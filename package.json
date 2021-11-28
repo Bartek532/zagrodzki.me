@@ -16,8 +16,10 @@
   "devDependencies": {
     "@types/node": "16.11.10",
     "@types/react": "17.0.37",
+    "clsx": "^1.1.1",
     "eslint": "7",
     "eslint-config-next": "12.0.4",
+    "next-seo": "^4.28.1",
     "sass": "^1.43.5",
     "typescript": "4.5.2"
   }

@@ -1,0 +1,39 @@
+@use "styles/_mixins";
+
+.nav {
+  background-color: var(--gray-100);
+  border-radius: 16px;
+  padding: 0.4rem 0.5rem;
+
+  .list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    @include mixins.flex;
+    gap: 0.7rem;
+
+    .link {
+      font-size: 1.3rem;
+      font-weight: 700;
+      padding: 0.5rem 1.4rem;
+      border-radius: 16px;
+      position: relative;
+      @include mixins.flex;
+
+      .label {
+        z-index: 1;
+      }
+
+      .active {
+        position: absolute;
+        right: 0;
+        left: 0;
+        height: 100%;
+        top: 0;
+        border-radius: 16px;
+        z-index: 0;
+        background-color: var(--white-100);
+      }
+    }
+  }
+}

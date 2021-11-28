@@ -1,0 +1,14 @@
+@use "styles/_mixins";
+
+.wrapper {
+  padding: 2rem;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 156rem;
+  @include mixins.flex;
+  flex-flow: column wrap;
+
+  @include mixins.mediaquery("sm") {
+    padding: 3rem 4rem;
+  }
+}
