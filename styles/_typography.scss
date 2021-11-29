@@ -1,0 +1,53 @@
+@use "_mixins";
+
+@font-face {
+  font-family: "GT Walsheim";
+  src: url("/fonts/GT-Walsheim-Black.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "GT Walsheim";
+  src: url("/fonts/GT-Walsheim-Bold.woff2") format("woff2");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "GT Walsheim";
+  src: url("/fonts/GT-Walsheim-Medium.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "GT Walsheim";
+  src: url("/fonts/GT-Walsheim-Regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  font-family: "GT Walsheim", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+html {
+  font-size: 62.5%;
+
+  @include mixins.mediaquery("lg") {
+    font-size: 55%;
+  }
+
+  @include mixins.mediaquery("xl") {
+    font-size: 58%;
+  }
+
+  @include mixins.mediaquery("xxl") {
+    font-size: 62.5%;
+  }
+}

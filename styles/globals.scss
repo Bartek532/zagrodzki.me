@@ -1,22 +1,7 @@
 @use "_mixins";
+@use "_typography";
 @use "variables";
 @use "reset";
-
-html {
-  font-size: 62.5%;
-
-  @include mixins.mediaquery("lg") {
-    font-size: 55%;
-  }
-
-  @include mixins.mediaquery("xl") {
-    font-size: 58%;
-  }
-
-  @include mixins.mediaquery("xxl") {
-    font-size: 62.5%;
-  }
-}
 
 body {
   min-height: 100vh;

@@ -3,6 +3,9 @@ import { memo } from "react";
 import { NextSeo } from "next-seo";
 import { Navbar } from "components/navbar/Navbar";
 import { routes } from "data/routes";
+import Logo from "public/svg/logo.svg";
+import PaperPlane from "public/svg/paper-plane.svg";
+import Link from "next/link";
 
 import { titleTemplate as defaultTitleTemplate } from "pages/_app";
 
@@ -16,7 +19,20 @@ export const Layout = memo<LayoutProps>(
   ({ children, title, titleTemplate = defaultTitleTemplate }) => {
     return (
       <div className={styles.wrapper}>
-        <Navbar routes={routes} />
+        <header className={styles.header}>
+          <Link href="/">
+            <a className={styles.logo}>
+              <Logo />
+            </a>
+          </Link>
+          <Navbar routes={routes} />
+          <Link href="/contact">
+            <a className={styles.contact}>
+              Contact
+              <PaperPlane />
+            </a>
+          </Link>
+        </header>
         {children}
 
         <NextSeo

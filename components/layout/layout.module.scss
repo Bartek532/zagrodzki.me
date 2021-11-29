@@ -1,14 +1,57 @@
 @use "styles/_mixins";
 
 .wrapper {
-  padding: 2rem;
+  padding: 3rem 2rem;
   margin: 0 auto;
   width: 100%;
-  max-width: 156rem;
+  max-width: 100rem;
   @include mixins.flex;
   flex-flow: column wrap;
 
   @include mixins.mediaquery("sm") {
     padding: 3rem 4rem;
+  }
+
+  .header {
+    @include mixins.flex;
+    flex-wrap: wrap;
+    width: 100%;
+
+    @include mixins.mediaquery("sm") {
+      justify-content: space-between;
+    }
+
+    .logo {
+      max-width: 4rem;
+      display: none;
+
+      @include mixins.mediaquery("sm") {
+        display: block;
+      }
+
+      svg {
+        width: 100%;
+      }
+    }
+
+    .contact {
+      @include mixins.flex;
+      gap: 1rem;
+      font-size: 1.3rem;
+      font-weight: 600;
+      display: none;
+
+      @include mixins.mediaquery("sm") {
+        display: flex;
+      }
+
+      &:hover svg {
+        transform: translate(5px, -7px) rotate(20deg);
+      }
+      svg {
+        width: 1.6rem;
+        transition: transform 0.2s ease-out;
+      }
+    }
   }
 }

@@ -14,6 +14,7 @@
     "react-dom": "17.0.2"
   },
   "devDependencies": {
+    "@svgr/webpack": "^5.5.0",
     "@types/node": "16.11.10",
     "@types/react": "17.0.37",
     "clsx": "^1.1.1",
