@@ -5,6 +5,7 @@ type NameToType = {
   readonly SPOTIFY_CLIENT_SECRET: string;
   readonly SPOTIFY_REFRESH_TOKEN: string;
   readonly SPOTIFY_ACCESS_TOKEN: string;
+  readonly NEXT_PUBLIC_TWITTER_USERNAME: string;
 };
 
 export function getEnv<Env extends keyof NameToType>(
