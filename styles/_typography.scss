@@ -32,8 +32,25 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "Kenfolg";
+  src: url("/fonts/Kenfolg.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 body {
   font-family: "GT Walsheim", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Kenfolg", "Georgia", "Garamond", serif;
 }
 
 html {

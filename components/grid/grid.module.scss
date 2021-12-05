@@ -1,0 +1,14 @@
+@use "styles/_mixins";
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: 100%;
+  grid-gap: 1rem;
+  margin-top: 3rem;
+  align-items: start;
+
+  @include mixins.mediaquery("lg") {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

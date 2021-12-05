@@ -1,0 +1,168 @@
+@use "styles/_mixins";
+
+.wrapper {
+  grid-column: 1 / span 2;
+  width: 100%;
+  padding: 2rem;
+  background-color: var(--white-100);
+  background-position: center center;
+  background-size: cover;
+  border-radius: 2rem;
+  position: relative;
+  min-height: 10rem;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
+  overflow: hidden;
+
+  @include mixins.mediaquery("xs") {
+    grid-column: 1 / span 1;
+    height: 0;
+    padding: 0;
+    padding-bottom: 100%;
+  }
+
+  .content {
+    @include mixins.flex(flex-start);
+    @include mixins.mediaquery("xs") {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      @include mixins.flex(space-between, flex-start);
+      flex-flow: column wrap;
+      padding: 3rem;
+    }
+
+    @include mixins.mediaquery("lg") {
+      padding: 2rem;
+    }
+
+    .logo {
+      width: 50px;
+      height: 50px;
+      display: none;
+
+      @include mixins.mediaquery("xs") {
+        display: block;
+      }
+
+      @include mixins.mediaquery("lg") {
+        width: 30px;
+        height: 30px;
+      }
+
+      @include mixins.mediaquery("xl") {
+        width: 35px;
+        height: 35px;
+      }
+
+      svg path {
+        fill: var(--green-100);
+      }
+    }
+
+    .info {
+      position: relative;
+      z-index: 2;
+
+      .label {
+        color: var(--green-100);
+        font-size: 1.2rem;
+
+        @include mixins.mediaquery("xs") {
+          font-size: 1.3rem;
+        }
+
+        .barWrapper {
+          margin-right: 5px;
+
+          .bar {
+            display: inline-block;
+            position: relative;
+            margin-right: 1px;
+            width: 3px;
+            height: 1px;
+            overflow: hidden;
+            background-color: var(--green-100);
+            color: transparent;
+            animation-name: pulse;
+            animation-duration: 1s;
+            animation-iteration-count: infinite;
+            border-radius: 25%;
+
+            &1 {
+              animation-delay: 0.5s;
+            }
+
+            &3 {
+              animation-delay: 1.2s;
+            }
+          }
+        }
+      }
+
+      .title {
+        margin: 0.3rem 0;
+
+        @include mixins.mediaquery("xs") {
+          font-size: 2rem;
+        }
+
+        @include mixins.mediaquery("lg") {
+          font-size: 1.8rem;
+        }
+      }
+
+      .description {
+        font-size: 1.15rem;
+
+        @include mixins.mediaquery("xs") {
+          font-size: 1.4rem;
+        }
+
+        @include mixins.mediaquery("lg") {
+          font-size: 1.2rem;
+        }
+      }
+    }
+
+    .album {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      max-width: 40%;
+
+      @include mixins.mediaquery("xs") {
+        display: none;
+      }
+    }
+  }
+}
+
+@keyframes pulse {
+  0% {
+    height: 1px;
+    margin-top: 0;
+  }
+  10% {
+    height: 15px;
+    margin-top: -15px;
+  }
+  50% {
+    height: 5px;
+    margin-top: -5px;
+  }
+  60% {
+    height: 7px;
+    margin-top: -7x;
+  }
+  80% {
+    height: 15px;
+    margin-top: -15px;
+  }
+  100% {
+    height: 1px;
+    margin-top: 0;
+  }
+}
