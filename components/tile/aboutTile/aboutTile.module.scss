@@ -1,0 +1,48 @@
+@use "styles/_mixins";
+
+.tile {
+  width: 100%;
+  grid-column: span 2;
+  background-color: var(--white-100);
+  border-radius: 2rem;
+  box-shadow: var(--tile-shadow);
+  @include mixins.flex(center, flex-start);
+  flex-flow: column wrap;
+  gap: 1.5rem;
+  padding: 2rem;
+  position: relative;
+
+  .avatar {
+    width: 7rem;
+  }
+
+  .description {
+    font-size: 1.4rem;
+
+    .name {
+      font-family: "Kenfolg";
+      font-size: 2rem;
+    }
+  }
+
+  .more {
+    position: absolute;
+    right: 2rem;
+    top: 2rem;
+    font-size: 1.4rem;
+    gap: 1rem;
+    @include mixins.flex;
+    border: 0.8px solid var(--gray-100);
+    padding: 0.6rem 1.2rem;
+    border-radius: 1rem;
+
+    .arrow {
+      width: 12px;
+      transition: transform 0.2s ease-in-out;
+    }
+
+    &:hover .arrow {
+      transform: rotate(45deg);
+    }
+  }
+}

@@ -9,11 +9,7 @@ import type { SpotifyTrack } from "types";
 import { LoaderRing } from "components/loader/LoaderRing";
 import Image from "next/image";
 
-type SpotifyTileProps = {
-  readonly track: SpotifyTrack;
-};
-
-export const SpotifyTile = memo<SpotifyTileProps>(() => {
+export const SpotifyTile = () => {
   const { data, isLoading } = useGetCurrentTrack();
   const {
     item: { artists, album, name, external_urls },
@@ -56,6 +52,4 @@ export const SpotifyTile = memo<SpotifyTileProps>(() => {
       </div>
     </a>
   );
-});
-
-SpotifyTile.displayName = "SpotifyTile";
+};

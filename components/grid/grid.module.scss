@@ -6,7 +6,7 @@
   width: 100%;
   grid-gap: 1rem;
   margin-top: 3rem;
-  align-items: start;
+  align-items: stretch;
 
   @include mixins.mediaquery("lg") {
     grid-template-columns: repeat(4, 1fr);
