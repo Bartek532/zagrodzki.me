@@ -11,6 +11,11 @@ import Image from "next/image";
 
 export const SpotifyTile = () => {
   const { data, isLoading } = useGetCurrentTrack();
+
+  if (!data) {
+    return null;
+  }
+
   const {
     item: { artists, album, name, external_urls },
   } = data.track;

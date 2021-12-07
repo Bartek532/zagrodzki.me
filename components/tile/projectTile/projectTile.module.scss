@@ -1,0 +1,30 @@
+@use "styles/_mixins";
+
+.project {
+  border-radius: 2rem;
+  grid-row: span 2;
+  position: relative;
+
+  img {
+    border-radius: 2rem;
+  }
+
+  .arrow {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    background-color: var(--white-100);
+    padding: 1rem;
+    border-radius: 50%;
+    @include mixins.flex;
+    transition: transform 0.2s ease-in-out;
+
+    svg {
+      width: 9px;
+    }
+  }
+
+  &:hover .arrow {
+    transform: rotate(45deg);
+  }
+}

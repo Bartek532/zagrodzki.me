@@ -12,8 +12,17 @@
   padding: 2rem;
   position: relative;
 
+  @include mixins.mediaquery("lg") {
+    justify-content: space-between;
+    padding: 2.5rem;
+  }
+
   .avatar {
     width: 7rem;
+
+    @include mixins.mediaquery("xl") {
+      width: 8rem;
+    }
   }
 
   .description {

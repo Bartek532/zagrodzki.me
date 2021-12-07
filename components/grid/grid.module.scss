@@ -10,5 +10,6 @@
 
   @include mixins.mediaquery("lg") {
     grid-template-columns: repeat(4, 1fr);
+    margin-top: 5rem;
   }
 }

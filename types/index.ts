@@ -58,3 +58,10 @@ export type SpotifyAlbum = {
   type: "album";
   uri: string;
 };
+
+export type Project = {
+  name: string;
+  slug: string;
+  priority: number;
+  url: string;
+};
