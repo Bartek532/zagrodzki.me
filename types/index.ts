@@ -68,6 +68,9 @@ export type Project = {
   timeToRead: number;
   publishedAt: string;
   isPublished: boolean;
+  mockup: string;
+  repoUrl: string;
+  stack: string[];
 };
 
 export type PromiseValue<T> = T extends PromiseLike<infer R> ? R : T;

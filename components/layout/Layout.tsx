@@ -33,7 +33,7 @@ export const Layout = memo<LayoutProps>(
             </a>
           </Link>
         </header>
-        {children}
+        <main className={styles.main}>{children}</main>
 
         <NextSeo
           title={

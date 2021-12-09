@@ -1,0 +1,42 @@
+@use "styles/_mixins";
+
+.thumbnail {
+  flex: 0 1 43rem;
+  @include mixins.flex(center, flex-start);
+  flex-flow: column wrap;
+
+  .image {
+    margin-bottom: 0.3rem;
+    img {
+      border-radius: 2rem;
+    }
+  }
+
+  .content {
+    @include mixins.flex(center, flex-start);
+    flex-flow: column wrap;
+    padding: 1rem;
+
+    .title {
+      font-size: 1.9rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .description {
+      font-size: 1.3rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .stack {
+      @include mixins.flex;
+      gap: 1rem;
+
+      .tech {
+        font-size: 1.2rem;
+        background-color: var(--white-100);
+        padding: 0.35rem 1.3rem;
+        border-radius: 2rem;
+      }
+    }
+  }
+}
