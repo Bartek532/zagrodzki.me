@@ -2,7 +2,7 @@
 
 .projects {
   width: 100%;
-  @include mixins.flex;
+  @include mixins.flex(center, flex-start);
   flex-wrap: wrap;
   gap: 3rem;
 

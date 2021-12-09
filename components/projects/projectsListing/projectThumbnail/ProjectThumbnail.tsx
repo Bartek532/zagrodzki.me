@@ -22,8 +22,8 @@ export const ProjectThumbnail = memo<ProjectThumbnailProps>(({ project }) => {
           <Image
             src={project.image}
             alt={project.title}
-            width={1024}
-            height={700}
+            width={1200}
+            height={880}
           />
         </motion.div>
         <div className={styles.content}>

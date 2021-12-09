@@ -2,7 +2,7 @@
 
 .thumbnail {
   flex: 0 1 43rem;
-  @include mixins.flex(center, flex-start);
+  @include mixins.flex(flex-start, flex-start);
   flex-flow: column wrap;
 
   .image {
