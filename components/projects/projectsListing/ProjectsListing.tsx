@@ -2,6 +2,7 @@ import styles from "./projectsListing.module.scss";
 import { memo } from "react";
 import type { Project } from "types";
 import { ProjectThumbnail } from "components/projects/projectsListing/projectThumbnail/ProjectThumbnail";
+import { SearchInput } from "components/input/SearchInput";
 
 type ProjectsListingProps = {
   readonly projects: Project[];
@@ -15,6 +16,11 @@ export const ProjectsListing = memo<ProjectsListingProps>(({ projects }) => {
         <p className={styles.description}>
           Everything that I have built, alone or with someone 🔨
         </p>
+        <SearchInput
+          name="search-projects"
+          placeholder="Search..."
+          label="Search for the project"
+        />
       </div>
       {projects.map(project => (
         <ProjectThumbnail project={project} key={project.slug} />
