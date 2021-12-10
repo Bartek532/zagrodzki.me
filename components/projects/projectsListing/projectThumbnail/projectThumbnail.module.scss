@@ -1,7 +1,7 @@
 @use "styles/_mixins";
 
 .thumbnail {
-  flex: 0 1 43rem;
+  flex: 0 1 47rem;
   @include mixins.flex(flex-start, flex-start);
   flex-flow: column wrap;
 
