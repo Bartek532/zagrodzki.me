@@ -7,6 +7,7 @@
 
   .image {
     margin-bottom: 0.3rem;
+    width: 100%;
     img {
       border-radius: 2rem;
     }
@@ -28,8 +29,9 @@
     }
 
     .stack {
-      @include mixins.flex;
-      gap: 1rem;
+      @include mixins.flex(flex-start);
+      gap: 0.8rem 1rem;
+      flex-wrap: wrap;
 
       .tech {
         font-size: 1.2rem;
