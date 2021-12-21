@@ -24,6 +24,22 @@
       max-width: 28rem;
     }
   }
+
+  .list {
+    list-style-type: none;
+    width: 100%;
+    @include mixins.flex(flex-start, flex-start);
+    flex-wrap: wrap;
+    gap: 4rem;
+    margin: 0;
+    padding: 0;
+
+    .hit {
+      flex: 0 1 46rem;
+      @include mixins.flex(flex-start, flex-start);
+      flex-flow: column wrap;
+    }
+  }
 }
 
 @media all and (min-width: 924px) {

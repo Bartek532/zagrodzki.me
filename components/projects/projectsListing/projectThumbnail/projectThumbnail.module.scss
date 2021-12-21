@@ -1,9 +1,7 @@
 @use "styles/_mixins";
 
 .thumbnail {
-  flex: 0 1 46rem;
-  @include mixins.flex(flex-start, flex-start);
-  flex-flow: column wrap;
+  width: 100%;
 
   .image {
     margin-bottom: 0.3rem;

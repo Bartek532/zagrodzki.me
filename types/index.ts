@@ -63,22 +63,19 @@ export type Project = {
   title: string;
   description: string;
   slug: string;
-  image: string;
   url: string;
   timeToRead: number;
   publishedAt: string;
   isPublished: boolean;
-  mockup: string;
   repoUrl: string;
   stack: string[];
 };
 
 export type PromiseValue<T> = T extends PromiseLike<infer R> ? R : T;
-export type InferGetStaticPropsType<T extends (...args: any) => any> =
-  PromiseValue<ReturnType<T>> extends infer Temp
-    ? Temp extends {
-        readonly props: infer P;
-      }
-      ? P
-      : never
-    : never;
+export type InferGetStaticPropsType<T extends (...args: any) => any> = PromiseValue<ReturnType<T>> extends infer Temp
+  ? Temp extends {
+      readonly props: infer P;
+    }
+    ? P
+    : never
+  : never;
