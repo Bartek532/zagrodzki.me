@@ -5,6 +5,7 @@
   flex-flow: column wrap;
   width: 100%;
   padding: 0 1rem;
+  margin-top: 2rem;
 
   .header {
     width: 100%;
@@ -61,7 +62,7 @@
       }
 
       .title {
-        font-size: 2.5rem;
+        font-size: 2.7rem;
 
         @include mixins.mediaquery("lg") {
           font-size: 3rem;
@@ -73,15 +74,15 @@
       }
 
       .description {
-        font-size: 1.4rem;
         max-width: 45rem;
+        font-size: 1.55rem;
 
         @include mixins.mediaquery("lg") {
-          font-size: 1.5rem;
+          font-size: 1.7rem;
         }
 
         @include mixins.mediaquery("xl") {
-          font-size: 1.6rem;
+          font-size: 1.8rem;
         }
       }
     }
@@ -94,7 +95,7 @@
 
   .thumbnail {
     position: relative;
-    margin: 2.5rem 0;
+    margin: 4.5rem 0;
 
     img {
       border-radius: 2rem;

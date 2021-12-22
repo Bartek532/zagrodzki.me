@@ -2,17 +2,17 @@
 
 .content {
   p {
-    font-size: 1.6rem;
-    line-height: 2.7rem;
+    font-size: 1.4rem;
+    line-height: 2.4rem;
 
     @include mixins.mediaquery("lg") {
-      font-size: 1.7rem;
-      line-height: 2.8rem;
+      font-size: 1.5rem;
+      line-height: 2.5rem;
     }
 
     @include mixins.mediaquery("xl") {
-      font-size: 1.8rem;
-      line-height: 3rem;
+      font-size: 1.7rem;
+      line-height: 2.7rem;
     }
   }
 }

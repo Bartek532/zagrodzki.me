@@ -18,10 +18,13 @@
   }
 
   .avatar {
-    width: 7rem;
+    width: 6rem;
+    position: relative;
+    left: 1rem;
 
     @include mixins.mediaquery("xl") {
-      width: 8rem;
+      width: 7rem;
+      left: 1.5rem;
     }
   }
 

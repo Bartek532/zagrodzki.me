@@ -8,18 +8,14 @@ import { Grid } from "components/grid/Grid";
 import { getNewestProjects } from "lib/projects";
 import type { InferGetStaticPropsType } from "types";
 
-const Home: NextPage = ({
-  projects,
-}: InferGetStaticPropsType<GetStaticProps>) => {
+const Home: NextPage = ({ projects }: InferGetStaticPropsType<GetStaticProps>) => {
   return (
     <Layout>
       <Grid>
         <SpotifyTile />
         <AboutTile />
-        <ProjectTile project={projects[0]} />
-        <TwitterTile
-          username={process.env.NEXT_PUBLIC_TWITTER_USERNAME as string}
-        />
+        <ProjectTile project={projects[1]} />
+        <TwitterTile username={process.env.NEXT_PUBLIC_TWITTER_USERNAME as string} />
       </Grid>
     </Layout>
   );

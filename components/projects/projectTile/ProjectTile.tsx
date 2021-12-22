@@ -14,7 +14,6 @@ export const ProjectTile = memo<ProjectTileProps>(({ project }) => {
     <Link href={`/projects/${project.slug}`}>
       <a className={styles.project}>
         <Image src={`/img/projects/${project.slug}/mockup.png`} alt="" layout="fill" objectFit="cover" />
-
         <div className={styles.arrow}>
           <Arrow />
         </div>

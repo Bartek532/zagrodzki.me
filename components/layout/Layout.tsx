@@ -15,34 +15,28 @@ type LayoutProps = {
   readonly title?: string;
 };
 
-export const Layout = memo<LayoutProps>(
-  ({ children, title, titleTemplate = defaultTitleTemplate }) => {
-    return (
-      <div className={styles.wrapper}>
-        <header className={styles.header}>
-          <Link href="/">
-            <a className={styles.logo}>
-              <Logo />
-            </a>
-          </Link>
-          <Navbar routes={routes} />
-          <Link href="/contact">
-            <a className={styles.contact}>
-              Contact
-              <PaperPlane />
-            </a>
-          </Link>
-        </header>
-        <main className={styles.main}>{children}</main>
+export const Layout = memo<LayoutProps>(({ children, title, titleTemplate = defaultTitleTemplate }) => {
+  return (
+    <div className={styles.wrapper}>
+      <header className={styles.header}>
+        <Link href="/">
+          <a className={styles.logo}>
+            <Logo />
+          </a>
+        </Link>
+        <Navbar routes={routes} />
+        <Link href="/contact">
+          <a className={styles.contact}>
+            Contact
+            <PaperPlane />
+          </a>
+        </Link>
+      </header>
+      <div className={styles.main}>{children}</div>
 
-        <NextSeo
-          title={
-            title ? titleTemplate.replace("%s", title) : titleTemplate.slice(4)
-          }
-        />
-      </div>
-    );
-  }
-);
+      <NextSeo title={title ? titleTemplate.replace("%s", title) : titleTemplate.slice(4)} />
+    </div>
+  );
+});
 
 Layout.displayName = "Layout";
