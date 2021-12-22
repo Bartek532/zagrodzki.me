@@ -1,0 +1,87 @@
+@use "styles/_mixins";
+
+.heading {
+  margin: 2rem 0;
+  position: relative;
+
+  &:hover {
+    a span {
+      opacity: 1;
+    }
+  }
+
+  a:focus {
+    span {
+      opacity: 1;
+    }
+  }
+
+  a span {
+    position: absolute;
+    width: 2.4rem;
+    height: 2.4rem;
+    top: 50%;
+    left: -3rem;
+    transform: translateY(-50%);
+    background-image: url("/icons/anchor.svg");
+    background-repeat: no-repeat;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+}
+
+.h2 {
+  font-size: 2.3rem;
+
+  @include mixins.mediaquery("sm") {
+    font-size: 2.8rem;
+  }
+
+  @include mixins.mediaquery("xl") {
+    font-size: 3.2rem;
+  }
+}
+.h3 {
+  font-size: 2.1rem;
+
+  @include mixins.mediaquery("sm") {
+    font-size: 2.6rem;
+  }
+
+  @include mixins.mediaquery("xl") {
+    font-size: 3rem;
+  }
+}
+.h4 {
+  font-size: 2rem;
+
+  @include mixins.mediaquery("sm") {
+    font-size: 2.5rem;
+  }
+
+  @include mixins.mediaquery("xl") {
+    font-size: 2.9rem;
+  }
+}
+.h5 {
+  font-size: 1.9rem;
+
+  @include mixins.mediaquery("sm") {
+    font-size: 2.4rem;
+  }
+
+  @include mixins.mediaquery("xl") {
+    font-size: 2.8rem;
+  }
+}
+.h6 {
+  font-size: 1.8rem;
+
+  @include mixins.mediaquery("sm") {
+    font-size: 2.3rem;
+  }
+
+  @include mixins.mediaquery("xl") {
+    font-size: 2.7rem;
+  }
+}

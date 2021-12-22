@@ -79,3 +79,5 @@ export type InferGetStaticPropsType<T extends (...args: any) => any> = PromiseVa
     ? P
     : never
   : never;
+
+export type HeadingVariant = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";

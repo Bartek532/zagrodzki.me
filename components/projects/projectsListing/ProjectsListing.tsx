@@ -7,7 +7,10 @@ import algoliasearch from "algoliasearch";
 import { InstantSearch, connectHits } from "react-instantsearch-dom";
 import type { HitsProvided } from "react-instantsearch-core";
 
-const searchClient = algoliasearch("3EE43YCZQB", "0912eff33c9cde21cd3c7e1c8dbf5c42");
+const searchClient = algoliasearch(
+  process.env.NEXT_PUBLIC_ALGOLIA_APP_ID!,
+  process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_KEY!,
+);
 
 interface CustomHitsProps extends HitsProvided<Project> {
   readonly currentObjectID: string | null;

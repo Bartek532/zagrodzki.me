@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
-module.exports = {
+const withTM = require("next-transpile-modules")(["react-github-btn"]);
+module.exports = withTM({
   reactStrictMode: true,
   webpack(config) {
     config.module.rules.push({
@@ -12,4 +13,4 @@ module.exports = {
   images: {
     domains: ["i.scdn.co"],
   },
-};
+});

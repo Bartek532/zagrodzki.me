@@ -8,13 +8,14 @@ type NameToType = {
   readonly NEXT_PUBLIC_TWITTER_USERNAME: string;
   readonly NEXT_PUBLIC_ALGOLIA_APP_ID: string;
   readonly NEXT_PUBLIC_ALGOLIA_SEARCH_KEY: string;
+  readonly NEXT_PUBLIC_URL: string;
 };
 
-export function getEnv<Env extends keyof NameToType>(
-  name: Env
-): NameToType[Env];
+export function getEnv<Env extends keyof NameToType>(name: Env): NameToType[Env];
 export function getEnv(name: keyof NameToType): NameToType[keyof NameToType] {
   const val = process.env[name];
+
+  console.log(val, name);
 
   if (!val) {
     throw new Error(`Cannot find environmental variable: ${name}`);

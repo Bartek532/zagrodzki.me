@@ -1,9 +1,5 @@
 import path from "path";
-import {
-  getAllResources,
-  getResourcesPaths,
-  getResourceBySlug,
-} from "lib/resource";
+import { getAllResources, getResourcesPaths, getResourceBySlug } from "lib/resource";
 import dayjs from "dayjs";
 import type { Project } from "types";
 import customParseFormat from "dayjs/plugin/customParseFormat";
@@ -21,7 +17,7 @@ export const getProjectsPaths = () => {
 };
 
 export const getProjectBySlug = (slug: string) => {
-  return getResourceBySlug(PROJECTS_DIR, slug);
+  return getResourceBySlug(slug, PROJECTS_DIR);
 };
 
 export const sortProjectsByNewest = (projects: Project[]) => {

@@ -28,7 +28,7 @@
   .list {
     list-style-type: none;
     width: 100%;
-    @include mixins.flex(flex-start, flex-start);
+    @include mixins.flex(center, flex-start);
     flex-wrap: wrap;
     gap: 4rem;
     margin: 0;
@@ -43,7 +43,7 @@
 }
 
 @media all and (min-width: 924px) {
-  .projects {
+  .projects .list {
     justify-content: space-between;
   }
 }

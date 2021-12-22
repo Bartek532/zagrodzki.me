@@ -1,0 +1,122 @@
+@use "styles/_mixins";
+
+.wrapper {
+  @include mixins.flex;
+  flex-flow: column wrap;
+  width: 100%;
+  padding: 0 1rem;
+
+  .header {
+    width: 100%;
+    @include mixins.flex(space-between);
+    flex-wrap: wrap;
+    gap: 1rem;
+
+    .info {
+      @include mixins.flex(center, flex-start);
+      flex-flow: column wrap;
+      gap: 1rem;
+
+      .path {
+        @include mixins.flex;
+        gap: 0.4rem;
+
+        @include mixins.mediaquery("lg") {
+          gap: 0.7rem;
+        }
+
+        .separator {
+          width: 9px;
+
+          svg path {
+            fill: var(--gray-300);
+          }
+
+          @include mixins.mediaquery("lg") {
+            width: 11px;
+          }
+
+          @include mixins.mediaquery("xl") {
+            width: 12px;
+          }
+        }
+
+        .link {
+          font-size: 1.2rem;
+          color: var(--gray-300);
+          transition: color 0.2s ease-out;
+
+          &:hover {
+            color: var(--blue-200);
+          }
+
+          @include mixins.mediaquery("lg") {
+            font-size: 1.5rem;
+          }
+
+          @include mixins.mediaquery("xl") {
+            font-size: 1.6rem;
+          }
+        }
+      }
+
+      .title {
+        font-size: 2.5rem;
+
+        @include mixins.mediaquery("lg") {
+          font-size: 3rem;
+        }
+
+        @include mixins.mediaquery("xl") {
+          font-size: 3.6rem;
+        }
+      }
+
+      .description {
+        font-size: 1.4rem;
+        max-width: 45rem;
+
+        @include mixins.mediaquery("lg") {
+          font-size: 1.5rem;
+        }
+
+        @include mixins.mediaquery("xl") {
+          font-size: 1.6rem;
+        }
+      }
+    }
+
+    .github {
+      @include mixins.flex;
+      gap: 0.7rem;
+    }
+  }
+
+  .thumbnail {
+    position: relative;
+    margin: 2.5rem 0;
+
+    img {
+      border-radius: 2rem;
+    }
+
+    .arrow {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 1rem;
+      background-color: var(--white-100);
+      padding: 1rem;
+      border-radius: 50%;
+      @include mixins.flex;
+      transition: transform 0.2s ease-in-out;
+
+      svg {
+        width: 9px;
+      }
+    }
+
+    &:hover .arrow {
+      transform: rotate(45deg);
+    }
+  }
+}

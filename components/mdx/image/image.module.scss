@@ -1,0 +1,20 @@
+@use "styles/_mixins";
+
+.wrapper {
+  width: auto;
+  height: auto;
+  margin: 4rem 0;
+  position: relative;
+  @include mixins.flex;
+
+  .nextImage {
+    width: auto;
+    height: 100%;
+    position: relative;
+  }
+
+  .image {
+    max-width: 100%;
+    border-radius: 2rem;
+  }
+}

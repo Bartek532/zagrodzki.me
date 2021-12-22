@@ -15,15 +15,20 @@ export const ProjectThumbnail = memo<ProjectThumbnailProps>(({ project }) => {
       scale: 1.05,
     },
   };
+
   return (
     <Link href={`/projects/${project.slug}`} passHref>
       <motion.a className={styles.thumbnail} whileHover="hover">
-        <motion.div className={styles.image} variants={imageVariants}>
+        <motion.div className={styles.image} variants={imageVariants} layoutId={`image-container-${project.slug}`}>
           <Image src={`/img/projects/${project.slug}/thumbnail.png`} alt={project.title} width={1200} height={880} />
         </motion.div>
         <div className={styles.content}>
-          <h2 className={styles.title}>{project.title}</h2>
-          <p className={styles.description}>{project.description}</p>
+          <motion.h2 className={styles.title} layoutId={`title-container-${project.slug}`}>
+            {project.title}
+          </motion.h2>
+          <motion.p className={styles.description} layoutId={`description-container-${project.slug}`}>
+            {project.description}
+          </motion.p>
           <div className={styles.stack}>
             {project.stack.map((tech) => (
               <div className={styles.tech} key={tech}>
