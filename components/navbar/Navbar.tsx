@@ -15,14 +15,12 @@ export const Navbar = memo<NavbarProps>(({ routes }) => {
   return (
     <nav className={styles.nav}>
       <ul className={styles.list}>
-        {routes.map(route => (
+        {routes.map((route) => (
           <li key={route.path} className={clsx(styles.link, {})}>
             <Link href={route.path}>
               <a className={styles.label}>{route.label}</a>
             </Link>
-            {pathname === route.path ? (
-              <motion.div className={styles.active} layoutId="active" />
-            ) : null}
+            {pathname === route.path ? <motion.div className={styles.active} layoutId="active" /> : null}
           </li>
         ))}
       </ul>

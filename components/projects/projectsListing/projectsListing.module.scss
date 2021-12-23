@@ -7,6 +7,24 @@
   gap: 4rem;
   margin-top: 3rem;
 
+  .empty {
+    width: 100%;
+    @include mixins.flex;
+    margin-top: 2rem;
+
+    .avatar {
+      width: 25rem;
+
+      @include mixins.mediaquery("lg") {
+        width: 30rem;
+      }
+
+      @include mixins.mediaquery("xl") {
+        width: 35rem;
+      }
+    }
+  }
+
   .hero {
     width: 100%;
     @include mixins.flex;

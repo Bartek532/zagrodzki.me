@@ -5,7 +5,7 @@
   flex-flow: column wrap;
   width: 100%;
   padding: 0 1rem;
-  margin-top: 2rem;
+  margin-top: 3.5rem;
 
   .header {
     width: 100%;
@@ -43,12 +43,12 @@
         }
 
         .link {
-          font-size: 1.2rem;
-          color: var(--gray-300);
-          transition: color 0.2s ease-out;
+          font-size: 1.3rem;
+          transition: opacity 0.2s ease-out;
+          opacity: 0.65;
 
           &:hover {
-            color: var(--blue-200);
+            opacity: 1;
           }
 
           @include mixins.mediaquery("lg") {

@@ -6,6 +6,7 @@ import { SearchBox } from "components/searchBox/SearchBox";
 import algoliasearch from "algoliasearch";
 import { InstantSearch, connectHits } from "react-instantsearch-dom";
 import type { HitsProvided } from "react-instantsearch-core";
+import Image from "next/image";
 
 const searchClient = algoliasearch(
   process.env.NEXT_PUBLIC_ALGOLIA_APP_ID!,
@@ -18,6 +19,16 @@ interface CustomHitsProps extends HitsProvided<Project> {
 }
 
 export const CustomHits = connectHits<CustomHitsProps, Project>(({ hits, currentObjectID }) => {
+  if (!hits.length) {
+    return (
+      <div className={styles.empty}>
+        <div className={styles.avatar}>
+          <Image src="/img/avatars/surprised.png" alt="surprised memoji" width={421} height={421} />
+        </div>
+      </div>
+    );
+  }
+
   return (
     <ol id="search-hits-list" className={styles.list}>
       {hits.map((hit) => (

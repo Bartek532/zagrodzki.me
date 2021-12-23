@@ -1,7 +1,7 @@
 import styles from "./projectView.module.scss";
 import { memo } from "react";
 import type { Project } from "types";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import GitHubButton from "react-github-btn";
 import Arrow from "public/svg/right-top-arrow.svg";
@@ -20,7 +20,7 @@ export const ProjectView = memo<ProjectViewProps>(({ children, project }) => {
     <article className={styles.wrapper}>
       <header className={styles.header}>
         <div className={styles.info}>
-          <div className={styles.path}>
+          <motion.div className={styles.path} animate={{ x: [-100, 0], opacity: [0, 1] }}>
             <Link href="/">
               <a className={styles.link}>Home</a>
             </Link>
@@ -30,7 +30,7 @@ export const ProjectView = memo<ProjectViewProps>(({ children, project }) => {
             <Link href="/projects">
               <a className={styles.link}>Projects</a>
             </Link>
-          </div>
+          </motion.div>
           <motion.h1 layoutId={`title-container-${project.slug}`} className={styles.title}>
             {project.title}
           </motion.h1>
@@ -39,7 +39,7 @@ export const ProjectView = memo<ProjectViewProps>(({ children, project }) => {
           </motion.p>
         </div>
 
-        <div className={styles.github}>
+        <motion.div className={styles.github} animate={{ x: [100, 0], opacity: [0, 1] }} layoutId="xd">
           <GitHubButton
             href={project.repoUrl}
             data-icon="octicon-star"
@@ -57,14 +57,21 @@ export const ProjectView = memo<ProjectViewProps>(({ children, project }) => {
           >
             Fork
           </GitHubButton>
-        </div>
+        </motion.div>
       </header>
-      <motion.a layoutId={`image-container-${project.slug}`} className={styles.thumbnail} href={project.url}>
-        <Image src={`/img/projects/${project.slug}/thumbnail.png`} alt={project.title} width={1200} height={880} />
-        <div className={styles.arrow}>
-          <Arrow />
-        </div>
-      </motion.a>
+      <AnimatePresence>
+        <motion.a
+          layoutId={`image-container-${project.slug}`}
+          className={styles.thumbnail}
+          href={project.url}
+          key="thumbnail"
+        >
+          <Image src={`/img/projects/${project.slug}/thumbnail.png`} alt={project.title} width={1200} height={880} />
+          <div className={styles.arrow}>
+            <Arrow />
+          </div>
+        </motion.a>
+      </AnimatePresence>
 
       <div className="content">{children}</div>
     </article>
