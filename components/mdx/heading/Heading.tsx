@@ -15,7 +15,7 @@ export const Heading = memo<HeadingProps>(({ level: Tag, slug, url }) => {
 
   return (
     <Tag id={id} className={cn(styles.heading, styles[Tag])}>
-      <a id={id} href={`${url}/#${id}`} aria-hidden="true" tabIndex={-1}>
+      <a id={id} href={`${url}#${id}`} aria-hidden="true" tabIndex={-1}>
         <span></span>
       </a>
       {slug}

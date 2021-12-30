@@ -8,6 +8,9 @@ import Arrow from "public/svg/right-top-arrow.svg";
 import RightArrow from "public/svg/right-arrow.svg";
 import Link from "next/link";
 import { useWindowSize } from "hooks/useWindowSize";
+import { Sidebar } from "components/sidebar/Sidebar";
+import { renderToString } from "react-dom/server";
+import { getHeadings } from "utils/getHeadings";
 
 type ProjectViewProps = {
   readonly project: Project;
@@ -16,8 +19,9 @@ type ProjectViewProps = {
 
 export const ProjectView = memo<ProjectViewProps>(({ children, project }) => {
   const { width } = useWindowSize();
+  const contentString = renderToString(children as React.ReactElement);
   return (
-    <article className={styles.wrapper}>
+    <article className={styles.container}>
       <header className={styles.header}>
         <div className={styles.info}>
           <motion.div className={styles.path} animate={{ x: [-100, 0], opacity: [0, 1] }}>
@@ -59,21 +63,31 @@ export const ProjectView = memo<ProjectViewProps>(({ children, project }) => {
           </GitHubButton>
         </motion.div>
       </header>
-      <AnimatePresence>
-        <motion.a
-          layoutId={`image-container-${project.slug}`}
-          className={styles.thumbnail}
-          href={project.url}
-          key="thumbnail"
-        >
-          <Image src={`/img/projects/${project.slug}/thumbnail.png`} alt={project.title} width={1200} height={880} />
-          <div className={styles.arrow}>
-            <Arrow />
-          </div>
-        </motion.a>
-      </AnimatePresence>
+      <div className={styles.main}>
+        <Sidebar contents={getHeadings(contentString)} />
+        <div className={styles.wrapper}>
+          <AnimatePresence>
+            <motion.a
+              layoutId={`image-container-${project.slug}`}
+              className={styles.thumbnail}
+              href={project.url}
+              key="thumbnail"
+            >
+              <Image
+                src={`/img/projects/${project.slug}/thumbnail.png`}
+                alt={project.title}
+                width={1200}
+                height={880}
+              />
+              <div className={styles.arrow}>
+                <Arrow />
+              </div>
+            </motion.a>
+          </AnimatePresence>
 
-      <div className="content">{children}</div>
+          <div className="content">{children}</div>
+        </div>
+      </div>
     </article>
   );
 });

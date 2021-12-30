@@ -4,6 +4,10 @@
 @use "variables";
 @use "reset";
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   min-height: 100vh;
   min-height: -webkit-fill-available;

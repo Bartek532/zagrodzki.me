@@ -1,10 +1,9 @@
 @use "styles/_mixins";
 
-.wrapper {
+.container {
   @include mixins.flex;
   flex-flow: column wrap;
   width: 100%;
-  padding: 0 1rem;
   margin-top: 3.5rem;
 
   .header {
@@ -94,31 +93,44 @@
     }
   }
 
-  .thumbnail {
-    position: relative;
-    margin: 4.5rem 0;
+  .main {
+    @include mixins.flex(center, flex-start);
+    flex-direction: row-reverse;
+    gap: 8rem;
 
-    img {
-      border-radius: 2rem;
-    }
-
-    .arrow {
-      position: absolute;
-      bottom: 1.5rem;
-      left: 1rem;
-      background-color: var(--white-100);
-      padding: 1rem;
-      border-radius: 50%;
+    .wrapper {
       @include mixins.flex;
-      transition: transform 0.2s ease-in-out;
-
-      svg {
-        width: 9px;
-      }
+      flex-flow: column wrap;
+      width: 100%;
+      max-width: min(686px, 100%);
     }
 
-    &:hover .arrow {
-      transform: rotate(45deg);
+    .thumbnail {
+      position: relative;
+      margin: 4.5rem 0;
+
+      img {
+        border-radius: 2rem;
+      }
+
+      .arrow {
+        position: absolute;
+        bottom: 1.5rem;
+        left: 1rem;
+        background-color: var(--white-100);
+        padding: 1rem;
+        border-radius: 50%;
+        @include mixins.flex;
+        transition: transform 0.2s ease-in-out;
+
+        svg {
+          width: 9px;
+        }
+      }
+
+      &:hover .arrow {
+        transform: rotate(45deg);
+      }
     }
   }
 }

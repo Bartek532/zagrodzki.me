@@ -5,7 +5,6 @@ import { ProjectView } from "components/projects/projectView/ProjectView";
 import { getProjectsPaths, getProjectBySlug } from "lib/projects";
 import { MDXRemote } from "next-mdx-remote";
 import { NextSeo, ArticleJsonLd } from "next-seo";
-import { getEnv } from "utils/env";
 import { Image } from "components/mdx/image/Image";
 import { Heading } from "components/mdx/heading/Heading";
 import { useCallback, useMemo } from "react";

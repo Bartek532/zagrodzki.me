@@ -9,10 +9,7 @@ const MDX_REGEX = /\.mdx$/;
 
 type Resource = Project;
 
-const getResourceFrontmatter = <T extends Resource>(
-  filename: string,
-  resourcePath: string
-) => {
+const getResourceFrontmatter = <T extends Resource>(filename: string, resourcePath: string) => {
   const fullPath = path.join(resourcePath, filename);
   const fileContents = fs.readFileSync(fullPath, "utf8");
   const slug = filename.replace(MDX_REGEX, "");
@@ -24,7 +21,7 @@ const getResourceFrontmatter = <T extends Resource>(
 
 export const getAllResources = <T extends Resource>(resourcePath: string) => {
   const filenames = fs.readdirSync(resourcePath);
-  const allResources = filenames.map(filename => {
+  const allResources = filenames.map((filename) => {
     return getResourceFrontmatter<T>(filename, resourcePath);
   });
 
@@ -43,14 +40,12 @@ export const getResourceBySlug = async (slug: string, resourcePath: string) => {
 };
 
 const getResourcesSlugs = (resourcePath: string) => {
-  return fs.readdirSync(resourcePath).filter(path => MDX_REGEX.test(path));
+  return fs.readdirSync(resourcePath).filter((path) => MDX_REGEX.test(path));
 };
 
 export const getResourcesPaths = (resourcePath: string) => {
   const slugs = getResourcesSlugs(resourcePath);
-  const paths = slugs
-    .map(slug => slug.replace(MDX_REGEX, ""))
-    .map(slug => ({ params: { slug } }));
+  const paths = slugs.map((slug) => slug.replace(MDX_REGEX, "")).map((slug) => ({ params: { slug } }));
 
   return paths;
 };
