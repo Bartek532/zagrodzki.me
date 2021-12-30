@@ -16,6 +16,9 @@ export const Sidebar = memo<SidebarProps>(({ contents }) => {
     <aside className={styles.aside}>
       <h2 className={styles.title}>table of contents</h2>
       <nav className={styles.nav}>
+        <Link href="#introduction">
+          <a className={cn(styles.link, styles.H2)}>Introduction</a>
+        </Link>
         {contents
           ? contents.map((content) => (
               <Link href={`#${content.id}`} key={content.id}>
