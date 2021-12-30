@@ -28,7 +28,6 @@ export const SearchBox = connectSearchBox<SearchBoxProps>(
           autoCapitalize="off"
           spellCheck={false}
           placeholder="Search..."
-          autoFocus
           onChange={handleChange}
           value={currentRefinement}
           {...(currentObjectID && { "aria-activedescendant": "id" + currentObjectID })}

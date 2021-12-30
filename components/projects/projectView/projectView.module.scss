@@ -11,7 +11,7 @@
     width: 100%;
     @include mixins.flex(space-between);
     flex-wrap: wrap;
-    gap: 1rem;
+    gap: 1.4rem;
 
     .info {
       @include mixins.flex(center, flex-start);
@@ -43,7 +43,7 @@
         }
 
         .link {
-          font-size: 1.3rem;
+          font-size: 1.35rem;
           transition: opacity 0.2s ease-out;
           opacity: 0.65;
 
@@ -62,27 +62,28 @@
       }
 
       .title {
-        font-size: 2.7rem;
+        font-size: 2.9rem;
 
         @include mixins.mediaquery("lg") {
           font-size: 3rem;
         }
 
         @include mixins.mediaquery("xl") {
-          font-size: 3.6rem;
+          font-size: 3.7rem;
         }
       }
 
       .description {
         max-width: 45rem;
-        font-size: 1.55rem;
+        font-size: 1.65rem;
 
         @include mixins.mediaquery("lg") {
-          font-size: 1.7rem;
+          font-size: 1.75rem;
         }
 
         @include mixins.mediaquery("xl") {
-          font-size: 1.8rem;
+          max-width: 52rem;
+          font-size: 1.85rem;
         }
       }
     }
