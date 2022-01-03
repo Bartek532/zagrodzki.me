@@ -5,6 +5,7 @@
   position: sticky;
   overflow: auto;
   top: 8.5rem;
+  max-height: calc(100vh - 8.5rem);
   margin-top: 4.5rem;
   display: none;
 

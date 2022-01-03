@@ -1,9 +1,15 @@
 @use "styles/_mixins";
 
 .content {
-  p {
+  p,
+  #introduction {
     font-size: 1.6rem;
-    line-height: 2.7rem;
+    line-height: 2.75rem;
+    margin-bottom: 1.6rem;
+
+    @include mixins.mediaquery("sm") {
+      margin-bottom: 3rem;
+    }
 
     @include mixins.mediaquery("lg") {
       font-size: 1.7rem;
@@ -11,8 +17,12 @@
     }
 
     @include mixins.mediaquery("xl") {
-      font-size: 1.75rem;
-      line-height: 3.05rem;
+      font-size: 1.85rem;
+      line-height: 3.15rem;
     }
+  }
+
+  a {
+    color: var(--blue-200);
   }
 }

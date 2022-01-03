@@ -1,7 +1,7 @@
 @use "styles/_mixins";
 
 .heading {
-  margin: 2rem 0;
+  margin: 2.5rem 0;
   position: relative;
 
   &:hover {
@@ -27,6 +27,11 @@
     background-repeat: no-repeat;
     opacity: 0;
     transition: opacity 0.3s;
+    display: none;
+
+    @include mixins.mediaquery("sm") {
+      display: block;
+    }
 
     &:hover,
     &:focus {
@@ -36,7 +41,7 @@
 }
 
 .h2 {
-  font-size: 2.3rem;
+  font-size: 2.6rem;
 
   @include mixins.mediaquery("sm") {
     font-size: 2.8rem;
