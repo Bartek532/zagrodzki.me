@@ -12,6 +12,35 @@ stack:
   - "postgresql"
 ---
 
-### Example header
+<p id="introduction">
 
-kaj fjf ksjf sdfj
+Every time I wanted to find a book in my house I have to spend a lot of time to do this. So I decide to **digitalize** it! Database, forms, some code and it’s live.
+
+Now the administration panel is, what may surprise you, available for everyone, so you too can add your own book, but in a few moments I will block this access so only my closest ones can access it. I want to show all functionalities to as many people as I can before I do this.
+
+</p>
+
+<Image src="/img/projects/book-searcher/stack.png" alt="book searcher tech stack" width="1200" height="880" />
+
+## Tech stack
+
+As you can see above I built two versions of _Book Searcher_. First, I tried to use MongoDB, Vuex and more... not quite the right technologies 😁 This project is still on my [Github](https://github.com/Bartek532/book-searcher-mongo), so you can see the code. When my app was growing up it turned out that I need relations, more control of my state, better validation, so I figured I'd use a different stack.
+
+Basically, the whole app have been written in TypeScript (too obvious?). At the back I used Express.js and PostgreSQL
+with Prisma for database. On the front end I bet on Vue and I think it paid off.
+
+<Image src="/img/projects/book-searcher/add-book.png" alt="admin panel - add book" width="1400" height="1026" />
+
+## Problems
+
+I spent most of my time preparing the view and the logic involved in adding the book. A lot of validation, error messages, relations had to be done at this stage. But I can’t leave out that I learnt a lot doing this.
+
+If I had to name one more thing it would be authorization. Handling user permissions, sending suitable status codes, it sounds so simple, but trust me, in more advanced cases it can be very irritating.
+
+<Image src="/img/projects/book-searcher/books.png" alt="books view" width="1200" height="880" />
+
+## Lessons learned
+
+It's impossible to count Vue libraries that I got to know while working with this project. Not all working as I expected, but I didn’t give up 😉
+
+It’s worth noting that this was my first application of this size built with Vue 3. I have often looked at the documentation, but it has allowed me to delve more deeply into the subject.
