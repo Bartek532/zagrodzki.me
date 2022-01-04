@@ -16,6 +16,11 @@ body {
   background-color: var(--bg-100);
 }
 
+*::selection {
+  background-color: var(--blue-200);
+  color: var(--white-100);
+}
+
 /*
   Improved screen reader only CSS class
   @author Gaël Poupard

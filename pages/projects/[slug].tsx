@@ -7,6 +7,7 @@ import { MDXRemote } from "next-mdx-remote";
 import { NextSeo, ArticleJsonLd } from "next-seo";
 import { Image } from "components/mdx/image/Image";
 import { Heading } from "components/mdx/heading/Heading";
+import { Link } from "components/mdx/link/Link";
 import { useCallback, useMemo } from "react";
 
 type HeadingComponentProps = {
@@ -39,6 +40,7 @@ const Project: NextPage = ({ transformedMdx, frontmatter }: InferGetStaticPropsT
       h6: (props: HeadingComponentProps) => <Heading level="h6" {...getHeadingProps(props)}></Heading>,
       img: ({ alt, src }: ImageProps) => <Image src={src} alt={alt ? alt : ""} />,
       Image,
+      Link,
     }),
     [],
   );

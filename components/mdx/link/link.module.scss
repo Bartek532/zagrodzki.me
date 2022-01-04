@@ -1,0 +1,24 @@
+@use "styles/_mixins";
+
+.link {
+  color: var(--blue-200);
+  display: inline;
+  text-decoration: underline;
+
+  .icon {
+    padding: 0 0.7rem;
+
+    svg {
+      width: 10px;
+      display: inline;
+
+      path {
+        stroke: var(--blue-200);
+      }
+    }
+  }
+
+  &:hover {
+    text-decoration: none;
+  }
+}
