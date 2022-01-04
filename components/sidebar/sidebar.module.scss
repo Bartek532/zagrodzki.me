@@ -23,6 +23,10 @@
     transition: opacity 0.2s ease-out;
     opacity: 0.65;
 
+    &.active {
+      color: var(--blue-200);
+    }
+
     &:hover {
       opacity: 1;
     }

@@ -1,5 +1,5 @@
 import styles from "./projectView.module.scss";
-import { memo } from "react";
+import { memo, useRef, useEffect } from "react";
 import type { Project } from "types";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
@@ -11,6 +11,7 @@ import { useWindowSize } from "hooks/useWindowSize";
 import { Sidebar } from "components/sidebar/Sidebar";
 import { renderToString } from "react-dom/server";
 import { getHeadings } from "utils/getHeadings";
+import { useRunningHeader } from "hooks/useRunningHeader";
 
 type ProjectViewProps = {
   readonly project: Project;
@@ -18,8 +19,15 @@ type ProjectViewProps = {
 };
 
 export const ProjectView = memo<ProjectViewProps>(({ children, project }) => {
+  const contentElRef = useRef<HTMLDivElement | null>(null);
   const { width } = useWindowSize();
+  const { id, setRunningHeader } = useRunningHeader(contentElRef.current);
   const contentString = renderToString(children as React.ReactElement);
+
+  useEffect(() => {
+    setRunningHeader(contentElRef.current);
+  }, []);
+
   return (
     <article className={styles.container}>
       <header className={styles.header}>
@@ -43,7 +51,7 @@ export const ProjectView = memo<ProjectViewProps>(({ children, project }) => {
           </motion.p>
         </div>
 
-        <motion.div className={styles.github} animate={{ x: [100, 0], opacity: [0, 1] }} layoutId="xd">
+        <motion.div className={styles.github} animate={{ x: [100, 0], opacity: [0, 1] }}>
           <GitHubButton
             href={project.repoUrl}
             data-icon="octicon-star"
@@ -64,7 +72,7 @@ export const ProjectView = memo<ProjectViewProps>(({ children, project }) => {
         </motion.div>
       </header>
       <div className={styles.main}>
-        <Sidebar contents={getHeadings(contentString)} />
+        <Sidebar contents={getHeadings(contentString)} currentActiveHeaderId={id} />
         <div className={styles.wrapper}>
           <AnimatePresence>
             <motion.a
@@ -85,7 +93,9 @@ export const ProjectView = memo<ProjectViewProps>(({ children, project }) => {
             </motion.a>
           </AnimatePresence>
 
-          <div className="content">{children}</div>
+          <div className="content" ref={contentElRef}>
+            {children}
+          </div>
         </div>
       </div>
     </article>
