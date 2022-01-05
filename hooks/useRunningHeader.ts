@@ -27,8 +27,6 @@ export const useRunningHeader = (el: HTMLElement | null) => {
       return;
     }
 
-    console.log(entry);
-
     if (entry.isIntersecting) {
       currentlyVisibleHeaders.current.add(entry.target as HTMLElement);
     } else {
