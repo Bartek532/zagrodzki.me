@@ -16,9 +16,7 @@ export const SpotifyTile = () => {
     return null;
   }
 
-  const {
-    item: { artists, album, name, external_urls },
-  } = data.track;
+  const { artists, album, name, external_urls } = data.track;
 
   return (
     <a className={styles.wrapper} href={external_urls.spotify}>
@@ -40,17 +38,10 @@ export const SpotifyTile = () => {
                 Now playing
               </span>
               <h2 className={styles.title}>{normalizeTitle(name)}</h2>
-              <p className={styles.description}>
-                {normalizeTrackArtists(artists)}
-              </p>
+              <p className={styles.description}>{normalizeTrackArtists(artists)}</p>
             </div>
             <div className={styles.album}>
-              <Image
-                src={album.images[0].url}
-                width="640"
-                height="640"
-                alt={album.name}
-              />
+              <Image src={album.images[0].url} width="640" height="640" alt={album.name} />
             </div>
           </>
         )}

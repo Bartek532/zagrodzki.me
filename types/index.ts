@@ -1,33 +1,27 @@
 export type Route = { label: string; path: string };
 
 export type SpotifyTrack = {
-  timestamp: number;
-  progress_ms: number;
-  current_playing_type: string;
-  is_playing: boolean;
-  item: {
-    artists: SpotifyArtist[];
-    album: SpotifyAlbum;
-    available_markets: string[];
-    disc_number: number;
-    duration_ms: number;
-    explicit: boolean;
-    external_ids: {
-      isrc: string;
-    };
-    external_urls: {
-      spotify: string;
-    };
-    href: string;
-    id: string;
-    is_local: boolean;
-    name: string;
-    popularity: string;
-    preview_url: string;
-    track_number: number;
-    type: string;
-    uri: string;
+  album: SpotifyAlbum;
+  artists: SpotifyArtist[];
+  available_markets: string[];
+  disc_number: number;
+  duration_ms: number;
+  explicit: boolean;
+  external_ids: {
+    isrc: string;
   };
+  external_urls: {
+    spotify: string;
+  };
+  href: string;
+  id: string;
+  is_local: boolean;
+  name: string;
+  popularity: string;
+  preview_url: string;
+  track_number: number;
+  type: string;
+  uri: string;
 };
 
 export type SpotifyArtist = {
