@@ -2,7 +2,7 @@ import type { GetStaticProps, NextPage } from "next";
 import { Layout } from "components/layout/Layout";
 import { SpotifyTile } from "components/tile/spotifyTile/SpotifyTile";
 import { AboutTile } from "components/tile/aboutTile/AboutTile";
-import { TwitterTile } from "components/tile/twitterTile/TwitterTile";
+import { SocialTile } from "components/tile/socialTile/SocialTile";
 import { ProjectTile } from "components/projects/projectTile/ProjectTile";
 import { Grid } from "components/grid/Grid";
 import { getNewestProjects } from "lib/projects";
@@ -15,7 +15,9 @@ const Home: NextPage = ({ projects }: InferGetStaticPropsType<GetStaticProps>) =
         <SpotifyTile />
         <AboutTile />
         <ProjectTile project={projects[1]} />
-        <TwitterTile username={process.env.NEXT_PUBLIC_TWITTER_USERNAME as string} />
+        <SocialTile username={process.env.NEXT_PUBLIC_TWITTER_USERNAME as string} social="twitter" />
+        <SocialTile username={process.env.NEXT_PUBLIC_LINKEDIN_USERNAME as string} social="linkedin" />
+        <SocialTile username={process.env.NEXT_PUBLIC_GITHUB_USERNAME as string} social="github" />
       </Grid>
     </Layout>
   );
