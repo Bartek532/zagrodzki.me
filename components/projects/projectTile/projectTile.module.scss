@@ -18,14 +18,9 @@
     padding: 1rem;
     border-radius: 50%;
     @include mixins.flex;
-    transition: transform 0.2s ease-in-out;
 
     svg {
       width: 9px;
     }
-  }
-
-  &:hover .arrow {
-    transform: rotate(45deg);
   }
 }
