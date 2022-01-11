@@ -65,6 +65,19 @@ export type Project = {
   stack: string[];
 };
 
+export type Post = {
+  title: string;
+  slug: string;
+  excerpt: string;
+  timeToRead: number;
+  publishedAt: string;
+  isPublished: boolean;
+  category: Category;
+  image: string;
+};
+
+export type Category = "Other";
+
 export type PromiseValue<T> = T extends PromiseLike<infer R> ? R : T;
 export type InferGetStaticPropsType<T extends (...args: any) => any> = PromiseValue<ReturnType<T>> extends infer Temp
   ? Temp extends {

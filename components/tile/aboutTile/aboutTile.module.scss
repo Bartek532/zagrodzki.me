@@ -34,6 +34,7 @@
     .name {
       font-family: "Kenfolg";
       font-size: 2rem;
+      transition: color 0.2s ease-in-out;
     }
   }
 
@@ -44,7 +45,7 @@
     font-size: 1.35rem;
     gap: 1rem;
     @include mixins.flex;
-    border: 0.8px solid var(--gray-100);
+    border: 0.8px solid var(--blue-300);
     padding: 0.6rem 1.4rem;
     border-radius: 1rem;
 
@@ -52,9 +53,9 @@
       width: 9px;
       transition: transform 0.2s ease-in-out;
     }
+  }
 
-    &:hover .arrow {
-      transform: rotate(45deg);
-    }
+  &:hover .description .name {
+    color: var(--blue-200);
   }
 }

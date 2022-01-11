@@ -9,7 +9,7 @@ dayjs.extend(customParseFormat);
 const PROJECTS_DIR = path.join(process.cwd(), "content/projects");
 
 export const getAllProjects = () => {
-  return getAllResources(PROJECTS_DIR);
+  return getAllResources<Project>(PROJECTS_DIR);
 };
 
 export const getProjectsPaths = () => {

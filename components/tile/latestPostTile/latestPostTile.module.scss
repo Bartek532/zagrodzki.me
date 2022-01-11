@@ -1,0 +1,98 @@
+@use "styles/_mixins";
+
+.link {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.article {
+  background-color: var(--white-100);
+  box-shadow: var(--tile-shadow);
+  border-radius: 2rem;
+  padding: 2rem;
+  @include mixins.flex(space-between, flex-start);
+  flex-flow: column wrap;
+  gap: 0.5rem;
+
+  .info {
+    padding: 0.5rem;
+    @include mixins.flex(space-between, flex-start);
+    flex-flow: column wrap;
+
+    .title {
+      font-size: 2rem;
+      margin-bottom: 0.8rem;
+      padding: 0 0.5rem;
+      transition: color 0.2s ease-in-out;
+
+      @include mixins.mediaquery("lg") {
+        font-size: 2.2rem;
+      }
+
+      @include mixins.mediaquery("xl") {
+        font-size: 2.5rem;
+      }
+    }
+
+    .description {
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      padding: 0 0.5rem;
+
+      @include mixins.mediaquery("lg") {
+        font-size: 1.5rem;
+      }
+    }
+
+    .additional {
+      width: 100%;
+      @include mixins.flex(space-between);
+      margin: 1rem 0;
+
+      @include mixins.mediaquery("lg") {
+        margin: 2rem 0 1.2rem;
+      }
+      .more {
+        font-size: 1.25rem;
+        gap: 1rem;
+        @include mixins.flex;
+        border: 0.8px solid var(--blue-300);
+        padding: 0.6rem 1.4rem;
+        border-radius: 1rem;
+
+        .arrow {
+          width: 9px;
+          transition: transform 0.2s ease-in-out;
+        }
+
+        @include mixins.mediaquery("sm") {
+          font-size: 1.35rem;
+        }
+      }
+
+      .timeToRead {
+        font-size: 1.2rem;
+
+        @include mixins.mediaquery("sm") {
+          font-size: 1.3rem;
+        }
+      }
+    }
+  }
+
+  .image {
+    position: relative;
+    aspect-ratio: 2/1;
+    width: 100%;
+
+    img {
+      border-radius: 2rem;
+    }
+  }
+
+  &:hover {
+    .info .title {
+      color: var(--blue-200);
+    }
+  }
+}

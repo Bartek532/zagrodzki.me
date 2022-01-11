@@ -3,11 +3,11 @@ import fs from "fs";
 import matter from "gray-matter";
 import readingTime from "reading-time";
 import { serialize } from "next-mdx-remote/serialize";
-import type { Project } from "types";
+import type { Project, Post } from "types";
 
 const MDX_REGEX = /\.mdx$/;
 
-type Resource = Project;
+type Resource = Project | Post;
 
 const getResourceFrontmatter = <T extends Resource>(filename: string, resourcePath: string) => {
   const fullPath = path.join(resourcePath, filename);

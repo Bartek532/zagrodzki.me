@@ -18,6 +18,8 @@ export const SocialTile = memo<SocialTileProps>(({ username, social }) => {
       href={`${selectedSocial?.link + username}`}
       className={styles.tile}
       style={{ backgroundColor: selectedSocial?.color }}
+      target="_blank"
+      rel="noreferrer"
     >
       <span className="sr-only">visit my {social} account</span>
       <div className={styles.icon}>
