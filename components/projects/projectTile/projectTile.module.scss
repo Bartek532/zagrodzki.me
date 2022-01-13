@@ -5,6 +5,25 @@
   grid-row: span 2;
   position: relative;
   display: block;
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow: hidden;
+
+  .mockup {
+    position: relative;
+    top: 50%;
+    width: 90%;
+
+    &.right {
+      left: 68%;
+      transform-origin: 0% 100%;
+    }
+
+    &.left {
+      left: -62%;
+      transform-origin: 100% 100%;
+    }
+  }
 
   img {
     border-radius: 2rem;
