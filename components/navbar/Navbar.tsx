@@ -20,7 +20,13 @@ export const Navbar = memo<NavbarProps>(({ routes }) => {
             <Link href={route.path}>
               <a className={styles.label}>{route.label}</a>
             </Link>
-            {pathname === route.path ? <motion.div className={styles.active} layoutId="active" /> : null}
+            {pathname === route.path ? (
+              <motion.div
+                className={styles.active}
+                layoutId="active"
+                transition={{ type: "spring", stiffness: 200, damping: 30 }}
+              />
+            ) : null}
           </li>
         ))}
       </ul>

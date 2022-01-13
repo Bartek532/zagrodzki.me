@@ -17,11 +17,11 @@ const Home: NextPage = ({ projects, posts }: InferGetStaticPropsType<GetStaticPr
       <Grid>
         <SpotifyTile />
         <AboutTile />
-        <ProjectTile project={projects[0]} mockupPosition="right" />
         <SocialTile username={process.env.NEXT_PUBLIC_TWITTER_USERNAME as string} social="twitter" />
+        <ProjectTile project={projects[0]} mockupPosition="right" />
+        <ThemeTile />
         <LatestPostTile post={posts[0]} />
         <ProjectTile project={projects[1]} mockupPosition="left" />
-        <ThemeTile />
         <SocialTile username={process.env.NEXT_PUBLIC_LINKEDIN_USERNAME as string} social="linkedin" />
         <SocialTile username={process.env.NEXT_PUBLIC_GITHUB_USERNAME as string} social="github" />
       </Grid>

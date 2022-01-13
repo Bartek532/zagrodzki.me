@@ -13,7 +13,7 @@
   box-shadow: var(--tile-shadow);
   overflow: hidden;
 
-  @include mixins.mediaquery("xs") {
+  @include mixins.mediaquery("lg") {
     grid-column: 1 / span 1;
     height: 0;
     padding: 0;
@@ -23,7 +23,13 @@
 
   .content {
     @include mixins.flex(flex-start);
-    @include mixins.mediaquery("xs") {
+
+    @media all and (min-width: 600px) {
+      padding: 1rem;
+    }
+
+    @include mixins.mediaquery("lg") {
+      padding: 2rem;
       width: 100%;
       height: 100%;
       position: absolute;
@@ -31,11 +37,6 @@
       left: 0;
       @include mixins.flex(space-between, flex-start);
       flex-flow: column wrap;
-      padding: 3rem;
-    }
-
-    @include mixins.mediaquery("lg") {
-      padding: 2rem;
     }
 
     .logo {
@@ -43,11 +44,8 @@
       height: 50px;
       display: none;
 
-      @include mixins.mediaquery("xs") {
-        display: block;
-      }
-
       @include mixins.mediaquery("lg") {
+        display: block;
         width: 30px;
         height: 30px;
       }
@@ -70,7 +68,7 @@
         color: var(--green-100);
         font-size: 1.2rem;
 
-        @include mixins.mediaquery("xs") {
+        @include mixins.mediaquery("lg") {
           font-size: 1.3rem;
         }
 
@@ -107,7 +105,7 @@
         line-height: 1.35;
 
         @include mixins.mediaquery("xs") {
-          font-size: 2rem;
+          font-size: 1.6rem;
         }
 
         @include mixins.mediaquery("lg") {
@@ -119,7 +117,7 @@
         font-size: 1.15rem;
 
         @include mixins.mediaquery("xs") {
-          font-size: 1.4rem;
+          font-size: 1.25rem;
         }
 
         @include mixins.mediaquery("lg") {
@@ -135,7 +133,7 @@
       transform: translateY(-50%);
       max-width: 40%;
 
-      @include mixins.mediaquery("xs") {
+      @include mixins.mediaquery("lg") {
         display: none;
       }
     }

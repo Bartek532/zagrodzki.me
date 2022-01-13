@@ -1,6 +1,6 @@
 import styles from "./socialTile.module.scss";
 import { memo } from "react";
-import TwitterIcon from "public/svg/twitter.svg";
+import { motion } from "framer-motion";
 import Arrow from "public/svg/right-top-arrow.svg";
 import { SOCIALS } from "lib/consts";
 import dynamic from "next/dynamic";
@@ -13,22 +13,27 @@ type SocialTileProps = {
 export const SocialTile = memo<SocialTileProps>(({ username, social }) => {
   const selectedSocial = SOCIALS.find(({ name }) => name === social);
   const Icon = dynamic(() => import(`public/svg/${selectedSocial?.name}.svg`));
+
+  const iconVariants = {
+    hover: { scale: 1.05 },
+  };
   return (
-    <a
+    <motion.a
       href={`${selectedSocial?.link + username}`}
       className={styles.tile}
       style={{ backgroundColor: selectedSocial?.color }}
       target="_blank"
       rel="noreferrer"
+      whileHover="hover"
     >
       <span className="sr-only">visit my {social} account</span>
-      <div className={styles.icon}>
+      <motion.div className={styles.icon} variants={iconVariants} initial={{ x: "-50%", y: "-50%" }}>
         <Icon />
-      </div>
+      </motion.div>
       <div className={styles.arrow}>
         <Arrow />
       </div>
-    </a>
+    </motion.a>
   );
 });
 
