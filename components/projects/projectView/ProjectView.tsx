@@ -24,6 +24,12 @@ export const ProjectView = memo<ProjectViewProps>(({ children, project }) => {
   const { id, setRunningHeader } = useRunningHeader(contentElRef.current);
   const contentString = renderToString(children as React.ReactElement);
 
+  const imageVariants = {
+    hover: {
+      scale: 1.05,
+    },
+  };
+
   useEffect(() => {
     setRunningHeader(contentElRef.current);
   }, []);
@@ -80,6 +86,8 @@ export const ProjectView = memo<ProjectViewProps>(({ children, project }) => {
               className={styles.thumbnail}
               href={project.url}
               key="thumbnail"
+              whileHover="hover"
+              variants={imageVariants}
             >
               <Image
                 src={`/img/projects/${project.slug}/thumbnail.png`}
