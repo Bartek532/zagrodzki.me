@@ -103,6 +103,7 @@
       .title {
         margin: 0.3rem 0;
         line-height: 1.35;
+        transition: color 0.2s ease-in-out;
 
         @include mixins.mediaquery("xs") {
           font-size: 1.6rem;
@@ -137,6 +138,10 @@
         display: none;
       }
     }
+  }
+
+  &:hover .title {
+    color: var(--blue-200);
   }
 }
 
