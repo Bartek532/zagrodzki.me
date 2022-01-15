@@ -4,8 +4,13 @@
   width: 100%;
 
   .image {
-    margin-bottom: 0.3rem;
+    margin-bottom: 0.4rem;
     width: 100%;
+
+    @include mixins.mediaquery("lg") {
+      margin-bottom: 0.7rem;
+    }
+
     img {
       border-radius: 2rem;
     }
@@ -17,13 +22,25 @@
     padding: 1rem;
 
     .title {
-      font-size: 1.9rem;
-      margin-bottom: 0.5rem;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+
+      @include mixins.mediaquery("lg") {
+        font-size: 2.2rem;
+      }
+
+      @include mixins.mediaquery("xl") {
+        font-size: 2.5rem;
+      }
     }
 
     .description {
-      font-size: 1.3rem;
+      font-size: 1.4rem;
       margin-bottom: 1.5rem;
+
+      @include mixins.mediaquery("lg") {
+        font-size: 1.45rem;
+      }
     }
 
     .stack {
@@ -32,9 +49,9 @@
       flex-wrap: wrap;
 
       .tech {
-        font-size: 1.2rem;
+        font-size: 1.3rem;
         background-color: var(--white-100);
-        padding: 0.35rem 1.3rem;
+        padding: 0.4rem 1.4rem;
         border-radius: 2rem;
       }
     }

@@ -4,7 +4,7 @@
   width: 100%;
   @include mixins.flex(center, flex-start);
   flex-wrap: wrap;
-  gap: 4rem;
+  gap: 5rem;
   margin-top: 3rem;
 
   .empty {
@@ -33,10 +33,10 @@
     .title {
       text-align: center;
       padding-bottom: 0.5rem;
-      font-size: 2.7rem;
+      font-size: 3rem;
 
       @include mixins.mediaquery("lg") {
-        font-size: 3rem;
+        font-size: 3.3rem;
       }
 
       @include mixins.mediaquery("xl") {
@@ -46,16 +46,17 @@
 
     .description {
       text-align: center;
-      font-size: 1.4rem;
+      font-size: 1.7rem;
       padding-bottom: 5.2rem;
-      max-width: 28rem;
+      max-width: 30rem;
 
       @include mixins.mediaquery("lg") {
-        font-size: 1.5rem;
+        font-size: 1.8rem;
       }
 
       @include mixins.mediaquery("xl") {
-        font-size: 1.6rem;
+        margin-top: 0.3rem;
+        font-size: 1.9rem;
       }
     }
   }
@@ -65,7 +66,7 @@
     width: 100%;
     @include mixins.flex(center, flex-start);
     flex-wrap: wrap;
-    gap: 4rem;
+    gap: 5rem 4rem;
     margin: 0;
     padding: 0;
 
