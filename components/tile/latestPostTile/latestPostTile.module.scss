@@ -13,6 +13,7 @@
   @include mixins.flex(space-between, flex-start);
   flex-flow: column wrap;
   gap: 0.5rem;
+  height: 100%;
 
   .info {
     padding: 0.5rem;
@@ -82,10 +83,11 @@
 
   .image {
     width: 100%;
-
-    img {
-      border-radius: 2rem;
-    }
+    flex: 1 1 auto;
+    background-size: cover;
+    background-position: center center;
+    border-radius: 2rem;
+    min-height: 20rem;
   }
 
   &:hover {

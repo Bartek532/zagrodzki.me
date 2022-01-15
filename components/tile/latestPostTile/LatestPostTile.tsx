@@ -34,9 +34,7 @@ export const LatestPostTile = memo<LatestPostTileProps>(({ post }) => {
               <div className={styles.timeToRead}>{post.timeToRead} minutes read</div>
             </div>
           </div>
-          <div className={styles.image}>
-            <motion.img src={post.image} alt="" variants={imageVariants} />
-          </div>
+          <motion.div className={styles.image} style={{ backgroundImage: `url(${post.image})` }}></motion.div>
         </article>
       </motion.a>
     </Link>
