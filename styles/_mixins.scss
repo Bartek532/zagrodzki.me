@@ -2,10 +2,10 @@
   $breakpoints: (
     "xs": "(min-width: 500px)",
     "sm": "(min-width: 639px)",
-    "lg": "(min-width: 800px)",
-    "xl": "(min-width: 1150px)",
-    "xxl": "(min-width: 1450px)",
-    "xxxl": "(min-width: 2000px)",
+    "lg": "(min-width: 900px)",
+    "xl": "(min-width: 970px)",
+    "xxl": "(min-width: 1250px)",
+    "xxxl": "(min-width: 1800px)",
   );
 
   @if map-has-key($breakpoints, $query) {

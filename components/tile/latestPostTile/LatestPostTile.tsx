@@ -10,12 +10,6 @@ type LatestPostTileProps = {
 };
 
 export const LatestPostTile = memo<LatestPostTileProps>(({ post }) => {
-  const imageVariants = {
-    hover: {
-      scale: 1.05,
-    },
-  };
-
   return (
     <Link href={`/blog/${post.slug}`} passHref>
       <motion.a className={styles.link} whileHover="hover">
@@ -25,13 +19,13 @@ export const LatestPostTile = memo<LatestPostTileProps>(({ post }) => {
             <p className={styles.description}>{post.excerpt}</p>
 
             <div className={styles.additional}>
+              <div className={styles.timeToRead}>{post.timeToRead} minutes read</div>
               <div className={styles.more}>
                 Read more
                 <span className={styles.arrow}>
                   <Arrow />
                 </span>
               </div>
-              <div className={styles.timeToRead}>{post.timeToRead} minutes read</div>
             </div>
           </div>
           <motion.div className={styles.image} style={{ backgroundImage: `url(${post.image})` }}></motion.div>

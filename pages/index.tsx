@@ -22,7 +22,7 @@ const Home: NextPage = ({ projects, posts }: InferGetStaticPropsType<GetStaticPr
         <ThemeTile />
         <LatestPostTile post={posts[0]} />
         <ProjectTile project={projects[1]} mockupPosition="left" />
-        <SocialTile username={process.env.NEXT_PUBLIC_LINKEDIN_USERNAME as string} social="linkedin" />
+        {/*<SocialTile username={process.env.NEXT_PUBLIC_LINKEDIN_USERNAME as string} social="linkedin" />*/}
         <SocialTile username={process.env.NEXT_PUBLIC_GITHUB_USERNAME as string} social="github" />
       </Grid>
     </Layout>

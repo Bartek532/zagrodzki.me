@@ -13,6 +13,10 @@
   box-shadow: var(--tile-shadow);
   overflow: hidden;
 
+  @include mixins.mediaquery("xs") {
+    padding: 2.5rem;
+  }
+
   @include mixins.mediaquery("lg") {
     grid-column: 1 / span 1;
     height: 0;
@@ -24,12 +28,8 @@
   .content {
     @include mixins.flex(flex-start);
 
-    @media all and (min-width: 600px) {
-      padding: 1rem;
-    }
-
     @include mixins.mediaquery("lg") {
-      padding: 2rem;
+      padding: 2.5rem;
       width: 100%;
       height: 100%;
       position: absolute;
@@ -40,19 +40,17 @@
     }
 
     .logo {
-      width: 50px;
-      height: 50px;
+      width: 35px;
+      height: 35px;
       display: none;
 
       @include mixins.mediaquery("lg") {
         display: block;
-        width: 30px;
-        height: 30px;
       }
 
       @include mixins.mediaquery("xl") {
-        width: 35px;
-        height: 35px;
+        width: 40px;
+        height: 40px;
       }
 
       svg path {
