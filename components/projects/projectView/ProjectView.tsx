@@ -1,7 +1,7 @@
 import styles from "./projectView.module.scss";
 import { memo, useRef, useEffect } from "react";
 import type { Project } from "types";
-import { motion, AnimatePresence, AnimateSharedLayout } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import GitHubButton from "react-github-btn";
 import Arrow from "public/svg/right-top-arrow.svg";
@@ -15,11 +15,10 @@ import { useRunningHeader } from "hooks/useRunningHeader";
 
 type ProjectViewProps = {
   readonly project: Project;
-  readonly blurFrontImageURL: string;
   readonly children: React.ReactNode;
 };
 
-export const ProjectView = memo<ProjectViewProps>(({ children, project, blurFrontImageURL }) => {
+export const ProjectView = memo<ProjectViewProps>(({ children, project }) => {
   const contentElRef = useRef<HTMLDivElement | null>(null);
   const { width } = useWindowSize();
   const { id, setRunningHeader } = useRunningHeader(contentElRef.current);
@@ -90,14 +89,7 @@ export const ProjectView = memo<ProjectViewProps>(({ children, project, blurFron
               whileHover="hover"
               variants={imageVariants}
             >
-              <Image
-                src={project.image}
-                alt={project.title}
-                width={1200}
-                height={880}
-                placeholder="blur"
-                blurDataURL={blurFrontImageURL}
-              />
+              <Image src={project.image} alt={project.title} width={1200} height={880} />
               <div className={styles.arrow}>
                 <Arrow />
               </div>

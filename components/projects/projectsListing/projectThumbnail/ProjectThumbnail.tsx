@@ -3,11 +3,11 @@ import { memo } from "react";
 import { Project } from "types";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, LayoutGroup, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 type ProjectThumbnailProps = {
   readonly project: Project;
-  readonly blurDataURL: string;
+  readonly blurDataURL?: string;
 };
 
 export const ProjectThumbnail = memo<ProjectThumbnailProps>(({ project, blurDataURL }) => {

@@ -19,7 +19,7 @@ interface CustomHitsProps extends HitsProvided<Project> {
   readonly blurImageData: {
     readonly slug: string;
     readonly base64: string;
-  };
+  }[];
 }
 
 export const CustomHits = connectHits<CustomHitsProps, Project>(({ hits, currentObjectID, blurImageData }) => {
@@ -55,7 +55,7 @@ interface ProjectsListingProps {
   readonly blurImageData: {
     readonly slug: string;
     readonly base64: string;
-  };
+  }[];
 }
 
 export const ProjectsListing = memo<ProjectsListingProps>(({ blurImageData }) => {

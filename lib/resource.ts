@@ -33,7 +33,7 @@ export const getResourceBySlug = async (slug: string, resourcePath: string) => {
   const source = fs.readFileSync(filePath);
   const { content, data } = matter(source);
   const timeToRead = readingTime(content).minutes;
-  const frontmatter = { ...data, timeToRead };
+  const frontmatter = { ...data, timeToRead } as Omit<Resource, "slug">;
   const transformedMdx = await serialize(content, { scope: data });
 
   return { transformedMdx, frontmatter };
