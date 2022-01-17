@@ -21,12 +21,14 @@
     "next": "12.0.4",
     "next-mdx-remote": "^3.0.8",
     "next-transpile-modules": "^9.0.0",
+    "plaiceholder": "^2.2.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-github-btn": "^1.2.1",
     "react-instantsearch-dom": "^6.18.0",
     "react-query": "^3.33.7",
     "reading-time": "^1.5.0",
+    "sharp": "^0.29.3",
     "slugify": "^1.6.4"
   },
   "devDependencies": {

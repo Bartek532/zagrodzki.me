@@ -1,5 +1,5 @@
 import styles from "./projectsListing.module.scss";
-import { useCallback, useState } from "react";
+import { useCallback, useState, memo } from "react";
 import type { Project } from "types";
 import { ProjectThumbnail } from "components/projects/projectsListing/projectThumbnail/ProjectThumbnail";
 import { SearchBox } from "components/searchBox/SearchBox";
@@ -16,9 +16,13 @@ const searchClient = algoliasearch(
 interface CustomHitsProps extends HitsProvided<Project> {
   readonly currentObjectID: string | null;
   readonly setObjectId: (objectId: string) => void;
+  readonly blurImageData: {
+    readonly slug: string;
+    readonly base64: string;
+  };
 }
 
-export const CustomHits = connectHits<CustomHitsProps, Project>(({ hits, currentObjectID }) => {
+export const CustomHits = connectHits<CustomHitsProps, Project>(({ hits, currentObjectID, blurImageData }) => {
   if (!hits.length) {
     return (
       <div className={styles.empty}>
@@ -40,14 +44,21 @@ export const CustomHits = connectHits<CustomHitsProps, Project>(({ hits, current
           id={"id" + hit.objectID}
           className={styles.hit}
         >
-          <ProjectThumbnail project={hit} />
+          <ProjectThumbnail project={hit} blurDataURL={blurImageData.find((d) => d.slug === hit.slug)?.base64} />
         </li>
       ))}
     </ol>
   );
 });
 
-export const ProjectsListing = () => {
+interface ProjectsListingProps {
+  readonly blurImageData: {
+    readonly slug: string;
+    readonly base64: string;
+  };
+}
+
+export const ProjectsListing = memo<ProjectsListingProps>(({ blurImageData }) => {
   const [currentObjectID, setObjectId] = useState<string | null>(null);
 
   const handleInputChange = useCallback(() => {
@@ -62,10 +73,10 @@ export const ProjectsListing = () => {
           <p className={styles.description}>Everything that I have built, alone or with someone 🔨</p>
           <SearchBox currentObjectID={currentObjectID} onChange={handleInputChange} />
         </div>
-        <CustomHits currentObjectID={currentObjectID} setObjectId={setObjectId} />
+        <CustomHits currentObjectID={currentObjectID} setObjectId={setObjectId} blurImageData={blurImageData} />
       </InstantSearch>
     </div>
   );
-};
+});
 
 ProjectsListing.displayName = "ProjectsListing";

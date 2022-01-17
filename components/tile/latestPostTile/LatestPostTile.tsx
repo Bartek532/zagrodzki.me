@@ -28,7 +28,7 @@ export const LatestPostTile = memo<LatestPostTileProps>(({ post }) => {
               </div>
             </div>
           </div>
-          <motion.div className={styles.image} style={{ backgroundImage: `url(${post.image})` }}></motion.div>
+          <div className={styles.image} style={{ backgroundImage: `url(${post.image})` }}></div>
         </article>
       </motion.a>
     </Link>

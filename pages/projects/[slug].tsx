@@ -9,6 +9,7 @@ import { Image } from "components/mdx/image/Image";
 import { Heading } from "components/mdx/heading/Heading";
 import { Link } from "components/mdx/link/Link";
 import { useCallback, useMemo } from "react";
+import { getPlaiceholder } from "plaiceholder";
 
 type HeadingComponentProps = {
   readonly children: string;
@@ -19,7 +20,11 @@ type ImageProps = {
   readonly alt: string;
 };
 
-const Project: NextPage = ({ transformedMdx, frontmatter }: InferGetStaticPropsType<typeof getStaticProps>) => {
+const Project: NextPage = ({
+  transformedMdx,
+  frontmatter,
+  blurDataURL,
+}: InferGetStaticPropsType<typeof getStaticProps>) => {
   const { title, description, publishedAt, slug } = frontmatter;
   const url = `${process.env.NEXT_PUBLIC_URL}/projects/${slug}`;
   const imageUrl = `${process.env.NEXT_PUBLIC_URL}/img/projects/${slug}/thumbnail.png`;
@@ -79,7 +84,7 @@ const Project: NextPage = ({ transformedMdx, frontmatter }: InferGetStaticPropsT
       />
       <Layout title={frontmatter.title}>
         <main>
-          <ProjectView project={frontmatter}>
+          <ProjectView project={frontmatter} blurFrontImageURL={blurDataURL}>
             <MDXRemote {...transformedMdx} components={customMdxComponents} />
           </ProjectView>
         </main>
@@ -91,6 +96,7 @@ const Project: NextPage = ({ transformedMdx, frontmatter }: InferGetStaticPropsT
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const slug = params!.slug as string;
   const { transformedMdx, frontmatter } = await getProjectBySlug(slug);
+  const { base64 } = await getPlaiceholder(frontmatter.image);
 
   return {
     props: {
@@ -99,6 +105,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         slug,
         ...frontmatter,
       },
+      blurDataURL: base64,
     },
     revalidate: 10,
   };

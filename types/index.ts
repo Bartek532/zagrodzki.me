@@ -63,6 +63,7 @@ export type Project = {
   isPublished: boolean;
   repoUrl: string;
   stack: string[];
+  image: string;
 };
 
 export type Post = {
