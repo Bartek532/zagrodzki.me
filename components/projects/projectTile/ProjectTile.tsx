@@ -26,6 +26,7 @@ export const ProjectTile = memo<ProjectTileProps>(({ project, mockupPosition }) 
         style={{ backgroundImage: `url(/img/projects/${project.slug}/back.png)` }}
         whileHover="hover"
       >
+        <span className="sr-only">check my project - {project.title}</span>
         <motion.div
           className={clsx(styles.mockup, styles[mockupPosition])}
           variants={imageVariants}

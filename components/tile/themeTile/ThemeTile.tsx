@@ -92,6 +92,9 @@ export const ThemeTile = () => {
 
   return (
     <label className={styles.tile}>
+      <span className="sr-only">
+        change theme to {theme === "system" ? invertTheme(systemTheme) : invertTheme(theme)}
+      </span>
       <input
         type="checkbox"
         className={styles.checkbox}
