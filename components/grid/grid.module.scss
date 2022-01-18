@@ -6,13 +6,12 @@
   grid-row-gap: 0;
   width: 100%;
   grid-gap: 1rem;
-  margin-top: 3rem;
   align-items: stretch;
   max-width: 50rem;
 
   @include mixins.mediaquery("lg") {
     grid-template-columns: repeat(4, 1fr);
-    margin-top: 5rem;
+    margin-top: 2rem;
     max-width: 100%;
 
     & > :nth-child(3) {

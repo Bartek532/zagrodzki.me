@@ -78,11 +78,9 @@ const Project: NextPage = ({ transformedMdx, frontmatter }: InferGetStaticPropsT
         url={url}
       />
       <Layout title={frontmatter.title}>
-        <main>
-          <ProjectView project={frontmatter}>
-            <MDXRemote {...transformedMdx} components={customMdxComponents} />
-          </ProjectView>
-        </main>
+        <ProjectView project={frontmatter}>
+          <MDXRemote {...transformedMdx} components={customMdxComponents} />
+        </ProjectView>
       </Layout>
     </>
   );

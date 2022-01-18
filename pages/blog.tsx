@@ -1,8 +1,13 @@
 import type { NextPage } from "next";
 import { Layout } from "components/layout/Layout";
+import { PostsListing } from "components/posts/postsListing/PostsListing";
 
 const Blog: NextPage = () => {
-  return <Layout>Blog</Layout>;
+  return (
+    <Layout title="Blog">
+      <PostsListing />
+    </Layout>
+  );
 };
 
 export default Blog;

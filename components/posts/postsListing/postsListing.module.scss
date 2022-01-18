@@ -1,28 +1,10 @@
 @use "styles/_mixins";
 
-.projects {
+.posts {
   width: 100%;
   @include mixins.flex(center, flex-start);
   flex-wrap: wrap;
   gap: 5rem;
-
-  .empty {
-    width: 100%;
-    @include mixins.flex;
-    margin-top: 2rem;
-
-    .avatar {
-      width: 25rem;
-
-      @include mixins.mediaquery("lg") {
-        width: 30rem;
-      }
-
-      @include mixins.mediaquery("xl") {
-        width: 35rem;
-      }
-    }
-  }
 
   .hero {
     width: 100%;
@@ -58,27 +40,5 @@
         font-size: 1.9rem;
       }
     }
-  }
-
-  .list {
-    list-style-type: none;
-    width: 100%;
-    @include mixins.flex(center, flex-start);
-    flex-wrap: wrap;
-    gap: 5rem 4rem;
-    margin: 0;
-    padding: 0;
-
-    .hit {
-      flex: 0 1 46rem;
-      @include mixins.flex(flex-start, flex-start);
-      flex-flow: column wrap;
-    }
-  }
-}
-
-@media all and (min-width: 924px) {
-  .projects .list {
-    justify-content: space-between;
   }
 }

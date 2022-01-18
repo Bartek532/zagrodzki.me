@@ -32,7 +32,7 @@ export const Layout = memo<LayoutProps>(({ children, title, titleTemplate = defa
           </a>
         </Link>
       </header>
-      <div className={styles.main}>{children}</div>
+      <main className={styles.main}>{children}</main>
 
       <NextSeo title={title ? titleTemplate.replace("%s", title) : titleTemplate.slice(4)} />
     </div>

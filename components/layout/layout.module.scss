@@ -56,10 +56,10 @@
   }
 
   .main {
-    margin-top: 1.5rem;
+    margin-top: 4.5rem;
 
     @include mixins.mediaquery("lg") {
-      margin-top: 2rem;
+      margin-top: 5rem;
     }
   }
 }

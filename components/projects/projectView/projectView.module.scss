@@ -4,7 +4,7 @@
   @include mixins.flex;
   flex-flow: column wrap;
   width: 100%;
-  margin-top: 3.5rem;
+  margin-top: 0.5rem;
   padding: 0 1rem;
 
   @include mixins.mediaquery("sm") {
