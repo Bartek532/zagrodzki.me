@@ -2,7 +2,7 @@ import styles from "./socialTile.module.scss";
 import { memo } from "react";
 import { motion } from "framer-motion";
 import Arrow from "public/svg/right-top-arrow.svg";
-import { SOCIALS } from "lib/consts";
+import { SOCIALS } from "utils/consts";
 import dynamic from "next/dynamic";
 
 type SocialTileProps = {

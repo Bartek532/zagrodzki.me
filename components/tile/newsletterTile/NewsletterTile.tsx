@@ -18,7 +18,7 @@ export const NewsletterTile = () => {
   } = useForm();
   const [promiseStatus, setPromiseStatus] = useState<PromiseStatus>("pending");
 
-  const handleFormSubmit = async ({ email }: { email: string }) => {
+  const handleFormSubmit = async ({ email }: { [key: string]: string }) => {
     setPromiseStatus("loading");
     try {
       await fetcher("/api/newsletter", { method: "POST", body: { email } });

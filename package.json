@@ -12,6 +12,7 @@
   },
   "type": "commonjs",
   "dependencies": {
+    "@googlemaps/js-api-loader": "^1.13.2",
     "algoliasearch": "^4.11.0",
     "classnames": "^2.3.1",
     "dayjs": "^1.10.7",
@@ -25,6 +26,7 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-github-btn": "^1.2.1",
+    "react-hook-form": "^7.25.0",
     "react-instantsearch-dom": "^6.18.0",
     "react-query": "^3.33.7",
     "reading-time": "^1.5.0",
@@ -33,6 +35,7 @@
   },
   "devDependencies": {
     "@svgr/webpack": "^5.5.0",
+    "@types/googlemaps": "^3.43.3",
     "@types/invariant": "^2.2.35",
     "@types/node": "16.11.10",
     "@types/react": "17.0.37",
@@ -42,7 +45,7 @@
     "eslint": "7",
     "eslint-config-next": "12.0.4",
     "next-seo": "^4.28.1",
-    "sass": "^1.43.5",
+    "sass": "^1.49.0",
     "ts-node": "^10.4.0",
     "tsconfig-paths": "^3.12.0",
     "typescript": "^4.5.4"

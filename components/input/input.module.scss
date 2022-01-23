@@ -3,6 +3,7 @@
 .wrapper {
   position: relative;
   display: block;
+  width: 100%;
 
   &::after {
     position: absolute;
@@ -11,7 +12,6 @@
     left: 0;
     width: 100%;
     height: 100%;
-    box-shadow: var(--input-shadow);
     opacity: 0;
     z-index: -1;
     border-radius: 2rem;
@@ -24,11 +24,17 @@
 
   .input {
     border: 0 none;
-    border-radius: 2rem;
+    border-radius: 1.5rem;
     padding: 1.1rem 2rem;
     font-size: 1.4rem;
     min-width: 26rem;
     outline: 0 none;
+    border: 1px solid #edebe8;
+    background-color: #fcfcfc;
+
+    &:focus {
+      border-color: #ccc;
+    }
 
     @include mixins.mediaquery("xs") {
       min-width: 30rem;

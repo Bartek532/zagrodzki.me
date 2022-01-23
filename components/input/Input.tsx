@@ -5,7 +5,7 @@ export const Input = forwardRef<HTMLInputElement, JSX.IntrinsicElements["input"]
   return (
     <label className={styles.wrapper}>
       {children}
-      <input ref={ref} {...props} className={styles.input} />
+      <input ref={ref} {...props} className={styles.input} type={props.type || "text"} />
     </label>
   );
 });

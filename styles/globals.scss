@@ -21,6 +21,14 @@ body {
   color: var(--white-100);
 }
 
+.gm-control-active,
+.gmnoprint,
+.gmnoscreen,
+img[alt="Google"],
+.gm-style-moc {
+  display: none !important;
+}
+
 /*
   Improved screen reader only CSS class
   @author Gaël Poupard

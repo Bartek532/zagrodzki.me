@@ -9,6 +9,7 @@
   background-color: var(--white-100);
   user-select: none;
   cursor: pointer;
+  box-shadow: var(--tile-shadow);
 
   .checkbox {
     position: absolute;
@@ -24,7 +25,7 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    background-color: var(--blue-300);
+    background-color: var(--gray-100);
     transform: translate(-50%, -50%);
     border-radius: 2rem;
     width: calc(var(--size) * 4);
