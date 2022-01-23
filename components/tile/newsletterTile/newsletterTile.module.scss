@@ -12,8 +12,12 @@
   gap: 2rem;
   position: relative;
 
+  @include mixins.mediaquery("xs") {
+    padding: 2.5rem;
+  }
+
   .title {
-    padding: 0.5rem 1rem;
+    padding: 0.5rem;
     font-size: 1.7rem;
     font-family: "GT Walsheim", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: normal;
@@ -24,7 +28,7 @@
     position: absolute;
     width: 160px;
     right: 1%;
-    top: -29%;
+    top: -33%;
     display: none;
 
     @include mixins.mediaquery("xs") {
@@ -33,7 +37,6 @@
 
     @include mixins.mediaquery("lg") {
       right: -3%;
-      top: -30%;
     }
 
     @include mixins.mediaquery("xl") {

@@ -40,6 +40,11 @@
 
     & > :nth-child(9) {
       order: 9;
+      display: none;
+    }
+
+    & > :nth-child(10) {
+      order: 10;
     }
   }
 }

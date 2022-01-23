@@ -9,19 +9,19 @@
   background-color: var(--white-100);
   box-shadow: var(--tile-shadow);
   border-radius: 2rem;
-  padding: 1.5rem;
+  padding: 2rem;
   @include mixins.flex(space-between, flex-start);
   flex-flow: column wrap;
   height: 100%;
 
-  @include mixins.mediaquery("xs") {
-    padding: 2rem;
-  }
-
   .info {
-    padding: 0.7rem;
+    padding: 0.5rem;
     @include mixins.flex(space-between, flex-start);
     flex-flow: column wrap;
+
+    @include mixins.mediaquery("lg") {
+      padding: 0.7rem;
+    }
 
     .title {
       font-size: 2rem;

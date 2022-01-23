@@ -29,15 +29,33 @@
     font-size: 1.4rem;
     min-width: 26rem;
     outline: 0 none;
-    border: 1px solid #edebe8;
-    background-color: #fcfcfc;
+    border: 1px solid var(--gray-100);
+    background-color: var(--gray-400);
 
     &:focus {
-      border-color: #ccc;
+      border-color: var(--gray-300);
     }
 
     @include mixins.mediaquery("xs") {
       min-width: 30rem;
     }
+  }
+
+  input[type="search"]::-ms-clear {
+    display: none;
+    width: 0;
+    height: 0;
+  }
+  input[type="search"]::-ms-reveal {
+    display: none;
+    width: 0;
+    height: 0;
+  }
+
+  input[type="search"]::-webkit-search-decoration,
+  input[type="search"]::-webkit-search-cancel-button,
+  input[type="search"]::-webkit-search-results-button,
+  input[type="search"]::-webkit-search-results-decoration {
+    display: none;
   }
 }

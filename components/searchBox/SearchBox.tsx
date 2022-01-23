@@ -31,6 +31,7 @@ export const SearchBox = connectSearchBox<SearchBoxProps>(
           onChange={handleChange}
           value={currentRefinement}
           {...(currentObjectID && { "aria-activedescendant": "id" + currentObjectID })}
+          type="search"
         >
           <span className="sr-only">search</span>
         </Input>
