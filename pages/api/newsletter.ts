@@ -1,0 +1,21 @@
+import { fetcher } from "utils/fetcher";
+import type { NextApiRequest, NextApiResponse } from "next";
+
+export const subscribeToNewsletter = async (email: string) => {
+  await fetcher("https://api.mailerlite.com/api/v2/subscribers", {
+    method: "POST",
+    headers: { "X-MailerLite-ApiKey": process.env.MAILER_LITE_API_KEY as string },
+    body: { email },
+  });
+};
+
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  try {
+    await subscribeToNewsletter(req.body.email);
+
+    return res.status(200).json({ message: "Subscribed!" });
+  } catch (e) {
+    console.log(e);
+    return res.status(400).json({ message: "Bad request!" });
+  }
+}
