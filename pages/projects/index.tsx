@@ -1,4 +1,4 @@
-import type { NextPage, GetStaticProps } from "next";
+import type { NextPage, GetStaticProps, GetStaticPaths } from "next";
 import { Layout } from "components/layout/Layout";
 import { ProjectsListing } from "components/projects/projectsListing/ProjectsListing";
 import type { InferGetStaticPropsType } from "types";

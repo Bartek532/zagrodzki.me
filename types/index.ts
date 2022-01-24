@@ -73,6 +73,7 @@ export type Post = {
   timeToRead: number;
   publishedAt: string;
   isPublished: boolean;
+  isPopular: boolean;
   category: Category;
   image: string;
 };

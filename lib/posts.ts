@@ -39,3 +39,16 @@ export const getNewestPosts = () => {
   const sortedPosts = sortPostsByNewest(filteredPosts);
   return sortedPosts;
 };
+
+export const getPostsCategories = () => {
+  const posts = getAllPosts();
+  const allCategories = posts.map((post) => post.category);
+  const uniqueCategories = [...new Set(allCategories)];
+
+  return uniqueCategories;
+};
+
+export const getPopularPosts = () => {
+  const posts = getAllPosts();
+  return posts.filter((post) => post.isPopular);
+};

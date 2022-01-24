@@ -1,25 +1,39 @@
 import { getAllProjects } from "./lib/projects";
+import { getAllPosts } from "./lib/posts";
 import algoliasearch from "algoliasearch";
 import dayjs from "dayjs";
 import invariant from "invariant";
 
-async function run() {
-  invariant(!!process.env.ALGOLIA_UPDATE_API_KEY, "Admin API KEY is not set");
-
-  const client = algoliasearch("3EE43YCZQB", process.env.ALGOLIA_UPDATE_API_KEY);
-  const index = client.initIndex("projects");
-
+const generateAlgoliaProjects = () => {
   const projects = getAllProjects();
-  const algoliaItems = projects.map((project) => {
+  return projects.map((project) => {
     return {
       ...project,
       objectID: project.slug,
       timestamp: dayjs(project.publishedAt, "DD-MM-YYYY").unix(),
     };
   });
+};
 
-  const results = await index.saveObjects(algoliaItems);
-  console.log(`${results.objectIDs.length} items indexed`);
+const generateAlgoliaPosts = () => {
+  const posts = getAllPosts();
+  return posts.map((post) => {
+    return { ...post, objectID: post.slug, timestamp: dayjs(post.publishedAt, "DD-MM-YYYY").unix() };
+  });
+};
+
+async function run() {
+  invariant(!!process.env.ALGOLIA_UPDATE_API_KEY, "Admin API KEY is not set");
+
+  const client = algoliasearch("3EE43YCZQB", process.env.ALGOLIA_UPDATE_API_KEY);
+  const projectsIndex = client.initIndex("projects");
+  const postsIndex = client.initIndex("posts");
+
+  const indexedProjects = await projectsIndex.saveObjects(generateAlgoliaProjects());
+  const indexedPosts = await postsIndex.saveObjects(generateAlgoliaPosts());
+
+  console.log(`${indexedProjects.objectIDs.length} projects indexed`);
+  console.log(`${indexedPosts.objectIDs.length} posts indexed`);
 }
 
 run().catch((err) => {
