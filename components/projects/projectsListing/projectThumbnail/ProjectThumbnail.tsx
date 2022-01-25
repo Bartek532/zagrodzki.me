@@ -40,8 +40,8 @@ export const ProjectThumbnail = memo<ProjectThumbnailProps>(({ project, blurData
             <motion.h2 className={styles.title} layoutId={`title-container-${project.slug}`}>
               {project.title}
             </motion.h2>
-            <motion.p className={styles.description} layoutId={`description-container-${project.slug}`}>
-              {project.description}
+            <motion.p className={styles.excerpt} layoutId={`excerpt-container-${project.slug}`}>
+              {project.excerpt}
             </motion.p>
             <motion.div className={styles.stack} layoutId={`stack-container-${project.slug}`}>
               {project.stack.map((tech) => (

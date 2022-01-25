@@ -1,0 +1,44 @@
+@use "styles/_mixins";
+
+.breadcrumbs {
+  @include mixins.flex;
+  gap: 0.6rem;
+
+  @include mixins.mediaquery("lg") {
+    gap: 0.9rem;
+  }
+
+  .separator {
+    width: 9px;
+
+    svg path {
+      fill: var(--gray-300);
+    }
+
+    @include mixins.mediaquery("lg") {
+      width: 11px;
+    }
+
+    @include mixins.mediaquery("xl") {
+      width: 12px;
+    }
+  }
+
+  .link {
+    font-size: 1.4rem;
+    transition: opacity 0.2s ease-out;
+    opacity: 0.6;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    @include mixins.mediaquery("lg") {
+      font-size: 1.5rem;
+    }
+
+    @include mixins.mediaquery("xl") {
+      font-size: 1.6rem;
+    }
+  }
+}

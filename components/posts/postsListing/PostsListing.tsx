@@ -7,8 +7,9 @@ import type { Post } from "types";
 import type { HitsProvided } from "react-instantsearch-core";
 import Image from "next/image";
 import { PostTile } from "components/posts/postsListing/postTile/PostTile";
-import { Categories } from "components/posts/postsListing/categories/Categories";
-import { PopularPosts } from "components/posts/postsListing/popularPosts/PopularPosts";
+import { Categories } from "components/posts/categories/Categories";
+import { PopularPosts } from "components/posts/popularPosts/PopularPosts";
+import { useRouter } from "next/router";
 
 const searchClient = algoliasearch(
   process.env.NEXT_PUBLIC_ALGOLIA_APP_ID!,
@@ -56,6 +57,7 @@ interface PostsListingProps {
 
 export const PostsListing = memo<PostsListingProps>(({ popularPosts, categories }) => {
   const [currentObjectID, setObjectId] = useState<string | null>(null);
+  const router = useRouter();
 
   const handleInputChange = useCallback(() => {
     setTimeout(() => setObjectId(null), 0);
@@ -72,7 +74,11 @@ export const PostsListing = memo<PostsListingProps>(({ popularPosts, categories 
           <Categories categories={categories} />
           <PopularPosts posts={popularPosts} />
           <div className={styles.wrapper}>
-            <SearchBox currentObjectID={currentObjectID} onChange={handleInputChange} />
+            {router.query.category ? (
+              <h2 className={styles.searchedCategory}>{decodeURIComponent(router.query.category as string)}</h2>
+            ) : (
+              <SearchBox currentObjectID={currentObjectID} onChange={handleInputChange} />
+            )}
             <CustomHits currentObjectID={currentObjectID} setObjectId={setObjectId} />
           </div>
         </div>

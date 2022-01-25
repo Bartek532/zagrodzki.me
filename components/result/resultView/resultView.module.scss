@@ -53,7 +53,7 @@
         .link {
           font-size: 1.4rem;
           transition: opacity 0.2s ease-out;
-          opacity: 0.65;
+          opacity: 0.6;
 
           &:hover {
             opacity: 1;
@@ -71,6 +71,7 @@
 
       .title {
         font-size: 3rem;
+        max-width: 70rem;
 
         @include mixins.mediaquery("lg") {
           font-size: 3.3rem;
@@ -81,8 +82,8 @@
         }
       }
 
-      .description {
-        max-width: 45rem;
+      .excerpt {
+        max-width: 55rem;
         font-size: 1.7rem;
 
         @include mixins.mediaquery("lg") {
@@ -90,7 +91,7 @@
         }
 
         @include mixins.mediaquery("xl") {
-          max-width: 52rem;
+          max-width: 68rem;
           font-size: 1.9rem;
         }
       }

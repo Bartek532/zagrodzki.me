@@ -12,7 +12,7 @@ export const Categories = memo<CategoriesProps>(({ categories }) => {
       <h2 className={styles.title}>categories</h2>
       <div className={styles.categories}>
         {categories.map((category) => (
-          <Link href={`/blog?category=${category}`} key={category}>
+          <Link href={`/blog?category=${encodeURIComponent(category)}`} key={category}>
             <a className={styles.category}>{category}</a>
           </Link>
         ))}

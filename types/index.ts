@@ -55,7 +55,7 @@ export type SpotifyAlbum = {
 
 export type Project = {
   title: string;
-  description: string;
+  excerpt: string;
   slug: string;
   url: string;
   timeToRead: number;

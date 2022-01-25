@@ -9,7 +9,7 @@ import { useState } from "react";
 
 const meta = {
   title: "Bartosz Zagrodzki",
-  description: "Here is the description", //TODO make description
+  description: "Hi, I'm Bartek - front-end developer, blogger, new technologies enthusiast, enjoy my website!",
 };
 
 export const titleTemplate = `%s • ${meta.title}`;

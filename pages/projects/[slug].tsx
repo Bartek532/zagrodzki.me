@@ -1,49 +1,15 @@
 import type { NextPage, GetStaticProps } from "next";
 import type { InferGetStaticPropsType } from "types";
 import { Layout } from "components/layout/Layout";
-import { ProjectView } from "components/projects/projectView/ProjectView";
+import { ResultView } from "components/result/resultView/ResultView";
 import { getProjectsPaths, getProjectBySlug } from "lib/projects";
-import { MDXRemote } from "next-mdx-remote";
 import { NextSeo, ArticleJsonLd } from "next-seo";
-import { Image } from "components/mdx/image/Image";
-import { Heading } from "components/mdx/heading/Heading";
-import { Link } from "components/mdx/link/Link";
-import { useCallback, useMemo } from "react";
-
-type HeadingComponentProps = {
-  readonly children: string;
-};
-
-type ImageProps = {
-  readonly src: string;
-  readonly alt: string;
-};
 
 const Project: NextPage = ({ transformedMdx, frontmatter }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const { title, description, publishedAt, slug } = frontmatter;
   const url = `${process.env.NEXT_PUBLIC_URL}/projects/${slug}`;
   const imageUrl = `${process.env.NEXT_PUBLIC_URL}/img/projects/${slug}/thumbnail.png`;
 
-  const getHeadingProps = useCallback(({ children }: HeadingComponentProps) => {
-    return {
-      slug: children,
-      url,
-    };
-  }, []);
-
-  const customMdxComponents = useMemo(
-    () => ({
-      h2: (props: HeadingComponentProps) => <Heading level="h2" {...getHeadingProps(props)}></Heading>,
-      h3: (props: HeadingComponentProps) => <Heading level="h3" {...getHeadingProps(props)}></Heading>,
-      h4: (props: HeadingComponentProps) => <Heading level="h4" {...getHeadingProps(props)}></Heading>,
-      h5: (props: HeadingComponentProps) => <Heading level="h5" {...getHeadingProps(props)}></Heading>,
-      h6: (props: HeadingComponentProps) => <Heading level="h6" {...getHeadingProps(props)}></Heading>,
-      img: ({ alt, src }: ImageProps) => <Image src={src} alt={alt ? alt : ""} />,
-      Image,
-      Link,
-    }),
-    [],
-  );
   return (
     <>
       <NextSeo
@@ -77,10 +43,8 @@ const Project: NextPage = ({ transformedMdx, frontmatter }: InferGetStaticPropsT
         title={title}
         url={url}
       />
-      <Layout title={frontmatter.title}>
-        <ProjectView project={frontmatter}>
-          <MDXRemote {...transformedMdx} components={customMdxComponents} />
-        </ProjectView>
+      <Layout title={title}>
+        <ResultView project={frontmatter} mdx={transformedMdx} type="project" />
       </Layout>
     </>
   );

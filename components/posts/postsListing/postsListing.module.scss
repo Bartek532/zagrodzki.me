@@ -60,7 +60,7 @@
 
     .wrapper {
       grid-area: posts;
-      @include mixins.flex;
+      @include mixins.flex(flex-start);
       flex-flow: column wrap;
       gap: 3.5rem;
 

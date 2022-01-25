@@ -8,7 +8,7 @@
   box-shadow: var(--tile-shadow);
 
   @include mixins.mediaquery("lg") {
-    padding: 2.5rem 3rem;
+    padding: 2.5rem 2.7rem;
   }
 
   .title {

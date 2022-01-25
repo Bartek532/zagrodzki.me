@@ -1,8 +1,15 @@
 import type { NextPage, GetStaticProps, GetStaticPaths } from "next";
 import { getPostBySlug, getPostsPaths } from "lib/posts";
+import { Layout } from "components/layout/Layout";
+import { ResultView } from "components/result/resultView/ResultView";
+import type { InferGetStaticPropsType } from "types";
 
-const Post: NextPage = () => {
-  return <h1>post</h1>;
+const Post: NextPage = ({ transformedMdx, frontmatter }: InferGetStaticPropsType<typeof getStaticProps>) => {
+  return (
+    <Layout title={frontmatter.title}>
+      <ResultView mdx={transformedMdx} type="post" post={frontmatter} />
+    </Layout>
+  );
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
@@ -21,7 +28,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   };
 };
 
-export const getStaticPaths = () => {
+export const getStaticPaths: GetStaticPaths = () => {
   const paths = getPostsPaths();
 
   return {

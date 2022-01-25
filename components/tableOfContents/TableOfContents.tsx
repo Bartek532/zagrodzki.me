@@ -1,9 +1,9 @@
-import styles from "./sidebar.module.scss";
+import styles from "./tableOfContents.module.scss";
 import { memo } from "react";
 import cn from "classnames";
 import Link from "next/link";
 
-type SidebarProps = {
+type TableOfContentsProps = {
   readonly contents?: {
     readonly text: string | null;
     readonly id: string;
@@ -12,7 +12,7 @@ type SidebarProps = {
   readonly currentActiveHeaderId: string;
 };
 
-export const Sidebar = memo<SidebarProps>(({ contents, currentActiveHeaderId }) => {
+export const TableOfContents = memo<TableOfContentsProps>(({ contents, currentActiveHeaderId }) => {
   return (
     <aside className={styles.aside}>
       <h2 className={styles.title}>table of contents</h2>
@@ -40,4 +40,4 @@ export const Sidebar = memo<SidebarProps>(({ contents, currentActiveHeaderId }) 
   );
 });
 
-Sidebar.displayName = "Sidebar";
+TableOfContents.displayName = "TableOfContents";
