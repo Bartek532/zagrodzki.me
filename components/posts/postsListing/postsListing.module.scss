@@ -4,7 +4,7 @@
   width: 100%;
   @include mixins.flex(center, flex-start);
   flex-wrap: wrap;
-  gap: 5rem;
+  gap: 7rem;
 
   .hero {
     width: 100%;
@@ -28,7 +28,6 @@
     .description {
       text-align: center;
       font-size: 1.7rem;
-      padding-bottom: 5.2rem;
       max-width: 30rem;
 
       @include mixins.mediaquery("lg") {
@@ -38,6 +37,44 @@
       @include mixins.mediaquery("xl") {
         margin-top: 0.3rem;
         font-size: 1.9rem;
+      }
+    }
+  }
+
+  .main {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-template-areas: "posts" "categories" "popular";
+    width: 100%;
+    gap: 6rem 10rem;
+    position: relative;
+    max-width: 500px;
+
+    @include mixins.mediaquery("m") {
+      max-width: 100%;
+      grid-template-columns: 5fr 3fr;
+      grid-template-rows: auto 1fr;
+      grid-template-areas: "posts categories" "posts popular";
+    }
+
+    .wrapper {
+      grid-area: posts;
+      @include mixins.flex;
+      flex-flow: column wrap;
+      gap: 3.5rem;
+
+      @include mixins.mediaquery("m") {
+        gap: 5rem;
+      }
+
+      .list {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        @include mixins.flex;
+        flex-flow: column wrap;
+        gap: 1.6rem;
       }
     }
   }

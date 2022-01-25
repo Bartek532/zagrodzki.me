@@ -2,7 +2,7 @@ import type { NextPage, GetStaticProps, GetStaticPaths } from "next";
 import { getPostBySlug, getPostsPaths } from "lib/posts";
 
 const Post: NextPage = () => {
-  return <h1></h1>;
+  return <h1>post</h1>;
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {

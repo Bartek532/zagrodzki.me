@@ -27,7 +27,7 @@
     border-radius: 1.5rem;
     padding: 1.1rem 2rem;
     font-size: 1.4rem;
-    min-width: 26rem;
+    min-width: 28rem;
     outline: 0 none;
     border: 1px solid var(--gray-100);
     background-color: var(--gray-400);
@@ -37,7 +37,7 @@
     }
 
     @include mixins.mediaquery("xs") {
-      min-width: 30rem;
+      min-width: 32rem;
     }
   }
 

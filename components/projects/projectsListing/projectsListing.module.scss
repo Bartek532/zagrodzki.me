@@ -4,7 +4,11 @@
   width: 100%;
   @include mixins.flex(center, flex-start);
   flex-wrap: wrap;
-  gap: 5rem;
+  gap: 3.5rem;
+
+  @include mixins.mediaquery("m") {
+    gap: 5rem;
+  }
 
   .empty {
     width: 100%;
@@ -46,7 +50,7 @@
     .description {
       text-align: center;
       font-size: 1.7rem;
-      padding-bottom: 5.2rem;
+      padding-bottom: 7rem;
       max-width: 30rem;
 
       @include mixins.mediaquery("lg") {

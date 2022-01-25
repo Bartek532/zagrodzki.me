@@ -9,6 +9,10 @@
   margin-top: 4.5rem;
   display: none;
 
+  @include mixins.mediaquery("xxl") {
+    display: block;
+  }
+
   .title {
     text-transform: uppercase;
     font-family: "GT Walsheim", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -61,11 +65,5 @@
       margin-left: 4.8rem;
       font-size: 1.1rem;
     }
-  }
-}
-
-@media all and (min-width: 100rem) {
-  .aside {
-    display: block;
   }
 }
