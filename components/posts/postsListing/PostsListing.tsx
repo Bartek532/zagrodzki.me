@@ -66,10 +66,6 @@ export const PostsListing = memo<PostsListingProps>(({ popularPosts, categories 
   return (
     <div className={styles.posts}>
       <InstantSearch indexName="posts" searchClient={searchClient}>
-        <div className={styles.hero}>
-          <h1 className={styles.title}>Blog</h1>
-          <p className={styles.description}>Everything that I or anyone else has written for my blog ✍️</p>
-        </div>
         <div className={styles.main}>
           <Categories categories={categories} />
           <PopularPosts posts={popularPosts} />

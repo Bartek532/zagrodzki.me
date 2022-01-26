@@ -1,13 +1,19 @@
 import type { NextPage, GetStaticProps, GetStaticPaths } from "next";
 import { Layout } from "components/layout/Layout";
 import { ProjectsListing } from "components/projects/projectsListing/ProjectsListing";
+import { Seo } from "components/Seo";
+import { Hero } from "components/hero/Hero";
 import type { InferGetStaticPropsType } from "types";
 import { getPlaiceholder } from "plaiceholder";
 import { getAllProjects } from "lib/projects";
 
 const Projects: NextPage = ({ blurImageData }: InferGetStaticPropsType<GetStaticProps>) => {
+  const description = "Everything that I have built, alone or with someone 🔨";
+
   return (
-    <Layout title="Projects">
+    <Layout>
+      <Seo title="Projects" description={description} />
+      <Hero title="Projects" description={description} />
       <ProjectsListing blurImageData={blurImageData} />
     </Layout>
   );

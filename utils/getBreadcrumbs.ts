@@ -3,7 +3,7 @@ export const getBreadcrumbs = (type: "project" | "post", category?: string) => {
     return [
       { path: "/", name: "Home" },
       { path: "/blog", name: "Blog" },
-      { path: `/blog?category=${category?.toLowerCase()}`, name: category },
+      { path: `/blog?category=${encodeURIComponent(category)}`, name: category },
     ];
   }
 

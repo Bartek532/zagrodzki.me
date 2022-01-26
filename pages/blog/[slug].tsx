@@ -3,10 +3,21 @@ import { getPostBySlug, getPostsPaths } from "lib/posts";
 import { Layout } from "components/layout/Layout";
 import { ResultView } from "components/result/resultView/ResultView";
 import type { InferGetStaticPropsType } from "types";
+import { Seo } from "components/Seo";
 
 const Post: NextPage = ({ transformedMdx, frontmatter }: InferGetStaticPropsType<typeof getStaticProps>) => {
+  const { title, excerpt, publishedAt, image, authors } = frontmatter;
+
   return (
-    <Layout title={frontmatter.title}>
+    <Layout>
+      <Seo
+        title={title}
+        description={excerpt}
+        publishedAt={publishedAt}
+        type="article"
+        authors={authors}
+        imageUrl={image}
+      />
       <ResultView mdx={transformedMdx} type="post" post={frontmatter} />
     </Layout>
   );

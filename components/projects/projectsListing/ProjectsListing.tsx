@@ -68,11 +68,7 @@ export const ProjectsListing = memo<ProjectsListingProps>(({ blurImageData }) =>
   return (
     <div className={styles.projects}>
       <InstantSearch indexName="projects" searchClient={searchClient}>
-        <div className={styles.hero}>
-          <h1 className={styles.title}>Projects</h1>
-          <p className={styles.description}>Everything that I have built, alone or with someone 🔨</p>
-          <SearchBox currentObjectID={currentObjectID} onChange={handleInputChange} />
-        </div>
+        <SearchBox currentObjectID={currentObjectID} onChange={handleInputChange} />
         <CustomHits currentObjectID={currentObjectID} setObjectId={setObjectId} blurImageData={blurImageData} />
       </InstantSearch>
     </div>

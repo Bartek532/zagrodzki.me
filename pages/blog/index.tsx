@@ -1,12 +1,18 @@
 import type { GetStaticProps, NextPage } from "next";
 import { Layout } from "components/layout/Layout";
 import { PostsListing } from "components/posts/postsListing/PostsListing";
+import { Seo } from "components/Seo";
+import { Hero } from "components/hero/Hero";
 import { getPopularPosts, getPostsCategories } from "lib/posts";
 import { InferGetStaticPropsType } from "types";
 
 const Blog: NextPage = ({ popularPosts, categories }: InferGetStaticPropsType<typeof getStaticProps>) => {
+  const description = "Everything that I or anyone else has written for my blog ✍️";
+
   return (
-    <Layout title="Blog">
+    <Layout>
+      <Seo title="Blog" description={description} />
+      <Hero title="Blog" description={description} />
       <PostsListing categories={categories} popularPosts={popularPosts} />
     </Layout>
   );

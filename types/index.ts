@@ -76,6 +76,7 @@ export type Post = {
   isPopular: boolean;
   category: Category;
   image: string;
+  authors: string[];
 };
 
 export type Category = "Other";
