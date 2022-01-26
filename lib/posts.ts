@@ -31,12 +31,17 @@ export const sortPostsByNewest = (posts: Post[]) => {
   });
 };
 
-const filterUnpublishedPosts = (posts: Post[]) => posts.filter((post) => post.publishedAt);
+const filterUnpublishedPosts = (posts: Post[]) => posts.filter((post) => post.isPublished);
+
+export const getPublishedPosts = () => {
+  const posts = getAllPosts();
+
+  return filterUnpublishedPosts(posts);
+};
 
 export const getNewestPosts = () => {
-  const posts = getAllPosts();
-  const filteredPosts = filterUnpublishedPosts(posts);
-  const sortedPosts = sortPostsByNewest(filteredPosts);
+  const publishedPosts = getPublishedPosts();
+  const sortedPosts = sortPostsByNewest(publishedPosts);
   return sortedPosts;
 };
 

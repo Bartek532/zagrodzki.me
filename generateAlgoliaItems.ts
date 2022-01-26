@@ -1,5 +1,5 @@
 import { getAllProjects } from "./lib/projects";
-import { getAllPosts } from "./lib/posts";
+import { getPublishedPosts } from "./lib/posts";
 import algoliasearch from "algoliasearch";
 import dayjs from "dayjs";
 import invariant from "invariant";
@@ -16,7 +16,7 @@ const generateAlgoliaProjects = () => {
 };
 
 const generateAlgoliaPosts = () => {
-  const posts = getAllPosts();
+  const posts = getPublishedPosts();
   return posts.map((post) => {
     return { ...post, objectID: post.slug, timestamp: dayjs(post.publishedAt, "DD-MM-YYYY").unix() };
   });

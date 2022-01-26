@@ -64,6 +64,12 @@ export const Seo = memo<SeoProps>(
           />
         ) : null}
         <Head>
+          <link
+            rel="alternate"
+            type="application/rss+xml"
+            title="Bartosz Zagrodzki &raquo; Posts feed"
+            href={`${HOST}/feed.xml`}
+          />
           <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png" />
           <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png" />
           <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png" />
