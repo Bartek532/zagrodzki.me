@@ -13,4 +13,12 @@ module.exports = withTM({
   images: {
     domains: ["i.scdn.co"],
   },
+  async rewrites() {
+    return [
+      {
+        source: "/feed",
+        destination: "/feed.xml",
+      },
+    ];
+  },
 });

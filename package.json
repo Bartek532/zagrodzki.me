@@ -3,13 +3,13 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && yarn algolia && yarn rss",
+    "build": "next build && yarn algolia && yarn feed",
     "start": "next start",
     "lint": "next lint",
     "tsc": "tsc --noEmit",
     "ts-node-esm": "node --loader ts-node/esm -r tsconfig-paths/register --experimental-specifier-resolution=node",
     "algolia": "yarn ts-node-esm generateAlgoliaItems.ts",
-    "rss": "yarn ts-node-esm generateRss.ts"
+    "feed": "yarn ts-node-esm generateFeed.ts"
   },
   "type": "commonjs",
   "dependencies": {
@@ -17,6 +17,7 @@
     "algoliasearch": "^4.11.0",
     "classnames": "^2.3.1",
     "dayjs": "^1.10.7",
+    "feed": "^4.2.2",
     "framer-motion": "^5.3.3",
     "gray-matter": "^4.0.3",
     "invariant": "^2.2.4",
@@ -31,7 +32,6 @@
     "react-instantsearch-dom": "^6.18.0",
     "react-query": "^3.33.7",
     "reading-time": "^1.5.0",
-    "rss": "^1.2.2",
     "sharp": "^0.29.3",
     "slugify": "^1.6.4"
   },
@@ -43,7 +43,6 @@
     "@types/react": "17.0.37",
     "@types/react-dom": "^17.0.11",
     "@types/react-instantsearch-dom": "^6.12.1",
-    "@types/rss": "^0.0.29",
     "clsx": "^1.1.1",
     "eslint": "7",
     "eslint-config-next": "12.0.4",
