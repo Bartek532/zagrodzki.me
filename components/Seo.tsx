@@ -29,9 +29,7 @@ export const Seo = memo<SeoProps>(
     return (
       <>
         <NextSeo
-          titleTemplate={SITE_TITLE_TEMPLATE}
-          title={title}
-          defaultTitle={SITE_TITLE}
+          title={title ? SITE_TITLE_TEMPLATE.replace("%s", title) : SITE_TITLE}
           description={description}
           canonical={canonical}
           robotsProps={{
