@@ -34,14 +34,11 @@ export const NewsletterTile = () => {
       <div className={styles.avatar}>
         <Image src="/img/avatars/have-an-idea.png" alt="" width="421" height="421" />
       </div>
-      <form
-        className={clsx(styles.form, { [styles.error]: errors.email })}
-        onSubmit={handleSubmit(handleFormSubmit)}
-        noValidate
-      >
+      <form className={styles.form} onSubmit={handleSubmit(handleFormSubmit)} noValidate>
         <Input
           type="email"
           placeholder="your@email.com"
+          isError={!!errors.email}
           {...register("email", {
             required: true,
             pattern: EMAIL_REGEX,

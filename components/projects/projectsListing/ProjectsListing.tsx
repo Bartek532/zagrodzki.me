@@ -27,7 +27,7 @@ export const CustomHits = connectHits<CustomHitsProps, Project>(({ hits, current
     return (
       <div className={styles.empty}>
         <div className={styles.avatar}>
-          <Image src="/img/avatars/surprised.png" alt="surprised memoji" width={421} height={421} />
+          <Image src="/img/avatars/disappointed.png" alt="disappointed memoji" width={421} height={421} />
         </div>
       </div>
     );

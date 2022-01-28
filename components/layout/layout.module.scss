@@ -24,9 +24,11 @@
     .logo {
       max-width: 4rem;
       transform: scale(0);
+      position: absolute;
 
       @include mixins.mediaquery("sm") {
         transform: scale(1);
+        position: static;
       }
 
       svg {
@@ -58,6 +60,7 @@
   .main {
     margin: 4.5rem 0;
     padding: 0 2rem;
+    width: 100%;
 
     @include mixins.mediaquery("sm") {
       padding: 0;

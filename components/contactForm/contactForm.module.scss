@@ -1,56 +1,23 @@
 @use "styles/_mixins";
 
-.tile {
-  grid-column: span 2;
-  height: 100%;
-  box-shadow: var(--tile-shadow);
-  border-radius: 2rem;
-  background-color: var(--white-100);
-  padding: 2rem;
-  @include mixins.flex(space-between, flex-start);
-  flex-flow: column wrap;
-  gap: 2rem;
-  position: relative;
-
-  @include mixins.mediaquery("xs") {
-    padding: 2.5rem;
-  }
-
-  .title {
-    padding: 0.5rem;
-    font-size: 1.7rem;
-    font-family: "GT Walsheim", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-weight: normal;
-    max-width: 30rem;
-  }
-
-  .avatar {
-    position: absolute;
-    width: 160px;
-    right: 1%;
-    top: -33%;
-    display: none;
-
-    @include mixins.mediaquery("xs") {
-      display: block;
-    }
-
-    @include mixins.mediaquery("lg") {
-      right: -3%;
-    }
-
-    @include mixins.mediaquery("xl") {
-      right: -2%;
-      top: -27%;
-      width: 170px;
-    }
-  }
+.wrapper {
+  @include mixins.flex;
+  gap: 7rem;
+  width: 100%;
 
   .form {
     @include mixins.flex;
     flex-flow: column wrap;
     gap: 1rem;
     width: 100%;
+    max-width: 42rem;
+
+    &.box {
+      box-shadow: var(--tile-shadow);
+      padding: 3rem;
+      background-color: var(--white-100);
+      border-radius: 2rem;
+    }
 
     @include mixins.mediaquery("lg") {
       gap: 1.3rem;
@@ -59,6 +26,25 @@
     input {
       width: 100%;
       min-width: auto;
+    }
+
+    .message {
+      border-radius: 1.5rem;
+      padding: 1.1rem 2rem;
+      font-size: 1.4rem;
+      width: 100%;
+      outline: 0 none;
+      border: 1px solid var(--gray-100);
+      background-color: var(--gray-400);
+      resize: vertical;
+
+      &:focus {
+        border-color: var(--gray-300);
+      }
+
+      &.error {
+        border-color: var(--red-100);
+      }
     }
 
     .btn {
@@ -98,5 +84,9 @@
         cursor: default;
       }
     }
+  }
+
+  .avatar {
+    min-width: 35rem;
   }
 }
