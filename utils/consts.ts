@@ -10,7 +10,7 @@ export const SHORT_DESCRIPTION = "My personal website";
 export const DEFAULT_DESCRIPTION =
   "Hi, I'm Bartek - front-end developer, blogger, new technologies enthusiast, enjoy my website!";
 
-export const DEFAULT_IMAGE_URL = `/banner.png`;
+export const DEFAULT_IMAGE_URL = `/img/banner.png`;
 
 export const SOCIALS = [
   {

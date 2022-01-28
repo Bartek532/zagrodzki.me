@@ -11,7 +11,7 @@ const Blog: NextPage = ({ popularPosts, categories }: InferGetStaticPropsType<ty
 
   return (
     <Layout>
-      <Seo title="Blog" description={description} />
+      <Seo title="Blog" description={description} imageUrl={"/img/blog.png"} />
       <Hero title="Blog" description={description} />
       <PostsListing categories={categories} popularPosts={popularPosts} />
     </Layout>

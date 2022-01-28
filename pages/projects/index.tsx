@@ -12,7 +12,7 @@ const Projects: NextPage = ({ blurImageData }: InferGetStaticPropsType<GetStatic
 
   return (
     <Layout>
-      <Seo title="Projects" description={description} />
+      <Seo title="Projects" description={description} imageUrl={"/img/projects.png"} />
       <Hero title="Projects" description={description} />
       <ProjectsListing blurImageData={blurImageData} />
     </Layout>

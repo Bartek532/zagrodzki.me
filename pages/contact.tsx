@@ -8,7 +8,7 @@ const About: NextPage = () => {
   const description = "Do you want to cooperate? Ask for something? Or just chat? Let me know 💬";
   return (
     <Layout>
-      <Seo title="Contact" description={description} />
+      <Seo title="Contact" description={description} imageUrl={"/img/contact.png"} />
       <Hero title="Contact" description={description} />
       <ContactForm isFullPage={true} />
     </Layout>
