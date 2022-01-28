@@ -8,7 +8,7 @@ export const AboutTile = () => {
     <Link href="/about">
       <a className={styles.tile}>
         <div className={styles.avatar}>
-          <Image src="/img/avatar.png" alt="Bartosz Zagrodzki memoji" width={230} height={306} />
+          <Image src="/img/avatars/winking.png" alt="winking memoji" width={230} height={306} />
         </div>
         <p className={styles.description}>
           I&apos;m <strong className={styles.name}>Bartek</strong>, front-end developer, blogger, new technologies
