@@ -1,5 +1,6 @@
 import styles from "./footer.module.scss";
 import { Link } from "components/mdx/link/Link";
+import { ContactForm } from "components/contactForm/ContactForm";
 import Logo from "public/svg/logo.svg";
 import NextLink from "next/link";
 import { SOCIALS } from "utils/consts";
@@ -37,9 +38,7 @@ export const Footer = () => {
         <p className={styles.description}>
           Feel free to reach out if you&apos;re looking for a developer, have a question, or just want to connect 📭
         </p>
-        <Link href="mailto:bartosz@zagrodzki.me">
-          <span className={styles.email}>bartosz@zagrodzki.me</span>
-        </Link>
+        <Link href="mailto:bartosz@zagrodzki.me">bartosz@zagrodzki.me</Link>
 
         <div className={styles.links}>
           <NextLink href="/">

@@ -11,12 +11,17 @@
     @include mixins.flex(center, flex-start);
     flex-flow: column wrap;
     gap: 2rem;
-    max-width: 108rem;
     width: 100%;
+    max-width: calc(686px + 6rem);
+    font-size: 1.5rem;
 
     @include mixins.mediaquery("sm") {
       padding: 3rem 4rem;
-      padding-bottom: 1.5rem;
+      padding-bottom: 1rem;
+    }
+
+    @include mixins.mediaquery("lg") {
+      max-width: 108rem;
     }
   }
 
@@ -35,7 +40,6 @@
 
   .description {
     font-size: 1.5rem;
-    margin-bottom: 1.5rem;
     max-width: 56rem;
 
     @include mixins.mediaquery("sm") {
@@ -47,15 +51,10 @@
     }
   }
 
-  .email {
-    font-size: 1.5rem;
-  }
-
   .links {
     @include mixins.flex(space-between);
     width: 100%;
-    margin-top: 5rem;
-    margin-bottom: 1rem;
+    margin-top: 2rem;
 
     .home {
       max-width: 4rem;
@@ -83,5 +82,9 @@
         }
       }
     }
+  }
+
+  .copyright {
+    font-size: 1.1rem;
   }
 }

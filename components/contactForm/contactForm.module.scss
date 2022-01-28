@@ -14,9 +14,13 @@
 
     &.box {
       box-shadow: var(--tile-shadow);
-      padding: 3rem;
+      padding: 2.5rem;
       background-color: var(--white-100);
       border-radius: 2rem;
+
+      @include mixins.mediaquery("lg") {
+        padding: 3rem;
+      }
     }
 
     @include mixins.mediaquery("lg") {
@@ -88,5 +92,10 @@
 
   .avatar {
     min-width: 35rem;
+    display: none;
+
+    @include mixins.mediaquery("lg") {
+      display: block;
+    }
   }
 }

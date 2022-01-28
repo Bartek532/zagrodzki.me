@@ -1,9 +1,92 @@
 @use "styles/_mixins";
 
 .link {
-  color: var(--blue-200);
+  .text {
+    color: var(--white-100);
+    position: relative;
+    padding: 0.1rem 0.3rem;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: var(--blue-200);
+      z-index: -1;
+      opacity: 0.6;
+      border-radius: 0.3rem;
+      transition: opacity 0.1s ease-in-out;
+    }
+
+    &:hover::after {
+      opacity: 1;
+    }
+  }
+
+  &.external {
+    .text {
+      color: var(--blue-200);
+      padding: 0;
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: -3px;
+        left: 0;
+        width: 100%;
+        height: 1.7px;
+        opacity: 1;
+        background-color: var(--blue-200);
+        transition: transform 0.1s ease-in-out;
+      }
+
+      &:hover::after {
+        transform: scaleY(0);
+      }
+    }
+
+    .icon {
+      padding: 0 0.7rem;
+
+      svg {
+        width: 10px;
+        display: inline;
+
+        path {
+          stroke: var(--blue-200);
+        }
+      }
+    }
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+/*
+.link {
+  
   display: inline;
-  text-decoration: underline;
+
+  .text {
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      width: 100%;
+      height: 1.7px;
+      background-color: var(--blue-200);
+      transition: transform 0.1s ease-in-out;
+    }
+
+    &:hover::after {
+      transform: scaleY(0);
+    }
+  }
 
   .icon {
     padding: 0 0.7rem;
@@ -22,3 +105,4 @@
     text-decoration: none;
   }
 }
+*/
