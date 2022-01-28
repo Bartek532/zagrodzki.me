@@ -28,6 +28,11 @@ export const SOCIALS = [
     color: "#333",
     link: "https://github.com/",
   },
+  {
+    name: "rss",
+    color: "#ee802f",
+    link: "/feed",
+  },
 ] as const;
 
 export const EMAIL_REGEX = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$/;

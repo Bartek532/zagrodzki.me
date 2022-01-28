@@ -9,7 +9,7 @@ type LinkProps = {
 
 export const Link = memo<LinkProps>(({ children, href }) => {
   return (
-    <a className={styles.link} rel="noreferrer noopener" href={href}>
+    <a className={styles.link} rel="noreferrer noopener" href={href} target="_blank">
       {children}
       <span className={styles.icon}>
         <RightTopArrow />

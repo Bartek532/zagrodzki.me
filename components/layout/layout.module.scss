@@ -1,7 +1,7 @@
 @use "styles/_mixins";
 
 .wrapper {
-  padding: 3rem 2rem;
+  padding: 3rem 0;
   margin: 0 auto;
   width: 100%;
   max-width: 108rem;
@@ -23,10 +23,10 @@
 
     .logo {
       max-width: 4rem;
-      display: none;
+      transform: scale(0);
 
       @include mixins.mediaquery("sm") {
-        display: block;
+        transform: scale(1);
       }
 
       svg {
@@ -56,10 +56,15 @@
   }
 
   .main {
-    margin-top: 4.5rem;
+    margin: 4.5rem 0;
+    padding: 0 2rem;
+
+    @include mixins.mediaquery("sm") {
+      padding: 0;
+    }
 
     @include mixins.mediaquery("lg") {
-      margin-top: 5rem;
+      margin: 5rem 0;
     }
   }
 }

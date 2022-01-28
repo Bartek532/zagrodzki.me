@@ -73,7 +73,7 @@
         font-size: 3rem;
         max-width: 70rem;
 
-        @include mixins.mediaquery("lg") {
+        @include mixins.mediaquery("sm") {
           font-size: 3.3rem;
         }
 
@@ -86,7 +86,7 @@
         max-width: 55rem;
         font-size: 1.7rem;
 
-        @include mixins.mediaquery("lg") {
+        @include mixins.mediaquery("sm") {
           font-size: 1.8rem;
         }
 
