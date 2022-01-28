@@ -41,6 +41,23 @@ export default class MyDocument extends Document {
             href="/fonts/GT-Walsheim-Regular.woff2"
           />
           <link rel="preload" as="font" type="font/woff2" crossOrigin="anonymous" href="/fonts/Kenfolg.otf" />
+
+          {/* Global Site Tag (gtag.js) - Google Analytics */}
+          <script defer src={`https://www.googletagmanager.com/gtag/js?id=${process.env.GA_TRACKING_ID}`} />
+          <script
+            defer
+            id="gtag-init"
+            dangerouslySetInnerHTML={{
+              __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${process.env.GA_TRACKING_ID}', {
+              page_path: window.location.pathname
+            });
+          `.trim(),
+            }}
+          />
         </Head>
         <body>
           <Main />

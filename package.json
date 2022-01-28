@@ -40,6 +40,7 @@
   "devDependencies": {
     "@svgr/webpack": "^5.5.0",
     "@types/googlemaps": "^3.43.3",
+    "@types/gtag.js": "^0.0.8",
     "@types/invariant": "^2.2.35",
     "@types/node": "16.11.10",
     "@types/react": "17.0.37",
