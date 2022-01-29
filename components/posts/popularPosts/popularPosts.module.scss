@@ -32,7 +32,6 @@
       font-weight: 700;
       @include mixins.flex(flex-start, flex-start);
       width: 100%;
-      transition: color 0.2s ease-in-out;
 
       .icon {
         min-width: 1.1rem;

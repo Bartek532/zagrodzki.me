@@ -26,7 +26,6 @@
     .title {
       font-size: 2rem;
       margin-bottom: 1rem;
-      transition: color 0.2s ease-in-out;
 
       @include mixins.mediaquery("lg") {
         font-size: 2.2rem;
