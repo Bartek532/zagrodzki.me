@@ -18,6 +18,27 @@ module.exports = withTM({
       {
         source: "/feed",
         destination: "/feed.xml",
+        permanent: true,
+      },
+    ];
+  },
+
+  async redirects() {
+    return [
+      {
+        source: "/new-post",
+        destination: "/blog/THE_NEWEST_POST_SLUG_HERE",
+        permanent: false,
+      },
+      {
+        source: "/new",
+        destination: "/blog/THE_NEWEST_POST_SLUG_HERE",
+        permanent: false,
+      },
+      {
+        source: "/newest-post",
+        destination: "/blog/THE_NEWEST_POST_SLUG_HERE",
+        permanent: false,
       },
     ];
   },

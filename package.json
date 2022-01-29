@@ -3,13 +3,14 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && yarn algolia && yarn feed",
+    "build": "./build.sh redirect algolia feed next",
     "start": "next start",
     "lint": "next lint",
     "tsc": "tsc --noEmit",
     "ts-node-esm": "node --loader ts-node/esm -r tsconfig-paths/register --experimental-specifier-resolution=node",
     "algolia": "yarn ts-node-esm generateAlgoliaItems.ts",
-    "feed": "yarn ts-node-esm generateFeed.ts"
+    "feed": "yarn ts-node-esm generateFeed.ts",
+    "new-post-redirect": "yarn ts-node-esm generateNewPostRedirect.ts"
   },
   "type": "commonjs",
   "dependencies": {

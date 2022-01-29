@@ -42,8 +42,6 @@ function run() {
 
   fs.writeFileSync("./public/feed.xml", feed.rss2());
   fs.writeFileSync("./public/feed.json", feed.json1());
-
-  console.log("Feed generated!");
 }
 
 run();
