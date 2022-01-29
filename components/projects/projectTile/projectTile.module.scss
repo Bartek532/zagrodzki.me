@@ -41,6 +41,10 @@
 
     svg {
       width: 9px;
+
+      path {
+        stroke: var(--black-100);
+      }
     }
   }
 }

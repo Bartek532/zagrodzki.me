@@ -3,39 +3,44 @@
 .heading {
   margin: 6.5rem 0 1.4rem;
   position: relative;
+  color: var(--mdx-heading-color);
 
   &:hover {
-    a span {
+    .link .clip {
       opacity: 0.65;
     }
   }
 
-  a:focus {
-    span {
+  .link:focus {
+    .clip {
       opacity: 0.65;
     }
   }
 
-  a span {
-    position: absolute;
-    width: 2.6rem;
-    height: 2.6rem;
-    top: 50%;
-    left: -3.2rem;
-    transform: translateY(-50%);
-    background-image: url("/svg/link.svg");
-    background-repeat: no-repeat;
-    opacity: 0;
-    transition: opacity 0.3s;
-    display: none;
+  .link {
+    .clip {
+      position: absolute;
+      width: 2.6rem;
+      height: 2.6rem;
+      top: 50%;
+      left: -3.2rem;
+      transform: translateY(-50%);
+      opacity: 0;
+      transition: opacity 0.3s;
+      display: none;
 
-    @include mixins.mediaquery("sm") {
-      display: block;
-    }
+      svg path {
+        stroke: var(--mdx-heading-color);
+      }
 
-    &:hover,
-    &:focus {
-      opacity: 1;
+      @include mixins.mediaquery("sm") {
+        display: block;
+      }
+
+      &:hover,
+      &:focus {
+        opacity: 1;
+      }
     }
   }
 }

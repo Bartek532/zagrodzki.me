@@ -62,6 +62,10 @@
 
       .arrow {
         width: 9px;
+
+        svg path {
+          stroke: var(--black-100);
+        }
       }
     }
   }

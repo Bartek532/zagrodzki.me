@@ -10,6 +10,7 @@ import { getHeadings } from "utils/getHeadings";
 import { getBreadcrumbs } from "utils/getBreadcrumbs";
 import { useRunningHeader } from "hooks/useRunningHeader";
 import { useWindowSize } from "hooks/useWindowSize";
+import { useLocalStorage } from "hooks/useLocalStorage";
 import { TableOfContents } from "components/tableOfContents/TableOfContents";
 import { Breadcrumbs } from "components/result/breadcrumbs/Breadcrumbs";
 import Arrow from "public/svg/right-top-arrow.svg";
@@ -41,6 +42,7 @@ export const ResultView = memo<ResultViewProps>((props) => {
   const { width } = useWindowSize();
   const { id, setRunningHeader } = useRunningHeader(contentElRef.current);
   const url = `${process.env.NEXT_PUBLIC_URL}/${props.type === "project" ? "project" : "blog"}/${result.slug}`;
+  const [theme] = useLocalStorage("theme", "system");
 
   const getHeadingProps = useCallback(({ children }: HeadingComponentProps) => {
     return {
@@ -98,6 +100,7 @@ export const ResultView = memo<ResultViewProps>((props) => {
               data-icon="octicon-star"
               data-size={width! > 800 ? "large" : ""}
               aria-label={`Star ${result.title} on Github`}
+              data-color-scheme={(theme === "system" ? "light: light; dark: dark;" : theme) || undefined}
             >
               Star
             </GitHubButton>
@@ -107,6 +110,7 @@ export const ResultView = memo<ResultViewProps>((props) => {
               data-icon="octicon-repo-forked"
               aria-label={`Fork ${result.title} on Github`}
               data-size={width! > 800 ? "large" : ""}
+              data-color-scheme={(theme === "system" ? "light: light; dark: dark;" : theme) || undefined}
             >
               Fork
             </GitHubButton>

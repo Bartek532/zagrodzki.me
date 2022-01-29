@@ -54,6 +54,10 @@
       svg {
         width: 1.6rem;
         transition: transform 0.2s ease-out;
+
+        path {
+          fill: var(--black-100);
+        }
       }
     }
   }

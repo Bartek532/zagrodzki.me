@@ -16,9 +16,12 @@ body {
   background-color: var(--bg-100);
 }
 
-*::selection {
-  background-color: var(--blue-200);
-  color: var(--white-100);
+* {
+  color: var(--black-100);
+  &::selection {
+    background-color: var(--blue-200);
+    color: var(--white-200);
+  }
 }
 
 .gm-control-active,
