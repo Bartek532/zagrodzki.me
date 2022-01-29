@@ -13,12 +13,12 @@
   }
 
   .header {
-    @include mixins.flex;
-    flex-wrap: wrap;
-    width: 100%;
+    display: grid;
+    grid-template-columns: auto;
 
     @include mixins.mediaquery("sm") {
-      justify-content: space-between;
+      grid-template-columns: 1fr auto 1fr;
+      width: 100%;
     }
 
     .logo {
@@ -42,6 +42,7 @@
       font-size: 1.4rem;
       font-weight: 600;
       display: none;
+      justify-self: end;
 
       @include mixins.mediaquery("sm") {
         display: flex;

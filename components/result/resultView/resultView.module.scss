@@ -20,6 +20,11 @@
     @include mixins.flex(space-between);
     flex-wrap: wrap;
     gap: 1.4rem;
+    max-width: min(686px, 100%);
+
+    @include mixins.mediaquery("xxl") {
+      max-width: 100%;
+    }
 
     .info {
       @include mixins.flex(center, flex-start);

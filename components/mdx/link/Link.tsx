@@ -2,7 +2,6 @@ import styles from "./link.module.scss";
 import { memo } from "react";
 import RightTopArrow from "public/svg/right-top-arrow.svg";
 import NextLink from "next/link";
-import clsx from "clsx";
 
 type LinkProps = {
   readonly children: React.ReactNode;
@@ -14,17 +13,11 @@ export const Link = memo<LinkProps>(({ children, href }) => {
 
   return (
     <NextLink href={href}>
-      <a
-        className={clsx(styles.link, { [styles.external]: isLinkExternal })}
-        rel={isLinkExternal ? "noreferrer noopener" : undefined}
-        target={isLinkExternal ? "_blank" : "_self"}
-      >
+      <a className={styles.link} rel={isLinkExternal ? "noreferrer noopener" : undefined} target="_blank">
         <span className={styles.text}>{children}</span>
-        {isLinkExternal && (
-          <span className={styles.icon}>
-            <RightTopArrow />
-          </span>
-        )}
+        <span className={styles.icon}>
+          <RightTopArrow />
+        </span>
       </a>
     </NextLink>
   );

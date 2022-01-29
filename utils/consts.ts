@@ -16,17 +16,17 @@ export const SOCIALS = [
   {
     name: "twitter",
     color: "#94ccff",
-    link: "https://twitter.com/",
+    link: `https://twitter.com/${process.env.NEXT_PUBLIC_TWITTER_USERNAME}`,
   },
   {
     name: "linkedin",
     color: "#2867B2",
-    link: "https://www.linkedin.com/in/",
+    link: `https://www.linkedin.com/in/${process.env.NEXT_PUBLIC_LINKEDIN_USERNAME}`,
   },
   {
     name: "github",
     color: "#333",
-    link: "https://github.com/",
+    link: `https://github.com/${process.env.NEXT_PUBLIC_GITHUB_USERNAME}`,
   },
   {
     name: "rss",

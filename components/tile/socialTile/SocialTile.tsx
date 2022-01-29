@@ -7,10 +7,9 @@ import dynamic from "next/dynamic";
 
 type SocialTileProps = {
   readonly social: typeof SOCIALS[number]["name"];
-  readonly username: string;
 };
 
-export const SocialTile = memo<SocialTileProps>(({ username, social }) => {
+export const SocialTile = memo<SocialTileProps>(({ social }) => {
   const selectedSocial = SOCIALS.find(({ name }) => name === social);
   const Icon = dynamic(() => import(`public/svg/${selectedSocial?.name}.svg`));
 
@@ -19,7 +18,7 @@ export const SocialTile = memo<SocialTileProps>(({ username, social }) => {
   };
   return (
     <motion.a
-      href={`${selectedSocial?.link + username}`}
+      href={selectedSocial?.link}
       className={styles.tile}
       style={{ backgroundColor: selectedSocial?.color }}
       target="_blank"

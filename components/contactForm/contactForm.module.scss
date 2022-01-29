@@ -13,13 +13,11 @@
     max-width: 42rem;
 
     &.box {
-      box-shadow: var(--tile-shadow);
-      padding: 2.5rem;
-      background-color: var(--white-100);
+      padding: 0 2rem;
       border-radius: 2rem;
 
       @include mixins.mediaquery("lg") {
-        padding: 3rem;
+        padding: 0 3rem;
       }
     }
 

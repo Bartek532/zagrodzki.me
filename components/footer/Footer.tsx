@@ -1,6 +1,5 @@
 import styles from "./footer.module.scss";
 import { Link } from "components/mdx/link/Link";
-import { ContactForm } from "components/contactForm/ContactForm";
 import Logo from "public/svg/logo.svg";
 import NextLink from "next/link";
 import { SOCIALS } from "utils/consts";
@@ -8,21 +7,16 @@ import dynamic from "next/dynamic";
 import { useWindowSize } from "hooks/useWindowSize";
 
 const Social = ({ social }: { social: typeof SOCIALS[number] }) => {
-  const selectedSocial = SOCIALS.find(({ name }) => name === social.name);
+  const selectedSocial = SOCIALS.find(({ name }) => name === social.name) as typeof SOCIALS[number];
   const Icon = dynamic(() => import(`public/svg/${selectedSocial?.name}.svg`));
-  const username = `NEXT_PUBLIC_${selectedSocial?.name.toUpperCase()}_USERNAME`;
   const { width } = useWindowSize();
 
   return (
     <>
       {width! > 640 ? (
-        <Link href={`${selectedSocial?.link}${process.env[username]}`}>{selectedSocial?.name}</Link>
+        <Link href={selectedSocial.link}>{selectedSocial?.name}</Link>
       ) : (
-        <a
-          href={`${selectedSocial?.link}${process.env[username]}`}
-          className={styles.social}
-          style={{ color: selectedSocial?.color }}
-        >
+        <a href={selectedSocial.link} className={styles.social} style={{ color: selectedSocial?.color }}>
           <Icon />
         </a>
       )}
