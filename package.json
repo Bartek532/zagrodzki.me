@@ -1,5 +1,7 @@
 {
   "name": "zagrodzki.me",
+  "description": "My personal website",
+  "author": "Bartosz Zagrodzki",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -13,6 +15,14 @@
     "format": "prettier --write \"./**/*.{js,jsx,ts,tsx,css,scss,md,mdx}\"",
     "lint": "next lint"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bartek532/zagrodzki.me"
+  },
+  "bugs": {
+    "url": "https://github.com/Bartek532/zagrodzki.me/issues"
+  },
+  "homepage": "https://zagrodzki.me",
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
@@ -71,7 +81,8 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.28.0",
     "eslint-plugin-react-hooks": "^4.3.0",
-    "husky": "^7.0.4",
+    "husky": "4",
+    "lint-staged": "^12.3.2",
     "next-seo": "^4.28.1",
     "prettier": "^2.5.1",
     "sass": "^1.49.0",
