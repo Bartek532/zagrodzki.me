@@ -1,6 +1,7 @@
-import styles from "./input.module.scss";
 import { forwardRef } from "react";
 import clsx from "clsx";
+
+import styles from "./input.module.scss";
 
 export const Input = forwardRef<HTMLInputElement, JSX.IntrinsicElements["input"] & { isError?: boolean }>(
   ({ isError, children, ...props }, ref) => {

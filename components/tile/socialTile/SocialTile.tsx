@@ -1,9 +1,11 @@
-import styles from "./socialTile.module.scss";
 import { memo } from "react";
 import { motion } from "framer-motion";
+import dynamic from "next/dynamic";
+
 import Arrow from "public/svg/right-top-arrow.svg";
 import { SOCIALS } from "utils/consts";
-import dynamic from "next/dynamic";
+
+import styles from "./socialTile.module.scss";
 
 type SocialTileProps = {
   readonly social: typeof SOCIALS[number]["name"];
@@ -16,6 +18,7 @@ export const SocialTile = memo<SocialTileProps>(({ social }) => {
   const iconVariants = {
     hover: { scale: 1.05 },
   };
+
   return (
     <motion.a
       href={selectedSocial?.link}

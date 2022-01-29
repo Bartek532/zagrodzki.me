@@ -1,11 +1,13 @@
-import { getAllProjects } from "./lib/projects";
-import { getPublishedPosts } from "./lib/posts";
 import algoliasearch from "algoliasearch";
 import dayjs from "dayjs";
 import invariant from "invariant";
 
+import { getPublishedPosts } from "./lib/posts";
+import { getAllProjects } from "./lib/projects";
+
 const generateAlgoliaProjects = () => {
   const projects = getAllProjects();
+
   return projects.map((project) => {
     return {
       ...project,
@@ -17,6 +19,7 @@ const generateAlgoliaProjects = () => {
 
 const generateAlgoliaPosts = () => {
   const posts = getPublishedPosts();
+
   return posts.map((post) => {
     return { ...post, objectID: post.slug, timestamp: dayjs(post.publishedAt, "DD-MM-YYYY").unix() };
   });

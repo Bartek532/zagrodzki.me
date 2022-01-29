@@ -1,25 +1,24 @@
-{
-  "root": true,
-  "parser": "@typescript-eslint/parser",
-  "extends": [
-    "prettier",
-    "plugin:react/recommended",
-    "plugin:react-hooks/recommended",
-    "plugin:jsx-a11y/strict",
-    "plugin:testing-library/recommended",
-    "plugin:jest-dom/recommended",
-    "next",
-    "next/core-web-vitals"
-  ],
-  "plugins": ["jsx-a11y", "react-app", "react-hooks", "jest-dom", "testing-library", "@typescript-eslint", "prettier"],
+module.exports = {
+  root: true,
+  parser: "@typescript-eslint/parser",
+  extends: ["plugin:react-hooks/recommended", "next", "next/core-web-vitals", "prettier"],
+  plugins: ["react-hooks", "@typescript-eslint", "prettier"],
 
-  "env": {
-    "es6": true,
-    "browser": true,
-    "jest": true,
-    "node": true
+  env: {
+    es6: true,
+    browser: true,
+    jest: true,
+    node: true,
   },
-  "rules": {
+  rules: {
+    // Separate import groups with newline by section
+    "import/order": [
+      "error",
+      {
+        groups: ["builtin", "external", "internal", "parent", "sibling", "index", "unknown"],
+        "newlines-between": "always",
+      },
+    ],
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
     "jsx-a11y/anchor-is-valid": 0,
@@ -37,13 +36,16 @@
     "@typescript-eslint/no-non-null-assertion": 0,
     "no-undef": 0,
     "no-unused-vars": 0,
+    "prefer-const": 1,
+    "newline-before-return": 1,
+    "no-useless-return": 1,
     "jsx-a11y/label-has-for": 0,
     "jsx-a11y/no-noninteractive-tabindex": 0,
     "prettier/prettier": 0,
-    "react/no-unescaped-entities": 0
+    "react/no-unescaped-entities": 0,
   },
-  "parserOptions": {
-    "ecmaVersion": 12,
-    "sourceType": "module"
-  }
-}
+  parserOptions: {
+    ecmaVersion: 12,
+    sourceType: "module",
+  },
+};

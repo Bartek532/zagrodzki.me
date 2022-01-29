@@ -1,8 +1,10 @@
 import path from "path";
-import { getAllResources, getResourcesPaths, getResourceBySlug } from "lib/resource";
+
 import dayjs from "dayjs";
-import type { Project } from "types";
 import customParseFormat from "dayjs/plugin/customParseFormat";
+
+import { getAllResources, getResourcesPaths, getResourceBySlug } from "lib/resource";
+import type { Project } from "types";
 
 dayjs.extend(customParseFormat);
 
@@ -27,6 +29,7 @@ export const sortProjectsByNewest = (projects: Project[]) => {
 
     if (dateA.isBefore(dateB)) return 1;
     if (dateA.isAfter(dateB)) return -1;
+
     return 0;
   });
 };
@@ -34,5 +37,6 @@ export const sortProjectsByNewest = (projects: Project[]) => {
 export const getNewestProjects = () => {
   const projects = getAllProjects();
   const sortedProjects = sortProjectsByNewest(projects);
+
   return sortedProjects;
 };

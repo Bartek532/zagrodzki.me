@@ -1,15 +1,17 @@
-import styles from "./postsListing.module.scss";
-import { SearchBox } from "components/searchBox/SearchBox";
 import { useState, useCallback, memo } from "react";
 import algoliasearch from "algoliasearch";
 import { InstantSearch, connectHits } from "react-instantsearch-dom";
-import type { Post } from "types";
 import type { HitsProvided } from "react-instantsearch-core";
 import Image from "next/image";
+import { useRouter } from "next/router";
+
+import type { Post } from "types";
 import { PostTile } from "components/posts/postsListing/postTile/PostTile";
 import { Categories } from "components/posts/categories/Categories";
 import { PopularPosts } from "components/posts/popularPosts/PopularPosts";
-import { useRouter } from "next/router";
+import { SearchBox } from "components/searchBox/SearchBox";
+
+import styles from "./postsListing.module.scss";
 
 const searchClient = algoliasearch(
   process.env.NEXT_PUBLIC_ALGOLIA_APP_ID!,

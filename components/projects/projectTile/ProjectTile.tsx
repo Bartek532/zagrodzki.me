@@ -1,11 +1,13 @@
-import styles from "./projectTile.module.scss";
 import { memo } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import Arrow from "public/svg/right-top-arrow.svg";
-import type { Project } from "types";
 import clsx from "clsx";
 import { motion } from "framer-motion";
+
+import Arrow from "public/svg/right-top-arrow.svg";
+import type { Project } from "types";
+
+import styles from "./projectTile.module.scss";
 
 type ProjectTileProps = {
   readonly project: Readonly<Project>;

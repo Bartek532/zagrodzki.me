@@ -1,11 +1,13 @@
-import styles from "./layout.module.scss";
 import { memo } from "react";
+import Link from "next/link";
+
 import { Footer } from "components/footer/Footer";
 import { Navbar } from "components/navbar/Navbar";
 import { routes } from "data/routes";
 import Logo from "public/svg/logo.svg";
 import PaperPlane from "public/svg/paper-plane.svg";
-import Link from "next/link";
+
+import styles from "./layout.module.scss";
 
 type LayoutProps = {
   readonly children: React.ReactNode;

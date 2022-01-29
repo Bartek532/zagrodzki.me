@@ -1,10 +1,12 @@
-import styles from "./navbar.module.scss";
 import { memo } from "react";
-import type { Route } from "types";
 import { motion } from "framer-motion";
 import clsx from "clsx";
 import { useRouter } from "next/router";
 import Link from "next/link";
+
+import type { Route } from "types";
+
+import styles from "./navbar.module.scss";
 
 type NavbarProps = {
   readonly routes: Route[];
@@ -12,6 +14,7 @@ type NavbarProps = {
 
 export const Navbar = memo<NavbarProps>(({ routes }) => {
   const { pathname } = useRouter();
+
   return (
     <nav className={styles.nav}>
       <ul className={styles.list}>

@@ -1,8 +1,10 @@
 import path from "path";
-import { getAllResources, getResourcesPaths, getResourceBySlug } from "lib/resource";
+
 import dayjs from "dayjs";
-import type { Post } from "types";
 import customParseFormat from "dayjs/plugin/customParseFormat";
+
+import { getAllResources, getResourcesPaths, getResourceBySlug } from "lib/resource";
+import type { Post } from "types";
 
 dayjs.extend(customParseFormat);
 
@@ -27,6 +29,7 @@ export const sortPostsByNewest = (posts: Post[]) => {
 
     if (dateA.isBefore(dateB)) return 1;
     if (dateA.isAfter(dateB)) return -1;
+
     return 0;
   });
 };
@@ -42,6 +45,7 @@ export const getPublishedPosts = () => {
 export const getNewestPosts = () => {
   const publishedPosts = getPublishedPosts();
   const sortedPosts = sortPostsByNewest(publishedPosts);
+
   return sortedPosts;
 };
 
@@ -54,6 +58,7 @@ export const getPostsCategories = () => {
 };
 
 export const getPopularPosts = () => {
-  const posts = getAllPosts();
+  const posts = getPublishedPosts();
+
   return posts.filter((post) => post.isPopular);
 };

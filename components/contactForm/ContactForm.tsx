@@ -1,12 +1,14 @@
-import styles from "./contactForm.module.scss";
-import { Input } from "components/input/Input";
 import clsx from "clsx";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
+import Image from "next/image";
+
+import { Input } from "components/input/Input";
 import { LoaderRing } from "components/loader/LoaderRing";
 import { fetcher } from "utils/fetcher";
 import { EMAIL_REGEX } from "utils/consts";
-import Image from "next/image";
+
+import styles from "./contactForm.module.scss";
 
 type PromiseStatus = "pending" | "loading" | "fullfilled" | "rejected";
 

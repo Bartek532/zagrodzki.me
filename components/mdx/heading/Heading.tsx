@@ -1,8 +1,10 @@
 import { memo } from "react";
 import cn from "classnames";
-import type { HeadingVariant } from "types";
-import styles from "./heading.module.scss";
 import slugify from "slugify";
+
+import type { HeadingVariant } from "types";
+
+import styles from "./heading.module.scss";
 
 type HeadingProps = {
   readonly slug: string;

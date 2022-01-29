@@ -1,7 +1,9 @@
-import styles from "./link.module.scss";
 import { memo } from "react";
-import RightTopArrow from "public/svg/right-top-arrow.svg";
 import NextLink from "next/link";
+
+import RightTopArrow from "public/svg/right-top-arrow.svg";
+
+import styles from "./link.module.scss";
 
 type LinkProps = {
   readonly children: React.ReactNode;

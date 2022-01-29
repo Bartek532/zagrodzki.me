@@ -1,10 +1,12 @@
-import styles from "./footer.module.scss";
+import NextLink from "next/link";
+import dynamic from "next/dynamic";
+
 import { Link } from "components/mdx/link/Link";
 import Logo from "public/svg/logo.svg";
-import NextLink from "next/link";
 import { SOCIALS } from "utils/consts";
-import dynamic from "next/dynamic";
 import { useWindowSize } from "hooks/useWindowSize";
+
+import styles from "./footer.module.scss";
 
 const Social = ({ social }: { social: typeof SOCIALS[number] }) => {
   const selectedSocial = SOCIALS.find(({ name }) => name === social.name) as typeof SOCIALS[number];

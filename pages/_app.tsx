@@ -1,11 +1,12 @@
 import "../styles/globals.scss";
 import type { AppProps } from "next/app";
-import { Seo } from "components/Seo";
 import Head from "next/head";
 import { Hydrate, QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
+
+import { Seo } from "components/Seo";
 import * as gtag from "lib/gtag";
 
 const isProduction = process.env.NODE_ENV === "production";
@@ -20,10 +21,12 @@ function MyApp({ Component, pageProps }: AppProps) {
         gtag.reportPageView(url);
       };
       router.events.on("routeChangeComplete", handleRouteChange);
+
       return () => {
         router.events.off("routeChangeComplete", handleRouteChange);
       };
     }
+
     return () => false;
   }, []);
 

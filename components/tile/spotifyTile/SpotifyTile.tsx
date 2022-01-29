@@ -1,11 +1,13 @@
-import styles from "./spotifyTile.module.scss";
-import SpotifyIcon from "public/svg/spotify.svg";
-import { useGetCurrentTrack } from "./hooks/useGetCurrentTrack";
 import clsx from "clsx";
+import Image from "next/image";
+
+import SpotifyIcon from "public/svg/spotify.svg";
+import { LoaderRing } from "components/loader/LoaderRing";
+
+import styles from "./spotifyTile.module.scss";
+import { useGetCurrentTrack } from "./hooks/useGetCurrentTrack";
 import { normalizeTrackArtists } from "./utils/normalizeTrackArtists";
 import { normalizeTitle } from "./utils/normalizeTitle";
-import { LoaderRing } from "components/loader/LoaderRing";
-import Image from "next/image";
 
 export const SpotifyTile = () => {
   const { data, error } = useGetCurrentTrack();

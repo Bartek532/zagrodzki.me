@@ -1,4 +1,5 @@
 import type { GetStaticProps, NextPage } from "next";
+
 import { Layout } from "components/layout/Layout";
 import { PostsListing } from "components/posts/postsListing/PostsListing";
 import { Seo } from "components/Seo";

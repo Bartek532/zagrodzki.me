@@ -1,8 +1,10 @@
-import styles from "./popularPosts.module.scss";
 import { memo } from "react";
+import Link from "next/link";
+
 import type { Post } from "types";
 import Arrow from "public/svg/right-top-arrow.svg";
-import Link from "next/link";
+
+import styles from "./popularPosts.module.scss";
 
 type PopularPostsProps = {
   readonly posts: Post[];

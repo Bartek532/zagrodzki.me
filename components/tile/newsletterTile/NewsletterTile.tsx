@@ -1,12 +1,14 @@
-import styles from "./newsletterTile.module.scss";
-import { Input } from "components/input/Input";
-import { EMAIL_REGEX } from "utils/consts";
 import { useForm } from "react-hook-form";
 import Image from "next/image";
 import clsx from "clsx";
 import { useState } from "react";
+
+import { EMAIL_REGEX } from "utils/consts";
+import { Input } from "components/input/Input";
 import { LoaderRing } from "components/loader/LoaderRing";
 import { fetcher } from "utils/fetcher";
+
+import styles from "./newsletterTile.module.scss";
 
 type PromiseStatus = "pending" | "loading" | "fullfilled" | "rejected";
 

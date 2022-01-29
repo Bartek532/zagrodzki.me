@@ -1,7 +1,9 @@
-import styles from "./breadcrumbs.module.scss";
 import { memo, Fragment } from "react";
 import Link from "next/link";
+
 import RightArrow from "public/svg/right-arrow.svg";
+
+import styles from "./breadcrumbs.module.scss";
 
 type BreadcrumbsProps = {
   readonly routes: { path: string; name: string }[];

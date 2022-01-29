@@ -1,21 +1,23 @@
-import styles from "./resultView.module.scss";
 import { memo, useRef, useEffect, useCallback, useMemo } from "react";
-import type { Project, Post } from "types";
 import { renderToString } from "react-dom/server";
+import { motion } from "framer-motion";
+import NextImage from "next/image";
+import GitHubButton from "react-github-btn";
+import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
+
+import type { Project, Post } from "types";
 import { getHeadings } from "utils/getHeadings";
 import { getBreadcrumbs } from "utils/getBreadcrumbs";
 import { useRunningHeader } from "hooks/useRunningHeader";
 import { useWindowSize } from "hooks/useWindowSize";
-import { motion } from "framer-motion";
 import { TableOfContents } from "components/tableOfContents/TableOfContents";
 import { Breadcrumbs } from "components/result/breadcrumbs/Breadcrumbs";
-import NextImage from "next/image";
-import GitHubButton from "react-github-btn";
 import Arrow from "public/svg/right-top-arrow.svg";
-import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import { Image } from "components/mdx/image/Image";
 import { Heading } from "components/mdx/heading/Heading";
 import { Link } from "components/mdx/link/Link";
+
+import styles from "./resultView.module.scss";
 
 type ResultViewProps =
   | {

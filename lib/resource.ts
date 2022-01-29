@@ -1,8 +1,10 @@
 import path from "path";
 import fs from "fs";
+
 import matter from "gray-matter";
 import readingTime from "reading-time";
 import { serialize } from "next-mdx-remote/serialize";
+
 import type { Project, Post } from "types";
 
 const MDX_REGEX = /\.mdx$/;

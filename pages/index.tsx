@@ -1,4 +1,5 @@
 import type { GetStaticProps, NextPage } from "next";
+
 import { Layout } from "components/layout/Layout";
 import { SpotifyTile } from "components/tile/spotifyTile/SpotifyTile";
 import { AboutTile } from "components/tile/aboutTile/AboutTile";

@@ -18,7 +18,6 @@ module.exports = withTM({
       {
         source: "/feed",
         destination: "/feed.xml",
-        permanent: true,
       },
     ];
   },

@@ -2,6 +2,7 @@ import type { ChangeEventHandler } from "react";
 import { connectSearchBox } from "react-instantsearch-dom";
 import type { SearchBoxProvided } from "react-instantsearch-core";
 import { useCallback } from "react";
+
 import { Input } from "components/input/Input";
 
 interface SearchBoxProps extends SearchBoxProvided {

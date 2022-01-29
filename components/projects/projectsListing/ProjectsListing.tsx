@@ -1,12 +1,14 @@
-import styles from "./projectsListing.module.scss";
 import { useCallback, useState, memo } from "react";
-import type { Project } from "types";
-import { ProjectThumbnail } from "components/projects/projectsListing/projectThumbnail/ProjectThumbnail";
-import { SearchBox } from "components/searchBox/SearchBox";
 import algoliasearch from "algoliasearch";
 import { InstantSearch, connectHits } from "react-instantsearch-dom";
 import type { HitsProvided } from "react-instantsearch-core";
 import Image from "next/image";
+
+import { SearchBox } from "components/searchBox/SearchBox";
+import { ProjectThumbnail } from "components/projects/projectsListing/projectThumbnail/ProjectThumbnail";
+import type { Project } from "types";
+
+import styles from "./projectsListing.module.scss";
 
 const searchClient = algoliasearch(
   process.env.NEXT_PUBLIC_ALGOLIA_APP_ID!,

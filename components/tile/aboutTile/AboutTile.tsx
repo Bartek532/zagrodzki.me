@@ -1,7 +1,9 @@
-import styles from "./aboutTile.module.scss";
 import Link from "next/link";
-import Arrow from "public/svg/right-top-arrow.svg";
 import Image from "next/image";
+
+import Arrow from "public/svg/right-top-arrow.svg";
+
+import styles from "./aboutTile.module.scss";
 
 export const AboutTile = () => {
   return (

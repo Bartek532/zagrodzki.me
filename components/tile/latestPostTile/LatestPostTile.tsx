@@ -1,9 +1,11 @@
-import styles from "./latestPostTile.module.scss";
 import { memo } from "react";
-import type { Post } from "types";
-import Arrow from "public/svg/right-top-arrow.svg";
 import { motion } from "framer-motion";
 import Link from "next/link";
+
+import type { Post } from "types";
+import Arrow from "public/svg/right-top-arrow.svg";
+
+import styles from "./latestPostTile.module.scss";
 
 type LatestPostTileProps = {
   readonly post: Post;

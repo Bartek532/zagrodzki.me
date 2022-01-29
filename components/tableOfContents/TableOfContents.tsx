@@ -1,7 +1,8 @@
-import styles from "./tableOfContents.module.scss";
 import { memo } from "react";
 import cn from "classnames";
 import Link from "next/link";
+
+import styles from "./tableOfContents.module.scss";
 
 type TableOfContentsProps = {
   readonly contents?: {

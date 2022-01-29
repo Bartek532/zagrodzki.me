@@ -1,6 +1,7 @@
 import sgMail from "@sendgrid/mail";
 import type { NextApiRequest, NextApiResponse } from "next";
 import * as yup from "yup";
+
 import { EMAIL_REGEX } from "utils/consts";
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY as string);
@@ -40,6 +41,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return res.status(200).json({ message: "Email has been sent!" });
   } catch (e) {
     console.log(e);
+
     return res.status(400).json({ message: e ?? "Bad request!" });
   }
 }

@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+
 import { useIntersectionObserver } from "hooks/useIntersectionObserver";
 
 const options = {
@@ -17,6 +18,7 @@ export const useRunningHeader = (el: HTMLElement | null) => {
     if (!el) {
       setId("");
       cleanup();
+
       return;
     }
     el.querySelectorAll<HTMLElement>("h2, h3, h4, h5, h6, #introduction").forEach(observeElement);
@@ -41,6 +43,7 @@ export const useRunningHeader = (el: HTMLElement | null) => {
       if (acc.compareDocumentPosition(node) & Node.DOCUMENT_POSITION_PRECEDING) {
         return node;
       }
+
       return acc;
     }, null);
 

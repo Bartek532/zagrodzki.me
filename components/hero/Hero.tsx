@@ -1,5 +1,6 @@
-import styles from "./hero.module.scss";
 import { memo } from "react";
+
+import styles from "./hero.module.scss";
 
 type HeroProps = {
   readonly title: string;

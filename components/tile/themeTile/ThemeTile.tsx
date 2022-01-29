@@ -1,7 +1,9 @@
-import styles from "./themeTile.module.scss";
 import { useEffect, useState } from "react";
-import { useLocalStorage } from "hooks/useLocalStorage";
 import { motion } from "framer-motion";
+
+import { useLocalStorage } from "hooks/useLocalStorage";
+
+import styles from "./themeTile.module.scss";
 
 type ThemeVariants = "system" | "dark" | "light";
 

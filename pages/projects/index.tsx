@@ -1,10 +1,11 @@
 import type { NextPage, GetStaticProps, GetStaticPaths } from "next";
+import { getPlaiceholder } from "plaiceholder";
+
 import { Layout } from "components/layout/Layout";
 import { ProjectsListing } from "components/projects/projectsListing/ProjectsListing";
 import { Seo } from "components/Seo";
 import { Hero } from "components/hero/Hero";
 import type { InferGetStaticPropsType } from "types";
-import { getPlaiceholder } from "plaiceholder";
 import { getAllProjects } from "lib/projects";
 
 const Projects: NextPage = ({ blurImageData }: InferGetStaticPropsType<GetStaticProps>) => {
@@ -41,6 +42,7 @@ export const getStaticProps: GetStaticProps = async () => {
     };
   } catch (e) {
     console.log(e);
+
     return {
       notFound: true as const,
     };

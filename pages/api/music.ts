@@ -1,5 +1,6 @@
-import { fetcher } from "utils/fetcher";
 import type { NextApiRequest, NextApiResponse } from "next";
+
+import { fetcher } from "utils/fetcher";
 import { getEnv } from "utils/env";
 import type { SpotifyTrack } from "types";
 
@@ -49,6 +50,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return res.status(200).json({ track });
   } catch (e) {
     console.log(e);
+
     return res.status(400).json({ message: "Bad request!" });
   }
 }

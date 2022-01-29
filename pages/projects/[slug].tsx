@@ -1,4 +1,5 @@
 import type { NextPage, GetStaticProps } from "next";
+
 import type { InferGetStaticPropsType } from "types";
 import { Layout } from "components/layout/Layout";
 import { ResultView } from "components/result/resultView/ResultView";

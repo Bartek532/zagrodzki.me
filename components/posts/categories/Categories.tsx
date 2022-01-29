@@ -1,6 +1,7 @@
-import styles from "./categories.module.scss";
 import { memo } from "react";
 import Link from "next/link";
+
+import styles from "./categories.module.scss";
 
 type CategoriesProps = {
   readonly categories: string[];

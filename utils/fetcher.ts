@@ -1,13 +1,4 @@
-type HTTPMethod =
-  | "GET"
-  | "HEAD"
-  | "POST"
-  | "PUT"
-  | "DELETE"
-  | "CONNECT"
-  | "OPTIONS"
-  | "TRACE"
-  | "PATCH";
+type HTTPMethod = "GET" | "HEAD" | "POST" | "PUT" | "DELETE" | "CONNECT" | "OPTIONS" | "TRACE" | "PATCH";
 
 type FetcherConfig<S> = {
   readonly method: HTTPMethod;
@@ -19,7 +10,7 @@ type FetcherConfig<S> = {
 
 export async function fetcher<S>(
   path: string,
-  { method = "GET", body, config, credentials, headers }: FetcherConfig<S>
+  { method = "GET", body, config, credentials, headers }: FetcherConfig<S>,
 ) {
   try {
     const response = await fetch(path, {

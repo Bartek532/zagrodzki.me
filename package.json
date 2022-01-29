@@ -5,20 +5,34 @@
     "dev": "next dev",
     "build": "./build.sh redirect algolia feed next",
     "start": "next start",
-    "lint": "next lint",
     "tsc": "tsc --noEmit",
     "ts-node-esm": "node --loader ts-node/esm -r tsconfig-paths/register --experimental-specifier-resolution=node",
     "algolia": "yarn ts-node-esm generateAlgoliaItems.ts",
     "feed": "yarn ts-node-esm generateFeed.ts",
-    "new-post-redirect": "yarn ts-node-esm generateNewPostRedirect.ts"
+    "new-post-redirect": "yarn ts-node-esm generateNewPostRedirect.ts",
+    "format": "prettier --write \"./**/*.{js,jsx,ts,tsx,css,scss,md,mdx}\"",
+    "lint": "next lint"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "**/*.{js,jsx,ts,tsx}": [
+      "eslint --fix"
+    ],
+    "**/*.{json,css,scss,md,mdx}": [
+      "prettier --write"
+    ]
   },
   "type": "commonjs",
   "dependencies": {
-    "@googlemaps/js-api-loader": "^1.13.2",
     "@sendgrid/mail": "^7.6.0",
     "algoliasearch": "^4.11.0",
     "classnames": "^2.3.1",
     "dayjs": "^1.10.7",
+    "eslint-plugin-import": "^2.25.4",
     "feed": "^4.2.2",
     "framer-motion": "^5.3.3",
     "gray-matter": "^4.0.3",
@@ -40,17 +54,26 @@
   },
   "devDependencies": {
     "@svgr/webpack": "^5.5.0",
-    "@types/googlemaps": "^3.43.3",
     "@types/gtag.js": "^0.0.8",
     "@types/invariant": "^2.2.35",
     "@types/node": "16.11.10",
     "@types/react": "17.0.37",
     "@types/react-dom": "^17.0.11",
     "@types/react-instantsearch-dom": "^6.12.1",
+    "@typescript-eslint/eslint-plugin": "^5.10.1",
+    "@typescript-eslint/parser": "^5.10.1",
     "clsx": "^1.1.1",
     "eslint": "7",
     "eslint-config-next": "12.0.4",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-import-resolver-alias": "^1.1.2",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.28.0",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "husky": "^7.0.4",
     "next-seo": "^4.28.1",
+    "prettier": "^2.5.1",
     "sass": "^1.49.0",
     "ts-node": "^10.4.0",
     "tsconfig-paths": "^3.12.0",

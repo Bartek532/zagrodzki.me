@@ -1,4 +1,5 @@
 import type { NextPage, GetStaticProps, GetStaticPaths } from "next";
+
 import { getPostBySlug, getPostsPaths } from "lib/posts";
 import { Layout } from "components/layout/Layout";
 import { ResultView } from "components/result/resultView/ResultView";

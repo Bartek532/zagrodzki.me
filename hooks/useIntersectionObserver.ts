@@ -32,6 +32,7 @@ export const useIntersectionObserver = <T extends Element = HTMLElement>(options
 
   useEffect(() => {
     const map = unobserve.current;
+
     return () => {
       map.forEach((callback) => callback());
       map.clear();
@@ -89,6 +90,7 @@ const observe = (() => {
         observers.delete(key);
       }
     };
+
     return unobserve;
   };
 })();

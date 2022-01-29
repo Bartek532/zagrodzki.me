@@ -1,5 +1,6 @@
 import NextImage from "next/image";
 import { memo } from "react";
+
 import styles from "./image.module.scss";
 
 type ImageProps = {

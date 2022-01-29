@@ -1,9 +1,11 @@
-import styles from "./postTile.module.scss";
 import { memo } from "react";
-import type { Post } from "types";
 import Link from "next/link";
-import Arrow from "public/svg/right-top-arrow.svg";
 import { motion } from "framer-motion";
+
+import type { Post } from "types";
+import Arrow from "public/svg/right-top-arrow.svg";
+
+import styles from "./postTile.module.scss";
 
 type PostTileProps = {
   readonly post: Post;
