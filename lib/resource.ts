@@ -5,6 +5,7 @@ import matter from "gray-matter";
 import readingTime from "reading-time";
 import { serialize } from "next-mdx-remote/serialize";
 
+import { commonRehypePlugins } from "utils/markdown";
 import type { Project, Post } from "types";
 
 const MDX_REGEX = /\.mdx$/;
@@ -36,7 +37,10 @@ export const getResourceBySlug = async (slug: string, resourcePath: string) => {
   const { content, data } = matter(source);
   const timeToRead = readingTime(content).minutes;
   const frontmatter = { ...data, timeToRead } as Omit<Resource, "slug">;
-  const transformedMdx = await serialize(content, { scope: data });
+  const transformedMdx = await serialize(content, {
+    scope: data,
+    mdxOptions: { rehypePlugins: commonRehypePlugins },
+  });
 
   return { transformedMdx, frontmatter };
 };

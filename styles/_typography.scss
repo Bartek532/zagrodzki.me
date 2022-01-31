@@ -33,6 +33,14 @@
 }
 
 @font-face {
+  font-family: "League Mono";
+  src: url("/fonts/LeagueMono-Regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
   font-family: "Kenfolg";
   src: url("/fonts/Kenfolg.otf") format("opentype");
   font-weight: normal;

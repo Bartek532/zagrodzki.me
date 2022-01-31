@@ -1,6 +1,7 @@
 @use "_mixins";
 @use "_typography";
 @use "_mdx";
+@use "_theme";
 @use "variables";
 @use "reset";
 
@@ -14,13 +15,13 @@ body {
   width: 100%;
   overflow-x: hidden;
   background-color: var(--bg-100);
+  color: var(--black-100);
 }
 
 * {
-  color: var(--black-100);
   &::selection {
-    background-color: var(--blue-200);
-    color: var(--white-200);
+    background-color: var(--selection-background);
+    color: var(--selection-color);
   }
 }
 

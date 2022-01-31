@@ -1,0 +1,240 @@
+@use "styles/_mixins";
+
+pre[data-lang]:not(pre[data-lang=""]) {
+  position: relative;
+  &::after {
+    content: attr(data-lang);
+    position: absolute;
+    right: 2.5rem;
+    top: 0;
+    transform: translateY(-100%);
+    font-family: "GT Walsheim", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-transform: uppercase;
+    background-color: var(--syntax-background);
+    font-weight: 600;
+    border-radius: 1rem 1rem 0 0;
+    padding: 0.3rem 1.1rem;
+    letter-spacing: 1.1px;
+    font-size: 1.5rem;
+  }
+}
+
+code[class*="language-"],
+pre[class*="language-"] {
+  color: var(--base-syntax-color);
+  background: none;
+  font-family: "League Mono", Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.7;
+  max-width: calc(686px + 2.4rem);
+
+  -moz-tab-size: 2;
+  -o-tab-size: 2;
+  tab-size: 2;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+  font-size: 1.45rem;
+  --selection-background: var(--syntax-selection);
+  --selection-color: currentColor;
+
+  @include mixins.mediaquery("lg") {
+    &::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: var(--syntax-scrollbar-color);
+      border-radius: 2rem;
+    }
+  }
+}
+
+pre[class*="language-"] {
+  padding: 3rem;
+  margin: 5rem -1.2rem;
+  border-radius: 1.2rem;
+}
+
+pre[class*="language-"] > code {
+  overflow: auto;
+  max-width: 100%;
+  display: block;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+  background: var(--syntax-background);
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: 0.1em;
+  border-radius: 0.3em;
+  white-space: normal;
+}
+
+code.language-css {
+  color: var(--syntax-css-base-color);
+
+  .token {
+    &.unit {
+      color: var(--syntax-css-unit);
+    }
+
+    &.number {
+      color: var(--syntax-css-number);
+    }
+
+    &.variable {
+      color: var(--syntax-css-variable);
+    }
+  }
+}
+
+code.language-ts,
+code.language-tsx,
+code.language-js,
+code.language-jsx,
+code.language-json,
+.language-javascript {
+  color: var(--syntax-js-base-color);
+}
+
+.token {
+  &.punctuation {
+    color: var(--syntax-punctuation);
+  }
+
+  &.namespace {
+    opacity: 0.7;
+  }
+
+  &.property {
+    color: var(--syntax-prop);
+  }
+
+  &.tag {
+    color: var(--syntax-tag);
+  }
+
+  &.constant {
+    color: var(--syntax-constant);
+  }
+
+  &.boolean {
+    color: var(--syntax-boolean);
+  }
+  &.number {
+    color: var(--syntax-number);
+  }
+  &.symbol,
+  &.deleted {
+    color: var(--syntax-pink);
+  }
+
+  &.selector {
+    color: var(--syntax-selector);
+  }
+
+  &.builtin {
+    color: var(--syntax-builtin);
+  }
+
+  &.attr-name {
+    color: var(--syntax-attr-name);
+  }
+  &.string,
+  &.char,
+  &.inserted {
+    color: var(--syntax-green);
+  }
+
+  &.operator {
+    color: var(--syntax-operator);
+  }
+
+  &.entity,
+  &.url,
+  .language-css &.string,
+  .style &.string {
+    color: var(--syntax-orange);
+  }
+
+  .language-css &.class {
+    color: var(--syntax-css-class);
+  }
+
+  .language-css &.id {
+    color: var(--syntax-css-id);
+  }
+
+  &.attr-value {
+    color: var(--syntax-attr-value);
+
+    .punctuation {
+      color: var(--syntax-attr-value);
+    }
+  }
+
+  &.atrule,
+  &.keyword {
+    color: var(--syntax-blue);
+  }
+
+  &.maybe-class-name {
+    color: var(--syntax-maybe-class-name);
+  }
+
+  &.function,
+  &.class-name {
+    color: var(--syntax-red);
+  }
+
+  &.important {
+    color: var(--syntax-important);
+  }
+
+  &.variable {
+    color: var(--syntax-variable);
+  }
+
+  &.regex {
+    color: var(--syntax-yellow);
+  }
+
+  &.important,
+  &.bold {
+    font-weight: bold;
+  }
+  &.italic {
+    font-style: italic;
+  }
+
+  &.entity {
+    cursor: help;
+  }
+
+  &.property-access,
+  &.function {
+    color: var(--syntax-function);
+  }
+
+  &.comment,
+  &.prolog,
+  &.doctype,
+  &.cdata,
+  &.shebang {
+    color: var(--syntax-comment);
+  }
+}
