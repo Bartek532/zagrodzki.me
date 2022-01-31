@@ -6,10 +6,10 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 
 import type { Post } from "types";
-import { PostTile } from "components/posts/postsListing/postTile/PostTile";
-import { Categories } from "components/posts/categories/Categories";
-import { PopularPosts } from "components/posts/popularPosts/PopularPosts";
-import { SearchBox } from "components/searchBox/SearchBox";
+import { PostThumbnail } from "components/blog/postsListing/postThumbnail/PostThumbnail";
+import { CategoriesList } from "components/category/categoriesList/CategoriesList";
+import { PopularPosts } from "components/blog/popularPosts/PopularPosts";
+import { SearchBox } from "components/shared/searchBox/SearchBox";
 
 import styles from "./postsListing.module.scss";
 
@@ -45,7 +45,7 @@ export const CustomHits = connectHits<CustomHitsProps, Post>(({ hits, currentObj
           id={"id" + hit.objectID}
           className={styles.hit}
         >
-          <PostTile post={hit} />
+          <PostThumbnail post={hit} />
         </li>
       ))}
     </ol>
@@ -69,7 +69,7 @@ export const PostsListing = memo<PostsListingProps>(({ popularPosts, categories 
     <div className={styles.posts}>
       <InstantSearch indexName="posts" searchClient={searchClient}>
         <div className={styles.main}>
-          <Categories categories={categories} />
+          <CategoriesList categories={categories} />
           <PopularPosts posts={popularPosts} />
           <div className={styles.wrapper}>
             {router.query.category ? (

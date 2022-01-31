@@ -8,7 +8,7 @@ import { ProjectTile } from "components/projects/projectTile/ProjectTile";
 import { ThemeTile } from "components/tile/themeTile/ThemeTile";
 import { LatestPostTile } from "components/tile/latestPostTile/LatestPostTile";
 import { NewsletterTile } from "components/tile/newsletterTile/NewsletterTile";
-import { Grid } from "components/grid/Grid";
+import { Grid } from "components/shared/grid/Grid";
 import { getNewestProjects } from "lib/projects";
 import type { InferGetStaticPropsType } from "types";
 import { getNewestPosts } from "lib/posts";

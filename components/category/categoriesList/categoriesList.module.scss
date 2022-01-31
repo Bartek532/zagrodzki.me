@@ -1,0 +1,25 @@
+@use "styles/_mixins";
+
+.wrapper {
+  grid-area: categories;
+  @include mixins.flex;
+  flex-flow: column wrap;
+
+  @include mixins.mediaquery("m") {
+    align-items: flex-start;
+  }
+
+  .title {
+    text-transform: uppercase;
+    font-family: "GT Walsheim", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    letter-spacing: 1.9px;
+    font-size: 1.7rem;
+    margin-bottom: 3rem;
+  }
+
+  .categories {
+    @include mixins.flex(flex-start);
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+}

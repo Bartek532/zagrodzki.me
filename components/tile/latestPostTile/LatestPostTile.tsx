@@ -17,8 +17,12 @@ export const LatestPostTile = memo<LatestPostTileProps>(({ post }) => {
       <motion.a className={styles.link} whileHover="hover">
         <article className={styles.article}>
           <div className={styles.info}>
-            <h2 className={styles.title}>{post.title}</h2>
-            <p className={styles.description}>{post.excerpt}</p>
+            <motion.h2 layoutId={`title-container-${post.slug}`} className={styles.title}>
+              {post.title}
+            </motion.h2>
+            <motion.p layoutId={`excerpt-container-${post.slug}`} className={styles.description}>
+              {post.excerpt}
+            </motion.p>
 
             <div className={styles.additional}>
               <div className={styles.timeToRead}>{post.timeToRead} minutes read</div>
@@ -30,7 +34,11 @@ export const LatestPostTile = memo<LatestPostTileProps>(({ post }) => {
               </div>
             </div>
           </div>
-          <div className={styles.image} style={{ backgroundImage: `url(${post.image})` }}></div>
+          <motion.div
+            className={styles.image}
+            layoutId={`image-container-${post.slug}`}
+            style={{ backgroundImage: `url(${post.image})` }}
+          ></motion.div>
         </article>
       </motion.a>
     </Link>

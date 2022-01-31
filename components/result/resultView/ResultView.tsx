@@ -11,7 +11,7 @@ import { getBreadcrumbs } from "utils/getBreadcrumbs";
 import { useRunningHeader } from "hooks/useRunningHeader";
 import { useWindowSize } from "hooks/useWindowSize";
 import { useLocalStorage } from "hooks/useLocalStorage";
-import { TableOfContents } from "components/tableOfContents/TableOfContents";
+import { TableOfContents } from "components/result/tableOfContents/TableOfContents";
 import { Breadcrumbs } from "components/result/breadcrumbs/Breadcrumbs";
 import Arrow from "public/svg/right-top-arrow.svg";
 import { Image } from "components/mdx/image/Image";

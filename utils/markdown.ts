@@ -1,3 +1,4 @@
+//@ts-ignore
 import rehypePrism from "@mapbox/rehype-prism";
 import { visit } from "unist-util-visit";
 import type { Node } from "unist";

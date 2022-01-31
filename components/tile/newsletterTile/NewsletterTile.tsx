@@ -4,8 +4,8 @@ import clsx from "clsx";
 import { useState } from "react";
 
 import { EMAIL_REGEX } from "utils/consts";
-import { Input } from "components/input/Input";
-import { LoaderRing } from "components/loader/LoaderRing";
+import { Input } from "components/shared/input/Input";
+import { LoaderRing } from "components/shared/loader/LoaderRing";
 import { fetcher } from "utils/fetcher";
 
 import styles from "./newsletterTile.module.scss";

@@ -3,7 +3,7 @@ import { connectSearchBox } from "react-instantsearch-dom";
 import type { SearchBoxProvided } from "react-instantsearch-core";
 import { useCallback } from "react";
 
-import { Input } from "components/input/Input";
+import { Input } from "components/shared/input/Input";
 
 interface SearchBoxProps extends SearchBoxProvided {
   readonly currentObjectID?: string | null;

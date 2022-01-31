@@ -5,13 +5,13 @@ import { motion } from "framer-motion";
 import type { Post } from "types";
 import Arrow from "public/svg/right-top-arrow.svg";
 
-import styles from "./postTile.module.scss";
+import styles from "./postThumbnail.module.scss";
 
-type PostTileProps = {
+type PostThumbnailProps = {
   readonly post: Post;
 };
 
-export const PostTile = memo<PostTileProps>(({ post }) => {
+export const PostThumbnail = memo<PostThumbnailProps>(({ post }) => {
   return (
     <Link href={`/blog/${post.slug}`}>
       <a>
@@ -40,4 +40,4 @@ export const PostTile = memo<PostTileProps>(({ post }) => {
   );
 });
 
-PostTile.displayName = "PostTile";
+PostThumbnail.displayName = "PostThumbnail";

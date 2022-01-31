@@ -4,7 +4,7 @@ import { getPlaiceholder } from "plaiceholder";
 import { Layout } from "components/layout/Layout";
 import { ProjectsListing } from "components/projects/projectsListing/ProjectsListing";
 import { Seo } from "components/Seo";
-import { Hero } from "components/hero/Hero";
+import { Hero } from "components/shared/hero/Hero";
 import type { InferGetStaticPropsType } from "types";
 import { getAllProjects } from "lib/projects";
 

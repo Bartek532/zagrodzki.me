@@ -14,6 +14,7 @@
     outline: 0 none;
     border: 1px solid var(--gray-100);
     background-color: var(--gray-400);
+    color: inherit;
 
     &:focus {
       border-color: var(--gray-300);

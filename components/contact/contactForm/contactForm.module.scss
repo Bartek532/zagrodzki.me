@@ -1,0 +1,71 @@
+@use "styles/_mixins";
+
+.form {
+  @include mixins.flex;
+  flex-flow: column wrap;
+  gap: 1rem;
+  width: 100%;
+  max-width: 42rem;
+
+  input {
+    width: 100%;
+    min-width: auto;
+  }
+
+  .message {
+    border-radius: 1.5rem;
+    padding: 1.1rem 2rem;
+    font-size: 1.4rem;
+    width: 100%;
+    outline: 0 none;
+    border: 1px solid var(--gray-100);
+    background-color: var(--gray-400);
+    resize: vertical;
+
+    &:focus {
+      border-color: var(--gray-300);
+    }
+
+    &.error {
+      border-color: var(--red-100);
+    }
+  }
+
+  .btn {
+    width: 100%;
+    border-radius: 1.5rem;
+    border: 0 none;
+    padding: 1.1rem 2rem;
+    font-size: 1.4rem;
+    background-color: var(--gray-100);
+    cursor: pointer;
+
+    .loader {
+      position: relative;
+      padding: 1.14rem 0;
+
+      & > * {
+        --color: var(--black-200);
+        --size: 1rem;
+      }
+    }
+
+    &.rejected {
+      background-color: var(--red-100);
+      color: var(--white-200);
+    }
+
+    &.fullfilled {
+      background-color: var(--green-100);
+      color: var(--white-200);
+    }
+
+    @include mixins.mediaquery("lg") {
+      font-size: 1.5rem;
+    }
+
+    &:disabled {
+      cursor: default;
+    }
+  }
+}
