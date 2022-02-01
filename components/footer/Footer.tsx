@@ -5,6 +5,7 @@ import { Link } from "components/mdx/link/Link";
 import Logo from "public/svg/logo.svg";
 import { SOCIALS } from "utils/consts";
 import { useWindowSize } from "hooks/useWindowSize";
+import { useTheme } from "context/ThemeContext";
 
 import styles from "./footer.module.scss";
 
@@ -12,13 +13,19 @@ const Social = ({ social }: { social: typeof SOCIALS[number] }) => {
   const selectedSocial = SOCIALS.find(({ name }) => name === social.name) as typeof SOCIALS[number];
   const Icon = dynamic(() => import(`public/svg/${selectedSocial?.name}.svg`));
   const { width } = useWindowSize();
+  const { theme } = useTheme();
 
   return (
     <>
       {width! > 640 ? (
         <Link href={selectedSocial.link}>{selectedSocial?.name}</Link>
       ) : (
-        <a href={selectedSocial.link} className={styles.social} style={{ color: selectedSocial?.color }}>
+        <a
+          href={selectedSocial.link}
+          className={styles.social}
+          style={{ color: theme === "dark" ? "#fff" : selectedSocial?.color } as React.CSSProperties}
+        >
+          <span className="sr-only">check my {selectedSocial?.name}</span>
           <Icon />
         </a>
       )}

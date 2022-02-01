@@ -60,13 +60,11 @@
     "reading-time": "^1.5.0",
     "sharp": "^0.29.3",
     "slugify": "^1.6.4",
-    "unist-util-visit": "^4.1.0",
     "yup": "^0.32.11"
   },
   "devDependencies": {
     "@mapbox/rehype-prism": "^0.8.0",
     "@svgr/webpack": "^5.5.0",
-    "@types/": "mapbox/rehype-prism",
     "@types/gtag.js": "^0.0.8",
     "@types/invariant": "^2.2.35",
     "@types/node": "16.11.10",
@@ -93,6 +91,8 @@
     "stylelint-config-standard-scss": "^3.0.0",
     "ts-node": "^10.4.0",
     "tsconfig-paths": "^3.12.0",
-    "typescript": "^4.5.4"
+    "typescript": "^4.5.4",
+    "unified": "10.1.1",
+    "unist-util-visit": "2.0.3"
   }
 }

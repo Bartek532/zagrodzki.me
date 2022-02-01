@@ -2,7 +2,7 @@ import type { NextPage, GetStaticProps } from "next";
 
 import type { InferGetStaticPropsType } from "types";
 import { Layout } from "components/layout/Layout";
-import { ResultView } from "components/result/resultView/ResultView";
+import { Mdx } from "components/mdx/Mdx";
 import { getProjectsPaths, getProjectBySlug } from "lib/projects";
 import { Seo } from "components/Seo";
 
@@ -12,7 +12,7 @@ const Project: NextPage = ({ transformedMdx, frontmatter }: InferGetStaticPropsT
   return (
     <Layout>
       <Seo title={title} description={excerpt} imageUrl={image} publishedAt={publishedAt} type="article" />
-      <ResultView project={frontmatter} mdx={transformedMdx} type="project" />
+      <Mdx resource={frontmatter} content={transformedMdx} />
     </Layout>
   );
 };

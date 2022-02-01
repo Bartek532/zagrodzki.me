@@ -2,8 +2,8 @@ import clsx from "clsx";
 import { useForm } from "react-hook-form";
 import { useState, useEffect } from "react";
 
-import { Input } from "components/shared/input/Input";
-import { LoaderRing } from "components/shared/loader/LoaderRing";
+import { Input } from "components/common/input/Input";
+import { LoaderRing } from "components/common/loader/LoaderRing";
 import { fetcher } from "utils/fetcher";
 import { EMAIL_REGEX } from "utils/consts";
 

@@ -4,7 +4,7 @@
   p,
   #introduction {
     font-size: 1.6rem;
-    line-height: 2.75rem;
+    line-height: 3rem;
     margin-bottom: 1.6rem;
 
     @include mixins.mediaquery("sm") {
@@ -13,12 +13,12 @@
 
     @include mixins.mediaquery("lg") {
       font-size: 1.7rem;
-      line-height: 2.9rem;
+      line-height: 3.2rem;
     }
 
     @include mixins.mediaquery("xl") {
       font-size: 1.8rem;
-      line-height: 3.15rem;
+      line-height: 3.4rem;
     }
   }
 }

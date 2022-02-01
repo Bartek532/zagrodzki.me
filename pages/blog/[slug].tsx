@@ -2,7 +2,7 @@ import type { NextPage, GetStaticProps, GetStaticPaths } from "next";
 
 import { getPostBySlug, getPostsPaths } from "lib/posts";
 import { Layout } from "components/layout/Layout";
-import { ResultView } from "components/result/resultView/ResultView";
+import { Mdx } from "components/mdx/Mdx";
 import type { InferGetStaticPropsType } from "types";
 import { Seo } from "components/Seo";
 
@@ -19,7 +19,7 @@ const Post: NextPage = ({ transformedMdx, frontmatter }: InferGetStaticPropsType
         authors={authors}
         imageUrl={image}
       />
-      <ResultView mdx={transformedMdx} type="post" post={frontmatter} />
+      <Mdx content={transformedMdx} resource={frontmatter} />
     </Layout>
   );
 };

@@ -29,8 +29,8 @@ pre[class*="language-"] {
   word-spacing: normal;
   word-break: normal;
   word-wrap: normal;
-  line-height: 1.7;
-  max-width: calc(686px + 2.4rem);
+  line-height: 1.85;
+  max-width: 100vw;
 
   -moz-tab-size: 2;
   -o-tab-size: 2;
@@ -40,9 +40,15 @@ pre[class*="language-"] {
   -moz-hyphens: none;
   -ms-hyphens: none;
   hyphens: none;
-  font-size: 1.45rem;
+  font-size: 1.35rem;
   --selection-background: var(--syntax-selection);
   --selection-color: currentColor;
+
+  @include mixins.mediaquery("m") {
+    max-width: calc(686px + 2.4rem);
+    line-height: 1.7;
+    font-size: 1.45rem;
+  }
 
   @include mixins.mediaquery("lg") {
     &::-webkit-scrollbar {
@@ -62,8 +68,16 @@ pre[class*="language-"] {
 
 pre[class*="language-"] {
   padding: 3rem;
-  margin: 5rem -1.2rem;
-  border-radius: 1.2rem;
+  margin: 5rem -3rem;
+
+  @include mixins.mediaquery("sm") {
+    margin: 5rem -4rem;
+  }
+
+  @include mixins.mediaquery("m") {
+    margin: 5rem -1.2rem;
+    border-radius: 1.2rem;
+  }
 }
 
 pre[class*="language-"] > code {

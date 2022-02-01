@@ -1,6 +1,7 @@
 import { memo } from "react";
 import Link from "next/link";
 
+import { useTheme } from "context/ThemeContext";
 import { Footer } from "components/footer/Footer";
 import { Navbar } from "components/navbar/Navbar";
 import { routes } from "data/routes";
@@ -14,6 +15,8 @@ type LayoutProps = {
 };
 
 export const Layout = memo<LayoutProps>(({ children }) => {
+  useTheme();
+
   return (
     <>
       <div className={styles.wrapper}>

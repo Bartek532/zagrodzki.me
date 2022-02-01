@@ -4,7 +4,7 @@ import { InstantSearch, connectHits } from "react-instantsearch-dom";
 import type { HitsProvided } from "react-instantsearch-core";
 import Image from "next/image";
 
-import { SearchBox } from "components/shared/searchBox/SearchBox";
+import { SearchBox } from "components/common/searchBox/SearchBox";
 import { ProjectThumbnail } from "components/projects/projectsListing/projectThumbnail/ProjectThumbnail";
 import type { Project } from "types";
 

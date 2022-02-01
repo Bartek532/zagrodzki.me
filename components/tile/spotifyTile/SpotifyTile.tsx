@@ -2,7 +2,7 @@ import clsx from "clsx";
 import Image from "next/image";
 
 import SpotifyIcon from "public/svg/spotify.svg";
-import { LoaderRing } from "components/shared/loader/LoaderRing";
+import { LoaderRing } from "components/common/loader/LoaderRing";
 
 import styles from "./spotifyTile.module.scss";
 import { useGetCurrentTrack } from "./hooks/useGetCurrentTrack";

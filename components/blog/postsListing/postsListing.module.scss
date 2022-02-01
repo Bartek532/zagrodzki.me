@@ -32,6 +32,25 @@
         gap: 5rem;
       }
 
+      .searchedCategory {
+        text-align: left;
+        width: 100%;
+        color: var(--red-100);
+        font-size: 2.7rem;
+        margin-bottom: -1rem;
+        padding-left: 2.5rem;
+
+        @include mixins.mediaquery("lg") {
+          padding-left: 2.7rem;
+          font-size: 2.95rem;
+          margin-bottom: -2rem;
+        }
+
+        @include mixins.mediaquery("xl") {
+          font-size: 3.3rem;
+        }
+      }
+
       .list {
         list-style-type: none;
         margin: 0;

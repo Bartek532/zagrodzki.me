@@ -1,6 +1,6 @@
 ---
 title: "Blog"
-excerpt: "Example food blog"
+excerpt: "Culinary journalist's blog 👩‍🍳"
 publishedAt: "10-11-2021"
 isPublished: true
 url: "https://food-blog-beta.vercel.app"
@@ -11,8 +11,225 @@ stack:
   - "pwa"
   - "cms"
 image: "/img/projects/blog/thumbnail.png"
+type: "project"
 ---
 
-### Example header
+<div id="introduction">
+has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
 
-kaj fjf ksjf sdfj
+The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.
+
+</div>
+
+## Exaample code
+
+has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
+
+```js
+const var = Array("2", "3", "4");
+
+class Animal {
+super();
+constructor(name) {
+this.name = name;
+}
+}
+
+const xd = 2;
+const tr = true;
+
+```
+
+```json
+{
+  "key": "value"
+}
+```
+
+```ts
+import path from "path";
+import fs from "fs";
+//here is a comment
+import matter from "gray-matter";
+import readingTime from "reading-time";
+import { serialize } from "next-mdx-remote/serialize";
+import rehypePrism from "@mapbox/rehype-prism";
+
+import type { Project, Post } from "types";
+
+const MDX_REGEX = /\.mdx$/;
+export const EMAIL_REGEX = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$/;
+
+type Resource = Project | Post;
+
+const getResourceFrontmatter = <T extends Resource>(filename: string, resourcePath: string) => {
+  const fullPath = path.join(resourcePath, filename);
+  const fileContents = fs.readFileSync(fullPath, "utf8");
+  const slug = filename.replace(MDX_REGEX, "");
+  const { content, data } = matter(fileContents);
+  const timeToRead = readingTime(content).minutes;
+
+  return { ...data, slug, timeToRead } as T;
+};
+
+export type SpotifyTrack = {
+  album: SpotifyAlbum;
+  artists: SpotifyArtist[];
+  available_markets: string[];
+  disc_number: number;
+  duration_ms: number;
+  explicit: boolean;
+  external_ids: {
+    isrc: string;
+  };
+  external_urls: {
+    spotify: string;
+  };
+  href: string;
+  id: string;
+  is_local: boolean;
+  name: string;
+  popularity: string;
+  preview_url: string;
+  track_number: number;
+  type: string;
+  uri: string;
+};
+```
+
+```html
+
+    <!DOCTYPE html>
+<html lang="en">
+  <head>
+    style {
+      background: #fff;
+      font-size: 10px;
+    }
+</head>
+    <section class="about" id="about">
+      <div class="header">
+        <h2 class="header__title">about me</h2>
+      </div>
+      <div class="info">
+        <div class="info__image" data-aos="fade-down">
+          <img src="./images/front-image.webp" alt="my photo" />
+        </div>
+        <div class="info__description" data-aos="fade-up">
+          <h3 class="info__description__title">Hi!</h3>
+          <p class="info__description__text">
+            I'm Bartek and I've been interested in creating websites for quite
+            some time now. I am currently a fourth-year student in a computer
+            science technical school. I'm constantly trying to expand my
+            knowledge, learn new technologies, create better and better web
+            applications. I am punctual and reliable when it comes to project
+            preparation. I am constantly learning, developing, gathering
+            experience. I always want my apps to be the best they can be, so
+            even if something works but can be done better, I improve it! 😎 I
+            am open to innovative ideas and solutions every time, I try to meet
+            the client's expectations at all costs. If you have any questions or
+            just want to chat,
+            <a href="#contact" class="info__description__text__link"
+              >contact me!</a
+            >
+          </p>
+        </div>
+      </div>
+    </section>
+
+
+
+          <input type="text" name="_gotcha" style="display: none" />
+
+
+    <div class="loader">
+      <img src="./images/logo.svg" alt="loading..." class="loader__spinner" />
+    </div>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <script src="./js/main.js"></script>
+  </body>
+</html>
+
+```
+
+```css
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+  width: 100%;
+  overflow-x: hidden;
+  background-color: var(--bg-100);
+}
+
+.sr-only {
+  border: 0 !important;
+  clip: rect(1px, 1px, 1px, 1px) !important; /* 1 */
+  -webkit-clip-path: inset(50%) !important;
+  clip-path: inset(50%) !important; /* 2 */
+  height: 1px !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  position: absolute !important;
+  width: 1px !important;
+  white-space: nowrap !important; /* 3 */
+}
+
+#id {
+  color: red;
+}
+```
+
+```tsx
+import styles from "./loaderRing.module.scss";
+
+export const LoaderRing = () => {
+  return (
+    <div className={styles.loader}>
+      <span className="sr-only">loading</span>
+      <div className={styles.ring}>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+  );
+};
+```
+
+```bash
+#!/bin/bash
+
+ARGS=$@
+
+if [[ ${ARGS[*]} =~ 'redirect' ]]; then
+  echo "Generating redirect to the newest post..."
+  yarn new-post-redirect
+  echo "Done generating redirect..."
+fi
+
+if [[ ${ARGS[*]} =~ 'algolia' ]]; then
+  echo "Updating Algolia index..."
+  yarn algolia
+  echo "Done updating Algolia index..."
+fi
+
+if [[ ${ARGS[*]} =~ 'feed' ]]; then
+  echo "Generating JSON and XML feed..."
+  yarn feed
+  echo "Done generating feeds..."
+fi
+
+if [[ ${ARGS[*]} =~ 'next' ]]; then
+  echo "Building Next.js..."
+  yarn next build
+  echo "Done building Next.js..."
+fi
+```

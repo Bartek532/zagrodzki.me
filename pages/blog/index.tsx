@@ -3,7 +3,7 @@ import type { GetStaticProps, NextPage } from "next";
 import { Layout } from "components/layout/Layout";
 import { PostsListing } from "components/blog/postsListing/PostsListing";
 import { Seo } from "components/Seo";
-import { Hero } from "components/shared/hero/Hero";
+import { Hero } from "components/common/hero/Hero";
 import { getPopularPosts, getPostsCategories } from "lib/posts";
 import { InferGetStaticPropsType } from "types";
 

@@ -12,18 +12,13 @@
     flex-flow: column wrap;
     gap: 2rem;
     width: 100%;
-    max-width: calc(686px + 6rem);
     font-size: 1.5rem;
+    max-width: 108rem;
 
     @include mixins.mediaquery("sm") {
-      max-width: calc(686px + 8rem);
       padding: 2.5rem 4rem;
       padding-bottom: 1rem;
       gap: 1.5rem;
-    }
-
-    @include mixins.mediaquery("xxl") {
-      max-width: 108rem;
     }
   }
 

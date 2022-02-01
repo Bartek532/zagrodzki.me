@@ -1,0 +1,69 @@
+@use "styles/_mixins";
+
+.container {
+  @include mixins.flex;
+  flex-flow: column wrap;
+  width: 100%;
+  margin-top: 0.5rem;
+  padding: 0 1rem;
+
+  @include mixins.mediaquery("sm") {
+    padding: 0;
+  }
+
+  * {
+    scroll-margin-top: 2.5rem;
+  }
+
+  .header {
+    width: 100%;
+    @include mixins.flex(space-between);
+    flex-wrap: wrap;
+    gap: 1.4rem;
+    max-width: min(686px, 100%);
+
+    @include mixins.mediaquery("xxl") {
+      max-width: 100%;
+    }
+  }
+
+  .main {
+    @include mixins.flex(center, flex-start);
+    flex-direction: row-reverse;
+    gap: 8rem;
+
+    .wrapper {
+      @include mixins.flex;
+      flex-flow: column wrap;
+      width: 100%;
+      max-width: min(686px, 100%);
+    }
+
+    .thumbnail {
+      position: relative;
+      margin: 4.5rem -1.2rem;
+
+      img {
+        border-radius: 2rem;
+      }
+
+      .arrow {
+        position: absolute;
+        bottom: 1.5rem;
+        left: 1rem;
+        background-color: var(--white-100);
+        padding: 1rem;
+        border-radius: 50%;
+        @include mixins.flex;
+
+        svg {
+          width: 9px;
+
+          path {
+            stroke: var(--black-100);
+          }
+        }
+      }
+    }
+  }
+}

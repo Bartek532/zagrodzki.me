@@ -1,15 +1,16 @@
 import { useState, useCallback, memo } from "react";
 import algoliasearch from "algoliasearch";
-import { InstantSearch, connectHits } from "react-instantsearch-dom";
+import { InstantSearch, connectHits, Configure } from "react-instantsearch-dom";
 import type { HitsProvided } from "react-instantsearch-core";
 import Image from "next/image";
 import { useRouter } from "next/router";
 
-import type { Post } from "types";
+import { allCategories } from "data/categories";
+import type { Post, Category } from "types";
 import { PostThumbnail } from "components/blog/postsListing/postThumbnail/PostThumbnail";
 import { CategoriesList } from "components/category/categoriesList/CategoriesList";
 import { PopularPosts } from "components/blog/popularPosts/PopularPosts";
-import { SearchBox } from "components/shared/searchBox/SearchBox";
+import { SearchBox } from "components/common/searchBox/SearchBox";
 
 import styles from "./postsListing.module.scss";
 
@@ -33,6 +34,7 @@ export const CustomHits = connectHits<CustomHitsProps, Post>(({ hits, currentObj
       </div>
     );
   }
+  console.log(hits);
 
   return (
     <ol id="search-hits-list" className={styles.list}>
@@ -54,7 +56,7 @@ export const CustomHits = connectHits<CustomHitsProps, Post>(({ hits, currentObj
 
 interface PostsListingProps {
   readonly popularPosts: Post[];
-  readonly categories: string[];
+  readonly categories: Category[];
 }
 
 export const PostsListing = memo<PostsListingProps>(({ popularPosts, categories }) => {
@@ -73,7 +75,12 @@ export const PostsListing = memo<PostsListingProps>(({ popularPosts, categories 
           <PopularPosts posts={popularPosts} />
           <div className={styles.wrapper}>
             {router.query.category ? (
-              <h2 className={styles.searchedCategory}>{decodeURIComponent(router.query.category as string)}</h2>
+              <>
+                <h2 className={styles.searchedCategory}>
+                  {allCategories.find((c) => c.slug === router.query.category)?.name}
+                </h2>
+                <Configure filters={`category:${router.query.category}`} />
+              </>
             ) : (
               <SearchBox currentObjectID={currentObjectID} onChange={handleInputChange} />
             )}

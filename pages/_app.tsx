@@ -6,6 +6,7 @@ import { ReactQueryDevtools } from "react-query/devtools";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 
+import { ThemeProvider } from "context/ThemeContext";
 import { Seo } from "components/Seo";
 import * as gtag from "lib/gtag";
 
@@ -39,7 +40,9 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Seo />
       <QueryClientProvider client={queryClient}>
         <Hydrate state={pageProps.dehydratedState}>
-          <Component {...pageProps} />
+          <ThemeProvider>
+            <Component {...pageProps} />
+          </ThemeProvider>
         </Hydrate>
         <ReactQueryDevtools />
       </QueryClientProvider>

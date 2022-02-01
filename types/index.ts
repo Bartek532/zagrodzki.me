@@ -1,3 +1,5 @@
+import { allCategories } from "data/categories";
+
 export type Route = { label: string; path: string };
 
 export type SpotifyTrack = {
@@ -54,6 +56,7 @@ export type SpotifyAlbum = {
 };
 
 export type Project = {
+  type: "project";
   title: string;
   excerpt: string;
   slug: string;
@@ -67,6 +70,7 @@ export type Project = {
 };
 
 export type Post = {
+  type: "post";
   title: string;
   slug: string;
   excerpt: string;
@@ -79,7 +83,7 @@ export type Post = {
   authors: string[];
 };
 
-export type Category = "Other";
+export type Category = typeof allCategories[number]["slug"];
 
 export type PromiseValue<T> = T extends PromiseLike<infer R> ? R : T;
 export type InferGetStaticPropsType<T extends (...args: any) => any> = PromiseValue<ReturnType<T>> extends infer Temp

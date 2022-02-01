@@ -2,6 +2,7 @@ import { memo } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
+import { allCategories } from "data/categories";
 import type { Post } from "types";
 import Arrow from "public/svg/right-top-arrow.svg";
 
@@ -24,7 +25,7 @@ export const PostThumbnail = memo<PostThumbnailProps>(({ post }) => {
           </motion.p>
           <div className={styles.info}>
             <div className={styles.mainInfo}>
-              <span className={styles.category}>{post.category}</span>•
+              <span className={styles.category}>{allCategories.find((c) => c.slug === post.category)?.name}</span>•
               <span className={styles.time}>{post.timeToRead} minutes</span>
             </div>
             <div className={styles.more}>

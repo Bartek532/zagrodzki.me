@@ -66,6 +66,8 @@
     margin: 4.5rem 0;
     padding: 0 2rem;
     width: 100%;
+    @include mixins.flex;
+    flex-flow: column wrap;
 
     @include mixins.mediaquery("sm") {
       padding: 0;

@@ -1,11 +1,9 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
-import { useLocalStorage } from "hooks/useLocalStorage";
+import { useTheme } from "context/ThemeContext";
 
 import styles from "./themeTile.module.scss";
-
-type ThemeVariants = "system" | "dark" | "light";
 
 const transition = {
   type: "spring",
@@ -75,48 +73,14 @@ const SunIcon = () => {
 };
 
 export const ThemeTile = () => {
-  const [theme, setTheme] = useLocalStorage<ThemeVariants>("theme", "system");
-  const [systemTheme, setSystemTheme] = useState<Exclude<ThemeVariants, "system"> | null>(null);
-
-  useEffect(() => {
-    setSystemTheme(window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
-  }, []);
-
-  useEffect(() => {
-    document.body.setAttribute("data-theme", theme!);
-  }, [theme]);
-
-  const invertTheme = (theme: Exclude<ThemeVariants, "system"> | null) => (theme === "dark" ? "light" : "dark");
-
-  const toggleTheme = () => {
-    setTheme(theme === "system" ? invertTheme(systemTheme) : invertTheme(theme));
-  };
+  const { theme, toggleTheme } = useTheme();
 
   return (
     <label className={styles.tile}>
-      <span className="sr-only">
-        change theme to {theme === "system" ? invertTheme(systemTheme) : invertTheme(theme)}
-      </span>
-      <input
-        type="checkbox"
-        className={styles.checkbox}
-        onChange={toggleTheme}
-        checked={theme === "light" || (theme === "system" && systemTheme === "light")}
-      />
+      <span className="sr-only">change theme to {theme === "dark" ? "light" : "dark"}</span>
+      <input type="checkbox" className={styles.checkbox} onChange={toggleTheme} checked={theme === "light"} />
       <div className={styles.toggle}>
-        <div className={styles.icon}>
-          {theme === "system" ? (
-            systemTheme === "light" ? (
-              <SunIcon />
-            ) : (
-              <MoonIcon />
-            )
-          ) : theme === "light" ? (
-            <SunIcon />
-          ) : (
-            <MoonIcon />
-          )}
-        </div>
+        <div className={styles.icon}>{theme === "light" ? <SunIcon /> : <MoonIcon />}</div>
       </div>
     </label>
   );

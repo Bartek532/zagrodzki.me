@@ -10,9 +10,10 @@
 
   .separator {
     width: 9px;
+    opacity: 0.35;
 
     svg path {
-      fill: var(--gray-300);
+      fill: var(--black-100);
     }
 
     @include mixins.mediaquery("lg") {
@@ -27,6 +28,7 @@
   .link {
     font-size: 1.4rem;
     opacity: 0.6;
+    color: var(--black-100);
 
     &:hover {
       opacity: 1;
