@@ -92,10 +92,13 @@ pre[class*="language-"] {
 }
 
 /* Inline code */
-:not(pre) > code[class*="language-"] {
-  padding: 0.1em;
-  border-radius: 0.3em;
+:not(pre) > code {
+  padding: 0.45rem 1rem;
+  margin: 0 0.3rem;
+  border-radius: 0.4rem;
   white-space: normal;
+  background: var(--syntax-background);
+  color: var(--syntax-function);
 }
 
 code.language-css {
