@@ -3,6 +3,8 @@ import fs from "fs";
 import dayjs from "dayjs";
 import { Feed } from "feed";
 
+import type { Author } from "types";
+
 import { getPublishedPosts } from "./lib/posts";
 import { SITE_TITLE, DEFAULT_DESCRIPTION } from "./utils/consts";
 
@@ -30,14 +32,14 @@ function run() {
     },
   });
 
-  posts.map(({ slug, title, excerpt, image, authors, publishedAt }) => {
+  posts.map(({ slug, title, excerpt, image, author, publishedAt }) => {
     feed.addItem({
       title,
       id: slug,
       description: excerpt,
       link: `${publicUrl}/blog/${slug}`,
       image: `${publicUrl}/${image}`,
-      author: authors.map((author) => ({ name: author })),
+      author: [{ name: author }],
       date: new Date(dayjs(publishedAt, "DD-MM-YYYY").format("MM-DD-YYYY")),
     });
   });

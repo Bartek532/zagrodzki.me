@@ -3,12 +3,13 @@ import { useRouter } from "next/router";
 import { memo } from "react";
 import { NextSeo, ArticleJsonLd } from "next-seo";
 
+import type { Author } from "types";
 import { HOST, SITE_TITLE_TEMPLATE, SITE_TITLE, DEFAULT_DESCRIPTION, DEFAULT_IMAGE_URL } from "utils/consts";
 
 type SeoProps = {
   readonly title?: string;
   readonly description?: string;
-  readonly authors?: string[];
+  readonly author?: Author;
   readonly type?: "website" | "article";
   readonly imageUrl?: string;
   readonly publishedAt?: string;
@@ -19,7 +20,7 @@ export const Seo = memo<SeoProps>(
     title,
     description = DEFAULT_DESCRIPTION,
     imageUrl = DEFAULT_IMAGE_URL,
-    authors,
+    author,
     type = "website",
     publishedAt,
   }) => {
@@ -45,7 +46,7 @@ export const Seo = memo<SeoProps>(
             description,
             site_name: SITE_TITLE,
             images: [{ width: 1200, height: 880, alt: title, url: `${HOST}${imageUrl}` }],
-            ...(type === "article" ? { article: { publishedTime: publishedAt, authors } } : {}),
+            ...(type === "article" ? { article: { publishedTime: publishedAt, authors: [author as Author] } } : {}),
           }}
         />
         {type === "article" ? (
@@ -55,7 +56,7 @@ export const Seo = memo<SeoProps>(
             description={description}
             datePublished={publishedAt as string}
             dateModified={publishedAt as string}
-            authorName={authors as string[]}
+            authorName={author as Author}
             publisherName="Bartosz Zagrodzki"
             publisherLogo="/android-icon-192x192.png"
             images={[`${HOST}${imageUrl}`]}

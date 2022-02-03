@@ -9,7 +9,7 @@ interface EditProps {
 export const Edit = memo<EditProps>(({ href }) => {
   return (
     <Link
-      href={`https://github.com/${process.env.NEXT_PUBLIC_GITHUB_USERNAME}/zagrodzki.me/tree/main/content//${href}.mdx`}
+      href={`https://github.com/${process.env.NEXT_PUBLIC_GITHUB_USERNAME}/zagrodzki.me/tree/main/content${href}.mdx`}
     >
       Edit on Github
     </Link>

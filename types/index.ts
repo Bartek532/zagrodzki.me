@@ -1,4 +1,5 @@
 import { allCategories } from "data/categories";
+import { allAuthors } from "data/authors";
 
 export type Route = { label: string; path: string };
 
@@ -67,6 +68,7 @@ export type Project = {
   repoUrl: string;
   stack: string[];
   image: string;
+  author: Author;
 };
 
 export type Post = {
@@ -80,10 +82,11 @@ export type Post = {
   isPopular: boolean;
   category: Category;
   image: string;
-  authors: string[];
+  author: Author;
 };
 
 export type Category = typeof allCategories[number]["slug"];
+export type Author = typeof allAuthors[number]["name"];
 
 export type PromiseValue<T> = T extends PromiseLike<infer R> ? R : T;
 export type InferGetStaticPropsType<T extends (...args: any) => any> = PromiseValue<ReturnType<T>> extends infer Temp

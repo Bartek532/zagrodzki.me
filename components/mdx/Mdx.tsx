@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import NextImage from "next/image";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 
+import { Author } from "components/mdx/author/Author";
 import type { Project, Post } from "types";
 import { getHeadings } from "utils/getHeadings";
 import { useRunningHeader } from "hooks/useRunningHeader";
@@ -102,6 +103,10 @@ export const Mdx = memo<MdxProps>(({ resource, content }) => {
           <div className={styles.links}>
             <Edit href={`/${resource.type === "project" ? "projects" : "posts"}/${resource.slug}`} />
             <Share href={url} title={resource.title} />
+          </div>
+
+          <div className={styles.author}>
+            <Author name={resource.author} />
           </div>
         </div>
       </div>

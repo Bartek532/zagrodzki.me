@@ -7,11 +7,18 @@ import { getProjectsPaths, getProjectBySlug } from "lib/projects";
 import { Seo } from "components/Seo";
 
 const Project: NextPage = ({ transformedMdx, frontmatter }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  const { title, excerpt, publishedAt, image } = frontmatter;
+  const { title, excerpt, publishedAt, image, author } = frontmatter;
 
   return (
     <Layout>
-      <Seo title={title} description={excerpt} imageUrl={image} publishedAt={publishedAt} type="article" />
+      <Seo
+        title={title}
+        description={excerpt}
+        imageUrl={image}
+        publishedAt={publishedAt}
+        type="article"
+        author={author}
+      />
       <Mdx resource={frontmatter} content={transformedMdx} />
     </Layout>
   );

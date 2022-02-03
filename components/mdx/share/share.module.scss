@@ -2,5 +2,9 @@
 
 .share {
   @include mixins.flex;
-  gap: 1.3rem;
+  gap: 0.9rem;
+
+  @include mixins.mediaquery("sm") {
+    gap: 1.3rem;
+  }
 }

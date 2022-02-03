@@ -7,7 +7,7 @@ import type { InferGetStaticPropsType } from "types";
 import { Seo } from "components/Seo";
 
 const Post: NextPage = ({ transformedMdx, frontmatter }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  const { title, excerpt, publishedAt, image, authors } = frontmatter;
+  const { title, excerpt, publishedAt, image, author } = frontmatter;
 
   return (
     <Layout>
@@ -16,7 +16,7 @@ const Post: NextPage = ({ transformedMdx, frontmatter }: InferGetStaticPropsType
         description={excerpt}
         publishedAt={publishedAt}
         type="article"
-        authors={authors}
+        author={author}
         imageUrl={image}
       />
       <Mdx content={transformedMdx} resource={frontmatter} />

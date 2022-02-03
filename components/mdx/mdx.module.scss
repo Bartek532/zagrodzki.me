@@ -70,8 +70,21 @@
   .links {
     @include mixins.flex(space-between);
     width: 100%;
-    font-size: 1.5rem;
     flex-wrap: wrap;
-    gap: 0.8rem;
+    gap: 0.9rem;
+    font-size: 1.55rem;
+    padding-bottom: 1.7rem;
+
+    @media all and (min-width: 380px) {
+      font-size: 1.6rem;
+    }
+
+    @include mixins.mediaquery("lg") {
+      font-size: 1.75rem;
+    }
+
+    @include mixins.mediaquery("xl") {
+      font-size: 1.85rem;
+    }
   }
 }

@@ -12,7 +12,8 @@ interface ShareProps {
 export const Share = memo<ShareProps>(({ href, title }) => {
   return (
     <div className={styles.share}>
-      <Link href={`https://twitter.com/share?url=${href}&text=${title}`}>Tweet this article</Link>•
+      <Link href={`https://twitter.com/share?url=${href}&text=${title}`}>Tweet this article</Link>
+      <span className={styles.separator}>•</span>
       <Link href={`https://www.linkedin.com/shareArticle?mini=true&url=${href}`}>Share on LinkedIn</Link>
     </div>
   );
