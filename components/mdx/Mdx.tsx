@@ -11,6 +11,8 @@ import Arrow from "public/svg/right-top-arrow.svg";
 import { Image } from "components/mdx/image/Image";
 import { Heading } from "components/mdx/heading/Heading";
 import { Link } from "components/mdx/link/Link";
+import { Edit } from "components/mdx/edit/Edit";
+import { Share } from "components/mdx/share/Share";
 
 import { TableOfContents } from "./tableOfContents/TableOfContents";
 import { Info } from "./info/Info";
@@ -95,6 +97,11 @@ export const Mdx = memo<MdxProps>(({ resource, content }) => {
 
           <div className="content" ref={contentElRef}>
             <MDXRemote {...content} components={customMdxComponents} />
+          </div>
+
+          <div className={styles.links}>
+            <Edit href={`/${resource.type === "project" ? "projects" : "posts"}/${resource.slug}`} />
+            <Share href={url} title={resource.title} />
           </div>
         </div>
       </div>

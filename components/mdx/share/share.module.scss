@@ -1,0 +1,6 @@
+@use "styles/_mixins";
+
+.share {
+  @include mixins.flex;
+  gap: 1.3rem;
+}

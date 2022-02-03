@@ -66,4 +66,12 @@
       }
     }
   }
+
+  .links {
+    @include mixins.flex(space-between);
+    width: 100%;
+    font-size: 1.5rem;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+  }
 }
