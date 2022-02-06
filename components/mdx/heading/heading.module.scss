@@ -60,11 +60,11 @@
   font-size: 2.1rem;
 
   @include mixins.mediaquery("sm") {
-    font-size: 2.6rem;
+    font-size: 2.45rem;
   }
 
   @include mixins.mediaquery("xl") {
-    font-size: 3rem;
+    font-size: 2.85rem;
   }
 }
 .h4 {

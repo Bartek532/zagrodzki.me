@@ -6,6 +6,8 @@
   margin: 4rem -1.2rem;
   position: relative;
   @include mixins.flex;
+  flex-flow: column wrap;
+  gap: 1.4rem;
 
   .nextImage {
     width: auto;
@@ -16,5 +18,11 @@
   .image {
     max-width: 100%;
     border-radius: 2rem;
+  }
+
+  .caption {
+    font-size: 1.4rem;
+    font-style: italic;
+    opacity: 0.6;
   }
 }

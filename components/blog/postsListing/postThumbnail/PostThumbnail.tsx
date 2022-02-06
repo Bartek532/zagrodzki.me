@@ -26,7 +26,7 @@ export const PostThumbnail = memo<PostThumbnailProps>(({ post }) => {
           <div className={styles.info}>
             <div className={styles.mainInfo}>
               <span className={styles.category}>{allCategories.find((c) => c.slug === post.category)?.name}</span>•
-              <span className={styles.time}>{post.timeToRead} minutes</span>
+              <span className={styles.time}>{Math.round(post.timeToRead)} minutes</span>
             </div>
             <div className={styles.more}>
               Read more

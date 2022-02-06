@@ -25,7 +25,7 @@ export const LatestPostTile = memo<LatestPostTileProps>(({ post }) => {
             </motion.p>
 
             <div className={styles.additional}>
-              <div className={styles.timeToRead}>{post.timeToRead} minutes read</div>
+              <div className={styles.timeToRead}>{Math.round(post.timeToRead)} minutes read</div>
               <div className={styles.more}>
                 Read more
                 <span className={styles.arrow}>

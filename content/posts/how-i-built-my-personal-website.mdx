@@ -4,8 +4,130 @@ category: "other"
 publishedAt: "10-01-2022"
 isPublished: true,
 isPopular: true,
-excerpt: "Which technologies am I used? What made me start a blog? Where am I working? Answers are here ✨"
-image: "/img/posts/how-i-built-my-personal-website/post-image.jpg"
+excerpt: "Which technologies am I used? What made me start a blog? What do I plan on posting here? Answers are here ✨"
+image: "/img/posts/how-i-built-my-personal-website/thumbnail.jpg"
 author: "Bartosz Zagrodzki"
 type: "post"
 ---
+
+<div id="introduction">
+  If you have the desire to create your own blog, you are probably surprised by the number of tools available to do so.
+  After all, a day without a <Link href="https://dayssincelastjavascriptframework.com/">new js framework</Link> is a day
+  lost.
+</div>
+
+When I was planning this site, I wanted to make it as fast as possible and to be able to create the most personalized content possible. How did I do it? What made me do it? Check it out below and you may find the answers you need to get started.
+
+## Why?
+
+<Quote
+  text="You see things; and you say 'Why?' But I dream things that never were; and I say 'Why not?'"
+  author="George Bernard Shaw"
+/>
+
+But why did I even decide to do something like this? The story is pretty simple - before, I was reading a lot of tech blogs and I even talked to some bloggers, then I thought: _"Why not try it myself?"_.
+
+This is a whole new experience, and I'm always eager to learn new things. As a result, you are reading this now!
+
+## Tech stack
+
+Here the choice was obvious to me - **TypeScript** and **Next.js**.
+
+Next gives us a lot of possibilities such as choosing the right rendering strategy. This has a beneficial effect on performance (which we'll talk about later). Personally I decided to take the SSG (_Static Site Generation_) approach, so my content is generated at the time of building the site.
+
+You probably noticed the search boxes - here I used **Algolia**, which is extremely easy to implement and works fine.
+
+Everything was deployed on **Vercel**, I had previous experience with this platform, so I knew there was nothing to fear here. Most of my projects are right there.
+
+For styling I used **(S)CSS Modules**, why not Styled Components? Hmm, they're not as great as you might expect (<Link href="https://dev.to/alexsergey/css-modules-vs-css-in-js-who-wins-3n25">this is material for a separate article</Link>).
+
+### CMS
+
+No, I didn't use Wordpress. I bet on the Markdown extension - **MDX**. If you have ever created a `README` file, you know what Markdown looks like. If not, you can see an example of such a file here:
+
+```md
+# This is the title of my amazing project
+
+And here is a description!
+
+And stack that I used:
+
+- HTML
+- CSS
+- JavaScript
+
+**Enjoy live [here](demo)**
+```
+
+Markdown must be transfomed to HTML to display correctly on website. It's very good for simple articles and content, but I want more 😉
+
+And here comes MDX - thanks to it I'm able to place a React component in the body of an article!
+For example, instead of just inserting an image, I'm able to include an interactive element on the page that the user can use.
+
+#### Metadata
+
+Don't forget that we also need to keep the information about the post e.g. for SEO. **Frontmatter** is perfect for this, it allows us to define the necessary values directly in the `.mdx` file
+
+```
+---
+title: "How I built my personal website?"
+category: "other"
+publishedAt: "10-01-2022"
+isPublished: true,
+isPopular: true,
+excerpt: "Which technologies am I used? What made me start a blog? What do I plan on posting here? Answers are here ✨"
+image: "/img/posts/how-i-built-my-personal-website/thumbnail.jpg"
+author: "Bartosz Zagrodzki"
+type: "post"
+---
+
+(post content here)
+```
+
+And then, I can freely use it in React code.
+
+## Performance
+
+When working on this site, I put a lot of emphasis on performance. How did it come out? Here are the results from <Link href="https://developers.google.com/web/tools/lighthouse">Lighthouse</Link> and <Link href="https://nextjs.org/analytics">Next Analytics</Link>, judge for yourself 😁
+
+<Image
+  src="/img/posts/how-i-built-my-personal-website/lighthouse-result.png"
+  alt="Lighthouse result"
+  width="1521"
+  height="346"
+/>
+
+## Open source
+
+The whole project is open source! What does this mean? You can offer your solutions, corrections, and even edit posts! Everything is on my <Link href="https://github.com/Bartek532/zagrodzki.me">Github</Link>, so feel free to contribute. Even if you only spotted a typo, don't hesitate, any contribution is equally welcome.
+
+But please read the project rules first, which you can find at <Link href="https://github.com/Bartek532/zagrodzki.me/CONTRIBUTING.md">CONTRIBUTING.md</Link>. Let's help each other while keeping our code clean and clear.
+
+Note that each post has a separate section to edit it (or share it on social media) so you can do it directly from here.
+
+Don't worry, even if you are a beginner, there is something for everyone 😁 What are you waiting for? Receive your certificate!
+
+<Image
+  src="/img/posts/how-i-built-my-personal-website/open-source-developer-certificate.png"
+  width="1200"
+  height="880"
+  alt="Open Source Developer certificate"
+/>
+
+## Further plans
+
+I won't give too much away, but I will say that the plans are strong. I'd like to do a few series on different technologies mostly related to web, but not only, I hope to cover more casual and life topics. I'm finally at my place, nothing limits me!
+
+I'd also like to start my **newsletter**, where I plan to send out a little more exclusive content. Don't forget to sign up!
+
+If you would like me to point something out in particular, please take the poll below. It will only take you 30 seconds, but it will be priceless to me.
+
+**<Link href="https://k71m98save8.typeform.com/to/JSD3pPmE">What would you like to read about?</Link>**
+
+## Conclusion
+
+Uff, it was a lot of work, but I think it came out pretty well 😀 I'm looking forward to future posts, I hope I cleared all your doubts and you'll stay with me for longer. Am I right? Be sure to share your opinion, it will help me create better and better content 💪
+
+If you have any questions or would like to chat, <Link href="mailto:bartosz@zagrodzki.me">email me</Link> or contact me via social media. You can also always open an <Link href="https://github.com/Bartek532/zagrodzki.me/issues">issue</Link> on Github.
+
+See you next time! 👋

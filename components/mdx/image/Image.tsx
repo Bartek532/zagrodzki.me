@@ -12,7 +12,7 @@ type ImageProps = {
 
 export const Image = memo<ImageProps>(({ src, alt, width = "100%", height }) => {
   return (
-    <div className={styles.wrapper}>
+    <figure className={styles.wrapper}>
       <NextImage
         className={styles.image}
         src={src}
@@ -22,7 +22,8 @@ export const Image = memo<ImageProps>(({ src, alt, width = "100%", height }) => 
         loading="lazy"
         decoding="async"
       />
-    </div>
+      {alt ? <figcaption className={styles.caption}>{alt}</figcaption> : null}
+    </figure>
   );
 });
 

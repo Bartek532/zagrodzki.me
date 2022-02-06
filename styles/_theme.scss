@@ -6,7 +6,7 @@ pre[data-lang]:not(pre[data-lang=""]) {
     content: attr(data-lang);
     position: absolute;
     right: 2.5rem;
-    top: 0;
+    top: 1px;
     transform: translateY(-100%);
     font-family: "GT Walsheim", "Helvetica Neue", Helvetica, Arial, sans-serif;
     text-transform: uppercase;
@@ -19,8 +19,8 @@ pre[data-lang]:not(pre[data-lang=""]) {
   }
 }
 
-code[class*="language-"],
-pre[class*="language-"] {
+code,
+pre {
   color: var(--base-syntax-color);
   background: none;
   font-family: "League Mono", Monaco, "Andale Mono", "Ubuntu Mono", monospace;
@@ -66,7 +66,7 @@ pre[class*="language-"] {
   }
 }
 
-pre[class*="language-"] {
+pre {
   padding: 3rem;
   margin: 5rem -3rem;
 
@@ -80,14 +80,14 @@ pre[class*="language-"] {
   }
 }
 
-pre[class*="language-"] > code {
+pre > code {
   overflow: auto;
   max-width: 100%;
   display: block;
 }
 
-:not(pre) > code[class*="language-"],
-pre[class*="language-"] {
+:not(pre) > code,
+pre {
   background: var(--syntax-background);
 }
 
