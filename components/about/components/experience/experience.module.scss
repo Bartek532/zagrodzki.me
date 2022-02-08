@@ -1,0 +1,83 @@
+@use "styles/_mixins";
+
+.experience {
+  width: min(40rem, 100%);
+
+  .title {
+    font-size: 2.6rem;
+    margin-bottom: 2rem;
+
+    @include mixins.mediaquery("sm") {
+      font-size: 2.8rem;
+    }
+
+    @include mixins.mediaquery("xl") {
+      font-size: 3.2rem;
+    }
+  }
+
+  .description {
+    font-size: 1.6rem;
+
+    @include mixins.mediaquery("lg") {
+      font-size: 1.7rem;
+    }
+
+    @include mixins.mediaquery("xl") {
+      font-size: 1.8rem;
+    }
+  }
+
+  .list {
+    @include mixins.flex(center, flex-start);
+    flex-flow: column wrap;
+    gap: 3rem;
+    max-width: 47rem;
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    padding-top: 3rem;
+
+    .position {
+      position: relative;
+      font-size: 1.5rem;
+      @include mixins.flex(center, flex-start);
+      flex-flow: column wrap;
+      padding-left: 6rem;
+      line-height: 1.75;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 0;
+        background-color: var(--gray-300);
+        width: 1.8rem;
+        height: 1.8rem;
+        border-radius: 50%;
+        transform: translateY(-50%);
+        z-index: 1;
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: calc(50% + 1.3rem);
+        left: 0.9rem;
+        transform: translateX(-50%);
+        background-color: var(--gray-300);
+        height: calc(100% + 3rem - 2.6rem);
+        width: 1.5px;
+        z-index: 0;
+      }
+
+      &:last-child::after {
+        display: none;
+      }
+
+      &:hover::before {
+        background-color: var(--blue-100);
+      }
+    }
+  }
+}

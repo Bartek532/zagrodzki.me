@@ -1,0 +1,49 @@
+@use "styles/_mixins";
+
+.skills {
+  width: min(47.5rem, 100%);
+
+  .title {
+    font-size: 2.6rem;
+    margin-bottom: 2rem;
+
+    @include mixins.mediaquery("sm") {
+      font-size: 2.8rem;
+    }
+
+    @include mixins.mediaquery("xl") {
+      font-size: 3.2rem;
+    }
+  }
+
+  .description {
+    font-size: 1.6rem;
+
+    @include mixins.mediaquery("lg") {
+      font-size: 1.7rem;
+    }
+
+    @include mixins.mediaquery("xl") {
+      font-size: 1.8rem;
+    }
+  }
+
+  .list {
+    @include mixins.flex(flex-start);
+    flex-wrap: wrap;
+    gap: 2rem;
+    max-width: 47rem;
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    padding-top: 3rem;
+
+    .skill {
+      width: 7rem;
+      height: 7rem;
+      background-color: currentColor;
+      @include mixins.flex;
+      border-radius: 1.2rem;
+    }
+  }
+}

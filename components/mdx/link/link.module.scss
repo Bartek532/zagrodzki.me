@@ -1,6 +1,7 @@
 @use "styles/_mixins";
 
 .link {
+  white-space: nowrap;
   .text {
     color: var(--blue-200);
     padding: 0;

@@ -13,8 +13,9 @@ export const AboutTile = () => {
           <Image src="/img/avatars/winking.png" alt="winking memoji" width={230} height={306} />
         </div>
         <p className={styles.description}>
-          I&apos;m <strong className={styles.name}>Bartek</strong>, front-end developer, blogger, new technologies
-          enthusiast. I&apos;m in love with React and TypeScript ❤️ Constantly learning and discovering new stuff 📖
+          I&apos;m <strong className={styles.name}>Bartek</strong>, front-end developer, blogger, freelancer,
+          technologies enthusiast. I&apos;m in love with React and TypeScript ❤️ Constantly learning and discovering new
+          stuff 📖
         </p>
         <div className={styles.more}>
           Learn more

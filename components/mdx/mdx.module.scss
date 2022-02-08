@@ -67,6 +67,15 @@
     }
   }
 
+  .views {
+    width: 100%;
+    text-align: right;
+    font-size: 1.4rem;
+    font-style: italic;
+    color: var(--gray-300);
+    margin: -5.5rem 0 4.5rem;
+  }
+
   .links {
     @include mixins.flex(space-between);
     width: 100%;

@@ -1,8 +1,9 @@
-import { memo, useRef, useEffect, useCallback, useMemo } from "react";
+import { memo, useRef, useEffect, useCallback, useMemo, useState } from "react";
 import { renderToString } from "react-dom/server";
 import { motion } from "framer-motion";
 import NextImage from "next/image";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
+import countapi from "countapi-js";
 
 import { Author } from "components/mdx/author/Author";
 import type { Project, Post } from "types";
@@ -15,6 +16,7 @@ import { Link } from "components/mdx/link/Link";
 import { Edit } from "components/mdx/edit/Edit";
 import { Share } from "components/mdx/share/Share";
 import { Quote } from "components/mdx/quote/Quote";
+import { ORIGIN } from "utils/consts";
 
 import { TableOfContents } from "./tableOfContents/TableOfContents";
 import { Info } from "./info/Info";
@@ -33,6 +35,7 @@ export const Mdx = memo<MdxProps>(({ resource, content }) => {
   const contentElRef = useRef<HTMLDivElement | null>(null);
   const { id, setRunningHeader } = useRunningHeader(contentElRef.current);
   const url = `${process.env.NEXT_PUBLIC_URL}/${resource.type === "project" ? "projects" : "blog"}/${resource.slug}`;
+  const [views, setViews] = useState(0);
 
   const getHeadingProps = useCallback(({ children }: HeadingComponentProps) => {
     return {
@@ -61,6 +64,16 @@ export const Mdx = memo<MdxProps>(({ resource, content }) => {
 
   useEffect(() => {
     setRunningHeader(contentElRef.current);
+
+    const fetchViews = async () => {
+      const result = await countapi.hit(ORIGIN, resource.slug);
+
+      console.log(result);
+
+      setViews(result.value);
+    };
+
+    fetchViews();
   }, []);
 
   const imageVariants = {
@@ -101,6 +114,8 @@ export const Mdx = memo<MdxProps>(({ resource, content }) => {
           <div className="content" ref={contentElRef}>
             <MDXRemote {...content} components={customMdxComponents} />
           </div>
+
+          <div className={styles.views}>{views} views</div>
 
           <div className={styles.links}>
             <Edit href={`/${resource.type === "project" ? "projects" : "posts"}/${resource.slug}`} />

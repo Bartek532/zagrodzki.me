@@ -1,0 +1,52 @@
+@use "styles/_mixins";
+
+.hero {
+  width: 100%;
+  @include mixins.flex(center, center);
+  flex-wrap: wrap;
+  gap: 5rem;
+
+  @include mixins.mediaquery("lg") {
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-flow: row nowrap;
+  }
+
+  .text {
+    width: min(47.5rem, 100%);
+    .title {
+      font-size: 2.6rem;
+      margin-bottom: 2rem;
+
+      @include mixins.mediaquery("sm") {
+        font-size: 2.8rem;
+      }
+
+      @include mixins.mediaquery("xl") {
+        font-size: 3.2rem;
+      }
+    }
+
+    .description {
+      font-size: 1.6rem;
+      line-height: 2.8rem;
+
+      .paragraph {
+        display: block;
+        margin-bottom: 1.2rem;
+      }
+
+      @include mixins.mediaquery("lg") {
+        font-size: 1.8rem;
+        line-height: 3.2rem;
+      }
+    }
+  }
+
+  .image {
+    @include mixins.flex(flex-end);
+    img {
+      border-radius: 2rem;
+    }
+  }
+}

@@ -1,0 +1,20 @@
+export const allSkills = [
+  { name: "HTML", slug: "html", color: "#e44d26" },
+  { name: "CSS", slug: "css", color: "#379ad6" },
+  { name: "JavaScript", slug: "js", color: "#f0db4f" },
+  { name: "TypeScript", slug: "ts", color: "#007acc" },
+  { name: "Vue", slug: "vue", color: "#3fb984" },
+  { name: "React", slug: "react", color: "#61dbfb" },
+  { name: "SCSS", slug: "scss", color: "#ce679a" },
+  {
+    name: "Next.js",
+    slug: "nextjs",
+    color: "#000",
+  },
+  { name: "Node.js", slug: "nodejs", color: "#6da75d" },
+  { name: "PostgreSQL", slug: "postgresql", color: "#035976" },
+  { name: "MongoDB", slug: "mongodb", color: "#4db33d" },
+  { name: "Git", slug: "git", color: "#f1502f" },
+  { name: "Jest", slug: "jest", color: "#C63D14" },
+  { name: "Cypress", slug: "cypress", color: "#5C5C5E" },
+] as const;

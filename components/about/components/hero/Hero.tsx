@@ -1,0 +1,36 @@
+import Image from "next/image";
+
+import { Link } from "components/mdx/link/Link";
+
+import styles from "./hero.module.scss";
+
+export const Hero = () => {
+  return (
+    <section className={styles.hero}>
+      <div className={styles.text}>
+        <h2 className={styles.title}>Hi, I'm Bartosz Zagrodzki&nbsp;👋</h2>
+        <p className={styles.description}>
+          <span className={styles.paragraph}>
+            I'm 20 years old software engineer based in Poland. I'm passionate about building modern software that helps
+            others (including me) to improve their lives. I'm working as a freelancer right now, so if you want to hire
+            me, check sections below. I'm open to innovative ideas and solutions every time, so I think we're gonna get
+            along. I always want my apps to be the best they can be, so even if something works but can be done better,
+            I improve it! 😎 I started my blogging adventure by publishing translations on{" "}
+            <Link href="https://dev.to/bartek532">dev.to</Link> and now I'm here.
+          </span>
+          <span className={styles.paragraph}>
+            I love talking to interesting people, in my free time I also like to just read or play a game of chess. I
+            love swimming too 💪
+          </span>
+          <span className={styles.paragraph}>
+            Sounds interesting? Feel free to <Link href="/contact">contact me!</Link>
+          </span>
+        </p>
+      </div>
+
+      <div className={styles.image}>
+        <Image src="/img/me.jpg" width="393" height="571" alt="" />
+      </div>
+    </section>
+  );
+};
