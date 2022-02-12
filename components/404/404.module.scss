@@ -1,0 +1,26 @@
+@use "styles/_mixins";
+
+.wrapper {
+  @include mixins.flex;
+  flex-flow: column wrap;
+
+  .title {
+    color: var(--red-100);
+    font-size: 4rem;
+
+    @include mixins.mediaquery("lg") {
+      font-size: 5.5rem;
+    }
+  }
+
+  .description {
+    font-size: 1.7rem;
+    text-align: center;
+    padding: 1rem;
+
+    @include mixins.mediaquery("lg") {
+      font-size: 2rem;
+      padding: 1.5rem;
+    }
+  }
+}
