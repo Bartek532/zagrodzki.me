@@ -31,12 +31,16 @@
   .list {
     @include mixins.flex(flex-start);
     flex-wrap: wrap;
-    gap: 2rem;
+    gap: 1.5rem;
     max-width: 47rem;
     padding: 0;
     margin: 0;
     list-style-type: none;
     padding-top: 3rem;
+
+    @include mixins.mediaquery("sm") {
+      gap: 2rem;
+    }
 
     .skill {
       width: 7rem;
@@ -44,6 +48,10 @@
       background-color: currentColor;
       @include mixins.flex;
       border-radius: 1.2rem;
+
+      svg {
+        width: 50%;
+      }
     }
   }
 }

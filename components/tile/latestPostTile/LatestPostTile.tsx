@@ -1,5 +1,4 @@
 import { memo } from "react";
-import { motion } from "framer-motion";
 import Link from "next/link";
 
 import type { Post } from "types";
@@ -13,16 +12,12 @@ type LatestPostTileProps = {
 
 export const LatestPostTile = memo<LatestPostTileProps>(({ post }) => {
   return (
-    <Link href={`/blog/${post.slug}`} passHref>
-      <motion.a className={styles.link} whileHover="hover">
+    <Link href={`/blog/${post.slug}`}>
+      <a className={styles.link}>
         <article className={styles.article}>
           <div className={styles.info}>
-            <motion.h2 layoutId={`title-container-${post.slug}`} className={styles.title}>
-              {post.title}
-            </motion.h2>
-            <motion.p layoutId={`excerpt-container-${post.slug}`} className={styles.description}>
-              {post.excerpt}
-            </motion.p>
+            <h2 className={styles.title}>{post.title}</h2>
+            <p className={styles.description}>{post.excerpt}</p>
 
             <div className={styles.additional}>
               <div className={styles.timeToRead}>{Math.round(post.timeToRead)} minutes read</div>
@@ -34,13 +29,9 @@ export const LatestPostTile = memo<LatestPostTileProps>(({ post }) => {
               </div>
             </div>
           </div>
-          <motion.div
-            className={styles.image}
-            layoutId={`image-container-${post.slug}`}
-            style={{ backgroundImage: `url(${post.image})` }}
-          ></motion.div>
+          <div className={styles.image} style={{ backgroundImage: `url(${post.image})` }}></div>
         </article>
-      </motion.a>
+      </a>
     </Link>
   );
 });

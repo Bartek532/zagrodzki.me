@@ -6,7 +6,7 @@
   #introduction,
   blockquote {
     font-size: 1.6rem;
-    line-height: 3rem;
+    line-height: 1.9;
     margin-bottom: 1.6rem;
 
     @include mixins.mediaquery("sm") {
@@ -15,12 +15,10 @@
 
     @include mixins.mediaquery("lg") {
       font-size: 1.7rem;
-      line-height: 3.2rem;
     }
 
     @include mixins.mediaquery("xl") {
       font-size: 1.8rem;
-      line-height: 3.4rem;
     }
   }
 }

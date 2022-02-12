@@ -40,7 +40,7 @@
 
     .description {
       font-size: 1.6rem;
-      line-height: 1.7;
+      line-height: 1.8;
 
       @include mixins.mediaquery("lg") {
         font-size: 1.7rem;

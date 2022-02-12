@@ -28,8 +28,8 @@
     }
 
     .description {
-      font-size: 1.6rem;
-      line-height: 2.8rem;
+      font-size: 1.5rem;
+      line-height: 1.9;
 
       .paragraph {
         display: block;
@@ -38,7 +38,6 @@
 
       @include mixins.mediaquery("lg") {
         font-size: 1.8rem;
-        line-height: 3.2rem;
       }
     }
   }

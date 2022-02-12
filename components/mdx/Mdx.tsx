@@ -67,9 +67,6 @@ export const Mdx = memo<MdxProps>(({ resource, content }) => {
 
     const fetchViews = async () => {
       const result = await countapi.hit(ORIGIN, resource.slug);
-
-      console.log(result);
-
       setViews(result.value);
     };
 

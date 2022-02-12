@@ -1,13 +1,12 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 
 import { fetcher } from "utils/fetcher";
-import { getEnv } from "utils/env";
 import type { SpotifyTrack } from "types";
 
 export const getNewAccessTokenFromRefreshToken = async (refreshToken: string) => {
   const params = new URLSearchParams();
-  params.append("client_id", getEnv("SPOTIFY_CLIENT_ID"));
-  params.append("client_secret", getEnv("SPOTIFY_CLIENT_SECRET"));
+  params.append("client_id", process.env.SPOTIFY_CLIENT_ID as string);
+  params.append("client_secret", process.env.SPOTIFY_CLIENT_SECRET as string);
   params.append("grant_type", "refresh_token");
   params.append("refresh_token", refreshToken);
 
@@ -26,14 +25,14 @@ export const getNewAccessTokenFromRefreshToken = async (refreshToken: string) =>
 };
 
 export const fetchLastPlayedSong = async () => {
-  await getNewAccessTokenFromRefreshToken(getEnv("SPOTIFY_REFRESH_TOKEN"));
+  await getNewAccessTokenFromRefreshToken(process.env.SPOTIFY_REFRESH_TOKEN as string);
 
   const { items }: { items: { track: SpotifyTrack; played_at: string }[] } = await fetcher(
     `https://api.spotify.com/v1/me/player/recently-played`,
     {
       method: "GET",
       headers: {
-        Authorization: `Bearer ${getEnv("SPOTIFY_ACCESS_TOKEN")}`,
+        Authorization: `Bearer ${process.env.SPOTIFY_ACCESS_TOKEN as string}`,
       },
     },
   );
@@ -43,7 +42,7 @@ export const fetchLastPlayedSong = async () => {
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
-    await getNewAccessTokenFromRefreshToken(getEnv("SPOTIFY_REFRESH_TOKEN"));
+    await getNewAccessTokenFromRefreshToken(process.env.SPOTIFY_REFRESH_TOKEN as string);
 
     const { track } = await fetchLastPlayedSong();
 

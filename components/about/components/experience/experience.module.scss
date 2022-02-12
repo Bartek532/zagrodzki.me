@@ -19,7 +19,7 @@
   .description {
     font-size: 1.6rem;
 
-    @include mixins.mediaquery("lg") {
+    @include mixins.mediaquery("sm") {
       font-size: 1.7rem;
     }
 
@@ -52,8 +52,8 @@
         top: 50%;
         left: 0;
         background-color: var(--gray-300);
-        width: 1.8rem;
-        height: 1.8rem;
+        width: 1.6rem;
+        height: 1.6rem;
         border-radius: 50%;
         transform: translateY(-50%);
         z-index: 1;
@@ -63,7 +63,7 @@
         content: "";
         position: absolute;
         top: calc(50% + 1.3rem);
-        left: 0.9rem;
+        left: 0.8rem;
         transform: translateX(-50%);
         background-color: var(--gray-300);
         height: calc(100% + 3rem - 2.6rem);

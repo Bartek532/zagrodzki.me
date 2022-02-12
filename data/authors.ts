@@ -11,6 +11,7 @@ export const allAuthors = [
       last_name: "Zagrodzki",
       first_name: "Bartosz",
       website: "https://zagrodzki.me",
+      about: "https://zagrodzki.me/about",
       description:
         "Bartosz Zagrodzki is a blogger, software engineer and the main coordinator of this blog, he has lots of ideas and won't hesitate to use them! He lives in Poland.",
     },

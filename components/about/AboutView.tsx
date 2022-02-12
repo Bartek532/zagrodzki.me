@@ -40,7 +40,7 @@ export const AboutView = () => {
             <Link href="mailto:bartosz@zagrodzki.me">email</Link>,{" "}
             <Link href="https://facebook.com/bzagrodzki">Facebook</Link>,{" "}
             <Link href="https://twitter.com/bzagrodzki">Twitter</Link> or other social media. I reply to all messages!
-            Ask me anything, I'm not afraid of any topics
+            Ask me anything, I'm not afraid of any topics.
           </p>
         </div>
       </div>

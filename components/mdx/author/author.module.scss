@@ -30,20 +30,17 @@
       font-weight: bold;
       margin-bottom: 1rem;
       font-size: 1.7rem;
-      line-height: 2.7rem;
+      line-height: 1.8;
 
       @include mixins.mediaquery("lg") {
         font-size: 1.9rem;
-        line-height: 3rem;
       }
     }
     .description {
       font-size: 1.55rem;
-      line-height: 2.6rem;
-
+      line-height: 1.7;
       @include mixins.mediaquery("lg") {
         font-size: 1.75rem;
-        line-height: 2.9rem;
       }
     }
 

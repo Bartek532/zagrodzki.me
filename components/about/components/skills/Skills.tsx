@@ -1,5 +1,6 @@
 import { memo } from "react";
 import Image from "next/image";
+import dynamic from "next/dynamic";
 
 import type { Skill } from "../../types";
 
@@ -16,11 +17,15 @@ export const Skills = memo<SkillsProps>(({ skills }) => {
       <p className={styles.description}>All the technologies I feel comfortable with ⚙️</p>
 
       <ul className={styles.list}>
-        {skills.map((skill) => (
-          <li className={styles.skill} key={skill.slug} style={{ color: skill.color }}>
-            <Image src={`/svg/techs/${skill.slug}.svg`} alt={skill.name} width="32" height="32" />
-          </li>
-        ))}
+        {skills.map((skill) => {
+          const Icon = dynamic(() => import(`public/svg/techs/${skill.slug}.svg`));
+
+          return (
+            <li className={styles.skill} key={skill.slug} style={{ color: skill.color }}>
+              <Icon />
+            </li>
+          );
+        })}
       </ul>
     </section>
   );

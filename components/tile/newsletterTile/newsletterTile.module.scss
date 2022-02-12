@@ -82,12 +82,12 @@
 
       &.rejected {
         background-color: var(--red-100);
-        color: var(--white-100);
+        color: var(--white-200);
       }
 
       &.fullfilled {
         background-color: var(--green-100);
-        color: var(--white-100);
+        color: var(--white-200);
       }
 
       @include mixins.mediaquery("lg") {
