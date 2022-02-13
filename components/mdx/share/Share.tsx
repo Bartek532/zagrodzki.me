@@ -16,7 +16,7 @@ export const Share = memo<ShareProps>(({ href, title, type }) => {
       <Link href={`https://twitter.com/share?url=${href}&text=${title} -`}>
         Tweet this {type === "post" ? "article" : type}
       </Link>
-      <span className={styles.separator}>•</span>
+
       <Link href={`https://www.linkedin.com/shareArticle?mini=true&url=${href}`}>Share on LinkedIn</Link>
     </div>
   );

@@ -1,10 +1,11 @@
 @use "styles/_mixins";
 
 .share {
-  @include mixins.flex;
+  @include mixins.flex(space-between);
+  flex-wrap: wrap;
   gap: 0.9rem;
 
   @include mixins.mediaquery("sm") {
-    gap: 1.3rem;
+    gap: 2.1rem;
   }
 }
