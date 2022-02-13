@@ -17,7 +17,7 @@ function run() {
     link: publicUrl,
     id: publicUrl,
     description: DEFAULT_DESCRIPTION,
-    image: `${publicUrl}/android-icon-192x192.png`,
+    image: `${publicUrl}/regular-android-icon-192x192.png`,
     favicon: `${publicUrl}/favicon.ico`,
     copyright: `${new Date().getFullYear()} Bartosz Zagrodzki`,
     updated: new Date(),
