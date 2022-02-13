@@ -19,6 +19,15 @@ export const allRecommendations = [
   },
   {
     content:
+      "We have collaborated on several projects and we can say that Bartek is very reliable and responsible person. He has a high level of work culture and always tries his best to meet customer expectations. The right person in the right place. Recommended!",
+    author: {
+      name: "3motion",
+      position: "Creative agency",
+      image: "/img/references/3motion.jpg",
+    },
+  },
+  {
+    content:
       "Extremely courteous and collegial guy. Cooperative, looking for unconventional solutions, punctual when it comes to project preparation. I know he can learn from the mistakes he and others make. I can certainly recommend Bartek as a professional person.",
     author: {
       name: "Olaf Sulich",
