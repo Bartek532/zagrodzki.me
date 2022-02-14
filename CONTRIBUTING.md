@@ -10,6 +10,10 @@ If you encounter a bug, please file a bug report. If you have a feature to reque
 
 In order to create a pull request for TakeNote, follow the GitHub instructions for [Creating a pull request from a fork](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request-from-a-fork). Please link your pull request to an existing issue.
 
+## Content
+
+If you spot a typo or an error, please boldly let me know. You can also write your own article! Just put it in `/content` folder and make a PR. It would be good for you to contact me beforehand to discuss the details, but it's not necessary. I can guarantee you that your efforts will be appreciated! Let's make a strong community 💪
+
 ## File Structure
 
 Description of the project files and directories.
