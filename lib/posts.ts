@@ -3,7 +3,7 @@ import path from "path";
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 
-import { getAllResources, getResourcesPaths, getResourceBySlug } from "lib/resource";
+import { getAllResources, getResourcesPaths, getResourceBySlug, getResourceParsedContent } from "lib/resource";
 import type { Post } from "types";
 
 dayjs.extend(customParseFormat);
@@ -20,6 +20,10 @@ export const getPostsPaths = () => {
 
 export const getPostBySlug = (slug: string) => {
   return getResourceBySlug(slug, POSTS_DIR);
+};
+
+export const getPostParsedContent = (slug: string) => {
+  return getResourceParsedContent(slug, POSTS_DIR);
 };
 
 export const sortPostsByNewest = (posts: Post[]) => {

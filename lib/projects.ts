@@ -3,7 +3,7 @@ import path from "path";
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 
-import { getAllResources, getResourcesPaths, getResourceBySlug } from "lib/resource";
+import { getAllResources, getResourcesPaths, getResourceBySlug, getResourceParsedContent } from "lib/resource";
 import type { Project } from "types";
 
 dayjs.extend(customParseFormat);
@@ -20,6 +20,10 @@ export const getProjectsPaths = () => {
 
 export const getProjectBySlug = (slug: string) => {
   return getResourceBySlug(slug, PROJECTS_DIR);
+};
+
+export const getProjectParsedContent = (slug: string) => {
+  return getResourceParsedContent(slug, PROJECTS_DIR);
 };
 
 export const sortProjectsByNewest = (projects: Project[]) => {

@@ -4,6 +4,10 @@ import fs from "fs";
 import matter from "gray-matter";
 import readingTime from "reading-time";
 import { serialize } from "next-mdx-remote/serialize";
+import unified from "unified";
+import remarkParse from "remark-parse";
+import remarkRehype from "remark-rehype";
+import rehypeStringify from "rehype-stringify";
 
 import { commonRehypePlugins } from "utils/markdown";
 import type { Project, Post } from "types";
@@ -29,6 +33,16 @@ export const getAllResources = <T extends Resource>(resourcePath: string) => {
   });
 
   return allResources;
+};
+
+export const getResourceParsedContent = async (slug: string, resourcePath: string) => {
+  const filePath = path.join(resourcePath, `${slug}.mdx`);
+  const source = fs.readFileSync(filePath);
+  const { content } = matter(source);
+
+  const compiledContent = await unified().use(rehypeStringify).use(remarkRehype).use(remarkParse).process(content);
+
+  return { compiledContent };
 };
 
 export const getResourceBySlug = async (slug: string, resourcePath: string) => {
