@@ -16,6 +16,7 @@ import { Link } from "components/mdx/link/Link";
 import { Edit } from "components/mdx/edit/Edit";
 import { Share } from "components/mdx/share/Share";
 import { Quote } from "components/mdx/quote/Quote";
+import { Pre } from "components/mdx/pre/Pre";
 import { ORIGIN } from "utils/consts";
 
 import { TableOfContents } from "./tableOfContents/TableOfContents";
@@ -54,6 +55,7 @@ export const Mdx = memo<MdxProps>(({ resource, content }) => {
       Image,
       Link,
       Quote,
+      pre: Pre,
     }),
     [],
   );

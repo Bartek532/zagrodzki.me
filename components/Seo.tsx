@@ -91,7 +91,7 @@ export const Seo = memo<SeoProps>(
           <link rel="manifest" href="/manifest.json" />
           <meta name="msapplication-TileColor" content="#F7F1F3" />
           <meta name="msapplication-TileImage" content="/regular-ms-icon-144x144.png" />
-          <meta name="theme-color" content="#94CCFF" />
+          <meta name="theme-color" content="#855B52" />
         </Head>
       </>
     );

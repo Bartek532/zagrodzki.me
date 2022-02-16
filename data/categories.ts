@@ -4,4 +4,5 @@ export const allCategories = [
   { slug: "animation", name: "Animation" },
   { slug: "react", name: "React" },
   { slug: "performance", name: "Performance" },
+  { slug: "js", name: "JavaScript" },
 ] as const;
