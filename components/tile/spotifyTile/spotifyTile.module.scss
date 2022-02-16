@@ -12,6 +12,38 @@
   min-height: 10rem;
   box-shadow: var(--tile-shadow);
   overflow: hidden;
+  @include mixins.flex;
+
+  &.dataWrapper {
+    justify-content: flex-start;
+  }
+
+  .error {
+    @include mixins.flex;
+    gap: 3rem;
+
+    @include mixins.mediaquery("lg") {
+      gap: 1.7rem;
+      flex-flow: column wrap;
+    }
+
+    .icon {
+      @include mixins.flex;
+      svg {
+        width: 4.5rem;
+        path {
+          fill: var(--red-100);
+        }
+      }
+    }
+
+    .description {
+      color: var(--red-100);
+      font-size: 1.4rem;
+      text-align: center;
+      max-width: 85%;
+    }
+  }
 
   @include mixins.mediaquery("xs") {
     padding: 2.5rem;
@@ -19,9 +51,7 @@
 
   @include mixins.mediaquery("lg") {
     grid-column: 1 / span 1;
-    height: 0;
-    padding: 0;
-    padding-bottom: 100%;
+    aspect-ratio: 1 / 1;
     border-radius: 2.5rem;
   }
 

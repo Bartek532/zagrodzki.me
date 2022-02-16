@@ -2,6 +2,7 @@ import clsx from "clsx";
 import Image from "next/image";
 
 import SpotifyIcon from "public/svg/spotify.svg";
+import CrossIcon from "public/svg/cross.svg";
 import { LoaderRing } from "components/common/loader/LoaderRing";
 
 import styles from "./spotifyTile.module.scss";
@@ -13,7 +14,16 @@ export const SpotifyTile = () => {
   const { data, error } = useGetCurrentTrack();
 
   if (error) {
-    return null;
+    return (
+      <div className={styles.wrapper}>
+        <div className={styles.error}>
+          <div className={styles.icon}>
+            <CrossIcon />
+          </div>
+          <p className={styles.description}>Something went wrong during fetching!</p>
+        </div>
+      </div>
+    );
   }
 
   if (!data) {
@@ -27,7 +37,7 @@ export const SpotifyTile = () => {
   const { artists, album, name, external_urls } = data.track;
 
   return (
-    <a className={styles.wrapper} href={external_urls.spotify}>
+    <a className={clsx(styles.wrapper, styles.dataWrapper)} href={external_urls.spotify}>
       <div className={styles.content}>
         <div className={styles.logo}>
           <SpotifyIcon />

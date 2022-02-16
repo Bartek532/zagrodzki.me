@@ -7,22 +7,15 @@
     padding: 0;
     position: relative;
 
-    &::after {
-      content: "";
-      position: absolute;
-      bottom: -3px;
-      left: 0;
-      width: 100%;
-      height: 1.7px;
-      opacity: 1;
-      background-color: var(--blue-200);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.25s ease;
-    }
+    background-image: linear-gradient(currentColor, currentColor);
+    background-repeat: no-repeat;
+    background-position: 0% 100%;
+    background-size: 0% 1.7px;
+    transition: background-size 0.25s ease;
 
-    &:hover::after {
-      transform: scaleX(1);
+    &:hover,
+    &:focus {
+      background-size: 100% 1.7px;
     }
   }
 
