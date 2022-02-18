@@ -24,7 +24,7 @@ export const Pre = memo<PreProps>(({ children, ...props }) => {
 
   const handleCopy = async () => {
     if (preRef.current?.innerText) {
-      copyToClipboard(preRef.current.innerText);
+      await copyToClipboard(preRef.current.innerText);
       setIsCopied(true);
     }
   };

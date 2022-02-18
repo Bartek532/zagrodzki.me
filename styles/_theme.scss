@@ -30,7 +30,6 @@ pre {
   word-break: normal;
   word-wrap: normal;
   line-height: 1.85;
-  max-width: 100vw;
 
   -moz-tab-size: 2;
   -o-tab-size: 2;
@@ -45,7 +44,6 @@ pre {
   --selection-color: currentColor;
 
   @include mixins.mediaquery("m") {
-    max-width: calc(686px + 2.4rem);
     line-height: 1.7;
     font-size: 1.45rem;
   }
@@ -68,7 +66,8 @@ pre {
 
 pre {
   padding: 3rem;
-  margin: 5rem -3rem;
+  margin: 4rem -3rem;
+  height: 100%;
 
   @include mixins.mediaquery("sm") {
     margin: 5rem -4rem;
@@ -82,7 +81,6 @@ pre {
 
 pre > code {
   overflow: auto;
-  max-width: 100%;
   display: block;
 }
 

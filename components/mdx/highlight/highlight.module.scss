@@ -1,0 +1,66 @@
+@use "styles/_mixins";
+
+.highlight {
+  margin: 1.7rem -1.2rem;
+  padding: 2rem 2.5rem 0.1rem;
+  border-radius: 0 1.2rem 1.2rem 0;
+  border-left: 4px solid;
+  position: relative;
+  @include mixins.flex(flex-start, flex-start);
+  flex-flow: column wrap;
+
+  &.success {
+    background-color: rgba(89, 203, 192, 0.15);
+    border-color: var(--green-100);
+    color: var(--green-100);
+  }
+
+  &.error {
+    background-color: rgba(239, 71, 111, 0.15);
+    border-color: var(--red-100);
+    color: var(--red-100);
+  }
+
+  &.warning {
+    background-color: rgba(252, 213, 59, 0.15);
+    border-color: var(--yellow-100);
+    color: var(--yellow-100);
+  }
+
+  .icon {
+    position: absolute;
+    top: 2rem;
+    right: 2.5rem;
+    width: 17%;
+    z-index: 0;
+    color: inherit;
+
+    svg {
+      opacity: 0.25;
+      path {
+        fill: currentColor;
+      }
+    }
+  }
+
+  @include mixins.mediaquery("lg") {
+    margin: 2.5rem -1.2rem;
+  }
+
+  .title {
+    color: var(--black-100);
+    padding-bottom: 1rem;
+  }
+
+  .content {
+    position: relative;
+    z-index: 1;
+    color: var(--black-100);
+    max-width: 100%;
+
+    pre {
+      margin: 3.5rem auto 2rem;
+      border-radius: 1.2rem;
+    }
+  }
+}

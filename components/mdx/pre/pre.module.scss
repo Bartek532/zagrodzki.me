@@ -16,10 +16,11 @@
       .btn {
         border-color: var(--green-100);
         opacity: 1;
-      }
 
-      svg path {
-        fill: var(--green-100);
+        svg path {
+          fill: var(--green-100);
+          stroke: var(--green-100);
+        }
       }
     }
 
@@ -37,6 +38,10 @@
 
       svg {
         width: 100%;
+
+        path {
+          stroke: var(--black-100);
+        }
       }
 
       &:hover {
