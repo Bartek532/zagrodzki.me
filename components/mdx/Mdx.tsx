@@ -5,6 +5,7 @@ import NextImage from "next/image";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import countapi from "countapi-js";
 
+import { useTheme } from "context/ThemeContext";
 import { Author } from "components/mdx/author/Author";
 import type { Project, Post } from "types";
 import { getHeadings } from "utils/getHeadings";
@@ -17,11 +18,12 @@ import { Edit } from "components/mdx/edit/Edit";
 import { Share } from "components/mdx/share/Share";
 import { Quote } from "components/mdx/quote/Quote";
 import { Pre } from "components/mdx/pre/Pre";
+import { Info } from "components/mdx/info/Info";
 import { Highlight } from "components/mdx/highlight/Highlight";
+import { Sandbox } from "components/mdx/sandbox/Sandbox";
 import { ORIGIN } from "utils/consts";
 
 import { TableOfContents } from "./tableOfContents/TableOfContents";
-import { Info } from "./info/Info";
 import styles from "./mdx.module.scss";
 
 type MdxProps = {
@@ -38,6 +40,7 @@ export const Mdx = memo<MdxProps>(({ resource, content }) => {
   const { id, setRunningHeader } = useRunningHeader(contentElRef.current);
   const url = `${process.env.NEXT_PUBLIC_URL}/${resource.type === "project" ? "projects" : "blog"}/${resource.slug}`;
   const [views, setViews] = useState(0);
+  const { theme } = useTheme();
 
   const getHeadingProps = useCallback(({ children }: HeadingComponentProps) => {
     return {
@@ -57,6 +60,7 @@ export const Mdx = memo<MdxProps>(({ resource, content }) => {
       Link,
       Quote,
       Highlight,
+      Sandbox: ({ id }: { id: string }) => <Sandbox id={id} theme={theme as "light" | "dark"} />,
       pre: Pre,
     }),
     [],
