@@ -70,11 +70,11 @@ pre {
   height: 100%;
 
   @include mixins.mediaquery("sm") {
-    margin: 5rem -4rem;
+    margin: 3rem -4rem 5rem;
   }
 
   @include mixins.mediaquery("m") {
-    margin: 5rem -1.2rem;
+    margin: 3rem -2rem 5rem;
     border-radius: 1.2rem;
   }
 }

@@ -9,6 +9,10 @@
   @include mixins.flex(flex-start, flex-start);
   flex-flow: column wrap;
 
+  @include mixins.mediaquery("sm") {
+    margin: 1.7rem -2rem;
+  }
+
   &.success {
     background-color: rgba(89, 203, 192, 0.15);
     border-color: var(--green-100);

@@ -7,6 +7,7 @@
   top: 8.5rem;
   max-height: calc(100vh - 8.5rem);
   margin-top: 4.5rem;
+  margin-left: auto;
   display: none;
 
   @include mixins.mediaquery("xxl") {

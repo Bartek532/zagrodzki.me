@@ -9,6 +9,10 @@
   flex-flow: column wrap;
   gap: 1.4rem;
 
+  @include mixins.mediaquery("sm") {
+    margin: 4rem -2rem;
+  }
+
   .nextImage {
     width: auto;
     height: 100%;

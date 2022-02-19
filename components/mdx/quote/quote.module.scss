@@ -8,6 +8,10 @@
   border-left: 4px solid var(--blue-100);
   position: relative;
 
+  @include mixins.mediaquery("sm") {
+    margin: 1.7rem -2rem;
+  }
+
   .icon {
     position: absolute;
     top: 2rem;

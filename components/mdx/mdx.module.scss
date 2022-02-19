@@ -20,7 +20,7 @@
     @include mixins.flex(space-between);
     flex-wrap: wrap;
     gap: 1.4rem;
-    max-width: min(686px, 100%);
+    max-width: min(666px, 100%);
 
     @include mixins.mediaquery("xxl") {
       max-width: 100%;
@@ -30,19 +30,18 @@
   .main {
     @include mixins.flex(center, flex-start);
     flex-direction: row-reverse;
-    gap: 8rem;
     width: 100%;
 
     .wrapper {
       @include mixins.flex;
       flex-flow: column wrap;
       width: 100%;
-      max-width: min(686px, 100%);
+      max-width: min(666px, 100%);
     }
 
     .thumbnail {
       position: relative;
-      margin: 4.5rem -1.2rem;
+      margin: 4.5rem -2rem;
 
       img {
         border-radius: 2rem;
