@@ -18,6 +18,7 @@ export const Link = memo<LinkProps>(({ children, href }) => {
       <a className={styles.link} rel={isLinkExternal ? "noreferrer noopener" : undefined} target="_blank">
         <span className={styles.text}>{children}</span>
         <span className={styles.icon}>
+          &#xfeff;
           <RightTopArrow />
         </span>
       </a>

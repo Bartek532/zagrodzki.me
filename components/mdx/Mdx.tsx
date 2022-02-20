@@ -5,6 +5,7 @@ import NextImage from "next/image";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import countapi from "countapi-js";
 
+import * as CustomPostsComponents from "components/mdx/custom";
 import { useTheme } from "context/ThemeContext";
 import { Author } from "components/mdx/author/Author";
 import type { Project, Post } from "types";
@@ -62,6 +63,7 @@ export const Mdx = memo<MdxProps>(({ resource, content }) => {
       Highlight,
       Sandbox: ({ id }: { id: string }) => <Sandbox id={id} theme={theme as "light" | "dark"} />,
       pre: Pre,
+      ...CustomPostsComponents,
     }),
     [],
   );

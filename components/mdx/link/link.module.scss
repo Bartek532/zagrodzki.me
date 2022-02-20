@@ -1,12 +1,9 @@
 @use "styles/_mixins";
 
 .link {
-  white-space: nowrap;
   .text {
     color: var(--blue-200);
     padding: 0;
-    position: relative;
-
     background-image: linear-gradient(currentColor, currentColor);
     background-repeat: no-repeat;
     background-position: 0% 100%;
@@ -21,6 +18,7 @@
 
   .icon {
     padding: 0 0.7rem;
+    white-space: nowrap;
 
     svg {
       width: 10px;

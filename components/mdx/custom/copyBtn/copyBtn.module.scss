@@ -1,0 +1,23 @@
+@use "styles/_mixins";
+
+.wrapper {
+  width: 100%;
+  @include mixins.flex;
+  flex-flow: column wrap;
+  margin: 2rem 0;
+
+  .btn {
+    border: 1px solid var(--gray-100);
+    background-color: var(--gray-200);
+    cursor: pointer;
+    font-size: 1.5rem;
+    padding: 0.7rem 1.8rem;
+    border-radius: 1.2rem;
+    transition: border-color 0.2s ease;
+
+    &:focus,
+    &:hover {
+      border-color: var(--gray-300);
+    }
+  }
+}

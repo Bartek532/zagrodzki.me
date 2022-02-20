@@ -57,6 +57,7 @@
   }
 }
 .h3 {
+  margin-top: 5rem;
   font-size: 2.1rem;
 
   @include mixins.mediaquery("sm") {
@@ -68,6 +69,7 @@
   }
 }
 .h4 {
+  margin-top: 4rem;
   font-size: 2rem;
 
   @include mixins.mediaquery("sm") {
@@ -79,6 +81,7 @@
   }
 }
 .h5 {
+  margin-top: 3rem;
   font-size: 1.9rem;
 
   @include mixins.mediaquery("sm") {
@@ -90,6 +93,7 @@
   }
 }
 .h6 {
+  margin-top: 2rem;
   font-size: 1.8rem;
 
   @include mixins.mediaquery("sm") {
