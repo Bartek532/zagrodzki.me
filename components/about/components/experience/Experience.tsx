@@ -12,7 +12,7 @@ export const Experience = memo<ExperienceProps>(({ positions }) => {
   return (
     <section className={styles.experience}>
       <h2 className={styles.title}>Experience</h2>
-      <p className={styles.description}>All the places I've worked so far 💼</p>
+      <p className={styles.description}>All the places I've worked at so far 💼</p>
 
       <ol className={styles.list}>
         {positions.map((position) => (
