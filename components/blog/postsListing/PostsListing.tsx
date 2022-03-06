@@ -34,7 +34,6 @@ export const CustomHits = connectHits<CustomHitsProps, Post>(({ hits, currentObj
       </div>
     );
   }
-  console.log(hits);
 
   return (
     <ol id="search-hits-list" className={styles.list}>
