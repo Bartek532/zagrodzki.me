@@ -1,17 +1,14 @@
-<h1 align="center">
-<img src="https://i.ibb.co/CBBJS1J/zagrodzki-me-banner.png" alt="zagrodzki.me banner" width="100%"/>
-
-</h1>
+[<img src="https://i.ibb.co/CBBJS1J/zagrodzki-me-banner.png" alt="zagrodzki.me banner" width="100%"/>](https://zagrodzki.me)
 
 <h4 align="center">zagrodzki.me - my personal website</h4>
 
 ## Project Overview 🎨
 
-Personal blog with portfolio and many more. Sounds great? I haven't mentioned the most important one yet. It's fully open source! Feel free to open an [issue](https://github.com/Bartek532/zagrodzki-me/issues) or directly make a [pull request](https://github.com/Bartek532/zagrodzki-me/pulls). Enjoy!
+Personal blog with portfolio and many more. Sounds great? I haven't mentioned the most important one yet. It's fully open source! Feel free to open an [issue](https://github.com/Bartek532/zagrodzki.me/issues) or directly make a [pull request](https://github.com/Bartek532/zagrodzki.me/pulls). Enjoy!
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](https://github.com/Bartek532/zagrodzki-me/CONTRIBUTING.md)
+Please read [CONTRIBUTING.md](https://github.com/Bartek532/zagrodzki.me/blob/main/CONTRIBUTING.md)
 
 ## Tech/framework used 🧰
 
@@ -44,7 +41,7 @@ Please read [CONTRIBUTING.md](https://github.com/Bartek532/zagrodzki-me/CONTRIBU
 
 ```bash
 
-git clone https://github.com/Bartek532/zagrodzki-me.git
+git clone https://github.com/Bartek532/zagrodzki.me.git
 
 yarn install
 
