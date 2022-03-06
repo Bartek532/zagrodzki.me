@@ -13,6 +13,7 @@
   @include mixins.flex(space-between, flex-start);
   flex-flow: column wrap;
   height: 100%;
+  color: var(--black-100);
 
   .info {
     padding: 0 0.5rem 0.5rem;

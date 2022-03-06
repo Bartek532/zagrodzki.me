@@ -19,6 +19,7 @@
       border-radius: 16px;
       position: relative;
       @include mixins.flex;
+      color: var(--black-100);
 
       .label {
         z-index: 1;
