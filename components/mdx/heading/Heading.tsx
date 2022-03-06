@@ -1,6 +1,7 @@
 import { memo } from "react";
 import cn from "classnames";
 import slugify from "slugify";
+import Link from "next/link";
 
 import Clip from "public/svg/link.svg";
 import type { HeadingVariant } from "types";
@@ -18,11 +19,13 @@ export const Heading = memo<HeadingProps>(({ level: Tag, slug, url }) => {
 
   return (
     <Tag id={id} className={cn(styles.heading, styles[Tag])}>
-      <a id={id} href={`${url}#${id}`} aria-hidden="true" tabIndex={-1} className={styles.link}>
-        <span className={styles.clip}>
-          <Clip />
-        </span>
-      </a>
+      <Link href={`#${id}`} passHref>
+        <a id={id} aria-hidden="true" tabIndex={-1} className={styles.link}>
+          <span className={styles.clip}>
+            <Clip />
+          </span>
+        </a>
+      </Link>
       {slug}
     </Tag>
   );
