@@ -6,7 +6,8 @@
   p,
   strong,
   #introduction,
-  blockquote {
+  blockquote,
+  li {
     font-size: 1.6rem;
     line-height: 1.9;
     padding-bottom: 1.6rem;
@@ -22,5 +23,13 @@
     @include mixins.mediaquery("xl") {
       font-size: 1.8rem;
     }
+  }
+
+  @include mixins.mediaquery("lg") {
+    margin-bottom: 12rem;
+  }
+
+  li {
+    padding: 0;
   }
 }
