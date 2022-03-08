@@ -15,6 +15,7 @@ export type Skill = {
   readonly name: string;
   readonly slug: string;
   readonly color: string;
+  readonly link: string;
 };
 
 export type Recommendation = {

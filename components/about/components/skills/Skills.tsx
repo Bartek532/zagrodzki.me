@@ -22,7 +22,10 @@ export const Skills = memo<SkillsProps>(({ skills }) => {
 
           return (
             <li className={styles.skill} key={skill.slug} style={{ color: skill.color }}>
-              <Icon />
+              <a href={skill.link} rel="noreferrer noopener" target="_blank" className={styles.link}>
+                <span className={styles.label}>{skill.name}</span>
+                <Icon />
+              </a>
             </li>
           );
         })}

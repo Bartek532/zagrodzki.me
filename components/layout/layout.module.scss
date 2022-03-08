@@ -43,6 +43,7 @@
       font-weight: 600;
       display: none;
       justify-self: end;
+      color: var(--black-100);
 
       @include mixins.mediaquery("sm") {
         display: flex;
