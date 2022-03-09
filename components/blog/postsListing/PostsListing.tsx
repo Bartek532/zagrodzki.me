@@ -1,10 +1,11 @@
 import { useState, useCallback, memo } from "react";
 import algoliasearch from "algoliasearch";
-import { InstantSearch, connectHits, Configure } from "react-instantsearch-dom";
+import { InstantSearch, connectHits, Configure, connectStateResults } from "react-instantsearch-dom";
 import type { HitsProvided } from "react-instantsearch-core";
 import Image from "next/image";
 import { useRouter } from "next/router";
 
+import { LoaderRing } from "components/common/loader/LoaderRing";
 import { allCategories } from "data/categories";
 import type { Post, Category } from "types";
 import { PostThumbnail } from "components/blog/postsListing/postThumbnail/PostThumbnail";
@@ -58,6 +59,14 @@ interface PostsListingProps {
   readonly categories: Category[];
 }
 
+const LoadingIndicator = connectStateResults(({ isSearchStalled }) =>
+  isSearchStalled ? (
+    <div className={styles.loading}>
+      <LoaderRing />
+    </div>
+  ) : null,
+);
+
 export const PostsListing = memo<PostsListingProps>(({ popularPosts, categories }) => {
   const [currentObjectID, setObjectId] = useState<string | null>(null);
   const router = useRouter();
@@ -83,6 +92,7 @@ export const PostsListing = memo<PostsListingProps>(({ popularPosts, categories 
             ) : (
               <SearchBox currentObjectID={currentObjectID} onChange={handleInputChange} />
             )}
+            <LoadingIndicator />
             <CustomHits currentObjectID={currentObjectID} setObjectId={setObjectId} />
           </div>
         </div>

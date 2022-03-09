@@ -20,7 +20,7 @@ export const Hero = () => {
           </span>
           <span className={styles.paragraph}>
             I love talking to interesting people, in my free time I also like to just read or play a game of chess. I
-            love swimming too 💪
+            love swimming too. 💪
           </span>
           <span className={styles.paragraph}>
             Sounds interesting? Feel free to <Link href="/contact">contact me!</Link>

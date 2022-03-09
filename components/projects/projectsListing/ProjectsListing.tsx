@@ -1,10 +1,11 @@
 import { useCallback, useState, memo } from "react";
 import algoliasearch from "algoliasearch";
-import { InstantSearch, connectHits } from "react-instantsearch-dom";
+import { InstantSearch, connectHits, connectStateResults } from "react-instantsearch-dom";
 import type { HitsProvided } from "react-instantsearch-core";
 import Image from "next/image";
 
 import { SearchBox } from "components/common/searchBox/SearchBox";
+import { LoaderRing } from "components/common/loader/LoaderRing";
 import { ProjectThumbnail } from "components/projects/projectsListing/projectThumbnail/ProjectThumbnail";
 import type { Project } from "types";
 
@@ -53,6 +54,14 @@ export const CustomHits = connectHits<CustomHitsProps, Project>(({ hits, current
   );
 });
 
+const LoadingIndicator = connectStateResults(({ isSearchStalled }) =>
+  isSearchStalled ? (
+    <div className={styles.loading}>
+      <LoaderRing />
+    </div>
+  ) : null,
+);
+
 interface ProjectsListingProps {
   readonly blurImageData: {
     readonly slug: string;
@@ -71,6 +80,7 @@ export const ProjectsListing = memo<ProjectsListingProps>(({ blurImageData }) =>
     <div className={styles.projects}>
       <InstantSearch indexName="projects" searchClient={searchClient}>
         <SearchBox currentObjectID={currentObjectID} onChange={handleInputChange} />
+        <LoadingIndicator />
         <CustomHits currentObjectID={currentObjectID} setObjectId={setObjectId} blurImageData={blurImageData} />
       </InstantSearch>
     </div>

@@ -32,6 +32,15 @@
         gap: 5rem;
       }
 
+      .loading {
+        position: relative;
+        padding: 4rem 0;
+
+        & > div {
+          --color: var(--blue-100);
+        }
+      }
+
       .searchedCategory {
         text-align: left;
         width: 100%;

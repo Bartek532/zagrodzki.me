@@ -28,6 +28,16 @@
     }
   }
 
+  .loading {
+    width: 100%;
+    position: relative;
+    padding: 4rem 0;
+
+    & > div {
+      --color: var(--blue-100);
+    }
+  }
+
   .list {
     list-style-type: none;
     width: 100%;
