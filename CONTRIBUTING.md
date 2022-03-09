@@ -8,7 +8,7 @@ If you encounter a bug, please file a bug report. If you have a feature to reque
 
 ## Pull Requests
 
-In order to create a pull request for TakeNote, follow the GitHub instructions for [Creating a pull request from a fork](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request-from-a-fork). Please link your pull request to an existing issue.
+In order to create a pull request for zagrodzki.me, follow the GitHub instructions for [Creating a pull request from a fork](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request-from-a-fork). Please link your pull request to an existing issue.
 
 ## Content
 
