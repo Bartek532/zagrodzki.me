@@ -24,11 +24,11 @@ export const getNewAccessTokenFromRefreshToken = async (refreshToken: string) =>
   }
 };
 
-export const fetchLastPlayedSong = async () => {
+export const fetchLastPlayedTrack = async () => {
   await getNewAccessTokenFromRefreshToken(process.env.SPOTIFY_REFRESH_TOKEN as string);
 
-  const { items }: { items: { track: SpotifyTrack; played_at: string }[] } = await fetcher(
-    `https://api.spotify.com/v1/me/player/recently-played`,
+  const data: { item: SpotifyTrack; is_playing: boolean } = await fetcher(
+    `https://api.spotify.com/v1/me/player/currently-playing`,
     {
       method: "GET",
       headers: {
@@ -37,16 +37,30 @@ export const fetchLastPlayedSong = async () => {
     },
   );
 
-  return { track: items[0].track };
+  if (!data?.item) {
+    const { items }: { items: { track: SpotifyTrack; played_at: string }[] } = await fetcher(
+      `https://api.spotify.com/v1/me/player/recently-played`,
+      {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${process.env.SPOTIFY_ACCESS_TOKEN as string}`,
+        },
+      },
+    );
+
+    return { track: items[0].track, status: "offline" };
+  }
+
+  return { track: data.item, status: data.is_playing ? "online" : "offline" };
 };
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
     await getNewAccessTokenFromRefreshToken(process.env.SPOTIFY_REFRESH_TOKEN as string);
 
-    const { track } = await fetchLastPlayedSong();
+    const { track, status } = await fetchLastPlayedTrack();
 
-    return res.status(200).json({ track });
+    return res.status(200).json({ track, status });
   } catch (e) {
     console.log(e);
 

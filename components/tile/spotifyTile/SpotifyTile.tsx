@@ -2,16 +2,17 @@ import clsx from "clsx";
 import Image from "next/image";
 
 import SpotifyIcon from "public/svg/spotify.svg";
+import OfflineIcon from "public/svg/offline.svg";
 import CrossIcon from "public/svg/cross.svg";
 import { LoaderRing } from "components/common/loader/LoaderRing";
 
 import styles from "./spotifyTile.module.scss";
-import { useGetCurrentTrack } from "./hooks/useGetCurrentTrack";
+import { useGetTrack } from "./hooks/useGetTrack";
 import { normalizeTrackArtists } from "./utils/normalizeTrackArtists";
 import { normalizeTitle } from "./utils/normalizeTitle";
 
 export const SpotifyTile = () => {
-  const { data, error } = useGetCurrentTrack();
+  const { data, error } = useGetTrack();
 
   if (error) {
     return (
@@ -44,12 +45,21 @@ export const SpotifyTile = () => {
         </div>
         <div className={styles.info}>
           <span className={styles.label}>
-            <span className={styles.barWrapper}>
-              <span className={clsx(styles.bar, styles.bar1)}></span>
-              <span className={clsx(styles.bar, styles.bar2)}></span>
-              <span className={clsx(styles.bar, styles.bar3)}></span>
-            </span>
-            Now playing
+            {data.status === "online" ? (
+              <>
+                <span className={styles.barWrapper}>
+                  <span className={clsx(styles.bar, styles.bar1)}></span>
+                  <span className={clsx(styles.bar, styles.bar2)}></span>
+                  <span className={clsx(styles.bar, styles.bar3)}></span>
+                </span>
+                Now playing
+              </>
+            ) : (
+              <>
+                <OfflineIcon />
+                Offline. Last played
+              </>
+            )}
           </span>
           <h2 className={styles.title}>{normalizeTitle(name)}</h2>
           <p className={styles.description}>{normalizeTrackArtists(artists)}</p>

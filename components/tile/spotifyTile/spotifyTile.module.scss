@@ -94,15 +94,22 @@
 
       .label {
         color: var(--green-100);
+        @include mixins.flex(flex-start);
+        gap: 0.5rem;
         font-size: 1.2rem;
 
         @include mixins.mediaquery("lg") {
           font-size: 1.3rem;
         }
 
-        .barWrapper {
-          margin-right: 5px;
+        svg {
+          width: 14px;
+          path {
+            fill: var(--green-100);
+          }
+        }
 
+        .barWrapper {
           .bar {
             display: inline-block;
             position: relative;
