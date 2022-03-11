@@ -41,7 +41,11 @@
 
     .thumbnail {
       position: relative;
-      margin: 4.5rem -2rem;
+      margin: 4rem -1.2rem;
+
+      @include mixins.mediaquery("sm") {
+        margin: 4.5rem -2rem;
+      }
 
       img {
         border-radius: 2rem;

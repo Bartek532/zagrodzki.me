@@ -6,6 +6,11 @@
   flex-flow: column wrap;
   margin: 2rem 0;
 
+  & > div {
+    position: relative;
+    z-index: 5;
+  }
+
   .btn {
     border: 1px solid var(--gray-100);
     background-color: var(--gray-100);
