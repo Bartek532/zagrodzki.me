@@ -1,0 +1,360 @@
+---
+title: "Using clipboard in JavaScript"
+category: "js"
+publishedAt: "12-03-2022"
+isPublished: true
+isPopular: true
+excerpt: "Each of us likes to copy and paste content. But how to embed this feature directly on website? 📋"
+image: "/img/posts/using-clipboard-in-js/thumbnail.jpg"
+author: "Bartosz Zagrodzki"
+type: "post"
+---
+
+<div id="introduction">
+  Today we'll talk about feature, that everyone use almost every day. Copy, cut, paste, sounds familar to you? Here you
+  can learn how to handle these events on the website, how to copy something directly from the code and many more.
+  Finally, we'll create a custom copy button that you can see below. Ready? Let's go!
+</div>
+
+<CopyBtn textToCopy="Example text copied from zagrodzki.me/blog/using-clipboard-in-js" label="Click me to copy!" />
+
+## Events
+
+You probably know events like `click`, `mouseover`, `mouseout` etc. But do you know that, in JS, we have _dedicated_ events for handling user interactions with the clipboard? Really, let me get you a little closer.
+
+### copy
+
+As you might guess, `copy` event will fire when user initiates a copy action through the browser's user interface. His default behavior is to copy the selection to clipboard, but, of course, we can modify it with JavaScript. Let's see:
+
+<Sandbox id="copy-pki82q" />
+
+In HTML I just used divs with `contenteditable` attribute, so there's nothing interesting here.
+
+Magic starts with JS, where you can listen to the copy event. As with everyone else, use `.addEventListener` to do so.
+
+```js
+const source = document.getElementById("source");
+
+source.addEventListener("copy", (e) => {
+  const selection = document.getSelection();
+  e.clipboardData.setData("text/plain", selection.toString().toLowerCase());
+  e.preventDefault();
+});
+```
+
+First, we got selected piece of text from the document. After, using `setData` method, which is included in `e.clipboardData` we set modified text in clipboard. You can use different data types (first argument), full list is available <Link href="https://www.w3.org/TR/clipboard-apis/#writing-to-clipboard">here</Link>. Lastly, we had to prevent default event behavior.
+
+<Highlight variant="warning" title="The handler cannot read the clipboard data">
+
+You may have noticed that `e.clipboardData` also have `getData` method. But, within copy event handler it **won't** return clipboard
+content, unless we explicitly set it. However, please don't forget this method, because it will be very useful later
+😉
+
+```js
+const source = document.getElementById("source");
+
+source.addEventListener("copy", (e) => {
+  const selection = document.getSelection();
+  console.log(e.clipboardData.getData("text/plain")); // ❌
+  e.clipboardData.setData("text/plain", selection.toString().toLowerCase());
+  console.log(e.clipboardData.getData("text/plain")); // ✅
+  e.preventDefault();
+});
+```
+
+</Highlight>
+
+### cut
+
+Called when a user wants to cut something. It's worth noting that it's also called when a user tries to cut non-editable content, but then event object won't contain data. His default behavior is to copy content to clipboard and **remove** it from the document.
+
+<Sandbox id="cut-1d3nil" />
+
+The only difference to the previous example is that we have to remove the content from the document.
+
+```js
+selection.deleteFromDocument();
+```
+
+Why we should do so? Because preventing `cut` event, prevent document from being updated. To correctly emulate "cutting" we should manually remove cutted content.
+
+Handler, similar to copying, cannot read the clipboard data.
+
+### paste
+
+Finally! Why cut or copy something if you don't want to paste it somewhere? `paste` event by default insert our contents from the clipboard into the document at the cursor position.
+
+<Sandbox id="paste-eo0dkj" />
+
+Now, we can use our `getData` to read clipboard content! Did I tell you not to forget? 😇
+
+```js
+const paste = (event.clipboardData || window.clipboardData).getData("text/plain");
+```
+
+After that, we checked that user selected something on the website, then delete this selection and insert our content as a text node.
+
+Simple, right? I think the events are now clear to you. 🤗 But how to copy something directly from the app code?
+
+## Ways to copy
+
+### execCommand (deprecated)
+
+Ok, let's start with `execCommand`. It's deprecated, so you SHOULDN'T use it. But, if you have to support older browsers it might be useful, so we can take a look of example code, that copy text using this method:
+
+```js
+const body = document.querySelector("body");
+
+const textarea = document.createElement("textarea");
+body?.appendChild(textarea);
+
+textarea.value = text;
+textarea.select();
+document.execCommand("copy");
+
+body?.removeChild(textarea);
+```
+
+Overengineered, right? You have to create contenteditable element (like textarea) and then execute `copy` on it. Definitely too complicated. 😉
+
+### prompt
+
+Another strange method to copy content is by using `window.prompt`. Wait, what? How is it possible? Simple, you present a prompt with already selected text and user has to copy it manually.
+
+Pros? Copy operation is safe, because user does it manually.
+
+```js
+const copyToClipboard = (text) => {
+  window.prompt("Copy to clipboard: Ctrl+C, Enter", text);
+};
+```
+
+Cons? Prompt has a limit to 2000 chars, so longer text will be truncated. And, in my opinion, the most important thing - user have to do three actions:
+
+1. Trigger copying (e.g. clicking a button)
+2. Copy content from the prompt
+3. Close it
+
+And I think it's a little too much for a simple copy action, but judge it yourself. 😇
+
+### navigator
+
+Finally, we have `navigator`. In this solution we should firstly check that <Link href="https://developer.mozilla.org/en-US/docs/Web/API/Clipboard_API">Clipboard API</Link> is supported, by checking that `navigator`, `navigator.clipboard` and `navigator.clipboard.writeText` is truthy.
+
+Next, use `clipboard.writeText` to copy text to clipboard.
+
+```js
+const copyToClipboardAsync = (text) => {
+  if (navigator && navigator.clipboard && navigator.clipboard.writeText) {
+    return navigator.clipboard.writeText(text);
+  }
+  return Promise.reject("The Clipboard API is not available.");
+};
+```
+
+<Highlight variant="warning" title="It's asynchronous method">
+
+Remember that `.writeText` is an asynchronous method, so the result will be a promise that resolves when the clipboard's
+contents have been updated. If Clipboard API is not supported you should return rejected promise with an appropriate message.
+
+</Highlight>
+
+### clipboard.js
+
+The simplest solution, but it requires external library. Fortunately, <Link href="https://clipboardjs.com/">clipboard.js</Link> is very lightweight (about 3kB gzipped) so we can use it without overloading the app. The installation is very easy and API is so simple too. Let's look!
+
+#### Install & Setup
+
+You can install it via NPM:
+
+```bash
+npm install clipboard
+```
+
+Or just download `.zip` package and include the script in HTML. Alternatively, you can load it from <Link href="https://github.com/zenorocha/clipboard.js/wiki/CDN-Providers">CDN</Link>, which is also a good option.
+
+```html
+<script src="/path/to/lib/clipboard.min.js"></script>
+```
+
+Setup is quite easy. Everything you should do is to instantiate appropriate class:
+
+```js
+new ClipboardJS(".button");
+```
+
+Note that you can specify either a selector, an element, or a list of elements as an argument.
+
+#### Usage
+
+All operations are based on the use of `data-` attributes. We can specify `data-clipboard-target`, `data-clipboard-action` and `data-clipboard-text` to handle all necessary operations. See <Link href="https://clipboardjs.com">docs</Link> for examples.
+
+#### Events
+
+Worth mentioning, that this lib provides us opportunity to show error or success message (or do anything else) by firing custom events.
+
+```js
+const clipboard = new ClipboardJS(".button");
+
+clipboard.on("success", () => {
+  console.log("Copied! 🥳");
+});
+
+clipboard.on("error", () => {
+  console.log("Something went wrong! ❌");
+});
+```
+
+## Custom copy button
+
+Okay, the theory is over, time to practice! We will create our own React component, which will allow us to copy any text by clicking on the button. Let's start! 🚀
+
+<CopyBtn textToCopy="Example text copied from zagrodzki.me/blog/using-clipboard-in-js" label="Click me to copy!" />
+
+First, let's create a helper function to copy the text:
+
+```js
+export const copyToClipboard = async (text) => {
+  if (navigator && navigator.clipboard && navigator.clipboard.writeText) {
+    await navigator.clipboard.writeText(text);
+  } else {
+    const body = document.querySelector("body");
+
+    const textarea = document.createElement("textarea");
+    body?.appendChild(textarea);
+
+    textarea.value = text;
+    textarea.select();
+    document.execCommand("copy");
+
+    body?.removeChild(textarea);
+  }
+};
+```
+
+As you can see, we're using some of the things I told you before - `navigator` and `execCommand` as a fallback, to support even older browsers.
+
+Ok, go to our component:
+
+```jsx
+import { useState, useEffect } from "react";
+import clsx from "clsx";
+import Confetti from "react-dom-confetti";
+
+import { copyToClipboard } from "../../utils/clipboard";
+
+import styles from "./copyBtn.module.scss";
+
+export const CopyBtn = ({ label, textToCopy }) => {
+  /* 1 */
+  const [isCopied, setIsCopied] = useState(false);
+
+  /* 2 */
+  const handleCopyBtnClick = async () => {
+    try {
+      await copyToClipboard(textToCopy);
+      setIsCopied(true);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  /* 3 */
+  useEffect(() => {
+    const timer = setTimeout(() => setIsCopied(false), 2000);
+
+    return () => clearTimeout(timer);
+  }, [isCopied]);
+
+  const confettiConfig = {
+    spread: 360,
+    startVelocity: 20,
+  };
+
+  return (
+    <div className={styles.wrapper}>
+      <Confetti active={isCopied} config={confettiConfig} />
+      <button onClick={handleCopyBtnClick} className={clsx(styles.btn, { [styles.copied]: isCopied })}>
+        {/* 4 */}
+        {isCopied ? "Copied! 🎉" : label}
+      </button>
+    </div>
+  );
+};
+```
+
+So, what's going on here?
+
+1. We're using `useState` hook to keep track of the `isCopied` state.
+2. Here copying is taking place, our helper function is called and we have to change the state (or handle error, if such occurs).
+3. Why timer? Because, we don't want constant clicks, so state will reset to `false` after specific amount of time (here 2 seconds).
+4. For a better UX, your users should have clear signal that's something happened, so we're conditionally displaying appropriate message.
+
+Let's talk about styling. In most of my projects in React I'm using (S)CSS Modules and no different this time.
+
+```sass
+.wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column wrap;
+  margin: 2rem 0;
+
+  .btn {
+    border: 1px solid rgb(236, 232, 235);
+    background-color: rgb(236, 232, 235);
+    cursor: pointer;
+    font-size: 1.5rem;
+    padding: 0.7rem 1.8rem;
+    border-radius: 1.2rem;
+    transition: border-color 0.2s ease;
+    color: var(--black-100);
+
+    &:focus,
+    &:hover {
+      border-color: rgb(181, 184, 185);
+    }
+  }
+}
+```
+
+Nothing special - some borders, colors and margins. Just styling. 😉
+
+And now, the funny part! I know that confetti is an exaggeration for such a simple case, but I think, for our demo purposes we can let go and have fun! 🎉
+
+```jsx
+/* Import confetti */
+import Confetti from "react-dom-confetti";
+
+/* Config it */
+const confettiConfig = {
+  spread: 360,
+  startVelocity: 20,
+};
+
+/* Use it! */
+<Confetti active={isCopied} config={confettiConfig} />;
+```
+
+All in all, everything with confetti is better. 🥳
+
+And that's it! We have created custom copy button that you can freely use in your next application. It wasn't hard, was it? You can modify it on your own to make it much more custom, please share it if you do something beatiful.
+
+<CopyBtn textToCopy="Example text copied from zagrodzki.me/blog/using-clipboard-in-js" label="Click me to copy!" />
+
+## Conclusion
+
+Uff, we've reached the end of the tutorial. I hope you've enjoyed it. If you have any questions, please don't hesitate to ask me. As you may have noticed, the topic isn't as simple as it seems. I encourage you to dive deeper, if you want to know more.
+
+Don't be afraid to experiment! 🚀
+
+See you next time! 👋
+
+## Sources
+
+- <Link href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Interact_with_the_clipboard">
+    Interact with the clipboard | MDN
+  </Link>
+- <Link href="https://clipboardjs.com/">clipboard.js docs</Link>
+- <Link href="https://www.w3.org/TR/clipboard-apis/">Clipboard APIs | W3</Link>

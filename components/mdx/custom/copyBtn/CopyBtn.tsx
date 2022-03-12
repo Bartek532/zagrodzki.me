@@ -14,8 +14,12 @@ type CopyBtnProps = {
 export const CopyBtn = memo<CopyBtnProps>(({ label, textToCopy }) => {
   const [isCopied, setIsCopied] = useState(false);
   const handleCopyBtnClick = async () => {
-    await copyToClipboard(textToCopy);
-    setIsCopied(true);
+    try {
+      await copyToClipboard(textToCopy);
+      setIsCopied(true);
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   useEffect(() => {
