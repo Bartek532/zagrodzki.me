@@ -5,16 +5,30 @@
   display: block;
   width: 100%;
 
+  .icon {
+    position: absolute;
+    top: 50%;
+    left: 1.6rem;
+    width: 1.9rem;
+    transform: translateY(-50%);
+    opacity: 0.5;
+  }
+
   .input {
     border: 0 none;
     border-radius: 1.5rem;
-    padding: 1.1rem 2rem;
+    padding: 1.4rem 2rem 1.4rem;
     font-size: 1.4rem;
     min-width: 28rem;
     outline: 0 none;
     border: 1px solid var(--gray-100);
     background-color: var(--gray-400);
     color: inherit;
+    line-height: 0;
+
+    &.search {
+      padding-left: 4.7rem;
+    }
 
     &:focus {
       border-color: var(--gray-300);
