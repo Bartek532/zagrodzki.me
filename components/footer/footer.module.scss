@@ -38,6 +38,7 @@
   .description {
     font-size: 1.4rem;
     max-width: 51rem;
+    color: var(--black-300);
 
     @include mixins.mediaquery("sm") {
       font-size: 1.5rem;
@@ -83,5 +84,7 @@
 
   .copyright {
     font-size: 1.1rem;
+    color: var(--black-300);
+    opacity: 0.8;
   }
 }

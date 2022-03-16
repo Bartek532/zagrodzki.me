@@ -18,6 +18,7 @@
 
   .description {
     font-size: 1.6rem;
+    color: var(--black-300);
 
     @include mixins.mediaquery("sm") {
       font-size: 1.7rem;
@@ -78,6 +79,11 @@
       &:hover::before {
         background-color: var(--blue-100);
       }
+    }
+
+    .company,
+    .date {
+      color: var(--black-300);
     }
   }
 }

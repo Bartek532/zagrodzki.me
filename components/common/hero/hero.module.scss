@@ -24,6 +24,7 @@
     text-align: center;
     font-size: 1.7rem;
     max-width: 30rem;
+    color: var(--black-300);
 
     @include mixins.mediaquery("lg") {
       font-size: 1.8rem;

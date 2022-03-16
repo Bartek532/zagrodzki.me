@@ -37,6 +37,7 @@
     .excerpt {
       font-size: 1.4rem;
       margin-bottom: 1.5rem;
+      color: var(--black-300);
 
       @include mixins.mediaquery("lg") {
         font-size: 1.45rem;

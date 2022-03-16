@@ -26,6 +26,7 @@
 
   .description {
     font-size: 1.4rem;
+    color: var(--black-300);
 
     @include mixins.mediaquery("lg") {
       font-size: 1.5rem;

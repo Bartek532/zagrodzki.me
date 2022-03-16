@@ -150,6 +150,7 @@
 
       .description {
         font-size: 1.15rem;
+        color: var(--black-300);
 
         @include mixins.mediaquery("xs") {
           font-size: 1.25rem;

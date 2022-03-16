@@ -18,6 +18,7 @@
 
   .description {
     font-size: 1.6rem;
+    color: var(--black-300);
 
     @include mixins.mediaquery("lg") {
       font-size: 1.7rem;
@@ -99,6 +100,7 @@
           @include mixins.flex(center, flex-start);
           flex-flow: column wrap;
           gap: 0.4rem;
+          color: var(--black-300);
 
           .name {
             font-weight: bold;

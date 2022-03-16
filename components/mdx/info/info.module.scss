@@ -65,6 +65,7 @@
     max-width: 55rem;
     font-size: 1.7rem;
     line-height: 1.65;
+    color: var(--black-300);
 
     @include mixins.mediaquery("sm") {
       font-size: 1.8rem;

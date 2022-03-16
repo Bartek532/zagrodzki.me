@@ -34,6 +34,7 @@
       .paragraph {
         display: block;
         margin-bottom: 1.2rem;
+        color: var(--black-300);
       }
 
       @include mixins.mediaquery("lg") {

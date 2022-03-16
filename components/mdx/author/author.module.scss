@@ -38,6 +38,8 @@
     .description {
       font-size: 1.55rem;
       line-height: 1.7;
+      color: var(--black-300);
+
       @include mixins.mediaquery("lg") {
         font-size: 1.75rem;
       }
