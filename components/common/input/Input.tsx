@@ -5,6 +5,8 @@ import SearchIcon from "public/svg/search.svg";
 
 import styles from "./input.module.scss";
 
+type xd = Pick<JSX.IntrinsicElements["button"], "type">;
+
 export const Input = forwardRef<HTMLInputElement, JSX.IntrinsicElements["input"] & { isError?: boolean }>(
   ({ isError, children, ...props }, ref) => {
     return (

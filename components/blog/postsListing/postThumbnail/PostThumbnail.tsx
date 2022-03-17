@@ -16,7 +16,7 @@ export const PostThumbnail = memo<PostThumbnailProps>(({ post }) => {
   return (
     <Link href={`/blog/${post.slug}`} passHref>
       <a>
-        <article className={styles.post}>
+        <motion.article className={styles.post} layout>
           <motion.h2 className={styles.title} layoutId={`title-container-${post.slug}`}>
             {post.title}
           </motion.h2>
@@ -35,7 +35,7 @@ export const PostThumbnail = memo<PostThumbnailProps>(({ post }) => {
               </span>
             </div>
           </div>
-        </article>
+        </motion.article>
       </a>
     </Link>
   );
