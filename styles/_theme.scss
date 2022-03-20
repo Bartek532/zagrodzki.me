@@ -66,15 +66,15 @@ pre {
 
 pre {
   padding: 3rem;
-  margin: 2rem -3rem;
+  margin: 3.5rem -3rem;
   height: 100%;
 
   @include mixins.mediaquery("sm") {
-    margin: 1.8rem -4rem 4.5rem;
+    margin: 4rem -4rem;
   }
 
   @include mixins.mediaquery("m") {
-    margin: 1.8rem -2rem 4.5rem;
+    margin: 4rem -2rem;
     border-radius: 1.2rem;
   }
 }

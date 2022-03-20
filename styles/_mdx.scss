@@ -4,18 +4,16 @@
   width: 100%;
   margin-bottom: 5rem;
   p,
-  strong,
   #introduction,
   blockquote,
-  li,
   ul,
   ol {
     font-size: 1.6rem;
     line-height: 1.9;
-    padding-bottom: 1.6rem;
+    margin-bottom: 1.6rem;
 
     @include mixins.mediaquery("sm") {
-      padding-bottom: 3rem;
+      margin-bottom: 3rem;
     }
 
     @include mixins.mediaquery("lg") {
@@ -31,7 +29,16 @@
     margin-bottom: 12rem;
   }
 
+  strong,
   li {
-    padding: 0;
+    font-size: 1.6rem;
+
+    @include mixins.mediaquery("lg") {
+      font-size: 1.7rem;
+    }
+
+    @include mixins.mediaquery("xl") {
+      font-size: 1.8rem;
+    }
   }
 }

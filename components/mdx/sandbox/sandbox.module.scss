@@ -1,16 +1,16 @@
 @use "styles/_mixins";
 
 .wrapper {
-  margin: 4rem -3rem;
+  margin: 3.5rem -3rem;
   aspect-ratio: 5 / 4;
   @include mixins.flex;
 
   @include mixins.mediaquery("sm") {
-    margin: 5rem -4rem;
+    margin: 4rem -4rem;
   }
 
   @include mixins.mediaquery("m") {
-    margin: 5rem -2rem;
+    margin: 4rem -2rem;
   }
 
   .sandbox {

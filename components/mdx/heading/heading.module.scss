@@ -1,7 +1,7 @@
 @use "styles/_mixins";
 
 .heading {
-  margin: 6.5rem 0 1.4rem;
+  margin: 7rem 0 1.4rem;
   position: relative;
   color: var(--mdx-heading-color);
 
@@ -57,7 +57,7 @@
   }
 }
 .h3 {
-  margin-top: 5rem;
+  margin-top: 6rem;
   font-size: 2.1rem;
 
   @include mixins.mediaquery("sm") {
@@ -69,7 +69,7 @@
   }
 }
 .h4 {
-  margin-top: 4rem;
+  margin-top: 5rem;
   font-size: 2rem;
 
   @include mixins.mediaquery("sm") {
@@ -81,7 +81,7 @@
   }
 }
 .h5 {
-  margin-top: 3rem;
+  margin-top: 4rem;
   font-size: 1.9rem;
 
   @include mixins.mediaquery("sm") {
@@ -93,7 +93,7 @@
   }
 }
 .h6 {
-  margin-top: 2rem;
+  margin-top: 3rem;
   font-size: 1.8rem;
 
   @include mixins.mediaquery("sm") {

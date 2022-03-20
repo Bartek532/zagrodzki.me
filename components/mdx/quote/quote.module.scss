@@ -2,14 +2,14 @@
 
 .quote {
   background-color: rgba(148, 204, 255, 0.15);
-  margin: 1.7rem -1.2rem;
+  margin: 2rem -1.2rem;
   padding: 2rem 2.5rem;
   border-radius: 0 1.2rem 1.2rem 0;
   border-left: 4px solid var(--blue-100);
   position: relative;
 
   @include mixins.mediaquery("sm") {
-    margin: 1.7rem -2rem;
+    margin: 2rem -2rem;
   }
 
   .icon {
@@ -35,6 +35,6 @@
   }
 
   .author {
-    padding: 0;
+    margin: 0;
   }
 }
