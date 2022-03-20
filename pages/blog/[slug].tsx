@@ -1,12 +1,17 @@
 import type { NextPage, GetStaticProps, GetStaticPaths } from "next";
 
-import { getPostBySlug, getPostsPaths } from "lib/posts";
+import { getPostBySlug, getPostsPaths, getNewestPosts } from "lib/posts";
 import { Layout } from "components/layout/Layout";
 import { Mdx } from "components/mdx/Mdx";
 import type { InferGetStaticPropsType } from "types";
 import { Seo } from "components/Seo";
+import { FeaturedPosts } from "components/blog/featuredPosts/FeaturedPosts";
 
-const Post: NextPage = ({ transformedMdx, frontmatter }: InferGetStaticPropsType<typeof getStaticProps>) => {
+const Post: NextPage = ({
+  transformedMdx,
+  frontmatter,
+  newestPosts,
+}: InferGetStaticPropsType<typeof getStaticProps>) => {
   const { title, excerpt, publishedAt, image, author } = frontmatter;
 
   return (
@@ -20,6 +25,7 @@ const Post: NextPage = ({ transformedMdx, frontmatter }: InferGetStaticPropsType
         imageUrl={image}
       />
       <Mdx content={transformedMdx} resource={frontmatter} />
+      <FeaturedPosts posts={newestPosts} actualPostSlug={frontmatter.slug} />
     </Layout>
   );
 };
@@ -27,6 +33,7 @@ const Post: NextPage = ({ transformedMdx, frontmatter }: InferGetStaticPropsType
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const slug = params!.slug as string;
   const { transformedMdx, frontmatter } = await getPostBySlug(slug);
+  const newestPosts = getNewestPosts();
 
   return {
     props: {
@@ -35,6 +42,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         slug,
         ...frontmatter,
       },
+      newestPosts,
     },
     revalidate: 10,
   };

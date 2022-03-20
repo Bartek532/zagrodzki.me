@@ -1,0 +1,43 @@
+@use "styles/_mixins";
+
+.post {
+  width: 100%;
+  max-width: 40rem;
+  .image {
+    margin-bottom: 0.4rem;
+    width: 100%;
+
+    @include mixins.mediaquery("lg") {
+      margin-bottom: 0.7rem;
+    }
+
+    img {
+      border-radius: 2rem;
+    }
+  }
+
+  .title {
+    font-size: 1.8rem;
+    padding: 1rem;
+    padding-top: 0.3rem;
+
+    @include mixins.mediaquery("lg") {
+      font-size: 2rem;
+    }
+
+    @include mixins.mediaquery("xl") {
+      font-size: 2.2rem;
+    }
+  }
+
+  .info {
+    padding: 0.8rem 1rem;
+    @include mixins.flex(flex-start);
+    gap: 0.7rem;
+    font-size: 1.3rem;
+
+    @include mixins.mediaquery("lg") {
+      font-size: 1.4rem;
+    }
+  }
+}
