@@ -54,7 +54,7 @@ export const getNewestPosts = () => {
 };
 
 export const getPostsCategories = () => {
-  const posts = getAllPosts();
+  const posts = getPublishedPosts();
   const allCategories = posts.map((post) => post.category);
   const uniqueCategories = [...new Set(allCategories)];
 

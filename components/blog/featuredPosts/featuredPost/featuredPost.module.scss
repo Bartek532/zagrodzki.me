@@ -20,6 +20,7 @@
     font-size: 1.8rem;
     padding: 1rem;
     padding-top: 0.3rem;
+    color: var(--black-100);
 
     @include mixins.mediaquery("lg") {
       font-size: 2rem;
@@ -35,6 +36,7 @@
     @include mixins.flex(flex-start);
     gap: 0.7rem;
     font-size: 1.3rem;
+    color: var(--black-300);
 
     @include mixins.mediaquery("lg") {
       font-size: 1.4rem;
