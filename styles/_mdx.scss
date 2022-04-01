@@ -41,4 +41,10 @@
       font-size: 1.8rem;
     }
   }
+
+  blockquote > p {
+    padding-left: 2.5rem;
+    border-left: 3px solid var(--gray-300);
+    opacity: 0.4;
+  }
 }
