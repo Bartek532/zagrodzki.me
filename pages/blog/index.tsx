@@ -8,7 +8,7 @@ import { getPopularPosts, getPostsCategories } from "lib/posts";
 import { InferGetStaticPropsType } from "types";
 
 const Blog: NextPage = ({ popularPosts, categories }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  const description = "Everything that I or anyone else has written for my blog ✍️";
+  const description = "Everything that I or one of the authors has written for my blog ✍️";
 
   return (
     <Layout>
