@@ -4,6 +4,9 @@ import { motion } from "framer-motion";
 import NextImage from "next/image";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import countapi from "countapi-js";
+import dayjs from "dayjs";
+import customParseFormat from "dayjs/plugin/customParseFormat";
+import advancedFormat from "dayjs/plugin/advancedFormat";
 
 import * as CustomPostsComponents from "components/mdx/custom";
 import { useTheme } from "context/ThemeContext";
@@ -26,6 +29,9 @@ import { ORIGIN } from "utils/consts";
 
 import { TableOfContents } from "./tableOfContents/TableOfContents";
 import styles from "./mdx.module.scss";
+
+dayjs.extend(customParseFormat);
+dayjs.extend(advancedFormat);
 
 type MdxProps = {
   readonly resource: Project | Post;
@@ -122,6 +128,11 @@ export const Mdx = memo<MdxProps>(({ resource, content }) => {
             <MDXRemote {...content} components={customMdxComponents} />
           </div>
 
+          {resource.type === "post" ? (
+            <div className={styles.date}>
+              Published on {dayjs(resource.publishedAt, "DD-MM-YYYY").format("Do MMMM, YYYY")}
+            </div>
+          ) : null}
           <div className={styles.views}>{views} views</div>
 
           <div className={styles.links}>

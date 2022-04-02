@@ -71,13 +71,21 @@
     }
   }
 
+  .date,
   .views {
     width: 100%;
     text-align: right;
     font-size: 1.4rem;
     font-style: italic;
     color: var(--gray-300);
-    margin: -5.5rem 0 4.5rem;
+  }
+
+  .date {
+    margin-top: -5.5rem;
+  }
+
+  .views {
+    margin-bottom: 4.5rem;
   }
 
   .links {
