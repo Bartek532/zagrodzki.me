@@ -26,7 +26,6 @@ import { Info } from "components/mdx/info/Info";
 import { Highlight } from "components/mdx/highlight/Highlight";
 import { Sandbox } from "components/mdx/sandbox/Sandbox";
 import { ORIGIN } from "utils/consts";
-import { usePostViews } from "hooks/usePostViews";
 
 import { TableOfContents } from "./tableOfContents/TableOfContents";
 import styles from "./mdx.module.scss";
@@ -48,7 +47,7 @@ export const Mdx = memo<MdxProps>(({ resource, content }) => {
   const { id, setRunningHeader } = useRunningHeader(contentElRef.current);
   const url = `${process.env.NEXT_PUBLIC_URL}/${resource.type === "project" ? "projects" : "blog"}/${resource.slug}`;
   const { theme } = useTheme();
-  const { views, hitPostView } = usePostViews();
+  const [views, setViews] = useState(0);
 
   const getHeadingProps = useCallback(({ children }: HeadingComponentProps) => {
     return {
@@ -81,7 +80,12 @@ export const Mdx = memo<MdxProps>(({ resource, content }) => {
 
   useEffect(() => {
     setRunningHeader(contentElRef.current);
-    hitPostView(resource.slug);
+
+    const hitView = async () => {
+      const result = await countapi.hit(ORIGIN, resource.slug);
+      setViews(result.value);
+    };
+    hitView();
   }, []);
 
   const imageVariants = {

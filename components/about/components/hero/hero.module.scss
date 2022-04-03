@@ -41,6 +41,14 @@
         font-size: 1.8rem;
       }
     }
+
+    .views {
+      border: 1px solid var(--gray-300);
+      background-color: var(--gray-400);
+      padding: 1rem 2rem;
+      width: fit-content;
+      border-radius: 1rem;
+    }
   }
 
   .image {

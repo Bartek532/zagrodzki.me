@@ -14,12 +14,12 @@ import { Facts } from "./components/facts/Facts";
 import styles from "./aboutView.module.scss";
 import { Recommendations } from "./components/recommendations/Recommendations";
 
-export const AboutView = () => {
+export const AboutView = ({ views }: { views: number }) => {
   const { theme } = useTheme();
 
   return (
     <div className={styles.about}>
-      <Hero />
+      <Hero views={views} />
       <div className={styles.container}>
         <Skills skills={allSkills} />
         <Experience positions={allPositions} />
