@@ -1,5 +1,7 @@
 import type { GetStaticProps, NextPage } from "next";
+import countapi from "countapi-js";
 
+import { ORIGIN } from "utils/consts";
 import { Layout } from "components/layout/Layout";
 import { PostsListing } from "components/blog/postsListing/PostsListing";
 import { Seo } from "components/Seo";
@@ -19,14 +21,20 @@ const Blog: NextPage = ({ popularPosts, categories }: InferGetStaticPropsType<ty
   );
 };
 
-export const getStaticProps: GetStaticProps = () => {
+export const getStaticProps: GetStaticProps = async () => {
   try {
     const popularPosts = getPopularPosts();
     const categories = getPostsCategories();
 
+    const postsWithViews = await Promise.all(
+      popularPosts.map(async (post) => ({ ...post, views: (await countapi.get(ORIGIN, post.slug)).value })),
+    );
+
+    const sortedPopularPostsByViews = postsWithViews.sort((a, b) => b.views - a.views);
+
     return {
       props: {
-        popularPosts,
+        popularPosts: sortedPopularPostsByViews,
         categories,
       },
     };
