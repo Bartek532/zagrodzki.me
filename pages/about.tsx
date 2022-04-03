@@ -30,7 +30,7 @@ export const getStaticProps: GetStaticProps = async () => {
       return (await sum) + postViews.value;
     }, Promise.resolve(0));
 
-    return { props: { views } };
+    return { props: { views }, revalidate: 10 };
   } catch {
     return { props: { views: 0 } };
   }
