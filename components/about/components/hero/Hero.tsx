@@ -17,8 +17,8 @@ export const Hero = ({ views }: { views: number }) => {
             <strong>{views.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</strong> posts views.
           </span>
           <span className={styles.paragraph}>
-            I'm working as a freelancer right now, so if you want to hire me, check the sections below. I'm always open
-            to innovative ideas and solutions, so I think we're gonna get along. 😎
+            I'm working as a freelancer, so if you want to hire me, check the sections below. I'm always open to
+            innovative ideas and solutions, so I think we're gonna get along. 😎
           </span>
           <span className={styles.paragraph}>
             I love talking to interesting people, in my free time I also like to just read or play a game of chess. I
