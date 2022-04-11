@@ -26,6 +26,7 @@ import { Info } from "components/mdx/info/Info";
 import { Highlight } from "components/mdx/highlight/Highlight";
 import { Sandbox } from "components/mdx/sandbox/Sandbox";
 import { ORIGIN } from "utils/consts";
+import { normalizeViewsCount } from "utils/normalizeViewsCount";
 
 import { TableOfContents } from "./tableOfContents/TableOfContents";
 import styles from "./mdx.module.scss";
@@ -132,7 +133,7 @@ export const Mdx = memo<MdxProps>(({ resource, content }) => {
               Published on {dayjs(resource.publishedAt, "DD-MM-YYYY").format("Do MMMM, YYYY")}
             </div>
           ) : null}
-          <div className={styles.views}>{views} views</div>
+          <div className={styles.views}>{normalizeViewsCount(views)} views</div>
 
           <div className={styles.links}>
             <Edit href={`/${resource.type === "project" ? "projects" : "posts"}/${resource.slug}`} />

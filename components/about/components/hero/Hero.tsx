@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 import { Link } from "components/mdx/link/Link";
+import { normalizeViewsCount } from "utils/normalizeViewsCount";
 
 import styles from "./hero.module.scss";
 
@@ -14,7 +15,7 @@ export const Hero = ({ views }: { views: number }) => {
             I'm a 20 year old software engineer based in Poland. I'm passionate about building modern software that
             helps others (including me) to improve their lives. I started my blogging adventure by publishing
             translations on <Link href="https://dev.to/bartek532">dev.to</Link> and now I'm here with{" "}
-            <strong>{views.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</strong> posts views.
+            <strong>{normalizeViewsCount(views)}</strong> posts views.
           </span>
           <span className={styles.paragraph}>
             I'm working as a freelancer, so if you want to hire me, check the sections below. I'm always open to
