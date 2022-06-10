@@ -18,6 +18,8 @@
     --black-200: rgb(51, 51, 51);
     --black-300: rgba(0, 0, 0, 0.8);
 
+    --scrollbar-thumb: rgb(145, 145, 145);
+    --scrollbar-thumb-hover: rgb(183, 183, 183);
     --mdx-heading-color: var(--black-100);
     --tile-shadow: rgba(0, 0, 0, 0.08) 0px 1px 4px;
     --selection-color: rgb(255, 255, 255);
@@ -44,6 +46,8 @@
   --black-200: rgb(51, 51, 51);
   --black-300: rgba(0, 0, 0, 0.8);
 
+  --scrollbar-thumb: rgb(145, 145, 145);
+  --scrollbar-thumb-hover: rgb(183, 183, 183);
   --mdx-heading-color: var(--black-100);
   --tile-shadow: rgba(0, 0, 0, 0.08) 0px 1px 4px;
   --selection-color: rgb(255, 255, 255);
@@ -74,6 +78,8 @@
     --gray-400: rgb(35, 36, 45);
     --gray-300: rgb(51, 52, 58);
     --mdx-heading-color: var(--red-100);
+    --scrollbar-thumb: rgb(144, 144, 144);
+    --scrollbar-thumb-hover: rgb(101, 101, 101);
 
     --tile-shadow: rgba(36, 36, 36, 0.781) 0px 1px 4px;
   }
@@ -101,6 +107,8 @@
   --gray-400: rgb(35, 36, 45);
   --gray-300: rgb(51, 52, 58);
   --mdx-heading-color: var(--red-100);
+  --scrollbar-thumb: rgb(144, 144, 144);
+  --scrollbar-thumb-hover: rgb(101, 101, 101);
 
   --tile-shadow: rgba(36, 36, 36, 0.781) 0px 1px 4px;
 }

@@ -12,7 +12,7 @@ In order to create a pull request for zagrodzki.me, follow the GitHub instructio
 
 ## Content
 
-If you spot a typo or an error, please boldly let me know. You can also write your own article! Just put it in `/content` folder and make a PR. It would be good for you to contact me beforehand to discuss the details, but it's not necessary. I can guarantee you that your efforts will be appreciated! Let's make a strong community 💪
+If you spot a typo or an error, please boldly let me know. **You can also write your own article!** Just put it in `/content` folder and make a PR. It would be good for you to contact me beforehand to discuss the details, but it's not necessary. I can guarantee you that your efforts will be appreciated! Let's make a strong community 💪
 
 ## File Structure
 
