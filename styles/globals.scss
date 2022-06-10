@@ -16,6 +16,26 @@ body {
   overflow-x: hidden;
   background-color: var(--bg-100);
   color: var(--black-100);
+
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  /* Track */
+  &::-webkit-scrollbar-track {
+    background: var(--bg-100);
+  }
+
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+    border-radius: 8px;
+  }
+
+  /* Handle on hover */
+  &::-webkit-scrollbar-thumb:hover {
+    background: var(--scrollbar-thumb-hover);
+  }
 }
 
 * {
