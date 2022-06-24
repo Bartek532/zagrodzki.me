@@ -35,29 +35,45 @@
         width: 100%;
       }
     }
-
-    .contact {
-      @include mixins.flex;
-      gap: 1.1rem;
-      font-size: 1.4rem;
-      font-weight: 600;
-      display: none;
+    .right {
       justify-self: end;
-      color: var(--black-100);
+      @include mixins.flex;
+      gap: 4.5rem;
+      .theme {
+        position: relative;
+        transform: scale(0.6);
+        width: fit-content;
+        cursor: pointer;
+        display: none;
 
-      @include mixins.mediaquery("sm") {
-        display: flex;
+        @include mixins.mediaquery("sm") {
+          display: block;
+        }
       }
 
-      &:hover svg {
-        transform: translate(5px, -7px) rotate(20deg);
-      }
-      svg {
-        width: 1.6rem;
-        transition: transform 0.2s ease-out;
+      .contact {
+        @include mixins.flex;
+        gap: 1.1rem;
+        font-size: 1.4rem;
+        font-weight: 600;
+        display: none;
+        justify-self: end;
+        color: var(--black-100);
 
-        path {
-          fill: var(--black-100);
+        @include mixins.mediaquery("sm") {
+          display: flex;
+        }
+
+        &:hover svg {
+          transform: translate(5px, -7px) rotate(20deg);
+        }
+        svg {
+          width: 1.6rem;
+          transition: transform 0.2s ease-out;
+
+          path {
+            fill: var(--black-100);
+          }
         }
       }
     }

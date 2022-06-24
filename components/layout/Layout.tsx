@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useTheme } from "context/ThemeContext";
 import { Footer } from "components/footer/Footer";
 import { Navbar } from "components/navbar/Navbar";
+import { ThemeSwitcher } from "components/common/themeSwitcher/ThemeSwitcher";
 import { routes } from "data/routes";
 import Logo from "public/svg/logo.svg";
 import PaperPlane from "public/svg/paper-plane.svg";
@@ -28,12 +29,17 @@ export const Layout = memo<LayoutProps>(({ children }) => {
             </a>
           </Link>
           <Navbar routes={routes} />
-          <Link href="/contact">
-            <a className={styles.contact}>
-              Contact
-              <PaperPlane />
-            </a>
-          </Link>
+          <div className={styles.right}>
+            <label className={styles.theme}>
+              <ThemeSwitcher />
+            </label>
+            <Link href="/contact">
+              <a className={styles.contact}>
+                Contact
+                <PaperPlane />
+              </a>
+            </Link>
+          </div>
         </header>
         <main className={styles.main}>{children}</main>
       </div>
