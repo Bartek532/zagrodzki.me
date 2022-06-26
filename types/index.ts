@@ -69,6 +69,7 @@ export type Project = {
   stack: string[];
   image: string;
   author: Author;
+  category: Category;
 };
 
 export type Post = {

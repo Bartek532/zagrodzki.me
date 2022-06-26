@@ -7,4 +7,6 @@ export const allCategories = [
   { slug: "life", name: "Life" },
   { slug: "js", name: "JavaScript" },
   { slug: "design", name: "Design" },
+  { slug: "hobby", name: "Hobby" },
+  { slug: "open-source", name: "Open Source" },
 ] as const;
