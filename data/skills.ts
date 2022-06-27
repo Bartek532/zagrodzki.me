@@ -21,6 +21,7 @@ export const allSkills = [
   { name: "PostgreSQL", slug: "postgresql", color: "#035976", link: "https://www.postgresql.org" },
   { name: "MongoDB", slug: "mongodb", color: "#4db33d", link: "https://www.mongodb.com" },
   { name: "Git", slug: "git", color: "#f1502f", link: "https://git-scm.com" },
+  { name: "Wordpress", slug: "wordpress", color: "#21759B", link: "https://wordpress.org" },
   { name: "Jest", slug: "jest", color: "#C63D14", link: "https://jestjs.io" },
   { name: "Cypress", slug: "cypress", color: "#5C5C5E", link: "https://www.cypress.io" },
 ] as const;
