@@ -10,6 +10,7 @@ import styles from "./quizDialog.module.scss";
 
 type QuizDialogProps = {
   readonly correctAnswers: (string | number)[];
+  readonly scoreMessages: { score: number; message: string }[];
 };
 
 type Answer = {
@@ -33,7 +34,7 @@ const AnswerItem = ({ answer, onDeleteAnswer }: { answer: Answer; onDeleteAnswer
   );
 };
 
-export const QuizDialog = memo<QuizDialogProps>(({ correctAnswers }) => {
+export const QuizDialog = memo<QuizDialogProps>(({ correctAnswers, scoreMessages }) => {
   const [answers, setAnswers] = useState<Answer[]>([]);
   const [isAnswersChecked, setIsAnswersChecked] = useState(false);
   const [isResultMessageShown, setIsResultMessageShown] = useState(false);
@@ -62,6 +63,7 @@ export const QuizDialog = memo<QuizDialogProps>(({ correctAnswers }) => {
 
   const handleDeleteAnswer = (id: number) => {
     const answer = answers.find((answer) => answer.id === id);
+    console.log(answer);
     if (answer?.status === "unchecked") {
       setAnswers((answers) => answers.filter((answer) => answer.id !== id));
     }
@@ -127,8 +129,19 @@ export const QuizDialog = memo<QuizDialogProps>(({ correctAnswers }) => {
           </ul>
         )}
         <div className={clsx(styles.result, { [styles.active]: isResultMessageShown })}>
-          Your result is {score.toFixed(0)}%
+          <strong>Your result is {score.toFixed(0)}%</strong>
+          <div className={styles.message}>
+            {scoreMessages.reverse().find((scoreMessage) => scoreMessage.score <= score)?.message}
+          </div>
         </div>
+        {isAnswersChecked ? (
+          <button
+            className={styles.resultBtn}
+            onClick={() => (isResultMessageShown ? setIsResultMessageShown(false) : setIsResultMessageShown(true))}
+          >
+            {isResultMessageShown ? "Hide" : "Show"}
+          </button>
+        ) : null}
       </div>
       <div className={styles.info}>
         <div className={styles.buttons}>

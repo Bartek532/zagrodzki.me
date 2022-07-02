@@ -29,6 +29,8 @@
     padding: 0;
     margin: 0;
     gap: 1rem;
+    position: relative;
+    z-index: 3;
 
     .answer {
       font-size: 1.4rem;
@@ -91,21 +93,43 @@
     left: 50%;
     transform: translate(-50%, -50%);
     @include mixins.flex;
+    flex-flow: column wrap;
+    gap: 0.2rem;
     font-size: 1.6rem;
     border-radius: 1.5rem;
-    backdrop-filter: blur(6px);
+    backdrop-filter: blur(9px);
     opacity: 0;
     transition: opacity 0.15s;
+    text-align: center;
+    padding: 3rem;
+    z-index: 2;
 
     &.active {
       opacity: 1;
+      z-index: 4;
+    }
+  }
+
+  .resultBtn {
+    position: absolute;
+    right: 1rem;
+    bottom: 0.7rem;
+    border: 0 none;
+    background-color: transparent;
+    color: var(--gray-300);
+    text-decoration: underline;
+    cursor: pointer;
+    z-index: 5;
+
+    &:hover {
+      text-decoration: none;
     }
   }
 }
 
 .info {
   width: 100%;
-  @include mixins.flex(space-between);
+  @include mixins.flex(space-between, flex-start);
   margin-top: 1.5rem;
   padding: 0 0.5rem;
 
