@@ -3,9 +3,8 @@
 .aside {
   flex: 0 1 250px;
   position: sticky;
-  overflow: auto;
-  top: 8.5rem;
-  max-height: calc(100vh - 8.5rem);
+  top: 6.5rem;
+  max-height: calc(100vh - 12.5rem);
   margin-top: 4.5rem;
   margin-left: auto;
   display: none;
@@ -20,6 +19,11 @@
     letter-spacing: 1.9px;
     font-size: 1.7rem;
     margin-bottom: 1.7rem;
+  }
+
+  .nav {
+    max-height: calc(100vh - 16.5rem);
+    overflow: auto;
   }
 
   .link {
@@ -45,6 +49,10 @@
     &.H5,
     &.H6 {
       margin-top: 0.3rem;
+    }
+
+    &:first-child {
+      margin-top: 0;
     }
 
     &.H3 {
