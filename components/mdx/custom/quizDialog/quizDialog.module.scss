@@ -2,6 +2,36 @@
 
 .form {
   width: 100%;
+  position: relative;
+
+  .btn {
+    border: 0 none;
+    cursor: pointer;
+    font-size: 1.45rem;
+    padding: 1.4rem 2rem;
+    border-radius: 1.5rem;
+    color: var(--white-200);
+    background-color: var(--blue-100);
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    @include mixins.flex;
+    gap: 0.8rem;
+
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
+
+    svg {
+      width: 1.2rem;
+    }
+  }
+
+  input {
+    padding-right: 10.5rem !important;
+  }
 }
 
 .answersWrapper {

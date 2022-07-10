@@ -20,28 +20,29 @@ body {
   &::-webkit-scrollbar {
     width: 10px;
   }
-
-  /* Track */
-  &::-webkit-scrollbar-track {
-    background: var(--bg-100);
-  }
-
-  /* Handle */
-  &::-webkit-scrollbar-thumb {
-    background: var(--scrollbar-thumb);
-    border-radius: 8px;
-  }
-
-  /* Handle on hover */
-  &::-webkit-scrollbar-thumb:hover {
-    background: var(--scrollbar-thumb-hover);
-  }
 }
 
 * {
   &::selection {
     background-color: var(--selection-background);
     color: var(--selection-color);
+  }
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: var(--bg-100);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+    border-radius: 8px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: var(--scrollbar-thumb-hover);
   }
 }
 

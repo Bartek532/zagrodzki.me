@@ -5,6 +5,7 @@ import clsx from "clsx";
 
 import { Input } from "components/common/input/Input";
 import CrossIcon from "public/svg/cross.svg";
+import PlusIcon from "public/svg/plus.svg";
 
 import styles from "./quizDialog.module.scss";
 
@@ -117,6 +118,9 @@ export const QuizDialog = memo<QuizDialogProps>(({ correctAnswers, scoreMessages
         >
           <span className="sr-only">input type</span>
         </Input>
+        <button className={styles.btn} disabled={answers.length >= correctAnswers.length || isAnswersChecked}>
+          Add <PlusIcon />
+        </button>
       </form>
       <div className={styles.answersWrapper}>
         {answers.length === 0 ? (
