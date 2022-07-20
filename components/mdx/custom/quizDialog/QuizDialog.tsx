@@ -64,7 +64,6 @@ export const QuizDialog = memo<QuizDialogProps>(({ correctAnswers, scoreMessages
 
   const handleDeleteAnswer = (id: number) => {
     const answer = answers.find((answer) => answer.id === id);
-    console.log(answer);
     if (answer?.status === "unchecked") {
       setAnswers((answers) => answers.filter((answer) => answer.id !== id));
     }
