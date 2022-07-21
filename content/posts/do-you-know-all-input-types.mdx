@@ -1,0 +1,160 @@
+---
+title: "Do you know all input types?"
+category: "html"
+publishedAt: "20-07-2022"
+isPublished: true
+isPopular: true
+excerpt: "It isn't secret knowledge, but can be very useful for your end users. Check yourself! 🚀"
+image: "/img/posts/do-you-know-all-input-types/thumbnail.jpg"
+author: "Bartosz Zagrodzki"
+type: "post"
+---
+
+<div id="introduction">
+  Choosing the right type of input is certainly very important in terms of the User Experience. Today I'll walk you
+  through all the types available in HTML5 with particular emphasis on the most useful ones. But first, I suggest you
+  check how many types are you able to point at the moment, what do you think? Check below and be sure to let me know
+  what your score is 👇 Good luck, but without cheating! 🎯
+</div>
+
+<QuizDialog
+  correctAnswers={[
+    "text",
+    "number",
+    "email",
+    "password",
+    "file",
+    "hidden",
+    "radio",
+    "checkbox",
+    "submit",
+    "reset",
+    "button",
+    "image",
+    "color",
+    "date",
+    "datetime-local",
+    "month",
+    "url",
+    "week",
+    "search",
+    "tel",
+    "range",
+    "time",
+  ]}
+  scoreMessages={[
+    { score: 85, message: "Wow, your knowledge is stunning! Are you a senior developer? 🤔" },
+    { score: 60, message: "That's a pretty good result! Where did you learn it? 😛" },
+    { score: 35, message: "You know something, but your knowledge should be consolated, maybe by this article? 😇" },
+    {
+      score: 0,
+      message: "You should definitely read this article! 😅",
+    },
+  ]}
+/>
+
+## Why is it so important?
+
+I mentioned it in one of
+my previous articles: <Link href="/blog/10-ui-ux-tips-that-you-should-know-forms#9.-choose-the-right-types">
+10 UI/UX tips that you should know - forms </Link>, because it definitely makes the interface easier to use. This is often accompanied by the display of the corresponding keyboard on the mobile device, making it easier to enter the correct data.
+
+We must also remember the users who use screen readers for whom the type (together with the label) gives a clear indication of what they are dealing with.
+
+So, why not take advantage of this fact? Let's start exploring types! I grouped them in four categories, it isn't an official subdivision, I used it, because I think this way can help you to easy remember where to use them. I also attach a link to the MDN documentation to each of them, so that if you want to dive deeper, you can use it.
+
+## One-liners
+
+Here are the most commonly used types. Who among us has never used a `text` or a `number`? I called them "one-liners", because they basically take one line, there's nothing deeper 😅
+
+&#8203;<Link href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/text">text</Link> - the most basic example,
+I don't think it needs a big explanation. The only problem is that it's often abused in places where the other one would
+work better. Don't use it for everything!
+
+&#8203;<Link href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/number">number</Link> - allows user to enter numbers. In addition, it has a validation that prevents inputting strings. Can also have stepper arrows with which you can increase or decrease the number with the mouse or a fingertip.
+
+&#8203;<Link href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/email">email</Link> - basically the `text` input, but with built-in validation for email addresses.
+
+&#8203;<Link href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/password">password</Link> - also a `text`, but it provides a way for the user to securely enter a password by replacing each character by asterisk (`*`) or a dot (`•`).
+
+&#8203;<Link href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/url">url</Link> - basically the `text` input, but with built-in validation for URL addresses. Worth mentioning, that on browsers that don't support inputs of type `url`, a `url` input falls back to being a standard `text` input.
+
+&#8203;<Link href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/search">search</Link> - designed to enter search queries.
+
+&#8203;<Link href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/tel">tel</Link> - used to enter telephone number. Unlike `url` and `email`, there is no built-in validation, because the phone formats differ too much around the world.
+
+<Image src="/img/posts/do-you-know-all-input-types/one-liners.png" alt="" width="1200" height="880" />
+
+<Highlight variant="warning" title="Avoid abusing one-liners">
+
+One-liners are very useful and I have to agree with this. But, they often are used in cases where something else would
+work better. This is particularly true for `text` and it's impossible to contradict it. Don't overdo it and your apps will
+be more accessible!
+
+</Highlight>
+
+## Form handling
+
+This group contains input fields that are commonly used for handling forms. The appearance is usually similar to buttons, but they are really inputs!
+
+&#8203;<Link href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/button">button</Link> - works like a normal button, with the difference that the value inside can only be a string. For this reason, for creating buttons it's recommended to use `<button>` where you can put any valid HTML code inside.
+
+&#8203;<Link href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/submit">submit</Link> - basically the button, but when user clicks it, form will be sent. Be careful, because if you only use `<button>` in the form, remember that if you have only one button in the form, it will be treated as a submit button by default.
+
+&#8203;<Link href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/reset">reset</Link> - used to reset the form to its original state.
+
+<Image src="/img/posts/do-you-know-all-input-types/form-handling.png" alt="" width="1200" height="880" />
+
+## Date related
+
+Everyone knows dates. But, do you know that we have five different types for inputs designed to provide date information? Let's explore them all! 🔍
+
+&#8203;<Link href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/date">date</Link> - most commonly used to enter date (year, month, day) from the user. Worth mentioning, that it provides easy interface for choosing dates and normalizes the format of the data transmitted to the server regardless of the user's locale.
+
+&#8203;<Link href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/time">time</Link> - enables entering the time (hours, minutes, and optionally seconds).
+
+&#8203;<Link href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/datetime-local">datetime-local</Link> - basically the same to `date`, but enables to enter a date and time in one input.
+
+&#8203;<Link href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/week">week</Link> - allows the simple entry of the week number with the year. Probably useful in rare cases, but it's always good to know it and not use `text` for that case.
+
+&#8203;<Link href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/month">month</Link> - do you want to receive a specific month name from your user? Use `month` and you will get additionally a year! 😅
+
+<Image src="/img/posts/do-you-know-all-input-types/date-related.png" alt="" width="1200" height="970" />
+
+<Highlight variant="warning" title="Control's UI">
+
+The control's UI varies for each date input in general from browser to browser. I don't mean the functional differences that you can see in the graph above, but the graphical differences. Of course, you can create your own date picker, but doing it you should follow all the rules to make it practical and accessible. I think that's the material for a separate article...
+
+</Highlight>
+
+## Special
+
+I called this group "Special", but so you don't feel misleading. These input fields are not intended for rare or special cases. Don't be afraid and use them when you think it's right. I hope the following list will help you make your future decisions 😁
+
+&#8203;<Link href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox">checkbox</Link> - user will usually see them as tick boxes. An important aspect is that you can select SEVERAL options in each checkboxes group.
+
+&#8203;<Link href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/radio">radio</Link> - very similar to `checkbox`, but circled and you can select only ONE option in each group of such entries.
+
+&#8203;<Link href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/range">range</Link> - allows entering numbers in a fancy way. However, you have to consider that such a widget is imprecise, and if an exact number is required, it's better to use `number`.
+
+&#8203;<Link href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/image">image</Link> - basically used to create graphical submit buttons. Maybe should I put it in "Form handling" section?
+
+&#8203;<Link href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/color">color</Link> - provide a user interface to specify a color - choosing it from color picker or by entering hex value.
+
+&#8203;<Link href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file">file</Link> - useful if your form needs file uploading feature.
+
+&#8203;<Link href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/hidden">hidden</Link> - the most mysterious one 🤐 What is the mystery behind this? Quite simply, they allow developers to include data in the form that cannot be changed or deleted. These fields are completely invisible on the website and you can't prevent it.
+
+<Image src="/img/posts/do-you-know-all-input-types/special.png" alt="" width="1200" height="880" />
+
+## Validation
+
+Using the right types is just as important as it helps the user to enter the data in the right format. Many of them have built-in validation that enables this, e. g. `email`, `url`. Also, don't forget the HTML attributes, which help you to narrow down the range of valid data, e. g. by limiting the time interval for the date selection.
+
+Of course, you can also perform the validation with more fancy tools: by using JavaScript or special library for this case. But please keep in mind that your users are not interested in how you do it. They are primarily interested in appearance and functionality, so you should consider all the rules to make their use comfortable. It's not that simple!
+
+## Conclusion
+
+In summary, it's very important to know what type of input should be used in the right situation to develop today's applications. I hope that with this article you will never again have a moment of hesitation in choosing and above all the desire to use `text` where it's completely unnecessary.
+
+Good luck with the creation and see you next time! 👋

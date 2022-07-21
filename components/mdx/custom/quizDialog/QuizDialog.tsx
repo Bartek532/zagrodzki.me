@@ -48,13 +48,13 @@ export const QuizDialog = memo<QuizDialogProps>(({ correctAnswers, scoreMessages
   } = useForm();
 
   const isNotInAnswers = (inputType: string) => {
-    return !answers.find((answer) => answer.text === inputType);
+    return inputType.trim() && !answers.find((answer) => answer.text === inputType);
   };
 
   const handleFormSubmit = ({ inputType }: { [key: string]: string }) => {
     const givenAnswer = {
       id: answers.length + 1,
-      text: inputType,
+      text: inputType.trim(),
       status: "unchecked" as const,
     };
 
@@ -73,7 +73,7 @@ export const QuizDialog = memo<QuizDialogProps>(({ correctAnswers, scoreMessages
     setAnswers((answers) =>
       answers.map((answer) => ({
         ...answer,
-        status: correctAnswers.includes(answer.text.toLowerCase()) ? "correct" : "incorrect",
+        status: correctAnswers.includes(answer.text.toLowerCase().trim()) ? "correct" : "incorrect",
       })),
     );
     setIsAnswersChecked(true);
@@ -134,7 +134,7 @@ export const QuizDialog = memo<QuizDialogProps>(({ correctAnswers, scoreMessages
         <div className={clsx(styles.result, { [styles.active]: isResultMessageShown })}>
           <strong>Your result is {score.toFixed(0)}%</strong>
           <div className={styles.message}>
-            {scoreMessages.reverse().find((scoreMessage) => scoreMessage.score <= score)?.message}
+            {scoreMessages.find((scoreMessage) => scoreMessage.score <= score)?.message}
           </div>
         </div>
         {isAnswersChecked ? (

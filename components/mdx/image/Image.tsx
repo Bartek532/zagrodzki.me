@@ -10,7 +10,7 @@ type ImageProps = {
   readonly height?: string | number;
 };
 
-export const Image = memo<ImageProps>(({ src, alt, width = "100%", height }) => {
+export const Image = memo<ImageProps>(({ src, alt = "", width = "100%", height }) => {
   return (
     <figure className={styles.wrapper}>
       <NextImage
