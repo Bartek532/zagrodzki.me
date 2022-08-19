@@ -46,6 +46,7 @@
       flex-flow: column wrap;
       padding-left: 6rem;
       line-height: 1.75;
+      display: block;
 
       &::before {
         content: "";

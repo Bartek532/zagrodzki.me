@@ -1,4 +1,5 @@
 import { memo } from "react";
+import Link from "next/link";
 
 import type { Position } from "../../types";
 
@@ -17,9 +18,13 @@ export const Experience = memo<ExperienceProps>(({ positions }) => {
       <ol className={styles.list}>
         {positions.map((position) => (
           <li key={position.id} className={styles.position}>
-            <h3 className={styles.name}>{position.position}</h3>
-            <p className={styles.company}>{position.company}</p>
-            <p className={styles.date}>{position.date}</p>
+            <Link href={position.link}>
+              <a rel="noreferrer noopener" target="_blank">
+                <h3 className={styles.name}>{position.position}</h3>
+                <p className={styles.company}>{position.company}</p>
+                <p className={styles.date}>{position.date}</p>
+              </a>
+            </Link>
           </li>
         ))}
       </ol>

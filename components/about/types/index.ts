@@ -9,6 +9,7 @@ export type Position = {
   readonly company: string;
   readonly date: string;
   readonly id: number;
+  readonly link: string;
 };
 
 export type Skill = {
