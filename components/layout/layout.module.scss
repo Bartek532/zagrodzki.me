@@ -15,10 +15,28 @@
   .header {
     display: grid;
     grid-template-columns: auto;
+    position: relative;
 
     @include mixins.mediaquery("sm") {
       grid-template-columns: 1fr auto 1fr;
       width: 100%;
+    }
+
+    .skip {
+      font-size: 1.6rem;
+      background-color: var(--blue-100);
+      color: var(--white-200);
+      padding: 1.7rem 3rem;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      border-radius: 15px;
+      z-index: 9000000;
+      transform: translate(-50%, -400%);
+
+      &:focus {
+        transform: translate(-50%, -50%);
+      }
     }
 
     .logo {

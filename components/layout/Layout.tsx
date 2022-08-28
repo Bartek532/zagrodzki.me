@@ -22,6 +22,9 @@ export const Layout = memo<LayoutProps>(({ children }) => {
     <>
       <div className={styles.wrapper}>
         <header className={styles.header}>
+          <a href="#main" className={styles.skip}>
+            skip to content
+          </a>
           <Link href="/">
             <a className={styles.logo}>
               <span className="sr-only">home</span>
@@ -41,7 +44,9 @@ export const Layout = memo<LayoutProps>(({ children }) => {
             </Link>
           </div>
         </header>
-        <main className={styles.main}>{children}</main>
+        <main className={styles.main} id="main">
+          {children}
+        </main>
       </div>
       <Footer />
     </>
