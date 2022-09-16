@@ -42,6 +42,27 @@ module.exports = withPWA(
           destination: "/blog/THE_NEWEST_POST_SLUG_HERE",
           permanent: false,
         },
+
+        {
+          source: "/twitter",
+          destination: `https://twitter.com/${process.env.NEXT_PUBLIC_TWITTER_USERNAME}`,
+          permanent: true,
+        },
+        {
+          source: "/linkedin",
+          destination: `https://www.linkedin.com/in/${process.env.NEXT_PUBLIC_LINKEDIN_USERNAME}`,
+          permanent: true,
+        },
+        {
+          source: "/github",
+          destination: `https://github.com/${process.env.NEXT_PUBLIC_GITHUB_USERNAME}`,
+          permanent: true,
+        },
+        {
+          source: "/gumroad",
+          destination: `https://zagrodzki.gumroad.com/`,
+          permanent: true,
+        },
       ];
     },
     pwa: {
