@@ -39,7 +39,7 @@ export const Footer = () => {
       <div className={styles.wrapper}>
         <h4 className={styles.title}>Let&apos;s build something together</h4>
         <p className={styles.description}>
-          Feel free to reach out if you&apos;re looking for a developer, have a question, or just want to connect 📭
+          Feel free to reach out if you&apos;re looking for a developer, have a question or just want to connect 📭
         </p>
         <Link href="mailto:bartosz@zagrodzki.me">bartosz@zagrodzki.me</Link>
 
