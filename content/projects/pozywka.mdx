@@ -1,0 +1,74 @@
+---
+title: "pozywka.pl"
+excerpt: "Food journalist personal website with blog 🌭"
+publishedAt: "03-12-2022"
+isPublished: true
+url: "https://pozywka.pl"
+repoUrl: "https://github.com/Bartek532/pozywka.pl"
+stack:
+  - "nextjs"
+  - "typescript"
+  - "pwa"
+image: "/img/projects/pozywka/thumbnail.png"
+type: "project"
+author: "Bartosz Zagrodzki"
+category: "freelance"
+priority: 3
+---
+
+<div id="introduction">
+
+pozywka.pl is a digital platform that combines food journalism and technology to provide readers with insightful and informative articles on food culture, culinary trends, and cooking techniques. It is a blog for anyone who is passionate about food and wants to stay up-to-date with the latest in the food industry.
+
+</div>
+
+## Tech stack
+
+As Content Managament System my client needs was to use **Wordpress**.
+
+I tried to counteract it, but unfortunately my efforts were in vain and I was forced to deal with him 🥲
+
+To still save it from the front side I bet on **Next.js**, which works great with all kinds of blogs with their Static Site Generation, image optimization and many, many more features.
+
+For the post likes functionality, I decided to use **Supabase** as a lightweight and easy to use solution for simple cases. I think it turned out pretty cool.
+
+The most interesting functionality here is certainly **PWA**, which in the case of a blog may turn out to be a thing that significantly improves the whole user experience. It currently works at a basic level, but can be easily expanded to include more functionalities from traditional mobile applications 📱
+
+<Image src="/img/projects/pozywka/stack.png" alt="Tech stack chart" width="1200" height="880" />
+
+## Problems
+
+I didn't mention it before, but the main thing was that I got the first version of the site from the previous developer and my job was to "fix it".
+
+Extremely slow loading time, broken newsletter, missing functionalities, lagging UX. I'll spare you that and I won't give you any more details 😅
+
+When I deeped dive into the application code itself, I noticed that my predecessor also decided to use Next. js, but didn't use its functionalities at all! What a waste! (he used pure JavaScript also 🤦‍♂️)
+
+After hours of plucking my hair out of my head and countless questions: _“what's going on here?”_ I decided to **rewrite the whole thing from scratch.**
+
+Now, I can say it was a good decision and saved probably quite a few hours of work. Also the results speak for themselves - I managed to improve the loading time nearly **five** times and go down with it under a **second**! It's comparison like between speed of car and speed of rocket 🚀
+
+As for me this is a very satisfactory result, especially since as you remember all the time I had to deal with the shortcomings of Wordpress, which is not one of the fastest tools.
+
+After all, even Lighthouse is showing really cool result and, regarding users opininions, I can say: “Good job!” 🔥
+
+<Image
+  src="/img/projects/pozywka/optimization-comparison.png"
+  alt="Average load time comparison between versions"
+  width="1200"
+  height="880"
+/>
+
+<Image src="/img/projects/pozywka/lighthouse.png" alt="Lighthouse result" width="640" height="118" />
+
+## Lessons learned
+
+I learnt a lot, especially about how to optimize things in web development.
+
+I entrusted a lot to Next.js, but as you can see, using its functionalities was the key to success. On the other hand, using Wordpress as a headless backend was a challenge for me, but I think that I squeezed everything I could out of him 💪
+
+I should mention SEO also, because in case of sites like blogs is super important to make search engines feel great with your work. Posts from blog are often shared across social media so I was supposed to provide good displaying on all platforms.
+
+All at all, I think it was enjoyable journey (especially since I decided to rewrite everything 😉), which is still going on as I take care of it all the time.
+
+<Image src="/img/projects/pozywka/404.png" alt="Page not found view" width="1200" height="880" />
