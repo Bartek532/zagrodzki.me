@@ -70,6 +70,7 @@ export type Project = {
   image: string;
   author: Author;
   category: Category;
+  priority: number;
 };
 
 export type Post = {

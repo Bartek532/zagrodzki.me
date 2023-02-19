@@ -1,4 +1,5 @@
 import "../styles/globals.scss";
+import { Analytics } from "@vercel/analytics/react";
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import { Hydrate, QueryClient, QueryClientProvider } from "react-query";
@@ -42,6 +43,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <Hydrate state={pageProps.dehydratedState}>
           <ThemeProvider>
             <Component {...pageProps} />
+            <Analytics />
           </ThemeProvider>
         </Hydrate>
         <ReactQueryDevtools />

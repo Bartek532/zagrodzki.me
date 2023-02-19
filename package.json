@@ -38,6 +38,7 @@
   },
   "dependencies": {
     "@sendgrid/mail": "^7.6.0",
+    "@vercel/analytics": "^0.1.8",
     "algoliasearch": "^4.11.0",
     "classnames": "^2.3.1",
     "countapi-js": "^1.0.2",

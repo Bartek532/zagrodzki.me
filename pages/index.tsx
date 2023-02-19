@@ -9,7 +9,7 @@ import { ThemeTile } from "components/tile/themeTile/ThemeTile";
 import { LatestPostTile } from "components/tile/latestPostTile/LatestPostTile";
 import { NewsletterTile } from "components/tile/newsletterTile/NewsletterTile";
 import { Grid } from "components/common/grid/Grid";
-import { getNewestProjects } from "lib/projects";
+import { getBestProjects } from "lib/projects";
 import type { InferGetStaticPropsType } from "types";
 import { getNewestPosts } from "lib/posts";
 
@@ -33,12 +33,12 @@ const Home: NextPage = ({ projects, posts }: InferGetStaticPropsType<GetStaticPr
 };
 
 export const getStaticProps: GetStaticProps = () => {
-  const newestProjects = getNewestProjects();
+  const bestProjects = getBestProjects();
   const newestPosts = getNewestPosts();
 
   return {
     props: {
-      projects: newestProjects,
+      projects: bestProjects,
       posts: newestPosts,
     },
     revalidate: 10,
