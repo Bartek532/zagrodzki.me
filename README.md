@@ -19,6 +19,7 @@ Please read [CONTRIBUTING.md](https://github.com/Bartek532/zagrodzki.me/blob/mai
 | [React](https://reactjs.org/)                             | Library for building user interfaces                                |
 | [MDX](https://mdxjs.com/)                                 | Markdown for the component era                                      |
 | [Algolia](https://www.algolia.com/)                       | Implementing search                                                 |
+| [Supabase](https://supabase.com/)                         | Open source database                                                |
 | [Framer Motion](https://www.framer.com/motion/)           | Motion library for React                                            |
 | [Context API](https://reactjs.org/docs/context.html)      | React structure that enables to share data with multiple components |
 | [React Query](https://react-query.tanstack.com/)          | Performant and powerful data synchronization for React              |
