@@ -1,7 +1,8 @@
 import { allCategories } from "data/categories";
+import { RESOURCE_TYPE } from "types";
 
-export const getBreadcrumbs = (type: "project" | "post", category?: string) => {
-  if (type === "post" && category) {
+export const getBreadcrumbs = (type: RESOURCE_TYPE, category?: string) => {
+  if (type === RESOURCE_TYPE.POST && category) {
     return [
       { path: "/", name: "Home" },
       { path: "/blog", name: "Blog" },

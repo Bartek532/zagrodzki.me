@@ -6,9 +6,8 @@ const options = {
   threshold: 1,
 };
 
-export const useRunningHeader = (el: HTMLElement | null) => {
+export const useRunningHeader = () => {
   const [id, setId] = useState("");
-  const [progress, setProgress] = useState(0);
 
   const { observeElement, entry, cleanup } = useIntersectionObserver<HTMLElement>(options);
 

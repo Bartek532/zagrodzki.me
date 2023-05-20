@@ -44,7 +44,7 @@ type HeadingComponentProps = {
 
 export const Mdx = memo<MdxProps>(({ resource, content }) => {
   const contentElRef = useRef<HTMLDivElement | null>(null);
-  const { id, setRunningHeader } = useRunningHeader(contentElRef.current);
+  const { id, setRunningHeader } = useRunningHeader();
   const url = `${process.env.NEXT_PUBLIC_URL}/${resource.type === "project" ? "projects" : "blog"}/${resource.slug}`;
   const { theme } = useTheme();
   const [views, setViews] = useState(0);
