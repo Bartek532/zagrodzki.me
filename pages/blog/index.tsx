@@ -1,13 +1,12 @@
 import type { GetStaticProps, NextPage } from "next";
-import countapi from "countapi-js";
 
-import { ORIGIN } from "utils/consts";
 import { Layout } from "components/layout/Layout";
 import { PostsListing } from "components/blog/postsListing/PostsListing";
 import { Seo } from "components/Seo";
 import { Hero } from "components/common/hero/Hero";
 import { getPopularPosts, getPostsCategories } from "lib/posts";
-import { InferGetStaticPropsType } from "types";
+import { RESOURCE_TYPE, InferGetStaticPropsType } from "types";
+import { getViewsBySlug } from "lib/views";
 
 const Blog: NextPage = ({ popularPosts, categories }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const description = "Everything that I or one of the authors has written for my blog ✍️";
@@ -27,7 +26,7 @@ export const getStaticProps: GetStaticProps = async () => {
     const categories = getPostsCategories();
 
     const postsWithViews = await Promise.all(
-      popularPosts.map(async (post) => ({ ...post, views: (await countapi.get(ORIGIN, post.slug)).value })),
+      popularPosts.map(async (post) => ({ ...post, views: await getViewsBySlug(post.slug, RESOURCE_TYPE.POST) })),
     );
 
     const sortedPopularPostsByViews = postsWithViews.sort((a, b) => b.views - a.views);
@@ -37,8 +36,11 @@ export const getStaticProps: GetStaticProps = async () => {
         popularPosts: sortedPopularPostsByViews,
         categories,
       },
+      revalidate: 120,
     };
-  } catch {
+  } catch (e) {
+    console.log(e);
+
     return {
       notFound: true as const,
     };

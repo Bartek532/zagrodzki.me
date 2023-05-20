@@ -3,6 +3,11 @@ import { allAuthors } from "data/authors";
 
 export type Route = { label: string; path: string };
 
+export enum RESOURCE_TYPE {
+  POST = "post",
+  PROJECT = "project",
+}
+
 export type SpotifyTrack = {
   album: SpotifyAlbum;
   artists: SpotifyArtist[];
@@ -57,7 +62,7 @@ export type SpotifyAlbum = {
 };
 
 export type Project = {
-  type: "project";
+  type: RESOURCE_TYPE.PROJECT;
   title: string;
   excerpt: string;
   slug: string;
@@ -74,7 +79,7 @@ export type Project = {
 };
 
 export type Post = {
-  type: "post";
+  type: RESOURCE_TYPE.POST;
   title: string;
   slug: string;
   excerpt: string;

@@ -3,7 +3,6 @@ import { renderToString } from "react-dom/server";
 import { motion } from "framer-motion";
 import NextImage from "next/image";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
-import countapi from "countapi-js";
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 import advancedFormat from "dayjs/plugin/advancedFormat";
@@ -25,8 +24,8 @@ import { Pre } from "components/mdx/pre/Pre";
 import { Info } from "components/mdx/info/Info";
 import { Highlight } from "components/mdx/highlight/Highlight";
 import { Sandbox } from "components/mdx/sandbox/Sandbox";
-import { ORIGIN } from "utils/consts";
 import { normalizeViewsCount } from "utils/normalizeViewsCount";
+import { view } from "lib/views";
 
 import { TableOfContents } from "./tableOfContents/TableOfContents";
 import styles from "./mdx.module.scss";
@@ -83,11 +82,11 @@ export const Mdx = memo<MdxProps>(({ resource, content }) => {
     setRunningHeader(contentElRef.current);
 
     const hitView = async () => {
-      const result = await countapi.hit(ORIGIN, resource.slug);
-      setViews(result.value);
+      const result = await view(resource.slug, resource.type);
+      setViews(result);
     };
     hitView();
-  }, []);
+  }, [resource]);
 
   const imageVariants = {
     hover: {
