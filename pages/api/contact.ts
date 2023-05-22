@@ -31,6 +31,10 @@ export const sendEmail = async ({ email, name, message }: Email) => {
 };
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  if (req.method !== "POST") {
+    return res.status(400).json({ message: "Bad request!" });
+  }
+
   try {
     const { name, message, email } = req.body;
 
