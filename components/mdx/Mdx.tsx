@@ -49,12 +49,15 @@ export const Mdx = memo<MdxProps>(({ resource, content }) => {
   const { theme } = useTheme();
   const [views, setViews] = useState(0);
 
-  const getHeadingProps = useCallback(({ children }: HeadingComponentProps) => {
-    return {
-      slug: children,
-      url,
-    };
-  }, []);
+  const getHeadingProps = useCallback(
+    ({ children }: HeadingComponentProps) => {
+      return {
+        slug: children,
+        url,
+      };
+    },
+    [url],
+  );
 
   const customMdxComponents = useMemo(
     () => ({

@@ -8,12 +8,12 @@
     "build": "./build.sh redirect algolia feed next",
     "start": "next start",
     "tsc": "tsc --noEmit",
-    "ts-node-esm": "node --loader ts-node/esm -r tsconfig-paths/register --experimental-specifier-resolution=node",
-    "algolia": "yarn ts-node-esm generateAlgoliaItems.ts",
-    "feed": "yarn ts-node-esm generateFeed.ts",
-    "new-post-redirect": "yarn ts-node-esm generateNewPostRedirect.ts",
+    "algolia": "ts-node generateAlgoliaItems.ts",
+    "feed": "ts-node generateFeed.ts",
+    "new-post-redirect": "ts-node generateNewPostRedirect.ts",
     "format": "prettier --write \"./**/*.{js,jsx,ts,tsx,css,scss,md,mdx}\"",
-    "lint": "next lint"
+    "lint": "next lint",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -23,11 +23,6 @@
     "url": "https://github.com/Bartek532/zagrodzki.me/issues"
   },
   "homepage": "https://zagrodzki.me",
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx}": [
       "eslint --fix"
@@ -58,6 +53,7 @@
     "react-dom-confetti": "^0.2.0",
     "react-github-btn": "^1.2.1",
     "react-hook-form": "^7.25.0",
+    "react-instantsearch-core": "6.40.0",
     "react-instantsearch-dom": "^6.18.0",
     "react-query": "^3.33.7",
     "reading-time": "^1.5.0",
@@ -73,7 +69,9 @@
     "@types/node": "16.11.10",
     "@types/react": "17.0.37",
     "@types/react-dom": "^17.0.11",
+    "@types/react-instantsearch-core": "6.26.3",
     "@types/react-instantsearch-dom": "^6.12.1",
+    "@types/unist": "2.0.6",
     "@typescript-eslint/eslint-plugin": "^5.10.1",
     "@typescript-eslint/parser": "^5.10.1",
     "clsx": "^1.1.1",
@@ -85,11 +83,12 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.28.0",
     "eslint-plugin-react-hooks": "^4.3.0",
-    "husky": "4",
+    "husky": "^8.0.0",
     "lint-staged": "^12.3.2",
     "next-seo": "^4.28.1",
     "prettier": "^2.5.1",
     "rehype-stringify": "8",
+    "remark-parse": "8.0.3",
     "remark-rehype": "8",
     "sass": "^1.49.0",
     "ts-node": "^10.4.0",

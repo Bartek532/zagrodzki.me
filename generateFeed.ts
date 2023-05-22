@@ -3,8 +3,6 @@ import fs from "fs";
 import dayjs from "dayjs";
 import { Feed } from "feed";
 
-import type { Author } from "types";
-
 import { getPublishedPosts } from "./lib/posts";
 import { SITE_TITLE, DEFAULT_DESCRIPTION } from "./utils/consts";
 
