@@ -38,7 +38,6 @@
     "algoliasearch": "^4.11.0",
     "classnames": "^2.3.1",
     "dayjs": "^1.10.7",
-    "eslint-plugin-import": "^2.25.4",
     "feed": "^4.2.2",
     "framer-motion": "^5.3.3",
     "gray-matter": "^4.0.3",
@@ -72,17 +71,13 @@
     "@types/react-instantsearch-core": "6.26.3",
     "@types/react-instantsearch-dom": "^6.12.1",
     "@types/unist": "2.0.6",
-    "@typescript-eslint/eslint-plugin": "^5.10.1",
-    "@typescript-eslint/parser": "^5.10.1",
+    "@typescript-eslint/eslint-plugin": "^5.60.1",
+    "@typescript-eslint/parser": "^5.60.1",
     "clsx": "^1.1.1",
-    "eslint": "7",
-    "eslint-config-next": "12.0.4",
+    "eslint": "8.44.0",
+    "eslint-config-next": "13.4.7",
     "eslint-config-prettier": "^8.3.0",
-    "eslint-import-resolver-alias": "^1.1.2",
-    "eslint-plugin-jsx-a11y": "^6.5.1",
-    "eslint-plugin-prettier": "^4.0.0",
-    "eslint-plugin-react": "^7.28.0",
-    "eslint-plugin-react-hooks": "^4.3.0",
+    "eslint-plugin-import": "2.27.5",
     "husky": "^8.0.0",
     "lint-staged": "^12.3.2",
     "next-seo": "^4.28.1",
@@ -96,5 +91,11 @@
     "typescript": "^4.5.4",
     "unified": "9.1",
     "unist-util-visit": "2.0.3"
-  }
+  },
+  "engines": {
+    "npm": ">=7.0.0",
+    "pnpm": ">=7.11.0",
+    "node": ">=18.0.0 <19"
+  },
+  "packageManager": "pnpm@7.17.0"
 }
