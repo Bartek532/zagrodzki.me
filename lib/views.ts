@@ -10,8 +10,15 @@ export const getViewsByType = async (type: RESOURCE_TYPE): Promise<number> => {
   return views ?? 0;
 };
 
-export const getViewsBySlug = async (slug: string, type: RESOURCE_TYPE): Promise<number> => {
-  const { data } = await supabase.from("views").select("*").eq("slug", slug).eq("type", type);
+export const getViewsBySlug = async (
+  slug: string,
+  type: RESOURCE_TYPE,
+): Promise<number> => {
+  const { data } = await supabase
+    .from("views")
+    .select("*")
+    .eq("slug", slug)
+    .eq("type", type);
 
   if (data && data[0] && data[0].count && !isNaN(data[0].count)) {
     return data[0].count;
@@ -20,8 +27,15 @@ export const getViewsBySlug = async (slug: string, type: RESOURCE_TYPE): Promise
   return 0;
 };
 
-export const view = async (slug: string, type: RESOURCE_TYPE): Promise<number> => {
-  const { data } = await supabase.from("views").select("*").eq("slug", slug).eq("type", type);
+export const view = async (
+  slug: string,
+  type: RESOURCE_TYPE,
+): Promise<number> => {
+  const { data } = await supabase
+    .from("views")
+    .select("*")
+    .eq("slug", slug)
+    .eq("type", type);
 
   if (data?.length) {
     await supabase

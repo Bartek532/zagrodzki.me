@@ -1,0 +1,86 @@
+@use "styles/_mixins";
+
+.header {
+  display: grid;
+  grid-template-columns: auto;
+  position: relative;
+
+  @include mixins.mediaquery("sm") {
+    grid-template-columns: 1fr auto 1fr;
+    width: 100%;
+  }
+
+  .skip {
+    font-size: 1.6rem;
+    background-color: var(--blue-100);
+    color: var(--white-200);
+    padding: 1.7rem 3rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 15px;
+    z-index: 9000000;
+    transform: translate(-50%, -400%);
+
+    &:focus {
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  .logo {
+    max-width: 4rem;
+    transform: scale(0);
+    position: absolute;
+
+    @include mixins.mediaquery("sm") {
+      transform: scale(1);
+      position: static;
+    }
+
+    svg {
+      width: 100%;
+    }
+  }
+  .right {
+    justify-self: end;
+    @include mixins.flex;
+    gap: 4.5rem;
+    .theme {
+      position: relative;
+      transform: scale(0.6);
+      width: fit-content;
+      cursor: pointer;
+      display: none;
+
+      @include mixins.mediaquery("sm") {
+        display: block;
+      }
+    }
+
+    .contact {
+      @include mixins.flex;
+      gap: 1.1rem;
+      font-size: 1.4rem;
+      font-weight: 600;
+      display: none;
+      justify-self: end;
+      color: var(--black-100);
+
+      @include mixins.mediaquery("sm") {
+        display: flex;
+      }
+
+      &:hover svg {
+        transform: translate(5px, -7px) rotate(20deg);
+      }
+      svg {
+        width: 1.6rem;
+        transition: transform 0.2s ease-out;
+
+        path {
+          fill: var(--black-100);
+        }
+      }
+    }
+  }
+}

@@ -1,15 +1,15 @@
 import clsx from "clsx";
 import Image from "next/image";
 
-import SpotifyIcon from "public/svg/spotify.svg";
-import OfflineIcon from "public/svg/offline.svg";
-import CrossIcon from "public/svg/cross.svg";
 import { LoaderRing } from "components/common/loader/LoaderRing";
+import CrossIcon from "public/svg/cross.svg";
+import OfflineIcon from "public/svg/offline.svg";
+import SpotifyIcon from "public/svg/spotify.svg";
 
-import styles from "./spotifyTile.module.scss";
 import { useGetTrack } from "./hooks/useGetTrack";
-import { normalizeTrackArtists } from "./utils/normalizeTrackArtists";
+import styles from "./spotifyTile.module.scss";
 import { normalizeTitle } from "./utils/normalizeTitle";
+import { normalizeTrackArtists } from "./utils/normalizeTrackArtists";
 
 export const SpotifyTile = () => {
   const { data, error } = useGetTrack();
@@ -21,7 +21,9 @@ export const SpotifyTile = () => {
           <div className={styles.icon}>
             <CrossIcon />
           </div>
-          <p className={styles.description}>Something went wrong during fetching!</p>
+          <p className={styles.description}>
+            Something went wrong during fetching!
+          </p>
         </div>
       </div>
     );
@@ -38,7 +40,10 @@ export const SpotifyTile = () => {
   const { artists, album, name, external_urls } = data.track;
 
   return (
-    <a className={clsx(styles.wrapper, styles.dataWrapper)} href={external_urls.spotify}>
+    <a
+      className={clsx(styles.wrapper, styles.dataWrapper)}
+      href={external_urls.spotify}
+    >
       <div className={styles.content}>
         <div className={styles.logo}>
           <SpotifyIcon />
@@ -65,7 +70,12 @@ export const SpotifyTile = () => {
           <p className={styles.description}>{normalizeTrackArtists(artists)}</p>
         </div>
         <div className={styles.album}>
-          <Image src={album.images[0].url} width="640" height="640" alt={album.name} />
+          <Image
+            src={album.images[0].url}
+            width="640"
+            height="640"
+            alt={album.name}
+          />
         </div>
       </div>
     </a>

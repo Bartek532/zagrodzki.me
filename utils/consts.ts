@@ -1,5 +1,9 @@
-export const ORIGIN = process.env.NEXT_PUBLIC_HOST || process.env.NEXT_PUBLIC_VERCEL_URL || ("zagrodzki.me" as const);
-export const PROTOCOL = process.env.NODE_ENV === "production" ? "https" : "http";
+export const ORIGIN =
+  process.env.NEXT_PUBLIC_HOST ??
+  process.env.NEXT_PUBLIC_VERCEL_URL ??
+  ("zagrodzki.me" as const);
+export const PROTOCOL =
+  process.env.NODE_ENV === "production" ? "https" : "http";
 export const HOST = `${PROTOCOL}://${ORIGIN}` as const;
 
 export const SEPARATOR = " • ";

@@ -8,7 +8,7 @@ import customParseFormat from "dayjs/plugin/customParseFormat";
 import advancedFormat from "dayjs/plugin/advancedFormat";
 
 import * as CustomPostsComponents from "components/mdx/custom";
-import { useTheme } from "context/ThemeContext";
+import { useTheme } from "providers/ThemeProvider";
 import { Author } from "components/mdx/author/Author";
 import type { Project, Post } from "types";
 import { getHeadings } from "utils/getHeadings";
@@ -45,7 +45,9 @@ type HeadingComponentProps = {
 export const Mdx = memo<MdxProps>(({ resource, content }) => {
   const contentElRef = useRef<HTMLDivElement | null>(null);
   const { id, setRunningHeader } = useRunningHeader();
-  const url = `${process.env.NEXT_PUBLIC_URL}/${resource.type === "project" ? "projects" : "blog"}/${resource.slug}`;
+  const url = `${process.env.NEXT_PUBLIC_URL}/${
+    resource.type === "project" ? "projects" : "blog"
+  }/${resource.slug}`;
   const { theme } = useTheme();
   const [views, setViews] = useState(0);
 
@@ -61,16 +63,28 @@ export const Mdx = memo<MdxProps>(({ resource, content }) => {
 
   const customMdxComponents = useMemo(
     () => ({
-      h2: (props: HeadingComponentProps) => <Heading level="h2" {...getHeadingProps(props)}></Heading>,
-      h3: (props: HeadingComponentProps) => <Heading level="h3" {...getHeadingProps(props)}></Heading>,
-      h4: (props: HeadingComponentProps) => <Heading level="h4" {...getHeadingProps(props)}></Heading>,
-      h5: (props: HeadingComponentProps) => <Heading level="h5" {...getHeadingProps(props)}></Heading>,
-      h6: (props: HeadingComponentProps) => <Heading level="h6" {...getHeadingProps(props)}></Heading>,
+      h2: (props: HeadingComponentProps) => (
+        <Heading level="h2" {...getHeadingProps(props)}></Heading>
+      ),
+      h3: (props: HeadingComponentProps) => (
+        <Heading level="h3" {...getHeadingProps(props)}></Heading>
+      ),
+      h4: (props: HeadingComponentProps) => (
+        <Heading level="h4" {...getHeadingProps(props)}></Heading>
+      ),
+      h5: (props: HeadingComponentProps) => (
+        <Heading level="h5" {...getHeadingProps(props)}></Heading>
+      ),
+      h6: (props: HeadingComponentProps) => (
+        <Heading level="h6" {...getHeadingProps(props)}></Heading>
+      ),
       Image,
       Link,
       Quote,
       Highlight,
-      Sandbox: ({ id }: { id: string }) => <Sandbox id={id} theme={theme as "light" | "dark"} />,
+      Sandbox: ({ id }: { id: string }) => (
+        <Sandbox id={id} theme={theme as "light" | "dark"} />
+      ),
       pre: Pre,
       ...CustomPostsComponents,
     }),
@@ -78,7 +92,9 @@ export const Mdx = memo<MdxProps>(({ resource, content }) => {
   );
 
   const contentString = renderToString(
-    (<MDXRemote {...content} components={customMdxComponents} />) as React.ReactElement,
+    (
+      <MDXRemote {...content} components={customMdxComponents} />
+    ) as React.ReactElement,
   );
 
   useEffect(() => {
@@ -103,7 +119,10 @@ export const Mdx = memo<MdxProps>(({ resource, content }) => {
         <Info resource={resource} />
       </header>
       <div className={styles.main}>
-        <TableOfContents contents={getHeadings(contentString)} currentActiveHeaderId={id} />
+        <TableOfContents
+          contents={getHeadings(contentString)}
+          currentActiveHeaderId={id}
+        />
         <div className={styles.wrapper}>
           {resource.type === "project" ? (
             <motion.a
@@ -115,14 +134,24 @@ export const Mdx = memo<MdxProps>(({ resource, content }) => {
               variants={imageVariants}
               target="_blank"
             >
-              <NextImage src={resource.image} alt={resource.title} width={1200} height={880} />
+              <NextImage
+                src={resource.image}
+                alt={resource.title}
+                width={1200}
+                height={880}
+              />
               <div className={styles.arrow}>
                 <Arrow />
               </div>
             </motion.a>
           ) : (
             <div className={styles.thumbnail}>
-              <NextImage src={resource.image} alt={resource.title} width={1200} height={880} />
+              <NextImage
+                src={resource.image}
+                alt={resource.title}
+                width={1200}
+                height={880}
+              />
             </div>
           )}
 
@@ -132,13 +161,20 @@ export const Mdx = memo<MdxProps>(({ resource, content }) => {
 
           {resource.type === "post" ? (
             <div className={styles.date}>
-              Published on {dayjs(resource.publishedAt, "DD-MM-YYYY").format("Do MMMM, YYYY")}
+              Published on{" "}
+              {dayjs(resource.publishedAt, "DD-MM-YYYY").format(
+                "Do MMMM, YYYY",
+              )}
             </div>
           ) : null}
           <div className={styles.views}>{normalizeViewsCount(views)} views</div>
 
           <div className={styles.links}>
-            <Edit href={`/${resource.type === "project" ? "projects" : "posts"}/${resource.slug}`} />
+            <Edit
+              href={`/${resource.type === "project" ? "projects" : "posts"}/${
+                resource.slug
+              }`}
+            />
             <Share href={url} title={resource.title} type={resource.type} />
           </div>
 

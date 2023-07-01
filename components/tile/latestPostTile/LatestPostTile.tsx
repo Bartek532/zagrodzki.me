@@ -1,14 +1,14 @@
-import { memo } from "react";
 import Link from "next/link";
+import { memo } from "react";
 
-import type { Post } from "types";
 import Arrow from "public/svg/right-top-arrow.svg";
+import type { Post } from "types";
 
 import styles from "./latestPostTile.module.scss";
 
-type LatestPostTileProps = {
+interface LatestPostTileProps {
   readonly post: Post;
-};
+}
 
 export const LatestPostTile = memo<LatestPostTileProps>(({ post }) => {
   return (
@@ -19,7 +19,9 @@ export const LatestPostTile = memo<LatestPostTileProps>(({ post }) => {
           <p className={styles.description}>{post.excerpt}</p>
 
           <div className={styles.additional}>
-            <div className={styles.timeToRead}>{Math.round(post.timeToRead)} minutes read</div>
+            <div className={styles.timeToRead}>
+              {Math.round(post.timeToRead)} minutes read
+            </div>
             <div className={styles.more}>
               Read more
               <span className={styles.arrow}>
@@ -28,7 +30,10 @@ export const LatestPostTile = memo<LatestPostTileProps>(({ post }) => {
             </div>
           </div>
         </div>
-        <div className={styles.image} style={{ backgroundImage: `url(${post.image})` }}></div>
+        <div
+          className={styles.image}
+          style={{ backgroundImage: `url(${post.image})` }}
+        ></div>
       </article>
     </Link>
   );

@@ -1,22 +1,25 @@
-import path from "path";
 import fs from "fs";
+import path from "path";
 
 import matter from "gray-matter";
-import readingTime from "reading-time";
 import { serialize } from "next-mdx-remote/serialize";
-import unified from "unified";
+import readingTime from "reading-time";
+import rehypeStringify from "rehype-stringify";
 import remarkParse from "remark-parse";
 import remarkRehype from "remark-rehype";
-import rehypeStringify from "rehype-stringify";
+import unified from "unified";
 
-import { commonRehypePlugins } from "utils/markdown";
 import type { Project, Post } from "types";
+import { commonRehypePlugins } from "utils/markdown";
 
 const MDX_REGEX = /\.mdx$/;
 
 type Resource = Project | Post;
 
-const getResourceFrontmatter = <T extends Resource>(filename: string, resourcePath: string) => {
+const getResourceFrontmatter = <T extends Resource>(
+  filename: string,
+  resourcePath: string,
+) => {
   const fullPath = path.join(resourcePath, filename);
   const fileContents = fs.readFileSync(fullPath, "utf8");
   const slug = filename.replace(MDX_REGEX, "");
@@ -35,12 +38,19 @@ export const getAllResources = <T extends Resource>(resourcePath: string) => {
   return allResources;
 };
 
-export const getResourceParsedContent = async (slug: string, resourcePath: string) => {
+export const getResourceParsedContent = async (
+  slug: string,
+  resourcePath: string,
+) => {
   const filePath = path.join(resourcePath, `${slug}.mdx`);
   const source = fs.readFileSync(filePath);
   const { content } = matter(source);
 
-  const compiledContent = await unified().use(rehypeStringify).use(remarkRehype).use(remarkParse).process(content);
+  const compiledContent = await unified()
+    .use(rehypeStringify)
+    .use(remarkRehype)
+    .use(remarkParse)
+    .process(content);
 
   return { compiledContent };
 };
@@ -60,12 +70,14 @@ export const getResourceBySlug = async (slug: string, resourcePath: string) => {
 };
 
 const getResourcesSlugs = (resourcePath: string) => {
-  return fs.readdirSync(resourcePath).filter((path) => MDX_REGEX.test(path));
+  return fs.readdirSync(resourcePath).filter((path) => path.endsWith(".mdx"));
 };
 
 export const getResourcesPaths = (resourcePath: string) => {
   const slugs = getResourcesSlugs(resourcePath);
-  const paths = slugs.map((slug) => slug.replace(MDX_REGEX, "")).map((slug) => ({ params: { slug } }));
+  const paths = slugs
+    .map((slug) => slug.replace(MDX_REGEX, ""))
+    .map((slug) => ({ params: { slug } }));
 
   return paths;
 };

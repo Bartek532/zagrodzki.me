@@ -1,14 +1,17 @@
-import { allCategories } from "data/categories";
 import { allAuthors } from "data/authors";
+import { allCategories } from "data/categories";
 
-export type Route = { label: string; path: string };
+export interface Route {
+  label: string;
+  path: string;
+}
 
 export enum RESOURCE_TYPE {
   POST = "post",
   PROJECT = "project",
 }
 
-export type SpotifyTrack = {
+export interface SpotifyTrack {
   album: SpotifyAlbum;
   artists: SpotifyArtist[];
   available_markets: string[];
@@ -30,9 +33,9 @@ export type SpotifyTrack = {
   track_number: number;
   type: string;
   uri: string;
-};
+}
 
-export type SpotifyArtist = {
+export interface SpotifyArtist {
   external_urls: {
     spotify: string;
   };
@@ -41,9 +44,9 @@ export type SpotifyArtist = {
   type: "artist";
   uri: string;
   name: string;
-};
+}
 
-export type SpotifyAlbum = {
+export interface SpotifyAlbum {
   album_type: string;
   artists: SpotifyArtist[];
   available_markets: string[];
@@ -59,9 +62,9 @@ export type SpotifyAlbum = {
   total_tracks: number;
   type: "album";
   uri: string;
-};
+}
 
-export type Project = {
+export interface Project {
   type: RESOURCE_TYPE.PROJECT;
   title: string;
   excerpt: string;
@@ -76,9 +79,9 @@ export type Project = {
   author: Author;
   category: Category;
   priority: number;
-};
+}
 
-export type Post = {
+export interface Post {
   type: RESOURCE_TYPE.POST;
   title: string;
   slug: string;
@@ -90,18 +93,19 @@ export type Post = {
   category: Category;
   image: string;
   author: Author;
-};
+}
 
 export type Category = typeof allCategories[number]["slug"];
 export type Author = typeof allAuthors[number]["name"];
 
 export type PromiseValue<T> = T extends PromiseLike<infer R> ? R : T;
-export type InferGetStaticPropsType<T extends (...args: any) => any> = PromiseValue<ReturnType<T>> extends infer Temp
-  ? Temp extends {
-      readonly props: infer P;
-    }
-    ? P
-    : never
-  : never;
+export type InferGetStaticPropsType<T extends (...args: any) => any> =
+  PromiseValue<ReturnType<T>> extends infer Temp
+    ? Temp extends {
+        readonly props: infer P;
+      }
+      ? P
+      : never
+    : never;
 
 export type HeadingVariant = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
