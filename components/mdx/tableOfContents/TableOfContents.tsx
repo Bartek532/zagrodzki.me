@@ -18,21 +18,22 @@ export const TableOfContents = memo<TableOfContentsProps>(({ contents, currentAc
     <aside className={styles.aside}>
       <h2 className={styles.title}>table of contents</h2>
       <nav className={styles.nav}>
-        <Link href="#introduction">
-          <a className={cn(styles.link, styles.H2, { [styles.active]: currentActiveHeaderId === "introduction" })}>
-            Introduction
-          </a>
+        <Link
+          href="#introduction"
+          className={cn(styles.link, styles.H2, { [styles.active]: currentActiveHeaderId === "introduction" })}
+        >
+          Introduction
         </Link>
         {contents
           ? contents.map((content) => (
-              <Link href={`#${content.id}`} key={content.id}>
-                <a
-                  className={cn(styles.link, styles[content.level], {
-                    [styles.active]: currentActiveHeaderId === content.id,
-                  })}
-                >
-                  {content.text}
-                </a>
+              <Link
+                href={`#${content.id}`}
+                key={content.id}
+                className={cn(styles.link, styles[content.level], {
+                  [styles.active]: currentActiveHeaderId === content.id,
+                })}
+              >
+                {content.text}
               </Link>
             ))
           : null}

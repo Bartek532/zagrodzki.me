@@ -14,8 +14,8 @@ export const Breadcrumbs = memo<BreadcrumbsProps>(({ routes }) => {
     <div className={styles.breadcrumbs}>
       {routes.map((route, index) => (
         <Fragment key={route.path}>
-          <Link href={route.path}>
-            <a className={styles.link}>{route.name}</a>
+          <Link href={route.path} className={styles.link}>
+            {route.name}
           </Link>
           {index !== routes.length - 1 ? (
             <div className={styles.separator}>

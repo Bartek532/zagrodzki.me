@@ -44,11 +44,9 @@ export const Footer = () => {
         <Link href="mailto:bartosz@zagrodzki.me">bartosz@zagrodzki.me</Link>
 
         <div className={styles.links}>
-          <NextLink href="/">
-            <a className={styles.home}>
-              <span className="sr-only">home</span>
-              <Logo />
-            </a>
+          <NextLink href="/" className={styles.home}>
+            <span className="sr-only">home</span>
+            <Logo />
           </NextLink>
           <div className={styles.socials}>
             {SOCIALS.map((social) => (

@@ -19,8 +19,8 @@ export const Navbar = memo<NavbarProps>(({ routes }) => {
       <ul className={styles.list}>
         {routes.map((route) => (
           <li key={route.path} className={styles.link}>
-            <Link href={route.path}>
-              <a className={styles.label}>{route.label}</a>
+            <Link href={route.path} className={styles.label}>
+              {route.label}
             </Link>
             {pathname === route.path || (pathname.startsWith(route.path) && route.path !== "/") ? (
               <motion.div

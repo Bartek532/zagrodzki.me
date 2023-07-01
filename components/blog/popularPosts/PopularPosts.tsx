@@ -20,8 +20,8 @@ export const PopularPosts = memo<PopularPostsProps>(({ posts }) => {
             <span className={styles.icon}>
               <Arrow />
             </span>
-            <Link href={`/blog/${post.slug}`}>
-              <a target="blank">{post.title}</a>
+            <Link href={`/blog/${post.slug}`} target="blank">
+              {post.title}
             </Link>
           </li>
         ))}
