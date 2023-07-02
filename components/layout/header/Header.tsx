@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { ThemeSwitcher } from "components/common/themeSwitcher/ThemeSwitcher";
+import { ThemeSwitcher } from "components/common/theme/ThemeSwitcher";
 import { routes } from "data/routes";
 import Logo from "public/svg/logo.svg";
 import PaperPlane from "public/svg/paper-plane.svg";

@@ -1,11 +1,11 @@
 import type { NextPage, GetStaticProps, GetStaticPaths } from "next";
 
-import { getPostBySlug, getPostsPaths, getNewestPosts } from "lib/posts";
+import { FeaturedPosts } from "components/blog/featuredPosts/FeaturedPosts";
 import { Layout } from "components/layout/Layout";
 import { Mdx } from "components/mdx/Mdx";
-import type { InferGetStaticPropsType } from "types";
 import { Seo } from "components/Seo";
-import { FeaturedPosts } from "components/blog/featuredPosts/FeaturedPosts";
+import { getPostBySlug, getPostsPaths, getNewestPosts } from "lib/posts";
+import type { InferGetStaticPropsType } from "types";
 
 const Post: NextPage = ({
   transformedMdx,

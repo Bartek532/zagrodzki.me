@@ -1,15 +1,17 @@
-import { memo } from "react";
+"use client";
+
 import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
+import { memo } from "react";
 
 import Arrow from "public/svg/right-top-arrow.svg";
 import { SOCIALS } from "utils/consts";
 
 import styles from "./socialTile.module.scss";
 
-type SocialTileProps = {
+interface SocialTileProps {
   readonly social: typeof SOCIALS[number]["name"];
-};
+}
 
 export const SocialTile = memo<SocialTileProps>(({ social }) => {
   const selectedSocial = SOCIALS.find(({ name }) => name === social);
@@ -29,7 +31,11 @@ export const SocialTile = memo<SocialTileProps>(({ social }) => {
       whileHover="hover"
     >
       <span className="sr-only">visit my {social} account</span>
-      <motion.div className={styles.icon} variants={iconVariants} initial={{ x: "-50%", y: "-50%" }}>
+      <motion.div
+        className={styles.icon}
+        variants={iconVariants}
+        initial={{ x: "-50%", y: "-50%" }}
+      >
         <Icon />
       </motion.div>
       <div className={styles.arrow}>

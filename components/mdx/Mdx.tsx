@@ -1,46 +1,46 @@
-import { memo, useRef, useEffect, useCallback, useMemo, useState } from "react";
-import { renderToString } from "react-dom/server";
+import dayjs from "dayjs";
+import advancedFormat from "dayjs/plugin/advancedFormat";
+import customParseFormat from "dayjs/plugin/customParseFormat";
 import { motion } from "framer-motion";
 import NextImage from "next/image";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
-import dayjs from "dayjs";
-import customParseFormat from "dayjs/plugin/customParseFormat";
-import advancedFormat from "dayjs/plugin/advancedFormat";
+import { memo, useRef, useEffect, useCallback, useMemo, useState } from "react";
+import { renderToString } from "react-dom/server";
 
-import * as CustomPostsComponents from "components/mdx/custom";
-import { useTheme } from "providers/ThemeProvider";
 import { Author } from "components/mdx/author/Author";
+import * as CustomPostsComponents from "components/mdx/custom";
+import { Edit } from "components/mdx/edit/Edit";
+import { Heading } from "components/mdx/heading/Heading";
+import { Highlight } from "components/mdx/highlight/Highlight";
+import { Image } from "components/mdx/image/Image";
+import { Info } from "components/mdx/info/Info";
+import { Link } from "components/mdx/link/Link";
+import { Pre } from "components/mdx/pre/Pre";
+import { Quote } from "components/mdx/quote/Quote";
+import { Share } from "components/mdx/share/Share";
+import { useRunningHeader } from "hooks/useRunningHeader";
+import { useTheme } from "providers/ThemeProvider";
+import Arrow from "public/svg/right-top-arrow.svg";
 import type { Project, Post } from "types";
 import { getHeadings } from "utils/getHeadings";
-import { useRunningHeader } from "hooks/useRunningHeader";
-import Arrow from "public/svg/right-top-arrow.svg";
-import { Image } from "components/mdx/image/Image";
-import { Heading } from "components/mdx/heading/Heading";
-import { Link } from "components/mdx/link/Link";
-import { Edit } from "components/mdx/edit/Edit";
-import { Share } from "components/mdx/share/Share";
-import { Quote } from "components/mdx/quote/Quote";
-import { Pre } from "components/mdx/pre/Pre";
-import { Info } from "components/mdx/info/Info";
-import { Highlight } from "components/mdx/highlight/Highlight";
 import { Sandbox } from "components/mdx/sandbox/Sandbox";
 import { normalizeViewsCount } from "utils/normalizeViewsCount";
 import { view } from "lib/views";
 
-import { TableOfContents } from "./tableOfContents/TableOfContents";
 import styles from "./mdx.module.scss";
+import { TableOfContents } from "./tableOfContents/TableOfContents";
 
 dayjs.extend(customParseFormat);
 dayjs.extend(advancedFormat);
 
-type MdxProps = {
+interface MdxProps {
   readonly resource: Project | Post;
-  readonly content: MDXRemoteSerializeResult<Record<string, unknown>>;
-};
+  readonly content: MDXRemoteSerializeResult;
+}
 
-type HeadingComponentProps = {
+interface HeadingComponentProps {
   readonly children: string;
-};
+}
 
 export const Mdx = memo<MdxProps>(({ resource, content }) => {
   const contentElRef = useRef<HTMLDivElement | null>(null);

@@ -1,8 +1,15 @@
-/** @type {import('next').NextConfig} */
-const withTM = require("next-transpile-modules")(["react-github-btn"]);
+// @ts-check
+
+// const withTM = require("next-transpile-modules")(["react-github-btn"]);
 const withPWA = require("next-pwa");
 
-module.exports = {
+/**
+ * @type {import('next').NextConfig}
+ **/
+const nextConfig = {
+  experimental: {
+    typedRoutes: true,
+  },
   reactStrictMode: true,
   webpack(config) {
     config.module.rules.push({
@@ -23,7 +30,6 @@ module.exports = {
       },
     ];
   },
-
   async redirects() {
     return [
       {
@@ -41,7 +47,6 @@ module.exports = {
         destination: "/blog/THE_NEWEST_POST_SLUG_HERE",
         permanent: false,
       },
-
       {
         source: "/twitter",
         destination: `https://twitter.com/${process.env.NEXT_PUBLIC_TWITTER_USERNAME}`,
@@ -65,6 +70,8 @@ module.exports = {
     ];
   },
 };
+
+module.exports = nextConfig;
 // module.exports = withPWA(
 //   withTM({
 //     reactStrictMode: true,

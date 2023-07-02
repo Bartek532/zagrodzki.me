@@ -58,7 +58,8 @@
     "reading-time": "^1.5.0",
     "sharp": "^0.29.3",
     "slugify": "^1.6.4",
-    "yup": "^0.32.11"
+    "yup": "^0.32.11",
+    "zod": "3.21.4"
   },
   "devDependencies": {
     "@mapbox/rehype-prism": "^0.8.0",

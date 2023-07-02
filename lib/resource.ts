@@ -60,7 +60,7 @@ export const getResourceBySlug = async (slug: string, resourcePath: string) => {
   const source = fs.readFileSync(filePath);
   const { content, data } = matter(source);
   const timeToRead = readingTime(content).minutes;
-  const frontmatter = { ...data, timeToRead } as Omit<Resource, "slug">;
+  const frontmatter = { ...data, timeToRead } as Resource;
   const transformedMdx = await serialize(content, {
     scope: data,
     mdxOptions: { rehypePlugins: commonRehypePlugins },
@@ -77,7 +77,7 @@ export const getResourcesPaths = (resourcePath: string) => {
   const slugs = getResourcesSlugs(resourcePath);
   const paths = slugs
     .map((slug) => slug.replace(MDX_REGEX, ""))
-    .map((slug) => ({ params: { slug } }));
+    .map((slug) => ({ slug }));
 
   return paths;
 };

@@ -2,7 +2,9 @@ import { RESOURCE_TYPE } from "types";
 
 import { supabase } from "./supabase";
 
-export const getViewsByType = async (type: RESOURCE_TYPE): Promise<number> => {
+export const getResourceViews = async (
+  type: RESOURCE_TYPE,
+): Promise<number> => {
   const { data } = await supabase.from("views").select("*").eq("type", type);
 
   const views = data?.reduce((acc, curr) => acc + curr.count, 0);

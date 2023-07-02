@@ -1,3 +1,5 @@
+import { env } from "env/client";
+
 export const ORIGIN =
   process.env.NEXT_PUBLIC_HOST ??
   process.env.NEXT_PUBLIC_VERCEL_URL ??
@@ -20,17 +22,17 @@ export const SOCIALS = [
   {
     name: "twitter",
     color: "#94ccff",
-    link: `https://twitter.com/${process.env.NEXT_PUBLIC_TWITTER_USERNAME}`,
+    link: `https://twitter.com/${env.NEXT_PUBLIC_TWITTER_USERNAME}`,
   },
   {
     name: "linkedin",
     color: "#2867B2",
-    link: `https://www.linkedin.com/in/${process.env.NEXT_PUBLIC_LINKEDIN_USERNAME}`,
+    link: `https://www.linkedin.com/in/${env.NEXT_PUBLIC_LINKEDIN_USERNAME}`,
   },
   {
     name: "github",
     color: "#333",
-    link: `https://github.com/${process.env.NEXT_PUBLIC_GITHUB_USERNAME}`,
+    link: `https://github.com/${env.NEXT_PUBLIC_GITHUB_USERNAME}`,
   },
   {
     name: "rss",

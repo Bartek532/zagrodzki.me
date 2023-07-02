@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import WinkingAvatar from "public/img/avatars/winking.png";
 import Arrow from "public/svg/right-top-arrow.svg";
 
 import styles from "./aboutTile.module.scss";
@@ -9,12 +10,7 @@ export const AboutTile = () => {
   return (
     <Link href="/about" className={styles.tile}>
       <div className={styles.avatar}>
-        <Image
-          src="/img/avatars/winking.png"
-          alt="winking memoji"
-          width={230}
-          height={306}
-        />
+        <Image src={WinkingAvatar} alt="winking memoji" />
       </div>
       <p className={styles.description}>
         I&apos;m <strong className={styles.name}>Bartek</strong>, full-stack

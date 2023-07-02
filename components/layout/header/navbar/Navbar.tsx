@@ -1,18 +1,22 @@
-import { memo } from "react";
+"use client";
+
 import { motion } from "framer-motion";
-import { useRouter } from "next/router";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { memo } from "react";
 
 import type { Route } from "types";
 
 import styles from "./navbar.module.scss";
 
-type NavbarProps = {
+interface NavbarProps {
   readonly routes: Route[];
-};
+}
 
 export const Navbar = memo<NavbarProps>(({ routes }) => {
-  const { pathname } = useRouter();
+  const pathname = usePathname();
+
+  if (!pathname) return null;
 
   return (
     <nav className={styles.nav}>
@@ -22,7 +26,8 @@ export const Navbar = memo<NavbarProps>(({ routes }) => {
             <Link href={route.path} className={styles.label}>
               {route.label}
             </Link>
-            {pathname === route.path || (pathname.startsWith(route.path) && route.path !== "/") ? (
+            {pathname === route.path ||
+            (pathname.startsWith(route.path) && route.path !== "/") ? (
               <motion.div
                 className={styles.active}
                 layoutId="active"

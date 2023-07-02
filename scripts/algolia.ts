@@ -40,10 +40,11 @@ const generateAlgoliaPosts = async () => {
 };
 
 async function run() {
-  invariant(!!process.env.ALGOLIA_UPDATE_API_KEY, "Admin API KEY is not set");
+  invariant(!!process.env.ALGOLIA_UPDATE_API_KEY, "Admin API KEY is not set!");
+  invariant(!!process.env.ALGOLIA_APP_ID, "App id is not set!");
 
   const client = algoliasearch(
-    process.env.ALGOLIA_APP_ID!,
+    process.env.ALGOLIA_APP_ID,
     process.env.ALGOLIA_UPDATE_API_KEY,
   );
   const projectsIndex = client.initIndex("projects");

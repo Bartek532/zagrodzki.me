@@ -1,6 +1,7 @@
-import { useState, useEffect, createContext, useContext } from "react";
+import { useState, useEffect } from "react";
 
 import { useLocalStorage } from "hooks/useLocalStorage";
+import { createSafeContext } from "lib/context";
 
 type ThemeVariants = "system" | "dark" | "light";
 
@@ -14,9 +15,9 @@ interface ThemeProviderProps {
   children: React.ReactNode;
 }
 
-const ThemeStateContext = createContext<ThemeContext | undefined>(undefined);
+const [useTheme, ThemeContextProvider] = createSafeContext<ThemeContext>();
 
-export const ThemeProvider = ({ children }: ThemeProviderProps) => {
+const ThemeProvider = ({ children }: ThemeProviderProps) => {
   const [theme, setTheme] = useLocalStorage<ThemeVariants>("theme", "system");
   const [systemTheme, setSystemTheme] = useState<Exclude<
     ThemeVariants,
@@ -45,7 +46,7 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
   };
 
   return (
-    <ThemeStateContext.Provider
+    <ThemeContextProvider
       value={{
         theme: theme === "system" ? systemTheme! : theme!,
         setTheme,
@@ -53,15 +54,8 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
       }}
     >
       {children}
-    </ThemeStateContext.Provider>
+    </ThemeContextProvider>
   );
 };
 
-export const useTheme = () => {
-  const context = useContext(ThemeStateContext);
-  if (context === undefined) {
-    throw new Error("useTheme must be used within a ThemeProvider");
-  }
-
-  return context;
-};
+export { useTheme, ThemeProvider };

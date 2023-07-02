@@ -42,6 +42,7 @@
           "parent",
           "sibling",
           "index",
+          "type",
           "unknown"
         ],
         "newlines-between": "always",

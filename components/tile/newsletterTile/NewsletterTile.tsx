@@ -1,11 +1,13 @@
-import { useForm } from "react-hook-form";
-import Image from "next/image";
-import clsx from "clsx";
-import { useState } from "react";
+"use client";
 
-import { EMAIL_REGEX } from "utils/consts";
+import clsx from "clsx";
+import Image from "next/image";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+
 import { Input } from "components/common/input/Input";
 import { LoaderRing } from "components/common/loader/LoaderRing";
+import { EMAIL_REGEX } from "utils/consts";
 import { fetcher } from "utils/fetcher";
 
 import styles from "./newsletterTile.module.scss";
@@ -20,7 +22,7 @@ export const NewsletterTile = () => {
   } = useForm();
   const [promiseStatus, setPromiseStatus] = useState<PromiseStatus>("pending");
 
-  const handleFormSubmit = async ({ email }: { [key: string]: string }) => {
+  const handleFormSubmit = async ({ email }: Record<string, string>) => {
     setPromiseStatus("loading");
     try {
       await fetcher("/api/newsletter", { method: "POST", body: { email } });
@@ -32,11 +34,22 @@ export const NewsletterTile = () => {
 
   return (
     <div className={styles.tile}>
-      <h3 className={styles.title}>Subscribe to get my notes, thoughts and many more via email 📬</h3>
+      <h3 className={styles.title}>
+        Subscribe to get my notes, thoughts and many more via email 📬
+      </h3>
       <div className={styles.avatar}>
-        <Image src="/img/avatars/have-an-idea.png" alt="" width="421" height="421" />
+        <Image
+          src="/img/avatars/have-an-idea.png"
+          alt=""
+          width="421"
+          height="421"
+        />
       </div>
-      <form className={styles.form} onSubmit={handleSubmit(handleFormSubmit)} noValidate>
+      <form
+        className={styles.form}
+        onSubmit={handleSubmit(handleFormSubmit)}
+        noValidate
+      >
         <Input
           type="email"
           placeholder="your@email.com"
@@ -49,7 +62,10 @@ export const NewsletterTile = () => {
           <span className="sr-only">email</span>
         </Input>
 
-        <button className={clsx(styles.btn, styles[promiseStatus])} disabled={promiseStatus === "fullfilled"}>
+        <button
+          className={clsx(styles.btn, styles[promiseStatus])}
+          disabled={promiseStatus === "fullfilled"}
+        >
           {promiseStatus === "loading" ? (
             <div className={styles.loader}>
               <LoaderRing />

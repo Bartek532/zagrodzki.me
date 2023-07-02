@@ -1,12 +1,15 @@
 import type { NextPage, GetStaticProps } from "next";
 
-import type { InferGetStaticPropsType } from "types";
 import { Layout } from "components/layout/Layout";
 import { Mdx } from "components/mdx/Mdx";
-import { getProjectsPaths, getProjectBySlug } from "lib/projects";
 import { Seo } from "components/Seo";
+import { getProjectsPaths, getProjectBySlug } from "lib/projects";
+import type { InferGetStaticPropsType } from "types";
 
-const Project: NextPage = ({ transformedMdx, frontmatter }: InferGetStaticPropsType<typeof getStaticProps>) => {
+const Project: NextPage = ({
+  transformedMdx,
+  frontmatter,
+}: InferGetStaticPropsType<typeof getStaticProps>) => {
   const { title, excerpt, publishedAt, image, author } = frontmatter;
 
   return (
