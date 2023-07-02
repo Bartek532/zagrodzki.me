@@ -8,7 +8,8 @@ pre[data-lang]:not(pre[data-lang=""]) {
     right: 2.5rem;
     top: 1px;
     transform: translateY(-100%);
-    font-family: "GT Walsheim", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: var(--font-walsheim), "Helvetica Neue", Helvetica, Arial,
+      sans-serif;
     text-transform: uppercase;
     background-color: var(--syntax-background);
     font-weight: 600;
@@ -23,7 +24,7 @@ code,
 pre {
   color: var(--base-syntax-color);
   background: none;
-  font-family: "League Mono", Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+  font-family: var(--font-mono), Monaco, "Andale Mono", "Ubuntu Mono", monospace;
   text-align: left;
   white-space: pre;
   word-spacing: normal;
