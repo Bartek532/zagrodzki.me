@@ -31,6 +31,8 @@ export const getHeadings = (source: string) => {
       };
     });
   }
+
+  return null;
 };
 
 export const getBreadcrumbs = (type: RESOURCE_TYPE, category?: string) => {

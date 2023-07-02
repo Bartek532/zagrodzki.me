@@ -9,8 +9,9 @@ import remarkParse from "remark-parse";
 import remarkRehype from "remark-rehype";
 import unified from "unified";
 
-import type { Project, Post } from "types";
 import { commonRehypePlugins } from "utils/markdown";
+
+import type { Project, Post } from "types";
 
 const MDX_REGEX = /\.mdx$/;
 
@@ -31,9 +32,9 @@ const getResourceFrontmatter = <T extends Resource>(
 
 export const getAllResources = <T extends Resource>(resourcePath: string) => {
   const filenames = fs.readdirSync(resourcePath);
-  const allResources = filenames.map((filename) => {
-    return getResourceFrontmatter<T>(filename, resourcePath);
-  });
+  const allResources = filenames.map((filename) =>
+    getResourceFrontmatter<T>(filename, resourcePath),
+  );
 
   return allResources;
 };

@@ -3,7 +3,13 @@ import path from "path";
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 
-import { getAllResources, getResourcesPaths, getResourceBySlug, getResourceParsedContent } from "lib/resource";
+import {
+  getAllResources,
+  getResourcesPaths,
+  getResourceBySlug,
+  getResourceParsedContent,
+} from "lib/resource";
+
 import type { Post } from "types";
 
 dayjs.extend(customParseFormat);
@@ -38,27 +44,23 @@ export const sortPostsByNewest = (posts: Post[]) => {
   });
 };
 
-const filterUnpublishedPosts = (posts: Post[]) => posts.filter((post) => post.isPublished);
-
 export const getPublishedPosts = () => {
   const posts = getAllPosts();
 
-  return filterUnpublishedPosts(posts);
+  return posts.filter((post) => post.isPublished);
 };
 
 export const getNewestPosts = () => {
   const publishedPosts = getPublishedPosts();
-  const sortedPosts = sortPostsByNewest(publishedPosts);
 
-  return sortedPosts;
+  return sortPostsByNewest(publishedPosts);
 };
 
 export const getPostsCategories = () => {
   const posts = getPublishedPosts();
   const allCategories = posts.map((post) => post.category);
-  const uniqueCategories = [...new Set(allCategories)];
 
-  return uniqueCategories;
+  return [...new Set(allCategories)];
 };
 
 export const getPopularPosts = () => {

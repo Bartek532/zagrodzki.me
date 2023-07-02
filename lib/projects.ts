@@ -3,7 +3,13 @@ import path from "path";
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 
-import { getAllResources, getResourcesPaths, getResourceBySlug, getResourceParsedContent } from "lib/resource";
+import {
+  getAllResources,
+  getResourcesPaths,
+  getResourceBySlug,
+  getResourceParsedContent,
+} from "lib/resource";
+
 import type { Project } from "types";
 
 dayjs.extend(customParseFormat);
@@ -49,7 +55,6 @@ export const sortProjectsByPriority = (projects: Project[]) => {
 
 export const getBestProjects = () => {
   const projects = getAllProjects();
-  const sortedProjects = sortProjectsByPriority(projects);
 
-  return sortedProjects;
+  return sortProjectsByPriority(projects);
 };

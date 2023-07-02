@@ -34,7 +34,7 @@ export const getAccessToken = async (refreshToken: string) => {
         "Content-Type": "application/x-www-form-urlencoded",
       },
       next: {
-        revalidate: false,
+        revalidate: 0,
       },
     },
   );

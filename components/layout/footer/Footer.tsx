@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 import NextLink from "next/link";
 
 import { Link } from "components/mdx/link/Link";
+import { env } from "env/client";
 import { useWindowSize } from "hooks/useWindowSize";
 import { useTheme } from "providers/ThemeProvider";
 import Logo from "public/svg/logo.svg";
@@ -48,7 +49,9 @@ export const Footer = () => (
         Feel free to reach out if you&apos;re looking for a developer, have a
         question or just want to connect 📭
       </p>
-      <Link href="mailto:bartosz@zagrodzki.me">bartosz@zagrodzki.me</Link>
+      <Link href={`mailto:${env.NEXT_PUBLIC_EMAIL}`}>
+        {env.NEXT_PUBLIC_EMAIL}
+      </Link>
 
       <div className={styles.links}>
         <NextLink href="/" className={styles.home}>
