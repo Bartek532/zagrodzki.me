@@ -44,9 +44,9 @@ const Social = ({ social }: { social: typeof SOCIALS[number] }) => {
 export const Footer = () => (
   <footer className={styles.footer}>
     <div className={styles.wrapper}>
-      <h4 className={styles.title}>Let&apos;s build something together</h4>
+      <h4 className={styles.title}>Let&#39;s build something together</h4>
       <p className={styles.description}>
-        Feel free to reach out if you&apos;re looking for a developer, have a
+        Feel free to reach out if you&#39;re looking for a developer, have a
         question or just want to connect 📭
       </p>
       <Link href={`mailto:${env.NEXT_PUBLIC_EMAIL}`}>

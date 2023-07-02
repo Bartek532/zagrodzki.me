@@ -1,13 +1,13 @@
-import { memo } from "react";
 import dynamic from "next/dynamic";
-
-import type { Fact as FactType } from "../../../types";
+import { memo } from "react";
 
 import styles from "./fact.module.scss";
 
-type FactProps = {
+import type { Fact as FactType } from "../../../types";
+
+interface FactProps {
   readonly fact: FactType;
-};
+}
 
 export const Fact = memo<FactProps>(({ fact }) => {
   const Icon = dynamic(() => import(`public/svg/${fact.icon}.svg`));

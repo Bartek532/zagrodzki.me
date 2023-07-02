@@ -1,8 +1,8 @@
 import { memo } from "react";
 
-import type { Position } from "../../types";
-
 import styles from "./experience.module.scss";
+
+import type { Position } from "../../types";
 
 interface ExperienceProps {
   readonly positions: readonly Position[];
@@ -13,7 +13,7 @@ export const Experience = memo<ExperienceProps>(({ positions }) => {
     <section className={styles.experience}>
       <h2 className={styles.title}>Experience</h2>
       <p className={styles.description}>
-        All the places I&apos;ve worked at so far 💼
+        All the places I&#39;ve worked at so far 💼
       </p>
 
       <ol className={styles.list}>

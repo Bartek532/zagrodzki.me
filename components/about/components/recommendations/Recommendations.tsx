@@ -1,18 +1,18 @@
-import { memo } from "react";
 import Image from "next/image";
+import { memo } from "react";
 
 import QuoteIcon from "public/svg/quote.svg";
 
-import type { Recommendation } from "../../types";
-
 import styles from "./recommendations.module.scss";
 
-type RecommendationsProps = {
-  readonly recommendations: readonly Recommendation[];
-};
+import type { Recommendation } from "../../types";
 
-export const Recommendations = memo<RecommendationsProps>(({ recommendations }) => {
-  return (
+interface RecommendationsProps {
+  readonly recommendations: readonly Recommendation[];
+}
+
+export const Recommendations = memo<RecommendationsProps>(
+  ({ recommendations }) => (
     <section className={styles.recommendations}>
       <h2 className={styles.title}>Recommendations</h2>
       <p className={styles.description}>What do others say about me? 👀</p>
@@ -39,7 +39,7 @@ export const Recommendations = memo<RecommendationsProps>(({ recommendations }) 
         ))}
       </ul>
     </section>
-  );
-});
+  ),
+);
 
 Recommendations.displayName = "Recommendations";

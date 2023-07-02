@@ -34,7 +34,7 @@ export const AboutView = ({ views }: { views: number }) => {
         <div className={styles.collaboration}>
           <h2 className={styles.title}>Collaboration</h2>
           <p className={styles.description}>
-            I&apos;m always open to new suggestions. If you have an
+            I&#39;m always open to new suggestions. If you have an
             unconventional offer or want to see what else I have to offer,
             contact me at{" "}
             <Link href={`mailto:${env.NEXT_PUBLIC_EMAIL}`}>
@@ -60,7 +60,7 @@ export const AboutView = ({ views }: { views: number }) => {
               Twitter
             </Link>{" "}
             or other social media. I reply to all messages! Ask me anything,
-            I&apos;m not afraid of any topics.
+            I&#39;m not afraid of any topics.
           </p>
         </div>
       </div>

@@ -13,10 +13,10 @@ export const AboutTile = () => {
         <Image src={WinkingAvatar} alt="winking memoji" />
       </div>
       <p className={styles.description}>
-        I&apos;m <strong className={styles.name}>Bartek</strong>, full-stack
-        developer, blogger, freelancer, technologies enthusiast. I&apos;m in
-        love with React and TypeScript ❤️ Constantly learning and discovering
-        new stuff 📖
+        I&#39;m <strong className={styles.name}>Bartek</strong>, full-stack
+        developer, blogger, freelancer, technologies enthusiast. I&#39;m in love
+        with React and TypeScript ❤️ Constantly learning and discovering new
+        stuff 📖
       </p>
       <div className={styles.more}>
         Learn more
