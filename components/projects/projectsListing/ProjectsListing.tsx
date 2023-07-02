@@ -1,23 +1,28 @@
-import { useCallback, useState, memo } from "react";
+"use client";
+
 import algoliasearch from "algoliasearch";
+import Image from "next/image";
+import { useCallback, useState, memo } from "react";
 import {
   InstantSearch,
   connectHits,
   connectStateResults,
 } from "react-instantsearch-dom";
-import type { HitsProvided } from "react-instantsearch-core";
-import Image from "next/image";
 
-import { SearchBox } from "components/common/search/SearchBox";
 import { LoaderRing } from "components/common/loader/LoaderRing";
+import { SearchBox } from "components/common/search/SearchBox";
 import { ProjectThumbnail } from "components/projects/projectsListing/projectThumbnail/ProjectThumbnail";
-import type { Project } from "types";
+import { env } from "env/client";
+import DisappointedAvatar from "public/img/avatars/disappointed.png";
 
 import styles from "./projectsListing.module.scss";
 
+import type { HitsProvided } from "react-instantsearch-core";
+import type { Project } from "types";
+
 const searchClient = algoliasearch(
-  process.env.NEXT_PUBLIC_ALGOLIA_APP_ID!,
-  process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_KEY!,
+  env.NEXT_PUBLIC_ALGOLIA_APP_ID,
+  env.NEXT_PUBLIC_ALGOLIA_SEARCH_KEY,
 );
 
 interface CustomHitsProps extends HitsProvided<Project> {
@@ -35,12 +40,7 @@ export const CustomHits = connectHits<CustomHitsProps, Project>(
       return (
         <div className={styles.empty}>
           <div className={styles.avatar}>
-            <Image
-              src="/img/avatars/disappointed.png"
-              alt="disappointed memoji"
-              width={421}
-              height={421}
-            />
+            <Image src={DisappointedAvatar} alt="disappointed memoji" />
           </div>
         </div>
       );
@@ -53,7 +53,7 @@ export const CustomHits = connectHits<CustomHitsProps, Project>(
             key={hit.objectID}
             role="option"
             aria-describedby="search-details"
-            aria-selected={currentObjectID === hit.objectID ? "true" : "false"}
+            aria-selected={currentObjectID === hit.objectID}
             id={"id" + hit.objectID}
             className={styles.hit}
           >

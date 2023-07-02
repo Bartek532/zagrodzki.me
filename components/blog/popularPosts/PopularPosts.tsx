@@ -1,14 +1,15 @@
-import { memo } from "react";
 import Link from "next/link";
+import { memo } from "react";
 
-import type { Post } from "types";
 import Arrow from "public/svg/right-top-arrow.svg";
 
 import styles from "./popularPosts.module.scss";
 
-type PopularPostsProps = {
+import type { Post } from "types";
+
+interface PopularPostsProps {
   readonly posts: Post[];
-};
+}
 
 export const PopularPosts = memo<PopularPostsProps>(({ posts }) => {
   return (

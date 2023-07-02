@@ -1,9 +1,10 @@
-import type { ChangeEventHandler } from "react";
-import { connectSearchBox } from "react-instantsearch-dom";
-import type { SearchBoxProvided } from "react-instantsearch-core";
 import { useCallback } from "react";
+import { connectSearchBox } from "react-instantsearch-dom";
 
 import { Input } from "components/common/input/Input";
+
+import type { ChangeEventHandler } from "react";
+import type { SearchBoxProvided } from "react-instantsearch-core";
 
 interface SearchBoxProps extends SearchBoxProvided {
   readonly currentObjectID?: string | null;
@@ -31,7 +32,9 @@ export const SearchBox = connectSearchBox<SearchBoxProps>(
           placeholder="Search..."
           onChange={handleChange}
           value={currentRefinement}
-          {...(currentObjectID && { "aria-activedescendant": "id" + currentObjectID })}
+          {...(currentObjectID && {
+            "aria-activedescendant": "id" + currentObjectID,
+          })}
           type="search"
         >
           <span className="sr-only">search</span>

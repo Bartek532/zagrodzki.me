@@ -1,13 +1,13 @@
 import { memo } from "react";
 
+import styles from "./categoriesList.module.scss";
+import { CategoryCard } from "./categoryCard/CategoryCard";
+
 import type { Category } from "types";
 
-import { CategoryCard } from "./categoryCard/CategoryCard";
-import styles from "./categoriesList.module.scss";
-
-type CategoriesListProps = {
+interface CategoriesListProps {
   readonly categories: Category[];
-};
+}
 
 export const CategoriesList = memo<CategoriesListProps>(({ categories }) => {
   return (

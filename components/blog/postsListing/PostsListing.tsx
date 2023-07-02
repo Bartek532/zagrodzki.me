@@ -1,28 +1,33 @@
-import { useState, useCallback, memo } from "react";
+"use client";
+
 import algoliasearch from "algoliasearch";
+import Image from "next/image";
+import { useSearchParams } from "next/navigation";
+import { useState, useCallback, memo } from "react";
 import {
   InstantSearch,
   connectHits,
   Configure,
   connectStateResults,
 } from "react-instantsearch-dom";
-import type { HitsProvided } from "react-instantsearch-core";
-import Image from "next/image";
-import { useRouter } from "next/router";
 
-import { LoaderRing } from "components/common/loader/LoaderRing";
-import { allCategories } from "data/categories";
-import type { Post, Category } from "types";
+import { PopularPosts } from "components/blog/popularPosts/PopularPosts";
 import { PostThumbnail } from "components/blog/postsListing/postThumbnail/PostThumbnail";
 import { CategoriesList } from "components/category/categoriesList/CategoriesList";
-import { PopularPosts } from "components/blog/popularPosts/PopularPosts";
+import { LoaderRing } from "components/common/loader/LoaderRing";
 import { SearchBox } from "components/common/search/SearchBox";
+import { allCategories } from "data/categories";
+import { env } from "env/client";
+import DisappointedAvatar from "public/img/avatars/disappointed.png";
 
 import styles from "./postsListing.module.scss";
 
+import type { HitsProvided } from "react-instantsearch-core";
+import type { Post, Category } from "types";
+
 const searchClient = algoliasearch(
-  process.env.NEXT_PUBLIC_ALGOLIA_APP_ID!,
-  process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_KEY!,
+  env.NEXT_PUBLIC_ALGOLIA_APP_ID,
+  env.NEXT_PUBLIC_ALGOLIA_SEARCH_KEY,
 );
 
 interface CustomHitsProps extends HitsProvided<Post> {
@@ -36,12 +41,7 @@ export const CustomHits = connectHits<CustomHitsProps, Post>(
       return (
         <div className={styles.empty}>
           <div className={styles.avatar}>
-            <Image
-              src="/img/avatars/disappointed.png"
-              alt="disappointed memoji"
-              width={421}
-              height={421}
-            />
+            <Image src={DisappointedAvatar} alt="disappointed memoji" />
           </div>
         </div>
       );
@@ -54,7 +54,7 @@ export const CustomHits = connectHits<CustomHitsProps, Post>(
             key={hit.objectID}
             role="option"
             aria-describedby="search-details"
-            aria-selected={currentObjectID === hit.objectID ? "true" : "false"}
+            aria-selected={currentObjectID === hit.objectID}
             id={"id" + hit.objectID}
             className={styles.hit}
           >
@@ -82,7 +82,7 @@ const LoadingIndicator = connectStateResults(({ isSearchStalled }) =>
 export const PostsListing = memo<PostsListingProps>(
   ({ popularPosts, categories }) => {
     const [currentObjectID, setObjectId] = useState<string | null>(null);
-    const router = useRouter();
+    const searchParams = useSearchParams();
 
     const handleInputChange = useCallback(() => {
       setTimeout(() => setObjectId(null), 0);
@@ -95,16 +95,18 @@ export const PostsListing = memo<PostsListingProps>(
             <CategoriesList categories={categories} />
             <PopularPosts posts={popularPosts} />
             <div className={styles.wrapper}>
-              {router.query.category ? (
+              {searchParams?.has("category") ? (
                 <>
                   <h2 className={styles.searchedCategory}>
                     {
                       allCategories.find(
-                        (c) => c.slug === router.query.category,
+                        (c) => c.slug === searchParams.get("category"),
                       )?.name
                     }
                   </h2>
-                  <Configure filters={`category:${router.query.category}`} />
+                  <Configure
+                    filters={`category:${searchParams.get("category") ?? ""}`}
+                  />
                 </>
               ) : (
                 <SearchBox
