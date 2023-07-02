@@ -45,6 +45,7 @@
     justify-self: end;
     @include mixins.flex;
     gap: 4.5rem;
+
     .theme {
       position: relative;
       transform: scale(0.6);
@@ -52,7 +53,7 @@
       cursor: pointer;
       display: none;
 
-      @include mixins.mediaquery("sm") {
+      @include mixins.mediaquery("m") {
         display: block;
       }
     }

@@ -25,8 +25,7 @@ import { useRunningHeader } from "hooks/useRunningHeader";
 import { view } from "lib/views";
 import { useTheme } from "providers/ThemeProvider";
 import Arrow from "public/svg/right-top-arrow.svg";
-import { getHeadings } from "utils/getHeadings";
-import { normalizeViewsCount } from "utils/normalizeViewsCount";
+import { getHeadings, normalizeViewsCount } from "utils/functions";
 
 import styles from "./mdx.module.scss";
 import { TableOfContents } from "./tableOfContents/TableOfContents";

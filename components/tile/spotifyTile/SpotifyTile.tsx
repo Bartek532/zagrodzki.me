@@ -14,8 +14,6 @@ import { normalizeTrackArtists } from "./utils/normalizeTrackArtists";
 
 const getTrack = async () => {
   try {
-    await new Promise((r) => setTimeout(r, 5000));
-
     const data = await fetchLastTrack();
 
     return { data, error: null };

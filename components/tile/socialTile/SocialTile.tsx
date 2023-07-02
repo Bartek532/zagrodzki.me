@@ -13,19 +13,22 @@ interface SocialTileProps {
   readonly social: typeof SOCIALS[number]["name"];
 }
 
+const iconVariants = {
+  hover: { scale: 1.05 },
+};
+
 export const SocialTile = memo<SocialTileProps>(({ social }) => {
   const selectedSocial = SOCIALS.find(({ name }) => name === social);
-  const Icon = dynamic(() => import(`public/svg/${selectedSocial?.name}.svg`));
 
-  const iconVariants = {
-    hover: { scale: 1.05 },
-  };
+  if (!selectedSocial) return null;
+
+  const Icon = dynamic(() => import(`public/svg/${selectedSocial.name}.svg`));
 
   return (
     <motion.a
-      href={selectedSocial?.link}
+      href={selectedSocial.link}
       className={styles.tile}
-      style={{ backgroundColor: selectedSocial?.color }}
+      style={{ backgroundColor: selectedSocial.color }}
       target="_blank"
       rel="noreferrer"
       whileHover="hover"

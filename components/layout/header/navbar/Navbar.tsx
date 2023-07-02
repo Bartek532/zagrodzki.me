@@ -5,9 +5,9 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { memo } from "react";
 
-import type { Route } from "types";
-
 import styles from "./navbar.module.scss";
+
+import type { Route } from "types";
 
 interface NavbarProps {
   readonly routes: Route[];

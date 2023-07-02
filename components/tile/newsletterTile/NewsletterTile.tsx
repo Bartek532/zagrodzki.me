@@ -1,25 +1,33 @@
 "use client";
 
+import { zodResolver } from "@hookform/resolvers/zod";
 import clsx from "clsx";
 import Image from "next/image";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { z } from "zod";
 
 import { Input } from "components/common/input/Input";
 import { LoaderRing } from "components/common/loader/LoaderRing";
-import { EMAIL_REGEX } from "utils/consts";
 import { fetcher } from "utils/fetcher";
+import { onPromise } from "utils/functions";
 
 import styles from "./newsletterTile.module.scss";
 
 type PromiseStatus = "pending" | "loading" | "fullfilled" | "rejected";
+
+const newsletterSchema = z.object({
+  email: z.string().email(),
+});
 
 export const NewsletterTile = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    resolver: zodResolver(newsletterSchema),
+  });
   const [promiseStatus, setPromiseStatus] = useState<PromiseStatus>("pending");
 
   const handleFormSubmit = async ({ email }: Record<string, string>) => {
@@ -47,17 +55,14 @@ export const NewsletterTile = () => {
       </div>
       <form
         className={styles.form}
-        onSubmit={handleSubmit(handleFormSubmit)}
+        onSubmit={onPromise(handleSubmit(handleFormSubmit))}
         noValidate
       >
         <Input
           type="email"
           placeholder="your@email.com"
           isError={!!errors.email}
-          {...register("email", {
-            required: true,
-            pattern: EMAIL_REGEX,
-          })}
+          {...register("email")}
         >
           <span className="sr-only">email</span>
         </Input>
