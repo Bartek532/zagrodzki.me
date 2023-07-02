@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import { useState } from "react";
 
@@ -10,12 +12,22 @@ export const Contact = () => {
 
   return (
     <section className={styles.wrapper}>
-      <ContactForm handleIsSent={(val: boolean) => setIsSent(val)} />
+      <ContactForm handleIsSent={(val) => setIsSent(val)} />
       <div className={styles.avatar}>
         {isSent ? (
-          <Image src="/img/avatars/in-love.png" alt="" width="421" height="421" />
+          <Image
+            src="/img/avatars/in-love.png"
+            alt=""
+            width="421"
+            height="421"
+          />
         ) : (
-          <Image src="/img/avatars/surprised.png" alt="" width="421" height="421" />
+          <Image
+            src="/img/avatars/surprised.png"
+            alt=""
+            width="421"
+            height="421"
+          />
         )}
       </div>
     </section>

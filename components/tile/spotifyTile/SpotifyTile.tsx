@@ -6,13 +6,29 @@ import CrossIcon from "public/svg/cross.svg";
 import OfflineIcon from "public/svg/offline.svg";
 import SpotifyIcon from "public/svg/spotify.svg";
 
-import { useGetTrack } from "./hooks/useGetTrack";
+import { fetchLastTrack } from "./api/spotify";
 import styles from "./spotifyTile.module.scss";
+import { TRACK_STATUS } from "./types";
 import { normalizeTitle } from "./utils/normalizeTitle";
 import { normalizeTrackArtists } from "./utils/normalizeTrackArtists";
 
-export const SpotifyTile = () => {
-  const { data, error } = useGetTrack();
+const getTrack = async () => {
+  try {
+    await new Promise((r) => setTimeout(r, 5000));
+
+    const data = await fetchLastTrack();
+
+    return { data, error: null };
+  } catch (e) {
+    if (e instanceof Error) {
+      return { data: null, error: e.message };
+    }
+    return { data: null, error: "Unexpected error occurred!" };
+  }
+};
+
+export const SpotifyTile = async () => {
+  const { data, error } = await getTrack();
 
   if (error) {
     return (
@@ -50,7 +66,7 @@ export const SpotifyTile = () => {
         </div>
         <div className={styles.info}>
           <span className={styles.label}>
-            {data.status === "online" ? (
+            {data.status === TRACK_STATUS.ONLINE ? (
               <>
                 <span className={styles.barWrapper}>
                   <span className={clsx(styles.bar, styles.bar1)}></span>

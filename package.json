@@ -56,6 +56,7 @@
     "react-instantsearch-core": "6.40.0",
     "react-instantsearch-dom": "^6.18.0",
     "reading-time": "^1.5.0",
+    "server-only": "0.0.1",
     "sharp": "^0.29.3",
     "slugify": "^1.6.4",
     "yup": "^0.32.11",
@@ -89,7 +90,7 @@
     "sass": "^1.49.0",
     "ts-node": "^10.4.0",
     "tsconfig-paths": "^3.12.0",
-    "typescript": "^4.5.4",
+    "typescript": "^5.1.6",
     "unified": "9.1",
     "unist-util-visit": "2.0.3"
   },

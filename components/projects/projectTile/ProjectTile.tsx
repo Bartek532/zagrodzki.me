@@ -7,9 +7,10 @@ import Link from "next/link";
 import { memo } from "react";
 
 import Arrow from "public/svg/right-top-arrow.svg";
-import type { Project } from "types";
 
 import styles from "./projectTile.module.scss";
+
+import type { Project } from "types";
 
 interface ProjectTileProps {
   readonly project: Readonly<Project>;
@@ -25,13 +26,13 @@ export const ProjectTile = memo<ProjectTileProps>(
     };
 
     return (
-      <Link href={`/projects/${project.slug}`} passHref>
-        <motion.a
+      <Link href={`/projects/${project.slug}`} className={styles.link}>
+        <motion.div
+          whileHover="hover"
           className={styles.project}
           style={{
             backgroundImage: `url(/img/projects/${project.slug}/back.png)`,
           }}
-          whileHover="hover"
         >
           <span className="sr-only">check my project - {project.title}</span>
           <motion.div
@@ -52,7 +53,7 @@ export const ProjectTile = memo<ProjectTileProps>(
           <div className={styles.arrow}>
             <Arrow />
           </div>
-        </motion.a>
+        </motion.div>
       </Link>
     );
   },

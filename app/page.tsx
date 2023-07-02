@@ -9,7 +9,7 @@ import { ThemeTile } from "components/tile/themeTile/ThemeTile";
 import { getNewestPosts } from "lib/posts";
 import { getBestProjects } from "lib/projects";
 
-export default function Page() {
+const Home = () => {
   const [firstProject, secondProject] = getBestProjects();
   const [post] = getNewestPosts();
 
@@ -19,7 +19,7 @@ export default function Page() {
 
   return (
     <Grid>
-      {/* <SpotifyTile /> */}
+      <SpotifyTile />
       <AboutTile />
       <SocialTile social="twitter" />
       <ProjectTile project={firstProject} mockupPosition="right" />
@@ -31,4 +31,6 @@ export default function Page() {
       <NewsletterTile />
     </Grid>
   );
-}
+};
+
+export default Home;

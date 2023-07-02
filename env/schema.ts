@@ -2,6 +2,9 @@ import { z } from "zod";
 
 export const serverSchema = z.object({
   NODE_ENV: z.enum(["development", "test", "production"]),
+  SPOTIFY_CLIENT_ID: z.string(),
+  SPOTIFY_CLIENT_SECRET: z.string(),
+  SPOTIFY_REFRESH_TOKEN: z.string(),
 });
 
 export const clientSchema = z.object({

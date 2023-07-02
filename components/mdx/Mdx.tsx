@@ -1,3 +1,5 @@
+"use client";
+
 import dayjs from "dayjs";
 import advancedFormat from "dayjs/plugin/advancedFormat";
 import customParseFormat from "dayjs/plugin/customParseFormat";
@@ -17,18 +19,19 @@ import { Info } from "components/mdx/info/Info";
 import { Link } from "components/mdx/link/Link";
 import { Pre } from "components/mdx/pre/Pre";
 import { Quote } from "components/mdx/quote/Quote";
+import { Sandbox } from "components/mdx/sandbox/Sandbox";
 import { Share } from "components/mdx/share/Share";
 import { useRunningHeader } from "hooks/useRunningHeader";
+import { view } from "lib/views";
 import { useTheme } from "providers/ThemeProvider";
 import Arrow from "public/svg/right-top-arrow.svg";
-import type { Project, Post } from "types";
 import { getHeadings } from "utils/getHeadings";
-import { Sandbox } from "components/mdx/sandbox/Sandbox";
 import { normalizeViewsCount } from "utils/normalizeViewsCount";
-import { view } from "lib/views";
 
 import styles from "./mdx.module.scss";
 import { TableOfContents } from "./tableOfContents/TableOfContents";
+
+import type { Project, Post } from "types";
 
 dayjs.extend(customParseFormat);
 dayjs.extend(advancedFormat);

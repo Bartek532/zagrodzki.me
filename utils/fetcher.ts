@@ -1,16 +1,25 @@
-type HTTPMethod = "GET" | "HEAD" | "POST" | "PUT" | "DELETE" | "CONNECT" | "OPTIONS" | "TRACE" | "PATCH";
+type HTTPMethod =
+  | "GET"
+  | "HEAD"
+  | "POST"
+  | "PUT"
+  | "DELETE"
+  | "CONNECT"
+  | "OPTIONS"
+  | "TRACE"
+  | "PATCH";
 
-type FetcherConfig<S> = {
+interface FetcherConfig {
   readonly method: HTTPMethod;
   readonly body?: object;
   readonly config?: RequestInit;
   readonly credentials?: "include" | "same-origin" | "omit";
   readonly headers?: Record<string, string>;
-};
+}
 
-export async function fetcher<S>(
+export async function fetcher(
   path: string,
-  { method = "GET", body, config, credentials, headers }: FetcherConfig<S>,
+  { method = "GET", body, config, credentials, headers }: FetcherConfig,
 ) {
   try {
     const response = await fetch(path, {
@@ -19,12 +28,12 @@ export async function fetcher<S>(
         "Content-Type": "application/json",
         ...headers,
       },
-      credentials: credentials || "include",
+      credentials: credentials ?? "include",
       method,
       ...(body && { body: JSON.stringify(body) }),
     });
     if (response.ok) {
-      return await response.json().catch(() => {});
+      return (await response.json().catch()) as unknown;
     }
     throw new ResponseError(response.statusText, response.status);
   } catch (err) {
