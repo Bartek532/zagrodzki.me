@@ -1,16 +1,15 @@
-import { memo, Fragment } from "react";
 import Link from "next/link";
+import { memo, Fragment } from "react";
 
 import RightArrow from "public/svg/right-arrow.svg";
 
 import styles from "./breadcrumbs.module.scss";
 
-type BreadcrumbsProps = {
+interface BreadcrumbsProps {
   readonly routes: { path: string; name: string }[];
-};
+}
 
-export const Breadcrumbs = memo<BreadcrumbsProps>(({ routes }) => {
-  return (
+export const Breadcrumbs = memo<BreadcrumbsProps>(({ routes }) => (
     <div className={styles.breadcrumbs}>
       {routes.map((route, index) => (
         <Fragment key={route.path}>
@@ -25,7 +24,6 @@ export const Breadcrumbs = memo<BreadcrumbsProps>(({ routes }) => {
         </Fragment>
       ))}
     </div>
-  );
-});
+  ));
 
 Breadcrumbs.displayName = "Breadcrumbs";

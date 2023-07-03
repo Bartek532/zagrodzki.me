@@ -3,15 +3,14 @@ import { memo } from "react";
 
 import styles from "./image.module.scss";
 
-type ImageProps = {
+interface ImageProps {
   readonly src: string;
   readonly alt: string;
   readonly width?: string | number;
   readonly height?: string | number;
-};
+}
 
-export const Image = memo<ImageProps>(({ src, alt = "", width = "100%", height }) => {
-  return (
+export const Image = memo<ImageProps>(({ src, alt = "", width = "100%", height }) => (
     <figure className={styles.wrapper}>
       <NextImage
         className={styles.image}
@@ -24,7 +23,6 @@ export const Image = memo<ImageProps>(({ src, alt = "", width = "100%", height }
       />
       {alt ? <figcaption className={styles.caption}>{alt}</figcaption> : null}
     </figure>
-  );
-});
+  ));
 
 Image.displayName = "Image";

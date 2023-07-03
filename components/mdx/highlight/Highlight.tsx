@@ -1,14 +1,14 @@
 import clsx from "clsx";
-import { memo } from "react";
 import dynamic from "next/dynamic";
+import { memo } from "react";
 
 import styles from "./highlight.module.scss";
 
-type HighlightProps = {
+interface HighlightProps {
   readonly variant: "success" | "error" | "warning";
   readonly title: string;
   readonly children: React.ReactNode;
-};
+}
 
 export const Highlight = memo<HighlightProps>(({ variant, title, children }) => {
   const Icon = dynamic(() => import(`public/svg/${variant}.svg`));

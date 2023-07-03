@@ -54,12 +54,10 @@ export const Mdx = memo<MdxProps>(({ resource, content }) => {
   const [views, setViews] = useState(0);
 
   const getHeadingProps = useCallback(
-    ({ children }: HeadingComponentProps) => {
-      return {
+    ({ children }: HeadingComponentProps) => ({
         slug: children,
         url,
-      };
-    },
+      }),
     [url],
   );
 

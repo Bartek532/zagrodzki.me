@@ -8,8 +8,7 @@ interface ExperienceProps {
   readonly positions: readonly Position[];
 }
 
-export const Experience = memo<ExperienceProps>(({ positions }) => {
-  return (
+export const Experience = memo<ExperienceProps>(({ positions }) => (
     <section className={styles.experience}>
       <h2 className={styles.title}>Experience</h2>
       <p className={styles.description}>
@@ -28,7 +27,6 @@ export const Experience = memo<ExperienceProps>(({ positions }) => {
         ))}
       </ol>
     </section>
-  );
-});
+  ));
 
 Experience.displayName = "Experience";

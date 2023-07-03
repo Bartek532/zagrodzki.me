@@ -1,15 +1,15 @@
-import { memo, useState, useEffect } from "react";
 import clsx from "clsx";
+import { memo, useState, useEffect } from "react";
 import Confetti from "react-dom-confetti";
 
 import { copyToClipboard } from "utils/clipboard";
 
 import styles from "./copyBtn.module.scss";
 
-type CopyBtnProps = {
+interface CopyBtnProps {
   readonly label: string;
   readonly textToCopy: string;
-};
+}
 
 export const CopyBtn = memo<CopyBtnProps>(({ label, textToCopy }) => {
   const [isCopied, setIsCopied] = useState(false);

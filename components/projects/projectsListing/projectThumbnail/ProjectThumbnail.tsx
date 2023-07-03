@@ -19,8 +19,7 @@ interface ProjectThumbnailProps {
 }
 
 export const ProjectThumbnail = memo<ProjectThumbnailProps>(
-  ({ project, blurDataURL }) => {
-    return (
+  ({ project, blurDataURL }) => (
       <Link href={`/projects/${project.slug}`}>
         <motion.article className={styles.thumbnail} whileHover="hover" layout>
           <motion.div
@@ -64,8 +63,7 @@ export const ProjectThumbnail = memo<ProjectThumbnailProps>(
           </div>
         </motion.article>
       </Link>
-    );
-  },
+    ),
 );
 
 ProjectThumbnail.displayName = "ProjectThumbnail";

@@ -30,18 +30,13 @@ interface CodeNode extends HtmlNode {
   };
 }
 
-const isPreNode = (node: Node): node is PreNode => {
-  return node.type === "element" && "tagName" in node && node.tagName === "pre";
-};
+const isPreNode = (node: Node): node is PreNode => node.type === "element" && "tagName" in node && node.tagName === "pre";
 
-const isCodeNode = (node: Node): node is CodeNode => {
-  return (
+const isCodeNode = (node: Node): node is CodeNode => (
     node.type === "element" && "tagName" in node && node.tagName === "code"
   );
-};
 
-export const addDataToCodeBlocks = (): import("unified").Transformer => {
-  return (tree) => {
+export const addDataToCodeBlocks = (): import("unified").Transformer => (tree) => {
     visit(tree, "element", (node: Node) => {
       if (!isPreNode(node) && !isCodeNode(node)) {
         return;
@@ -59,6 +54,5 @@ export const addDataToCodeBlocks = (): import("unified").Transformer => {
       }
     });
   };
-};
 
 export const commonRehypePlugins = [rehypePrism, addDataToCodeBlocks];

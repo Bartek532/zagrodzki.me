@@ -14,8 +14,7 @@ interface TableOfContentsProps {
 }
 
 export const TableOfContents = memo<TableOfContentsProps>(
-  ({ contents, currentActiveHeaderId }) => {
-    return (
+  ({ contents, currentActiveHeaderId }) => (
       <aside className={styles.aside}>
         <h2 className={styles.title}>table of contents</h2>
         <nav className={styles.nav}>
@@ -42,8 +41,7 @@ export const TableOfContents = memo<TableOfContentsProps>(
             : null}
         </nav>
       </aside>
-    );
-  },
+    ),
 );
 
 TableOfContents.displayName = "TableOfContents";

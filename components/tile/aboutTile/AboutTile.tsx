@@ -6,8 +6,7 @@ import Arrow from "public/svg/right-top-arrow.svg";
 
 import styles from "./aboutTile.module.scss";
 
-export const AboutTile = () => {
-  return (
+export const AboutTile = () => (
     <Link href="/about" className={styles.tile}>
       <div className={styles.avatar}>
         <Image src={WinkingAvatar} alt="winking memoji" />
@@ -26,4 +25,3 @@ export const AboutTile = () => {
       </div>
     </Link>
   );
-};

@@ -5,13 +5,11 @@ import { RESOURCE_TYPE } from "types";
 
 export const onPromise = <T>(
   promise: (event: SyntheticEvent) => Promise<T>,
-) => {
-  return (event: SyntheticEvent) => {
+) => (event: SyntheticEvent) => {
     promise(event).catch((error) => {
       console.log("Unexpected error", error);
     });
   };
-};
 
 export const normalizeViewsCount = (count: number) =>
   count.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");

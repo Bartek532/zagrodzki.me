@@ -6,12 +6,10 @@ interface EditProps {
   readonly href: string;
 }
 
-export const Edit = memo<EditProps>(({ href }) => {
-  return (
+export const Edit = memo<EditProps>(({ href }) => (
     <Link
       href={`https://github.com/${process.env.NEXT_PUBLIC_GITHUB_USERNAME}/zagrodzki.me/tree/main/content${href}.mdx`}
     >
       Edit on Github
     </Link>
-  );
-});
+  ));

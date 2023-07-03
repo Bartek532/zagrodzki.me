@@ -9,8 +9,7 @@ interface CategoriesListProps {
   readonly categories: Category[];
 }
 
-export const CategoriesList = memo<CategoriesListProps>(({ categories }) => {
-  return (
+export const CategoriesList = memo<CategoriesListProps>(({ categories }) => (
     <section className={styles.wrapper}>
       <h2 className={styles.title}>categories</h2>
       <div className={styles.categories}>
@@ -19,7 +18,6 @@ export const CategoriesList = memo<CategoriesListProps>(({ categories }) => {
         ))}
       </div>
     </section>
-  );
-});
+  ));
 
 CategoriesList.displayName = "CategoriesList";

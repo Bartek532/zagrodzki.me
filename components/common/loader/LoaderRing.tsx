@@ -1,7 +1,6 @@
 import styles from "./loaderRing.module.scss";
 
-export const LoaderRing = () => {
-  return (
+export const LoaderRing = () => (
     <div className={styles.loader}>
       <span className="sr-only">loading</span>
       <div className={styles.ring}>
@@ -12,4 +11,3 @@ export const LoaderRing = () => {
       </div>
     </div>
   );
-};

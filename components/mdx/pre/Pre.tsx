@@ -1,15 +1,15 @@
-import { memo, useRef, useState, useEffect } from "react";
 import clsx from "clsx";
+import { memo, useRef, useState, useEffect } from "react";
 
 import CheckIcon from "public/svg/check.svg";
-import { copyToClipboard } from "utils/clipboard";
 import CopyIcon from "public/svg/copy.svg";
+import { copyToClipboard } from "utils/clipboard";
 
 import styles from "./pre.module.scss";
 
-type PreProps = {
+interface PreProps {
   readonly children: React.ReactNode;
-};
+}
 
 export const Pre = memo<PreProps>(({ children, ...props }) => {
   const preRef = useRef<HTMLPreElement | null>(null);

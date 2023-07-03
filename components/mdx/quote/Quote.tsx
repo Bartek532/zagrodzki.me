@@ -4,13 +4,12 @@ import QuoteIcon from "public/svg/quote.svg";
 
 import styles from "./quote.module.scss";
 
-type QuoteProps = {
+interface QuoteProps {
   readonly text: string;
   readonly author: string;
-};
+}
 
-export const Quote = memo<QuoteProps>(({ text, author }) => {
-  return (
+export const Quote = memo<QuoteProps>(({ text, author }) => (
     <blockquote className={styles.quote}>
       <div className={styles.icon}>
         <QuoteIcon />
@@ -18,7 +17,6 @@ export const Quote = memo<QuoteProps>(({ text, author }) => {
       <p className={styles.text}>{text}</p>
       <p className={styles.author}>{author}</p>
     </blockquote>
-  );
-});
+  ));
 
 Quote.displayName = "Quote";

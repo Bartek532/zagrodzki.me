@@ -5,8 +5,7 @@ import { normalizeViewsCount } from "utils/functions";
 
 import styles from "./hero.module.scss";
 
-export const Hero = ({ views }: { views: number }) => {
-  return (
+export const Hero = ({ views }: { views: number }) => (
     <section className={styles.hero}>
       <div className={styles.text}>
         <h2 className={styles.title}>Hi, I&#39;m Bartosz Zagrodzki&nbsp;👋</h2>
@@ -40,4 +39,3 @@ export const Hero = ({ views }: { views: number }) => {
       </div>
     </section>
   );
-};

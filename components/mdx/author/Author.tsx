@@ -6,9 +6,9 @@ import { Link } from "../link/Link";
 
 import styles from "./author.module.scss";
 
-type AuthorProps = {
+interface AuthorProps {
   readonly name: typeof allAuthors[number]["name"];
-};
+}
 
 export const Author = memo<AuthorProps>(({ name }) => {
   const author = allAuthors.find((c) => c.name === name)!;

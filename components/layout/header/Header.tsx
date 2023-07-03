@@ -8,8 +8,7 @@ import PaperPlane from "public/svg/paper-plane.svg";
 import styles from "./header.module.scss";
 import { Navbar } from "./navbar/Navbar";
 
-export const Header = () => {
-  return (
+export const Header = () => (
     <header className={styles.header}>
       <Link href="#main" className={styles.skip}>
         skip to content
@@ -30,4 +29,3 @@ export const Header = () => {
       </div>
     </header>
   );
-};

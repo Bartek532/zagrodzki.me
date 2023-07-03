@@ -1,11 +1,11 @@
 import clsx from "clsx";
-import { useForm } from "react-hook-form";
 import { useState, useEffect } from "react";
+import { useForm } from "react-hook-form";
 
 import { Input } from "components/common/input/Input";
 import { LoaderRing } from "components/common/loader/LoaderRing";
-import { fetcher } from "utils/fetcher";
 import { EMAIL_REGEX } from "utils/consts";
+import { fetcher } from "utils/fetcher";
 
 import styles from "./contactForm.module.scss";
 
@@ -19,7 +19,7 @@ export const ContactForm = ({ handleIsSent }: { handleIsSent: (val: boolean) => 
   } = useForm();
   const [promiseStatus, setPromiseStatus] = useState<PromiseStatus>("pending");
 
-  const handleFormSubmit = async ({ name, email, message }: { [key: string]: string }) => {
+  const handleFormSubmit = async ({ name, email, message }: Record<string, string>) => {
     setPromiseStatus("loading");
     try {
       await fetcher("/api/contact", { method: "POST", body: { name, email, message } });

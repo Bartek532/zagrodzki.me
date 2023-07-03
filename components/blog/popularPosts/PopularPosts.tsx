@@ -11,8 +11,7 @@ interface PopularPostsProps {
   readonly posts: Post[];
 }
 
-export const PopularPosts = memo<PopularPostsProps>(({ posts }) => {
-  return (
+export const PopularPosts = memo<PopularPostsProps>(({ posts }) => (
     <section className={styles.wrapper}>
       <h2 className={styles.title}>popular posts</h2>
       <ul className={styles.posts}>
@@ -28,7 +27,6 @@ export const PopularPosts = memo<PopularPostsProps>(({ posts }) => {
         ))}
       </ul>
     </section>
-  );
-});
+  ));
 
 PopularPosts.displayName = "PopularPosts";

@@ -11,8 +11,7 @@ interface CategoryCardProps {
   readonly category: CategoryType;
 }
 
-export const CategoryCard = memo<CategoryCardProps>(({ category }) => {
-  return (
+export const CategoryCard = memo<CategoryCardProps>(({ category }) => (
     <Link
       href={`/blog?category=${category}`}
       key={category}
@@ -20,7 +19,6 @@ export const CategoryCard = memo<CategoryCardProps>(({ category }) => {
     >
       {allCategories.find((c) => c.slug === category)?.name}
     </Link>
-  );
-});
+  ));
 
 CategoryCard.displayName = "CategoryCard";

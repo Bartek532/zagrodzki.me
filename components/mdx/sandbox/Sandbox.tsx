@@ -2,13 +2,12 @@ import { memo } from "react";
 
 import styles from "./sandbox.module.scss";
 
-type SandboxProps = {
+interface SandboxProps {
   readonly id: string;
   readonly theme: "dark" | "light";
-};
+}
 
-export const Sandbox = memo<SandboxProps>(({ id, theme }) => {
-  return (
+export const Sandbox = memo<SandboxProps>(({ id, theme }) => (
     <div className={styles.wrapper}>
       <iframe
         src={`https://codesandbox.io/embed/${id}?fontsize=14&codemirror=1&theme=${theme}`}
@@ -17,7 +16,6 @@ export const Sandbox = memo<SandboxProps>(({ id, theme }) => {
         className={styles.sandbox}
       ></iframe>
     </div>
-  );
-});
+  ));
 
 Sandbox.displayName = "Sandbox";

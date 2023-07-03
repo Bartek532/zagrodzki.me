@@ -2,16 +2,17 @@ import Link from "next/link";
 import { memo } from "react";
 
 import Arrow from "public/svg/right-top-arrow.svg";
-import type { Post } from "types";
 
 import styles from "./latestPostTile.module.scss";
+
+import type { Post } from "types";
+
 
 interface LatestPostTileProps {
   readonly post: Post;
 }
 
-export const LatestPostTile = memo<LatestPostTileProps>(({ post }) => {
-  return (
+export const LatestPostTile = memo<LatestPostTileProps>(({ post }) => (
     <Link href={`/blog/${post.slug}`} className={styles.link}>
       <article className={styles.article}>
         <div className={styles.info}>
@@ -36,7 +37,6 @@ export const LatestPostTile = memo<LatestPostTileProps>(({ post }) => {
         ></div>
       </article>
     </Link>
-  );
-});
+  ));
 
 LatestPostTile.displayName = "LatestPostTile";

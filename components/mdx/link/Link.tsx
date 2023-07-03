@@ -1,14 +1,14 @@
-import { memo } from "react";
 import NextLink from "next/link";
+import { memo } from "react";
 
 import RightTopArrow from "public/svg/right-top-arrow.svg";
 
 import styles from "./link.module.scss";
 
-type LinkProps = {
+interface LinkProps {
   readonly children: React.ReactNode;
   readonly href: string;
-};
+}
 
 export const Link = memo<LinkProps>(({ children, href }) => {
   const isLinkExternal = href.startsWith("http://") || href.startsWith("https://") || href.startsWith("mailto:");

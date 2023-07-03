@@ -25,8 +25,7 @@ interface FeaturedPostProps {
   readonly post: Post;
 }
 
-export const FeaturedPost = memo<FeaturedPostProps>(({ post }) => {
-  return (
+export const FeaturedPost = memo<FeaturedPostProps>(({ post }) => (
     <Link href={`/blog/${post.slug}`}>
       <motion.div className={styles.post} whileHover="hover">
         <motion.div className={styles.image} variants={imageVariants}>
@@ -44,7 +43,6 @@ export const FeaturedPost = memo<FeaturedPostProps>(({ post }) => {
         <h3 className={styles.title}>{post.title}</h3>
       </motion.div>
     </Link>
-  );
-});
+  ));
 
 FeaturedPost.displayName = "FeaturedPost";

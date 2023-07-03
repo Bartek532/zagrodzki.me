@@ -4,9 +4,11 @@ import { memo } from "react";
 import slugify from "slugify";
 
 import Clip from "public/svg/link.svg";
-import type { HeadingVariant } from "types";
 
 import styles from "./heading.module.scss";
+
+import type { HeadingVariant } from "types";
+
 
 interface HeadingProps {
   readonly slug: string;

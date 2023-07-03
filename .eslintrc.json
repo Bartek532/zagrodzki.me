@@ -3,7 +3,7 @@
   "parserOptions": {
     "project": "./tsconfig.json"
   },
-  "plugins": ["@typescript-eslint"],
+  "plugins": ["@typescript-eslint", "unused-imports"],
   "extends": [
     "next",
     "next/core-web-vitals",
@@ -49,6 +49,22 @@
         "warnOnUnassignedImports": true
       }
     ],
+    "arrow-body-style": ["warn", "as-needed"],
+    "eqeqeq": [
+      "error",
+      "always",
+      {
+        "null": "ignore"
+      }
+    ],
+    "no-unused-vars": [
+      "error",
+      {
+        "argsIgnorePattern": "^_",
+        "varsIgnorePattern": "^_"
+      }
+    ],
+    "unused-imports/no-unused-imports": "warn",
     "@typescript-eslint/naming-convention": [
       "error",
       {

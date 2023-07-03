@@ -1,7 +1,7 @@
-import { memo, useEffect } from "react";
-import { useForm } from "react-hook-form";
-import { useState } from "react";
 import clsx from "clsx";
+import { memo, useEffect } from "react";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
 
 import { Input } from "components/common/input/Input";
 import CrossIcon from "public/svg/cross.svg";
@@ -9,19 +9,18 @@ import PlusIcon from "public/svg/plus.svg";
 
 import styles from "./quizDialog.module.scss";
 
-type QuizDialogProps = {
+interface QuizDialogProps {
   readonly correctAnswers: (string | number)[];
   readonly scoreMessages: { score: number; message: string }[];
-};
+}
 
-type Answer = {
+interface Answer {
   readonly id: number;
   readonly text: string;
   readonly status: "unchecked" | "correct" | "incorrect";
-};
+}
 
-const AnswerItem = ({ answer, onDeleteAnswer }: { answer: Answer; onDeleteAnswer: any }) => {
-  return (
+const AnswerItem = ({ answer, onDeleteAnswer }: { answer: Answer; onDeleteAnswer: any }) => (
     <li>
       <button className={clsx(styles.answer, styles[answer.status])} onClick={onDeleteAnswer}>
         {answer.status === "unchecked" ? (
@@ -33,7 +32,6 @@ const AnswerItem = ({ answer, onDeleteAnswer }: { answer: Answer; onDeleteAnswer
       </button>
     </li>
   );
-};
 
 export const QuizDialog = memo<QuizDialogProps>(({ correctAnswers, scoreMessages }) => {
   const [answers, setAnswers] = useState<Answer[]>([]);
@@ -47,11 +45,9 @@ export const QuizDialog = memo<QuizDialogProps>(({ correctAnswers, scoreMessages
     reset,
   } = useForm();
 
-  const isNotInAnswers = (inputType: string) => {
-    return inputType.trim() && !answers.find((answer) => answer.text === inputType);
-  };
+  const isNotInAnswers = (inputType: string) => inputType.trim() && !answers.find((answer) => answer.text === inputType);
 
-  const handleFormSubmit = ({ inputType }: { [key: string]: string }) => {
+  const handleFormSubmit = ({ inputType }: Record<string, string>) => {
     const givenAnswer = {
       id: answers.length + 1,
       text: inputType.trim(),

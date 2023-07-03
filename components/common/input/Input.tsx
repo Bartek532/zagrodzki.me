@@ -8,8 +8,7 @@ import styles from "./input.module.scss";
 export const Input = forwardRef<
   HTMLInputElement,
   JSX.IntrinsicElements["input"] & { isError?: boolean }
->(({ isError, children, ...props }, ref) => {
-  return (
+>(({ isError, children, ...props }, ref) => (
     <label className={styles.wrapper}>
       {children}
       {props.type === "search" && <SearchIcon className={styles.icon} />}
@@ -23,7 +22,6 @@ export const Input = forwardRef<
         type={props.type ?? "text"}
       />
     </label>
-  );
-});
+  ));
 
 Input.displayName = "Input";

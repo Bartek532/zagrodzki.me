@@ -4,6 +4,4 @@ interface GridProps {
   readonly children: React.ReactNode;
 }
 
-export const Grid = ({ children }: GridProps) => {
-  return <div className={styles.grid}>{children}</div>;
-};
+export const Grid = ({ children }: GridProps) => <div className={styles.grid}>{children}</div>;
