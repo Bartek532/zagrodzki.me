@@ -3,19 +3,15 @@
 import algoliasearch from "algoliasearch";
 import Image from "next/image";
 import { useCallback, useState, memo } from "react";
-import {
-  InstantSearch,
-  connectHits,
-  connectStateResults,
-} from "react-instantsearch-dom";
+import { InstantSearch, connectHits, connectStateResults } from "react-instantsearch-dom";
 
 import { LoaderRing } from "components/common/loader/LoaderRing";
 import { SearchBox } from "components/common/search/SearchBox";
-import { ProjectThumbnail } from "components/projects/projectsListing/projectThumbnail/ProjectThumbnail";
 import { env } from "env/client";
 import DisappointedAvatar from "public/img/avatars/disappointed.png";
 
 import styles from "./projectsListing.module.scss";
+import { ProjectThumbnail } from "./thumbnail/ProjectThumbnail";
 
 import type { HitsProvided } from "react-instantsearch-core";
 import type { Project } from "types";
@@ -59,9 +55,7 @@ export const CustomHits = connectHits<CustomHitsProps, Project>(
           >
             <ProjectThumbnail
               project={hit}
-              blurDataURL={
-                blurImageData.find((d) => d.slug === hit.slug)?.base64
-              }
+              blurDataURL={blurImageData.find((d) => d.slug === hit.slug)?.base64}
             />
           </li>
         ))}
@@ -85,31 +79,26 @@ interface ProjectsListingProps {
   }[];
 }
 
-export const ProjectsListing = memo<ProjectsListingProps>(
-  ({ blurImageData }) => {
-    const [currentObjectID, setObjectId] = useState<string | null>(null);
+export const ProjectsListing = memo<ProjectsListingProps>(({ blurImageData }) => {
+  const [currentObjectID, setObjectId] = useState<string | null>(null);
 
-    const handleInputChange = useCallback(() => {
-      setTimeout(() => setObjectId(null), 0);
-    }, []);
+  const handleInputChange = useCallback(() => {
+    setTimeout(() => setObjectId(null), 0);
+  }, []);
 
-    return (
-      <div className={styles.projects}>
-        <InstantSearch indexName="projects" searchClient={searchClient}>
-          <SearchBox
-            currentObjectID={currentObjectID}
-            onChange={handleInputChange}
-          />
-          <LoadingIndicator />
-          <CustomHits
-            currentObjectID={currentObjectID}
-            setObjectId={setObjectId}
-            blurImageData={blurImageData}
-          />
-        </InstantSearch>
-      </div>
-    );
-  },
-);
+  return (
+    <div className={styles.projects}>
+      <InstantSearch indexName="projects" searchClient={searchClient}>
+        <SearchBox currentObjectID={currentObjectID} onChange={handleInputChange} />
+        <LoadingIndicator />
+        <CustomHits
+          currentObjectID={currentObjectID}
+          setObjectId={setObjectId}
+          blurImageData={blurImageData}
+        />
+      </InstantSearch>
+    </div>
+  );
+});
 
 ProjectsListing.displayName = "ProjectsListing";

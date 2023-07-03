@@ -2,12 +2,13 @@ import { Mdx } from "components/mdx/Mdx";
 import { getProjectBySlug, getProjectsPaths } from "lib/projects";
 
 export function generateStaticParams() {
-  const paths = getProjectsPaths();
-  return paths;
+  return getProjectsPaths();
 }
 
-export default async function Page({ params }: { params: { slug: string } }) {
+const ProjectPage = async ({ params }: { params: { slug: string } }) => {
   const { transformedMdx, frontmatter } = await getProjectBySlug(params.slug);
 
   return <Mdx resource={frontmatter} content={transformedMdx} />;
-}
+};
+
+export default ProjectPage;

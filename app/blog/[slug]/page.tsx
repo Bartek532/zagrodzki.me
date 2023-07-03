@@ -1,4 +1,4 @@
-import { FeaturedPosts } from "components/blog/featuredPosts/FeaturedPosts";
+import { FeaturedPosts } from "components/blog/featured/FeaturedPosts";
 import { Mdx } from "components/mdx/Mdx";
 import { getNewestPosts, getPostBySlug, getPostsPaths } from "lib/posts";
 

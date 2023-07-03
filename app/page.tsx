@@ -1,11 +1,11 @@
 import { Grid } from "components/common/grid/Grid";
-import { ProjectTile } from "components/projects/projectTile/ProjectTile";
-import { AboutTile } from "components/tile/aboutTile/AboutTile";
-import { LatestPostTile } from "components/tile/latestPostTile/LatestPostTile";
-import { NewsletterTile } from "components/tile/newsletterTile/NewsletterTile";
-import { SocialTile } from "components/tile/socialTile/SocialTile";
-import { SpotifyTile } from "components/tile/spotifyTile/SpotifyTile";
-import { ThemeTile } from "components/tile/themeTile/ThemeTile";
+import { ProjectTile } from "components/projects/tile/ProjectTile";
+import { AboutTile } from "components/tile/about/AboutTile";
+import { LatestPostTile } from "components/tile/latestPost/LatestPostTile";
+import { NewsletterTile } from "components/tile/newsletter/NewsletterTile";
+import { SocialTile } from "components/tile/social/SocialTile";
+import { SpotifyTile } from "components/tile/spotify/SpotifyTile";
+import { ThemeTile } from "components/tile/theme/ThemeTile";
 import { getNewestPosts } from "lib/posts";
 import { getBestProjects } from "lib/projects";
 

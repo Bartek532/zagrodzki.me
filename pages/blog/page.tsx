@@ -1,14 +1,18 @@
+import { PostsListing } from "components/blog/postsListing/PostsListing";
+
+import { Hero } from "components/common/hero/Hero";
+import { Layout } from "components/layout/Layout";
+import { Seo } from "components/Seo";
+import { getPopularPosts, getPostsCategories } from "lib/posts";
+import { getViewsBySlug } from "lib/views";
+import { RESOURCE_TYPE, InferGetStaticPropsType } from "types";
+
 import type { GetStaticProps, NextPage } from "next";
 
-import { Layout } from "components/layout/Layout";
-import { PostsListing } from "components/blog/postsListing/PostsListing";
-import { Seo } from "components/Seo";
-import { Hero } from "components/common/hero/Hero";
-import { getPopularPosts, getPostsCategories } from "lib/posts";
-import { RESOURCE_TYPE, InferGetStaticPropsType } from "types";
-import { getViewsBySlug } from "lib/views";
-
-const Blog: NextPage = ({ popularPosts, categories }: InferGetStaticPropsType<typeof getStaticProps>) => {
+const Blog: NextPage = ({
+  popularPosts,
+  categories,
+}: InferGetStaticPropsType<typeof getStaticProps>) => {
   const description = "Everything that I or one of the authors has written for my blog ✍️";
 
   return (
@@ -26,7 +30,10 @@ export const getStaticProps: GetStaticProps = async () => {
     const categories = getPostsCategories();
 
     const postsWithViews = await Promise.all(
-      popularPosts.map(async (post) => ({ ...post, views: await getViewsBySlug(post.slug, RESOURCE_TYPE.POST) })),
+      popularPosts.map(async (post) => ({
+        ...post,
+        views: await getViewsBySlug(post.slug, RESOURCE_TYPE.POST),
+      })),
     );
 
     const sortedPopularPostsByViews = postsWithViews.sort((a, b) => b.views - a.views);
