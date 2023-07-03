@@ -42,6 +42,8 @@ export interface Post {
   author: Author;
 }
 
+export type Resource = Post | Project;
+
 export type Category = typeof allCategories[number]["slug"];
 export type Author = typeof allAuthors[number]["name"];
 

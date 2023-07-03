@@ -11,13 +11,13 @@ import {
   connectStateResults,
 } from "react-instantsearch-dom";
 
-import { CategoriesList } from "components/category/list/CategoriesList";
 import { LoaderRing } from "components/common/loader/LoaderRing";
 import { SearchBox } from "components/common/search/SearchBox";
 import { allCategories } from "data/categories";
 import { env } from "env/client";
 import DisappointedAvatar from "public/img/avatars/disappointed.png";
 
+import { CategoriesList } from "../category/list/CategoriesList";
 import { PopularPosts } from "../popular/PopularPosts";
 
 import styles from "./postsListing.module.scss";

@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 
-import { ContactForm } from "components/contact/contactForm/ContactForm";
+import { ContactForm } from "components/contact/form/ContactForm";
 import InLoveAvatar from "public/img/avatars/in-love.png";
 import SurprisedAvatar from "public/img/avatars/surprised.png";
 

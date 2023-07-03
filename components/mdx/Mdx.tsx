@@ -6,7 +6,7 @@ import customParseFormat from "dayjs/plugin/customParseFormat";
 import { motion } from "framer-motion";
 import NextImage from "next/image";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
-import { memo, useRef, useEffect, useCallback, useMemo, useState } from "react";
+import { memo, useRef, useEffect, useCallback, useMemo } from "react";
 import { renderToString } from "react-dom/server";
 
 import { Author } from "components/mdx/author/Author";
@@ -21,22 +21,28 @@ import { Pre } from "components/mdx/pre/Pre";
 import { Quote } from "components/mdx/quote/Quote";
 import { Sandbox } from "components/mdx/sandbox/Sandbox";
 import { Share } from "components/mdx/share/Share";
+import { resourceRoutes } from "data/routes";
+import { env } from "env/client";
 import { useRunningHeader } from "hooks/useRunningHeader";
-import { view } from "lib/views";
 import { useTheme } from "providers/ThemeProvider";
 import Arrow from "public/svg/right-top-arrow.svg";
-import { getHeadings, normalizeViewsCount } from "utils/functions";
+import { RESOURCE_TYPE, type Resource } from "types";
+import { getHeadings } from "utils/functions";
 
 import styles from "./mdx.module.scss";
 import { TableOfContents } from "./tableOfContents/TableOfContents";
 
-import type { Project, Post } from "types";
-
 dayjs.extend(customParseFormat);
 dayjs.extend(advancedFormat);
 
+const imageVariants = {
+  hover: {
+    scale: 1.05,
+  },
+};
+
 interface MdxProps {
-  readonly resource: Project | Post;
+  readonly resource: Resource;
   readonly content: MDXRemoteSerializeResult;
 }
 
@@ -47,17 +53,15 @@ interface HeadingComponentProps {
 export const Mdx = memo<MdxProps>(({ resource, content }) => {
   const contentElRef = useRef<HTMLDivElement | null>(null);
   const { id, setRunningHeader } = useRunningHeader();
-  const url = `${process.env.NEXT_PUBLIC_URL}/${
-    resource.type === "project" ? "projects" : "blog"
-  }/${resource.slug}`;
+  const url = `${env.NEXT_PUBLIC_URL}/${resourceRoutes[resource.type]}/${resource.slug}`;
   const { theme } = useTheme();
-  const [views, setViews] = useState(0);
+  // const [views, setViews] = useState(0);
 
   const getHeadingProps = useCallback(
     ({ children }: HeadingComponentProps) => ({
-        slug: children,
-        url,
-      }),
+      slug: children,
+      url,
+    }),
     [url],
   );
 
@@ -82,9 +86,7 @@ export const Mdx = memo<MdxProps>(({ resource, content }) => {
       Link,
       Quote,
       Highlight,
-      Sandbox: ({ id }: { id: string }) => (
-        <Sandbox id={id} theme={theme as "light" | "dark"} />
-      ),
+      Sandbox: ({ id }: { id: string }) => <Sandbox id={id} theme={theme as "light" | "dark"} />,
       pre: Pre,
       ...CustomPostsComponents,
     }),
@@ -92,26 +94,18 @@ export const Mdx = memo<MdxProps>(({ resource, content }) => {
   );
 
   const contentString = renderToString(
-    (
-      <MDXRemote {...content} components={customMdxComponents} />
-    ) as React.ReactElement,
+    (<MDXRemote {...content} components={customMdxComponents} />) as React.ReactElement,
   );
 
   useEffect(() => {
     setRunningHeader(contentElRef.current);
 
-    const hitView = async () => {
-      const result = await view(resource.slug, resource.type);
-      setViews(result);
-    };
-    hitView();
-  }, [resource]);
-
-  const imageVariants = {
-    hover: {
-      scale: 1.05,
-    },
-  };
+    // const hitView = async () => {
+    //   const result = await view(resource.slug, resource.type);
+    //   setViews(result);
+    // };
+    // hitView();
+  }, [resource, setRunningHeader]);
 
   return (
     <article className={styles.container}>
@@ -119,12 +113,9 @@ export const Mdx = memo<MdxProps>(({ resource, content }) => {
         <Info resource={resource} />
       </header>
       <div className={styles.main}>
-        <TableOfContents
-          contents={getHeadings(contentString)}
-          currentActiveHeaderId={id}
-        />
+        <TableOfContents contents={getHeadings(contentString)} currentActiveHeaderId={id} />
         <div className={styles.wrapper}>
-          {resource.type === "project" ? (
+          {resource.type === RESOURCE_TYPE.PROJECT ? (
             <motion.a
               layoutId={`image-container-${resource.slug}`}
               className={styles.thumbnail}
@@ -134,24 +125,14 @@ export const Mdx = memo<MdxProps>(({ resource, content }) => {
               variants={imageVariants}
               target="_blank"
             >
-              <NextImage
-                src={resource.image}
-                alt={resource.title}
-                width={1200}
-                height={880}
-              />
+              <NextImage src={resource.image} alt={resource.title} width={1200} height={880} />
               <div className={styles.arrow}>
                 <Arrow />
               </div>
             </motion.a>
           ) : (
             <div className={styles.thumbnail}>
-              <NextImage
-                src={resource.image}
-                alt={resource.title}
-                width={1200}
-                height={880}
-              />
+              <NextImage src={resource.image} alt={resource.title} width={1200} height={880} />
             </div>
           )}
 
@@ -159,19 +140,16 @@ export const Mdx = memo<MdxProps>(({ resource, content }) => {
             <MDXRemote {...content} components={customMdxComponents} />
           </div>
 
-          {resource.type === "post" ? (
+          {resource.type === RESOURCE_TYPE.POST ? (
             <div className={styles.date}>
-              Published on{" "}
-              {dayjs(resource.publishedAt, "DD-MM-YYYY").format(
-                "Do MMMM, YYYY",
-              )}
+              Published on {dayjs(resource.publishedAt, "DD-MM-YYYY").format("Do MMMM, YYYY")}
             </div>
           ) : null}
-          <div className={styles.views}>{normalizeViewsCount(views)} views</div>
+          {/* <div className={styles.views}>{normalizeViewsCount(views)} views</div> */}
 
           <div className={styles.links}>
             <Edit
-              href={`/${resource.type === "project" ? "projects" : "posts"}/${
+              href={`/${resource.type === RESOURCE_TYPE.PROJECT ? "projects" : "posts"}/${
                 resource.slug
               }`}
             />

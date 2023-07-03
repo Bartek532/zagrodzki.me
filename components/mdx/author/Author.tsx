@@ -1,17 +1,20 @@
 import { memo } from "react";
 
 import { allAuthors } from "data/authors";
+import { Author as AuthorType } from "types";
 
 import { Link } from "../link/Link";
 
 import styles from "./author.module.scss";
 
 interface AuthorProps {
-  readonly name: typeof allAuthors[number]["name"];
+  readonly name: AuthorType;
 }
 
 export const Author = memo<AuthorProps>(({ name }) => {
-  const author = allAuthors.find((c) => c.name === name)!;
+  const author = allAuthors.find((c) => c.name === name);
+
+  if (!author) return null;
 
   return (
     <div className={styles.author}>

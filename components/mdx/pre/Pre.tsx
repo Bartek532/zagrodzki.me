@@ -4,6 +4,7 @@ import { memo, useRef, useState, useEffect } from "react";
 import CheckIcon from "public/svg/check.svg";
 import CopyIcon from "public/svg/copy.svg";
 import { copyToClipboard } from "utils/clipboard";
+import { onPromise } from "utils/functions";
 
 import styles from "./pre.module.scss";
 
@@ -32,7 +33,11 @@ export const Pre = memo<PreProps>(({ children, ...props }) => {
   return (
     <pre {...props} ref={preRef} className={styles.pre}>
       <div className={clsx(styles.copy, { [styles.copied]: isCopied })}>
-        <button className={styles.btn} onClick={handleCopy} aria-label="copy code to clipboard">
+        <button
+          className={styles.btn}
+          onClick={onPromise(handleCopy)}
+          aria-label="copy code to clipboard"
+        >
           <div className={styles.icon}>{isCopied ? <CheckIcon /> : <CopyIcon />}</div>
         </button>
       </div>

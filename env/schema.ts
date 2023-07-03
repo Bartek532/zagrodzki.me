@@ -17,6 +17,7 @@ export const clientSchema = z.object({
   NEXT_PUBLIC_EMAIL: z.string().email(),
   NEXT_PUBLIC_ALGOLIA_APP_ID: z.string(),
   NEXT_PUBLIC_ALGOLIA_SEARCH_KEY: z.string(),
+  NEXT_PUBLIC_URL: z.string().url(),
 });
 
 /**
@@ -33,4 +34,5 @@ export const clientEnv = {
   NEXT_PUBLIC_EMAIL: process.env.NEXT_PUBLIC_EMAIL,
   NEXT_PUBLIC_ALGOLIA_APP_ID: process.env.NEXT_PUBLIC_ALGOLIA_APP_ID,
   NEXT_PUBLIC_ALGOLIA_SEARCH_KEY: process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_KEY,
+  NEXT_PUBLIC_URL: process.env.NEXT_PUBLIC_URL,
 };

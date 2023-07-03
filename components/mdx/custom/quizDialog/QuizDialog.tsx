@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { Input } from "components/common/input/Input";
 import CrossIcon from "public/svg/cross.svg";
 import PlusIcon from "public/svg/plus.svg";
+import { onPromise } from "utils/functions";
 
 import styles from "./quizDialog.module.scss";
 
@@ -20,18 +21,18 @@ interface Answer {
   readonly status: "unchecked" | "correct" | "incorrect";
 }
 
-const AnswerItem = ({ answer, onDeleteAnswer }: { answer: Answer; onDeleteAnswer: any }) => (
-    <li>
-      <button className={clsx(styles.answer, styles[answer.status])} onClick={onDeleteAnswer}>
-        {answer.status === "unchecked" ? (
-          <div className={styles.close}>
-            <CrossIcon />
-          </div>
-        ) : null}
-        <span className={styles.text}>{answer.text}</span>
-      </button>
-    </li>
-  );
+const AnswerItem = ({ answer, onDeleteAnswer }: { answer: Answer; onDeleteAnswer: () => void }) => (
+  <li>
+    <button className={clsx(styles.answer, styles[answer.status])} onClick={onDeleteAnswer}>
+      {answer.status === "unchecked" ? (
+        <div className={styles.close}>
+          <CrossIcon />
+        </div>
+      ) : null}
+      <span className={styles.text}>{answer.text}</span>
+    </button>
+  </li>
+);
 
 export const QuizDialog = memo<QuizDialogProps>(({ correctAnswers, scoreMessages }) => {
   const [answers, setAnswers] = useState<Answer[]>([]);
@@ -45,12 +46,13 @@ export const QuizDialog = memo<QuizDialogProps>(({ correctAnswers, scoreMessages
     reset,
   } = useForm();
 
-  const isNotInAnswers = (inputType: string) => inputType.trim() && !answers.find((answer) => answer.text === inputType);
+  const isNotInAnswers = (inputType: string) =>
+    inputType.trim() && !answers.find((answer) => answer.text === inputType);
 
   const handleFormSubmit = ({ inputType }: Record<string, string>) => {
     const givenAnswer = {
       id: answers.length + 1,
-      text: inputType.trim(),
+      text: inputType?.trim() ?? "",
       status: "unchecked" as const,
     };
 
@@ -93,14 +95,14 @@ export const QuizDialog = memo<QuizDialogProps>(({ correctAnswers, scoreMessages
   };
 
   useEffect(() => {
-    if (answers.length === 0) {
+    if (!answers.length) {
       setIsAnswersChecked(false);
     }
   }, [answers]);
 
   return (
     <>
-      <form className={styles.form} onSubmit={handleSubmit(handleFormSubmit)}>
+      <form className={styles.form} onSubmit={onPromise(handleSubmit(handleFormSubmit))}>
         <Input
           type="text"
           placeholder="Type your answer here..."
@@ -113,7 +115,10 @@ export const QuizDialog = memo<QuizDialogProps>(({ correctAnswers, scoreMessages
         >
           <span className="sr-only">input type</span>
         </Input>
-        <button className={styles.btn} disabled={answers.length >= correctAnswers.length || isAnswersChecked}>
+        <button
+          className={styles.btn}
+          disabled={answers.length >= correctAnswers.length || isAnswersChecked}
+        >
           Add <PlusIcon />
         </button>
       </form>
@@ -123,7 +128,11 @@ export const QuizDialog = memo<QuizDialogProps>(({ correctAnswers, scoreMessages
         ) : (
           <ul className={styles.answers}>
             {answers.map((answer) => (
-              <AnswerItem key={answer.id} answer={answer} onDeleteAnswer={() => handleDeleteAnswer(answer.id)} />
+              <AnswerItem
+                key={answer.id}
+                answer={answer}
+                onDeleteAnswer={() => handleDeleteAnswer(answer.id)}
+              />
             ))}
           </ul>
         )}
@@ -136,7 +145,9 @@ export const QuizDialog = memo<QuizDialogProps>(({ correctAnswers, scoreMessages
         {isAnswersChecked ? (
           <button
             className={styles.resultBtn}
-            onClick={() => (isResultMessageShown ? setIsResultMessageShown(false) : setIsResultMessageShown(true))}
+            onClick={() =>
+              isResultMessageShown ? setIsResultMessageShown(false) : setIsResultMessageShown(true)
+            }
           >
             {isResultMessageShown ? "Hide" : "Show"}
           </button>
@@ -147,14 +158,14 @@ export const QuizDialog = memo<QuizDialogProps>(({ correctAnswers, scoreMessages
           <button
             className={clsx(styles.button, styles.check)}
             onClick={handleCheckAnswers}
-            disabled={answers.length === 0 || isAnswersChecked}
+            disabled={!answers.length || isAnswersChecked}
           >
             Check
           </button>
           <button
             className={clsx(styles.button, styles.reset)}
             onClick={handleResetAnswers}
-            disabled={answers.length === 0}
+            disabled={!answers.length}
           >
             Reset
           </button>

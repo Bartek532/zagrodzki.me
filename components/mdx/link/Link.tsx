@@ -11,7 +11,8 @@ interface LinkProps {
 }
 
 export const Link = memo<LinkProps>(({ children, href }) => {
-  const isLinkExternal = href.startsWith("http://") || href.startsWith("https://") || href.startsWith("mailto:");
+  const isLinkExternal =
+    href.startsWith("http://") || href.startsWith("https://") || href.startsWith("mailto:");
 
   return (
     <NextLink
