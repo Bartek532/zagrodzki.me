@@ -5,40 +5,38 @@ import clsx from "clsx";
 import Image from "next/image";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { z } from "zod";
 
 import { Input } from "components/common/input/Input";
 import { LoaderRing } from "components/common/loader/LoaderRing";
-import { fetcher } from "utils/fetcher";
+import IngeniousAvatar from "public/img/avatars/have-an-idea.png";
 import { onPromise } from "utils/functions";
 
+import { subscribeToNewsletter } from "./api/mailer";
 import styles from "./newsletterTile.module.scss";
+import { subscriberSchema } from "./utils/validation/schema";
+import { Subscriber } from "./utils/validation/types";
 
-type PromiseStatus = "pending" | "loading" | "fullfilled" | "rejected";
-
-const newsletterSchema = z.object({
-  email: z.string().email(),
-});
+type FormStatus = "pending" | "loading" | "fullfilled" | "rejected";
 
 export const NewsletterTile = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({
-    resolver: zodResolver(newsletterSchema),
+  } = useForm<Subscriber>({
+    resolver: zodResolver(subscriberSchema),
   });
-  const [promiseStatus, setPromiseStatus] = useState<PromiseStatus>("pending");
+  const [formStatus, setFormStatus] = useState<FormStatus>("pending");
 
-  const handleFormSubmit = async ({ email }: Record<string, string>) => {
-    setPromiseStatus("loading");
+  const onSubmit = handleSubmit(async ({ email }) => {
+    setFormStatus("loading");
     try {
-      await fetcher("/api/newsletter", { method: "POST", body: { email } });
-      setPromiseStatus("fullfilled");
+      await subscribeToNewsletter(email);
+      setFormStatus("fullfilled");
     } catch {
-      setPromiseStatus("rejected");
+      setFormStatus("rejected");
     }
-  };
+  });
 
   return (
     <div className={styles.tile}>
@@ -46,18 +44,9 @@ export const NewsletterTile = () => {
         Subscribe to get my notes, thoughts and many more via email 📬
       </h3>
       <div className={styles.avatar}>
-        <Image
-          src="/img/avatars/have-an-idea.png"
-          alt=""
-          width="421"
-          height="421"
-        />
+        <Image src={IngeniousAvatar} alt="" />
       </div>
-      <form
-        className={styles.form}
-        onSubmit={onPromise(handleSubmit(handleFormSubmit))}
-        noValidate
-      >
+      <form className={styles.form} onSubmit={onPromise(onSubmit)} noValidate>
         <Input
           type="email"
           placeholder="your@email.com"
@@ -68,16 +57,16 @@ export const NewsletterTile = () => {
         </Input>
 
         <button
-          className={clsx(styles.btn, styles[promiseStatus])}
-          disabled={promiseStatus === "fullfilled"}
+          className={clsx(styles.btn, styles[formStatus])}
+          disabled={formStatus !== "pending"}
         >
-          {promiseStatus === "loading" ? (
+          {formStatus === "loading" ? (
             <div className={styles.loader}>
               <LoaderRing />
             </div>
-          ) : promiseStatus === "fullfilled" ? (
+          ) : formStatus === "fullfilled" ? (
             "Yeah, check your inbox!"
-          ) : promiseStatus === "rejected" ? (
+          ) : formStatus === "rejected" ? (
             "Oops, maybe try again later?"
           ) : (
             "Subscribe!"
