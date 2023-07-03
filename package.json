@@ -34,10 +34,8 @@
   "dependencies": {
     "@hookform/resolvers": "3.1.1",
     "@sendgrid/mail": "^7.6.0",
-    "@supabase/supabase-js": "^2.22.0",
-    "@tanstack/react-query": "4.29.19",
-    "@tanstack/react-query-devtools": "4.29.19",
     "@vercel/analytics": "^0.1.8",
+    "@vercel/kv": "0.2.2",
     "algoliasearch": "^4.11.0",
     "dayjs": "^1.10.7",
     "feed": "^4.2.2",

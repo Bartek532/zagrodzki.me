@@ -3,9 +3,9 @@ import { SyntheticEvent } from "react";
 import { allCategories } from "data/categories";
 import { RESOURCE_TYPE } from "types";
 
-export const onPromise = <T>(
-  promise: (event: SyntheticEvent) => Promise<T>,
-) => (event: SyntheticEvent) => {
+export const onPromise =
+  <T>(promise: (event: SyntheticEvent) => Promise<T>) =>
+  (event: SyntheticEvent) => {
     promise(event).catch((error) => {
       console.log("Unexpected error", error);
     });
@@ -19,8 +19,8 @@ export const getHeadings = (source: string) => {
 
   if (source.match(HEADING_REGEX) && typeof window !== "undefined") {
     return source.match(HEADING_REGEX)?.map((heading) => {
-      const headingEl = new DOMParser().parseFromString(heading, "text/html")
-        .body.firstChild as Element;
+      const headingEl = new DOMParser().parseFromString(heading, "text/html").body
+        .firstChild as Element;
 
       return {
         text: headingEl.textContent,

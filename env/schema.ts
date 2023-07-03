@@ -5,8 +5,21 @@ export const serverSchema = z.object({
   SPOTIFY_CLIENT_ID: z.string(),
   SPOTIFY_CLIENT_SECRET: z.string(),
   SPOTIFY_REFRESH_TOKEN: z.string(),
+
   SENDGRID_API_KEY: z.string(),
   EMAIL: z.string().email(),
+
+  KV_URL: z.string().url(),
+  KV_REST_API_READ_ONLY_TOKEN: z.string(),
+  KV_REST_API_TOKEN: z.string(),
+  KV_REST_API_URL: z.string().url(),
+
+  ALGOLIA_APP_ID: z.string(),
+  ALGOLIA_API_KEY: z.string(),
+  ALGOLIA_UPDATE_API_KEY: z.string(),
+
+  MAILER_LITE_API_KEY: z.string(),
+  MAILER_LITE_GROUP_ID: z.string(),
 });
 
 export const clientSchema = z.object({
@@ -15,8 +28,10 @@ export const clientSchema = z.object({
   NEXT_PUBLIC_GITHUB_USERNAME: z.string(),
   NEXT_PUBLIC_FACEBOOK_USERNAME: z.string(),
   NEXT_PUBLIC_EMAIL: z.string().email(),
+
   NEXT_PUBLIC_ALGOLIA_APP_ID: z.string(),
   NEXT_PUBLIC_ALGOLIA_SEARCH_KEY: z.string(),
+
   NEXT_PUBLIC_URL: z.string().url(),
 });
 
@@ -32,7 +47,9 @@ export const clientEnv = {
   NEXT_PUBLIC_GITHUB_USERNAME: process.env.NEXT_PUBLIC_GITHUB_USERNAME,
   NEXT_PUBLIC_FACEBOOK_USERNAME: process.env.NEXT_PUBLIC_FACEBOOK_USERNAME,
   NEXT_PUBLIC_EMAIL: process.env.NEXT_PUBLIC_EMAIL,
+
   NEXT_PUBLIC_ALGOLIA_APP_ID: process.env.NEXT_PUBLIC_ALGOLIA_APP_ID,
   NEXT_PUBLIC_ALGOLIA_SEARCH_KEY: process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_KEY,
+
   NEXT_PUBLIC_URL: process.env.NEXT_PUBLIC_URL,
 };

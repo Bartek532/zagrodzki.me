@@ -27,7 +27,7 @@ import { useRunningHeader } from "hooks/useRunningHeader";
 import { useTheme } from "providers/ThemeProvider";
 import Arrow from "public/svg/right-top-arrow.svg";
 import { RESOURCE_TYPE, type Resource } from "types";
-import { getHeadings } from "utils/functions";
+import { getHeadings, normalizeViewsCount } from "utils/functions";
 
 import styles from "./mdx.module.scss";
 import { TableOfContents } from "./tableOfContents/TableOfContents";
@@ -44,18 +44,18 @@ const imageVariants = {
 interface MdxProps {
   readonly resource: Resource;
   readonly content: MDXRemoteSerializeResult;
+  readonly views: number;
 }
 
 interface HeadingComponentProps {
   readonly children: string;
 }
 
-export const Mdx = memo<MdxProps>(({ resource, content }) => {
+export const Mdx = memo<MdxProps>(({ resource, content, views }) => {
   const contentElRef = useRef<HTMLDivElement | null>(null);
   const { id, setRunningHeader } = useRunningHeader();
   const url = `${env.NEXT_PUBLIC_URL}/${resourceRoutes[resource.type]}/${resource.slug}`;
   const { theme } = useTheme();
-  // const [views, setViews] = useState(0);
 
   const getHeadingProps = useCallback(
     ({ children }: HeadingComponentProps) => ({
@@ -99,12 +99,6 @@ export const Mdx = memo<MdxProps>(({ resource, content }) => {
 
   useEffect(() => {
     setRunningHeader(contentElRef.current);
-
-    // const hitView = async () => {
-    //   const result = await view(resource.slug, resource.type);
-    //   setViews(result);
-    // };
-    // hitView();
   }, [resource, setRunningHeader]);
 
   return (
@@ -145,7 +139,7 @@ export const Mdx = memo<MdxProps>(({ resource, content }) => {
               Published on {dayjs(resource.publishedAt, "DD-MM-YYYY").format("Do MMMM, YYYY")}
             </div>
           ) : null}
-          {/* <div className={styles.views}>{normalizeViewsCount(views)} views</div> */}
+          <span className={styles.views}>{normalizeViewsCount(views)} views</span>
 
           <div className={styles.links}>
             <Edit

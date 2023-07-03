@@ -16,24 +16,16 @@ dayjs.extend(customParseFormat);
 
 const POSTS_DIR = path.join(process.cwd(), "content/posts");
 
-export const getAllPosts = () => {
-  return getAllResources<Post>(POSTS_DIR);
-};
+export const getAllPosts = () => getAllResources<Post>(POSTS_DIR);
 
-export const getPostsPaths = () => {
-  return getResourcesPaths(POSTS_DIR);
-};
+export const getPostsPaths = () => getResourcesPaths(POSTS_DIR);
 
-export const getPostBySlug = (slug: string) => {
-  return getResourceBySlug(slug, POSTS_DIR);
-};
+export const getPostBySlug = (slug: string) => getResourceBySlug(slug, POSTS_DIR);
 
-export const getPostParsedContent = (slug: string) => {
-  return getResourceParsedContent(slug, POSTS_DIR);
-};
+export const getPostParsedContent = (slug: string) => getResourceParsedContent(slug, POSTS_DIR);
 
-export const sortPostsByNewest = (posts: Post[]) => {
-  return posts.sort((a, b) => {
+export const sortPostsByNewest = (posts: Post[]) =>
+  posts.sort((a, b) => {
     const dateA = dayjs(a.publishedAt, "DD-MM-YYYY");
     const dateB = dayjs(b.publishedAt, "DD-MM-YYYY");
 
@@ -42,7 +34,6 @@ export const sortPostsByNewest = (posts: Post[]) => {
 
     return 0;
   });
-};
 
 export const getPublishedPosts = () => {
   const posts = getAllPosts();
