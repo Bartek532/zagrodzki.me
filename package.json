@@ -47,7 +47,6 @@
     "next": "13.4.7",
     "next-mdx-remote": "^3.0.8",
     "next-pwa": "^5.4.4",
-    "next-transpile-modules": "^9.0.0",
     "plaiceholder": "^2.2.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -94,6 +93,7 @@
     "ts-node": "^10.4.0",
     "tsconfig-paths": "^3.12.0",
     "typescript": "^5.1.6",
+    "typescript-plugin-css-modules": "5.0.1",
     "unified": "9.1",
     "unist-util-visit": "2.0.3"
   },

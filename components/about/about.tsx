@@ -12,14 +12,14 @@ import { useTheme } from "providers/ThemeProvider";
 import GithubGraphDark from "public/img/gh-graph-dark.png";
 import GithubGraphLight from "public/img/gh-graph-light.png";
 
-import styles from "./aboutView.module.scss";
+import styles from "./about.module.scss";
 import { Experience } from "./components/experience/Experience";
 import { Facts } from "./components/facts/Facts";
 import { Hero } from "./components/hero/Hero";
 import { Recommendations } from "./components/recommendations/Recommendations";
 import { Skills } from "./components/skills/Skills";
 
-export const AboutView = ({ views }: { views: number }) => {
+export const About = ({ views }: { views: number }) => {
   const { theme } = useTheme();
 
   return (
