@@ -48,3 +48,6 @@ export type Category = typeof allCategories[number]["slug"];
 export type Author = typeof allAuthors[number]["name"];
 
 export type HeadingVariant = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+export interface MetadataParams {
+  params: { slug: string };
+}

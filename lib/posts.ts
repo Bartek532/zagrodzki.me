@@ -20,7 +20,7 @@ export const getAllPosts = () => getAllResources<Post>(POSTS_DIR);
 
 export const getPostsPaths = () => getResourcesPaths(POSTS_DIR);
 
-export const getPostBySlug = (slug: string) => getResourceBySlug(slug, POSTS_DIR);
+export const getPostBySlug = (slug: string) => getResourceBySlug<Post>(slug, POSTS_DIR);
 
 export const getPostParsedContent = (slug: string) => getResourceParsedContent(slug, POSTS_DIR);
 

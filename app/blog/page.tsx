@@ -1,10 +1,13 @@
 import { PostsListing } from "components/blog/listing/PostsListing";
 import { Hero } from "components/common/hero/Hero";
+import { getMetadata } from "lib/metadata";
 import { getPopularPosts, getPostsCategories } from "lib/posts";
 import { getResourceViews } from "lib/views";
 import { Post, RESOURCE_TYPE } from "types";
 
 const description = "Everything that I or one of the authors has written for my blog ✍️";
+
+export const metadata = getMetadata({ title: "Blog", description, image: "/img/blog.png" });
 
 const BlogPage = async () => {
   const categories = getPostsCategories();

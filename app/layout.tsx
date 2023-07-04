@@ -3,9 +3,12 @@ import localFont from "next/font/local";
 
 import { Analytics } from "components/common/analytics/Analytics";
 import { Layout } from "components/layout/Layout";
+import { DEFAULT_METADATA } from "lib/metadata";
 import { AppProviders } from "providers/AppProviders";
 
 import "../styles/globals.scss";
+
+export const metadata = DEFAULT_METADATA;
 
 const walsheim = localFont({
   src: [
@@ -42,11 +45,7 @@ const kenfolg = localFont({
   variable: "--font-kenfolg",
 });
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html
       lang="en-EN"

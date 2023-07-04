@@ -17,10 +17,7 @@ const MDX_REGEX = /\.mdx$/;
 
 type Resource = Project | Post;
 
-const getResourceFrontmatter = <T extends Resource>(
-  filename: string,
-  resourcePath: string,
-) => {
+const getResourceFrontmatter = <T extends Resource>(filename: string, resourcePath: string) => {
   const fullPath = path.join(resourcePath, filename);
   const fileContents = fs.readFileSync(fullPath, "utf8");
   const slug = filename.replace(MDX_REGEX, "");
@@ -39,10 +36,7 @@ export const getAllResources = <T extends Resource>(resourcePath: string) => {
   return allResources;
 };
 
-export const getResourceParsedContent = async (
-  slug: string,
-  resourcePath: string,
-) => {
+export const getResourceParsedContent = async (slug: string, resourcePath: string) => {
   const filePath = path.join(resourcePath, `${slug}.mdx`);
   const source = fs.readFileSync(filePath);
   const { content } = matter(source);
@@ -56,12 +50,12 @@ export const getResourceParsedContent = async (
   return { compiledContent };
 };
 
-export const getResourceBySlug = async (slug: string, resourcePath: string) => {
+export const getResourceBySlug = async <T extends Resource>(slug: string, resourcePath: string) => {
   const filePath = path.join(resourcePath, `${slug}.mdx`);
   const source = fs.readFileSync(filePath);
   const { content, data } = matter(source);
   const timeToRead = readingTime(content).minutes;
-  const frontmatter = { ...data, timeToRead } as Resource;
+  const frontmatter = { ...data, timeToRead } as T;
   const transformedMdx = await serialize(content, {
     scope: data,
     mdxOptions: { rehypePlugins: commonRehypePlugins },
@@ -70,15 +64,10 @@ export const getResourceBySlug = async (slug: string, resourcePath: string) => {
   return { transformedMdx, frontmatter };
 };
 
-const getResourcesSlugs = (resourcePath: string) => {
-  return fs.readdirSync(resourcePath).filter((path) => path.endsWith(".mdx"));
-};
+const getResourcesSlugs = (resourcePath: string) =>
+  fs.readdirSync(resourcePath).filter((path) => path.endsWith(".mdx"));
 
 export const getResourcesPaths = (resourcePath: string) => {
   const slugs = getResourcesSlugs(resourcePath);
-  const paths = slugs
-    .map((slug) => slug.replace(MDX_REGEX, ""))
-    .map((slug) => ({ slug }));
-
-  return paths;
+  return slugs.map((slug) => slug.replace(MDX_REGEX, ""));
 };
