@@ -97,14 +97,14 @@ devDependencies:
     specifier: 0.8.0
     version: 0.8.0
   '@types/node':
-    specifier: 16.11.10
-    version: 16.11.10
+    specifier: 20.3.3
+    version: 20.3.3
   '@types/react':
-    specifier: 17.0.37
-    version: 17.0.37
+    specifier: 18.2.14
+    version: 18.2.14
   '@types/react-dom':
-    specifier: ^17.0.11
-    version: 17.0.11
+    specifier: ^18.2.6
+    version: 18.2.6
   '@types/react-instantsearch-core':
     specifier: 6.26.3
     version: 6.26.3
@@ -161,7 +161,7 @@ devDependencies:
     version: 1.49.0
   ts-node:
     specifier: ^10.4.0
-    version: 10.4.0(@types/node@16.11.10)(typescript@5.1.6)
+    version: 10.4.0(@types/node@20.3.3)(typescript@5.1.6)
   tsconfig-paths:
     specifier: ^3.12.0
     version: 3.12.0
@@ -2047,7 +2047,7 @@ packages:
     resolution: {integrity: sha512-ZUxbzKl0IfJILTS6t7ip5fQQM/J3TJYubDm3nMbgubNNYS62eXeUpoLUC8/7fJNiFYHTrGPQn7hspDUzIHX3UA==}
     dependencies:
       '@types/minimatch': 5.1.2
-      '@types/node': 16.11.10
+      '@types/node': 20.3.3
     dev: false
 
   /@types/gtag.js@0.0.8:
@@ -2073,7 +2073,7 @@ packages:
   /@types/keyv@3.1.4:
     resolution: {integrity: sha512-BQ5aZNSCpj7D6K2ksrRCTmKRLEpnPvWDiLPfoGyhZ++8YtiK9d/3DBKPJgry359X/P1PfruyYwvnvwFjuEiEIg==}
     dependencies:
-      '@types/node': 16.11.10
+      '@types/node': 20.3.3
     dev: true
 
   /@types/mapbox__rehype-prism@0.8.0:
@@ -2092,8 +2092,8 @@ packages:
     resolution: {integrity: sha512-K0VQKziLUWkVKiRVrx4a40iPaxTUefQmjtkQofBkYRcoaaL/8rhwDWww9qWbrgicNOgnpIsMxyNIUM4+n6dUIA==}
     dev: false
 
-  /@types/node@16.11.10:
-    resolution: {integrity: sha512-3aRnHa1KlOEEhJ6+CvyHKK5vE9BcLGjtUpwvqYLRvYNQKMfabu3BwfJaA/SLW8dxe28LsNDjtHwePTuzn3gmOA==}
+  /@types/node@20.3.3:
+    resolution: {integrity: sha512-wheIYdr4NYML61AjC8MKj/2jrR/kDQri/CIpVoZwldwhnIrD/j9jIU5bJ8yBKuB2VhpFV7Ab6G2XkBjv9r9Zzw==}
 
   /@types/parse-json@4.0.0:
     resolution: {integrity: sha512-//oorEZjL6sbPcKUaCdIGlIUeH26mgzimjBB77G6XRgnDl/L5wOnpyBGRe/Mmf5CVW3PwEBE1NjiMZ/ssFh4wA==}
@@ -2123,16 +2123,16 @@ packages:
     resolution: {integrity: sha512-L28j2FcJfSZOnL1WBjDYp2vUHCeIFlyYI/53EwD/rKUBQ7MtUUfbQWiyKJGpcnv4/WgrhWsFKrcPstcAt/J0tQ==}
     dev: true
 
-  /@types/react-dom@17.0.11:
-    resolution: {integrity: sha512-f96K3k+24RaLGVu/Y2Ng3e1EbZ8/cVJvypZWd7cy0ofCBaf2lcM46xNhycMZ2xGwbBjRql7hOlZ+e2WlJ5MH3Q==}
+  /@types/react-dom@18.2.6:
+    resolution: {integrity: sha512-2et4PDvg6PVCyS7fuTc4gPoksV58bW0RwSxWKcPRcHZf0PRUGq03TKcD/rUHe3azfV6/5/biUBJw+HhCQjaP0A==}
     dependencies:
-      '@types/react': 17.0.37
+      '@types/react': 18.2.14
     dev: true
 
   /@types/react-instantsearch-core@6.26.3:
     resolution: {integrity: sha512-dBq/K1NQFBgLmCdiLYaC15KjXdjZk8UTQBhumSg+fAHgpW3ai5fu5BbzAKzSCkqYwbgqvhCQ1EZ9PLvPvOfqwQ==}
     dependencies:
-      '@types/react': 17.0.37
+      '@types/react': 18.2.14
       algoliasearch: 4.11.0
       algoliasearch-helper: 3.13.0(algoliasearch@4.11.0)
     dev: true
@@ -2140,12 +2140,12 @@ packages:
   /@types/react-instantsearch-dom@6.12.1:
     resolution: {integrity: sha512-0crWjo6w6SHPZY5XWVUVkH3exVRGjyNJXtVYXRD7s6u8CiSIhONO82cCsxSCsdyGeK2yenPZNxFuZ1KXnoWKOg==}
     dependencies:
-      '@types/react': 17.0.37
+      '@types/react': 18.2.14
       '@types/react-instantsearch-core': 6.26.3
     dev: true
 
-  /@types/react@17.0.37:
-    resolution: {integrity: sha512-2FS1oTqBGcH/s0E+CjrCCR9+JMpsu9b69RTFO+40ua43ZqP5MmQ4iUde/dMjWR909KxZwmOQIFq6AV6NjEG5xg==}
+  /@types/react@18.2.14:
+    resolution: {integrity: sha512-A0zjq+QN/O0Kpe30hA1GidzyFjatVvrpIvWLxD+xv67Vt91TWWgco9IvrJBkeyHm1trGaFS/FSGqPlhyeZRm0g==}
     dependencies:
       '@types/prop-types': 15.7.5
       '@types/scheduler': 0.16.3
@@ -2155,13 +2155,13 @@ packages:
   /@types/resolve@1.17.1:
     resolution: {integrity: sha512-yy7HuzQhj0dhGpD8RLXSZWEkLsV9ibvxvi6EiJ3bkqLAO1RGo0WbkWQiwpRlSFymTJRz0d3k5LM3kkx8ArDbLw==}
     dependencies:
-      '@types/node': 16.11.10
+      '@types/node': 20.3.3
     dev: false
 
   /@types/responselike@1.0.0:
     resolution: {integrity: sha512-85Y2BjiufFzaMIlvJDvTTB8Fxl2xfLo4HgmHzVBz08w4wDePCTjYw66PdrolO0kzli3yam/YCgRufyo1DdQVTA==}
     dependencies:
-      '@types/node': 16.11.10
+      '@types/node': 20.3.3
     dev: true
 
   /@types/scheduler@0.16.3:
@@ -5243,7 +5243,7 @@ packages:
     resolution: {integrity: sha512-KWYVV1c4i+jbMpaBC+U++4Va0cp8OisU185o73T1vo99hqi7w8tSJfUXYswwqqrjzwxa6KpRK54WhPvwf5w6PQ==}
     engines: {node: '>= 10.13.0'}
     dependencies:
-      '@types/node': 16.11.10
+      '@types/node': 20.3.3
       merge-stream: 2.0.0
       supports-color: 7.2.0
     dev: false
@@ -5252,7 +5252,7 @@ packages:
     resolution: {integrity: sha512-7vuh85V5cdDofPyxn58nrPjBktZo0u9x1g8WtjQol+jZDaE+fhN+cIvTj11GndBnMnyfrUOG1sZQxCdjKh+DKg==}
     engines: {node: '>= 10.13.0'}
     dependencies:
-      '@types/node': 16.11.10
+      '@types/node': 20.3.3
       merge-stream: 2.0.0
       supports-color: 8.1.1
     dev: false
@@ -6395,7 +6395,7 @@ packages:
     dependencies:
       lilconfig: 2.1.0
       postcss: 8.4.24
-      ts-node: 10.4.0(@types/node@16.11.10)(typescript@5.1.6)
+      ts-node: 10.4.0(@types/node@20.3.3)(typescript@5.1.6)
       yaml: 1.10.2
     dev: true
 
@@ -7721,7 +7721,7 @@ packages:
     resolution: {integrity: sha512-AqTiAOLcj85xS7vQ8QkAV41hPDIJ71XJB4RCUrzo/1GM2CQwhkJGaf9Hgr7BOugMRpgGUrqRg/DrBDl4H40+8g==}
     dev: true
 
-  /ts-node@10.4.0(@types/node@16.11.10)(typescript@5.1.6):
+  /ts-node@10.4.0(@types/node@20.3.3)(typescript@5.1.6):
     resolution: {integrity: sha512-g0FlPvvCXSIO1JDF6S232P5jPYqBkRL9qly81ZgAOSU7rwI0stphCgd2kLiCrU9DjQCrJMWEqcNSjQL02s6d8A==}
     hasBin: true
     peerDependencies:
@@ -7740,7 +7740,7 @@ packages:
       '@tsconfig/node12': 1.0.11
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.4
-      '@types/node': 16.11.10
+      '@types/node': 20.3.3
       acorn: 8.8.2
       acorn-walk: 8.2.0
       arg: 4.1.3
