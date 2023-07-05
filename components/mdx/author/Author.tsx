@@ -23,7 +23,6 @@ export const Author = memo<AuthorProps>(({ name }) => {
       <div className={styles.info}>
         <div className={styles.name}>Written by {author.name}</div>
         <p className={styles.description}>{author.meta.description}</p>
-
         <div className={styles.learnMore}>
           <Link href={author.meta.about}>Learn more about {author.name.split(" ")[0]}</Link>
         </div>

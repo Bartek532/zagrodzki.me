@@ -1,5 +1,5 @@
-import "server-only";
 import dayjs from "dayjs";
+import "server-only";
 
 import { env } from "env/server";
 
@@ -73,24 +73,19 @@ export const fetchLastTrack = async () => {
   if (isCurrentlyPlayingPayload(currentlyPlayingData)) {
     return {
       track: currentlyPlayingData.item,
-      status: currentlyPlayingData.is_playing
-        ? TRACK_STATUS.ONLINE
-        : TRACK_STATUS.OFFLINE,
+      status: currentlyPlayingData.is_playing ? TRACK_STATUS.ONLINE : TRACK_STATUS.OFFLINE,
     };
   }
 
-  const recentlyPlayedData = await fetch(
-    `https://api.spotify.com/v1/me/player/recently-played`,
-    {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-      next: {
-        revalidate: 60,
-      },
+  const recentlyPlayedData = await fetch(`https://api.spotify.com/v1/me/player/recently-played`, {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${token}`,
     },
-  );
+    next: {
+      revalidate: 60,
+    },
+  });
 
   if (!isRecentlyPlayedPayload(recentlyPlayedData)) {
     throw new Error("Unexpected error occured!");

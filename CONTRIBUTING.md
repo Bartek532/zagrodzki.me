@@ -19,13 +19,15 @@ If you spot a typo or an error, please boldly let me know. **You can also write 
 Description of the project files and directories.
 
 ```bash
+├── app/                       # Next.js app directory (v13)
 ├── components/                # React components
 ├── content/                   # All .mdx files with content
-├── context/                   # React context global state
 ├── data/                      # Global available data
+├── env/                       # Env variables handling (validation)
 ├── hooks/                     # Shared React hooks
 ├── lib/                       # Lib files
-├── pages/                     # Next.js pages
+├── providers/                 # React context global state
+├── scripts/                   # Scripts executed during deployment (algolia, redirects, feed)
 ├── public/                    # All images, icons, fonts
 ├── styles/                    # All shared styles
 ├── types/                     # TypeScript types
@@ -37,19 +39,16 @@ Description of the project files and directories.
 ├── .prettierignore            # Files ignored by Prettier
 ├── .prettierrc                # Code convention enforced by Prettier
 ├── build.sh                   # Deployment script
-├── generateAlgoliaItems.ts    # Script to generate Algolia index
-├── generateFeed.ts            # Script to generate xml and json feed
-├── generateNewPostRedirect.ts # Script to generate new post redirect
 ├── next.config.js             # Next.js config
 ├── package.json               # Dependencies and additional information
 ├── README.md
 ├── tsconfig.json              # Typescript configuration
-└── yarn.lock                  # Yarn lockfile
+└── pnpm-lock.yaml             # Pnpm lockfile
 ```
 
 ## Styleguide
 
-Coding conventions are enforced by [ESLint](.eslintrc.js) and [Prettier](.prettierrc).
+Coding conventions are enforced by [ESLint](.eslintrc.json) and [Prettier](.prettierrc).
 
 - Semicolons
 - Double quotes
@@ -60,7 +59,7 @@ Coding conventions are enforced by [ESLint](.eslintrc.js) and [Prettier](.pretti
 - Trailing commas in arrays and objects
 - [Non-default exports](https://humanwhocodes.com/blog/2019/01/stop-using-default-exports-javascript-module/) are preferred for components
 - Module imports are ordered and separated: **built-in** -> **external** -> **internal** -> **css/assets/other**
-- TypeScript: strict mode, with no implicitly any
+- TypeScript: strict mode, with strict ESLint rules
 
 ## Example component structure
 
@@ -74,9 +73,9 @@ Coding conventions are enforced by [ESLint](.eslintrc.js) and [Prettier](.pretti
 import styles from "./component.module.scss";
 import { memo } from "react";
 
-type ComponentProps = {
+interface ComponentProps {
   readonly title: string;
-};
+}
 
 export const Component = memo<ComponentProps>(({ title }) => {
   return <h1>{title}</h1>;
@@ -90,16 +89,17 @@ Component.displayName = "Component";
 | Tech                                                      | Description                                                         |
 | --------------------------------------------------------- | ------------------------------------------------------------------- |
 | [TypeScript](https://www.typescriptlang.org/)             | Static type-checking programming language                           |
-| [Next.js](https://nextjs.org/)                            | The React Framework for Production                                  |
+| [Next.js 13](https://nextjs.org/)                         | The React Framework for Production                                  |
 | [React](https://reactjs.org/)                             | Library for building user interfaces                                |
 | [MDX](https://mdxjs.com/)                                 | Markdown for the component era                                      |
-| [Algolia](https://www.algolia.com/)                       | Implementing search                                                 |
+| [Algolia](https://www.algolia.com/)                       | Implementing powerful search                                        |
 | [Framer Motion](https://www.framer.com/motion/)           | Motion library for React                                            |
 | [Context API](https://reactjs.org/docs/context.html)      | React structure that enables to share data with multiple components |
-| [React Query](https://react-query.tanstack.com/)          | Performant and powerful data synchronization for React              |
 | [React Hook Form](https://react-hook-form.com)            | Forms with easy-to-use validation                                   |
+| [Vercel KV](https://vercel.com/docs/storage/vercel-kv)    | Durable Redis database                                              |
 | [SCSS](https://sass-lang.com)                             | CSS with superpowers                                                |
 | [CSS Modules](https://github.com/css-modules/css-modules) | Styles convention in React                                          |
-| [Husky](https://github.com/typicode/husky)                | Git hooks                                                           |
+| [Zod](https://zod.dev)                                    | TypeScript-first schema validation with static type inference       |
+| [Husky](https://github.comtypicode/husky)                 | Git hooks                                                           |
 | [ESLint](https://eslint.org/)                             | TypeScript linting                                                  |
 | [Prettier](https://prettier.io/)                          | Code formatter                                                      |

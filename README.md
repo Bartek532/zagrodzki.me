@@ -15,18 +15,18 @@ Please read [CONTRIBUTING.md](https://github.com/Bartek532/zagrodzki.me/blob/mai
 | Tech                                                      | Description                                                         |
 | --------------------------------------------------------- | ------------------------------------------------------------------- |
 | [TypeScript](https://www.typescriptlang.org/)             | Static type-checking programming language                           |
-| [Next.js](https://nextjs.org/)                            | The React Framework for Production                                  |
+| [Next.js 13](https://nextjs.org/)                         | The React Framework for Production                                  |
 | [React](https://reactjs.org/)                             | Library for building user interfaces                                |
 | [MDX](https://mdxjs.com/)                                 | Markdown for the component era                                      |
-| [Algolia](https://www.algolia.com/)                       | Implementing search                                                 |
-| [Supabase](https://supabase.com/)                         | Open source database                                                |
+| [Algolia](https://www.algolia.com/)                       | Implementing powerful search                                        |
 | [Framer Motion](https://www.framer.com/motion/)           | Motion library for React                                            |
 | [Context API](https://reactjs.org/docs/context.html)      | React structure that enables to share data with multiple components |
-| [React Query](https://react-query.tanstack.com/)          | Performant and powerful data synchronization for React              |
 | [React Hook Form](https://react-hook-form.com)            | Forms with easy-to-use validation                                   |
+| [Vercel KV](https://vercel.com/docs/storage/vercel-kv)    | Durable Redis database                                              |
 | [SCSS](https://sass-lang.com)                             | CSS with superpowers                                                |
 | [CSS Modules](https://github.com/css-modules/css-modules) | Styles convention in React                                          |
-| [Husky](https://github.com/typicode/husky)                | Git hooks                                                           |
+| [Zod](https://zod.dev)                                    | TypeScript-first schema validation with static type inference       |
+| [Husky](https://github.comtypicode/husky)                 | Git hooks                                                           |
 | [ESLint](https://eslint.org/)                             | TypeScript linting                                                  |
 | [Prettier](https://prettier.io/)                          | Code formatter                                                      |
 
@@ -44,11 +44,11 @@ Please read [CONTRIBUTING.md](https://github.com/Bartek532/zagrodzki.me/blob/mai
 
 git clone https://github.com/Bartek532/zagrodzki.me.git
 
-yarn install
+pnpm install
 
-# set up environment variables
+cp .env-sample .env.local # set up environment variables
 
-yarn start
+pnpm dev
 
 ```
 

@@ -93,7 +93,7 @@ export const PostsListing = memo<PostsListingProps>(({ popularPosts, categories 
           <CategoriesList categories={categories} />
           <PopularPosts posts={popularPosts} />
           <div className={styles.wrapper}>
-            {searchParams?.has("category") ? (
+            {searchParams.has("category") ? (
               <>
                 <h2 className={styles.searchedCategory}>
                   {allCategories.find((c) => c.slug === searchParams.get("category"))?.name}
