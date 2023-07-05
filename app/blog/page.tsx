@@ -13,8 +13,8 @@ const BlogPage = async () => {
   const categories = getPostsCategories();
   const posts = getPopularPosts();
 
-  const postsViews = await getResourceViews(RESOURCE_TYPE.POST);
-  const postsSlugs = postsViews.filter((_, index) => !(index % 2)) as string[];
+  const postsViews = (await getResourceViews(RESOURCE_TYPE.POST)) as string[];
+  const postsSlugs = postsViews.filter((_, index) => !(index % 2));
 
   const sortedPosts = postsSlugs.length
     ? postsSlugs
