@@ -14,7 +14,6 @@ export const serverSchema = z.object({
   KV_REST_API_URL: z.string().url(),
 
   ALGOLIA_APP_ID: z.string(),
-  ALGOLIA_API_KEY: z.string(),
   ALGOLIA_UPDATE_API_KEY: z.string(),
 
   MAILER_LITE_API_KEY: z.string(),
@@ -31,9 +30,8 @@ export const clientSchema = z.object({
   NEXT_PUBLIC_ALGOLIA_APP_ID: z.string(),
   NEXT_PUBLIC_ALGOLIA_SEARCH_KEY: z.string(),
 
-  NEXT_PUBLIC_URL: z.string().url(),
-  NEXT_PUBLIC_HOST: z.string().url().optional(),
-  NEXT_PUBLIC_VERCEL_URL: z.string().url().optional(),
+  NEXT_PUBLIC_HOST: z.string().optional(),
+  NEXT_PUBLIC_VERCEL_URL: z.string().optional(),
 
   NEXT_PUBLIC_GA_TRACKING_ID: z.string(),
 });
@@ -54,7 +52,8 @@ export const clientEnv = {
   NEXT_PUBLIC_ALGOLIA_APP_ID: process.env.NEXT_PUBLIC_ALGOLIA_APP_ID,
   NEXT_PUBLIC_ALGOLIA_SEARCH_KEY: process.env.NEXT_PUBLIC_ALGOLIA_SEARCH_KEY,
 
-  NEXT_PUBLIC_URL: process.env.NEXT_PUBLIC_URL,
+  NEXT_PUBLIC_HOST: process.env.NEXT_PUBLIC_HOST,
+  NEXT_PUBLIC_VERCEL_URL: process.env.NEXT_PUBLIC_VERCEL_URL,
 
   NEXT_PUBLIC_GA_TRACKING_ID: process.env.NEXT_PUBLIC_GA_TRACKING_ID,
 };

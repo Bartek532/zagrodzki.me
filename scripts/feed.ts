@@ -5,27 +5,27 @@ import dayjs from "dayjs";
 import { Feed } from "feed";
 
 import { getPublishedPosts } from "../lib/posts";
-import { SITE_TITLE, DEFAULT_DESCRIPTION, ORIGIN } from "../utils/consts";
+import { SITE_TITLE, DEFAULT_DESCRIPTION, HOST } from "../utils/consts";
 
 function run() {
   const posts = getPublishedPosts();
   const feed = new Feed({
     title: SITE_TITLE,
-    link: ORIGIN,
-    id: ORIGIN,
+    link: HOST,
+    id: HOST,
     description: DEFAULT_DESCRIPTION,
-    image: `${ORIGIN}/regular-android-icon-192x192.png`,
-    favicon: `${ORIGIN}/favicon.ico`,
+    image: `${HOST}/regular-android-icon-192x192.png`,
+    favicon: `${HOST}/favicon.ico`,
     copyright: `${new Date().getFullYear()} ${SITE_TITLE}`,
     updated: new Date(),
     generator: SITE_TITLE,
     feedLinks: {
-      rss: `${ORIGIN}/feed`,
+      rss: `${HOST}/feed`,
     },
     language: "en",
     author: {
       name: SITE_TITLE,
-      link: ORIGIN,
+      link: HOST,
     },
   });
 
@@ -34,8 +34,8 @@ function run() {
       title,
       id: slug,
       description: excerpt,
-      link: `${ORIGIN}/blog/${slug}`,
-      image: `${ORIGIN}/${image}`,
+      link: `${HOST}/blog/${slug}`,
+      image: `${HOST}/${image}`,
       author: [{ name: author }],
       date: new Date(dayjs(publishedAt, "DD-MM-YYYY").format("MM-DD-YYYY")),
     });

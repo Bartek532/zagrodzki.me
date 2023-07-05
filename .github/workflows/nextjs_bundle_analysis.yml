@@ -43,7 +43,7 @@ jobs:
           key: ${{ runner.os }}-build-${{ env.cache-name }}
 
       - name: Build next.js app
-        run: ./node_modules/.bin/next build
+        run: SKIP_ENV_VALIDATION=1 ./node_modules/.bin/next build
 
       - name: Analyze bundle
         run: npx -p nextjs-bundle-analysis report

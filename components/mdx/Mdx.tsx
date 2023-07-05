@@ -5,7 +5,7 @@ import advancedFormat from "dayjs/plugin/advancedFormat";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 import { motion } from "framer-motion";
 import NextImage from "next/image";
-import { MDXRemote, MDXRemoteSerializeResult, MDXRemoteProps } from "next-mdx-remote";
+import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import { memo, useRef, useEffect, useCallback, useMemo } from "react";
 import { renderToString } from "react-dom/server";
 
@@ -22,11 +22,11 @@ import { Quote } from "components/mdx/quote/Quote";
 import { Sandbox } from "components/mdx/sandbox/Sandbox";
 import { Share } from "components/mdx/share/Share";
 import { resourceRoutes } from "data/routes";
-import { env } from "env/client";
 import { useRunningHeader } from "hooks/useRunningHeader";
 import { useTheme } from "providers/ThemeProvider";
 import Arrow from "public/svg/right-top-arrow.svg";
 import { RESOURCE_TYPE, type Resource } from "types";
+import { HOST } from "utils/consts";
 import { getHeadings, normalizeViewsCount } from "utils/functions";
 
 import styles from "./mdx.module.scss";
@@ -54,7 +54,7 @@ interface HeadingComponentProps {
 export const Mdx = memo<MdxProps>(({ resource, content, views }) => {
   const contentElRef = useRef<HTMLDivElement | null>(null);
   const { id, setRunningHeader } = useRunningHeader();
-  const url = `${env.NEXT_PUBLIC_URL}/${resourceRoutes[resource.type]}/${resource.slug}`;
+  const url = `${HOST}/${resourceRoutes[resource.type]}/${resource.slug}`;
   const { theme } = useTheme();
 
   const getHeadingProps = useCallback(
@@ -90,7 +90,7 @@ export const Mdx = memo<MdxProps>(({ resource, content, views }) => {
         Sandbox: ({ id }: { id: string }) => <Sandbox id={id} theme={theme as "light" | "dark"} />,
         pre: Pre,
         ...CustomPostsComponents,
-      } as MDXRemoteProps["components"]),
+      } as unknown as Record<string, React.ReactNode>),
     [theme, getHeadingProps],
   );
 
