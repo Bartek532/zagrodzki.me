@@ -6,7 +6,7 @@ import type { z } from "zod";
 
 const validateEnvVariables = () => {
   if (process.env.SKIP_ENV_VALIDATION === "1") {
-    return { ...process.env, ...clientEnv } as z.infer<typeof serverSchema> &
+    return { ...process.env, ...clientEnv } as unknown as z.infer<typeof serverSchema> &
       z.infer<typeof clientSchema>;
   }
 
