@@ -40,6 +40,7 @@ export const Info = memo<InfoProps>(({ resource }) => {
 
       {resource.type === RESOURCE_TYPE.PROJECT ? (
         <motion.div className={styles.github} animate={{ x: [100, 0], opacity: [0, 1] }}>
+          {/* @ts-expect-error mismatched React version */}
           <GitHubButton
             href={resource.repoUrl}
             data-icon="octicon-star"
@@ -53,6 +54,7 @@ export const Info = memo<InfoProps>(({ resource }) => {
             Star
           </GitHubButton>
 
+          {/* @ts-expect-error mismatched React version */}
           <GitHubButton
             href={`${resource.repoUrl}/fork`}
             data-icon="octicon-repo-forked"

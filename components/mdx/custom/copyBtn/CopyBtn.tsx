@@ -39,7 +39,7 @@ export const CopyBtn = memo<CopyBtnProps>(({ label, textToCopy }) => {
       <Confetti active={isCopied} config={confettiConfig} />
       <button
         onClick={onPromise(handleCopyBtnClick)}
-        className={clsx(styles.btn, { [styles.copied]: isCopied })}
+        className={clsx(styles.btn, styles.copied && { [styles.copied]: isCopied })}
       >
         {isCopied ? "Copied! 🎉" : label}
       </button>

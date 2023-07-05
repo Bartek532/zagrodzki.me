@@ -14,7 +14,6 @@ interface PreProps {
 
 export const Pre = memo<PreProps>(({ children, ...props }) => {
   const preRef = useRef<HTMLPreElement | null>(null);
-
   const [isCopied, setIsCopied] = useState(false);
 
   useEffect(() => {
@@ -32,7 +31,7 @@ export const Pre = memo<PreProps>(({ children, ...props }) => {
 
   return (
     <pre {...props} ref={preRef} className={styles.pre}>
-      <div className={clsx(styles.copy, { [styles.copied]: isCopied })}>
+      <div className={clsx(styles.copy, styles.copied && { [styles.copied]: isCopied })}>
         <button
           className={styles.btn}
           onClick={onPromise(handleCopy)}

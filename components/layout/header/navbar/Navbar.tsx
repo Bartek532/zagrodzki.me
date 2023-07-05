@@ -7,10 +7,13 @@ import { memo } from "react";
 
 import styles from "./navbar.module.scss";
 
-import type { Route } from "types";
+interface Route {
+  readonly label: string;
+  readonly path: string;
+}
 
 interface NavbarProps {
-  readonly routes: Route[];
+  readonly routes: Readonly<Route[]>;
 }
 
 export const Navbar = memo<NavbarProps>(({ routes }) => {
@@ -26,8 +29,7 @@ export const Navbar = memo<NavbarProps>(({ routes }) => {
             <Link href={route.path} className={styles.label}>
               {route.label}
             </Link>
-            {pathname === route.path ||
-            (pathname.startsWith(route.path) && route.path !== "/") ? (
+            {pathname === route.path || (pathname.startsWith(route.path) && route.path !== "/") ? (
               <motion.div
                 className={styles.active}
                 layoutId="active"

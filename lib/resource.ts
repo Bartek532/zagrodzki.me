@@ -58,6 +58,7 @@ export const getResourceBySlug = async <T extends Resource>(slug: string, resour
   const frontmatter = { ...data, timeToRead } as T;
   const transformedMdx = await serialize(content, {
     scope: data,
+    // @ts-expect-error rehype plugins types are not compatible
     mdxOptions: { rehypePlugins: commonRehypePlugins },
   });
 

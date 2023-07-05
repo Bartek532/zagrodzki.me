@@ -30,29 +30,29 @@ interface CodeNode extends HtmlNode {
   };
 }
 
-const isPreNode = (node: Node): node is PreNode => node.type === "element" && "tagName" in node && node.tagName === "pre";
+const isPreNode = (node: Node): node is PreNode =>
+  node.type === "element" && "tagName" in node && node.tagName === "pre";
 
-const isCodeNode = (node: Node): node is CodeNode => (
-    node.type === "element" && "tagName" in node && node.tagName === "code"
-  );
+const isCodeNode = (node: Node): node is CodeNode =>
+  node.type === "element" && "tagName" in node && node.tagName === "code";
 
 export const addDataToCodeBlocks = (): import("unified").Transformer => (tree) => {
-    visit(tree, "element", (node: Node) => {
-      if (!isPreNode(node) && !isCodeNode(node)) {
-        return;
-      }
+  visit(tree, "element", (node: Node) => {
+    if (!isPreNode(node) && !isCodeNode(node)) {
+      return;
+    }
 
-      const prefix = "language-";
-      const lang = node.properties?.className
-        ?.find((className) => className.startsWith(prefix))
-        ?.slice(prefix.length);
-      if (lang) {
-        node.properties = {
-          ...node.properties,
-          "data-lang": lang,
-        };
-      }
-    });
-  };
+    const prefix = "language-";
+    const lang = node.properties?.className
+      ?.find((className) => className.startsWith(prefix))
+      ?.slice(prefix.length);
+    if (lang) {
+      node.properties = {
+        ...node.properties,
+        "data-lang": lang,
+      };
+    }
+  });
+};
 
 export const commonRehypePlugins = [rehypePrism, addDataToCodeBlocks];

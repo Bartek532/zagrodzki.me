@@ -1,11 +1,6 @@
 import { allAuthors } from "data/authors";
 import { allCategories } from "data/categories";
 
-export interface Route {
-  label: string;
-  path: string;
-}
-
 export enum RESOURCE_TYPE {
   POST = "post",
   PROJECT = "project",

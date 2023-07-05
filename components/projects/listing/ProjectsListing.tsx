@@ -24,14 +24,14 @@ const searchClient = algoliasearch(
 interface CustomHitsProps extends HitsProvided<Project> {
   readonly currentObjectID: string | null;
   readonly setObjectId: (objectId: string) => void;
-  readonly blurImageData: {
+  readonly blurredImages: {
     readonly slug: string;
     readonly base64: string;
   }[];
 }
 
 export const CustomHits = connectHits<CustomHitsProps, Project>(
-  ({ hits, currentObjectID, blurImageData }) => {
+  ({ hits, currentObjectID, blurredImages }) => {
     if (!hits.length) {
       return (
         <div className={styles.empty}>
@@ -55,7 +55,7 @@ export const CustomHits = connectHits<CustomHitsProps, Project>(
           >
             <ProjectThumbnail
               project={hit}
-              blurDataURL={blurImageData.find((d) => d.slug === hit.slug)?.base64}
+              blurredImage={blurredImages.find((d) => d.slug === hit.slug)?.base64}
             />
           </li>
         ))}
@@ -73,13 +73,13 @@ const LoadingIndicator = connectStateResults(({ isSearchStalled }) =>
 );
 
 interface ProjectsListingProps {
-  readonly blurImageData: {
+  readonly blurredImages: {
     readonly slug: string;
     readonly base64: string;
   }[];
 }
 
-export const ProjectsListing = memo<ProjectsListingProps>(({ blurImageData }) => {
+export const ProjectsListing = memo<ProjectsListingProps>(({ blurredImages }) => {
   const [currentObjectID, setObjectId] = useState<string | null>(null);
 
   const handleInputChange = useCallback(() => {
@@ -94,7 +94,7 @@ export const ProjectsListing = memo<ProjectsListingProps>(({ blurImageData }) =>
         <CustomHits
           currentObjectID={currentObjectID}
           setObjectId={setObjectId}
-          blurImageData={blurImageData}
+          blurredImages={blurredImages}
         />
       </InstantSearch>
     </div>

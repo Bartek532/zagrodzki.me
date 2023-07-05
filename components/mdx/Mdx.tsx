@@ -5,7 +5,7 @@ import advancedFormat from "dayjs/plugin/advancedFormat";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 import { motion } from "framer-motion";
 import NextImage from "next/image";
-import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
+import { MDXRemote, MDXRemoteSerializeResult, MDXRemoteProps } from "next-mdx-remote";
 import { memo, useRef, useEffect, useCallback, useMemo } from "react";
 import { renderToString } from "react-dom/server";
 
@@ -66,36 +66,35 @@ export const Mdx = memo<MdxProps>(({ resource, content, views }) => {
   );
 
   const customMdxComponents = useMemo(
-    () => ({
-      h2: (props: HeadingComponentProps) => (
-        <Heading level="h2" {...getHeadingProps(props)}></Heading>
-      ),
-      h3: (props: HeadingComponentProps) => (
-        <Heading level="h3" {...getHeadingProps(props)}></Heading>
-      ),
-      h4: (props: HeadingComponentProps) => (
-        <Heading level="h4" {...getHeadingProps(props)}></Heading>
-      ),
-      h5: (props: HeadingComponentProps) => (
-        <Heading level="h5" {...getHeadingProps(props)}></Heading>
-      ),
-      h6: (props: HeadingComponentProps) => (
-        <Heading level="h6" {...getHeadingProps(props)}></Heading>
-      ),
-      Image,
-      Link,
-      Quote,
-      Highlight,
-      Sandbox: ({ id }: { id: string }) => <Sandbox id={id} theme={theme as "light" | "dark"} />,
-      pre: Pre,
-      ...CustomPostsComponents,
-    }),
-    [],
+    () =>
+      ({
+        h2: (props: HeadingComponentProps) => (
+          <Heading level="h2" {...getHeadingProps(props)}></Heading>
+        ),
+        h3: (props: HeadingComponentProps) => (
+          <Heading level="h3" {...getHeadingProps(props)}></Heading>
+        ),
+        h4: (props: HeadingComponentProps) => (
+          <Heading level="h4" {...getHeadingProps(props)}></Heading>
+        ),
+        h5: (props: HeadingComponentProps) => (
+          <Heading level="h5" {...getHeadingProps(props)}></Heading>
+        ),
+        h6: (props: HeadingComponentProps) => (
+          <Heading level="h6" {...getHeadingProps(props)}></Heading>
+        ),
+        Image,
+        Link,
+        Quote,
+        Highlight,
+        Sandbox: ({ id }: { id: string }) => <Sandbox id={id} theme={theme as "light" | "dark"} />,
+        pre: Pre,
+        ...CustomPostsComponents,
+      } as MDXRemoteProps["components"]),
+    [theme, getHeadingProps],
   );
 
-  const contentString = renderToString(
-    (<MDXRemote {...content} components={customMdxComponents} />) as React.ReactElement,
-  );
+  const contentString = renderToString(<MDXRemote {...content} components={customMdxComponents} />);
 
   useEffect(() => {
     setRunningHeader(contentElRef.current);

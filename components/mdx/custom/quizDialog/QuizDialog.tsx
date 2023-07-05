@@ -136,7 +136,12 @@ export const QuizDialog = memo<QuizDialogProps>(({ correctAnswers, scoreMessages
             ))}
           </ul>
         )}
-        <div className={clsx(styles.result, { [styles.active]: isResultMessageShown })}>
+        <div
+          className={clsx(
+            styles.result,
+            styles.active && { [styles.active]: isResultMessageShown },
+          )}
+        >
           <strong>Your result is {score.toFixed(0)}%</strong>
           <div className={styles.message}>
             {scoreMessages.find((scoreMessage) => scoreMessage.score <= score)?.message}

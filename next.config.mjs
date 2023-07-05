@@ -1,5 +1,14 @@
-// @ts-check
-// const withPWA = require("next-pwa");
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-return */
+
+import withPlaiceholder from "@plaiceholder/next";
+import pwa from "next-pwa";
+
+const withPWA = pwa({
+  dest: "public",
+  disable: process.env.NODE_ENV === "development",
+});
 
 /**
  * @type {import('next').NextConfig}
@@ -21,16 +30,16 @@ const nextConfig = {
   images: {
     domains: ["i.scdn.co"],
   },
-  async rewrites() {
-    return [
+  rewrites() {
+    return Promise.resolve([
       {
         source: "/feed",
         destination: "/feed.xml",
       },
-    ];
+    ]);
   },
-  async redirects() {
-    return [
+  redirects() {
+    return Promise.resolve([
       {
         source: "/new-post",
         destination: "/blog/THE_NEWEST_POST_SLUG_HERE",
@@ -48,17 +57,19 @@ const nextConfig = {
       },
       {
         source: "/twitter",
-        destination: `https://twitter.com/${process.env.NEXT_PUBLIC_TWITTER_USERNAME}`,
+        destination: `https://twitter.com/${process.env.NEXT_PUBLIC_TWITTER_USERNAME ?? ""}`,
         permanent: true,
       },
       {
         source: "/linkedin",
-        destination: `https://www.linkedin.com/in/${process.env.NEXT_PUBLIC_LINKEDIN_USERNAME}`,
+        destination: `https://www.linkedin.com/in/${
+          process.env.NEXT_PUBLIC_LINKEDIN_USERNAME ?? ""
+        }`,
         permanent: true,
       },
       {
         source: "/github",
-        destination: `https://github.com/${process.env.NEXT_PUBLIC_GITHUB_USERNAME}`,
+        destination: `https://github.com/${process.env.NEXT_PUBLIC_GITHUB_USERNAME ?? ""}`,
         permanent: true,
       },
       {
@@ -66,8 +77,8 @@ const nextConfig = {
         destination: `https://zagrodzki.gumroad.com/`,
         permanent: true,
       },
-    ];
+    ]);
   },
 };
 
-module.exports = nextConfig;
+export default withPWA(withPlaiceholder(nextConfig));

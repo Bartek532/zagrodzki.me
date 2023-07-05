@@ -9,19 +9,19 @@ export const Input = forwardRef<
   HTMLInputElement,
   JSX.IntrinsicElements["input"] & { isError?: boolean }
 >(({ isError, children, ...props }, ref) => (
-    <label className={styles.wrapper}>
-      {children}
-      {props.type === "search" && <SearchIcon className={styles.icon} />}
-      <input
-        ref={ref}
-        {...props}
-        className={clsx(styles.input, {
-          [styles.error]: isError,
-          [styles.search]: props.type === "search",
-        })}
-        type={props.type ?? "text"}
-      />
-    </label>
-  ));
+  <label className={styles.wrapper}>
+    {children}
+    {props.type === "search" && <SearchIcon className={styles.icon} />}
+    <input
+      ref={ref}
+      {...props}
+      className={clsx(styles.input, {
+        ...(styles.error ? { [styles.error]: isError } : {}),
+        ...(styles.search ? { [styles.search]: props.type === "search" } : {}),
+      })}
+      type={props.type ?? "text"}
+    />
+  </label>
+));
 
 Input.displayName = "Input";

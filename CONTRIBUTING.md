@@ -39,7 +39,7 @@ Description of the project files and directories.
 ├── .prettierignore            # Files ignored by Prettier
 ├── .prettierrc                # Code convention enforced by Prettier
 ├── build.sh                   # Deployment script
-├── next.config.js             # Next.js config
+├── next.config.mjs             # Next.js config
 ├── package.json               # Dependencies and additional information
 ├── README.md
 ├── tsconfig.json              # Typescript configuration
