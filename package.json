@@ -98,5 +98,11 @@
     "pnpm": ">=7.11.0",
     "node": ">=18.0.0 <19"
   },
-  "packageManager": "pnpm@7.17.0"
+  "packageManager": "pnpm@7.17.0",
+  "nextBundleAnalysis": {
+    "budget": null,
+    "budgetPercentIncreaseRed": 20,
+    "minimumChangeThreshold": 0,
+    "showDetails": true
+  }
 }
