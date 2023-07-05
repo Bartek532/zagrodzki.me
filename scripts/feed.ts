@@ -5,31 +5,27 @@ import dayjs from "dayjs";
 import { Feed } from "feed";
 
 import { getPublishedPosts } from "../lib/posts";
-import { SITE_TITLE, DEFAULT_DESCRIPTION } from "../utils/consts";
+import { SITE_TITLE, DEFAULT_DESCRIPTION, ORIGIN } from "../utils/consts";
 
 function run() {
-  const publicUrl = `https://${
-    process.env.NEXT_PUBLIC_HOST ?? process.env.NEXT_PUBLIC_VERCEL_URL ?? "zagrodzki.me"
-  }`;
-
   const posts = getPublishedPosts();
   const feed = new Feed({
     title: SITE_TITLE,
-    link: publicUrl,
-    id: publicUrl,
+    link: ORIGIN,
+    id: ORIGIN,
     description: DEFAULT_DESCRIPTION,
-    image: `${publicUrl}/regular-android-icon-192x192.png`,
-    favicon: `${publicUrl}/favicon.ico`,
-    copyright: `${new Date().getFullYear()} Bartosz Zagrodzki`,
+    image: `${ORIGIN}/regular-android-icon-192x192.png`,
+    favicon: `${ORIGIN}/favicon.ico`,
+    copyright: `${new Date().getFullYear()} ${SITE_TITLE}`,
     updated: new Date(),
     generator: SITE_TITLE,
     feedLinks: {
-      rss: `${publicUrl}/feed`,
+      rss: `${ORIGIN}/feed`,
     },
     language: "en",
     author: {
       name: SITE_TITLE,
-      link: publicUrl,
+      link: ORIGIN,
     },
   });
 
@@ -38,8 +34,8 @@ function run() {
       title,
       id: slug,
       description: excerpt,
-      link: `${publicUrl}/blog/${slug}`,
-      image: `${publicUrl}/${image}`,
+      link: `${ORIGIN}/blog/${slug}`,
+      image: `${ORIGIN}/${image}`,
       author: [{ name: author }],
       date: new Date(dayjs(publishedAt, "DD-MM-YYYY").format("MM-DD-YYYY")),
     });

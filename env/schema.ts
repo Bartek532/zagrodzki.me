@@ -1,7 +1,6 @@
 import { z } from "zod";
 
 export const serverSchema = z.object({
-  NODE_ENV: z.enum(["development", "test", "production"]),
   SPOTIFY_CLIENT_ID: z.string(),
   SPOTIFY_CLIENT_SECRET: z.string(),
   SPOTIFY_REFRESH_TOKEN: z.string(),
@@ -33,6 +32,8 @@ export const clientSchema = z.object({
   NEXT_PUBLIC_ALGOLIA_SEARCH_KEY: z.string(),
 
   NEXT_PUBLIC_URL: z.string().url(),
+  NEXT_PUBLIC_HOST: z.string().url().optional(),
+  NEXT_PUBLIC_VERCEL_URL: z.string().url().optional(),
 
   NEXT_PUBLIC_GA_TRACKING_ID: z.string(),
 });

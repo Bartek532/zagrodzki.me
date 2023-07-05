@@ -1,6 +1,7 @@
 import algoliasearch from "algoliasearch";
 import dayjs from "dayjs";
-import invariant from "invariant";
+
+import { env } from "env/server";
 
 import { getPublishedPosts, getPostParsedContent } from "../lib/posts";
 import { getAllProjects, getProjectParsedContent } from "../lib/projects";
@@ -40,22 +41,15 @@ const generateAlgoliaPosts = async () => {
 };
 
 async function run() {
-  invariant(!!process.env.ALGOLIA_UPDATE_API_KEY, "Admin API KEY is not set!");
-  invariant(!!process.env.ALGOLIA_APP_ID, "App id is not set!");
+  // invariant(!!process.env.ALGOLIA_UPDATE_API_KEY, "Admin API KEY is not set!");
+  // invariant(!!process.env.ALGOLIA_APP_ID, "App id is not set!");
 
-  const client = algoliasearch(
-    process.env.ALGOLIA_APP_ID,
-    process.env.ALGOLIA_UPDATE_API_KEY,
-  );
+  const client = algoliasearch(env.ALGOLIA_APP_ID, env.ALGOLIA_UPDATE_API_KEY);
   const projectsIndex = client.initIndex("projects");
   const postsIndex = client.initIndex("posts");
 
-  const indexedProjects = await projectsIndex.saveObjects(
-    await generateAlgoliaProjects(),
-  );
-  const indexedPosts = await postsIndex.saveObjects(
-    await generateAlgoliaPosts(),
-  );
+  const indexedProjects = await projectsIndex.saveObjects(await generateAlgoliaProjects());
+  const indexedPosts = await postsIndex.saveObjects(await generateAlgoliaPosts());
 
   console.log(`${indexedProjects.objectIDs.length} projects indexed`);
   console.log(`${indexedPosts.objectIDs.length} posts indexed`);
