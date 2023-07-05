@@ -19,6 +19,9 @@ permissions:
 jobs:
   analyze:
     runs-on: ubuntu-latest
+    env:
+      KV_REST_API_TOKEN: ${{ secrets.KV_REST_API_TOKEN }}
+      KV_REST_API_URL: ${{ secrets.KV_REST_API_URL }}
     steps:
       - uses: actions/checkout@v3
       - name: Install Node.js

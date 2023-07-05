@@ -8,8 +8,6 @@ export const serverSchema = z.object({
   SENDGRID_API_KEY: z.string(),
   EMAIL: z.string().email(),
 
-  KV_URL: z.string().url(),
-  KV_REST_API_READ_ONLY_TOKEN: z.string(),
   KV_REST_API_TOKEN: z.string(),
   KV_REST_API_URL: z.string().url(),
 
