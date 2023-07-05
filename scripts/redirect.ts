@@ -4,22 +4,15 @@ import path from "path";
 import { getNewestPosts } from "../lib/posts";
 
 function run() {
-  const [{ slug }] = getNewestPosts();
+  const [post] = getNewestPosts();
 
-  const nextConfig = fs.readFileSync(
-    path.join(__dirname, "next.config.js"),
-    "utf8",
-  );
+  if (!post) return;
 
-  const nextConfigWithNewPostRedirect = nextConfig.replace(
-    /THE_NEWEST_POST_SLUG_HERE/g,
-    slug,
-  );
+  const nextConfig = fs.readFileSync(path.join(__dirname, "next.config.js"), "utf8");
 
-  fs.writeFileSync(
-    path.join(__dirname, "next.config.js"),
-    nextConfigWithNewPostRedirect,
-  );
+  const nextConfigWithNewPostRedirect = nextConfig.replace(/THE_NEWEST_POST_SLUG_HERE/g, post.slug);
+
+  fs.writeFileSync(path.join(__dirname, "next.config.js"), nextConfigWithNewPostRedirect);
 }
 
 run();

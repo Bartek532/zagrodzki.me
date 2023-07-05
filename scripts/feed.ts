@@ -9,7 +9,7 @@ import { SITE_TITLE, DEFAULT_DESCRIPTION } from "../utils/consts";
 
 function run() {
   const publicUrl = `https://${
-    process.env.NEXT_PUBLIC_HOST ?? process.env.NEXT_PUBLIC_VERCEL_URL
+    process.env.NEXT_PUBLIC_HOST ?? process.env.NEXT_PUBLIC_VERCEL_URL ?? "zagrodzki.me"
   }`;
 
   const posts = getPublishedPosts();
