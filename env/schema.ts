@@ -11,7 +11,6 @@ export const serverSchema = z.object({
   KV_REST_API_TOKEN: z.string(),
   KV_REST_API_URL: z.string().url(),
 
-  ALGOLIA_APP_ID: z.string(),
   ALGOLIA_UPDATE_API_KEY: z.string(),
 
   MAILER_LITE_API_KEY: z.string(),
