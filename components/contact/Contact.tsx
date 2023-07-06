@@ -1,7 +1,11 @@
+"use client";
+
 import Image from "next/image";
 import { useState } from "react";
 
-import { ContactForm } from "components/contact/contactForm/ContactForm";
+import { ContactForm } from "components/contact/form/ContactForm";
+import InLoveAvatar from "public/img/avatars/in-love.png";
+import SurprisedAvatar from "public/img/avatars/surprised.png";
 
 import styles from "./contact.module.scss";
 
@@ -10,13 +14,9 @@ export const Contact = () => {
 
   return (
     <section className={styles.wrapper}>
-      <ContactForm handleIsSent={(val: boolean) => setIsSent(val)} />
+      <ContactForm onSent={() => setIsSent(true)} />
       <div className={styles.avatar}>
-        {isSent ? (
-          <Image src="/img/avatars/in-love.png" alt="" width="421" height="421" />
-        ) : (
-          <Image src="/img/avatars/surprised.png" alt="" width="421" height="421" />
-        )}
+        <Image src={isSent ? InLoveAvatar : SurprisedAvatar} alt="" />
       </div>
     </section>
   );

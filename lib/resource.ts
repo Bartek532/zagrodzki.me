@@ -1,15 +1,16 @@
-import path from "path";
 import fs from "fs";
+import path from "path";
 
 import matter from "gray-matter";
-import readingTime from "reading-time";
 import { serialize } from "next-mdx-remote/serialize";
-import unified from "unified";
+import readingTime from "reading-time";
+import rehypeStringify from "rehype-stringify";
 import remarkParse from "remark-parse";
 import remarkRehype from "remark-rehype";
-import rehypeStringify from "rehype-stringify";
+import unified from "unified";
 
 import { commonRehypePlugins } from "utils/markdown";
+
 import type { Project, Post } from "types";
 
 const MDX_REGEX = /\.mdx$/;
@@ -28,9 +29,9 @@ const getResourceFrontmatter = <T extends Resource>(filename: string, resourcePa
 
 export const getAllResources = <T extends Resource>(resourcePath: string) => {
   const filenames = fs.readdirSync(resourcePath);
-  const allResources = filenames.map((filename) => {
-    return getResourceFrontmatter<T>(filename, resourcePath);
-  });
+  const allResources = filenames.map((filename) =>
+    getResourceFrontmatter<T>(filename, resourcePath),
+  );
 
   return allResources;
 };
@@ -40,32 +41,34 @@ export const getResourceParsedContent = async (slug: string, resourcePath: strin
   const source = fs.readFileSync(filePath);
   const { content } = matter(source);
 
-  const compiledContent = await unified().use(rehypeStringify).use(remarkRehype).use(remarkParse).process(content);
+  const compiledContent = await unified()
+    .use(rehypeStringify)
+    .use(remarkRehype)
+    .use(remarkParse)
+    .process(content);
 
   return { compiledContent };
 };
 
-export const getResourceBySlug = async (slug: string, resourcePath: string) => {
+export const getResourceBySlug = async <T extends Resource>(slug: string, resourcePath: string) => {
   const filePath = path.join(resourcePath, `${slug}.mdx`);
   const source = fs.readFileSync(filePath);
   const { content, data } = matter(source);
   const timeToRead = readingTime(content).minutes;
-  const frontmatter = { ...data, timeToRead } as Omit<Resource, "slug">;
+  const frontmatter = { ...data, timeToRead } as T;
   const transformedMdx = await serialize(content, {
     scope: data,
+    // @ts-expect-error rehype plugins types are not compatible
     mdxOptions: { rehypePlugins: commonRehypePlugins },
   });
 
   return { transformedMdx, frontmatter };
 };
 
-const getResourcesSlugs = (resourcePath: string) => {
-  return fs.readdirSync(resourcePath).filter((path) => MDX_REGEX.test(path));
-};
+const getResourcesSlugs = (resourcePath: string) =>
+  fs.readdirSync(resourcePath).filter((path) => path.endsWith(".mdx"));
 
 export const getResourcesPaths = (resourcePath: string) => {
   const slugs = getResourcesSlugs(resourcePath);
-  const paths = slugs.map((slug) => slug.replace(MDX_REGEX, "")).map((slug) => ({ params: { slug } }));
-
-  return paths;
+  return slugs.map((slug) => slug.replace(MDX_REGEX, ""));
 };

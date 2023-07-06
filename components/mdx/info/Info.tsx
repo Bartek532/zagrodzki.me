@@ -1,19 +1,19 @@
+import { motion } from "framer-motion";
 import { memo } from "react";
 import GitHubButton from "react-github-btn";
-import { motion } from "framer-motion";
 
-import type { Post, Project } from "types";
-import { getBreadcrumbs } from "utils/getBreadcrumbs";
-import { useWindowSize } from "hooks/useWindowSize";
 import { useLocalStorage } from "hooks/useLocalStorage";
+import { useWindowSize } from "hooks/useWindowSize";
+import { RESOURCE_TYPE, type Resource } from "types";
+import { getBreadcrumbs } from "utils/functions";
 
 import { Breadcrumbs } from "../breadcrumbs/Breadcrumbs";
 
 import styles from "./info.module.scss";
 
-type InfoProps = {
-  readonly resource: Project | Post;
-};
+interface InfoProps {
+  readonly resource: Resource;
+}
 
 export const Info = memo<InfoProps>(({ resource }) => {
   const [theme] = useLocalStorage("theme", "system");
@@ -22,9 +22,12 @@ export const Info = memo<InfoProps>(({ resource }) => {
   return (
     <>
       <div className={styles.info}>
-        <motion.div className={styles.breadcrumbs} animate={{ x: [-100, 0], opacity: [0, 1] }}>
+        <motion.div className={styles.breadcrumbs} animate={{ x: [-70, 0], opacity: [0.5, 1] }}>
           <Breadcrumbs
-            routes={getBreadcrumbs(resource.type, resource.type === "post" ? resource.category : undefined)}
+            routes={getBreadcrumbs(
+              resource.type,
+              resource.type === RESOURCE_TYPE.POST ? resource.category : undefined,
+            )}
           />
         </motion.div>
         <motion.h1 layoutId={`title-container-${resource.slug}`} className={styles.title}>
@@ -35,24 +38,32 @@ export const Info = memo<InfoProps>(({ resource }) => {
         </motion.p>
       </div>
 
-      {resource.type === "project" ? (
+      {resource.type === RESOURCE_TYPE.PROJECT ? (
         <motion.div className={styles.github} animate={{ x: [100, 0], opacity: [0, 1] }}>
+          {/* @ts-expect-error mismatched React version */}
           <GitHubButton
             href={resource.repoUrl}
             data-icon="octicon-star"
             data-size={width! > 800 ? "large" : ""}
             aria-label={`Star ${resource.title} on Github`}
-            data-color-scheme={(theme === "system" ? "light: light; dark: dark;" : theme) || undefined}
+            data-color-scheme={
+              (theme === "system" ? "light: light; dark: dark;" : theme) ??
+              "light: light; dark: dark;"
+            }
           >
             Star
           </GitHubButton>
 
+          {/* @ts-expect-error mismatched React version */}
           <GitHubButton
             href={`${resource.repoUrl}/fork`}
             data-icon="octicon-repo-forked"
             aria-label={`Fork ${resource.title} on Github`}
             data-size={width! > 800 ? "large" : ""}
-            data-color-scheme={(theme === "system" ? "light: light; dark: dark;" : theme) || undefined}
+            data-color-scheme={
+              (theme === "system" ? "light: light; dark: dark;" : theme) ??
+              "light: light; dark: dark;"
+            }
           >
             Fork
           </GitHubButton>

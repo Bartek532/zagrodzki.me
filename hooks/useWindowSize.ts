@@ -1,6 +1,11 @@
+"use client";
+
 import { useState, useEffect } from "react";
 
-type Dimensions = { width?: number; height?: number };
+interface Dimensions {
+  width: number | undefined;
+  height: number | undefined;
+}
 
 export const useWindowSize = () => {
   const [windowSize, setWindowSize] = useState<Dimensions>({

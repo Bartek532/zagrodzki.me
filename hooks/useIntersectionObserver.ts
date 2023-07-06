@@ -1,14 +1,19 @@
 import { useEffect, useState, useRef } from "react";
 
-type IntersectionObserverOptions = Pick<IntersectionObserverInit, "rootMargin" | "threshold">;
+type IntersectionObserverOptions = Pick<
+  IntersectionObserverInit,
+  "rootMargin" | "threshold"
+>;
 type ObserverCallback = (entry: IntersectionObserverEntry) => void;
-type Observer = {
+interface Observer {
   readonly key: string;
   readonly intersectionObserver: IntersectionObserver;
   readonly elementToCallback: Map<Element, ObserverCallback>;
-};
+}
 
-export const useIntersectionObserver = <T extends Element = HTMLElement>(options: IntersectionObserverOptions) => {
+export const useIntersectionObserver = <T extends Element = HTMLElement>(
+  options: IntersectionObserverOptions,
+) => {
   const unobserve = useRef<Map<T, () => void>>(new Map());
 
   const [entry, setEntry] = useState<IntersectionObserverEntry | null>(null);
@@ -40,6 +45,7 @@ export const useIntersectionObserver = <T extends Element = HTMLElement>(options
   }, []);
 
   if (typeof window === "undefined") {
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
     return { entry: null, observeElement: () => {}, cleanup: () => {} };
   }
 
@@ -76,8 +82,13 @@ const observe = (() => {
     return observer;
   };
 
-  return <T extends Element>(el: T, callback: ObserverCallback, options: IntersectionObserverOptions) => {
-    const { key, intersectionObserver, elementToCallback } = createObserver(options);
+  return <T extends Element>(
+    el: T,
+    callback: ObserverCallback,
+    options: IntersectionObserverOptions,
+  ) => {
+    const { key, intersectionObserver, elementToCallback } =
+      createObserver(options);
     elementToCallback.set(el, callback);
     intersectionObserver.observe(el);
 

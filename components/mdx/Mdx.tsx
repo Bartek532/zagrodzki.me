@@ -1,101 +1,104 @@
-import { memo, useRef, useEffect, useCallback, useMemo, useState } from "react";
-import { renderToString } from "react-dom/server";
+"use client";
+
+import dayjs from "dayjs";
+import advancedFormat from "dayjs/plugin/advancedFormat";
+import customParseFormat from "dayjs/plugin/customParseFormat";
 import { motion } from "framer-motion";
 import NextImage from "next/image";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
-import dayjs from "dayjs";
-import customParseFormat from "dayjs/plugin/customParseFormat";
-import advancedFormat from "dayjs/plugin/advancedFormat";
+import { memo, useRef, useEffect, useCallback, useMemo } from "react";
+import { renderToString } from "react-dom/server";
 
-import * as CustomPostsComponents from "components/mdx/custom";
-import { useTheme } from "context/ThemeContext";
 import { Author } from "components/mdx/author/Author";
-import type { Project, Post } from "types";
-import { getHeadings } from "utils/getHeadings";
-import { useRunningHeader } from "hooks/useRunningHeader";
-import Arrow from "public/svg/right-top-arrow.svg";
-import { Image } from "components/mdx/image/Image";
-import { Heading } from "components/mdx/heading/Heading";
-import { Link } from "components/mdx/link/Link";
+import * as CustomPostsComponents from "components/mdx/custom";
 import { Edit } from "components/mdx/edit/Edit";
-import { Share } from "components/mdx/share/Share";
-import { Quote } from "components/mdx/quote/Quote";
-import { Pre } from "components/mdx/pre/Pre";
-import { Info } from "components/mdx/info/Info";
+import { Heading } from "components/mdx/heading/Heading";
 import { Highlight } from "components/mdx/highlight/Highlight";
+import { Image } from "components/mdx/image/Image";
+import { Info } from "components/mdx/info/Info";
+import { Link } from "components/mdx/link/Link";
+import { Pre } from "components/mdx/pre/Pre";
+import { Quote } from "components/mdx/quote/Quote";
 import { Sandbox } from "components/mdx/sandbox/Sandbox";
-import { normalizeViewsCount } from "utils/normalizeViewsCount";
-import { view } from "lib/views";
+import { Share } from "components/mdx/share/Share";
+import { resourceRoutes } from "data/routes";
+import { useRunningHeader } from "hooks/useRunningHeader";
+import { useTheme } from "providers/ThemeProvider";
+import Arrow from "public/svg/right-top-arrow.svg";
+import { RESOURCE_TYPE, type Resource } from "types";
+import { HOST } from "utils/consts";
+import { getHeadings, normalizeViewsCount } from "utils/functions";
 
-import { TableOfContents } from "./tableOfContents/TableOfContents";
 import styles from "./mdx.module.scss";
+import { TableOfContents } from "./tableOfContents/TableOfContents";
 
 dayjs.extend(customParseFormat);
 dayjs.extend(advancedFormat);
 
-type MdxProps = {
-  readonly resource: Project | Post;
-  readonly content: MDXRemoteSerializeResult<Record<string, unknown>>;
+const imageVariants = {
+  hover: {
+    scale: 1.05,
+  },
 };
 
-type HeadingComponentProps = {
+interface MdxProps {
+  readonly resource: Resource;
+  readonly content: MDXRemoteSerializeResult;
+  readonly views: number;
+}
+
+interface HeadingComponentProps {
   readonly children: string;
-};
+}
 
-export const Mdx = memo<MdxProps>(({ resource, content }) => {
+export const Mdx = memo<MdxProps>(({ resource, content, views }) => {
   const contentElRef = useRef<HTMLDivElement | null>(null);
   const { id, setRunningHeader } = useRunningHeader();
-  const url = `${process.env.NEXT_PUBLIC_URL}/${resource.type === "project" ? "projects" : "blog"}/${resource.slug}`;
+  const url = `${HOST}/${resourceRoutes[resource.type]}/${resource.slug}`;
   const { theme } = useTheme();
-  const [views, setViews] = useState(0);
 
   const getHeadingProps = useCallback(
-    ({ children }: HeadingComponentProps) => {
-      return {
-        slug: children,
-        url,
-      };
-    },
+    ({ children }: HeadingComponentProps) => ({
+      slug: children,
+      url,
+    }),
     [url],
   );
 
   const customMdxComponents = useMemo(
-    () => ({
-      h2: (props: HeadingComponentProps) => <Heading level="h2" {...getHeadingProps(props)}></Heading>,
-      h3: (props: HeadingComponentProps) => <Heading level="h3" {...getHeadingProps(props)}></Heading>,
-      h4: (props: HeadingComponentProps) => <Heading level="h4" {...getHeadingProps(props)}></Heading>,
-      h5: (props: HeadingComponentProps) => <Heading level="h5" {...getHeadingProps(props)}></Heading>,
-      h6: (props: HeadingComponentProps) => <Heading level="h6" {...getHeadingProps(props)}></Heading>,
-      Image,
-      Link,
-      Quote,
-      Highlight,
-      Sandbox: ({ id }: { id: string }) => <Sandbox id={id} theme={theme as "light" | "dark"} />,
-      pre: Pre,
-      ...CustomPostsComponents,
-    }),
-    [],
+    () =>
+      ({
+        h2: (props: HeadingComponentProps) => (
+          <Heading level="h2" {...getHeadingProps(props)}></Heading>
+        ),
+        h3: (props: HeadingComponentProps) => (
+          <Heading level="h3" {...getHeadingProps(props)}></Heading>
+        ),
+        h4: (props: HeadingComponentProps) => (
+          <Heading level="h4" {...getHeadingProps(props)}></Heading>
+        ),
+        h5: (props: HeadingComponentProps) => (
+          <Heading level="h5" {...getHeadingProps(props)}></Heading>
+        ),
+        h6: (props: HeadingComponentProps) => (
+          <Heading level="h6" {...getHeadingProps(props)}></Heading>
+        ),
+        Image,
+        Link,
+        Quote,
+        Highlight,
+        Sandbox: ({ id }: { id: string }) => <Sandbox id={id} theme={theme as "light" | "dark"} />,
+        pre: Pre,
+        ...CustomPostsComponents,
+      } as unknown as Record<string, React.ReactNode>),
+    [theme, getHeadingProps],
   );
 
-  const contentString = renderToString(
-    (<MDXRemote {...content} components={customMdxComponents} />) as React.ReactElement,
-  );
+  const contentString = renderToString(<MDXRemote {...content} components={customMdxComponents} />);
 
   useEffect(() => {
     setRunningHeader(contentElRef.current);
-
-    const hitView = async () => {
-      const result = await view(resource.slug, resource.type);
-      setViews(result);
-    };
-    hitView();
   }, [resource]);
-
-  const imageVariants = {
-    hover: {
-      scale: 1.05,
-    },
-  };
 
   return (
     <article className={styles.container}>
@@ -105,7 +108,7 @@ export const Mdx = memo<MdxProps>(({ resource, content }) => {
       <div className={styles.main}>
         <TableOfContents contents={getHeadings(contentString)} currentActiveHeaderId={id} />
         <div className={styles.wrapper}>
-          {resource.type === "project" ? (
+          {resource.type === RESOURCE_TYPE.PROJECT ? (
             <motion.a
               layoutId={`image-container-${resource.slug}`}
               className={styles.thumbnail}
@@ -130,15 +133,19 @@ export const Mdx = memo<MdxProps>(({ resource, content }) => {
             <MDXRemote {...content} components={customMdxComponents} />
           </div>
 
-          {resource.type === "post" ? (
+          {resource.type === RESOURCE_TYPE.POST ? (
             <div className={styles.date}>
               Published on {dayjs(resource.publishedAt, "DD-MM-YYYY").format("Do MMMM, YYYY")}
             </div>
           ) : null}
-          <div className={styles.views}>{normalizeViewsCount(views)} views</div>
+          <span className={styles.views}>{normalizeViewsCount(views)} views</span>
 
           <div className={styles.links}>
-            <Edit href={`/${resource.type === "project" ? "projects" : "posts"}/${resource.slug}`} />
+            <Edit
+              href={`/${resource.type === RESOURCE_TYPE.PROJECT ? "projects" : "posts"}/${
+                resource.slug
+              }`}
+            />
             <Share href={url} title={resource.title} type={resource.type} />
           </div>
 

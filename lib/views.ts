@@ -1,39 +1,97 @@
+import "server-only";
+import { z } from "zod";
+
+import { env } from "env/server";
 import { RESOURCE_TYPE } from "types";
 
-import { supabase } from "./supabase";
+const resultSchema = z
+  .array(
+    z.object({
+      result: z.string().or(z.array(z.string())),
+    }),
+  )
+  .nonempty();
 
-export const getViewsByType = async (type: RESOURCE_TYPE): Promise<number> => {
-  const { data } = await supabase.from("views").select("*").eq("type", type);
+const isValidKvResult = (data: unknown): data is z.infer<typeof resultSchema> =>
+  resultSchema.safeParse(data).success;
 
-  const views = data?.reduce((acc, curr) => acc + curr.count, 0);
+export const getResourceTotalViews = async (type: RESOURCE_TYPE) => {
+  const data = await getResourceViews(type);
+  if (!Array.isArray(data)) return 0;
 
-  return views ?? 0;
+  const views = data.filter((_, index) => index % 2).map((view) => Number(view));
+
+  const total = views.reduce((acc, curr) => acc + Number(curr), 0);
+
+  return total;
 };
 
-export const getViewsBySlug = async (slug: string, type: RESOURCE_TYPE): Promise<number> => {
-  const { data } = await supabase.from("views").select("*").eq("slug", slug).eq("type", type);
+export const getAllResourcesTotalViews = async () => {
+  try {
+    const postsViews = await getResourceTotalViews(RESOURCE_TYPE.POST);
+    const projectsViews = await getResourceTotalViews(RESOURCE_TYPE.PROJECT);
 
-  if (data && data[0] && data[0].count && !isNaN(data[0].count)) {
-    return data[0].count;
-  }
-
-  return 0;
-};
-
-export const view = async (slug: string, type: RESOURCE_TYPE): Promise<number> => {
-  const { data } = await supabase.from("views").select("*").eq("slug", slug).eq("type", type);
-
-  if (data?.length) {
-    await supabase
-      .from("views")
-      .update({ count: data[0].count + 1 })
-      .eq("slug", slug)
-      .eq("type", type);
-
-    return data[0].count + 1;
-  } else {
-    await supabase.from("views").insert([{ slug, count: 1, type }]);
-
-    return 1;
+    return postsViews + projectsViews;
+  } catch {
+    return 0;
   }
 };
+
+export const getResourceViews = async (type: RESOURCE_TYPE) => {
+  try {
+    const response = await fetch(`${env.KV_REST_API_URL}/pipeline`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${env.KV_REST_API_TOKEN}`,
+      },
+      body: `[["ZRANGE", "${type}", 0, -1, "WITHSCORES"]]`,
+      next: {
+        revalidate: 60,
+      },
+    });
+
+    const data: unknown = await response.json();
+
+    if (!isValidKvResult(data)) {
+      return [];
+    }
+
+    return data[0].result;
+  } catch {
+    return [];
+  }
+};
+
+export const getResourceViewsBySlug = async (type: RESOURCE_TYPE, slug: string) => {
+  try {
+    const response = await fetch(`${env.KV_REST_API_URL}/pipeline`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${env.KV_REST_API_TOKEN}`,
+      },
+      body: `[["ZSCORE", "${type}", "${slug}"]]`,
+      next: {
+        revalidate: 60,
+      },
+    });
+
+    const data: unknown = await response.json();
+
+    if (!isValidKvResult(data)) {
+      return 0;
+    }
+
+    return Number(data[0].result);
+  } catch {
+    return 0;
+  }
+};
+
+export const view = (type: RESOURCE_TYPE, slug: string) =>
+  fetch(`${env.KV_REST_API_URL}/pipeline`, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${env.KV_REST_API_TOKEN}`,
+    },
+    body: `[["ZINCRBY", "${type}", 1, "${slug}"]]`,
+  });

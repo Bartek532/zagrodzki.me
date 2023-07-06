@@ -1,15 +1,13 @@
-//@ts-ignore
 import rehypePrism from "@mapbox/rehype-prism";
 import visit from "unist-util-visit";
+
 import type { Node } from "unist";
 
 interface HtmlNode extends Node {
   tagName: string;
   type: "element";
   children?: (HtmlNode | TextNode)[];
-  properties?: {
-    [prop: string]: string[] | string | undefined;
-  };
+  properties?: Record<string, string[] | string | undefined>;
 }
 
 interface TextNode extends Node {
@@ -32,30 +30,29 @@ interface CodeNode extends HtmlNode {
   };
 }
 
-function isPreNode(node: Node): node is PreNode {
-  return node && node.type === "element" && (node as PreNode).tagName === "pre";
-}
-function isCodeNode(node: Node): node is CodeNode {
-  return node && node.type === "element" && (node as CodeNode).tagName === "code";
-}
+const isPreNode = (node: Node): node is PreNode =>
+  node.type === "element" && "tagName" in node && node.tagName === "pre";
 
-export function addDataToCodeBlocks(): import("unified").Transformer {
-  return (tree) => {
-    visit(tree, "element", (node: Node) => {
-      if (!isPreNode(node) && !isCodeNode(node)) {
-        return;
-      }
+const isCodeNode = (node: Node): node is CodeNode =>
+  node.type === "element" && "tagName" in node && node.tagName === "code";
 
-      const prefix = "language-";
-      const lang = node.properties?.className?.find((className) => className.startsWith(prefix))?.slice(prefix.length);
-      if (lang) {
-        node.properties = {
-          ...node.properties,
-          "data-lang": lang,
-        };
-      }
-    });
-  };
-}
+export const addDataToCodeBlocks = (): import("unified").Transformer => (tree) => {
+  visit(tree, "element", (node: Node) => {
+    if (!isPreNode(node) && !isCodeNode(node)) {
+      return;
+    }
+
+    const prefix = "language-";
+    const lang = node.properties?.className
+      ?.find((className) => className.startsWith(prefix))
+      ?.slice(prefix.length);
+    if (lang) {
+      node.properties = {
+        ...node.properties,
+        "data-lang": lang,
+      };
+    }
+  });
+};
 
 export const commonRehypePlugins = [rehypePrism, addDataToCodeBlocks];

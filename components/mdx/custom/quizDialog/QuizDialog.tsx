@@ -1,39 +1,38 @@
-import { memo, useEffect } from "react";
-import { useForm } from "react-hook-form";
-import { useState } from "react";
 import clsx from "clsx";
+import { memo, useEffect } from "react";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
 
 import { Input } from "components/common/input/Input";
 import CrossIcon from "public/svg/cross.svg";
 import PlusIcon from "public/svg/plus.svg";
+import { onPromise } from "utils/functions";
 
 import styles from "./quizDialog.module.scss";
 
-type QuizDialogProps = {
+interface QuizDialogProps {
   readonly correctAnswers: (string | number)[];
   readonly scoreMessages: { score: number; message: string }[];
-};
+}
 
-type Answer = {
+interface Answer {
   readonly id: number;
   readonly text: string;
   readonly status: "unchecked" | "correct" | "incorrect";
-};
+}
 
-const AnswerItem = ({ answer, onDeleteAnswer }: { answer: Answer; onDeleteAnswer: any }) => {
-  return (
-    <li>
-      <button className={clsx(styles.answer, styles[answer.status])} onClick={onDeleteAnswer}>
-        {answer.status === "unchecked" ? (
-          <div className={styles.close}>
-            <CrossIcon />
-          </div>
-        ) : null}
-        <span className={styles.text}>{answer.text}</span>
-      </button>
-    </li>
-  );
-};
+const AnswerItem = ({ answer, onDeleteAnswer }: { answer: Answer; onDeleteAnswer: () => void }) => (
+  <li>
+    <button className={clsx(styles.answer, styles[answer.status])} onClick={onDeleteAnswer}>
+      {answer.status === "unchecked" ? (
+        <div className={styles.close}>
+          <CrossIcon />
+        </div>
+      ) : null}
+      <span className={styles.text}>{answer.text}</span>
+    </button>
+  </li>
+);
 
 export const QuizDialog = memo<QuizDialogProps>(({ correctAnswers, scoreMessages }) => {
   const [answers, setAnswers] = useState<Answer[]>([]);
@@ -47,14 +46,13 @@ export const QuizDialog = memo<QuizDialogProps>(({ correctAnswers, scoreMessages
     reset,
   } = useForm();
 
-  const isNotInAnswers = (inputType: string) => {
-    return inputType.trim() && !answers.find((answer) => answer.text === inputType);
-  };
+  const isNotInAnswers = (inputType: string) =>
+    inputType.trim() && !answers.find((answer) => answer.text === inputType);
 
-  const handleFormSubmit = ({ inputType }: { [key: string]: string }) => {
+  const handleFormSubmit = ({ inputType }: Record<string, string>) => {
     const givenAnswer = {
       id: answers.length + 1,
-      text: inputType.trim(),
+      text: inputType?.trim() ?? "",
       status: "unchecked" as const,
     };
 
@@ -97,14 +95,14 @@ export const QuizDialog = memo<QuizDialogProps>(({ correctAnswers, scoreMessages
   };
 
   useEffect(() => {
-    if (answers.length === 0) {
+    if (!answers.length) {
       setIsAnswersChecked(false);
     }
   }, [answers]);
 
   return (
     <>
-      <form className={styles.form} onSubmit={handleSubmit(handleFormSubmit)}>
+      <form className={styles.form} onSubmit={onPromise(handleSubmit(handleFormSubmit))}>
         <Input
           type="text"
           placeholder="Type your answer here..."
@@ -117,7 +115,10 @@ export const QuizDialog = memo<QuizDialogProps>(({ correctAnswers, scoreMessages
         >
           <span className="sr-only">input type</span>
         </Input>
-        <button className={styles.btn} disabled={answers.length >= correctAnswers.length || isAnswersChecked}>
+        <button
+          className={styles.btn}
+          disabled={answers.length >= correctAnswers.length || isAnswersChecked}
+        >
           Add <PlusIcon />
         </button>
       </form>
@@ -127,11 +128,20 @@ export const QuizDialog = memo<QuizDialogProps>(({ correctAnswers, scoreMessages
         ) : (
           <ul className={styles.answers}>
             {answers.map((answer) => (
-              <AnswerItem key={answer.id} answer={answer} onDeleteAnswer={() => handleDeleteAnswer(answer.id)} />
+              <AnswerItem
+                key={answer.id}
+                answer={answer}
+                onDeleteAnswer={() => handleDeleteAnswer(answer.id)}
+              />
             ))}
           </ul>
         )}
-        <div className={clsx(styles.result, { [styles.active]: isResultMessageShown })}>
+        <div
+          className={clsx(
+            styles.result,
+            styles.active && { [styles.active]: isResultMessageShown },
+          )}
+        >
           <strong>Your result is {score.toFixed(0)}%</strong>
           <div className={styles.message}>
             {scoreMessages.find((scoreMessage) => scoreMessage.score <= score)?.message}
@@ -140,7 +150,9 @@ export const QuizDialog = memo<QuizDialogProps>(({ correctAnswers, scoreMessages
         {isAnswersChecked ? (
           <button
             className={styles.resultBtn}
-            onClick={() => (isResultMessageShown ? setIsResultMessageShown(false) : setIsResultMessageShown(true))}
+            onClick={() =>
+              isResultMessageShown ? setIsResultMessageShown(false) : setIsResultMessageShown(true)
+            }
           >
             {isResultMessageShown ? "Hide" : "Show"}
           </button>
@@ -151,14 +163,14 @@ export const QuizDialog = memo<QuizDialogProps>(({ correctAnswers, scoreMessages
           <button
             className={clsx(styles.button, styles.check)}
             onClick={handleCheckAnswers}
-            disabled={answers.length === 0 || isAnswersChecked}
+            disabled={!answers.length || isAnswersChecked}
           >
             Check
           </button>
           <button
             className={clsx(styles.button, styles.reset)}
             onClick={handleResetAnswers}
-            disabled={answers.length === 0}
+            disabled={!answers.length}
           >
             Reset
           </button>

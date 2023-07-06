@@ -1,0 +1,28 @@
+name: Lighthouse
+
+concurrency:
+  group: lighthouse-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+on: [pull_request]
+
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Wait for Vercel preview deployment
+        uses: patrickedqvist/wait-for-vercel-preview@v1.2.0
+        id: waitForVercelPreviewDeployment
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          max_timeout: 600
+          check_interval: 15
+
+      - name: Lighthouse
+        uses: foo-software/lighthouse-check-action@v9.1.0
+        with:
+          urls: ${{ steps.waitForVercelPreviewDeployment.outputs.url }}
+          gitHubAccessToken: ${{ secrets.GITHUB_TOKEN }}
+          locale: en
+          prCommentEnabled: true

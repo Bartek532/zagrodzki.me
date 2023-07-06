@@ -2,18 +2,16 @@ import { memo } from "react";
 
 import styles from "./hero.module.scss";
 
-type HeroProps = {
+interface HeroProps {
   readonly title: string;
   readonly description: string;
-};
+}
 
-export const Hero = memo<HeroProps>(({ title, description }) => {
-  return (
+export const Hero = memo<HeroProps>(({ title, description }) => (
     <div className={styles.hero}>
       <h1 className={styles.title}>{title}</h1>
       <p className={styles.description}>{description}</p>
     </div>
-  );
-});
+  ));
 
 Hero.displayName = "Hero";

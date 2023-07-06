@@ -10,16 +10,16 @@ interface ShareProps {
   readonly type: "project" | "post";
 }
 
-export const Share = memo<ShareProps>(({ href, title, type }) => {
-  return (
-    <div className={styles.share}>
-      <Link href={`https://twitter.com/share?url=${href}&text=${title} -`}>
-        Tweet this {type === "post" ? "article" : type}
-      </Link>
+export const Share = memo<ShareProps>(({ href, title, type }) => (
+  <div className={styles.share}>
+    <Link href={`https://twitter.com/share?url=${href}&text=${title} -`}>
+      Tweet this {type === "post" ? "article" : type}
+    </Link>
 
-      <Link href={`https://www.linkedin.com/shareArticle?mini=true&url=${href}`}>Share on LinkedIn</Link>
-    </div>
-  );
-});
+    <Link href={`https://www.linkedin.com/shareArticle?mini=true&url=${href}`}>
+      Share on LinkedIn
+    </Link>
+  </div>
+));
 
 Share.displayName = "Share";

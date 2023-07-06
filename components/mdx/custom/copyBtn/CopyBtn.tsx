@@ -1,15 +1,16 @@
-import { memo, useState, useEffect } from "react";
 import clsx from "clsx";
+import { memo, useState, useEffect } from "react";
 import Confetti from "react-dom-confetti";
 
 import { copyToClipboard } from "utils/clipboard";
+import { onPromise } from "utils/functions";
 
 import styles from "./copyBtn.module.scss";
 
-type CopyBtnProps = {
+interface CopyBtnProps {
   readonly label: string;
   readonly textToCopy: string;
-};
+}
 
 export const CopyBtn = memo<CopyBtnProps>(({ label, textToCopy }) => {
   const [isCopied, setIsCopied] = useState(false);
@@ -36,7 +37,10 @@ export const CopyBtn = memo<CopyBtnProps>(({ label, textToCopy }) => {
   return (
     <div className={styles.wrapper}>
       <Confetti active={isCopied} config={confettiConfig} />
-      <button onClick={handleCopyBtnClick} className={clsx(styles.btn, { [styles.copied]: isCopied })}>
+      <button
+        onClick={onPromise(handleCopyBtnClick)}
+        className={clsx(styles.btn, styles.copied && { [styles.copied]: isCopied })}
+      >
         {isCopied ? "Copied! 🎉" : label}
       </button>
     </div>
