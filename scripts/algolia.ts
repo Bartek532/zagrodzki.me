@@ -41,18 +41,28 @@ const generateAlgoliaPosts = async () => {
 };
 
 async function run() {
-  // invariant(!!process.env.ALGOLIA_UPDATE_API_KEY, "Admin API KEY is not set!");
-  // invariant(!!process.env.ALGOLIA_APP_ID, "App id is not set!");
+  const client = algoliasearch(
+    env.NEXT_PUBLIC_ALGOLIA_APP_ID,
+    env.ALGOLIA_UPDATE_API_KEY,
+  );
+  const projectsIndex = client.initIndex(
+    env.NEXT_PUBLIC_ALGOLIA_PROJECTS_INDEX_NAME,
+  );
+  const postsIndex = client.initIndex(env.NEXT_PUBLIC_ALGOLIA_POSTS_INDEX_NAME);
 
-  const client = algoliasearch(env.ALGOLIA_APP_ID, env.ALGOLIA_UPDATE_API_KEY);
-  const projectsIndex = client.initIndex("projects");
-  const postsIndex = client.initIndex("posts");
+  const indexedProjects = await projectsIndex.saveObjects(
+    await generateAlgoliaProjects(),
+  );
+  const indexedPosts = await postsIndex.saveObjects(
+    await generateAlgoliaPosts(),
+  );
 
-  const indexedProjects = await projectsIndex.saveObjects(await generateAlgoliaProjects());
-  const indexedPosts = await postsIndex.saveObjects(await generateAlgoliaPosts());
-
-  console.log(`${indexedProjects.objectIDs.length} projects indexed`);
-  console.log(`${indexedPosts.objectIDs.length} posts indexed`);
+  console.log(
+    `${indexedProjects.objectIDs.length} projects indexed in ${env.NEXT_PUBLIC_ALGOLIA_PROJECTS_INDEX_NAME}`,
+  );
+  console.log(
+    `${indexedPosts.objectIDs.length} posts indexed in ${env.NEXT_PUBLIC_ALGOLIA_POSTS_INDEX_NAME}`,
+  );
 }
 
 run().catch((err) => {
