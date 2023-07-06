@@ -1,5 +1,6 @@
+"use client";
+
 import clsx from "clsx";
-import Link from "next/link";
 import { memo } from "react";
 
 import styles from "./tableOfContents.module.scss";
@@ -20,25 +21,33 @@ export const TableOfContents = memo<TableOfContentsProps>(({ contents, currentAc
   <aside className={styles.aside}>
     <h2 className={styles.title}>table of contents</h2>
     <nav className={styles.nav}>
-      <Link
+      <a
         href="#introduction"
-        className={clsx(styles.link, styles.H2, {
-          [styles.active!]: currentActiveHeaderId === "introduction",
-        })}
+        className={clsx(
+          styles.link,
+          styles.H2,
+          styles.active && {
+            [styles.active]: currentActiveHeaderId === "introduction",
+          },
+        )}
       >
         Introduction
-      </Link>
+      </a>
       {contents
         ? contents.map((content) => (
-            <Link
+            <a
               href={`#${content.id}`}
               key={content.id}
-              className={clsx(styles.link, styles[content.level], {
-                [styles.active!]: currentActiveHeaderId === content.id,
-              })}
+              className={clsx(
+                styles.link,
+                styles[content.level],
+                styles.active && {
+                  [styles.active]: currentActiveHeaderId === content.id,
+                },
+              )}
             >
               {content.text}
-            </Link>
+            </a>
           ))
         : null}
     </nav>

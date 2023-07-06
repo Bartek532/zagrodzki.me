@@ -5,6 +5,10 @@
 @use "variables";
 @use "reset";
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   min-height: 100vh;
   min-height: -webkit-fill-available;
@@ -12,7 +16,6 @@ body {
   overflow-x: hidden;
   background-color: var(--bg-100);
   color: var(--black-100);
-  scroll-behavior: smooth;
 
   &::-webkit-scrollbar {
     width: 10px;

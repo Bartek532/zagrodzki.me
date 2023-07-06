@@ -98,7 +98,7 @@ export const Mdx = memo<MdxProps>(({ resource, content, views }) => {
 
   useEffect(() => {
     setRunningHeader(contentElRef.current);
-  }, [resource, setRunningHeader]);
+  }, [resource]);
 
   return (
     <article className={styles.container}>

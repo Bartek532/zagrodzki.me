@@ -20,9 +20,8 @@ export const useRunningHeader = () => {
 
       return;
     }
-    el.querySelectorAll<HTMLElement>(
-      "h2, h3, h4, h5, h6, #introduction",
-    ).forEach(observeElement);
+
+    el.querySelectorAll<HTMLElement>("h2, h3, h4, h5, h6, #introduction").forEach(observeElement);
   };
 
   useEffect(() => {
@@ -36,21 +35,20 @@ export const useRunningHeader = () => {
       currentlyVisibleHeaders.current.delete(entry.target as HTMLElement);
     }
 
-    const highestEl = [
-      ...currentlyVisibleHeaders.current,
-    ].reduce<HTMLElement | null>((acc, node) => {
-      if (!acc) {
-        return node;
-      }
+    const highestEl = [...currentlyVisibleHeaders.current].reduce<HTMLElement | null>(
+      (acc, node) => {
+        if (!acc) {
+          return node;
+        }
 
-      if (
-        acc.compareDocumentPosition(node) & Node.DOCUMENT_POSITION_PRECEDING
-      ) {
-        return node;
-      }
+        if (acc.compareDocumentPosition(node) & Node.DOCUMENT_POSITION_PRECEDING) {
+          return node;
+        }
 
-      return acc;
-    }, null);
+        return acc;
+      },
+      null,
+    );
 
     if (highestEl) {
       setId(highestEl.id);
