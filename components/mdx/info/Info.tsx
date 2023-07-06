@@ -22,7 +22,7 @@ export const Info = memo<InfoProps>(({ resource }) => {
   return (
     <>
       <div className={styles.info}>
-        <motion.div className={styles.breadcrumbs} animate={{ x: [-100, 0], opacity: [0, 1] }}>
+        <motion.div className={styles.breadcrumbs} animate={{ x: [-70, 0], opacity: [0.5, 1] }}>
           <Breadcrumbs
             routes={getBreadcrumbs(
               resource.type,

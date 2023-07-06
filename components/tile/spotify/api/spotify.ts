@@ -68,24 +68,31 @@ export const fetchLastTrack = async () => {
     },
   );
 
-  const currentlyPlayingData: unknown = await currentlyPlayingResponse.json();
+  if (currentlyPlayingResponse.status === 200) {
+    const currentlyPlayingData: unknown = await currentlyPlayingResponse.json();
 
-  if (isCurrentlyPlayingPayload(currentlyPlayingData)) {
-    return {
-      track: currentlyPlayingData.item,
-      status: currentlyPlayingData.is_playing ? TRACK_STATUS.ONLINE : TRACK_STATUS.OFFLINE,
-    };
+    if (isCurrentlyPlayingPayload(currentlyPlayingData)) {
+      return {
+        track: currentlyPlayingData.item,
+        status: currentlyPlayingData.is_playing ? TRACK_STATUS.ONLINE : TRACK_STATUS.OFFLINE,
+      };
+    }
   }
 
-  const recentlyPlayedData = await fetch(`https://api.spotify.com/v1/me/player/recently-played`, {
-    method: "GET",
-    headers: {
-      Authorization: `Bearer ${token}`,
+  const recentlyPlayedResponse = await fetch(
+    `https://api.spotify.com/v1/me/player/recently-played`,
+    {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      next: {
+        revalidate: 60,
+      },
     },
-    next: {
-      revalidate: 60,
-    },
-  });
+  );
+
+  const recentlyPlayedData: unknown = await recentlyPlayedResponse.json();
 
   if (!isRecentlyPlayedPayload(recentlyPlayedData)) {
     throw new Error("Unexpected error occured!");
