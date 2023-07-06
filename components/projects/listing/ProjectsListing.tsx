@@ -3,7 +3,11 @@
 import algoliasearch from "algoliasearch";
 import Image from "next/image";
 import { useCallback, useState, memo } from "react";
-import { InstantSearch, connectHits, connectStateResults } from "react-instantsearch-dom";
+import {
+  InstantSearch,
+  connectHits,
+  connectStateResults,
+} from "react-instantsearch-dom";
 
 import { LoaderRing } from "components/common/loader/LoaderRing";
 import { SearchBox } from "components/common/search/SearchBox";
@@ -55,7 +59,9 @@ export const CustomHits = connectHits<CustomHitsProps, Project>(
           >
             <ProjectThumbnail
               project={hit}
-              blurredImage={blurredImages.find((d) => d.slug === hit.slug)?.base64}
+              blurredImage={
+                blurredImages.find((d) => d.slug === hit.slug)?.base64
+              }
             />
           </li>
         ))}
@@ -79,26 +85,34 @@ interface ProjectsListingProps {
   }[];
 }
 
-export const ProjectsListing = memo<ProjectsListingProps>(({ blurredImages }) => {
-  const [currentObjectID, setObjectId] = useState<string | null>(null);
+export const ProjectsListing = memo<ProjectsListingProps>(
+  ({ blurredImages }) => {
+    const [currentObjectID, setObjectId] = useState<string | null>(null);
 
-  const handleInputChange = useCallback(() => {
-    setTimeout(() => setObjectId(null), 0);
-  }, []);
+    const handleInputChange = useCallback(() => {
+      setTimeout(() => setObjectId(null), 0);
+    }, []);
 
-  return (
-    <div className={styles.projects}>
-      <InstantSearch indexName="projects" searchClient={searchClient}>
-        <SearchBox currentObjectID={currentObjectID} onChange={handleInputChange} />
-        <LoadingIndicator />
-        <CustomHits
-          currentObjectID={currentObjectID}
-          setObjectId={setObjectId}
-          blurredImages={blurredImages}
-        />
-      </InstantSearch>
-    </div>
-  );
-});
+    return (
+      <div className={styles.projects}>
+        <InstantSearch
+          indexName={env.NEXT_PUBLIC_ALGOLIA_PROJECTS_INDEX_NAME}
+          searchClient={searchClient}
+        >
+          <SearchBox
+            currentObjectID={currentObjectID}
+            onChange={handleInputChange}
+          />
+          <LoadingIndicator />
+          <CustomHits
+            currentObjectID={currentObjectID}
+            setObjectId={setObjectId}
+            blurredImages={blurredImages}
+          />
+        </InstantSearch>
+      </div>
+    );
+  },
+);
 
 ProjectsListing.displayName = "ProjectsListing";

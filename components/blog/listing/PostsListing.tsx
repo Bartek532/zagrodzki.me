@@ -36,34 +36,36 @@ interface CustomHitsProps extends HitsProvided<Post> {
   readonly setObjectId: (objectId: string) => void;
 }
 
-export const CustomHits = connectHits<CustomHitsProps, Post>(({ hits, currentObjectID }) => {
-  if (!hits.length) {
-    return (
-      <div className={styles.empty}>
-        <div className={styles.avatar}>
-          <Image src={DisappointedAvatar} alt="disappointed memoji" />
+export const CustomHits = connectHits<CustomHitsProps, Post>(
+  ({ hits, currentObjectID }) => {
+    if (!hits.length) {
+      return (
+        <div className={styles.empty}>
+          <div className={styles.avatar}>
+            <Image src={DisappointedAvatar} alt="disappointed memoji" />
+          </div>
         </div>
-      </div>
-    );
-  }
+      );
+    }
 
-  return (
-    <ol id="search-hits-list" className={styles.list}>
-      {hits.map((hit) => (
-        <li
-          key={hit.objectID}
-          role="option"
-          aria-describedby="search-details"
-          aria-selected={currentObjectID === hit.objectID}
-          id={"id" + hit.objectID}
-          className={styles.hit}
-        >
-          <PostThumbnail post={hit} />
-        </li>
-      ))}
-    </ol>
-  );
-});
+    return (
+      <ol id="search-hits-list" className={styles.list}>
+        {hits.map((hit) => (
+          <li
+            key={hit.objectID}
+            role="option"
+            aria-describedby="search-details"
+            aria-selected={currentObjectID === hit.objectID}
+            id={"id" + hit.objectID}
+            className={styles.hit}
+          >
+            <PostThumbnail post={hit} />
+          </li>
+        ))}
+      </ol>
+    );
+  },
+);
 
 interface PostsListingProps {
   readonly popularPosts: Post[];
@@ -78,38 +80,55 @@ const LoadingIndicator = connectStateResults(({ isSearchStalled }) =>
   ) : null,
 );
 
-export const PostsListing = memo<PostsListingProps>(({ popularPosts, categories }) => {
-  const [currentObjectID, setObjectId] = useState<string | null>(null);
-  const searchParams = useSearchParams();
+export const PostsListing = memo<PostsListingProps>(
+  ({ popularPosts, categories }) => {
+    const [currentObjectID, setObjectId] = useState<string | null>(null);
+    const searchParams = useSearchParams();
 
-  const handleInputChange = useCallback(() => {
-    setTimeout(() => setObjectId(null), 0);
-  }, []);
+    const handleInputChange = useCallback(() => {
+      setTimeout(() => setObjectId(null), 0);
+    }, []);
 
-  return (
-    <div className={styles.posts}>
-      <InstantSearch indexName="posts" searchClient={searchClient}>
-        <div className={styles.main}>
-          <CategoriesList categories={categories} />
-          <PopularPosts posts={popularPosts} />
-          <div className={styles.wrapper}>
-            {searchParams.has("category") ? (
-              <>
-                <h2 className={styles.searchedCategory}>
-                  {allCategories.find((c) => c.slug === searchParams.get("category"))?.name}
-                </h2>
-                <Configure filters={`category:${searchParams.get("category") ?? ""}`} />
-              </>
-            ) : (
-              <SearchBox currentObjectID={currentObjectID} onChange={handleInputChange} />
-            )}
-            <LoadingIndicator />
-            <CustomHits currentObjectID={currentObjectID} setObjectId={setObjectId} />
+    return (
+      <div className={styles.posts}>
+        <InstantSearch
+          indexName={env.NEXT_PUBLIC_ALGOLIA_POSTS_INDEX_NAME}
+          searchClient={searchClient}
+        >
+          <div className={styles.main}>
+            <CategoriesList categories={categories} />
+            <PopularPosts posts={popularPosts} />
+            <div className={styles.wrapper}>
+              {searchParams.has("category") ? (
+                <>
+                  <h2 className={styles.searchedCategory}>
+                    {
+                      allCategories.find(
+                        (c) => c.slug === searchParams.get("category"),
+                      )?.name
+                    }
+                  </h2>
+                  <Configure
+                    filters={`category:${searchParams.get("category") ?? ""}`}
+                  />
+                </>
+              ) : (
+                <SearchBox
+                  currentObjectID={currentObjectID}
+                  onChange={handleInputChange}
+                />
+              )}
+              <LoadingIndicator />
+              <CustomHits
+                currentObjectID={currentObjectID}
+                setObjectId={setObjectId}
+              />
+            </div>
           </div>
-        </div>
-      </InstantSearch>
-    </div>
-  );
-});
+        </InstantSearch>
+      </div>
+    );
+  },
+);
 
 PostsListing.displayName = "PostsListing";

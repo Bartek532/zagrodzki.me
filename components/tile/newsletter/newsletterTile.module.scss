@@ -31,6 +31,7 @@
     right: 1%;
     top: -33%;
     display: none;
+    pointer-events: none;
 
     @include mixins.mediaquery("xs") {
       display: block;
