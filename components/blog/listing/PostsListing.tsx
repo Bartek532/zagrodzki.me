@@ -3,7 +3,7 @@
 import algoliasearch from "algoliasearch";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
-import { useState, useCallback, memo } from "react";
+import React, { useState, useCallback, memo } from "react";
 import {
   InstantSearch,
   connectHits,
@@ -23,7 +23,10 @@ import { PopularPosts } from "../popular/PopularPosts";
 import styles from "./postsListing.module.scss";
 import { PostThumbnail } from "./thumbnail/PostThumbnail";
 
-import type { HitsProvided } from "react-instantsearch-core";
+import type {
+  HitsProvided,
+  StateResultsProvided,
+} from "react-instantsearch-core";
 import type { Post, Category } from "types";
 
 const searchClient = algoliasearch(
@@ -31,12 +34,40 @@ const searchClient = algoliasearch(
   env.NEXT_PUBLIC_ALGOLIA_SEARCH_KEY,
 );
 
+interface CustomResultsProps extends StateResultsProvided<Post> {
+  readonly children: React.ReactNode;
+}
+
+const CustomResults = connectStateResults<CustomResultsProps>(
+  ({ searchResults, isSearchStalled, children }) => {
+    if (isSearchStalled) {
+      return (
+        <div className={styles.loading}>
+          <LoaderRing />
+        </div>
+      );
+    }
+
+    if (!searchResults.hits.length) {
+      return (
+        <div className={styles.empty}>
+          <div className={styles.avatar}>
+            <Image src={DisappointedAvatar} alt="disappointed memoji" />
+          </div>
+        </div>
+      );
+    }
+
+    return children;
+  },
+);
+
 interface CustomHitsProps extends HitsProvided<Post> {
   readonly currentObjectID: string | null;
   readonly setObjectId: (objectId: string) => void;
 }
 
-export const CustomHits = connectHits<CustomHitsProps, Post>(
+const CustomHits = connectHits<CustomHitsProps, Post>(
   ({ hits, currentObjectID }) => {
     if (!hits.length) {
       return (
@@ -71,14 +102,6 @@ interface PostsListingProps {
   readonly popularPosts: Post[];
   readonly categories: Category[];
 }
-
-const LoadingIndicator = connectStateResults(({ isSearchStalled }) =>
-  isSearchStalled ? (
-    <div className={styles.loading}>
-      <LoaderRing />
-    </div>
-  ) : null,
-);
 
 export const PostsListing = memo<PostsListingProps>(
   ({ popularPosts, categories }) => {
@@ -118,11 +141,12 @@ export const PostsListing = memo<PostsListingProps>(
                   onChange={handleInputChange}
                 />
               )}
-              <LoadingIndicator />
-              <CustomHits
-                currentObjectID={currentObjectID}
-                setObjectId={setObjectId}
-              />
+              <CustomResults>
+                <CustomHits
+                  currentObjectID={currentObjectID}
+                  setObjectId={setObjectId}
+                />
+              </CustomResults>
             </div>
           </div>
         </InstantSearch>
