@@ -1,26 +1,21 @@
-"use client";
-
-import Image from "next/image";
-
 import { Link } from "components/mdx/link/Link";
 import { allPositions } from "data/experience";
 import { allFacts } from "data/facts";
 import { allRecommendations } from "data/recommendations";
 import { allSkills } from "data/skills";
 import { env } from "env/client";
-import { useTheme } from "providers/ThemeProvider";
-import GithubGraphDark from "public/img/gh-graph-dark.png";
-import GithubGraphLight from "public/img/gh-graph-light.png";
+import { getAllResourcesTotalViews } from "lib/views";
 
 import styles from "./about.module.scss";
 import { Experience } from "./components/experience/Experience";
 import { Facts } from "./components/facts/Facts";
+import { GithubGraph } from "./components/github/GithubGraph";
 import { Hero } from "./components/hero/Hero";
 import { Recommendations } from "./components/recommendations/Recommendations";
 import { Skills } from "./components/skills/Skills";
 
-export const About = ({ views }: { views: number }) => {
-  const { theme } = useTheme();
+export const About = async () => {
+  const views = await getAllResourcesTotalViews();
 
   return (
     <div className={styles.about}>
@@ -65,15 +60,7 @@ export const About = ({ views }: { views: number }) => {
         </div>
       </div>
       <Recommendations recommendations={allRecommendations} />
-      <figure className={styles.githubGraph}>
-        <Image
-          src={theme === "dark" ? GithubGraphDark : GithubGraphLight}
-          alt="My Github contributions graph"
-        />
-        <figcaption className={styles.caption}>
-          My Github graph looks impressing!
-        </figcaption>
-      </figure>
+      <GithubGraph />
     </div>
   );
 };
