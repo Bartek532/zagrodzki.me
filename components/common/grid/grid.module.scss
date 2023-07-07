@@ -9,6 +9,23 @@
   align-items: stretch;
   max-width: 50rem;
 
+  & > :nth-child(2) {
+    grid-column: span 2;
+  }
+
+  & > :nth-child(4) {
+    grid-row: span 2;
+  }
+
+  & > :nth-child(6) {
+    grid-row: span 2;
+    grid-column: span 2;
+  }
+
+  & > :nth-child(7) {
+    grid-row: span 2;
+  }
+
   @include mixins.mediaquery("lg") {
     grid-template-columns: repeat(4, 1fr);
     margin-top: 2rem;
@@ -20,6 +37,7 @@
 
     & > :nth-child(4) {
       order: 3;
+      grid-row: span 2;
     }
 
     & > :nth-child(5) {
@@ -32,6 +50,7 @@
 
     & > :nth-child(7) {
       order: 6;
+      grid-row: span 2;
     }
 
     & > :nth-child(8) {
@@ -45,6 +64,7 @@
 
     & > :nth-child(10) {
       order: 10;
+      grid-column: span 2;
     }
   }
 }

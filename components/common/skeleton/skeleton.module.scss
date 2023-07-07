@@ -3,7 +3,7 @@
   background: linear-gradient(
       100deg,
       rgba(255, 255, 255, 0) 40%,
-      rgba(255, 255, 255, 0.5) 50%,
+      var(--skeleton) 50%,
       rgba(255, 255, 255, 0) 60%
     )
     var(--gray-100);

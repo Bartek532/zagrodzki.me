@@ -23,6 +23,7 @@
     --scrollbar-thumb-hover: rgb(183, 183, 183);
     --mdx-heading-color: var(--black-100);
     --tile-shadow: rgba(0, 0, 0, 0.08) 0px 1px 4px;
+    --skeleton: rgba(255, 255, 255, 0.5);
     --selection-color: rgb(255, 255, 255);
     --selection-background: rgb(68, 50, 255);
   }
@@ -52,6 +53,7 @@
   --scrollbar-thumb-hover: rgb(183, 183, 183);
   --mdx-heading-color: var(--black-100);
   --tile-shadow: rgba(0, 0, 0, 0.08) 0px 1px 4px;
+  --skeleton: rgba(255, 255, 255, 0.5);
   --selection-color: rgb(255, 255, 255);
   --selection-background: rgb(68, 50, 255);
 }
@@ -83,7 +85,7 @@
     --mdx-heading-color: var(--red-100);
     --scrollbar-thumb: rgb(144, 144, 144);
     --scrollbar-thumb-hover: rgb(101, 101, 101);
-
+    --skeleton: rgba(99, 99, 99, 0.5);
     --tile-shadow: rgba(36, 36, 36, 0.781) 0px 1px 4px;
   }
 }
@@ -113,7 +115,7 @@
   --mdx-heading-color: var(--red-100);
   --scrollbar-thumb: rgb(144, 144, 144);
   --scrollbar-thumb-hover: rgb(101, 101, 101);
-
+  --skeleton: rgba(78, 78, 78, 0.5);
   --tile-shadow: rgba(36, 36, 36, 0.781) 0px 1px 4px;
 }
 

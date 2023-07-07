@@ -148,7 +148,7 @@ export const PostsListing = memo<PostsListingProps>(
             <CategoriesList categories={categories} />
             <PopularPosts posts={popularPosts} />
             <div className={styles.wrapper}>
-              <Suspense fallback={<Skeleton />}>
+              <Suspense fallback={<Skeleton h={4.5} />}>
                 <Header
                   currentObjectID={currentObjectID}
                   setObjectId={setObjectId}

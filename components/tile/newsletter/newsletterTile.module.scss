@@ -1,7 +1,6 @@
 @use "styles/_mixins";
 
 .tile {
-  grid-column: span 2;
   height: 100%;
   box-shadow: var(--tile-shadow);
   border-radius: 2rem;
