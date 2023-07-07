@@ -1,7 +1,7 @@
 "use client";
 
 import { Analytics as VercelAnalytics } from "@vercel/analytics/react";
-import { usePathname, useSearchParams } from "next/navigation";
+import { usePathname } from "next/navigation";
 import Script from "next/script";
 import { useEffect } from "react";
 
@@ -12,14 +12,12 @@ const isProduction = process.env.NODE_ENV === "production";
 
 export const Analytics = () => {
   const pathname = usePathname();
-  const searchParams = useSearchParams();
 
   useEffect(() => {
     if (isProduction) {
-      const url = pathname + searchParams.toString();
-      reportPageView(url);
+      reportPageView(pathname);
     }
-  }, [pathname, searchParams]);
+  }, [pathname]);
 
   return (
     <>
