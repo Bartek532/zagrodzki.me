@@ -17,12 +17,43 @@ import DisappointedAvatar from "public/img/avatars/disappointed.png";
 import styles from "./projectsListing.module.scss";
 import { ProjectThumbnail } from "./thumbnail/ProjectThumbnail";
 
-import type { HitsProvided } from "react-instantsearch-core";
+import type {
+  HitsProvided,
+  StateResultsProvided,
+} from "react-instantsearch-core";
 import type { Project } from "types";
 
 const searchClient = algoliasearch(
   env.NEXT_PUBLIC_ALGOLIA_APP_ID,
   env.NEXT_PUBLIC_ALGOLIA_SEARCH_KEY,
+);
+
+interface CustomResultsProps extends StateResultsProvided<Project> {
+  readonly children: React.ReactNode;
+}
+
+const CustomResults = connectStateResults<CustomResultsProps>(
+  ({ searchResults, isSearchStalled, children }) => {
+    if (isSearchStalled) {
+      return (
+        <div className={styles.loading}>
+          <LoaderRing />
+        </div>
+      );
+    }
+
+    if (!searchResults.hits.length) {
+      return (
+        <div className={styles.empty}>
+          <div className={styles.avatar}>
+            <Image src={DisappointedAvatar} alt="disappointed memoji" />
+          </div>
+        </div>
+      );
+    }
+
+    return children;
+  },
 );
 
 interface CustomHitsProps extends HitsProvided<Project> {
@@ -70,14 +101,6 @@ export const CustomHits = connectHits<CustomHitsProps, Project>(
   },
 );
 
-const LoadingIndicator = connectStateResults(({ isSearchStalled }) =>
-  isSearchStalled ? (
-    <div className={styles.loading}>
-      <LoaderRing />
-    </div>
-  ) : null,
-);
-
 interface ProjectsListingProps {
   readonly blurredImages: {
     readonly slug: string;
@@ -103,12 +126,13 @@ export const ProjectsListing = memo<ProjectsListingProps>(
             currentObjectID={currentObjectID}
             onChange={handleInputChange}
           />
-          <LoadingIndicator />
-          <CustomHits
-            currentObjectID={currentObjectID}
-            setObjectId={setObjectId}
-            blurredImages={blurredImages}
-          />
+          <CustomResults>
+            <CustomHits
+              currentObjectID={currentObjectID}
+              setObjectId={setObjectId}
+              blurredImages={blurredImages}
+            />
+          </CustomResults>
         </InstantSearch>
       </div>
     );
