@@ -24,6 +24,7 @@
     .title {
       font-size: 2rem;
       margin-bottom: 1rem;
+      width: 100%;
 
       @include mixins.mediaquery("lg") {
         font-size: 2.2rem;
@@ -38,6 +39,7 @@
       font-size: 1.4rem;
       margin-bottom: 1.5rem;
       color: var(--black-300);
+      width: 100%;
 
       @include mixins.mediaquery("lg") {
         font-size: 1.45rem;
@@ -48,6 +50,7 @@
       @include mixins.flex(flex-start);
       gap: 0.8rem 1rem;
       flex-wrap: wrap;
+      width: 100%;
 
       .tech {
         font-size: 1.3rem;

@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { memo } from "react";
 
+import { Skeleton } from "components/common/skeleton/Skeleton";
 import { allCategories } from "data/categories";
 import Arrow from "public/svg/right-top-arrow.svg";
 
@@ -48,5 +49,9 @@ export const PostThumbnail = memo<PostThumbnailProps>(({ post }) => (
     </motion.article>
   </Link>
 ));
+
+export const PostThumbnailSkeleton = () => (
+  <Skeleton h={17} />
+);
 
 PostThumbnail.displayName = "PostThumbnail";

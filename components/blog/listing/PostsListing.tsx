@@ -24,7 +24,10 @@ import {
 import { PopularPosts, PopularPostsSkeleton } from "../popular/PopularPosts";
 
 import styles from "./postsListing.module.scss";
-import { PostThumbnail } from "./thumbnail/PostThumbnail";
+import {
+  PostThumbnail,
+  PostThumbnailSkeleton,
+} from "./thumbnail/PostThumbnail";
 
 import type {
   HitsProvided,
@@ -182,7 +185,7 @@ export const PostsListingSkeleton = () => (
           {Array(6)
             .fill(null)
             .map((_, i) => (
-              <Skeleton h={17} key={i} />
+              <PostThumbnailSkeleton key={i} />
             ))}
         </div>
       </div>

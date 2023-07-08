@@ -17,11 +17,11 @@ export const Hero = memo<HeroProps>(({ title, description }) => (
   </div>
 ));
 
-Hero.displayName = "Hero";
-
 export const HeroSkeleton = () => (
   <div className={clsx(styles.hero, styles.skeleton)}>
     <Skeleton h={5} w={15} />
     <Skeleton h={6.5} w={35} />
   </div>
 );
+
+Hero.displayName = "Hero";
