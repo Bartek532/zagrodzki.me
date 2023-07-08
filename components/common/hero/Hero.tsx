@@ -1,4 +1,7 @@
+import clsx from "clsx";
 import { memo } from "react";
+
+import { Skeleton } from "../skeleton/Skeleton";
 
 import styles from "./hero.module.scss";
 
@@ -8,10 +11,17 @@ interface HeroProps {
 }
 
 export const Hero = memo<HeroProps>(({ title, description }) => (
-    <div className={styles.hero}>
-      <h1 className={styles.title}>{title}</h1>
-      <p className={styles.description}>{description}</p>
-    </div>
-  ));
+  <div className={styles.hero}>
+    <h1 className={styles.title}>{title}</h1>
+    <p className={styles.description}>{description}</p>
+  </div>
+));
 
 Hero.displayName = "Hero";
+
+export const HeroSkeleton = () => (
+  <div className={clsx(styles.hero, styles.skeleton)}>
+    <Skeleton h={5} w={15} />
+    <Skeleton h={6.5} w={35} />
+  </div>
+);

@@ -15,20 +15,27 @@
       sans-serif;
     letter-spacing: 1.9px;
     font-size: 1.7rem;
-    margin-bottom: 3rem;
   }
 
   .posts {
     list-style-type: none;
     margin: 0;
+    margin-top: 3rem;
     padding: 0;
+    width: 100%;
+    @include mixins.flex(flex-start);
+    flex-flow: column wrap;
+    gap: 1.6rem;
 
     @include mixins.mediaquery("m") {
       margin-left: -2.7rem;
     }
 
+    &.skeleton {
+      margin-left: 0;
+    }
+
     .post {
-      margin-bottom: 1.6rem;
       font-size: 2rem;
       font-weight: 700;
       @include mixins.flex(flex-start, flex-start);

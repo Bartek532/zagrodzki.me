@@ -11,15 +11,17 @@ import {
   connectStateResults,
 } from "react-instantsearch-dom";
 
-import { LoaderRing } from "components/common/loader/LoaderRing";
 import { SearchBox } from "components/common/search/SearchBox";
 import { Skeleton } from "components/common/skeleton/Skeleton";
 import { allCategories } from "data/categories";
 import { env } from "env/client";
 import DisappointedAvatar from "public/img/avatars/disappointed.png";
 
-import { CategoriesList } from "../category/list/CategoriesList";
-import { PopularPosts } from "../popular/PopularPosts";
+import {
+  CategoriesList,
+  CategoriesListSkeleton,
+} from "../category/list/CategoriesList";
+import { PopularPosts, PopularPostsSkeleton } from "../popular/PopularPosts";
 
 import styles from "./postsListing.module.scss";
 import { PostThumbnail } from "./thumbnail/PostThumbnail";
@@ -43,8 +45,12 @@ const CustomResults = connectStateResults<CustomResultsProps>(
   ({ searchResults, isSearchStalled, children }) => {
     if (isSearchStalled) {
       return (
-        <div className={styles.loading}>
-          <LoaderRing />
+        <div className={styles.list}>
+          {Array(6)
+            .fill(null)
+            .map((_, i) => (
+              <Skeleton h={17} key={i} />
+            ))}
         </div>
       );
     }
@@ -163,6 +169,25 @@ export const PostsListing = memo<PostsListingProps>(
       </div>
     );
   },
+);
+
+export const PostsListingSkeleton = () => (
+  <div className={styles.posts}>
+    <div className={styles.main}>
+      <CategoriesListSkeleton />
+      <PopularPostsSkeleton />
+      <div className={styles.wrapper}>
+        <Skeleton h={4.5} />
+        <div className={styles.list}>
+          {Array(6)
+            .fill(null)
+            .map((_, i) => (
+              <Skeleton h={17} key={i} />
+            ))}
+        </div>
+      </div>
+    </div>
+  </div>
 );
 
 PostsListing.displayName = "PostsListing";

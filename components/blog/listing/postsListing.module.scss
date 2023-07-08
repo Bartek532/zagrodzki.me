@@ -68,6 +68,7 @@
         @include mixins.flex;
         flex-flow: column wrap;
         gap: 1.6rem;
+        width: 100%;
       }
     }
   }

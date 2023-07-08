@@ -15,12 +15,13 @@
       sans-serif;
     letter-spacing: 1.9px;
     font-size: 1.7rem;
-    margin-bottom: 3rem;
   }
 
   .categories {
+    margin-top: 3rem;
     @include mixins.flex(flex-start);
     flex-wrap: wrap;
     gap: 1rem;
+    width: 100%;
   }
 }

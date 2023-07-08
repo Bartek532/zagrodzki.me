@@ -6,6 +6,10 @@
   flex-flow: column wrap;
   padding-bottom: 7rem;
 
+  &.skeleton {
+    gap: 2rem;
+  }
+
   .title {
     text-align: center;
     padding-bottom: 0.5rem;

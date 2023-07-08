@@ -5,9 +5,14 @@ import { getPopularPosts, getPostsCategories } from "lib/posts";
 import { getResourceViews } from "lib/views";
 import { Post, RESOURCE_TYPE } from "types";
 
-const description = "Everything that I or one of the authors has written for my blog ✍️";
+const description =
+  "Everything that I or one of the authors has written for my blog ✍️";
 
-export const metadata = getMetadata({ title: "Blog", description, image: "/img/blog.png" });
+export const metadata = getMetadata({
+  title: "Blog",
+  description,
+  image: "/img/blog.png",
+});
 
 const BlogPage = async () => {
   const categories = getPostsCategories();
@@ -26,7 +31,7 @@ const BlogPage = async () => {
   return (
     <>
       <Hero title="Blog" description={description} />
-      <PostsListing categories={categories} popularPosts={sortedPosts} />
+      <PostsListing popularPosts={sortedPosts} categories={categories} />
     </>
   );
 };
