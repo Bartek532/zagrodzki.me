@@ -9,6 +9,10 @@
   align-items: stretch;
   max-width: 50rem;
 
+  & > :nth-child(1) {
+    grid-column: 1 / span 2;
+  }
+
   & > :nth-child(2) {
     grid-column: span 2;
   }
@@ -26,10 +30,18 @@
     grid-row: span 2;
   }
 
+  & > :nth-child(10) {
+    grid-column: span 2;
+  }
+
   @include mixins.mediaquery("lg") {
     grid-template-columns: repeat(4, 1fr);
     margin-top: 2rem;
     max-width: 100%;
+
+    & > :nth-child(1) {
+      grid-column: 1 / span 1;
+    }
 
     & > :nth-child(3) {
       order: 4;
@@ -64,7 +76,6 @@
 
     & > :nth-child(10) {
       order: 10;
-      grid-column: span 2;
     }
   }
 }

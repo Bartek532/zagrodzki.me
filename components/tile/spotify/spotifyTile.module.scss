@@ -1,7 +1,6 @@
 @use "styles/_mixins";
 
 .wrapper {
-  grid-column: 1 / span 2;
   width: 100%;
   padding: 2rem;
   background-color: var(--white-100);
