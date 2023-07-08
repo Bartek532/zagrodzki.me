@@ -1,10 +1,5 @@
 @use "styles/_mixins";
 
-.link {
-  grid-column: span 2;
-  grid-row: span 2;
-}
-
 .article {
   background-color: var(--white-100);
   box-shadow: var(--tile-shadow);

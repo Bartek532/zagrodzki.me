@@ -7,7 +7,11 @@ import { HOST } from "utils/consts";
 
 const description = "Everything that I have built, alone or with someone 🔨";
 
-export const metadata = getMetadata({ title: "Projects", description, image: "/img/projects.png" });
+export const metadata = getMetadata({
+  title: "Projects",
+  description,
+  image: "/img/projects.png",
+});
 
 const ProjectsPage = async () => {
   const projects = getAllProjects();

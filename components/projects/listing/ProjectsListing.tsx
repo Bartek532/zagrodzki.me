@@ -9,13 +9,16 @@ import {
   connectStateResults,
 } from "react-instantsearch-dom";
 
-import { LoaderRing } from "components/common/loader/LoaderRing";
 import { SearchBox } from "components/common/search/SearchBox";
+import { Skeleton } from "components/common/skeleton/Skeleton";
 import { env } from "env/client";
 import DisappointedAvatar from "public/img/avatars/disappointed.png";
 
 import styles from "./projectsListing.module.scss";
-import { ProjectThumbnail } from "./thumbnail/ProjectThumbnail";
+import {
+  ProjectThumbnail,
+  ProjectThumbnailSkeleton,
+} from "./thumbnail/ProjectThumbnail";
 
 import type {
   HitsProvided,
@@ -36,8 +39,14 @@ const CustomResults = connectStateResults<CustomResultsProps>(
   ({ searchResults, isSearchStalled, children }) => {
     if (isSearchStalled) {
       return (
-        <div className={styles.loading}>
-          <LoaderRing />
+        <div className={styles.list}>
+          {Array(7)
+            .fill(null)
+            .map((_, i) => (
+              <div key={i} className={styles.hit}>
+                <ProjectThumbnailSkeleton />
+              </div>
+            ))}
         </div>
       );
     }
@@ -137,6 +146,21 @@ export const ProjectsListing = memo<ProjectsListingProps>(
       </div>
     );
   },
+);
+
+export const ProjectsListingSkeleton = () => (
+  <div className={styles.projects}>
+    <Skeleton h={4.5} w={30} />
+    <div className={styles.list}>
+      {Array(7)
+        .fill(null)
+        .map((_, i) => (
+          <div key={i} className={styles.hit}>
+            <ProjectThumbnailSkeleton />
+          </div>
+        ))}
+    </div>
+  </div>
 );
 
 ProjectsListing.displayName = "ProjectsListing";

@@ -1,5 +1,6 @@
 import clsx from "clsx";
 import Image from "next/image";
+import { Suspense } from "react";
 
 import { LoaderRing } from "components/common/loader/LoaderRing";
 import CrossIcon from "public/svg/cross.svg";
@@ -25,7 +26,13 @@ const getTrack = async () => {
   }
 };
 
-export const SpotifyTile = async () => {
+const LoadingFallback = () => (
+  <div className={clsx(styles.wrapper, styles.loaderWrapper)}>
+    <LoaderRing />
+  </div>
+);
+
+const SpotifyData = async () => {
   const { data, error } = await getTrack();
 
   if (error) {
@@ -43,13 +50,7 @@ export const SpotifyTile = async () => {
     );
   }
 
-  if (!data) {
-    return (
-      <div className={clsx(styles.wrapper, styles.loaderWrapper)}>
-        <LoaderRing />
-      </div>
-    );
-  }
+  if (!data) return <LoadingFallback />;
 
   const { artists, album, name, external_urls } = data.track;
 
@@ -95,3 +96,9 @@ export const SpotifyTile = async () => {
     </a>
   );
 };
+
+export const SpotifyTile = () => (
+  <Suspense fallback={<LoadingFallback />}>
+    <SpotifyData />
+  </Suspense>
+);

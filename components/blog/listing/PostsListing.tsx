@@ -3,7 +3,7 @@
 import algoliasearch from "algoliasearch";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
-import React, { useState, useCallback, memo } from "react";
+import React, { useState, useCallback, memo, Suspense } from "react";
 import {
   InstantSearch,
   connectHits,
@@ -11,17 +11,23 @@ import {
   connectStateResults,
 } from "react-instantsearch-dom";
 
-import { LoaderRing } from "components/common/loader/LoaderRing";
 import { SearchBox } from "components/common/search/SearchBox";
+import { Skeleton } from "components/common/skeleton/Skeleton";
 import { allCategories } from "data/categories";
 import { env } from "env/client";
 import DisappointedAvatar from "public/img/avatars/disappointed.png";
 
-import { CategoriesList } from "../category/list/CategoriesList";
-import { PopularPosts } from "../popular/PopularPosts";
+import {
+  CategoriesList,
+  CategoriesListSkeleton,
+} from "../category/list/CategoriesList";
+import { PopularPosts, PopularPostsSkeleton } from "../popular/PopularPosts";
 
 import styles from "./postsListing.module.scss";
-import { PostThumbnail } from "./thumbnail/PostThumbnail";
+import {
+  PostThumbnail,
+  PostThumbnailSkeleton,
+} from "./thumbnail/PostThumbnail";
 
 import type {
   HitsProvided,
@@ -42,8 +48,12 @@ const CustomResults = connectStateResults<CustomResultsProps>(
   ({ searchResults, isSearchStalled, children }) => {
     if (isSearchStalled) {
       return (
-        <div className={styles.loading}>
-          <LoaderRing />
+        <div className={styles.list}>
+          {Array(6)
+            .fill(null)
+            .map((_, i) => (
+              <Skeleton h={17} key={i} />
+            ))}
         </div>
       );
     }
@@ -64,7 +74,6 @@ const CustomResults = connectStateResults<CustomResultsProps>(
 
 interface CustomHitsProps extends HitsProvided<Post> {
   readonly currentObjectID: string | null;
-  readonly setObjectId: (objectId: string) => void;
 }
 
 const CustomHits = connectHits<CustomHitsProps, Post>(
@@ -98,6 +107,37 @@ const CustomHits = connectHits<CustomHitsProps, Post>(
   },
 );
 
+const Header = ({
+  currentObjectID,
+  setObjectId,
+}: {
+  currentObjectID: string | null;
+  setObjectId: (objectId: string | null) => void;
+}) => {
+  const searchParams = useSearchParams();
+  const handleInputChange = useCallback(() => {
+    setTimeout(() => setObjectId(null), 0);
+  }, [setObjectId]);
+
+  if (searchParams.has("category")) {
+    return (
+      <>
+        <h2 className={styles.searchedCategory}>
+          {
+            allCategories.find((c) => c.slug === searchParams.get("category"))
+              ?.name
+          }
+        </h2>
+        <Configure filters={`category:${searchParams.get("category") ?? ""}`} />
+      </>
+    );
+  }
+
+  return (
+    <SearchBox currentObjectID={currentObjectID} onChange={handleInputChange} />
+  );
+};
+
 interface PostsListingProps {
   readonly popularPosts: Post[];
   readonly categories: Category[];
@@ -106,11 +146,6 @@ interface PostsListingProps {
 export const PostsListing = memo<PostsListingProps>(
   ({ popularPosts, categories }) => {
     const [currentObjectID, setObjectId] = useState<string | null>(null);
-    const searchParams = useSearchParams();
-
-    const handleInputChange = useCallback(() => {
-      setTimeout(() => setObjectId(null), 0);
-    }, []);
 
     return (
       <div className={styles.posts}>
@@ -122,30 +157,14 @@ export const PostsListing = memo<PostsListingProps>(
             <CategoriesList categories={categories} />
             <PopularPosts posts={popularPosts} />
             <div className={styles.wrapper}>
-              {searchParams.has("category") ? (
-                <>
-                  <h2 className={styles.searchedCategory}>
-                    {
-                      allCategories.find(
-                        (c) => c.slug === searchParams.get("category"),
-                      )?.name
-                    }
-                  </h2>
-                  <Configure
-                    filters={`category:${searchParams.get("category") ?? ""}`}
-                  />
-                </>
-              ) : (
-                <SearchBox
-                  currentObjectID={currentObjectID}
-                  onChange={handleInputChange}
-                />
-              )}
-              <CustomResults>
-                <CustomHits
+              <Suspense fallback={<Skeleton h={4.5} />}>
+                <Header
                   currentObjectID={currentObjectID}
                   setObjectId={setObjectId}
                 />
+              </Suspense>
+              <CustomResults>
+                <CustomHits currentObjectID={currentObjectID} />
               </CustomResults>
             </div>
           </div>
@@ -153,6 +172,25 @@ export const PostsListing = memo<PostsListingProps>(
       </div>
     );
   },
+);
+
+export const PostsListingSkeleton = () => (
+  <div className={styles.posts}>
+    <div className={styles.main}>
+      <CategoriesListSkeleton />
+      <PopularPostsSkeleton />
+      <div className={styles.wrapper}>
+        <Skeleton h={4.5} />
+        <div className={styles.list}>
+          {Array(6)
+            .fill(null)
+            .map((_, i) => (
+              <PostThumbnailSkeleton key={i} />
+            ))}
+        </div>
+      </div>
+    </div>
+  </div>
 );
 
 PostsListing.displayName = "PostsListing";

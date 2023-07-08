@@ -93,6 +93,7 @@ Component.displayName = "Component";
 | [React](https://reactjs.org/)                             | Library for building user interfaces                                |
 | [MDX](https://mdxjs.com/)                                 | Markdown for the component era                                      |
 | [Algolia](https://www.algolia.com/)                       | Implementing powerful search                                        |
+| [Github Actions](https://github.com/features/actions)     | Automations for workflow improvements                               |
 | [Framer Motion](https://www.framer.com/motion/)           | Motion library for React                                            |
 | [Context API](https://reactjs.org/docs/context.html)      | React structure that enables to share data with multiple components |
 | [React Hook Form](https://react-hook-form.com)            | Forms with easy-to-use validation                                   |
