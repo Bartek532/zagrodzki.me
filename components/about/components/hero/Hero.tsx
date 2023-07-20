@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 import { Link } from "components/mdx/link/Link";
+import Me from "public/img/me.webp";
 import { normalizeViewsCount } from "utils/functions";
 
 import styles from "./hero.module.scss";
@@ -11,7 +12,7 @@ export const Hero = ({ views }: { views: number }) => (
       <h2 className={styles.title}>Hi, I&#39;m Bartosz Zagrodzki&nbsp;👋</h2>
       <p className={styles.description}>
         <span className={styles.paragraph}>
-          I&#39;m a 20 year old software engineer based in Poland. I&#39;m
+          I&#39;m a 21 year old software engineer based in Poland. I&#39;m
           passionate about building modern software that helps others (including
           me) to improve their lives. I started my blogging adventure by
           publishing translations on{" "}
@@ -35,7 +36,7 @@ export const Hero = ({ views }: { views: number }) => (
     </div>
 
     <div className={styles.image}>
-      <Image src="/img/me.png" width="400" height="586" alt="" />
+      <Image src={Me} width="400" height="586" alt="" />
     </div>
   </section>
 );

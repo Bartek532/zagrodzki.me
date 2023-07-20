@@ -2,7 +2,7 @@
 
 import algoliasearch from "algoliasearch";
 import Image from "next/image";
-import { useCallback, useState, memo } from "react";
+import { memo } from "react";
 import {
   InstantSearch,
   connectHits,
@@ -66,8 +66,6 @@ const CustomResults = connectStateResults<CustomResultsProps>(
 );
 
 interface CustomHitsProps extends HitsProvided<Project> {
-  readonly currentObjectID: string | null;
-  readonly setObjectId: (objectId: string) => void;
   readonly blurredImages: {
     readonly slug: string;
     readonly base64: string;
@@ -75,7 +73,7 @@ interface CustomHitsProps extends HitsProvided<Project> {
 }
 
 export const CustomHits = connectHits<CustomHitsProps, Project>(
-  ({ hits, currentObjectID, blurredImages }) => {
+  ({ hits, blurredImages }) => {
     if (!hits.length) {
       return (
         <div className={styles.empty}>
@@ -87,13 +85,10 @@ export const CustomHits = connectHits<CustomHitsProps, Project>(
     }
 
     return (
-      <ol id="search-hits-list" className={styles.list}>
+      <ol id="search-hits-list" className={styles.list} role="list">
         {hits.map((hit) => (
           <li
             key={hit.objectID}
-            role="option"
-            aria-describedby="search-details"
-            aria-selected={currentObjectID === hit.objectID}
             id={"id" + hit.objectID}
             className={styles.hit}
           >
@@ -118,34 +113,19 @@ interface ProjectsListingProps {
 }
 
 export const ProjectsListing = memo<ProjectsListingProps>(
-  ({ blurredImages }) => {
-    const [currentObjectID, setObjectId] = useState<string | null>(null);
-
-    const handleInputChange = useCallback(() => {
-      setTimeout(() => setObjectId(null), 0);
-    }, []);
-
-    return (
-      <div className={styles.projects}>
-        <InstantSearch
-          indexName={env.NEXT_PUBLIC_ALGOLIA_PROJECTS_INDEX_NAME}
-          searchClient={searchClient}
-        >
-          <SearchBox
-            currentObjectID={currentObjectID}
-            onChange={handleInputChange}
-          />
-          <CustomResults>
-            <CustomHits
-              currentObjectID={currentObjectID}
-              setObjectId={setObjectId}
-              blurredImages={blurredImages}
-            />
-          </CustomResults>
-        </InstantSearch>
-      </div>
-    );
-  },
+  ({ blurredImages }) => (
+    <div className={styles.projects}>
+      <InstantSearch
+        indexName={env.NEXT_PUBLIC_ALGOLIA_PROJECTS_INDEX_NAME}
+        searchClient={searchClient}
+      >
+        <SearchBox />
+        <CustomResults>
+          <CustomHits blurredImages={blurredImages} />
+        </CustomResults>
+      </InstantSearch>
+    </div>
+  ),
 );
 
 export const ProjectsListingSkeleton = () => (
