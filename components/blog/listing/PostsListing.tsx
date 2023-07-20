@@ -3,7 +3,7 @@
 import algoliasearch from "algoliasearch";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
-import React, { useState, useCallback, memo, Suspense } from "react";
+import React, { memo, Suspense } from "react";
 import {
   InstantSearch,
   connectHits,
@@ -29,10 +29,7 @@ import {
   PostThumbnailSkeleton,
 } from "./thumbnail/PostThumbnail";
 
-import type {
-  HitsProvided,
-  StateResultsProvided,
-} from "react-instantsearch-core";
+import type { StateResultsProvided } from "react-instantsearch-core";
 import type { Post, Category } from "types";
 
 const searchClient = algoliasearch(
@@ -72,52 +69,30 @@ const CustomResults = connectStateResults<CustomResultsProps>(
   },
 );
 
-interface CustomHitsProps extends HitsProvided<Post> {
-  readonly currentObjectID: string | null;
-}
-
-const CustomHits = connectHits<CustomHitsProps, Post>(
-  ({ hits, currentObjectID }) => {
-    if (!hits.length) {
-      return (
-        <div className={styles.empty}>
-          <div className={styles.avatar}>
-            <Image src={DisappointedAvatar} alt="disappointed memoji" />
-          </div>
-        </div>
-      );
-    }
-
+const CustomHits = connectHits<Post>(({ hits }) => {
+  if (!hits.length) {
     return (
-      <ol id="search-hits-list" className={styles.list}>
-        {hits.map((hit) => (
-          <li
-            key={hit.objectID}
-            role="option"
-            aria-describedby="search-details"
-            aria-selected={currentObjectID === hit.objectID}
-            id={"id" + hit.objectID}
-            className={styles.hit}
-          >
-            <PostThumbnail post={hit} />
-          </li>
-        ))}
-      </ol>
+      <div className={styles.empty}>
+        <div className={styles.avatar}>
+          <Image src={DisappointedAvatar} alt="disappointed memoji" />
+        </div>
+      </div>
     );
-  },
-);
+  }
 
-const Header = ({
-  currentObjectID,
-  setObjectId,
-}: {
-  currentObjectID: string | null;
-  setObjectId: (objectId: string | null) => void;
-}) => {
+  return (
+    <ol id="search-hits-list" className={styles.list} role="">
+      {hits.map((hit) => (
+        <li key={hit.objectID} id={"id" + hit.objectID} className={styles.hit}>
+          <PostThumbnail post={hit} />
+        </li>
+      ))}
+    </ol>
+  );
+});
+
+const Header = () => {
   const searchParams = useSearchParams();
-  const handleInputChange = useCallback(() => {
-    setTimeout(() => setObjectId(null), 0);
-  }, [setObjectId]);
 
   if (searchParams.has("category")) {
     return (
@@ -133,9 +108,7 @@ const Header = ({
     );
   }
 
-  return (
-    <SearchBox currentObjectID={currentObjectID} onChange={handleInputChange} />
-  );
+  return <SearchBox />;
 };
 
 interface PostsListingProps {
@@ -144,34 +117,27 @@ interface PostsListingProps {
 }
 
 export const PostsListing = memo<PostsListingProps>(
-  ({ popularPosts, categories }) => {
-    const [currentObjectID, setObjectId] = useState<string | null>(null);
-
-    return (
-      <div className={styles.posts}>
-        <InstantSearch
-          indexName={env.NEXT_PUBLIC_ALGOLIA_POSTS_INDEX_NAME}
-          searchClient={searchClient}
-        >
-          <div className={styles.main}>
-            <CategoriesList categories={categories} />
-            <PopularPosts posts={popularPosts} />
-            <div className={styles.wrapper}>
-              <Suspense fallback={<Skeleton h={4.5} />}>
-                <Header
-                  currentObjectID={currentObjectID}
-                  setObjectId={setObjectId}
-                />
-              </Suspense>
-              <CustomResults>
-                <CustomHits currentObjectID={currentObjectID} />
-              </CustomResults>
-            </div>
+  ({ popularPosts, categories }) => (
+    <div className={styles.posts}>
+      <InstantSearch
+        indexName={env.NEXT_PUBLIC_ALGOLIA_POSTS_INDEX_NAME}
+        searchClient={searchClient}
+      >
+        <div className={styles.main}>
+          <CategoriesList categories={categories} />
+          <PopularPosts posts={popularPosts} />
+          <div className={styles.wrapper}>
+            <Suspense fallback={<Skeleton h={4.5} />}>
+              <Header />
+            </Suspense>
+            <CustomResults>
+              <CustomHits />
+            </CustomResults>
           </div>
-        </InstantSearch>
-      </div>
-    );
-  },
+        </div>
+      </InstantSearch>
+    </div>
+  ),
 );
 
 export const PostsListingSkeleton = () => (
