@@ -18,8 +18,7 @@
   .title {
     padding: 0.5rem;
     font-size: 1.7rem;
-    font-family: var(--font-walsheim), "Helvetica Neue", Helvetica, Arial,
-      sans-serif;
+    font-family: var(--font-walsheim), "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: normal;
     max-width: 30rem;
   }
@@ -60,44 +59,6 @@
     input {
       width: 100%;
       min-width: auto;
-    }
-
-    .btn {
-      width: 100%;
-      border-radius: 1.5rem;
-      border: 0 none;
-      padding: 1.1rem 2rem;
-      font-size: 1.4rem;
-      background-color: var(--gray-100);
-      cursor: pointer;
-
-      .loader {
-        position: relative;
-        padding: 1.14rem 0;
-
-        & > * {
-          --color: var(--black-100);
-          --size: 1rem;
-        }
-      }
-
-      &.rejected {
-        background-color: var(--red-100);
-        color: var(--white-200);
-      }
-
-      &.fullfilled {
-        background-color: var(--green-100);
-        color: var(--white-200);
-      }
-
-      @include mixins.mediaquery("lg") {
-        font-size: 1.5rem;
-      }
-
-      &:disabled {
-        cursor: default;
-      }
     }
   }
 }

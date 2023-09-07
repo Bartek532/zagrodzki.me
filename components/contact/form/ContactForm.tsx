@@ -3,8 +3,9 @@ import clsx from "clsx";
 import { useState, useEffect, memo } from "react";
 import { useForm } from "react-hook-form";
 
+import { Button } from "components/common/button/Button";
 import { Input } from "components/common/input/Input";
-import { LoaderRing } from "components/common/loader/LoaderRing";
+import { FormStatus } from "types";
 import { onPromise } from "utils/functions";
 
 import { sendMail } from "../api/contact";
@@ -12,8 +13,6 @@ import { messageSchema } from "../utils/validation/schema";
 import { Message } from "../utils/validation/types";
 
 import styles from "./contactForm.module.scss";
-
-type FormStatus = "pending" | "loading" | "fullfilled" | "rejected";
 
 interface ContactFormProps {
   onSent: () => void;
@@ -27,21 +26,21 @@ export const ContactForm = memo<ContactFormProps>(({ onSent }) => {
   } = useForm<Message>({
     resolver: zodResolver(messageSchema),
   });
-  const [formStatus, setFormStatus] = useState<FormStatus>("pending");
+  const [status, setStatus] = useState<FormStatus>("pending");
 
   const onSubmit = handleSubmit(async (message) => {
-    setFormStatus("loading");
+    setStatus("loading");
     try {
       await sendMail(message);
-      setFormStatus("fullfilled");
+      setStatus("fullfilled");
     } catch {
-      setFormStatus("rejected");
+      setStatus("rejected");
     }
   });
 
   useEffect(() => {
-    formStatus === "fullfilled" && onSent();
-  }, [formStatus, onSent]);
+    status === "fullfilled" && onSent();
+  }, [status, onSent]);
 
   return (
     <form className={styles.form} onSubmit={onPromise(onSubmit)} noValidate>
@@ -73,19 +72,13 @@ export const ContactForm = memo<ContactFormProps>(({ onSent }) => {
       ></textarea>
       {errors.message?.message && <span className={styles.error}>{errors.message.message}</span>}
 
-      <button className={clsx(styles.btn, styles[formStatus])} disabled={formStatus !== "pending"}>
-        {formStatus === "loading" ? (
-          <div className={styles.loader}>
-            <LoaderRing />
-          </div>
-        ) : formStatus === "fullfilled" ? (
-          "Thanks for your message!"
-        ) : formStatus === "rejected" ? (
-          "Oops, maybe try again later?"
-        ) : (
-          "Send!"
-        )}
-      </button>
+      <Button disabled={status !== "pending"} className={styles.submit} status={status}>
+        {status === "fullfilled"
+          ? "Thanks for your message!"
+          : status === "rejected"
+          ? "Oops, maybe try again later?"
+          : "Send!"}
+      </Button>
     </form>
   );
 });

@@ -39,42 +39,7 @@
     }
   }
 
-  .btn {
-    width: 100%;
-    border-radius: 1.5rem;
-    border: 0 none;
-    padding: 1.1rem 2rem;
-    font-size: 1.4rem;
-    background-color: var(--gray-100);
-    cursor: pointer;
+  .submit {
     margin-top: 1rem;
-
-    .loader {
-      position: relative;
-      padding: 1.14rem 0;
-
-      & > * {
-        --color: var(--black-200);
-        --size: 1rem;
-      }
-    }
-
-    &.rejected {
-      background-color: var(--red-100);
-      color: var(--white-200);
-    }
-
-    &.fullfilled {
-      background-color: var(--green-100);
-      color: var(--white-200);
-    }
-
-    @include mixins.mediaquery("lg") {
-      font-size: 1.5rem;
-    }
-
-    &:disabled {
-      cursor: default;
-    }
   }
 }
