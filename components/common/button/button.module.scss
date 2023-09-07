@@ -1,6 +1,7 @@
 @use "styles/_mixins";
 
 .btn {
+  min-width: 20rem;
   width: 100%;
   border-radius: 1.5rem;
   border: 0 none;

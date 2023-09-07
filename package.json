@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "next-build": "next build",
+    "build:next": "next build",
     "build": "./build.sh redirect algolia feed next",
     "start": "next start",
     "tsc": "tsc --noEmit",
@@ -14,7 +14,9 @@
     "new-post-redirect": "ts-node ./scripts/redirect.ts",
     "format": "prettier --write \"./**/*.{js,jsx,ts,tsx,css,scss,md,mdx}\"",
     "lint": "next lint",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "storybook": "storybook dev -p 6006",
+    "build:storybook": "storybook build"
   },
   "repository": {
     "type": "git",
@@ -24,14 +26,6 @@
     "url": "https://github.com/Bartek532/zagrodzki.me/issues"
   },
   "homepage": "https://zagrodzki.me",
-  "lint-staged": {
-    "**/*.{js,jsx,ts,tsx}": [
-      "eslint --fix"
-    ],
-    "**/*.{json,css,scss,md,mdx}": [
-      "prettier --write"
-    ]
-  },
   "dependencies": {
     "@hookform/resolvers": "3.1.1",
     "@plaiceholder/next": "3.0.0",
@@ -63,6 +57,14 @@
   },
   "devDependencies": {
     "@mapbox/rehype-prism": "^0.8.0",
+    "@storybook/addon-a11y": "7.4.0",
+    "@storybook/addon-essentials": "^7.4.0",
+    "@storybook/addon-interactions": "^7.4.0",
+    "@storybook/addon-links": "^7.4.0",
+    "@storybook/blocks": "^7.4.0",
+    "@storybook/nextjs": "^7.4.0",
+    "@storybook/react": "^7.4.0",
+    "@storybook/testing-library": "^0.2.0",
     "@svgr/webpack": "^5.5.0",
     "@types/gtag.js": "^0.0.8",
     "@types/invariant": "^2.2.35",
@@ -81,6 +83,7 @@
     "eslint-config-next": "13.4.7",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "2.27.5",
+    "eslint-plugin-storybook": "0.6.13",
     "eslint-plugin-unused-imports": "2.0.0",
     "husky": "^8.0.0",
     "lint-staged": "^12.3.2",
@@ -89,6 +92,7 @@
     "remark-parse": "8.0.3",
     "remark-rehype": "8",
     "sass": "^1.49.0",
+    "storybook": "^7.4.0",
     "ts-node": "^10.9.1",
     "tsconfig-paths": "^3.12.0",
     "typescript": "^5.1.6",
