@@ -1,19 +1,20 @@
-import { Hero } from "./Hero";
+import { Skeleton } from "./Skeleton";
 
 import type { Meta, StoryObj } from "@storybook/react";
 
 const meta = {
-  title: "Design System/Common/Hero",
-  component: Hero,
+  title: "Design System/Common/Skeleton",
+  component: Skeleton,
   tags: ["autodocs"],
-} satisfies Meta<typeof Hero>;
+} satisfies Meta<typeof Skeleton>;
 
 type Story = StoryObj<typeof meta>;
 
 export const Default = {
   args: {
-    title: "Hello world!",
-    description: "This is a description",
+    w: 10,
+    h: 10,
+    square: true,
   },
 } satisfies Story;
 
