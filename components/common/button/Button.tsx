@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import { memo } from "react";
 
-import { LoaderRing } from "components/common/loader/LoaderRing";
+import { Spinner } from "components/common/spinner/Spinner";
 
 import styles from "./button.module.scss";
 
@@ -31,7 +31,7 @@ export const Button = memo<ButtonProps>(
     <button className={clsx(styles.btn, styles[status], className)} disabled={disabled}>
       {status === "loading" ? (
         <div className={styles.loader}>
-          <LoaderRing />
+          <Spinner />
         </div>
       ) : (
         children

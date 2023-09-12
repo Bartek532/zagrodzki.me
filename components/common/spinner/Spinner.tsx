@@ -1,7 +1,7 @@
-import styles from "./loaderRing.module.scss";
+import styles from "./spinner.module.scss";
 
-export const LoaderRing = () => (
-  <div className={styles.loader}>
+export const Spinner = () => (
+  <div className={styles.spinner}>
     <span className="sr-only">loading</span>
     <div className={styles.ring}>
       <div></div>
