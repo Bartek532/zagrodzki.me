@@ -6,7 +6,13 @@ import { Skeleton } from "../skeleton/Skeleton";
 import styles from "./hero.module.scss";
 
 interface HeroProps {
+  /**
+   * The title of the hero.
+   */
   readonly title: string;
+  /**
+   * The description of the hero.
+   */
   readonly description: string;
 }
 

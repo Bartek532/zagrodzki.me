@@ -1,49 +1,13 @@
 import clsx from "clsx";
-import localFont from "next/font/local";
 
 import { Analytics } from "components/common/analytics/Analytics";
 import { Layout } from "components/layout/Layout";
+import { walsheim, mono, kenfolg } from "lib/fonts";
 import { DEFAULT_METADATA } from "lib/metadata";
 import { AppProviders } from "providers/AppProviders";
-
-import "../styles/globals.scss";
+import "styles/globals.scss";
 
 export const metadata = DEFAULT_METADATA;
-
-const walsheim = localFont({
-  src: [
-    {
-      path: "../public/fonts/GT-Walsheim-Black.woff2",
-      weight: "400",
-    },
-    {
-      path: "../public/fonts/GT-Walsheim-Bold.woff2",
-      weight: "bold",
-    },
-    {
-      path: "../public/fonts/GT-Walsheim-Medium.woff2",
-      weight: "600",
-    },
-    {
-      path: "../public/fonts/GT-Walsheim-Regular.woff2",
-      weight: "normal",
-    },
-  ],
-  display: "swap",
-  variable: "--font-walsheim",
-});
-
-const mono = localFont({
-  src: "../public/fonts/LeagueMono-Regular.woff2",
-  display: "swap",
-  variable: "--font-mono",
-});
-
-const kenfolg = localFont({
-  src: "../public/fonts/Kenfolg.otf",
-  display: "swap",
-  variable: "--font-kenfolg",
-});
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
