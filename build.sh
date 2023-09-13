@@ -4,24 +4,24 @@ ARGS=$@
 
 if [[ ${ARGS[*]} =~ 'redirect' ]]; then
   echo "Generating redirect to the newest post..."
-  pnpm new-post-redirect
+  bun ./scripts/redirect
   echo "Done generating redirect..."
 fi
 
 if [[ ${ARGS[*]} =~ 'algolia' ]]; then
   echo "Updating Algolia index..."
-  pnpm algolia
+  bun ./scripts/algolia
   echo "Done updating Algolia index..."
 fi
 
 if [[ ${ARGS[*]} =~ 'feed' ]]; then
   echo "Generating JSON and XML feed..."
-  pnpm feed
+  bun ./scripts/feed
   echo "Done generating feeds..."
 fi
 
 if [[ ${ARGS[*]} =~ 'next' ]]; then
   echo "Building Next.js..."
-  pnpm next build
+  bun next build
   echo "Done building Next.js..."
 fi
