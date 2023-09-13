@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
-import Image from "next/image";
 import Link from "next/link";
 import { memo } from "react";
 
+import { Image } from "components/common/image/Image";
 import { Skeleton } from "components/common/skeleton/Skeleton";
 import { Project } from "types";
 

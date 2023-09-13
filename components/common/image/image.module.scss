@@ -3,24 +3,9 @@
   overflow: hidden;
   height: 100%;
 
-  &.skeleton {
-    background-color: var(--gray-100);
-    
-    &::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-      100deg,
-      rgba(255, 255, 255, 0) 40%,
-      var(--skeleton) 50%,
-      rgba(255, 255, 255, 0) 60%
-      )
-      var(--gray-100);
-      background-size: 200% 100%;
-      background-position-x: 180%;
-      animation: 1s loading ease-in-out infinite;
-    }
+  .skeleton {
+    position: absolute;
+    inset: 0;
   }
 }
 
@@ -30,14 +15,5 @@
 
   &.loaded {
     opacity: 1;
-  }
-}
-
-@keyframes shimmer {
-  from {
-    transform: translateX(-100%);
-  }
-  to {
-    transform: translateX(100%);
   }
 }
