@@ -4,7 +4,11 @@ zagrodzki.me is an open source project, and contributions of any kind are welcom
 
 ## Issues
 
-If you encounter a bug, please file a bug report. If you have a feature to request, please open a feature request. If you would like to work on an issue or feature, there is no need to request permission.
+If you encounter a bug, please file a bug report. 
+
+If you have a feature to request, please open a feature request. 
+
+If you would like to work on an issue or feature, there is no need to request permission.
 
 ## Pull Requests
 
@@ -12,7 +16,11 @@ In order to create a pull request for zagrodzki.me, follow the GitHub instructio
 
 ## Content
 
-If you spot a typo or an error, please boldly let me know. **You can also write your own article!** Just put it in `/content` folder and make a PR. It would be good for you to contact me beforehand to discuss the details, but it's not necessary. I can guarantee you that your efforts will be appreciated! Let's make a strong community 💪
+If you spot a typo or an error, please boldly let me know. 
+
+**You can also write your own article!** 
+
+Just put it in `/content` folder and make a PR. It would be good for you to contact me beforehand to discuss the details, but it's not necessary. I can guarantee you that your efforts will be appreciated! Let's make a strong community 💪
 
 ## File Structure
 
