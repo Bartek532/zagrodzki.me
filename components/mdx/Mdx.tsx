@@ -4,17 +4,17 @@ import dayjs from "dayjs";
 import advancedFormat from "dayjs/plugin/advancedFormat";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 import { motion } from "framer-motion";
-import NextImage from "next/image";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import { memo, useRef, useEffect, useCallback, useMemo } from "react";
 import { renderToString } from "react-dom/server";
 
+import { Image } from "components/common/image/Image";
 import { Author } from "components/mdx/author/Author";
 import * as CustomPostsComponents from "components/mdx/custom";
 import { Edit } from "components/mdx/edit/Edit";
 import { Heading } from "components/mdx/heading/Heading";
 import { Highlight } from "components/mdx/highlight/Highlight";
-import { Image } from "components/mdx/image/Image";
+import { Image as ArticleImage } from "components/mdx/image/Image";
 import { Info } from "components/mdx/info/Info";
 import { Link } from "components/mdx/link/Link";
 import { Pre } from "components/mdx/pre/Pre";
@@ -83,7 +83,7 @@ export const Mdx = memo<MdxProps>(({ resource, content, views }) => {
         h6: (props: HeadingComponentProps) => (
           <Heading level="h6" {...getHeadingProps(props)}></Heading>
         ),
-        Image,
+        Image: ArticleImage,
         Link,
         Quote,
         Highlight,
@@ -118,14 +118,14 @@ export const Mdx = memo<MdxProps>(({ resource, content, views }) => {
               variants={imageVariants}
               target="_blank"
             >
-              <NextImage src={resource.image} alt={resource.title} width={1200} height={880} />
+              <Image src={resource.image} alt={resource.title} width={1200} height={880} />
               <div className={styles.arrow}>
                 <Arrow />
               </div>
             </motion.a>
           ) : (
             <div className={styles.thumbnail}>
-              <NextImage src={resource.image} alt={resource.title} width={1200} height={880} />
+              <Image src={resource.image} alt={resource.title} width={1200} height={880} />
             </div>
           )}
 

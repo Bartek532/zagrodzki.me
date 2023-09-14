@@ -1,6 +1,6 @@
-import Image from "next/image";
 import { memo } from "react";
 
+import { Image } from "components/common/image/Image";
 import QuoteIcon from "public/svg/quote.svg";
 
 import styles from "./recommendations.module.scss";
