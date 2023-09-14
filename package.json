@@ -10,7 +10,7 @@
     "dev": "next dev",
     "algolia": "tsx ./scripts/algolia.ts",
     "feed": "tsx ./scripts/feed.ts",
-    "new-post-redirect": "tsx ./scripts/redirect.ts",
+    "redirect": "tsx ./scripts/redirect.ts",
     "tsc": "tsc --noEmit",
     "format": "prettier --write \"./**/*.{js,jsx,ts,tsx,css,scss,md,mdx}\"",
     "lint": "next lint",

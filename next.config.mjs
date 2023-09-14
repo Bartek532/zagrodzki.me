@@ -37,21 +37,21 @@ const nextConfig = {
       },
     ]);
   },
-  redirects() {
+  async redirects() {
     return Promise.resolve([
       {
         source: "/new-post",
-        destination: "/blog/THE_NEWEST_POST_SLUG_HERE",
+        destination: "/blog/REPLACE_THE_NEWEST_POST_SLUG",
         permanent: false,
       },
       {
         source: "/new",
-        destination: "/blog/THE_NEWEST_POST_SLUG_HERE",
+        destination: "/blog/REPLACE_THE_NEWEST_POST_SLUG",
         permanent: false,
       },
       {
-        source: "/newest-post",
-        destination: "/blog/THE_NEWEST_POST_SLUG_HERE",
+        source: "/post",
+        destination: "/blog/REPLACE_THE_NEWEST_POST_SLUG",
         permanent: false,
       },
       {
@@ -73,7 +73,7 @@ const nextConfig = {
       },
       {
         source: "/gumroad",
-        destination: `https://${process.env.NEXT_PUBLIC_GUMROAD_USERNAME ?? ""}.gumroad.com/`,
+        destination: `https://${process.env.NEXT_PUBLIC_GUMROAD_USERNAME ?? ""}.gumroad.com`,
         permanent: true,
       },
     ]);

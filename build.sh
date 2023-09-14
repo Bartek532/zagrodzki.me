@@ -4,7 +4,7 @@ ARGS=$@
 
 if [[ ${ARGS[*]} =~ 'redirect' ]]; then
   echo "Generating redirect to the newest post..."
-  pnpm new-post-redirect
+  pnpm redirect
   echo "Done generating redirect..."
 fi
 
