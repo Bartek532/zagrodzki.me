@@ -1,3 +1,4 @@
+import fs from "fs";
 
 import dayjs from "dayjs";
 
@@ -6,7 +7,7 @@ import { Feed } from "feed";
 import { getPublishedPosts } from "../lib/posts";
 import { SITE_TITLE, DEFAULT_DESCRIPTION, HOST } from "../utils/consts";
 
-async function run() {
+function run() {
   const posts = getPublishedPosts();
   const feed = new Feed({
     title: SITE_TITLE,
@@ -27,7 +28,7 @@ async function run() {
       link: HOST,
     },
   });
-  
+
   posts.map(({ slug, title, excerpt, image, author, publishedAt }) => {
     feed.addItem({
       title,
@@ -36,15 +37,12 @@ async function run() {
       link: `${HOST}/blog/${slug}`,
       image: `${HOST}/${image}`,
       author: [{ name: author }],
-      date: new Date(dayjs(publishedAt, "DD-MM-YYYY").format("YYYY-MM-DD")),
+      date: new Date(dayjs(publishedAt, "DD-MM-YYYY").format("MM-DD-YYYY")),
     });
   });
 
-  await Bun.write("./public/feed.xml", feed.rss2());
-  await Bun.write("./public/feed.json", feed.json1());
+  fs.writeFileSync("./public/feed.xml", feed.rss2());
+  fs.writeFileSync("./public/feed.json", feed.json1());
 }
 
-run().catch((err) => {
-  console.error(err);
-  process.exit(1);
-});
+run();
