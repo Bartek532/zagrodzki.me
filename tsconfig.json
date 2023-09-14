@@ -3,6 +3,7 @@
     "target": "esnext",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
+    "checkJs": true,
     "skipLibCheck": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
@@ -11,7 +12,7 @@
     "module": "esnext",
     "allowImportingTsExtensions": true,
     "moduleResolution": "bundler",
-    "resolveJsonModule": true,
+    "moduleDetection": "force",
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
@@ -24,7 +25,6 @@
     "noImplicitReturns": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "checkJs": true,
     "baseUrl": ".",
     "plugins": [
       {
