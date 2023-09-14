@@ -27,10 +27,15 @@ interface FeaturedPostProps {
 }
 
 export const FeaturedPost = memo<FeaturedPostProps>(({ post }) => (
-  <Link href={`/blog/${post.slug}`}>
+  <Link href={`/blog/${post.slug}`} className={styles.link}>
     <motion.div className={styles.post} whileHover="hover">
       <motion.div className={styles.image} variants={imageVariants}>
-        <Image src={post.image} alt={post.title} width={1200} height={880} />
+        <Image
+          src={post.image}
+          alt=""
+          fill
+          style={{ objectFit: "cover", objectPosition: "center" }}
+        />
       </motion.div>
       <div className={styles.info}>
         <time className={styles.time}>

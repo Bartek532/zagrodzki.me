@@ -37,7 +37,7 @@ const nextConfig = {
       },
     ]);
   },
-  async redirects() {
+  redirects() {
     return Promise.resolve([
       {
         source: "/new-post",

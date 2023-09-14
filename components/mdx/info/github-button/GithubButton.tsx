@@ -33,6 +33,7 @@ export const GithubButton = memo<GithubButtonProps>(({ url, title, type }) => {
       aria-label={`${label} ${title} on Github`}
       className={styles.btn}
       target="_blank"
+      rel="noopener noreferrer"
     >
       <div className={styles.content}>
         <div className={styles.icon}>{icon}</div>
