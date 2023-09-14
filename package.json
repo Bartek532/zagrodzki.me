@@ -41,7 +41,6 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-dom-confetti": "0.2.0",
-    "react-github-btn": "1.2.1",
     "react-hook-form": "7.45.1",
     "react-instantsearch-core": "6.40.1",
     "react-instantsearch-dom": "6.40.1",

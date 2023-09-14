@@ -49,9 +49,6 @@ dependencies:
   react-dom-confetti:
     specifier: 0.2.0
     version: 0.2.0(react@18.2.0)
-  react-github-btn:
-    specifier: 1.2.1
-    version: 1.2.1(react@18.2.0)
   react-hook-form:
     specifier: 7.45.1
     version: 7.45.1(react@18.2.0)
@@ -4757,10 +4754,6 @@ packages:
       remote-origin-url: 1.0.0
     dev: true
 
-  /github-buttons@2.27.0:
-    resolution: {integrity: sha512-PmfRMI2Rttg/2jDfKBeSl621sEznrsKF019SuoLdoNlO7qRUZaOyEI5Li4uW+79pVqnDtKfIEVuHTIJ5lgy64w==}
-    dev: false
-
   /github-from-package@0.0.0:
     resolution: {integrity: sha512-SyHy3T1v2NUXn29OsWdxmK6RwHD+vkj3v8en8AOBZ1wBQ/hCAQ5bAQTD02kW4W9tUp/3Qh6J8r9EvntiyCmOOw==}
     dev: false
@@ -6676,15 +6669,6 @@ packages:
 
   /react-fast-compare@3.2.2:
     resolution: {integrity: sha512-nsO+KSNgo1SbJqJEYRE9ERzo7YtYbou/OqjSQKxV7jcKox7+usiUVZOAC+XnDOABXggQTno0Y1CpVnuWEc1boQ==}
-    dev: false
-
-  /react-github-btn@1.2.1(react@18.2.0):
-    resolution: {integrity: sha512-/gXD01mHAOhW0xYuNJFDn08OGjaMXOjcg6GCKVPdHvQcWzswH4aT85DLDAAJ6Zhw/71veSIH4Kx1BTBfy69SsA==}
-    peerDependencies:
-      react: '>=16.3.0'
-    dependencies:
-      github-buttons: 2.27.0
-      react: 18.2.0
     dev: false
 
   /react-hook-form@7.45.1(react@18.2.0):

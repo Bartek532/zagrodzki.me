@@ -98,6 +98,7 @@ export const Mdx = memo<MdxProps>(({ resource, content, views }) => {
 
   useEffect(() => {
     setRunningHeader(contentElRef.current);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [resource]);
 
   return (
