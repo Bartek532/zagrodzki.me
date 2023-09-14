@@ -73,7 +73,7 @@ const nextConfig = {
       },
       {
         source: "/gumroad",
-        destination: `https://zagrodzki.gumroad.com/`,
+        destination: `https://${process.env.NEXT_PUBLIC_GUMROAD_USERNAME ?? ""}.gumroad.com/`,
         permanent: true,
       },
     ]);
