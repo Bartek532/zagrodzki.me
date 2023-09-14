@@ -79,11 +79,9 @@
   }
 
   .image {
+    position: relative;
     width: 100%;
     flex: 1 1 auto;
-    background-size: cover;
-    background-position: center center;
-    border-radius: 2rem;
     min-height: 20rem;
 
     @include mixins.mediaquery("xs") {
@@ -92,6 +90,10 @@
 
     @include mixins.mediaquery("lg") {
       min-height: 20rem;
+    }
+
+    img {
+      border-radius: 2rem;
     }
   }
 
