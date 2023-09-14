@@ -44,7 +44,7 @@ export const Info = memo<InfoProps>(({ resource }) => {
           <GitHubButton
             href={resource.repoUrl}
             data-icon="octicon-star"
-            data-size={width! > 800 ? "large" : ""}
+            data-size={width && width > 800 ? "large" : ""}
             aria-label={`Star ${resource.title} on Github`}
             data-color-scheme={
               (theme === "system" ? "light: light; dark: dark;" : theme) ??
@@ -59,7 +59,7 @@ export const Info = memo<InfoProps>(({ resource }) => {
             href={`${resource.repoUrl}/fork`}
             data-icon="octicon-repo-forked"
             aria-label={`Fork ${resource.title} on Github`}
-            data-size={width! > 800 ? "large" : ""}
+            data-size={width && width > 800 ? "large" : ""}
             data-color-scheme={
               (theme === "system" ? "light: light; dark: dark;" : theme) ??
               "light: light; dark: dark;"

@@ -1,7 +1,3 @@
-// Needed to make TypeScript work with Bun in DOM
-/// <reference lib="dom" />
-/// <reference lib="dom.iterable" />
-
 /// <reference types="next" />
 /// <reference types="next/image-types/global" />
 
