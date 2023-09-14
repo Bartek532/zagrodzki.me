@@ -1,5 +1,6 @@
 import { memo } from "react";
 
+import { Image } from "components/common/image/Image";
 import { allAuthors } from "data/authors";
 import { Author as AuthorType } from "types";
 
@@ -18,7 +19,14 @@ export const Author = memo<AuthorProps>(({ name }) => {
 
   return (
     <div className={styles.author}>
-      <div className={styles.avatar} style={{ backgroundImage: `url(${author.avatarUrl})` }}></div>
+      <div className={styles.avatar}>
+        <Image
+          src={author.avatar}
+          alt={name}
+          fill
+          style={{ objectFit: "cover", objectPosition: "center" }}
+        />
+      </div>
 
       <div className={styles.info}>
         <div className={styles.name}>Written by {author.name}</div>

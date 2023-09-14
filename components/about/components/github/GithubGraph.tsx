@@ -1,7 +1,6 @@
 "use client";
 
-import Image from "next/image";
-
+import { Image } from "components/common/image/Image";
 import { useTheme } from "providers/ThemeProvider";
 import GithubGraphDark from "public/img/gh-graph-dark.png";
 import GithubGraphLight from "public/img/gh-graph-light.png";
@@ -16,9 +15,7 @@ export const GithubGraph = () => {
         src={theme === "dark" ? GithubGraphDark : GithubGraphLight}
         alt="My Github contributions graph"
       />
-      <figcaption className={styles.caption}>
-        My Github graph looks impressing!
-      </figcaption>
+      <figcaption className={styles.caption}>My Github graph looks impressing!</figcaption>
     </figure>
   );
 };

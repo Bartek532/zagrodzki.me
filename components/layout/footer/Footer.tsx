@@ -12,7 +12,7 @@ import { SOCIALS } from "utils/consts";
 
 import styles from "./footer.module.scss";
 
-const Social = ({ social }: { social: typeof SOCIALS[number] }) => {
+const Social = ({ social }: { social: (typeof SOCIALS)[number] }) => {
   const selectedSocial = SOCIALS.find(({ name }) => name === social.name);
   const { width } = useWindowSize();
   const { theme } = useTheme();
@@ -21,7 +21,7 @@ const Social = ({ social }: { social: typeof SOCIALS[number] }) => {
 
   const Icon = dynamic(() => import(`public/svg/${selectedSocial.name}.svg`));
 
-  if (width! > 640) {
+  if (width && width > 640) {
     return <Link href={selectedSocial.link}>{selectedSocial.name}</Link>;
   }
 
@@ -46,12 +46,10 @@ export const Footer = () => (
     <div className={styles.wrapper}>
       <h4 className={styles.title}>Let&#39;s build something together</h4>
       <p className={styles.description}>
-        Feel free to reach out if you&#39;re looking for a developer, have a
-        question or just want to connect 📭
+        Feel free to reach out if you&#39;re looking for a developer, have a question or just want
+        to connect 📭
       </p>
-      <Link href={`mailto:${env.NEXT_PUBLIC_EMAIL}`}>
-        {env.NEXT_PUBLIC_EMAIL}
-      </Link>
+      <Link href={`mailto:${env.NEXT_PUBLIC_EMAIL}`}>{env.NEXT_PUBLIC_EMAIL}</Link>
 
       <div className={styles.links}>
         <NextLink href="/" className={styles.home}>
@@ -65,8 +63,7 @@ export const Footer = () => (
         </div>
       </div>
       <span className={styles.copyright}>
-        &copy; {new Date().getFullYear()} Bartosz Zagrodzki. All rights
-        reserved.
+        &copy; {new Date().getFullYear()} Bartosz Zagrodzki. All rights reserved.
       </span>
     </div>
   </footer>

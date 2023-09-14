@@ -1,7 +1,7 @@
 export const allAuthors = [
   {
     name: "Bartosz Zagrodzki",
-    avatarUrl: "/img/authors/zagrodzki.jpg",
+    avatar: "/img/authors/zagrodzki.jpg",
     meta: {
       youtube: "",
       github: "https://github.com/Bartek532",

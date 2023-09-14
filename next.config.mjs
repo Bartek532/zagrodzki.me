@@ -2,7 +2,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 
-import withPlaiceholder from "@plaiceholder/next";
 import pwa from "next-pwa";
 
 const withPWA = pwa({
@@ -42,17 +41,17 @@ const nextConfig = {
     return Promise.resolve([
       {
         source: "/new-post",
-        destination: "/blog/THE_NEWEST_POST_SLUG_HERE",
+        destination: "/blog/REPLACE_THE_NEWEST_POST_SLUG",
         permanent: false,
       },
       {
         source: "/new",
-        destination: "/blog/THE_NEWEST_POST_SLUG_HERE",
+        destination: "/blog/REPLACE_THE_NEWEST_POST_SLUG",
         permanent: false,
       },
       {
-        source: "/newest-post",
-        destination: "/blog/THE_NEWEST_POST_SLUG_HERE",
+        source: "/post",
+        destination: "/blog/REPLACE_THE_NEWEST_POST_SLUG",
         permanent: false,
       },
       {
@@ -74,11 +73,11 @@ const nextConfig = {
       },
       {
         source: "/gumroad",
-        destination: `https://zagrodzki.gumroad.com/`,
+        destination: `https://${process.env.NEXT_PUBLIC_GUMROAD_USERNAME ?? ""}.gumroad.com`,
         permanent: true,
       },
     ]);
   },
 };
 
-export default withPWA(withPlaiceholder(nextConfig));
+export default withPWA(nextConfig);

@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 
 import { useIntersectionObserver } from "hooks/useIntersectionObserver";
 
@@ -13,16 +13,19 @@ export const useRunningHeader = () => {
 
   const currentlyVisibleHeaders = useRef<Set<HTMLElement>>(new Set());
 
-  const setRunningHeader = (el: HTMLElement | null) => {
-    if (!el) {
-      setId("");
-      cleanup();
+  const setRunningHeader = useCallback(
+    (el: HTMLElement | null) => {
+      if (!el) {
+        setId("");
+        cleanup();
 
-      return;
-    }
+        return;
+      }
 
-    el.querySelectorAll<HTMLElement>("h2, h3, h4, h5, h6, #introduction").forEach(observeElement);
-  };
+      el.querySelectorAll<HTMLElement>("h2, h3, h4, h5, h6, #introduction").forEach(observeElement);
+    },
+    [cleanup, observeElement],
+  );
 
   useEffect(() => {
     if (!entry) {
