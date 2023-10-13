@@ -17,17 +17,11 @@ import { allCategories } from "data/categories";
 import { env } from "env/client";
 import DisappointedAvatar from "public/img/avatars/disappointed.png";
 
-import {
-  CategoriesList,
-  CategoriesListSkeleton,
-} from "../category/list/CategoriesList";
+import { CategoriesList, CategoriesListSkeleton } from "../category/list/CategoriesList";
 import { PopularPosts, PopularPostsSkeleton } from "../popular/PopularPosts";
 
 import styles from "./postsListing.module.scss";
-import {
-  PostThumbnail,
-  PostThumbnailSkeleton,
-} from "./thumbnail/PostThumbnail";
+import { PostThumbnail, PostThumbnailSkeleton } from "./thumbnail/PostThumbnail";
 
 import type { StateResultsProvided } from "react-instantsearch-core";
 import type { Post, Category } from "types";
@@ -38,7 +32,7 @@ const searchClient = algoliasearch(
 );
 
 interface CustomResultsProps extends StateResultsProvided<Post> {
-  readonly children: React.ReactNode;
+  readonly children: React.ReactElement;
 }
 
 const CustomResults = connectStateResults<CustomResultsProps>(
@@ -98,10 +92,7 @@ const Header = () => {
     return (
       <>
         <h2 className={styles.searchedCategory}>
-          {
-            allCategories.find((c) => c.slug === searchParams.get("category"))
-              ?.name
-          }
+          {allCategories.find((c) => c.slug === searchParams.get("category"))?.name}
         </h2>
         <Configure filters={`category:${searchParams.get("category") ?? ""}`} />
       </>
@@ -116,29 +107,24 @@ interface PostsListingProps {
   readonly categories: Category[];
 }
 
-export const PostsListing = memo<PostsListingProps>(
-  ({ popularPosts, categories }) => (
-    <div className={styles.posts}>
-      <InstantSearch
-        indexName={env.NEXT_PUBLIC_ALGOLIA_POSTS_INDEX_NAME}
-        searchClient={searchClient}
-      >
-        <div className={styles.main}>
-          <CategoriesList categories={categories} />
-          <PopularPosts posts={popularPosts} />
-          <div className={styles.wrapper}>
-            <Suspense fallback={<Skeleton h={4.5} />}>
-              <Header />
-            </Suspense>
-            <CustomResults>
-              <CustomHits />
-            </CustomResults>
-          </div>
+export const PostsListing = memo<PostsListingProps>(({ popularPosts, categories }) => (
+  <div className={styles.posts}>
+    <InstantSearch indexName={env.NEXT_PUBLIC_ALGOLIA_POSTS_INDEX_NAME} searchClient={searchClient}>
+      <div className={styles.main}>
+        <CategoriesList categories={categories} />
+        <PopularPosts posts={popularPosts} />
+        <div className={styles.wrapper}>
+          <Suspense fallback={<Skeleton h={4.5} />}>
+            <Header />
+          </Suspense>
+          <CustomResults>
+            <CustomHits />
+          </CustomResults>
         </div>
-      </InstantSearch>
-    </div>
-  ),
-);
+      </div>
+    </InstantSearch>
+  </div>
+));
 
 export const PostsListingSkeleton = () => (
   <div className={styles.posts}>

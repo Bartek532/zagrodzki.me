@@ -29,6 +29,7 @@
     font-size: 1.4rem;
     opacity: 0.6;
     color: var(--black-100);
+    transition: opacity 0.2s ease-out;
 
     &:hover {
       opacity: 1;

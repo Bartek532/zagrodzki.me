@@ -16,13 +16,16 @@
   }
 
   .avatar {
+    position: relative;
     width: 15rem;
     height: 15rem;
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
-    border-radius: 50%;
+
+    div,
+    img {
+      border-radius: 50%;
+    }
   }
+
   .info {
     flex: 1;
     .name {
