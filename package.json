@@ -48,7 +48,7 @@
     "schema-dts": "1.1.2",
     "sharp": "0.32.1",
     "slugify": "1.6.4",
-    "zod": "3.21.4"
+    "zod": "3.22.3"
   },
   "devDependencies": {
     "@mapbox/rehype-prism": "0.8.0",
