@@ -2,9 +2,14 @@
 
 import { env } from "env/server";
 
-export const subscribeToNewsletter = (email: string) =>
-  fetch(`https://api.mailerlite.com/api/v2/groups/${env.MAILER_LITE_GROUP_ID}/subscribers`, {
+export const subscribeToNewsletter = async (email: string) => {
+  await fetch("https://connect.mailerlite.com/api/subscribers", {
     method: "POST",
-    headers: { "X-MailerLite-ApiKey": env.MAILER_LITE_API_KEY },
-    body: JSON.stringify({ email }),
+    body: JSON.stringify({ email, groups: [env.MAILER_LITE_GROUP_ID] }),
+    headers: {
+      Authorization: "Bearer " + env.MAILER_LITE_API_KEY,
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
   });
+};
