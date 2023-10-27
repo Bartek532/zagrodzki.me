@@ -3,12 +3,13 @@ import localFont from "next/font/local";
 
 import { Analytics } from "components/common/analytics/Analytics";
 import { Layout } from "components/layout/Layout";
-import { DEFAULT_METADATA } from "lib/metadata";
+import { DEFAULT_METADATA, DEFAULT_VIEWPORT } from "lib/metadata";
 import { AppProviders } from "providers/AppProviders";
 
 import "../styles/globals.scss";
 
 export const metadata = DEFAULT_METADATA;
+export const viewport = DEFAULT_VIEWPORT;
 
 const walsheim = localFont({
   src: [

@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { Viewport } from "next";
 
 import {
   DEFAULT_DESCRIPTION,
@@ -91,6 +92,9 @@ export const DEFAULT_METADATA: Metadata = {
       ],
     },
   },
+};
+
+export const DEFAULT_VIEWPORT: Viewport = {
   themeColor: "#855B52",
 };
 
