@@ -14,7 +14,6 @@ const withPWA = pwa({
  **/
 const nextConfig = {
   experimental: {
-    serverActions: true,
     esmExternals: "loose",
   },
   reactStrictMode: true,
