@@ -25,9 +25,6 @@ const nextConfig = {
 
     return config;
   },
-  images: {
-    domains: ["i.scdn.co"],
-  },
   rewrites() {
     return Promise.resolve([
       {

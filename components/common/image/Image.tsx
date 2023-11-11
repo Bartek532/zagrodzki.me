@@ -8,7 +8,7 @@ import { Skeleton } from "../skeleton/Skeleton";
 
 import styles from "./image.module.scss";
 
-export const Image = (props: Omit<ImageProps, "onLoadingComplete">) => {
+export const Image = (props: Omit<ImageProps, "onLoad">) => {
   const [isLoaded, setIsLoaded] = useState(false);
 
   return (
@@ -20,7 +20,7 @@ export const Image = (props: Omit<ImageProps, "onLoadingComplete">) => {
         className={clsx(styles.fade, styles.loaded && { [styles.loaded]: isLoaded })}
         data-loaded={isLoaded}
       >
-        <NextImage {...props} onLoadingComplete={() => setIsLoaded(true)} />
+        <NextImage {...props} onLoad={() => setIsLoaded(true)} />
       </div>
     </div>
   );

@@ -6,7 +6,6 @@ import customParseFormat from "dayjs/plugin/customParseFormat";
 import { motion } from "framer-motion";
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import { memo, useRef, useEffect, useCallback, useMemo } from "react";
-import { renderToString } from "react-dom/server";
 
 import { Image } from "components/common/image/Image";
 import { Author } from "components/mdx/author/Author";
@@ -94,8 +93,6 @@ export const Mdx = memo<MdxProps>(({ resource, content, views }) => {
     [theme, getHeadingProps],
   );
 
-  const contentString = renderToString(<MDXRemote {...content} components={customMdxComponents} />);
-
   useEffect(() => {
     setRunningHeader(contentElRef.current);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -107,7 +104,10 @@ export const Mdx = memo<MdxProps>(({ resource, content, views }) => {
         <Info resource={resource} />
       </header>
       <div className={styles.main}>
-        <TableOfContents contents={getHeadings(contentString)} currentActiveHeaderId={id} />
+        <TableOfContents
+          contents={getHeadings(contentElRef.current?.innerHTML ?? "")}
+          currentActiveHeaderId={id}
+        />
         <div className={styles.wrapper}>
           {resource.type === RESOURCE_TYPE.PROJECT ? (
             <motion.a
@@ -158,5 +158,11 @@ export const Mdx = memo<MdxProps>(({ resource, content, views }) => {
     </article>
   );
 });
+
+export const MdxSkeleton = () => (
+  <div className={styles.container}>
+    <div className={styles.header}></div>
+  </div>
+);
 
 Mdx.displayName = "Mdx";
