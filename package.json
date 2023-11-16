@@ -46,7 +46,7 @@
     "react-instantsearch-dom": "6.40.1",
     "reading-time": "1.5.0",
     "schema-dts": "1.1.2",
-    "sharp": "0.32.1",
+    "sharp": "0.32.6",
     "slugify": "1.6.4",
     "zod": "3.21.4"
   },
