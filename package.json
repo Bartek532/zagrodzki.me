@@ -1,29 +1,29 @@
 {
   "name": "zagrodzki.me",
-  "description": "My personal website",
-  "author": "Bartosz Zagrodzki",
   "private": true,
-  "scripts": {
-    "start": "next start",
-    "build": "./build.sh redirect feed algolia next",
-    "build:next": "next build",
-    "dev": "next dev",
-    "algolia": "tsx ./scripts/algolia.ts",
-    "feed": "tsx ./scripts/feed.ts",
-    "redirect": "tsx ./scripts/redirect.ts",
-    "tsc": "tsc --noEmit",
-    "format": "prettier --write \"./**/*.{js,jsx,ts,tsx,css,scss,md,mdx}\"",
-    "lint": "next lint",
-    "prepare": "husky install"
+  "description": "My personal website",
+  "homepage": "https://zagrodzki.me",
+  "bugs": {
+    "url": "https://github.com/Bartek532/zagrodzki.me/issues"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Bartek532/zagrodzki.me"
   },
-  "bugs": {
-    "url": "https://github.com/Bartek532/zagrodzki.me/issues"
+  "author": "Bartosz Zagrodzki",
+  "scripts": {
+    "algolia": "tsx ./scripts/algolia.ts",
+    "build": "./build.sh redirect feed algolia next",
+    "build:next": "next build",
+    "dev": "next dev",
+    "feed": "tsx ./scripts/feed.ts",
+    "format": "prettier --write \"./**/*.{js,jsx,ts,tsx,css,scss,md,mdx}\"",
+    "lint": "next lint",
+    "prepare": "husky install",
+    "redirect": "tsx ./scripts/redirect.ts",
+    "start": "next start",
+    "tsc": "tsc --noEmit"
   },
-  "homepage": "https://zagrodzki.me",
   "dependencies": {
     "@hookform/resolvers": "3.1.1",
     "@plaiceholder/next": "3.0.0",
@@ -84,12 +84,12 @@
     "unified": "9.1",
     "unist-util-visit": "2.0.3"
   },
-  "engines": {
-    "npm": ">=7.0.0",
-    "pnpm": ">=7.11.0",
-    "node": ">=18.0.0 <19"
-  },
   "packageManager": "pnpm@7.17.0",
+  "engines": {
+    "node": ">=18.0.0 <19",
+    "npm": ">=7.0.0",
+    "pnpm": ">=7.11.0"
+  },
   "nextBundleAnalysis": {
     "budget": null,
     "budgetPercentIncreaseRed": 20,

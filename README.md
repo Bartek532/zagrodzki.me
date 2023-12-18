@@ -47,7 +47,8 @@ git clone https://github.com/Bartek532/zagrodzki.me.git
 
 pnpm install
 
-cp .env-sample .env.local # set up environment variables
+cp .env-sample .env.local
+# set up environment variables - follow instructions from .env-sample
 
 pnpm dev
 

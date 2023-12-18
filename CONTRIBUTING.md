@@ -4,9 +4,9 @@ zagrodzki.me is an open source project, and contributions of any kind are welcom
 
 ## Issues
 
-If you encounter a bug, please file a bug report. 
+If you encounter a bug, please file a bug report.
 
-If you have a feature to request, please open a feature request. 
+If you have a feature to request, please open a feature request.
 
 If you would like to work on an issue or feature, there is no need to request permission.
 
@@ -16,9 +16,9 @@ In order to create a pull request for zagrodzki.me, follow the GitHub instructio
 
 ## Content
 
-If you spot a typo or an error, please boldly let me know. 
+If you spot a typo or an error, please boldly let me know.
 
-**You can also write your own article!** 
+**You can also write your own article!**
 
 Just put it in `/content` folder and make a PR. It would be good for you to contact me beforehand to discuss the details, but it's not necessary. I can guarantee you that your efforts will be appreciated! Let's make a strong community 💪
 
@@ -35,8 +35,8 @@ Description of the project files and directories.
 ├── hooks/                     # Shared React hooks
 ├── lib/                       # Lib files
 ├── providers/                 # React context global state
-├── scripts/                   # Scripts executed during deployment (algolia, redirects, feed)
 ├── public/                    # All images, icons, fonts
+├── scripts/                   # Scripts executed during deployment (algolia, redirects, feed)
 ├── styles/                    # All shared styles
 ├── types/                     # TypeScript types
 ├── utils/                     # All utilities
@@ -112,3 +112,19 @@ Component.displayName = "Component";
 | [Husky](https://github.comtypicode/husky)                 | Git hooks                                                           |
 | [ESLint](https://eslint.org/)                             | TypeScript linting                                                  |
 | [Prettier](https://prettier.io/)                          | Code formatter                                                      |
+
+## Scripts
+
+| Script                                                                                | Description                                                 |
+| ------------------------------------------------------------------------------------- | ----------------------------------------------------------- |
+| [algolia](https://github.com/Bartek532/zagrodzki.me/blob/develop/package.json#L15)    | Updates Algolia indexes with posts and projects             |
+| [build](https://github.com/Bartek532/zagrodzki.me/blob/develop/package.json#L16)      | Builds the whole project                                    |
+| [build:next](https://github.com/Bartek532/zagrodzki.me/blob/develop/package.json#L17) | Builds Next.js app                                          |
+| [dev](https://github.com/Bartek532/zagrodzki.me/blob/develop/package.json#L18)        | Runs Next.js local development server                       |
+| [feed](https://github.com/Bartek532/zagrodzki.me/blob/develop/package.json#L19)       | Generates RSS feed for the blog                             |
+| [format](https://github.com/Bartek532/zagrodzki.me/blob/develop/package.json#L20)     | Formats the whole project (using Prettier)                  |
+| [lint](https://github.com/Bartek532/zagrodzki.me/blob/develop/package.json#L21)       | Runs ESLint against project files                           |
+| [prepare](https://github.com/Bartek532/zagrodzki.me/blob/develop/package.json#L22)    | Prepares Husky hooks                                        |
+| [redirect](https://github.com/Bartek532/zagrodzki.me/blob/develop/package.json#L23)   | Generates redirects to the newest post (in next.config.mjs) |
+| [start](https://github.com/Bartek532/zagrodzki.me/blob/develop/package.json#L24)      | Starts Next.js server                                       |
+| [tsc](https://github.com/Bartek532/zagrodzki.me/blob/develop/package.json#L25)        | Runs TypeScript transpilation against project files         |
