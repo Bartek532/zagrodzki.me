@@ -15,7 +15,7 @@ Please read [CONTRIBUTING.md](https://github.com/Bartek532/zagrodzki.me/blob/mai
 | Tech                                                      | Description                                                         |
 | --------------------------------------------------------- | ------------------------------------------------------------------- |
 | [TypeScript](https://www.typescriptlang.org/)             | Static type-checking programming language                           |
-| [Next.js 13](https://nextjs.org/)                         | The React Framework for Production                                  |
+| [Next.js](https://nextjs.org/)                            | The React framework for production                                  |
 | [React](https://reactjs.org/)                             | Library for building user interfaces                                |
 | [MDX](https://mdxjs.com/)                                 | Markdown for the component era                                      |
 | [Algolia](https://www.algolia.com/)                       | Implementing powerful search                                        |
