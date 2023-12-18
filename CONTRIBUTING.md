@@ -115,16 +115,16 @@ Component.displayName = "Component";
 
 ## Scripts
 
-| Script                                                                                | Description                                                 |
-| ------------------------------------------------------------------------------------- | ----------------------------------------------------------- |
-| [algolia](https://github.com/Bartek532/zagrodzki.me/blob/develop/package.json#L15)    | Updates Algolia indexes with posts and projects             |
-| [build](https://github.com/Bartek532/zagrodzki.me/blob/develop/package.json#L16)      | Builds the whole project                                    |
-| [build:next](https://github.com/Bartek532/zagrodzki.me/blob/develop/package.json#L17) | Builds Next.js app                                          |
-| [dev](https://github.com/Bartek532/zagrodzki.me/blob/develop/package.json#L18)        | Runs Next.js local development server                       |
-| [feed](https://github.com/Bartek532/zagrodzki.me/blob/develop/package.json#L19)       | Generates RSS feed for the blog                             |
-| [format](https://github.com/Bartek532/zagrodzki.me/blob/develop/package.json#L20)     | Formats the whole project (using Prettier)                  |
-| [lint](https://github.com/Bartek532/zagrodzki.me/blob/develop/package.json#L21)       | Runs ESLint against project files                           |
-| [prepare](https://github.com/Bartek532/zagrodzki.me/blob/develop/package.json#L22)    | Prepares Husky hooks                                        |
-| [redirect](https://github.com/Bartek532/zagrodzki.me/blob/develop/package.json#L23)   | Generates redirects to the newest post (in next.config.mjs) |
-| [start](https://github.com/Bartek532/zagrodzki.me/blob/develop/package.json#L24)      | Starts Next.js server                                       |
-| [tsc](https://github.com/Bartek532/zagrodzki.me/blob/develop/package.json#L25)        | Runs TypeScript transpilation against project files         |
+| Script                                                                             | Description                                                 |
+| ---------------------------------------------------------------------------------- | ----------------------------------------------------------- |
+| [algolia](https://github.com/Bartek532/zagrodzki.me/blob/main/package.json#L15)    | Updates Algolia indexes with posts and projects             |
+| [build](https://github.com/Bartek532/zagrodzki.me/blob/main/package.json#L16)      | Builds the whole project                                    |
+| [build:next](https://github.com/Bartek532/zagrodzki.me/blob/main/package.json#L17) | Builds Next.js app                                          |
+| [dev](https://github.com/Bartek532/zagrodzki.me/blob/main/package.json#L18)        | Runs Next.js local development server                       |
+| [feed](https://github.com/Bartek532/zagrodzki.me/blob/main/package.json#L19)       | Generates RSS feed for the blog                             |
+| [format](https://github.com/Bartek532/zagrodzki.me/blob/main/package.json#L20)     | Formats the whole project (using Prettier)                  |
+| [lint](https://github.com/Bartek532/zagrodzki.me/blob/main/package.json#L21)       | Runs ESLint against project files                           |
+| [prepare](https://github.com/Bartek532/zagrodzki.me/blob/main/package.json#L22)    | Prepares Husky hooks                                        |
+| [redirect](https://github.com/Bartek532/zagrodzki.me/blob/main/package.json#L23)   | Generates redirects to the newest post (in next.config.mjs) |
+| [start](https://github.com/Bartek532/zagrodzki.me/blob/main/package.json#L24)      | Starts Next.js server                                       |
+| [tsc](https://github.com/Bartek532/zagrodzki.me/blob/main/package.json#L25)        | Runs TypeScript transpilation against project files         |
