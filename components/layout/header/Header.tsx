@@ -9,23 +9,23 @@ import styles from "./header.module.scss";
 import { Navbar } from "./navbar/Navbar";
 
 export const Header = () => (
-    <header className={styles.header}>
-      <Link href="#main" className={styles.skip}>
-        skip to content
+  <header className={styles.header}>
+    <Link href="#main" className={styles.skip}>
+      skip to content
+    </Link>
+    <Link href="/" className={styles.logo}>
+      <span className="sr-only">home</span>
+      <Logo />
+    </Link>
+    <Navbar routes={routes} />
+    <div className={styles.right}>
+      <label className={styles.theme}>
+        <ThemeSwitcher />
+      </label>
+      <Link href="/contact" className={styles.contact}>
+        Contact
+        <PaperPlane />
       </Link>
-      <Link href="/" className={styles.logo}>
-        <span className="sr-only">home</span>
-        <Logo />
-      </Link>
-      <Navbar routes={routes} />
-      <div className={styles.right}>
-        <label className={styles.theme}>
-          <ThemeSwitcher />
-        </label>
-        <Link href="/contact" className={styles.contact}>
-          Contact
-          <PaperPlane />
-        </Link>
-      </div>
-    </header>
-  );
+    </div>
+  </header>
+);

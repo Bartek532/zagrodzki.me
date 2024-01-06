@@ -76,9 +76,7 @@ export const ThemeSwitcher = () => {
 
   return (
     <>
-      <span className="sr-only">
-        change theme to {theme === "dark" ? "light" : "dark"}
-      </span>
+      <span className="sr-only">change theme to {theme === "dark" ? "light" : "dark"}</span>
       <input
         type="checkbox"
         className={styles.checkbox}
@@ -86,9 +84,7 @@ export const ThemeSwitcher = () => {
         checked={theme === "light"}
       />
       <div className={styles.toggle}>
-        <div className={styles.icon}>
-          {theme === "light" ? <SunIcon /> : <MoonIcon />}
-        </div>
+        <div className={styles.icon}>{theme === "light" ? <SunIcon /> : <MoonIcon />}</div>
       </div>
     </>
   );

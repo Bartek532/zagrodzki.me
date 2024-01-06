@@ -22,9 +22,9 @@ priority: 2
 Every time I wanted to find a book in my house I have to spend a lot of time to do this. So I decide to **digitalize** it! Database, forms, some code and it’s live.
 
 <del>
-  Now the administration panel is, what may surprise you, available for everyone, so you too can add your own book, but
-  in a few moments I will block this access so only my closest ones can access it. I want to show all functionalities to
-  as many people as I can before I do this.
+  Now the administration panel is, what may surprise you, available for everyone, so you too can add
+  your own book, but in a few moments I will block this access so only my closest ones can access
+  it. I want to show all functionalities to as many people as I can before I do this.
 </del>
 
 I have created role based system - you have to be one of **admins** 👷 to be able to add or move a book. The whole process is simple, if you register and login for the first time you will don't have access to all functionalities. To gain permission you should send a request to one of **super admins** 🦸, what you can do directly from your dashboard. After your request has been approved, you should see that all options are available. Enjoy Book Searcher in all its glory!
@@ -45,7 +45,12 @@ As you can see below I built two versions of Book Searcher. First, I tried to us
 Basically, the whole app have been written in **TypeScript** (too obvious?). At the back I used **Express.js** and **PostgreSQL**
 with **Prisma** for database. On the front end I bet on **Vue** and I think it paid off 💰
 
-<Image src="/img/projects/book-searcher/stack.png" alt="Two versions stack" width="1200" height="880" />
+<Image
+  src="/img/projects/book-searcher/stack.png"
+  alt="Two versions stack"
+  width="1200"
+  height="880"
+/>
 
 ## Problems
 
@@ -53,7 +58,12 @@ I spent most of my time preparing the view and the logic involved in adding the 
 
 If I had to name one more thing it would be **authorization**. Handling user permissions, sending suitable status codes, it sounds so simple, but trust me, in more advanced cases it can be very irritating 🤐
 
-<Image src="/img/projects/book-searcher/add-book.png" alt="Admin dashboard - add book" width="1400" height="1026" />
+<Image
+  src="/img/projects/book-searcher/add-book.png"
+  alt="Admin dashboard - add book"
+  width="1400"
+  height="1026"
+/>
 
 ## Lessons learned
 
@@ -61,4 +71,9 @@ It's impossible to count Vue libraries that I got to know while working with thi
 
 It’s worth noting that this was my first application of this size built with **Vue 3**. I have often looked at the documentation, but it has allowed me to delve more deeply into the subject.
 
-<Image src="/img/projects/book-searcher/books.png" alt="Main books view" width="1200" height="880" />
+<Image
+  src="/img/projects/book-searcher/books.png"
+  alt="Main books view"
+  width="1200"
+  height="880"
+/>

@@ -1,9 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 
-type IntersectionObserverOptions = Pick<
-  IntersectionObserverInit,
-  "rootMargin" | "threshold"
->;
+type IntersectionObserverOptions = Pick<IntersectionObserverInit, "rootMargin" | "threshold">;
 type ObserverCallback = (entry: IntersectionObserverEntry) => void;
 interface Observer {
   readonly key: string;
@@ -87,8 +84,7 @@ const observe = (() => {
     callback: ObserverCallback,
     options: IntersectionObserverOptions,
   ) => {
-    const { key, intersectionObserver, elementToCallback } =
-      createObserver(options);
+    const { key, intersectionObserver, elementToCallback } = createObserver(options);
     elementToCallback.set(el, callback);
     intersectionObserver.observe(el);
 

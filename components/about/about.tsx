@@ -29,33 +29,20 @@ export const About = async () => {
         <div className={styles.collaboration}>
           <h2 className={styles.title}>Collaboration</h2>
           <p className={styles.description}>
-            I&#39;m always open to new suggestions. If you have an
-            unconventional offer or want to see what else I have to offer,
-            contact me at{" "}
-            <Link href={`mailto:${env.NEXT_PUBLIC_EMAIL}`}>
-              {env.NEXT_PUBLIC_EMAIL}
-            </Link>
+            I&#39;m always open to new suggestions. If you have an unconventional offer or want to
+            see what else I have to offer, contact me at{" "}
+            <Link href={`mailto:${env.NEXT_PUBLIC_EMAIL}`}>{env.NEXT_PUBLIC_EMAIL}</Link>
           </p>
         </div>
         <div className={styles.contact}>
           <h2 className={styles.title}>Contact</h2>
           <p className={styles.description}>
-            You can contact me directly from my{" "}
-            <Link href="/contact">website</Link>, via{" "}
+            You can contact me directly from my <Link href="/contact">website</Link>, via{" "}
             <Link href={`mailto:${env.NEXT_PUBLIC_EMAIL}`}>email</Link>,{" "}
-            <Link
-              href={`https://facebook.com/${env.NEXT_PUBLIC_FACEBOOK_USERNAME}`}
-            >
-              Facebook
-            </Link>
-            ,{" "}
-            <Link
-              href={`https://twitter.com/${env.NEXT_PUBLIC_TWITTER_USERNAME}`}
-            >
-              Twitter
-            </Link>{" "}
-            or other social media. I reply to all messages! Ask me anything,
-            I&#39;m not afraid of any topics.
+            <Link href={`https://facebook.com/${env.NEXT_PUBLIC_FACEBOOK_USERNAME}`}>Facebook</Link>
+            , <Link href={`https://twitter.com/${env.NEXT_PUBLIC_TWITTER_USERNAME}`}>Twitter</Link>{" "}
+            or other social media. I reply to all messages! Ask me anything, I&#39;m not afraid of
+            any topics.
           </p>
         </div>
       </div>

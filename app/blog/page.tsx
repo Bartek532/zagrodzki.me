@@ -5,8 +5,7 @@ import { getPopularPosts, getPostsCategories } from "lib/posts";
 import { getResourceViews } from "lib/views";
 import { Post, RESOURCE_TYPE } from "types";
 
-const description =
-  "Everything that I or one of the authors has written for my blog ✍️";
+const description = "Everything that I or one of the authors has written for my blog ✍️";
 
 export const metadata = getMetadata({
   title: "Blog",

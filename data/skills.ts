@@ -5,7 +5,12 @@ export const allSkills = [
     color: "#e44d26",
     link: "https://www.w3.org/html",
   },
-  { name: "CSS", slug: "css", color: "#379ad6", link: "https://www.w3.org/Style/CSS/Overview.en.html" },
+  {
+    name: "CSS",
+    slug: "css",
+    color: "#379ad6",
+    link: "https://www.w3.org/Style/CSS/Overview.en.html",
+  },
   { name: "JavaScript", slug: "js", color: "#f0db4f", link: "https://www.javascript.com" },
   { name: "TypeScript", slug: "ts", color: "#007acc", link: "https://www.typescriptlang.org" },
   { name: "Vue", slug: "vue", color: "#3fb984", link: "https://vuejs.org" },

@@ -12,7 +12,7 @@ import { SOCIALS } from "utils/consts";
 
 import styles from "./footer.module.scss";
 
-const Social = ({ social }: { social: (typeof SOCIALS)[number] }) => {
+const Social = ({ social }: { social: typeof SOCIALS[number] }) => {
   const selectedSocial = SOCIALS.find(({ name }) => name === social.name);
   const { width } = useWindowSize();
   const { theme } = useTheme();

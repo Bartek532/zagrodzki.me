@@ -11,12 +11,16 @@ type: "post"
 ---
 
 <div id="introduction">
-  Today we'll talk about feature, that everyone use almost every day. Copy, cut, paste, sounds familar to you? Here you
-  can learn how to handle these events on the website, how to copy something directly from the code and many more.
-  Finally, we'll create a custom copy button that you can see below. Ready? Let's go!
+  Today we'll talk about feature, that everyone use almost every day. Copy, cut, paste, sounds
+  familar to you? Here you can learn how to handle these events on the website, how to copy
+  something directly from the code and many more. Finally, we'll create a custom copy button that
+  you can see below. Ready? Let's go!
 </div>
 
-<CopyBtn textToCopy="Example text copied from zagrodzki.me/blog/using-clipboard-in-js" label="Click me to copy!" />
+<CopyBtn
+  textToCopy="Example text copied from zagrodzki.me/blog/using-clipboard-in-js"
+  label="Click me to copy!"
+/>
 
 ## Events
 
@@ -209,7 +213,10 @@ clipboard.on("error", () => {
 
 Okay, the theory is over, time to practice! We will create our own React component, which will allow us to copy any text by clicking on the button. Let's start! 🚀
 
-<CopyBtn textToCopy="Example text copied from zagrodzki.me/blog/using-clipboard-in-js" label="Click me to copy!" />
+<CopyBtn
+  textToCopy="Example text copied from zagrodzki.me/blog/using-clipboard-in-js"
+  label="Click me to copy!"
+/>
 
 First, let's create a helper function to copy the text:
 
@@ -274,7 +281,10 @@ export const CopyBtn = ({ label, textToCopy }) => {
   return (
     <div className={styles.wrapper}>
       <Confetti active={isCopied} config={confettiConfig} />
-      <button onClick={handleCopyBtnClick} className={clsx(styles.btn, { [styles.copied]: isCopied })}>
+      <button
+        onClick={handleCopyBtnClick}
+        className={clsx(styles.btn, { [styles.copied]: isCopied })}
+      >
         {/* 4 */}
         {isCopied ? "Copied! 🎉" : label}
       </button>
@@ -341,7 +351,10 @@ All in all, everything with confetti is better. 🥳
 
 And that's it! We have created custom copy button that you can freely use in your next application. It wasn't hard, was it? You can modify it on your own to make it much more custom, please share it if you do something beatiful.
 
-<CopyBtn textToCopy="Example text copied from zagrodzki.me/blog/using-clipboard-in-js" label="Click me to copy!" />
+<CopyBtn
+  textToCopy="Example text copied from zagrodzki.me/blog/using-clipboard-in-js"
+  label="Click me to copy!"
+/>
 
 ## Conclusion
 

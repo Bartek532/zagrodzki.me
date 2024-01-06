@@ -10,8 +10,6 @@ export const Custom404 = () => (
       <Image src={PissedOffAvatar} alt="pissed off memoji" />
     </div>
     <h1 className={styles.title}>404!</h1>
-    <p className={styles.description}>
-      The page you are looking for does not exist.
-    </p>
+    <p className={styles.description}>The page you are looking for does not exist.</p>
   </div>
 );

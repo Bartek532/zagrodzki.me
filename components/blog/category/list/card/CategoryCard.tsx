@@ -12,13 +12,9 @@ interface CategoryCardProps {
 }
 
 export const CategoryCard = memo<CategoryCardProps>(({ category }) => (
-    <Link
-      href={`/blog?category=${category}`}
-      key={category}
-      className={styles.category}
-    >
-      {allCategories.find((c) => c.slug === category)?.name}
-    </Link>
-  ));
+  <Link href={`/blog?category=${category}`} key={category} className={styles.category}>
+    {allCategories.find((c) => c.slug === category)?.name}
+  </Link>
+));
 
 CategoryCard.displayName = "CategoryCard";

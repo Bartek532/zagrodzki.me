@@ -19,17 +19,10 @@ const [useTheme, ThemeContextProvider] = createSafeContext<ThemeContext>();
 
 const ThemeProvider = ({ children }: ThemeProviderProps) => {
   const [theme, setTheme] = useLocalStorage<ThemeVariants>("theme", "system");
-  const [systemTheme, setSystemTheme] = useState<Exclude<
-    ThemeVariants,
-    "system"
-  > | null>(null);
+  const [systemTheme, setSystemTheme] = useState<Exclude<ThemeVariants, "system"> | null>(null);
 
   useEffect(() => {
-    setSystemTheme(
-      window.matchMedia("(prefers-color-scheme: dark)").matches
-        ? "dark"
-        : "light",
-    );
+    setSystemTheme(window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
   }, []);
 
   useEffect(() => {
@@ -40,9 +33,7 @@ const ThemeProvider = ({ children }: ThemeProviderProps) => {
     theme === "dark" ? "light" : "dark";
 
   const toggleTheme = () => {
-    setTheme(
-      theme === "system" ? invertTheme(systemTheme) : invertTheme(theme),
-    );
+    setTheme(theme === "system" ? invertTheme(systemTheme) : invertTheme(theme));
   };
 
   return (

@@ -17,16 +17,10 @@ interface PostThumbnailProps {
 export const PostThumbnail = memo<PostThumbnailProps>(({ post }) => (
   <Link href={`/blog/${post.slug}`}>
     <motion.article className={styles.post} layout>
-      <motion.h2
-        className={styles.title}
-        layoutId={`title-container-${post.slug}`}
-      >
+      <motion.h2 className={styles.title} layoutId={`title-container-${post.slug}`}>
         {post.title}
       </motion.h2>
-      <motion.p
-        className={styles.excerpt}
-        layoutId={`excerpt-container-${post.slug}`}
-      >
+      <motion.p className={styles.excerpt} layoutId={`excerpt-container-${post.slug}`}>
         {post.excerpt}
       </motion.p>
       <div className={styles.info}>
@@ -34,10 +28,7 @@ export const PostThumbnail = memo<PostThumbnailProps>(({ post }) => (
           <span className={styles.category}>
             {allCategories.find((c) => c.slug === post.category)?.name}
           </span>
-          •
-          <span className={styles.time}>
-            {Math.round(post.timeToRead)} minutes
-          </span>
+          •<span className={styles.time}>{Math.round(post.timeToRead)} minutes</span>
         </div>
         <div className={styles.more}>
           Read more
@@ -50,8 +41,6 @@ export const PostThumbnail = memo<PostThumbnailProps>(({ post }) => (
   </Link>
 ));
 
-export const PostThumbnailSkeleton = () => (
-  <Skeleton h={17} />
-);
+export const PostThumbnailSkeleton = () => <Skeleton h={17} />;
 
 PostThumbnail.displayName = "PostThumbnail";

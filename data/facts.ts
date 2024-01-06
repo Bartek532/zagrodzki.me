@@ -2,7 +2,8 @@ export const allFacts = [
   {
     title: "I do 100 pushups every day",
     icon: "pushup",
-    description: "The beginning was hard, but if I ever give up, you can slap me in the face. Are you in? 💪",
+    description:
+      "The beginning was hard, but if I ever give up, you can slap me in the face. Are you in? 💪",
   },
   {
     title: "I have read 55 books in the last year",

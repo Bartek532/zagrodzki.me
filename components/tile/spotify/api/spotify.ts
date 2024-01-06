@@ -74,9 +74,7 @@ export const fetchLastTrack = async () => {
     if (isCurrentlyPlayingPayload(currentlyPlayingData)) {
       return {
         track: currentlyPlayingData.item,
-        status: currentlyPlayingData.is_playing
-          ? TRACK_STATUS.ONLINE
-          : TRACK_STATUS.OFFLINE,
+        status: currentlyPlayingData.is_playing ? TRACK_STATUS.ONLINE : TRACK_STATUS.OFFLINE,
       };
     }
   }

@@ -12,15 +12,15 @@
   },
   "author": "Bartosz Zagrodzki",
   "scripts": {
-    "algolia": "tsx ./scripts/algolia.ts",
+    "algolia": "tsx --env-file .env.local ./scripts/algolia.ts ",
     "build": "./build.sh redirect feed algolia next",
     "build:next": "next build",
     "dev": "next dev",
-    "feed": "tsx ./scripts/feed.ts",
+    "feed": "tsx --env-file .env.local ./scripts/feed.ts",
     "format": "prettier --write \"./**/*.{js,jsx,ts,tsx,css,scss,md,mdx}\"",
     "lint": "next lint",
     "prepare": "husky install",
-    "redirect": "tsx ./scripts/redirect.ts",
+    "redirect": "tsx --env-file .env.local ./scripts/redirect.ts",
     "start": "next start",
     "tsc": "tsc --noEmit"
   },
@@ -84,11 +84,11 @@
     "unified": "9.1",
     "unist-util-visit": "2.0.3"
   },
-  "packageManager": "pnpm@7.17.0",
+  "packageManager": "pnpm@8.5.0",
   "engines": {
-    "node": ">=18.0.0 <19",
-    "npm": ">=7.0.0",
-    "pnpm": ">=7.11.0"
+    "node": ">=20.0.0",
+    "npm": ">=10.0.0",
+    "pnpm": ">=8.0.0"
   },
   "nextBundleAnalysis": {
     "budget": null,

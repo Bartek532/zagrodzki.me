@@ -41,21 +41,12 @@ const generateAlgoliaPosts = async () => {
 };
 
 async function run() {
-  const client = algoliasearch(
-    env.NEXT_PUBLIC_ALGOLIA_APP_ID,
-    env.ALGOLIA_UPDATE_API_KEY,
-  );
-  const projectsIndex = client.initIndex(
-    env.NEXT_PUBLIC_ALGOLIA_PROJECTS_INDEX_NAME,
-  );
+  const client = algoliasearch(env.NEXT_PUBLIC_ALGOLIA_APP_ID, env.ALGOLIA_UPDATE_API_KEY);
+  const projectsIndex = client.initIndex(env.NEXT_PUBLIC_ALGOLIA_PROJECTS_INDEX_NAME);
   const postsIndex = client.initIndex(env.NEXT_PUBLIC_ALGOLIA_POSTS_INDEX_NAME);
 
-  const indexedProjects = await projectsIndex.saveObjects(
-    await generateAlgoliaProjects(),
-  );
-  const indexedPosts = await postsIndex.saveObjects(
-    await generateAlgoliaPosts(),
-  );
+  const indexedProjects = await projectsIndex.saveObjects(await generateAlgoliaProjects());
+  const indexedPosts = await postsIndex.saveObjects(await generateAlgoliaPosts());
 
   console.log(
     `${indexedProjects.objectIDs.length} projects indexed in ${env.NEXT_PUBLIC_ALGOLIA_PROJECTS_INDEX_NAME}`,

@@ -42,9 +42,7 @@ const SpotifyData = async () => {
           <div className={styles.icon}>
             <CrossIcon />
           </div>
-          <p className={styles.description}>
-            Something went wrong during fetching!
-          </p>
+          <p className={styles.description}>Something went wrong during fetching!</p>
         </div>
       </div>
     );
@@ -55,10 +53,7 @@ const SpotifyData = async () => {
   const { artists, album, name, external_urls } = data.track;
 
   return (
-    <a
-      className={clsx(styles.wrapper, styles.dataWrapper)}
-      href={external_urls.spotify}
-    >
+    <a className={clsx(styles.wrapper, styles.dataWrapper)} href={external_urls.spotify}>
       <div className={styles.content}>
         <div className={styles.logo}>
           <SpotifyIcon />
@@ -85,12 +80,7 @@ const SpotifyData = async () => {
           <p className={styles.description}>{normalizeTrackArtists(artists)}</p>
         </div>
         <div className={styles.album}>
-          <Image
-            src={album.images[0].url}
-            width="640"
-            height="640"
-            alt={album.name}
-          />
+          <Image src={album.images[0].url} width="640" height="640" alt={album.name} />
         </div>
       </div>
     </a>
