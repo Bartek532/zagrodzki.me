@@ -29,6 +29,7 @@
     "@plaiceholder/next": "3.0.0",
     "@sendgrid/mail": "7.6.0",
     "@vercel/analytics": "0.1.8",
+    "@vercel/speed-insights": "1.0.7",
     "algoliasearch": "4.11.0",
     "dayjs": "1.10.7",
     "feed": "4.2.2",
