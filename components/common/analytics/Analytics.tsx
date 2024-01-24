@@ -1,6 +1,7 @@
 "use client";
 
 import { Analytics as VercelAnalytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { usePathname } from "next/navigation";
 import Script from "next/script";
 import { useEffect } from "react";
@@ -21,6 +22,7 @@ export const Analytics = () => {
 
   return (
     <>
+      <SpeedInsights />
       <VercelAnalytics />
       <Script
         strategy="afterInteractive"
