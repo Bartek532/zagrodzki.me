@@ -16,5 +16,5 @@ export const sendMail = async ({ name, email, message }: Message) => {
     text: message,
   };
 
-  return sgMail.send(msg);
+  await sgMail.send(msg);
 };
