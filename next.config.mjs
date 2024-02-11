@@ -25,6 +25,13 @@ const nextConfig = {
 
     return config;
   },
+  images: {
+    remotePatterns: [
+      {
+        hostname: "i.scdn.co",
+      },
+    ],
+  },
   rewrites() {
     return Promise.resolve([
       {
