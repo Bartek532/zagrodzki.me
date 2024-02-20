@@ -13,7 +13,7 @@ interface RecommendationsProps {
 
 export const Recommendations = memo<RecommendationsProps>(({ recommendations }) => (
   <section className={styles.recommendations}>
-    <h2 className={styles.title}>Recommendations</h2>
+    <h2 className={styles.title}>Testimonials</h2>
     <p className={styles.description}>What do others say about me? 👀</p>
 
     <ul className={styles.list}>

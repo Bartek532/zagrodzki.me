@@ -52,8 +52,23 @@
   }
 
   .image {
+    position: relative;
     @include mixins.flex(flex-end);
+    overflow: hidden;
+
+    &::after {
+      position: absolute;
+      width: 120%;
+      height: 140px;
+      bottom: -40px;
+      left: -10%;
+      background-color: var(--bg-100);
+      content: "";
+      filter: blur(17px);
+    }
+
     img {
+      filter: drop-shadow(0 -5px 10px var(--gray-300));
       border-radius: 2rem;
     }
   }

@@ -12,9 +12,9 @@ export const AboutTile = () => (
       <Image src={WinkingAvatar} alt="winking memoji" />
     </div>
     <p className={styles.description}>
-      I&#39;m <strong className={styles.name}>Bartek</strong>, full-stack developer, blogger,
-      freelancer, technologies enthusiast. I&#39;m in love with React and TypeScript ❤️ Constantly
-      learning and discovering new stuff 📖
+      I&#39;m <strong className={styles.name}>Bart</strong>, software engineer building products to
+      help people lead better lives 🎯 In love with creative solutions - constantly learning and
+      discovering new stuff 📖
     </p>
     <div className={styles.more}>
       Learn more

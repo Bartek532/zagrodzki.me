@@ -1,7 +1,7 @@
 export const allPositions = [
   {
     id: 1,
-    position: "Full-stack developer",
+    position: "Software engineer",
     company: "Brainhub",
     date: "10.2022 - present",
     link: "https://brainhub.eu",
