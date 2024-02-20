@@ -5,11 +5,13 @@
   @include mixins.flex(center, center);
   flex-wrap: wrap;
   gap: 5rem;
+  margin-bottom: -6rem;
 
   @include mixins.mediaquery("lg") {
     justify-content: space-between;
     align-items: flex-start;
     flex-flow: row nowrap;
+    margin-bottom: 0;
   }
 
   .text {
