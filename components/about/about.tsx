@@ -40,9 +40,9 @@ export const About = async () => {
             You can contact me directly from my <Link href="/contact">website</Link>, via{" "}
             <Link href={`mailto:${env.NEXT_PUBLIC_EMAIL}`}>email</Link>,{" "}
             <Link href={`https://facebook.com/${env.NEXT_PUBLIC_LINKEDIN_USERNAME}`}>Linkedin</Link>
-            , <Link href={`https://twitter.com/${env.NEXT_PUBLIC_TWITTER_USERNAME}`}>Twitter</Link>{" "}
-            or other social media. I reply to all messages! Ask me anything, I&#39;m not afraid of
-            any topics.
+            , <Link href={`https://x.com/${env.NEXT_PUBLIC_X_USERNAME}`}>X (Twitter)</Link> or other
+            social media. I reply to all messages! Ask me anything, I&#39;m not afraid of any
+            topics.
           </p>
         </div>
       </div>

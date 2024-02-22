@@ -25,7 +25,7 @@ export const ProjectTile = memo<ProjectTileProps>(({ project, mockupPosition }) 
   };
 
   return (
-    <Link href={`/projects/${project.slug}`} className={styles.link}>
+    <Link href={`/work/${project.slug}`} className={styles.link}>
       <motion.div
         whileHover="hover"
         className={styles.project}

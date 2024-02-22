@@ -33,7 +33,7 @@ export const Hero = ({ views }: { views: number }) => (
     </div>
 
     <div className={styles.image}>
-      <Image src={Me} width="400" height="586" alt="" />
+      <Image src={Me} width="450" height="660" alt="" />
     </div>
   </section>
 );

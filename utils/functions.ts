@@ -47,6 +47,6 @@ export const getBreadcrumbs = (type: RESOURCE_TYPE, category?: string) => {
 
   return [
     { path: "/", name: "Home" },
-    { path: "/projects", name: "Projects" },
+    { path: "/work", name: "Work" },
   ];
 };
