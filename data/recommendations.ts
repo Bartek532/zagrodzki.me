@@ -23,7 +23,7 @@ export const allRecommendations = [
     author: {
       name: "3motion",
       position: "Creative agency",
-      image: "/img/references/3motion.jpg",
+      image: "/img/references/3motion.png",
     },
   },
   {

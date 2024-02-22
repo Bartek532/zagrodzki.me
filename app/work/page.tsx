@@ -7,7 +7,7 @@ const description = "Everything that I have built, alone or with someone 🔨";
 export const metadata = getMetadata({
   title: "Work",
   description,
-  image: "/img/projects.png",
+  image: "/img/work.png",
 });
 
 const WorkPage = () => (

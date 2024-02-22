@@ -56,6 +56,7 @@
 
   .content {
     @include mixins.flex(flex-start);
+    width: 100%;
 
     @include mixins.mediaquery("lg") {
       padding: 2.5rem;
@@ -88,8 +89,18 @@
     }
 
     .info {
+      --gap: 2rem;
       position: relative;
       z-index: 2;
+      max-width: calc(60% - var(--gap));
+
+      @include mixins.mediaquery("xs") {
+        --gap: 2.5rem;
+      }
+
+      @include mixins.mediaquery("lg") {
+        max-width: 100%;
+      }
 
       .label {
         color: var(--green-100);
@@ -135,8 +146,11 @@
       }
 
       .title {
-        margin: 0.3rem 0;
+        margin: 0.3rem 0 0.5rem;
         line-height: 1.35;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
 
         @include mixins.mediaquery("xs") {
           font-size: 1.6rem;
@@ -144,11 +158,17 @@
 
         @include mixins.mediaquery("lg") {
           font-size: 1.8rem;
+          white-space: revert;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          line-clamp: 2;
+          -webkit-box-orient: vertical;
         }
       }
 
       .description {
         font-size: 1.15rem;
+        line-height: 1.3;
         color: var(--black-300);
 
         @include mixins.mediaquery("xs") {

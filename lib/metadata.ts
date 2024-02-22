@@ -100,7 +100,10 @@ export const DEFAULT_METADATA: Metadata = {
 };
 
 export const DEFAULT_VIEWPORT: Viewport = {
-  themeColor: "#855B52",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#f7f1f3" },
+    { media: "(prefers-color-scheme: dark)", color: "#161b22" },
+  ],
 };
 
 export const getMetadata = (

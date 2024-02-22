@@ -10,7 +10,6 @@ import SpotifyIcon from "public/svg/spotify.svg";
 import { fetchLastTrack } from "./api/spotify";
 import styles from "./spotifyTile.module.scss";
 import { TRACK_STATUS } from "./types";
-import { normalizeTitle } from "./utils/normalizeTitle";
 import { normalizeTrackArtists } from "./utils/normalizeTrackArtists";
 
 const getTrack = async () => {
@@ -76,7 +75,7 @@ const SpotifyData = async () => {
               </>
             )}
           </span>
-          <h2 className={styles.title}>{normalizeTitle(name)}</h2>
+          <h2 className={styles.title}>{name}</h2>
           <p className={styles.description}>{normalizeTrackArtists(artists)}</p>
         </div>
         <div className={styles.album}>
