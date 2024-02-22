@@ -25,9 +25,9 @@ const ThemeProvider = ({ children }: ThemeProviderProps) => {
     setSystemTheme(window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
   }, []);
 
-  useEffect(() => {
-    document.body.setAttribute("data-theme", theme!);
-  }, [theme]);
+  // useEffect(() => {
+  //   document.body.setAttribute("data-theme", theme!);
+  // }, [theme]);
 
   const invertTheme = (theme: Exclude<ThemeVariants, "system"> | null) =>
     theme === "dark" ? "light" : "dark";
