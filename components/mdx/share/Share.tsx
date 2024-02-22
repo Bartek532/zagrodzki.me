@@ -12,7 +12,7 @@ interface ShareProps {
 
 export const Share = memo<ShareProps>(({ href, title, type }) => (
   <div className={styles.share}>
-    <Link href={`https://twitter.com/share?url=${href}&text=${title} -`}>
+    <Link href={`https://x.com/share?url=${href}&text=${title} -`}>
       Tweet this {type === "post" ? "article" : type}
     </Link>
 

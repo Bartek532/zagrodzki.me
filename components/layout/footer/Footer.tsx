@@ -13,13 +13,13 @@ import { SOCIALS } from "utils/consts";
 import styles from "./footer.module.scss";
 
 const Social = ({ social }: { social: typeof SOCIALS[number] }) => {
-  const selectedSocial = SOCIALS.find(({ name }) => name === social.name);
+  const selectedSocial = SOCIALS.find(({ id }) => id === social.id);
   const { width } = useWindowSize();
   const { theme } = useTheme();
 
   if (!selectedSocial) return null;
 
-  const Icon = dynamic(() => import(`public/svg/${selectedSocial.name}.svg`));
+  const Icon = dynamic(() => import(`public/svg/${selectedSocial.id}.svg`));
 
   if (width && width > 640) {
     return <Link href={selectedSocial.link}>{selectedSocial.name}</Link>;

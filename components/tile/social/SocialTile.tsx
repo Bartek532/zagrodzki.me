@@ -10,7 +10,7 @@ import { SOCIALS } from "utils/consts";
 import styles from "./socialTile.module.scss";
 
 interface SocialTileProps {
-  readonly social: typeof SOCIALS[number]["name"];
+  readonly social: typeof SOCIALS[number]["id"];
 }
 
 const iconVariants = {
@@ -18,11 +18,11 @@ const iconVariants = {
 };
 
 export const SocialTile = memo<SocialTileProps>(({ social }) => {
-  const selectedSocial = SOCIALS.find(({ name }) => name === social);
+  const selectedSocial = SOCIALS.find(({ id }) => id === social);
 
   if (!selectedSocial) return null;
 
-  const Icon = dynamic(() => import(`public/svg/${selectedSocial.name}.svg`));
+  const Icon = dynamic(() => import(`public/svg/${selectedSocial.id}.svg`));
 
   return (
     <motion.a

@@ -59,7 +59,12 @@ const nextConfig = {
       },
       {
         source: "/twitter",
-        destination: `https://twitter.com/${process.env.NEXT_PUBLIC_TWITTER_USERNAME ?? ""}`,
+        destination: `https://twitter.com/${process.env.NEXT_PUBLIC_X_USERNAME ?? ""}`,
+        permanent: true,
+      },
+      {
+        source: "/x",
+        destination: `https://x.com/${process.env.NEXT_PUBLIC_X_USERNAME ?? ""}`,
         permanent: true,
       },
       {

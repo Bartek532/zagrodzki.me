@@ -1,5 +1,5 @@
 import { HeroSkeleton } from "components/common/hero/Hero";
-import { ProjectsListingSkeleton } from "components/projects/listing/ProjectsListing";
+import { ProjectsListingSkeleton } from "components/work/listing/ProjectsListing";
 
 const LoadingPage = () => (
   <>

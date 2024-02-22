@@ -50,9 +50,13 @@
   }
 
   .links {
-    @include mixins.flex(space-between, flex-end);
+    @include mixins.flex(space-between);
     width: 100%;
     margin-top: 2rem;
+
+    @include mixins.mediaquery("sm") {
+      align-items: flex-end;
+    }
 
     .home {
       max-width: 4rem;

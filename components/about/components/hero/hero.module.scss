@@ -55,21 +55,23 @@
     position: relative;
     @include mixins.flex(flex-end);
     overflow: hidden;
+    transform: translateY(-3%);
 
     &::after {
       position: absolute;
       width: 120%;
-      height: 140px;
-      bottom: -40px;
+      height: 145px;
+      bottom: -42px;
       left: -10%;
       background-color: var(--bg-100);
       content: "";
-      filter: blur(17px);
+      filter: blur(16px);
     }
 
     img {
       filter: drop-shadow(0 -5px 10px var(--gray-300));
       border-radius: 2rem;
+      border-bottom: 1px solid var(--bg-100);
     }
   }
 }

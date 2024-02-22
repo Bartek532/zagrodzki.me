@@ -1,11 +1,11 @@
 import { Grid } from "components/common/grid/Grid";
-import { ProjectTile } from "components/projects/tile/ProjectTile";
 import { AboutTile } from "components/tile/about/AboutTile";
 import { LatestPostTile } from "components/tile/latestPost/LatestPostTile";
 import { NewsletterTile } from "components/tile/newsletter/NewsletterTile";
 import { SocialTile } from "components/tile/social/SocialTile";
 import { SpotifyTile } from "components/tile/spotify/SpotifyTile";
 import { ThemeTile } from "components/tile/theme/ThemeTile";
+import { ProjectTile } from "components/work/tile/ProjectTile";
 import { getNewestPosts } from "lib/posts";
 import { getBestProjects } from "lib/projects";
 
@@ -21,7 +21,7 @@ const Home = () => {
     <Grid>
       <SpotifyTile />
       <AboutTile />
-      <SocialTile social="twitter" />
+      <SocialTile social="x" />
       <ProjectTile project={firstProject} mockupPosition="right" />
       <ThemeTile />
       <LatestPostTile post={post} />

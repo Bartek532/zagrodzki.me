@@ -17,21 +17,25 @@ export const DEFAULT_IMAGE_URL = `/img/banner.png`;
 
 export const SOCIALS = [
   {
-    name: "twitter",
-    color: "#94ccff",
-    link: `https://twitter.com/${env.NEXT_PUBLIC_TWITTER_USERNAME}`,
+    id: "x",
+    name: "x (twitter)",
+    color: "#000000",
+    link: `https://x.com/${env.NEXT_PUBLIC_X_USERNAME}`,
   },
   {
+    id: "linkedin",
     name: "linkedin",
     color: "#2867B2",
     link: `https://www.linkedin.com/in/${env.NEXT_PUBLIC_LINKEDIN_USERNAME}`,
   },
   {
+    id: "github",
     name: "github",
     color: "#333",
     link: `https://github.com/${env.NEXT_PUBLIC_GITHUB_USERNAME}`,
   },
   {
+    id: "rss",
     name: "rss",
     color: "#ee802f",
     link: "/feed",

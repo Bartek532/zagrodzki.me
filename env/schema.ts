@@ -18,7 +18,7 @@ export const serverSchema = z.object({
 });
 
 export const clientSchema = z.object({
-  NEXT_PUBLIC_TWITTER_USERNAME: z.string(),
+  NEXT_PUBLIC_X_USERNAME: z.string(),
   NEXT_PUBLIC_LINKEDIN_USERNAME: z.string(),
   NEXT_PUBLIC_GITHUB_USERNAME: z.string(),
   NEXT_PUBLIC_FACEBOOK_USERNAME: z.string(),
@@ -43,7 +43,7 @@ export const clientSchema = z.object({
  * @type {{ [k in keyof z.infer<typeof clientSchema>]: z.infer<typeof clientSchema>[k] | undefined }}
  */
 export const clientEnv = {
-  NEXT_PUBLIC_TWITTER_USERNAME: process.env.NEXT_PUBLIC_TWITTER_USERNAME,
+  NEXT_PUBLIC_X_USERNAME: process.env.NEXT_PUBLIC_X_USERNAME,
   NEXT_PUBLIC_LINKEDIN_USERNAME: process.env.NEXT_PUBLIC_LINKEDIN_USERNAME,
   NEXT_PUBLIC_GITHUB_USERNAME: process.env.NEXT_PUBLIC_GITHUB_USERNAME,
   NEXT_PUBLIC_FACEBOOK_USERNAME: process.env.NEXT_PUBLIC_FACEBOOK_USERNAME,

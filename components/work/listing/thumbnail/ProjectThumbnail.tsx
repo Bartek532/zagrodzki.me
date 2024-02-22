@@ -19,7 +19,7 @@ interface ProjectThumbnailProps {
 }
 
 export const ProjectThumbnail = memo<ProjectThumbnailProps>(({ project }) => (
-  <Link href={`/projects/${project.slug}`}>
+  <Link href={`/work/${project.slug}`}>
     <motion.article className={styles.thumbnail} whileHover="hover" layout>
       <motion.div
         className={styles.image}

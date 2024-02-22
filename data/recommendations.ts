@@ -5,7 +5,7 @@ export const allRecommendations = [
     author: {
       name: "Michał Miszczyszyn",
       position: "Tech Lead at Saleor • CEO at Type Of Web",
-      image: "/img/references/michal-miszczyszyn.jpg",
+      image: "/img/references/michal-miszczyszyn.jpeg",
     },
   },
   {
