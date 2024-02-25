@@ -25,12 +25,8 @@ export const Info = memo<InfoProps>(({ resource }) => (
           )}
         />
       </motion.div>
-      <motion.h1 layoutId={`title-container-${resource.slug}`} className={styles.title}>
-        {resource.title}
-      </motion.h1>
-      <motion.p layoutId={`excerpt-container-${resource.slug}`} className={styles.excerpt}>
-        {resource.excerpt}
-      </motion.p>
+      <h1 className={styles.title}>{resource.title}</h1>
+      <p className={styles.excerpt}>{resource.excerpt}</p>
     </div>
 
     {resource.type === RESOURCE_TYPE.PROJECT ? (

@@ -33,7 +33,9 @@ export const Footer = memo<FooterProps>(({ resource }) => {
         <Views slug={resource.slug} type={resource.type} />
       </Suspense>
       <div className={styles.links}>
-        <Edit href={`/${resourceRoutes[resource.type]}/${resource.slug}`} />
+        <Edit
+          href={`/${resource.type === RESOURCE_TYPE.POST ? "posts" : "projects"}/${resource.slug}`}
+        />
         <Share href={url} title={resource.title} />
       </div>
     </>

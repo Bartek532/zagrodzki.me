@@ -27,8 +27,8 @@ export const getProjectParsedContent = (slug: string) =>
 
 export const sortProjectsByNewest = (projects: Project[]) =>
   projects.sort((a, b) => {
-    const dateA = dayjs(a.publishedAt, "DD-MM-YYYY");
-    const dateB = dayjs(b.publishedAt, "DD-MM-YYYY");
+    const dateA = dayjs(a.modifiedAt, "DD-MM-YYYY");
+    const dateB = dayjs(b.modifiedAt, "DD-MM-YYYY");
 
     if (dateA.isBefore(dateB)) return 1;
     if (dateA.isAfter(dateB)) return -1;

@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import { MDXRemoteSerializeResult } from "next-mdx-remote";
-import { memo } from "react";
+import { Suspense, memo } from "react";
 
 import { Image } from "components/common/image/Image";
 import Arrow from "public/svg/right-top-arrow.svg";
@@ -11,6 +11,7 @@ import { TableOfContents } from "./content/tableOfContents/TableOfContents";
 import { Author } from "./layout/author/Author";
 import { Footer } from "./layout/footer/Footer";
 import { Info } from "./layout/info/Info";
+import { Likes } from "./layout/likes/Likes";
 import styles from "./resource.module.scss";
 
 type ResourceProps = {
@@ -26,7 +27,9 @@ export const Resource = memo<ResourceProps>(({ metadata, content }) => (
     <div className={styles.main}>
       <aside className={styles.aside}>
         <TableOfContents content={content} />
-        {/* <Likes likes={likes} slug={resource.slug} type={resource.type} /> */}
+        <Suspense fallback={null}>
+          <Likes slug={metadata.slug} type={metadata.type} />
+        </Suspense>
       </aside>
       <div className={styles.wrapper}>
         {metadata.type === RESOURCE_TYPE.PROJECT ? (

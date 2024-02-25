@@ -21,28 +21,19 @@ interface ProjectThumbnailProps {
 export const ProjectThumbnail = memo<ProjectThumbnailProps>(({ project }) => (
   <Link href={`/work/${project.slug}`}>
     <motion.article className={styles.thumbnail} whileHover="hover" layout>
-      <motion.div
-        className={styles.image}
-        variants={imageVariants}
-        layoutId={`image-container-${project.slug}`}
-        key="thumbnail"
-      >
+      <motion.div className={styles.image} variants={imageVariants} key="thumbnail">
         <Image src={project.image} alt={project.title} width={1200} height={880} />
       </motion.div>
       <div className={styles.content}>
-        <motion.h2 className={styles.title} layoutId={`title-container-${project.slug}`}>
-          {project.title}
-        </motion.h2>
-        <motion.p className={styles.excerpt} layoutId={`excerpt-container-${project.slug}`}>
-          {project.excerpt}
-        </motion.p>
-        <motion.div className={styles.stack} layoutId={`stack-container-${project.slug}`}>
+        <h2 className={styles.title}>{project.title}</h2>
+        <p className={styles.excerpt}>{project.excerpt}</p>
+        <div className={styles.stack}>
           {project.stack.map((tech) => (
             <div className={styles.tech} key={tech}>
               {tech}
             </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </motion.article>
   </Link>

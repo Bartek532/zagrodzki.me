@@ -17,12 +17,8 @@ interface PostThumbnailProps {
 export const PostThumbnail = memo<PostThumbnailProps>(({ post }) => (
   <Link href={`/blog/${post.slug}`}>
     <motion.article className={styles.post} layout>
-      <motion.h2 className={styles.title} layoutId={`title-container-${post.slug}`}>
-        {post.title}
-      </motion.h2>
-      <motion.p className={styles.excerpt} layoutId={`excerpt-container-${post.slug}`}>
-        {post.excerpt}
-      </motion.p>
+      <h2 className={styles.title}>{post.title}</h2>
+      <p className={styles.excerpt}>{post.excerpt}</p>
       <div className={styles.info}>
         <div className={styles.mainInfo}>
           <span className={styles.category}>

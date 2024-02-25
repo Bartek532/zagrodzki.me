@@ -6,36 +6,31 @@ export enum RESOURCE_TYPE {
   PROJECT = "project",
 }
 
-export interface Project {
-  type: RESOURCE_TYPE.PROJECT;
+type Common = {
   title: string;
   excerpt: string;
   slug: string;
-  url: string;
   timeToRead: number;
   publishedAt: string;
+  modifiedAt: string;
   isPublished: boolean;
+  category: Category;
+  image: string;
+  author: Author;
+};
+
+export type Project = Common & {
+  type: RESOURCE_TYPE.PROJECT;
+  url: string;
   repoUrl: string;
   stack: string[];
-  image: string;
-  author: Author;
-  category: Category;
   priority: number;
-}
+};
 
-export interface Post {
+export type Post = Common & {
   type: RESOURCE_TYPE.POST;
-  title: string;
-  slug: string;
-  excerpt: string;
-  timeToRead: number;
-  publishedAt: string;
-  isPublished: boolean;
   isPopular: boolean;
-  category: Category;
-  image: string;
-  author: Author;
-}
+};
 
 export type Resource = Post | Project;
 
