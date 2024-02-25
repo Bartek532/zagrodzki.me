@@ -22,7 +22,7 @@ export const SocialTile = memo<SocialTileProps>(({ social }) => {
 
   if (!selectedSocial) return null;
 
-  const Icon = dynamic(() => import(`public/svg/${selectedSocial.id}.svg`));
+  const Icon = dynamic(() => import(`public/svg/socials/${selectedSocial.id}.svg`));
 
   return (
     <motion.a

@@ -1,10 +1,9 @@
 import { Project, WithContext } from "schema-dts";
 
-import { Mdx } from "components/mdx/Mdx";
+import { Resource } from "components/resource/Resource";
 import { getMetadata } from "lib/metadata";
 import { getProjectBySlug, getProjectsPaths } from "lib/projects";
-import { getResourceViewsBySlug, view } from "lib/views";
-import { MetadataParams, RESOURCE_TYPE } from "types";
+import { MetadataParams } from "types";
 
 export async function generateMetadata({ params: { slug } }: MetadataParams) {
   const { frontmatter } = await getProjectBySlug(slug);
@@ -24,8 +23,6 @@ export function generateStaticParams() {
 
 const ProjectPage = async ({ params: { slug } }: MetadataParams) => {
   const { transformedMdx, frontmatter } = await getProjectBySlug(slug);
-  await view(RESOURCE_TYPE.PROJECT, slug);
-  const views = await getResourceViewsBySlug(RESOURCE_TYPE.PROJECT, slug);
 
   const jsonLd: WithContext<Project> = {
     "@context": "https://schema.org",
@@ -37,7 +34,7 @@ const ProjectPage = async ({ params: { slug } }: MetadataParams) => {
 
   return (
     <>
-      <Mdx resource={frontmatter} content={transformedMdx} views={views} />
+      <Resource content={transformedMdx} metadata={frontmatter} />
       {/* Needed to add JSON-LD to the page */}
       <script
         type="application/ld+json"

@@ -104,11 +104,11 @@ devDependencies:
     specifier: 20.3.3
     version: 20.3.3
   '@types/react':
-    specifier: 18.2.14
-    version: 18.2.14
+    specifier: 18.2.58
+    version: 18.2.58
   '@types/react-dom':
-    specifier: 18.2.6
-    version: 18.2.6
+    specifier: 18.2.19
+    version: 18.2.19
   '@types/react-instantsearch-core':
     specifier: 6.26.3
     version: 6.26.3
@@ -2369,7 +2369,7 @@ packages:
   /@types/next-pwa@5.6.4(@babel/core@7.23.2)(react-dom@18.2.0)(react@18.2.0)(sass@1.49.0):
     resolution: {integrity: sha512-ysfWc9FO0yFih1qr84kU+3svvUXPdQA9qi4GYJhFWr3Jx+x/TpH0c2cEBcUiUHLdi+pWnotFbpRguReS0Lb+dg==}
     dependencies:
-      '@types/react': 18.2.14
+      '@types/react': 18.2.58
       next: 13.5.6(@babel/core@7.23.2)(react-dom@18.2.0)(react@18.2.0)(sass@1.49.0)
       workbox-build: 6.6.0
     transitivePeerDependencies:
@@ -2402,16 +2402,16 @@ packages:
     resolution: {integrity: sha512-HBPgtzp44867rkL+IzQ3560/E/BlobwCjeXsuKqogrcE99SKgZR4tvBBCuNJZMhUFMz26M7cjKWZg785lllwpA==}
     dev: true
 
-  /@types/react-dom@18.2.6:
-    resolution: {integrity: sha512-2et4PDvg6PVCyS7fuTc4gPoksV58bW0RwSxWKcPRcHZf0PRUGq03TKcD/rUHe3azfV6/5/biUBJw+HhCQjaP0A==}
+  /@types/react-dom@18.2.19:
+    resolution: {integrity: sha512-aZvQL6uUbIJpjZk4U8JZGbau9KDeAwMfmhyWorxgBkqDIEf6ROjRozcmPIicqsUwPUjbkDfHKgGee1Lq65APcA==}
     dependencies:
-      '@types/react': 18.2.14
+      '@types/react': 18.2.58
     dev: true
 
   /@types/react-instantsearch-core@6.26.3:
     resolution: {integrity: sha512-dBq/K1NQFBgLmCdiLYaC15KjXdjZk8UTQBhumSg+fAHgpW3ai5fu5BbzAKzSCkqYwbgqvhCQ1EZ9PLvPvOfqwQ==}
     dependencies:
-      '@types/react': 18.2.14
+      '@types/react': 18.2.58
       algoliasearch: 4.11.0
       algoliasearch-helper: 3.14.2(algoliasearch@4.11.0)
     dev: true
@@ -2419,12 +2419,12 @@ packages:
   /@types/react-instantsearch-dom@6.12.1:
     resolution: {integrity: sha512-0crWjo6w6SHPZY5XWVUVkH3exVRGjyNJXtVYXRD7s6u8CiSIhONO82cCsxSCsdyGeK2yenPZNxFuZ1KXnoWKOg==}
     dependencies:
-      '@types/react': 18.2.14
+      '@types/react': 18.2.58
       '@types/react-instantsearch-core': 6.26.3
     dev: true
 
-  /@types/react@18.2.14:
-    resolution: {integrity: sha512-A0zjq+QN/O0Kpe30hA1GidzyFjatVvrpIvWLxD+xv67Vt91TWWgco9IvrJBkeyHm1trGaFS/FSGqPlhyeZRm0g==}
+  /@types/react@18.2.58:
+    resolution: {integrity: sha512-TaGvMNhxvG2Q0K0aYxiKfNDS5m5ZsoIBBbtfUorxdH4NGSXIlYvZxLJI+9Dd3KjeB3780bciLyAb7ylO8pLhPw==}
     dependencies:
       '@types/prop-types': 15.7.9
       '@types/scheduler': 0.16.5

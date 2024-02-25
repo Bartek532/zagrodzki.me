@@ -1,0 +1,20 @@
+@use "styles/_mixins";
+
+.button {
+  position: relative;
+  border: 0 none;
+  background-color: transparent;
+  cursor: pointer;
+  --webkit-tap-highlight-color: transparent;
+
+  .cup {
+    position: relative;
+    z-index: 10;
+  }
+
+  .corn {
+    position: absolute;
+    top: 40%;
+    transform-origin: center center;
+  }
+}

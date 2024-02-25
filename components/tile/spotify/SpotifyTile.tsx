@@ -5,7 +5,7 @@ import { Suspense } from "react";
 import { LoaderRing } from "components/common/loader/LoaderRing";
 import CrossIcon from "public/svg/cross.svg";
 import OfflineIcon from "public/svg/offline.svg";
-import SpotifyIcon from "public/svg/spotify.svg";
+import SpotifyIcon from "public/svg/socials/spotify.svg";
 
 import { fetchLastTrack } from "./api/spotify";
 import styles from "./spotifyTile.module.scss";

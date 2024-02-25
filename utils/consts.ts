@@ -43,3 +43,4 @@ export const SOCIALS = [
 ] as const;
 
 export const EMAIL_REGEX = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$/;
+export const CONTENT_ID = "content";

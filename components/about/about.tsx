@@ -1,10 +1,11 @@
 import { Link } from "components/mdx/link/Link";
+
 import { allPositions } from "data/experience";
 import { allFacts } from "data/facts";
 import { allRecommendations } from "data/recommendations";
 import { allSkills } from "data/skills";
 import { env } from "env/client";
-import { getAllResourcesTotalViews } from "lib/views";
+import { getAllResourcesTotalViews } from "lib/kv/views";
 
 import styles from "./about.module.scss";
 import { Experience } from "./components/experience/Experience";

@@ -1,0 +1,35 @@
+@use "styles/_mixins";
+
+.date {
+  width: 100%;
+  text-align: right;
+  font-size: 1.4rem;
+  font-style: italic;
+  color: var(--gray-300);
+  margin-top: -5.5rem;
+}
+
+.date {
+  margin-top: -5.5rem;
+}
+
+.links {
+  @include mixins.flex(space-between);
+  width: 100%;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  font-size: 1.55rem;
+  padding-bottom: 1.7rem;
+
+  @media all and (min-width: 380px) {
+    font-size: 1.6rem;
+  }
+
+  @include mixins.mediaquery("lg") {
+    font-size: 1.75rem;
+  }
+
+  @include mixins.mediaquery("xl") {
+    font-size: 1.85rem;
+  }
+}

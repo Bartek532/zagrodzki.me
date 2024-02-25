@@ -1,11 +1,10 @@
 import { Article, WithContext } from "schema-dts";
 
 import { FeaturedPosts } from "components/blog/featured/FeaturedPosts";
-import { Mdx } from "components/mdx/Mdx";
+import { Resource } from "components/resource/Resource";
 import { getMetadata } from "lib/metadata";
 import { getNewestPosts, getPostBySlug, getPostsPaths } from "lib/posts";
-import { getResourceViewsBySlug, view } from "lib/views";
-import { type MetadataParams, RESOURCE_TYPE } from "types";
+import { type MetadataParams } from "types";
 import { SITE_TITLE } from "utils/consts";
 
 export async function generateMetadata({ params: { slug } }: MetadataParams) {
@@ -25,10 +24,10 @@ export function generateStaticParams() {
 }
 
 const PostPage = async ({ params: { slug } }: MetadataParams) => {
-  const posts = getNewestPosts();
+  const featuredPosts = getNewestPosts()
+    .filter((post) => post.slug !== slug)
+    .slice(0, 3);
   const { transformedMdx, frontmatter } = await getPostBySlug(slug);
-  await view(RESOURCE_TYPE.POST, slug);
-  const views = await getResourceViewsBySlug(RESOURCE_TYPE.POST, slug);
 
   const jsonLd: WithContext<Article> = {
     "@context": "https://schema.org",
@@ -43,8 +42,8 @@ const PostPage = async ({ params: { slug } }: MetadataParams) => {
 
   return (
     <>
-      <Mdx content={transformedMdx} resource={frontmatter} views={views} />
-      <FeaturedPosts posts={posts} actualPostSlug={frontmatter.slug} />
+      <Resource content={transformedMdx} metadata={frontmatter} />
+      <FeaturedPosts posts={featuredPosts} />
       {/* Needed to add JSON-LD to the page */}
       <script
         type="application/ld+json"

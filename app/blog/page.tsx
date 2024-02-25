@@ -1,8 +1,8 @@
 import { PostsListing } from "components/blog/listing/PostsListing";
 import { Hero } from "components/common/hero/Hero";
+import { getResourceViews } from "lib/kv/views";
 import { getMetadata } from "lib/metadata";
 import { getPopularPosts, getPostsCategories } from "lib/posts";
-import { getResourceViews } from "lib/views";
 import { Post, RESOURCE_TYPE } from "types";
 
 const description = "Everything that I or one of the authors has written for my blog ✍️";

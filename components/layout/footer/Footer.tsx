@@ -3,7 +3,7 @@
 import dynamic from "next/dynamic";
 import NextLink from "next/link";
 
-import { Link } from "components/mdx/link/Link";
+import { Link } from "components/common/link/Link";
 import { env } from "env/client";
 import { useWindowSize } from "hooks/useWindowSize";
 import { useTheme } from "providers/ThemeProvider";
@@ -19,7 +19,7 @@ const Social = ({ social }: { social: typeof SOCIALS[number] }) => {
 
   if (!selectedSocial) return null;
 
-  const Icon = dynamic(() => import(`public/svg/${selectedSocial.id}.svg`));
+  const Icon = dynamic(() => import(`public/svg/socials/${selectedSocial.id}.svg`));
 
   if (width && width > 640) {
     return <Link href={selectedSocial.link}>{selectedSocial.name}</Link>;

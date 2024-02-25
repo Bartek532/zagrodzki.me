@@ -55,7 +55,7 @@ export const getResourceBySlug = async <T extends Resource>(slug: string, resour
   const source = fs.readFileSync(filePath);
   const { content, data } = matter(source);
   const timeToRead = readingTime(content).minutes;
-  const frontmatter = { ...data, timeToRead } as T;
+  const frontmatter = { ...data, slug, timeToRead } as T;
   const transformedMdx = await serialize(content, {
     scope: data,
     // @ts-expect-error rehype plugins types are not compatible

@@ -1,0 +1,12 @@
+@use "styles/_mixins";
+
+.container {
+  @include mixins.flex;
+  gap: 1.5rem;
+
+  .text {
+    font-weight: bold;
+    font-size: 1.6rem;
+    padding-top: 0.3rem;
+  }
+}
