@@ -1,5 +1,4 @@
-import { Link } from "components/mdx/link/Link";
-
+import { Link } from "components/common/link/Link";
 import { allPositions } from "data/experience";
 import { allFacts } from "data/facts";
 import { allRecommendations } from "data/recommendations";

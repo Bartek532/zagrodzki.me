@@ -20,8 +20,6 @@ type LikesProps = {
   readonly slug: string;
 };
 
-const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
-
 export const Likes = memo<LikesProps>(({ likes, type, slug }) => {
   const [optimisticLikes, changeOptimisticLikes] = useOptimistic(likes, (state, action: Action) => {
     if (action === "like") {

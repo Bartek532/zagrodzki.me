@@ -1,5 +1,5 @@
 import { Image } from "components/common/image/Image";
-import { Link } from "components/mdx/link/Link";
+import { Link } from "components/common/link/Link";
 import Me from "public/img/me.webp";
 import { normalizeCount } from "utils/functions";
 

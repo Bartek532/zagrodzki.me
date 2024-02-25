@@ -12,15 +12,15 @@
   },
   "author": "Bartosz Zagrodzki",
   "scripts": {
-    "algolia": "tsx --env-file .env.local ./scripts/algolia.ts ",
+    "algolia": "tsx ./scripts/algolia.ts ",
     "build": "./build.sh redirect feed algolia next",
     "build:next": "next build",
     "dev": "next dev",
-    "feed": "tsx --env-file .env.local ./scripts/feed.ts",
+    "feed": "tsx ./scripts/feed.ts",
     "format": "prettier --write \"./**/*.{js,jsx,ts,tsx,css,scss,md,mdx}\"",
     "lint": "next lint",
     "prepare": "husky install",
-    "redirect": "tsx --env-file .env.local ./scripts/redirect.ts",
+    "redirect": "tsx ./scripts/redirect.ts",
     "start": "next start",
     "tsc": "tsc --noEmit"
   },
