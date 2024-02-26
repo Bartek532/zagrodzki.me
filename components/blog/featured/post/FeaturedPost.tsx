@@ -39,7 +39,7 @@ export const FeaturedPost = memo<FeaturedPostProps>(({ post }) => (
       </motion.div>
       <div className={styles.info}>
         <time className={styles.time}>
-          {dayjs(post.publishedAt, "DD-MM-YYYY").format("MMMM Do, YYYY")}
+          {dayjs(post.modifiedAt, "DD-MM-YYYY").format("MMMM Do, YYYY")}
         </time>
         •<span className={styles.timeToRead}>{Math.round(post.timeToRead)} minutes read</span>
       </div>

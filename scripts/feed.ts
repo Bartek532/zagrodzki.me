@@ -29,7 +29,7 @@ function run() {
     },
   });
 
-  posts.map(({ slug, title, excerpt, image, author, publishedAt }) => {
+  posts.map(({ slug, title, excerpt, image, author, publishedAt, modifiedAt }) => {
     feed.addItem({
       title,
       id: slug,
@@ -37,7 +37,8 @@ function run() {
       link: `${HOST}/blog/${slug}`,
       image: `${HOST}/${image}`,
       author: [{ name: author }],
-      date: new Date(dayjs(publishedAt, "DD-MM-YYYY").format("MM-DD-YYYY")),
+      date: new Date(dayjs(modifiedAt, "DD-MM-YYYY").format("MM-DD-YYYY")),
+      published: new Date(dayjs(publishedAt, "DD-MM-YYYY").format("MM-DD-YYYY")),
     });
   });
 

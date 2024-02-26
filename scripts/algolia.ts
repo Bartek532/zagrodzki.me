@@ -17,7 +17,7 @@ const generateAlgoliaProjects = async () => {
         ...project,
         content: compiledContent.contents.toString().replace(/<[^>]+>/g, ""),
         objectID: project.slug,
-        timestamp: dayjs(project.publishedAt, "DD-MM-YYYY").unix(),
+        timestamp: dayjs(project.modifiedAt, "DD-MM-YYYY").unix(),
       };
     }),
   );
@@ -34,7 +34,7 @@ const generateAlgoliaPosts = async () => {
         ...post,
         content: compiledContent.contents.toString().replace(/<[^>]+>/g, ""),
         objectID: post.slug,
-        timestamp: dayjs(post.publishedAt, "DD-MM-YYYY").unix(),
+        timestamp: dayjs(post.modifiedAt, "DD-MM-YYYY").unix(),
       };
     }),
   );
