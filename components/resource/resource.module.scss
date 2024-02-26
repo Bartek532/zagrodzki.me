@@ -30,69 +30,85 @@
   .main {
     @include mixins.flex(center, flex-start);
     flex-direction: row-reverse;
+    flex-wrap: wrap;
     width: 100%;
 
-    .aside {
-      flex: 0 1 250px;
-      top: 6.5rem;
-      position: sticky;
-      max-height: calc(100vh - 13rem);
-      margin-top: 4.5rem;
-      margin-left: auto;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 4rem;
-      display: none;
-
-      @include mixins.mediaquery("xxl") {
-        display: flex;
-      }
-    }
-
-    .wrapper {
-      @include mixins.flex;
-      flex-flow: column wrap;
+    .inner {
+      @include mixins.flex(center, flex-start);
+      flex-direction: row-reverse;
+      flex-wrap: wrap;
       width: 100%;
-      max-width: min(666px, 100%);
 
-      .thumbnail {
-        position: relative;
-        margin: 4rem -1.2rem;
+      .aside {
+        flex: 0 1 250px;
+        top: 6.5rem;
+        position: sticky;
+        max-height: calc(100vh - 13rem);
+        margin-top: 4.5rem;
+        margin-left: auto;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4rem;
+        display: none;
 
-        @include mixins.mediaquery("sm") {
-          margin: 4.5rem -2rem;
+        @include mixins.mediaquery("xxl") {
+          display: flex;
         }
+      }
 
-        &.link {
-          cursor: pointer;
-          transition: scale 0.2s ease;
+      .wrapper {
+        @include mixins.flex;
+        flex-flow: column wrap;
+        width: 100%;
+        max-width: min(666px, 100%);
 
-          &:hover {
-            scale: 1.05;
+        .thumbnail {
+          position: relative;
+          margin: 2rem -1.2rem 3.5rem;
+
+          @include mixins.mediaquery("sm") {
+            margin: 4rem -2rem 4.5rem;
           }
-        }
 
-        img {
-          border-radius: 2rem;
-        }
+          &.link {
+            cursor: pointer;
+            transition: scale 0.2s ease;
 
-        .arrow {
-          position: absolute;
-          bottom: 1.5rem;
-          left: 1rem;
-          background-color: var(--white-100);
-          padding: 1rem;
-          border-radius: 50%;
-          @include mixins.flex;
+            &:hover {
+              scale: 1.05;
+            }
+          }
 
-          svg {
-            width: 9px;
+          img {
+            border-radius: 2rem;
+          }
 
-            path {
-              stroke: var(--black-100);
+          .arrow {
+            position: absolute;
+            bottom: 1.5rem;
+            left: 1rem;
+            background-color: var(--white-100);
+            padding: 1rem;
+            border-radius: 50%;
+            @include mixins.flex;
+
+            svg {
+              width: 9px;
+
+              path {
+                stroke: var(--black-100);
+              }
             }
           }
         }
+      }
+    }
+
+    .author {
+      max-width: min(666px, 100%);
+
+      @include mixins.mediaquery("xxl") {
+        margin-right: auto;
       }
     }
   }

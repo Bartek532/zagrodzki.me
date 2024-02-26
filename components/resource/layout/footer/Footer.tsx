@@ -7,6 +7,8 @@ import { resourceRoutes } from "data/routes";
 import { RESOURCE_TYPE, Resource } from "types";
 import { HOST } from "utils/consts";
 
+import { Likes } from "../likes/Likes";
+
 import { Edit } from "./edit/Edit";
 import styles from "./footer.module.scss";
 import { Share } from "./share/Share";
@@ -24,19 +26,26 @@ export const Footer = memo<FooterProps>(({ resource }) => {
 
   return (
     <>
-      {resource.type === RESOURCE_TYPE.POST ? (
-        <div className={styles.date}>
-          Published on {dayjs(resource.publishedAt, "DD-MM-YYYY").format("Do MMMM, YYYY")}
+      <div className={styles.wrapper}>
+        <div className={styles.likes}>
+          <Suspense fallback={null}>
+            <Likes slug={resource.slug} type={resource.type} />
+          </Suspense>
         </div>
-      ) : null}
-      <Suspense fallback={null}>
-        <Views slug={resource.slug} type={resource.type} />
-      </Suspense>
+        <div className={styles.info}>
+          <div className={styles.date}>
+            {dayjs(resource.modifiedAt, "DD-MM-YYYY").format("MMMM Do, YYYY")}
+          </div>
+          <Suspense fallback={null}>
+            <Views slug={resource.slug} type={resource.type} />
+          </Suspense>
+        </div>
+      </div>
       <div className={styles.links}>
+        <Share href={url} title={resource.title} />
         <Edit
           href={`/${resource.type === RESOURCE_TYPE.POST ? "posts" : "projects"}/${resource.slug}`}
         />
-        <Share href={url} title={resource.title} />
       </div>
     </>
   );

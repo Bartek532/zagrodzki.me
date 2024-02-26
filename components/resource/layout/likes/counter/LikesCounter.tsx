@@ -1,5 +1,6 @@
 "use client";
 
+import clsx from "clsx";
 import { motion } from "framer-motion";
 import { memo, useState } from "react";
 
@@ -60,7 +61,9 @@ export const LikesCounter = memo<LikesCounterProps>(({ likes: initialLikes, type
   return (
     <div className={styles.container}>
       <Popcorn width={40} count={givenLikes} onAdd={onLike} onRemove={onUnlike} />
-      <span className={styles.text}>{normalizeCount(likes)}</span>
+      <span className={clsx(styles.text, givenLikes > 0 && styles.given)}>
+        {normalizeCount(likes)}
+      </span>
 
       <div className={styles.wrapper}>
         {lastAction && (

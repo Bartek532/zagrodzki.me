@@ -2,7 +2,7 @@
 
 .content {
   width: 100%;
-  margin-bottom: 5rem;
+  margin-bottom: 4rem;
   p,
   #introduction,
   blockquote,
@@ -26,7 +26,11 @@
   }
 
   @include mixins.mediaquery("lg") {
-    margin-bottom: 12rem;
+    margin-bottom: 8rem;
+  }
+
+  @include mixins.mediaquery("xxl") {
+    margin-bottom: 6rem;
   }
 
   strong,

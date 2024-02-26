@@ -1,10 +1,8 @@
 @use "styles/_mixins";
 
 .views {
-  width: 100%;
   text-align: right;
   font-size: 1.4rem;
   font-style: italic;
-  color: var(--gray-300);
-  margin-bottom: 2.5rem;
+  opacity: 0.6;
 }

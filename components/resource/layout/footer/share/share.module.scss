@@ -4,6 +4,11 @@
   @include mixins.flex(space-between);
   flex-wrap: wrap;
   gap: 0.9rem;
+  display: none;
+
+  @include mixins.mediaquery("xs") {
+    display: flex;
+  }
 
   @include mixins.mediaquery("sm") {
     gap: 2.1rem;
