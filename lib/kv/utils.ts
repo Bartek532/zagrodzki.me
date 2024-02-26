@@ -1,4 +1,3 @@
-import { revalidateTag } from "next/cache";
 import "server-only";
 import { z } from "zod";
 
@@ -75,9 +74,6 @@ export const incrementSortedSetValue = async (name: string, key: string) => {
     },
     body: `[["ZINCRBY", "${name}", 1, "${key}"]]`,
   });
-
-  revalidateTag(`${name}-${key}`);
-  revalidateTag(name);
 };
 
 export const decrementSortedSetValue = async (name: string, key: string) => {
@@ -88,7 +84,4 @@ export const decrementSortedSetValue = async (name: string, key: string) => {
     },
     body: `[["ZINCRBY", "${name}", -1, "${key}"]]`,
   });
-
-  revalidateTag(`${name}-${key}`);
-  revalidateTag(name);
 };

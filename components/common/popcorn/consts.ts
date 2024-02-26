@@ -3,7 +3,7 @@ export const allCorns = [
     id: 1,
     left: 35,
     width: 18,
-    y: -160,
+    y: -190,
     x: -150,
     rotate: {
       initial: 0,
@@ -15,7 +15,7 @@ export const allCorns = [
     id: 2,
     left: 10,
     width: 21,
-    y: -160,
+    y: -190,
     x: 100,
     rotate: {
       initial: 100,
@@ -27,7 +27,7 @@ export const allCorns = [
     id: 3,
     left: 62,
     width: 24,
-    y: -165,
+    y: -195,
     x: -205,
     rotate: {
       initial: 30,
@@ -39,7 +39,7 @@ export const allCorns = [
     id: 4,
     left: 32,
     width: 24,
-    y: -165,
+    y: -195,
     x: 130,
     rotate: {
       initial: 20,
@@ -51,11 +51,11 @@ export const allCorns = [
     id: 5,
     left: 45,
     width: 27,
-    y: -158,
+    y: -180,
     x: -20,
     rotate: {
       initial: -70,
-      final: 100,
+      final: 110,
     },
     zIndex: 2,
   },
@@ -63,7 +63,7 @@ export const allCorns = [
     id: 6,
     left: 48,
     width: 20,
-    y: -240,
+    y: -270,
     x: 60,
     rotate: {
       initial: 90,
@@ -75,7 +75,7 @@ export const allCorns = [
     id: 7,
     left: 14,
     width: 22,
-    y: -250,
+    y: -280,
     x: 150,
     rotate: {
       initial: 0,
@@ -87,7 +87,7 @@ export const allCorns = [
     id: 8,
     left: 65,
     width: 27,
-    y: -200,
+    y: -230,
     x: -190,
     rotate: {
       initial: 20,
@@ -99,7 +99,7 @@ export const allCorns = [
     id: 9,
     left: 64,
     width: 21,
-    y: -250,
+    y: -280,
     x: -150,
     rotate: {
       initial: 200,
@@ -111,7 +111,7 @@ export const allCorns = [
     id: 10,
     left: 25,
     width: 29,
-    y: -230,
+    y: -260,
     x: 45,
     rotate: {
       initial: 0,

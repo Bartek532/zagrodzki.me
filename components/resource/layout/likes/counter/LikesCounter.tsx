@@ -1,6 +1,7 @@
 "use client";
 
-import { memo, useOptimistic, useTransition } from "react";
+import { motion } from "framer-motion";
+import { memo, useState } from "react";
 
 import { Popcorn } from "components/common/popcorn/Popcorn";
 import { useLocalStorage } from "hooks/useLocalStorage";
@@ -13,7 +14,6 @@ import { decrementGivenLikes, getGivenLikes, incrementGivenLikes } from "../util
 import styles from "./likesCounter.module.scss";
 
 const MAX_LIKES_TO_GIVE = 10;
-type Action = "like" | "unlike";
 
 type LikesCounterProps = {
   readonly likes: number;
@@ -21,41 +21,63 @@ type LikesCounterProps = {
   readonly slug: string;
 };
 
-export const LikesCounter = memo<LikesCounterProps>(({ likes, type, slug }) => {
-  const [isPending, startTransition] = useTransition();
+export const LikesCounter = memo<LikesCounterProps>(({ likes: initialLikes, type, slug }) => {
+  const [lastAction, setLastAction] = useState<"+" | "-" | null>(null);
+  const [likes, setLikes] = useState(initialLikes);
   const [givenLikesData, setGivenLikesData] = useLocalStorage<string>("likes", "{}");
   const givenLikes = getGivenLikes(givenLikesData, slug);
-  const [optimisticLikes, changeOptimisticLikes] = useOptimistic(likes, (state, action: Action) => {
-    if (action === "like") {
-      return state + 1;
-    }
-    return state - 1;
-  });
 
   const onLike = async () => {
     if (givenLikes >= MAX_LIKES_TO_GIVE) {
       return;
     }
-    startTransition(() => {
-      changeOptimisticLikes("like");
-    });
+
+    setLikes((likes) => likes + 1);
+    setLastAction("+");
     setGivenLikesData(incrementGivenLikes(givenLikesData, slug));
-    await like(type, slug);
+    try {
+      await like(type, slug);
+    } catch (error) {
+      setLikes((likes) => likes - 1);
+    }
   };
 
   const onUnlike = async () => {
-    startTransition(() => {
-      changeOptimisticLikes("unlike");
-    });
+    if (givenLikes <= 0) {
+      return;
+    }
+
+    setLikes((likes) => likes - 1);
+    setLastAction("-");
     setGivenLikesData(decrementGivenLikes(givenLikesData, slug));
-    await unlike(type, slug);
+    try {
+      await unlike(type, slug);
+    } catch (error) {
+      setLikes((likes) => likes + 1);
+    }
   };
 
   return (
     <div className={styles.container}>
       <Popcorn width={40} count={givenLikes} onAdd={onLike} onRemove={onUnlike} />
-      <span className={styles.text}>{normalizeCount(optimisticLikes)}</span>
-      {isPending}
+      <span className={styles.text}>{normalizeCount(likes)}</span>
+
+      <div className={styles.wrapper}>
+        {lastAction && (
+          <motion.div
+            animate={{
+              opacity: [1, 0],
+              y: [0, -10],
+            }}
+            transition={{
+              duration: 0.5,
+            }}
+            key={likes}
+          >
+            {lastAction}1
+          </motion.div>
+        )}
+      </div>
     </div>
   );
 });

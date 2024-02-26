@@ -29,7 +29,7 @@ export const Popcorn = memo<PopcornProps>(({ width = 100, count = 0, onAdd, onRe
   >
     <Cup width={width} className={styles.cup} />
 
-    <AnimatePresence initial={false}>
+    <AnimatePresence>
       {allCorns.slice(0, count).map((corn, index) => (
         <motion.div
           key={corn.id}
@@ -41,13 +41,13 @@ export const Popcorn = memo<PopcornProps>(({ width = 100, count = 0, onAdd, onRe
             left: corn.left + "%",
           }}
           animate={{
-            y: [null, `-${300 + index * 10}%`, corn.y + "%"],
+            y: [null, `-${300 + index * 12}%`, corn.y + "%"],
             x: corn.x + "%",
             rotateZ: [null, corn.rotate.final / 3, corn.rotate.final],
             ...transition,
           }}
           exit={{
-            y: [null, `-${300 + index * 10}%`, "40%"],
+            y: [null, `-${300 + index * 12}%`, "40%"],
             rotateZ: [null, corn.rotate.final / 3, corn.rotate.initial],
             x: -corn.x + "%",
             opacity: 0,
