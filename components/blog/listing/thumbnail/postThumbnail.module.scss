@@ -6,6 +6,7 @@
   padding: 2rem 2.5rem;
   border-radius: 2rem;
   box-shadow: var(--tile-shadow);
+  transition: background 350ms ease 0s;
 
   @include mixins.mediaquery("lg") {
     padding: 2.5rem 2.7rem;
@@ -60,6 +61,7 @@
       border: 0.8px solid var(--gray-100);
       padding: 0.6rem 1.4rem;
       border-radius: 1rem;
+      transition: border 350ms ease 0s;
 
       .arrow {
         width: 9px;

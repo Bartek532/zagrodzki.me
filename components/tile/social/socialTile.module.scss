@@ -8,6 +8,7 @@
   padding-bottom: 100%;
   position: relative;
   box-shadow: var(--tile-shadow);
+  transition: background 350ms ease 0s;
 
   .icon {
     width: 45px;
@@ -36,12 +37,14 @@
     padding: 1rem;
     border-radius: 50%;
     @include mixins.flex;
+    transition: background 350ms ease 0s;
 
     svg {
       width: 9px;
 
       path {
         stroke: var(--black-100);
+        transition: stroke 350ms ease 0s;
       }
     }
   }

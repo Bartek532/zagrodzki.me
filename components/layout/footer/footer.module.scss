@@ -4,6 +4,7 @@
   width: 100%;
   background-color: var(--gray-100);
   @include mixins.flex;
+  transition: background 350ms ease 0s;
 
   .wrapper {
     padding: 3rem;
@@ -39,6 +40,7 @@
     font-size: 1.4rem;
     max-width: 51rem;
     color: var(--black-300);
+    transition: color 350ms ease 0s;
 
     @include mixins.mediaquery("sm") {
       font-size: 1.5rem;
@@ -85,6 +87,7 @@
   .copyright {
     font-size: 1.1rem;
     color: var(--black-300);
+    transition: color 350ms ease 0s;
     opacity: 0.8;
   }
 }

@@ -16,6 +16,7 @@
 
     path {
       fill: var(--black-100);
+      transition: fill 350ms ease 0s;
     }
   }
 
@@ -31,6 +32,7 @@
     color: inherit;
     line-height: 0;
     width: 100%;
+    transition: background 350ms ease 0s, border-color 350ms ease 0s;
 
     &:disabled {
       cursor: not-allowed;

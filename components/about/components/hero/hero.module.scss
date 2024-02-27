@@ -37,19 +37,12 @@
         display: block;
         margin-bottom: 1.2rem;
         color: var(--black-300);
+        transition: color 350ms ease 0s;
       }
 
       @include mixins.mediaquery("lg") {
         font-size: 1.8rem;
       }
-    }
-
-    .views {
-      border: 1px solid var(--gray-300);
-      background-color: var(--gray-400);
-      padding: 1rem 2rem;
-      width: fit-content;
-      border-radius: 1rem;
     }
   }
 
@@ -66,6 +59,7 @@
       bottom: -42px;
       left: -10%;
       background-color: var(--bg-100);
+      transition: background 350ms ease 0s;
       content: "";
       filter: blur(16px);
     }

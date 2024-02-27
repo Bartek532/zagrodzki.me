@@ -9,6 +9,7 @@
   flex-flow: column wrap;
   height: 100%;
   color: var(--black-100);
+  transition: background 350ms ease 0s, color 350ms ease 0s;
 
   .info {
     padding: 0 0.5rem 0.5rem;
@@ -36,6 +37,7 @@
       font-size: 1.4rem;
       margin-bottom: 1rem;
       color: var(--black-300);
+      transition: color 350ms ease 0s;
 
       @include mixins.mediaquery("lg") {
         font-size: 1.45rem;

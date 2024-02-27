@@ -29,6 +29,7 @@
     font-size: 1.7rem;
     max-width: 30rem;
     color: var(--black-300);
+    transition: color 350ms ease 0s;
 
     @include mixins.mediaquery("lg") {
       font-size: 1.8rem;

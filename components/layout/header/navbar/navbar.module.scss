@@ -5,6 +5,7 @@
   border-radius: 2rem;
   padding: 0.4rem 0.55rem;
   height: fit-content;
+  transition: background 350ms ease 0s;
 
   .list {
     margin: 0;
@@ -21,6 +22,7 @@
       position: relative;
       @include mixins.flex;
       color: var(--black-100);
+      transition: color 350ms ease 0s;
 
       .label {
         z-index: 1;
@@ -35,6 +37,7 @@
         border-radius: 16px;
         z-index: 0;
         background-color: var(--white-100);
+        transition: background 350ms ease 0s;
       }
     }
   }

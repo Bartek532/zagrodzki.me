@@ -40,6 +40,7 @@
       margin-bottom: 1.5rem;
       color: var(--black-300);
       width: 100%;
+      transition: color 350ms ease 0s;
 
       @include mixins.mediaquery("lg") {
         font-size: 1.45rem;
@@ -58,6 +59,7 @@
         padding: 0.4rem 1.4rem;
         border-radius: 2rem;
         border: 0.5px solid var(--white-200);
+        transition: background 350ms ease 0s, border-color 350ms ease 0s;
       }
     }
   }
