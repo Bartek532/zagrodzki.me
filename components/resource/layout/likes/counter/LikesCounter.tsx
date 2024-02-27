@@ -2,11 +2,12 @@
 
 import clsx from "clsx";
 import { motion } from "framer-motion";
-import { memo, useState } from "react";
+import { debounce } from "lodash";
+import { memo, useMemo, useState } from "react";
 
 import { Popcorn } from "components/common/popcorn/Popcorn";
 import { useLocalStorage } from "hooks/useLocalStorage";
-import { like, unlike } from "lib/kv/likes";
+import { setLikesBySlug } from "lib/kv/likes";
 import { RESOURCE_TYPE } from "types";
 import { normalizeCount } from "utils/functions";
 
@@ -28,6 +29,8 @@ export const LikesCounter = memo<LikesCounterProps>(({ likes: initialLikes, type
   const [givenLikesData, setGivenLikesData] = useLocalStorage<string>("likes", "{}");
   const givenLikes = getGivenLikes(givenLikesData, slug);
 
+  const debouncedFetch = useMemo(() => debounce(setLikesBySlug, 1500), []);
+
   const onLike = async () => {
     if (givenLikes >= MAX_LIKES_TO_GIVE) {
       return;
@@ -37,7 +40,7 @@ export const LikesCounter = memo<LikesCounterProps>(({ likes: initialLikes, type
     setLastAction("+");
     setGivenLikesData(incrementGivenLikes(givenLikesData, slug));
     try {
-      await like(type, slug);
+      await debouncedFetch(type, slug, likes + 1);
     } catch (error) {
       setLikes((likes) => likes - 1);
     }
@@ -52,7 +55,7 @@ export const LikesCounter = memo<LikesCounterProps>(({ likes: initialLikes, type
     setLastAction("-");
     setGivenLikesData(decrementGivenLikes(givenLikesData, slug));
     try {
-      await unlike(type, slug);
+      await debouncedFetch(type, slug, likes - 1);
     } catch (error) {
       setLikes((likes) => likes + 1);
     }
@@ -62,24 +65,22 @@ export const LikesCounter = memo<LikesCounterProps>(({ likes: initialLikes, type
     <div className={styles.container}>
       <Popcorn width={40} count={givenLikes} onAdd={onLike} onRemove={onUnlike} />
       <span className={clsx(styles.text, givenLikes > 0 && styles.given)}>
-        {normalizeCount(likes)}
+        {normalizeCount(givenLikes > likes ? givenLikes : likes)}
       </span>
 
       <div className={styles.wrapper}>
-        {lastAction && (
-          <motion.div
-            animate={{
-              opacity: [1, 0],
-              y: [0, -10],
-            }}
-            transition={{
-              duration: 0.5,
-            }}
-            key={likes}
-          >
-            {lastAction}1
-          </motion.div>
-        )}
+        <motion.div
+          animate={{
+            opacity: [1, 0],
+            y: [0, -10],
+          }}
+          transition={{
+            duration: 0.5,
+          }}
+          key={likes}
+        >
+          {lastAction}1
+        </motion.div>
       </div>
     </div>
   );

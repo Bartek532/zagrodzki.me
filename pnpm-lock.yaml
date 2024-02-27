@@ -38,6 +38,9 @@ dependencies:
   invariant:
     specifier: 2.2.4
     version: 2.2.4
+  lodash:
+    specifier: 4.17.21
+    version: 4.17.21
   next:
     specifier: 14.1.0
     version: 14.1.0(@babel/core@7.23.2)(react-dom@18.2.0)(react@18.2.0)(sass@1.49.0)
@@ -94,6 +97,9 @@ devDependencies:
   '@types/invariant':
     specifier: 2.2.35
     version: 2.2.35
+  '@types/lodash':
+    specifier: 4.14.202
+    version: 4.14.202
   '@types/mapbox__rehype-prism':
     specifier: 0.8.0
     version: 0.8.0
@@ -2348,6 +2354,10 @@ packages:
     resolution: {integrity: sha512-BQ5aZNSCpj7D6K2ksrRCTmKRLEpnPvWDiLPfoGyhZ++8YtiK9d/3DBKPJgry359X/P1PfruyYwvnvwFjuEiEIg==}
     dependencies:
       '@types/node': 20.3.3
+    dev: true
+
+  /@types/lodash@4.14.202:
+    resolution: {integrity: sha512-OvlIYQK9tNneDlS0VN54LLd5uiPCBOp7gS5Z0f1mjoJYBrtStzgmJBxONW3U6OZqdtNzZPmn9BS/7WI7BFFcFQ==}
     dev: true
 
   /@types/mapbox__rehype-prism@0.8.0:

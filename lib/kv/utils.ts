@@ -66,6 +66,16 @@ export const getSortedSetValue = async (name: string, key: string) => {
   }
 };
 
+export const setSortedSetValue = async (name: string, key: string, score: number) => {
+  await fetch(`${env.KV_REST_API_URL}/pipeline`, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${env.KV_REST_API_TOKEN}`,
+    },
+    body: `[["ZADD", "${name}", "${score}", "${key}"]]`,
+  });
+};
+
 export const incrementSortedSetValue = async (name: string, key: string) => {
   await fetch(`${env.KV_REST_API_URL}/pipeline`, {
     method: "POST",

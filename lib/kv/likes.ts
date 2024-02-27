@@ -2,7 +2,12 @@
 
 import { RESOURCE_TYPE } from "types";
 
-import { decrementSortedSetValue, getSortedSetValue, incrementSortedSetValue } from "./utils";
+import {
+  decrementSortedSetValue,
+  getSortedSetValue,
+  incrementSortedSetValue,
+  setSortedSetValue,
+} from "./utils";
 
 const SORTED_SET_SUFFIX = "-likes";
 
@@ -14,3 +19,6 @@ export const unlike = (type: RESOURCE_TYPE, slug: string) =>
 
 export const getResourceLikesBySlug = async (type: RESOURCE_TYPE, slug: string) =>
   getSortedSetValue(`${type}${SORTED_SET_SUFFIX}`, slug);
+
+export const setLikesBySlug = async (type: RESOURCE_TYPE, slug: string, likes: number) =>
+  setSortedSetValue(`${type}${SORTED_SET_SUFFIX}`, slug, likes);
