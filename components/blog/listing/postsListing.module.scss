@@ -51,6 +51,12 @@
         }
       }
 
+      .empty {
+        img {
+          filter: drop-shadow(0 -5px 10px var(--gray-300));
+        }
+      }
+
       .list {
         list-style-type: none;
         margin: 0;

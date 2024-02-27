@@ -28,7 +28,7 @@ const ThemeProvider = ({ children }: ThemeProviderProps) => {
   }, []);
 
   useEffect(() => {
-    document.body.setAttribute("data-theme", theme!);
+    document.body.setAttribute("data-theme", theme ?? "light");
   }, [theme]);
 
   const invertTheme = (theme: Exclude<ThemeVariants, "system"> | null) =>
@@ -41,7 +41,7 @@ const ThemeProvider = ({ children }: ThemeProviderProps) => {
   return (
     <ThemeContextProvider
       value={{
-        theme: theme === "system" ? systemTheme! : theme!,
+        theme: theme === "system" ? systemTheme ?? "light" : theme ?? "light",
         setTheme,
         toggleTheme,
       }}

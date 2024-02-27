@@ -68,20 +68,22 @@ export const LikesCounter = memo<LikesCounterProps>(({ likes: initialLikes, type
         {normalizeCount(givenLikes > likes ? givenLikes : likes)}
       </span>
 
-      <div className={styles.wrapper}>
-        <motion.div
-          animate={{
-            opacity: [1, 0],
-            y: [0, -10],
-          }}
-          transition={{
-            duration: 0.5,
-          }}
-          key={likes}
-        >
-          {lastAction}1
-        </motion.div>
-      </div>
+      {lastAction && (
+        <div className={styles.wrapper}>
+          <motion.div
+            animate={{
+              opacity: [1, 0],
+              y: [0, -10],
+            }}
+            transition={{
+              duration: 0.5,
+            }}
+            key={likes}
+          >
+            {lastAction}1
+          </motion.div>
+        </div>
+      )}
     </div>
   );
 });

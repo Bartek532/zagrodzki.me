@@ -67,9 +67,7 @@ const CustomHits = connectHits<Post>(({ hits }) => {
   if (!hits.length) {
     return (
       <div className={styles.empty}>
-        <div className={styles.avatar}>
-          <Image src={DisappointedAvatar} alt="disappointed memoji" />
-        </div>
+        <Image src={DisappointedAvatar} alt="disappointed memoji" />
       </div>
     );
   }

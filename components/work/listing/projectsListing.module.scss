@@ -16,14 +16,18 @@
     margin-top: 2rem;
 
     .avatar {
-      width: 25rem;
-
-      @include mixins.mediaquery("lg") {
-        width: 30rem;
-      }
+      width: 30rem;
 
       @include mixins.mediaquery("xl") {
         width: 35rem;
+      }
+
+      @include mixins.mediaquery("xl") {
+        width: 40rem;
+      }
+
+      img {
+        filter: drop-shadow(0 -5px 10px var(--gray-300));
       }
     }
   }

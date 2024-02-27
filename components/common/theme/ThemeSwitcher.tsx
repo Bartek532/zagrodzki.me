@@ -19,6 +19,7 @@ const MoonIcon = () => (
     />
   </motion.svg>
 );
+
 const SunIcon = () => (
   <motion.svg
     key="sun"
