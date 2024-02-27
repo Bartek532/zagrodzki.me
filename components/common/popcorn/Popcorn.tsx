@@ -19,7 +19,7 @@ type PopcornProps = {
 export const Popcorn = memo<PopcornProps>(({ width = 100, count = 0, onAdd, onRemove }) => (
   <motion.button
     className={styles.button}
-    whileTap={{ scale: 0.9, rotateZ: 4 }}
+    whileTap={{ scale: 1.1, rotateZ: 2 }}
     whileHover={{ scale: 1.05 }}
     onClick={onAdd}
     onContextMenu={(e) => {

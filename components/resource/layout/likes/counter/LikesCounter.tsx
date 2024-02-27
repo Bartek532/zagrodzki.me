@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { debounce } from "lodash";
 import { memo, useMemo, useState } from "react";
 
+import { MAX_CORNS_COUNT } from "components/common/popcorn/consts";
 import { Popcorn } from "components/common/popcorn/Popcorn";
 import { useLocalStorage } from "hooks/useLocalStorage";
 import { setLikesBySlug } from "lib/kv/likes";
@@ -14,8 +15,6 @@ import { normalizeCount } from "utils/functions";
 import { decrementGivenLikes, getGivenLikes, incrementGivenLikes } from "../utils/givenLikes";
 
 import styles from "./likesCounter.module.scss";
-
-const MAX_LIKES_TO_GIVE = 10;
 
 type LikesCounterProps = {
   readonly likes: number;
@@ -32,7 +31,7 @@ export const LikesCounter = memo<LikesCounterProps>(({ likes: initialLikes, type
   const debouncedFetch = useMemo(() => debounce(setLikesBySlug, 1500), []);
 
   const onLike = async () => {
-    if (givenLikes >= MAX_LIKES_TO_GIVE) {
+    if (givenLikes >= MAX_CORNS_COUNT) {
       return;
     }
 
@@ -80,7 +79,7 @@ export const LikesCounter = memo<LikesCounterProps>(({ likes: initialLikes, type
             }}
             key={likes}
           >
-            {lastAction}1
+            {givenLikes === MAX_CORNS_COUNT ? "MAX" : `${lastAction}1`}
           </motion.div>
         </div>
       )}

@@ -121,6 +121,8 @@ export const allCorns = [
   },
 ];
 
+export const MAX_CORNS_COUNT = allCorns.length;
+
 export const transition = {
   transition: {
     duration: 1,
