@@ -1,21 +1,36 @@
 @use "styles/_mixins";
 
-.button {
+.wrapper {
   position: relative;
-  padding: 0;
-  border: 0 none;
-  background-color: transparent;
-  cursor: pointer;
-  -webkit-tap-highlight-color: transparent;
 
-  .cup {
+  .button {
     position: relative;
-    z-index: 10;
+    padding: 0;
+    border: 0 none;
+    background-color: transparent;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    z-index: 1;
+
+    .cup {
+      position: relative;
+      z-index: 10;
+    }
+
+    .corn {
+      position: absolute;
+      top: 40%;
+      transform-origin: center center;
+    }
   }
 
-  .corn {
+  .confetti {
     position: absolute;
-    top: 40%;
-    transform-origin: center center;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    z-index: 0;
   }
 }

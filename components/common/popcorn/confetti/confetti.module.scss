@@ -1,0 +1,12 @@
+.particles {
+  --size: 10px;
+  position: relative;
+  width: 100%;
+
+  .particle {
+    position: absolute;
+    width: var(--size);
+    top: calc(50% - var(--size) / 2);
+    left: calc(50% - var(--size) / 2);
+  }
+}
