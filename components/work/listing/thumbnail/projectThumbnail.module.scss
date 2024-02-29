@@ -6,6 +6,8 @@
   .image {
     margin-bottom: 0.4rem;
     width: 100%;
+    border-radius: 2rem;
+    box-shadow: 0px 0px 120px -15px #fcccd6;
 
     @include mixins.mediaquery("lg") {
       margin-bottom: 0.7rem;

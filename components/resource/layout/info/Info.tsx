@@ -31,8 +31,8 @@ export const Info = memo<InfoProps>(({ resource }) => (
 
     {resource.type === RESOURCE_TYPE.PROJECT ? (
       <motion.div className={styles.github} animate={{ x: [100, 0], opacity: [0, 1] }}>
-        <GithubButton type="star" url={resource.repoUrl} title={resource.title} />
-        <GithubButton type="fork" url={resource.repoUrl} title={resource.title} />
+        <GithubButton type="star" url={resource.repository} title={resource.title} />
+        <GithubButton type="fork" url={resource.repository} title={resource.title} />
       </motion.div>
     ) : null}
   </>

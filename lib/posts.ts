@@ -38,7 +38,7 @@ export const sortPostsByNewest = (posts: Post[]) =>
 export const getPublishedPosts = () => {
   const posts = getAllPosts();
 
-  return posts.filter((post) => post.isPublished);
+  return posts.filter((post) => post.published);
 };
 
 export const getNewestPosts = () => {
@@ -57,5 +57,5 @@ export const getPostsCategories = () => {
 export const getPopularPosts = () => {
   const posts = getPublishedPosts();
 
-  return posts.filter((post) => post.isPopular);
+  return posts.filter((post) => post.popular);
 };

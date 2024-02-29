@@ -13,23 +13,24 @@ type Common = {
   timeToRead: number;
   publishedAt: string;
   modifiedAt: string;
-  isPublished: boolean;
-  category: Category;
   image: string;
   author: Author;
+  published: boolean;
 };
 
 export type Project = Common & {
   type: RESOURCE_TYPE.PROJECT;
   url: string;
-  repoUrl: string;
-  stack: string[];
+  repository: string;
+  tags: string[];
   priority: number;
+  archived: boolean;
 };
 
 export type Post = Common & {
   type: RESOURCE_TYPE.POST;
-  isPopular: boolean;
+  category: Category;
+  popular: boolean;
 };
 
 export type Resource = Post | Project;

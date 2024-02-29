@@ -28,9 +28,9 @@ export const ProjectThumbnail = memo<ProjectThumbnailProps>(({ project }) => (
         <h2 className={styles.title}>{project.title}</h2>
         <p className={styles.excerpt}>{project.excerpt}</p>
         <div className={styles.stack}>
-          {project.stack.map((tech) => (
-            <div className={styles.tech} key={tech}>
-              {tech}
+          {project.tags.map((tag) => (
+            <div className={styles.tech} key={tag}>
+              {tag}
             </div>
           ))}
         </div>
