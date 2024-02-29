@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { memo } from "react";
@@ -20,7 +21,16 @@ interface ProjectThumbnailProps {
 
 export const ProjectThumbnail = memo<ProjectThumbnailProps>(({ project }) => (
   <Link href={`/work/${project.slug}`}>
-    <motion.article className={styles.thumbnail} whileHover="hover" layout>
+    <motion.article
+      className={clsx(
+        styles.thumbnail,
+        styles.archived && {
+          [styles.archived]: project.archived,
+        },
+      )}
+      whileHover="hover"
+      layout
+    >
       <motion.div className={styles.image} variants={imageVariants} key="thumbnail">
         <Image src={project.image} alt={project.title} width={1200} height={880} />
       </motion.div>

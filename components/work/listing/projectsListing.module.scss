@@ -10,6 +10,11 @@
     gap: 5rem;
   }
 
+  .search {
+    @include mixins.flex;
+    gap: 1.5rem;
+  }
+
   .empty {
     width: 100%;
     @include mixins.flex;

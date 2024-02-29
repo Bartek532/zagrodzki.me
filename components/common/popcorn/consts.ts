@@ -127,7 +127,7 @@ export const transition = {
   transition: {
     duration: 1,
     mass: 1,
-    damping: 50,
+    damping: 45,
     stiffness: 100,
     velocity: 2,
     ease: "easeInOut",

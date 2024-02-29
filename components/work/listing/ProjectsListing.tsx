@@ -9,6 +9,7 @@ import { Skeleton } from "components/common/skeleton/Skeleton";
 import { env } from "env/client";
 import DisappointedAvatar from "public/img/avatars/disappointed.png";
 
+import { ArchiveCheckbox } from "./archive/ArchiveCheckbox";
 import styles from "./projectsListing.module.scss";
 import { ProjectThumbnail, ProjectThumbnailSkeleton } from "./thumbnail/ProjectThumbnail";
 
@@ -82,7 +83,11 @@ export const ProjectsListing = () => (
       indexName={env.NEXT_PUBLIC_ALGOLIA_PROJECTS_INDEX_NAME}
       searchClient={searchClient}
     >
-      <SearchBox />
+      <div className={styles.search}>
+        <SearchBox />
+        <ArchiveCheckbox attribute="archived" value={false} defaultRefinement={false} />
+      </div>
+
       <CustomResults>
         <CustomHits />
       </CustomResults>
