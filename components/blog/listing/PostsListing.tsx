@@ -11,7 +11,7 @@ import {
   connectStateResults,
 } from "react-instantsearch-dom";
 
-import { SearchBox } from "components/common/search/SearchBox";
+import { SearchBox } from "components/common/input/search/SearchBox";
 import { Skeleton } from "components/common/skeleton/Skeleton";
 import { allCategories } from "data/categories";
 import { env } from "env/client";

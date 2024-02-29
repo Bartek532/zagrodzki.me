@@ -1,0 +1,46 @@
+@use "styles/_mixins";
+
+.checkbox {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.toggle {
+  --size: 1.5rem;
+  --wrapperPadding: 0.2rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background-color: var(--gray-100);
+  transform: translate(-50%, -50%);
+  border-radius: 2rem;
+  width: calc(var(--size) * 4);
+  padding: var(--wrapperPadding);
+
+  @include mixins.mediaquery("sm") {
+    --size: 2rem;
+    --wrapperPadding: 0.3rem;
+    border-radius: 3rem;
+  }
+
+  .icon {
+    width: calc(var(--size) * 2);
+    height: calc(var(--size) * 2);
+    background-color: var(--white-100);
+    border-radius: 50%;
+    @include mixins.flex;
+    transition: transform 0.2s ease-in-out;
+
+    svg {
+      width: var(--size);
+      height: var(--size);
+    }
+  }
+}
+
+.checkbox:checked ~ .toggle .icon {
+  transform: translateX(calc(var(--size) * 2 - var(--wrapperPadding) * 2));
+}

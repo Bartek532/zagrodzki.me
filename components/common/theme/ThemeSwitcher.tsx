@@ -1,11 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { memo } from "react";
 
 import { useTheme } from "providers/ThemeProvider";
 
+import { Toggle } from "../input/toggle/Toggle";
+
 import { moon, sun } from "./consts";
-import styles from "./themeSwitcher.module.scss";
 
 const MoonIcon = () => (
   <motion.svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" key="moon">
@@ -72,13 +74,20 @@ const SunIcon = () => (
   </motion.svg>
 );
 
-export const ThemeSwitcher = () => {
+interface ThemeSwitcherProps {
+  readonly className?: string | undefined;
+}
+
+export const ThemeSwitcher = memo<ThemeSwitcherProps>(({ className }) => {
   const { theme, toggleTheme } = useTheme();
 
   return (
-    <>
+    <label className={className}>
       <span className="sr-only">change theme to {theme === "dark" ? "light" : "dark"}</span>
-      <input
+      <Toggle value={theme === "light"} onChange={toggleTheme}>
+        {theme === "light" ? <SunIcon /> : <MoonIcon />}
+      </Toggle>
+      {/* <input
         type="checkbox"
         className={styles.checkbox}
         onChange={toggleTheme}
@@ -86,9 +95,9 @@ export const ThemeSwitcher = () => {
       />
       <div className={styles.toggle}>
         <div className={styles.icon}>{theme === "light" ? <SunIcon /> : <MoonIcon />}</div>
-      </div>
-    </>
+      </div> */}
+    </label>
   );
-};
+});
 
 ThemeSwitcher.displayName = "ThemeSwitcher";

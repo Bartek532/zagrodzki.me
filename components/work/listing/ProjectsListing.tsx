@@ -4,7 +4,7 @@ import algoliasearch from "algoliasearch";
 import Image from "next/image";
 import { InstantSearch, connectHits, connectStateResults } from "react-instantsearch-dom";
 
-import { SearchBox } from "components/common/search/SearchBox";
+import { SearchBox } from "components/common/input/search/SearchBox";
 import { Skeleton } from "components/common/skeleton/Skeleton";
 import { env } from "env/client";
 import DisappointedAvatar from "public/img/avatars/disappointed.png";

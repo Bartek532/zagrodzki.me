@@ -19,9 +19,7 @@ export const Header = () => (
     </Link>
     <Navbar routes={routes} />
     <div className={styles.right}>
-      <label className={styles.theme}>
-        <ThemeSwitcher />
-      </label>
+      <ThemeSwitcher className={styles.theme} />
       <Link href="/contact" className={styles.contact}>
         Contact
         <PaperPlane />
