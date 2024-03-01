@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import { connectToggleRefinement } from "react-instantsearch-core";
 
 import { Checkbox } from "components/common/input/checkbox/Checkbox";
@@ -13,8 +14,23 @@ export const ArchiveCheckbox = connectToggleRefinement(
       onChange={(checked) => refine(checked)}
       className={styles.checkbox}
     >
-    
-      {currentRefinement ? "📦" : "📂"}
+      <div className={styles.wrapper}>
+        <div className={clsx(styles.box, styles.active && { [styles.active]: !currentRefinement })}>
+          <div className={clsx(styles.side, styles.cover)}>
+            <div className={clsx(styles.coverSide, styles.left)}></div>
+            <div className={clsx(styles.coverSide, styles.right)}></div>
+            <div className={clsx(styles.coverSide, styles.front)}></div>
+            <div className={clsx(styles.coverSide, styles.back)}></div>
+          </div>
+
+          <div className={styles.label}>Archive</div>
+          <div className={clsx(styles.side, styles.front)}></div>
+          <div className={clsx(styles.side, styles.back)}></div>
+          <div className={clsx(styles.side, styles.left)}></div>
+          <div className={clsx(styles.side, styles.right)}></div>
+          <div className={clsx(styles.side, styles.bottom)}></div>
+        </div>
+      </div>
     </Checkbox>
   ),
 );
