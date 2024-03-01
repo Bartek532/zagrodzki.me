@@ -17,9 +17,10 @@ const imageVariants = {
 
 interface ProjectThumbnailProps {
   readonly project: Project;
+  readonly featured?: boolean;
 }
 
-export const ProjectThumbnail = memo<ProjectThumbnailProps>(({ project }) => (
+export const ProjectThumbnail = memo<ProjectThumbnailProps>(({ project, featured = false }) => (
   <Link href={`/work/${project.slug}`}>
     <motion.article
       className={clsx(
@@ -27,13 +28,27 @@ export const ProjectThumbnail = memo<ProjectThumbnailProps>(({ project }) => (
         styles.archived && {
           [styles.archived]: project.archived,
         },
+        styles.featured && { [styles.featured]: featured },
       )}
       whileHover="hover"
       layout
     >
-      <motion.div className={styles.image} variants={imageVariants} key="thumbnail">
-        <Image src={project.image} alt={project.title} width={1200} height={880} />
-      </motion.div>
+      <div className={styles.wrapper}>
+        {featured && (
+          <div
+            className={styles.blur}
+            style={{
+              backgroundImage: `url(${project.image})`,
+            }}
+          ></div>
+        )}
+        <motion.div variants={imageVariants} key="thumbnail" className={styles.image}>
+          <div className={styles.label}>
+            {project.archived ? "Archived" : featured ? "Featured" : ""}
+          </div>
+          <Image src={project.image} alt={project.title} width={1200} height={880} />
+        </motion.div>
+      </div>
       <div className={styles.content}>
         <h2 className={styles.title}>{project.title}</h2>
         <p className={styles.excerpt}>{project.excerpt}</p>

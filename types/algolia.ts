@@ -1,5 +1,6 @@
 export type ToggleRefinementProps = {
   readonly attribute: string;
+  readonly label: string;
   readonly value: boolean;
   readonly defaultRefinement: boolean;
   readonly currentRefinement: boolean;

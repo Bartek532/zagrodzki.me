@@ -16,6 +16,8 @@ import { ProjectThumbnail, ProjectThumbnailSkeleton } from "./thumbnail/ProjectT
 import type { HitsProvided, StateResultsProvided } from "react-instantsearch-core";
 import type { Project } from "types";
 
+const FEATURED_PROJECT = "pozywka";
+
 const searchClient = algoliasearch(
   env.NEXT_PUBLIC_ALGOLIA_APP_ID,
   env.NEXT_PUBLIC_ALGOLIA_SEARCH_KEY,
@@ -70,7 +72,7 @@ export const CustomHits = connectHits<HitsProvided<Project>, Project>(({ hits })
     <ol id="search-hits-list" className={styles.list} role="list">
       {hits.map((hit) => (
         <li key={hit.objectID} id={"id" + hit.objectID} className={styles.hit}>
-          <ProjectThumbnail project={hit} />
+          <ProjectThumbnail project={hit} featured={hit.slug === FEATURED_PROJECT} />
         </li>
       ))}
     </ol>
@@ -85,7 +87,12 @@ export const ProjectsListing = () => (
     >
       <div className={styles.search}>
         <SearchBox />
-        <ArchiveCheckbox attribute="archived" value={false} defaultRefinement={false} />
+        <ArchiveCheckbox
+          attribute="archived"
+          value={false}
+          defaultRefinement={false}
+          label="show only active projects"
+        />
       </div>
 
       <CustomResults>

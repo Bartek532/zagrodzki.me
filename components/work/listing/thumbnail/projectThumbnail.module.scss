@@ -3,39 +3,97 @@
 .thumbnail {
   width: 100%;
 
-  .image {
+  .wrapper {
     position: relative;
-    margin-bottom: 0.4rem;
-    width: 100%;
-    border-radius: 2rem;
-    overflow: hidden;
-
-    @include mixins.mediaquery("lg") {
-      margin-bottom: 0.7rem;
+    .blur {
+      position: absolute;
+      top: 5%;
+      left: 2.5%;
+      width: 95%;
+      height: 95%;
+      background-size: cover;
+      filter: blur(60px);
     }
 
-    img {
+    .image {
+      position: relative;
+      margin-bottom: 0.4rem;
+      width: 100%;
       border-radius: 2rem;
+
+      .label {
+        position: absolute;
+        top: 20px;
+        right: 0;
+        z-index: 2;
+        padding: 0.5rem 1.5rem;
+        font-size: 1.2rem;
+        font-weight: 600;
+        border-radius: 1rem 0 0 1rem;
+        display: none;
+      }
+
+      @include mixins.mediaquery("lg") {
+        margin-bottom: 0.7rem;
+      }
+
+      img {
+        border-radius: 2rem;
+      }
     }
   }
 
-  &.archived .image {
-    &::before {
-      content: "";
-      position: absolute;
-      width: 85%;
-      height: 110%;
-      top: 10px;
-      left: 10px;
-      z-index: 1;
-      rotate: 45deg;
-      border-left: 18px solid;
-      border-image: repeating-linear-gradient(-55deg, #000, #000 20px, #ffb101 20px, #ffb101 40px)
-        10;
+  &.featured {
+    .image {
+      .label {
+        display: block;
+        background-color: var(--blue-200);
+        color: var(--white-200);
+        font-weight: bold;
+      }
     }
+  }
 
-    img {
-      filter: grayscale(85%);
+  &.archived {
+    .image {
+      overflow: hidden;
+
+      .label {
+        display: block;
+        background-color: var(--yellow-100);
+      }
+
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 6%;
+        z-index: 1;
+        background-image: repeating-linear-gradient(
+          -45deg,
+          var(--black-200),
+          var(--black-200) 20px,
+          var(--yellow-100) 20px,
+          var(--yellow-100) 40px
+        );
+      }
+
+      &::before {
+        top: -11%;
+        left: -30%;
+        rotate: -63deg;
+      }
+
+      &::after {
+        bottom: 35%;
+        left: -35%;
+        rotate: 63deg;
+      }
+
+      img {
+        filter: grayscale(85%);
+      }
     }
   }
 

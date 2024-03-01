@@ -9,6 +9,7 @@ import { RESOURCE_TYPE, Resource as ResourceType } from "types";
 import { Content } from "./content/Content";
 import { TableOfContents } from "./content/tableOfContents/TableOfContents";
 import { Author } from "./layout/author/Author";
+import { Banner } from "./layout/banner/Banner";
 import { Footer } from "./layout/footer/Footer";
 import { Info } from "./layout/info/Info";
 import { Likes } from "./layout/likes/Likes";
@@ -22,6 +23,11 @@ type ResourceProps = {
 export const Resource = memo<ResourceProps>(({ metadata, content }) => (
   <article className={styles.container}>
     <header className={styles.header}>
+      {"archived" in metadata && metadata.archived && (
+        <Banner
+          text={`This ${metadata.type} is archived and, most likely, won't get any updates.`}
+        />
+      )}
       <Info resource={metadata} />
     </header>
     <div className={styles.main}>
