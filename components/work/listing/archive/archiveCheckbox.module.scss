@@ -2,11 +2,12 @@
   -webkit-tap-highlight-color: transparent;
 
   .wrapper {
-    --size: 22px;
+    --size: 21px;
     width: var(--size);
     height: var(--size);
     perspective: 2000px;
-    transform: translateY(-3px);
+    transform: translateY(-4px);
+    margin-right: 20px;
 
     .box {
       position: relative;
@@ -26,6 +27,7 @@
         border-radius: 1rem;
         font-weight: bold;
         color: var(--black-200);
+        pointer-events: none;
       }
 
       .side {
