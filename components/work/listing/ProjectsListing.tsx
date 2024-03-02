@@ -16,7 +16,7 @@ import { ProjectThumbnail, ProjectThumbnailSkeleton } from "./thumbnail/ProjectT
 import type { HitsProvided, StateResultsProvided } from "react-instantsearch-core";
 import type { Project } from "types";
 
-const FEATURED_PROJECT = "pozywka";
+const FEATURED_PROJECT = "rssmarkable";
 
 const searchClient = algoliasearch(
   env.NEXT_PUBLIC_ALGOLIA_APP_ID,
