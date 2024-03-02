@@ -23,6 +23,7 @@ export const ArchiveCheckbox = connectToggleRefinement(
             <div className={clsx(styles.coverSide, styles.back)}></div>
           </div>
 
+          <div className={styles.tape}></div>
           <div className={styles.label}>Archive</div>
           <div className={clsx(styles.side, styles.front)}></div>
           <div className={clsx(styles.side, styles.back)}></div>
