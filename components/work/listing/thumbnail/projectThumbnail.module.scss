@@ -22,15 +22,31 @@
       border-radius: 2rem;
 
       .label {
+        --height: 3rem;
+        @include mixins.flex;
         position: absolute;
+        height: var(--height);
         top: 20px;
         right: 0;
         z-index: 2;
-        padding: 0.5rem 1.5rem;
+        padding: 0 1.5rem 0 1rem;
         font-size: 1.2rem;
         font-weight: 600;
-        border-radius: 1rem 0 0 1rem;
+        background-color: var(--background);
         display: none;
+
+        &::before {
+          --size: calc(var(--height) / 2);
+          content: "";
+          position: absolute;
+          top: 0;
+          left: calc(-1 * var(--size) + 1px);
+          height: 100%;
+          border-bottom: var(--size) solid var(--background);
+          border-top: var(--size) solid var(--background);
+          border-left: var(--size) solid transparent;
+          border-radius: 5px 0 0 5px;
+        }
       }
 
       @include mixins.mediaquery("lg") {
@@ -46,8 +62,8 @@
   &.featured {
     .image {
       .label {
-        display: block;
-        background-color: var(--blue-200);
+        --background: var(--blue-200);
+        display: flex;
         color: var(--white-200);
         font-weight: bold;
       }
@@ -59,8 +75,8 @@
       overflow: hidden;
 
       .label {
-        display: block;
-        background-color: var(--yellow-100);
+        --background: var(--yellow-100);
+        display: flex;
       }
 
       &::before,
