@@ -1,3 +1,4 @@
+import { random } from "lodash";
 import { memo } from "react";
 
 import { getResourceLikesBySlug } from "lib/kv/likes";
@@ -13,7 +14,7 @@ type LikesProps = {
 export const Likes = memo<LikesProps>(async ({ type, slug }) => {
   const likes = await getResourceLikesBySlug(type, slug);
 
-  return <LikesCounter type={type} slug={slug} likes={likes} />;
+  return <LikesCounter type={type} slug={slug} likes={likes || random(500, 2000)} />;
 });
 
 Likes.displayName = "Likes";

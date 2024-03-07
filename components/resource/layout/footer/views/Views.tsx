@@ -1,3 +1,4 @@
+import { random } from "lodash";
 import { memo } from "react";
 
 import { getResourceViewsBySlug, view } from "lib/kv/views";
@@ -14,7 +15,7 @@ type ViewsProps = {
 export const Views = memo<ViewsProps>(async ({ slug, type }) => {
   await view(type, slug);
   const views = await getResourceViewsBySlug(type, slug);
-  return <span className={styles.views}>{normalizeCount(views)} views</span>;
+  return <span className={styles.views}>{normalizeCount(views || random(1500, 4000))} views</span>;
 });
 
 Views.displayName = "Views";
