@@ -11,7 +11,7 @@ export const SITE_TITLE = "Bartosz Zagrodzki";
 export const SITE_TITLE_TEMPLATE = `%s ${SEPARATOR} ${SITE_TITLE}`;
 export const SHORT_DESCRIPTION = "My personal website";
 export const DEFAULT_DESCRIPTION =
-  "Software engineer building products to help people lead better lives 🎯 In love with creative solutions - constantly learning and discovering new stuff 📖";
+  "Software engineer building products to help people lead better lives. In love with creative solutions - constantly learning and discovering new stuff.";
 
 export const DEFAULT_IMAGE_URL = `/img/banner.png`;
 
