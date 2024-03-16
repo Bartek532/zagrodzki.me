@@ -16,10 +16,6 @@ h6 {
 html {
   font-size: 62.5%;
 
-  @include mixins.mediaquery("lg") {
-    font-size: 55%;
-  }
-
   @include mixins.mediaquery("xl") {
     font-size: 58%;
   }
