@@ -18,7 +18,7 @@ export const ThemeChanger = ({ children }: { children: React.ReactNode }) => {
           clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
         }}
         animate={{ clipPath: "polygon(0 0, 0 0, 0 100%, 0 100%)" }}
-        transition={{ duration: 1.5, ease: [0.17, 0.5, 0.9, 1] }}
+        transition={{ duration: 1, ease: [0.17, 0.5, 0.9, 1] }}
         style={{
           backgroundColor: "var(--bg-100)",
           color: "var(--black-100)",
