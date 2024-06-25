@@ -3,7 +3,7 @@
 import { env } from "env/server";
 
 export const subscribeToNewsletter = async (email: string) => {
-  await fetch("https://connect.mailerlite.com/api/subscribers", {
+  const response = await fetch("https://connect.mailerlite.com/api/subscribers", {
     method: "POST",
     body: JSON.stringify({ email, groups: [env.MAILER_LITE_GROUP_ID] }),
     headers: {
@@ -12,4 +12,8 @@ export const subscribeToNewsletter = async (email: string) => {
       Accept: "application/json",
     },
   });
+
+  if (!response.ok) {
+    throw new Error("Failed to subscribe to newsletter!");
+  }
 };
