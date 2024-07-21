@@ -13,11 +13,11 @@ export const Hero = ({ views }: { views: number }) => (
       <h2 className={styles.title}>Hi, I&#39;m Bartosz Zagrodzki&nbsp;👋</h2>
       <p className={styles.description}>
         <span className={styles.paragraph}>
-          I&#39;m a 21 years old software engineer based in Poland. I&#39;m passionate about
+          I&#39;m a 22 years old software engineer based in Poland. I&#39;m passionate about
           constructing modern software that enhances the lives of others, as well as my own. My
           blogging journey began by publishing translations on{" "}
           <Link href="https://dev.to/bartek532">dev.to</Link> and now I&#39;m here with{" "}
-          <strong>{normalizeCount(views || random(32000, 34000))}</strong> posts views.
+          <strong>{normalizeCount(views || random(82000, 84000))}</strong> posts views.
         </span>
         <span className={styles.paragraph}>
           My main focus is the user and his experience. I believe that the best software is the one

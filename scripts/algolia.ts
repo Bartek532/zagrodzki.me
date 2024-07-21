@@ -45,8 +45,8 @@ async function run() {
   const projectsIndex = client.initIndex(env.NEXT_PUBLIC_ALGOLIA_PROJECTS_INDEX_NAME);
   const postsIndex = client.initIndex(env.NEXT_PUBLIC_ALGOLIA_POSTS_INDEX_NAME);
 
-  const indexedProjects = await projectsIndex.saveObjects(await generateAlgoliaProjects());
-  const indexedPosts = await postsIndex.saveObjects(await generateAlgoliaPosts());
+  const indexedProjects = await projectsIndex.replaceAllObjects(await generateAlgoliaProjects());
+  const indexedPosts = await postsIndex.replaceAllObjects(await generateAlgoliaPosts());
 
   console.log(
     `${indexedProjects.objectIDs.length} projects indexed in ${env.NEXT_PUBLIC_ALGOLIA_PROJECTS_INDEX_NAME}`,
