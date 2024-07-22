@@ -17,6 +17,7 @@
       position: relative;
       top: 50%;
       width: 90%;
+      filter: drop-shadow(0 20px 13px rgb(0 0 0 / 0.03)) drop-shadow(0 8px 5px rgb(0 0 0 / 0.08));
 
       &.right {
         left: 68%;
@@ -30,7 +31,7 @@
     }
 
     img {
-      border-radius: 1.5rem;
+      border-radius: 1.2rem;
     }
 
     .arrow {

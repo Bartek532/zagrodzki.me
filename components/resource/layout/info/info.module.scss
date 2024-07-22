@@ -51,6 +51,7 @@
   .title {
     font-size: 3rem;
     max-width: 70rem;
+    text-wrap: balance;
 
     @include mixins.mediaquery("sm") {
       font-size: 3.3rem;
@@ -66,6 +67,7 @@
     font-size: 1.7rem;
     line-height: 1.65;
     color: var(--black-300);
+    text-wrap: pretty;
 
     @include mixins.mediaquery("sm") {
       font-size: 1.8rem;

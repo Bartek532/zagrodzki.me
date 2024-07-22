@@ -15,7 +15,7 @@
     "algolia": "tsx ./scripts/algolia.ts ",
     "build": "./build.sh redirect feed algolia next",
     "build:next": "next build",
-    "dev": "next dev",
+    "dev": "next dev -p 3001",
     "feed": "tsx ./scripts/feed.ts",
     "format": "prettier --write \"./**/*.{js,jsx,ts,tsx,css,scss,md,mdx}\"",
     "lint": "next lint",

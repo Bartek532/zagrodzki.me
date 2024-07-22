@@ -22,7 +22,7 @@ export const ProjectTile = memo<ProjectTileProps>(({ project, mockupPosition }) 
   const { theme } = useTheme();
   const imageVariants = {
     hover: {
-      rotate: mockupPosition === "right" ? "-23.5deg" : "23.5deg",
+      rotate: mockupPosition === "right" ? "-24deg" : "25deg",
     },
   };
 
