@@ -21,10 +21,10 @@ type Common = {
 export type Project = Common & {
   type: RESOURCE_TYPE.PROJECT;
   url: string;
-  repository: string;
   tags: string[];
   priority: number;
   archived: boolean;
+  repository?: string;
 };
 
 export type Post = Common & {
