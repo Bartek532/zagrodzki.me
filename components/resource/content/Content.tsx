@@ -14,6 +14,7 @@ import { Image } from "./components/image/Image";
 import { Pre } from "./components/pre/Pre";
 import { Quote } from "./components/quote/Quote";
 import { Sandbox } from "./components/sandbox/Sandbox";
+import { Video } from "./components/video/Video";
 
 interface ContentProps {
   readonly content: MDXRemoteSerializeResult;
@@ -32,6 +33,7 @@ const customMdxComponents = {
   Image,
   Link,
   Quote,
+  Video,
   Highlight,
   Sandbox: ({ id }: { id: string }) => <Sandbox id={id} />,
   pre: Pre,

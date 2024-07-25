@@ -1,0 +1,57 @@
+@use "styles/_mixins";
+
+.wrapper {
+  width: auto;
+  height: auto;
+  margin: 4rem -1.2rem;
+  position: relative;
+  @include mixins.flex;
+  flex-flow: column wrap;
+  gap: 1.4rem;
+
+  @include mixins.mediaquery("sm") {
+    margin: 4rem -2rem;
+  }
+
+  .videoWrapper {
+    position: relative;
+
+    .video {
+      max-width: 100%;
+      border-radius: 2rem;
+      cursor: pointer;
+    }
+
+    .control {
+      position: absolute;
+      inset: 0;
+      width: 6.5rem;
+      height: 6.5rem;
+      border-radius: 50%;
+      border: 0 none;
+      transition: opacity 500ms ease;
+      background-color: rgba(0, 0, 0, 0.5);
+      margin: auto;
+      pointer-events: none;
+      opacity: 0;
+      color: var(--white-200);
+      @include mixins.flex;
+
+      &.visible {
+        opacity: 1;
+      }
+
+      .icon {
+        width: 50%;
+      }
+    }
+  }
+
+  .caption {
+    font-size: 1.4rem;
+    font-style: italic;
+    opacity: 0.6;
+    padding: 0 1rem;
+    text-align: center;
+  }
+}
