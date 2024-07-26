@@ -1,4 +1,4 @@
 module.exports = {
-  siteUrl: "https://zagrodzki.me",
+  siteUrl: "https://www.zagrodzki.me",
   generateRobotsTxt: true,
 };

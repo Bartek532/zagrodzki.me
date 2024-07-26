@@ -11,7 +11,7 @@ export const allPositions = [
     position: "Blogger",
     company: "zagrodzki.me",
     date: "02.2022 - present",
-    link: "https://zagrodzki.me",
+    link: "https://www.zagrodzki.me",
   },
   {
     id: 3,

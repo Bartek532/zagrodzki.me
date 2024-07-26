@@ -1,7 +1,7 @@
 import { env } from "env/client";
 
 export const ORIGIN =
-  env.NEXT_PUBLIC_HOST ?? env.NEXT_PUBLIC_VERCEL_URL ?? ("zagrodzki.me" as const);
+  env.NEXT_PUBLIC_HOST ?? env.NEXT_PUBLIC_VERCEL_URL ?? ("www.zagrodzki.me" as const);
 export const PROTOCOL = process.env.NODE_ENV === "production" ? "https" : "http";
 export const HOST = `${PROTOCOL}://${ORIGIN}` as const;
 

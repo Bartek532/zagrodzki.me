@@ -11,6 +11,7 @@ export const metadata = getMetadata({
   title: "Blog",
   description,
   image: "/img/blog.png",
+  canonical: "/blog",
 });
 
 const BlogPage = async () => {

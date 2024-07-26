@@ -8,6 +8,7 @@ export const metadata = getMetadata({
   title: "About",
   description,
   image: "/img/about.png",
+  url: "/about",
 });
 
 const AboutPage = () => (

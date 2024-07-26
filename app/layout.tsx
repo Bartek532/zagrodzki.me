@@ -49,7 +49,7 @@ const kenfolg = localFont({
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html
-      lang="en-EN"
+      lang="en"
       dir="ltr"
       prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#"
       itemType="http://schema.org/WebPage"

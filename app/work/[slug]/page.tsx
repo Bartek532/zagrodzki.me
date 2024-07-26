@@ -13,6 +13,7 @@ export async function generateMetadata({ params: { slug } }: MetadataParams) {
     type: "article",
     author: frontmatter.author,
     image: frontmatter.image,
+    url: `/work/${slug}`,
   });
 }
 

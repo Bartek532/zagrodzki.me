@@ -2,7 +2,7 @@
   "name": "zagrodzki.me",
   "private": true,
   "description": "My personal website",
-  "homepage": "https://zagrodzki.me",
+  "homepage": "https://www.zagrodzki.me",
   "bugs": {
     "url": "https://github.com/Bartek532/zagrodzki.me/issues"
   },
@@ -15,7 +15,7 @@
     "algolia": "tsx ./scripts/algolia.ts ",
     "build": "./build.sh redirect feed algolia next",
     "build:next": "next build",
-    "dev": "next dev -p 3001",
+    "dev": "next dev",
     "feed": "tsx ./scripts/feed.ts",
     "format": "prettier --write \"./**/*.{js,jsx,ts,tsx,css,scss,md,mdx}\"",
     "lint": "next lint",
