@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
-import Link from "next/link";
 import { memo } from "react";
 
+import { SuperLink } from "components/common/link/SuperLink";
 import { Skeleton } from "components/common/skeleton/Skeleton";
 import { allCategories } from "data/categories";
 import Arrow from "public/svg/right-top-arrow.svg";
@@ -15,7 +15,7 @@ interface PostThumbnailProps {
 }
 
 export const PostThumbnail = memo<PostThumbnailProps>(({ post }) => (
-  <Link href={`/blog/${post.slug}`}>
+  <SuperLink href={`/blog/${post.slug}`}>
     <motion.article className={styles.post} layout>
       <h2 className={styles.title}>{post.title}</h2>
       <p className={styles.excerpt}>{post.excerpt}</p>
@@ -34,7 +34,7 @@ export const PostThumbnail = memo<PostThumbnailProps>(({ post }) => (
         </div>
       </div>
     </motion.article>
-  </Link>
+  </SuperLink>
 ));
 
 export const PostThumbnailSkeleton = () => <Skeleton h={17} />;

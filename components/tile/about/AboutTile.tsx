@@ -1,13 +1,13 @@
 import Image from "next/image";
-import Link from "next/link";
 
+import { SuperLink } from "components/common/link/SuperLink";
 import WinkingAvatar from "public/img/avatars/winking.png";
 import Arrow from "public/svg/right-top-arrow.svg";
 
 import styles from "./aboutTile.module.scss";
 
 export const AboutTile = () => (
-  <Link href="/about" className={styles.tile}>
+  <SuperLink href="/about" className={styles.tile}>
     <div className={styles.avatar}>
       <Image src={WinkingAvatar} alt="winking memoji" />
     </div>
@@ -22,5 +22,5 @@ export const AboutTile = () => (
         <Arrow />
       </span>
     </div>
-  </Link>
+  </SuperLink>
 );

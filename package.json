@@ -76,6 +76,7 @@
     "eslint-plugin-unused-imports": "2.0.0",
     "husky": "8.0.0",
     "lint-staged": "12.3.2",
+    "network-information-types": "0.1.1",
     "prettier": "2.5.1",
     "rehype-stringify": "8",
     "remark-parse": "8.0.3",

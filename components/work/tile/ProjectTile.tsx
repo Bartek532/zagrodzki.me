@@ -2,10 +2,10 @@
 
 import clsx from "clsx";
 import { motion } from "framer-motion";
-import Link from "next/link";
 import { memo } from "react";
 
 import { Image } from "components/common/image/Image";
+import { SuperLink } from "components/common/link/SuperLink";
 import { useTheme } from "providers/ThemeProvider";
 import Arrow from "public/svg/right-top-arrow.svg";
 
@@ -27,7 +27,7 @@ export const ProjectTile = memo<ProjectTileProps>(({ project, mockupPosition }) 
   };
 
   return (
-    <Link href={`/work/${project.slug}`} className={styles.link}>
+    <SuperLink href={`/work/${project.slug}`} className={styles.link}>
       <motion.div
         whileHover="hover"
         className={styles.project}
@@ -55,7 +55,7 @@ export const ProjectTile = memo<ProjectTileProps>(({ project, mockupPosition }) 
           <Arrow />
         </div>
       </motion.div>
-    </Link>
+    </SuperLink>
   );
 });
 

@@ -1,7 +1,7 @@
 import clsx from "clsx";
-import Link from "next/link";
 import { memo } from "react";
 
+import { SuperLink } from "components/common/link/SuperLink";
 import { Skeleton } from "components/common/skeleton/Skeleton";
 import Arrow from "public/svg/right-top-arrow.svg";
 
@@ -22,9 +22,9 @@ export const PopularPosts = memo<PopularPostsProps>(({ posts }) => (
           <span className={styles.icon}>
             <Arrow />
           </span>
-          <Link href={`/blog/${post.slug}`} target="blank">
+          <SuperLink href={`/blog/${post.slug}`} target="blank">
             {post.title}
-          </Link>
+          </SuperLink>
         </li>
       ))}
     </ul>

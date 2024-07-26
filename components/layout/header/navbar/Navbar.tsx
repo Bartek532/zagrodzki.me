@@ -1,9 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { memo } from "react";
+
+import { SuperLink } from "components/common/link/SuperLink";
 
 import styles from "./navbar.module.scss";
 
@@ -26,9 +27,9 @@ export const Navbar = memo<NavbarProps>(({ routes }) => {
       <ul className={styles.list}>
         {routes.map((route) => (
           <li key={route.path} className={styles.link}>
-            <Link href={route.path} className={styles.label}>
+            <SuperLink href={route.path} className={styles.label}>
               {route.label}
-            </Link>
+            </SuperLink>
             {pathname === route.path || (pathname.startsWith(route.path) && route.path !== "/") ? (
               <motion.div
                 className={styles.active}

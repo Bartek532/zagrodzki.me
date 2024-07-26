@@ -4,10 +4,10 @@ import dayjs from "dayjs";
 import advancedFormat from "dayjs/plugin/advancedFormat";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 import { motion } from "framer-motion";
-import Link from "next/link";
 import { memo } from "react";
 
 import { Image } from "components/common/image/Image";
+import { SuperLink } from "components/common/link/SuperLink";
 
 import styles from "./featuredPost.module.scss";
 
@@ -27,7 +27,7 @@ interface FeaturedPostProps {
 }
 
 export const FeaturedPost = memo<FeaturedPostProps>(({ post }) => (
-  <Link href={`/blog/${post.slug}`} className={styles.link}>
+  <SuperLink href={`/blog/${post.slug}`} className={styles.link}>
     <motion.div className={styles.post} whileHover="hover">
       <motion.div className={styles.image} variants={imageVariants}>
         <Image
@@ -45,7 +45,7 @@ export const FeaturedPost = memo<FeaturedPostProps>(({ post }) => (
       </div>
       <h3 className={styles.title}>{post.title}</h3>
     </motion.div>
-  </Link>
+  </SuperLink>
 ));
 
 FeaturedPost.displayName = "FeaturedPost";

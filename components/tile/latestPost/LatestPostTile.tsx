@@ -1,7 +1,7 @@
-import Link from "next/link";
 import { memo } from "react";
 
 import { Image } from "components/common/image/Image";
+import { SuperLink } from "components/common/link/SuperLink";
 import Arrow from "public/svg/right-top-arrow.svg";
 
 import styles from "./latestPostTile.module.scss";
@@ -13,7 +13,7 @@ interface LatestPostTileProps {
 }
 
 export const LatestPostTile = memo<LatestPostTileProps>(({ post }) => (
-  <Link href={`/blog/${post.slug}`}>
+  <SuperLink href={`/blog/${post.slug}`}>
     <article className={styles.article}>
       <div className={styles.info}>
         <h2 className={styles.title}>{post.title}</h2>
@@ -38,7 +38,7 @@ export const LatestPostTile = memo<LatestPostTileProps>(({ post }) => (
         />
       </div>
     </article>
-  </Link>
+  </SuperLink>
 ));
 
 LatestPostTile.displayName = "LatestPostTile";

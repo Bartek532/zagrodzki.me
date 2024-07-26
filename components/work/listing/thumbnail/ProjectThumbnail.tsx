@@ -1,9 +1,9 @@
 import clsx from "clsx";
 import { motion } from "framer-motion";
-import Link from "next/link";
 import { memo } from "react";
 
 import { Image } from "components/common/image/Image";
+import { SuperLink } from "components/common/link/SuperLink";
 import { Skeleton } from "components/common/skeleton/Skeleton";
 import { Project } from "types";
 
@@ -21,7 +21,7 @@ interface ProjectThumbnailProps {
 }
 
 export const ProjectThumbnail = memo<ProjectThumbnailProps>(({ project, featured = false }) => (
-  <Link href={`/work/${project.slug}`}>
+  <SuperLink href={`/work/${project.slug}`}>
     <motion.article
       className={clsx(
         styles.thumbnail,
@@ -61,7 +61,7 @@ export const ProjectThumbnail = memo<ProjectThumbnailProps>(({ project, featured
         </div>
       </div>
     </motion.article>
-  </Link>
+  </SuperLink>
 ));
 
 export const ProjectThumbnailSkeleton = () => (

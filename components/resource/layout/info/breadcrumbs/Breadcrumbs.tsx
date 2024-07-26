@@ -1,6 +1,6 @@
-import Link from "next/link";
 import { memo, Fragment } from "react";
 
+import { SuperLink } from "components/common/link/SuperLink";
 import RightArrow from "public/svg/right-arrow.svg";
 
 import styles from "./breadcrumbs.module.scss";
@@ -13,9 +13,9 @@ export const Breadcrumbs = memo<BreadcrumbsProps>(({ routes }) => (
   <div className={styles.breadcrumbs}>
     {routes.map((route, index) => (
       <Fragment key={route.path}>
-        <Link href={route.path} className={styles.link}>
+        <SuperLink href={route.path} className={styles.link}>
           {route.name}
-        </Link>
+        </SuperLink>
         {index !== routes.length - 1 ? (
           <div className={styles.separator}>
             <RightArrow />
