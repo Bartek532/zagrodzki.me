@@ -21,4 +21,223 @@ priority: 1
 
 <div id="introduction">
 
+The app was initially designed to be my **go-to place** when I wanted to search for something in my library of web resources. It allows users to sync their favorite content for distraction-free reading, saving time and replacing multiple apps with just one.
+
+The focus was primarily on the **user experience** and **performance**, making it as easy and fast as possible to consume web content.
+
+**EDIT: This project is officially my <u>first</u> SaaS that I made <u>money</u> from&nbsp;🥹**
+
 </div>
+
+## Tech stack
+
+When I was talking about this project with my friends, I found out that it's best to show the architecture and decisions on a **diagram**.
+
+That's why I created some more **production-ready graph** than my unorganized scribbles and put it here:
+
+<Image
+  src="/img/projects/syncreads/architecture.png"
+  alt="SyncReads architecture graph"
+  width="1170"
+  height="805"
+/>
+
+Let's talk about it a bit more.
+
+### Architecture
+
+1. Starting from the main setup, **Docker** and **Turborepo** were utilized to create a perfect development environment. The separation of concerns in this monorepo helps keep the codebase clean and structured.
+
+   It is also used to simplify the process of deployment and testing the app, enabling us to run multiple tasks in parallel&nbsp;📦
+
+2. The web app is the primary interface that users see, built with **Next.js** App Router to harness the benefits from **RSC** and keep performance under control.
+
+3. Leveraging the full power of Next.js we employ serverless API and **Edge functions**&nbsp;🔥 mainly for CRUD operations on the database or non-resource-intensive computations on given data. Being a built-in part of Next.js it's super easy to maintain.
+
+4. The connection between the frontend and serverless API is facilitated by **tRPC**, enforcing full type-safety and conventions across different operations.
+
+   Seamless validation is achieved with **Zod**, ensuring our data is in the correct shape.
+
+5. The Sync module, the main character in this theater, is a strictly separated backend built with **Nest.js** responsible ONLY for sync functionality.
+
+   As operations here could be resource and time-intensive, we can scale and extend it independently from the main flow to ensure a good user experience while background tasks are executed&nbsp;📈
+
+6. To initiate synchronization, a simple HTTP request is made. The goal is to make it as simple as possible for third-party tools to integrate with this part by just making a request.
+
+   Communication follows a pure **REST API** approach using endpoints exposed by the backend, with the request requiring authorization through a special user-specific token.
+
+7. Sync performance, a potential concern, is addressed by using queues. A straightforward **Redis** instance with reasonable limits ensures smooth operation.
+
+   Incoming requests are pushed to the correct queue, and when their time comes, our main service processes them.
+
+8. **BullMQ** is used to communicate with our queues, a library dedicated to managing structures like this.
+
+   Easy integration with **Nest.js**, multiple features, and a developer-friendly API enable us to avoid complicated syntax to achieve simple goals&nbsp;💡
+
+9. But where is the data? Short question = short answer. **Supabase**. It uses **PostgreSQL** under the hood, so we won't bother about strictly db things.
+
+   With a range of useful services that can be integrated in minutes (e.g., realtime, auth), it allows us to focus on business value rather than low-level implementation details.
+
+10. There are several ways to communicate with the database, but SyncReads places its bet on the official **JavaScript SDK**.
+
+    Simple, handy, and performant, it eliminates the need for writing tons of abstractions over the database to obtain the desired data.
+
+11. If you don't already know, SyncReads has also a browser extension (available for **Chrome**, **Firefox**, **Edge** etc.), which allow you to save content from the web with just one click.
+
+    It's built with **React** and **Vite** which is simple, yet powerful combination.
+
+<Image
+  src="/img/projects/syncreads/dark-theme.png"
+  alt="It even has a dark theme 🌙"
+  width="1200"
+  height="880"
+/>
+
+### Design
+
+I was **horrible** at design.
+
+I mean, probably I still am (😅), but I improved **A LOT**. I read multiple books (e.g. <Link href="https://www.refactoringui.com/">Refactoring UI</Link>) and watched tons of tutorials to get better at it.
+
+After all, when I see that someone says "_it looks neat_" or "_I like the colors_" I feel like I finally achieved something&nbsp;💪
+
+What I'm trying to say is that I designed the <u>**whole**</u> app myself. From the logo, through the landing page, to the app itself.
+
+It won't be possible to implement it fast, without my favorite **Tailwind** and a lot of accessibility help from **Radix UI**.
+
+A lot to show and talk about, but, I'm still most proud of THIS&nbsp;👇
+
+<Video
+  src="/img/projects/syncreads/grid.mp4"
+  alt="This grid view is pure magic 🪄"
+  autoPlay
+  loop
+  playsInline
+  muted
+  width="1535"
+  heigth="1225"
+/>
+
+PS. You can see it live directly on the <Link href="https://www.syncreads.com">homepage</Link>&nbsp;🔥
+
+## Problems
+
+From a technical standpoint, the biggest challenge was making the **sync process** as fast as possible.
+
+Developing a **monorepo** with separate **deployments** to different platforms through one unified pipeline was also challenging, but it was worth it.
+
+However, two things were even harder...&nbsp;😬
+
+### Marketing
+
+Marketing is probably every developer's **nightmare**&nbsp;🫣
+
+I had to learn a lot about **SEO**, **growth hacking**, **copywriting**, and **social media**. I'm still learning, but I'm happy to see some results.
+
+Most of my users came from my <Link href="https://x.com/bzagrodzki">𝕏 (Twitter)</Link> account, but I'm constantly working on providing more and more traffic sources.
+
+At the end of the day, a **happy customer** is what motivates me the most.
+
+<Video
+  src="/img/projects/syncreads/testimonials.mp4"
+  alt="Positive feedback means more than money 🥹"
+  autoPlay
+  loop
+  playsInline
+  muted
+  width="1370"
+  heigth="900"
+/>
+
+### Product fit
+
+Achieving **market fit is crucial for the success** of any product&nbsp;🔥
+
+For SyncReads, this meant ensuring that the product not only solves a **real problem** but also meets the needs and preferences of its target users. Before diving into development, I conducted extensive **user research** to understand the needs, pain points, and behaviors of potential users.
+
+The primary pain point SyncReads addresses is the **hassle of synchronizing data** across different platforms and devices&nbsp;🔄
+
+Users needed a seamless way to keep their information updated without manual intervention. By analyzing competitors and existing tools, I **identified gaps** in the market. Many tools were either **too complex**, **lacked essential features**, or **were not user-friendly**.
+
+SyncReads aimed to fill these gaps by providing an intuitive and efficient solution.
+
+I started with an **MVP** to quickly test the core functionality of SyncReads. This early version focused on the essential features needed for **data synchronization** and received feedback from a small group of users.
+
+Based on user feedback, I iteratively improved the product. This agile approach allowed me to continuously refine SyncReads, **adding features that users found valuable** and removing or modifying those that did not meet their expectations&nbsp;⭐
+
+Encouraging **satisfied users** to become advocates helped spread the word about SyncReads. **User testimonials**, **case studies**, and **referral programs** leveraged the power of word-of-mouth marketing.
+
+**<u>This is how I achieved my first SaaS sale</u>**&nbsp;🚀
+
+<Image
+  src="/img/projects/syncreads/sale.png"
+  alt="First sale feels different..."
+  width="1200"
+  height="880"
+/>
+
+## Lessons learned
+
+<Quote
+  text="Building a product from scratch to market launch taught me more than 10 years of commercial programming."
+  author="My friend a few years ago"
+/>
+
+After doing it, I can say it's true&nbsp;✅
+
+It's not only about coding - I now think that coding is the easiest part of the whole process.
+
+It's about **marketing**, **sales**, **customer support**, **SEO**, **growth hacking**, **copywriting**, **design**, **product management**, and many more.
+
+Saying "_I learned a lot_" would be an **understatement**.
+
+I discovered a whole **new world** of possibilities, and I'm happy to be a part of it. (#buildinpublic&nbsp;🙏)
+
+### Online presence
+
+To build an online presence for the product, I posted regular updates on <Link href="https://x.com/bzagrodzki">𝕏 (Twitter)</Link> and Reddit.
+
+I even made the whole app **open-source** at one point, but it didn't go well due to a high entry barrier ❌
+
+Despite this, I kept pushing forward with my <Link href="https://github.com/users/Bartek532/projects/2">roadmap</Link> and implementing user **feedback** in real-time. I also discovered <Link href="https://www.producthunt.com/@bzagrodzki">Product Hunt</Link> and the indie hackers community, where I shared my journey and received valuable feedback.
+
+Looking back, I gained a lot of new connections, had tons of insightful conversations, and reviewed thousands of products made by ambitious people.
+
+**What do I regret?**
+
+Not starting **earlier**&nbsp;😢
+
+If you want to start, just do it. **TODAY**.
+
+<Image
+  src="/img/projects/syncreads/growth.png"
+  alt="We grow a lot since I started 🌱"
+  width="1515"
+  height="489"
+/>
+
+### SEO
+
+I didn't realize **how important** SEO is in today's world.
+
+If your app isn't listed in the search engine, it's like it **doesn't exist**&nbsp;🥶
+
+There are still things to do, but I'm proud that I managed to get some **organic traffic**.
+
+- User testimonials
+- Case studies
+- Blog posts
+- Reviews
+
+Helped me get some backlinks and improve the ranking. They made me a lot, but I know I'll do much better in the future&nbsp;💪
+
+What's next?
+
+Well, if you've made your **first sale**, then the **moon** should be your next destination...&nbsp;🚀
+
+<Image
+  src="/img/projects/syncreads/extension.png"
+  alt="SyncReads is available where you need it!"
+  width="1200"
+  height="880"
+/>
