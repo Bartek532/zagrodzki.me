@@ -1,12 +1,17 @@
 import clsx from "clsx";
 import localFont from "next/font/local";
 
-import { Analytics } from "components/common/analytics/Analytics";
-import { Layout } from "components/layout/Layout";
-import { DEFAULT_METADATA, DEFAULT_VIEWPORT } from "lib/metadata";
-import { AppProviders } from "providers/AppProviders";
+import { Header } from "@/components/layout/header";
+import { Toaster } from "@/components/ui/sonner";
+import { WindowsEmojiPolyfill } from "@/components/windows-emoji-polyfill";
+import { DEFAULT_METADATA, DEFAULT_VIEWPORT } from "@/lib/metadata";
+import { Analytics } from "@/providers/analytics";
+import { ThemeProvider } from "@/providers/theme";
 
-import "../styles/globals.scss";
+import "../styles/globals.css";
+
+import { Newsletter } from "@/components/home/newsletter";
+// import "../styles/globals.scss";
 
 export const metadata = DEFAULT_METADATA;
 export const viewport = DEFAULT_VIEWPORT;
@@ -54,12 +59,26 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#"
       itemType="http://schema.org/WebPage"
       className={clsx(walsheim.variable, mono.variable, kenfolg.variable)}
+      suppressHydrationWarning
     >
-      <body>
-        <AppProviders>
-          <Layout>{children}</Layout>
-        </AppProviders>
+      <body className="overflow-x-hidden font-sans antialiased">
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Header />
+          <div className="container mx-auto h-[52px] sm:h-16 sm:border-x" />
+          <main className="divide-y border-dashed sm:border-b">
+            {children}
+            <Newsletter />
+          </main>
+          {/* <Footer /> */}
+        </ThemeProvider>
+        <Toaster />
         <Analytics />
+        <WindowsEmojiPolyfill />
       </body>
     </html>
   );

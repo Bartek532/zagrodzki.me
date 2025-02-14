@@ -1,0 +1,67 @@
+import { Children, type ReactNode } from "react";
+
+import { ViewAnimation } from "@/providers/view-animation";
+import { cn } from "@/utils";
+
+import { Section } from "./section";
+
+type HeroProps = {
+  image?: ReactNode;
+  caption?: string | null;
+  title: string;
+  children?: ReactNode;
+};
+
+export const HeroSection = ({ image, caption, title, children }: HeroProps) => (
+  <Section className="p-6">
+    <div
+      className={cn(
+        "flex flex-col items-start justify-center gap-8",
+        "sm:items-center sm:rounded-lg sm:border sm:bg-card sm:px-8 sm:py-20 sm:shadow-sm",
+      )}
+    >
+      {image && (
+        <ViewAnimation
+          initial={{ opacity: 0, translateY: -8 }}
+          whileInView={{ opacity: 1, translateY: 0 }}
+        >
+          {image}
+        </ViewAnimation>
+      )}
+      <div className="flex flex-col gap-4 sm:items-center">
+        {caption && (
+          <ViewAnimation
+            initial={{ opacity: 0, translateY: -8 }}
+            whileInView={{ opacity: 1, translateY: 0 }}
+          >
+            <small className="block text-muted-foreground text-sm sm:text-base">{caption}</small>
+          </ViewAnimation>
+        )}
+        <ViewAnimation
+          initial={{ opacity: 0, translateY: -8 }}
+          whileInView={{ opacity: 1, translateY: 0 }}
+          delay={0.4}
+        >
+          <h1
+            className={cn(
+              "max-w-4xl font-bold font-kenfolg text-3xl leading-tight tracking-tight",
+              "sm:text-center sm:text-4xl sm:leading-tight",
+              "md:text-5xl md:leading-tight",
+            )}
+          >
+            {title}
+          </h1>
+        </ViewAnimation>
+      </div>
+      {Children.map(children, (child, index) => (
+        <ViewAnimation
+          initial={{ opacity: 0, translateY: -8 }}
+          whileInView={{ opacity: 1, translateY: 0 }}
+          delay={0.8 + index * 0.4}
+        >
+          {child}
+        </ViewAnimation>
+      ))}
+    </div>
+  </Section>
+);

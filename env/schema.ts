@@ -15,6 +15,8 @@ export const serverSchema = z.object({
 
   MAILER_LITE_API_KEY: z.string(),
   MAILER_LITE_GROUP_ID: z.string(),
+
+  GITHUB_TOKEN: z.string(),
 });
 
 export const clientSchema = z.object({
