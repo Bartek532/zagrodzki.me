@@ -20,13 +20,13 @@ export const FeaturedPost = ({ post }: FeaturedPostProps) => (
         href: `/blog/${post.slug}`,
       },
       {
-        label: "View all features",
+        label: "View all posts",
         href: "/blog",
       },
     ]}
   >
     <div
-      className={cn("relative aspect-video overflow-hidden bg-dashed px-4 pt-4", "sm:px-8 sm:pt-8")}
+      className={cn("relative aspect-video overflow-hidden bg-dashed px-6 pt-6", "sm:px-8 sm:pt-8")}
     >
       <div className="relative h-full w-full">
         <Image src={post.image} alt="" fill className="rounded-t-lg border sm:rounded-t-2xl" />

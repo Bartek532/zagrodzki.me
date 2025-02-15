@@ -7,7 +7,7 @@ export const HOST = `${PROTOCOL}://${ORIGIN}` as const;
 
 export const SEPARATOR = " • ";
 
-export const SITE_TITLE = "Bartosz Zagrodzki";
+export const SITE_TITLE = "Bart Zagrodzki";
 export const SITE_TITLE_TEMPLATE = `%s ${SEPARATOR} ${SITE_TITLE}`;
 export const SHORT_DESCRIPTION = "My personal website";
 export const DEFAULT_DESCRIPTION =
@@ -15,32 +15,36 @@ export const DEFAULT_DESCRIPTION =
 
 export const DEFAULT_IMAGE_URL = `/img/banner.png`;
 
-export const SOCIALS = [
-  {
+export const SOCIALS = {
+  x: {
     id: "x",
-    name: "x (twitter)",
-    color: "#000000",
+    name: "X",
     link: `https://x.com/${env.NEXT_PUBLIC_X_USERNAME}`,
   },
-  {
+  linkedin: {
     id: "linkedin",
-    name: "linkedin",
-    color: "#2867B2",
+    name: "LinkedIn",
     link: `https://www.linkedin.com/in/${env.NEXT_PUBLIC_LINKEDIN_USERNAME}`,
   },
-  {
+  github: {
     id: "github",
-    name: "github",
-    color: "#333",
+    name: "GitHub",
     link: `https://github.com/${env.NEXT_PUBLIC_GITHUB_USERNAME}`,
   },
-  {
+  rss: {
     id: "rss",
-    name: "rss",
-    color: "#ee802f",
+    name: "RSS",
     link: "/feed",
   },
-] as const;
+} as const;
 
 export const EMAIL_REGEX = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$/;
 export const CONTENT_ID = "content";
+
+export const DEFAULT_BREAKPOINTS = {
+  sm: 640,
+  md: 768,
+  lg: 1024,
+  xl: 1280,
+  "2xl": 1536,
+} as const;

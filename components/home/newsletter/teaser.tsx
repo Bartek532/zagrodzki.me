@@ -1,20 +1,30 @@
+import Image from "next/image";
+
 import { TeaserTitle } from "./teaser-title";
 
-export const Teaser = async () => (
+const gravatars = [
+  "27205e5c51cb03f862138b22bcb5dc20f94a342e744ff6df1b8dc8af3c865109",
+  "09abd59eb5653a7183ba812b8261f48b",
+  "aa99b351245441b8ca95d54a52d2998c",
+  "fab9f6ea398e4c042e274df505383b458fbdb12272ab025cd2f275f1fb716da3",
+  "44cffd4ad9a44b797edcd00eb94b384bd4817fd046d95210766e863a562c57de",
+];
+
+export const Teaser = () => (
   <div className="flex flex-col gap-4">
-    <TeaserTitle contacts={2200} />
+    <TeaserTitle contacts={100} />
     <div className="-space-x-2 flex items-center">
-      {/* {contacts?.subscribers.map((contact) => (
-          <Image
-            key={contact.id}
-            src={`https://www.gravatar.com/avatar/${contact.hash}?d=404`}
-            alt=""
-            width={40}
-            height={40}
-            className="h-8 w-8 rounded-full object-cover ring-2 ring-secondary"
-          />
-        ))} */}
-      <div className="flex h-8 w-8 items-center justify-center rounded-full bg-background ring-2 ring-secondary">
+      {gravatars.map((hash) => (
+        <Image
+          key={hash}
+          src={`https://www.gravatar.com/avatar/${hash}?d=404`}
+          alt=""
+          width={40}
+          height={40}
+          className="h-8 w-8 rounded-full object-cover ring-2 ring-secondary"
+        />
+      ))}
+      <div className="flex h-8 w-8 items-center justify-center rounded-full bg-card ring-2 ring-secondary">
         <span className="text-[8px] text-muted-foreground">
           +{new Intl.NumberFormat("en-US", { notation: "compact" }).format((100 ?? 0) - (10 ?? 0))}
         </span>

@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-return */
-
 import pwa from "next-pwa";
 
 const withPWA = pwa({
@@ -29,6 +28,12 @@ const nextConfig = {
     remotePatterns: [
       {
         hostname: "i.scdn.co",
+      },
+      {
+        hostname: "www.gravatar.com",
+      },
+      {
+        hostname: "oku.ams3.cdn.digitaloceanspaces.com",
       },
     ],
   },

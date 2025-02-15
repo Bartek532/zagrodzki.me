@@ -8,7 +8,7 @@ import {
   isCurrentlyPlayingPayload,
   isRecentlyPlayedPayload,
   isTokensPayload,
-} from "../utils/validation/validator";
+} from "../validation/validator";
 
 const access = {
   token: "",

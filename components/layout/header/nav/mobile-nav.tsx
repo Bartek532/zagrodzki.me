@@ -1,13 +1,14 @@
 "use client";
 
-import { useAtom } from "jotai";
+import { atom, useAtom } from "jotai";
 import Link from "next/link";
 
-import { mobileMenuOpen } from "@/components/layout/header/mobile-menu";
 import { ActiveLink } from "@/components/ui/active-link";
 import { Button } from "@/components/ui/button";
-import { navigation } from "@/lib/navigation";
+import { routes } from "@/data/routes";
 import { cn } from "@/utils";
+
+export const mobileMenuOpen = atom(false);
 
 export const MobileNav = () => {
   const [open, setOpen] = useAtom(mobileMenuOpen);
@@ -34,9 +35,9 @@ export const MobileNav = () => {
         >
           <nav className="flex flex-col items-start gap-2">
             <ul className="w-full">
-              {navigation.map((link) => (
-                <li key={link.href} className="w-full py-1">
-                  <ActiveLink key={link.href} href={link.href} onClick={() => setOpen(false)}>
+              {routes.map((link) => (
+                <li key={link.path} className="w-full py-1">
+                  <ActiveLink key={link.path} href={link.path} onClick={() => setOpen(false)}>
                     {link.label}
                   </ActiveLink>
                 </li>

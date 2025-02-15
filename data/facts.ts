@@ -6,10 +6,10 @@ export const allFacts = [
       "The beginning was hard, but if I ever give up, you can slap me in the face. Are you in? 💪",
   },
   {
-    title: "I have read 55 books in the last year",
+    title: "I've read 55 books last year",
     icon: "book",
     description:
-      "I love to read, I will try to improve on that this year. What is your favorite genre? What do you recommend? 📖",
+      "I love to read and try to improve on that this year. What book could you recommend? 📖",
   },
   {
     title: "I really like chess",

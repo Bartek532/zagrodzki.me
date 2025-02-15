@@ -1,5 +1,7 @@
-import { Hero } from "components/common/hero/Hero";
-import { ProjectsListing } from "components/work/listing/ProjectsListing";
+import { Recommendations } from "@/components/about/recommendation";
+import { Skills } from "@/components/about/skills";
+import { Hero } from "@/components/work/hero";
+import { Positions } from "@/components/work/positions";
 import { getMetadata } from "lib/metadata";
 
 const description = "Everything that I have built, alone or with someone 🔨";
@@ -13,8 +15,12 @@ export const metadata = getMetadata({
 
 const WorkPage = () => (
   <>
-    <Hero title="Work" description={description} />
-    <ProjectsListing />
+    {/* <Hero title="Work" description={description} />
+    <ProjectsListing /> */}
+    <Hero />
+    <Positions />
+    <Skills />
+    <Recommendations />
   </>
 );
 

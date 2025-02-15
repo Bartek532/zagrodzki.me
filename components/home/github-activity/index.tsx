@@ -1,13 +1,12 @@
 import dayjs from "dayjs";
 import { unstable_cache as cache } from "next/cache";
-import ActivityCalendar from "rsc-activity-calendar";
 
 import { Section } from "@/components/common/sections/section";
 import { env } from "@/env/client";
-import tailwind from "@/lib/tailwind";
 import { ViewAnimation } from "@/providers/view-animation";
 
-import type { Activity } from "rsc-activity-calendar";
+import type { Activity } from "react-activity-calendar";
+import { Calendar } from "./calendar";
 
 const getContributions = cache(
   async () => {
@@ -53,36 +52,14 @@ export const GitHubActivity = async () => {
       <ViewAnimation
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
-        className="relative grid gap-0.5 sm:grid-cols-2 sm:gap-[3px] sm:p-8 lg:gap-1"
+        className="relative grid gap-0.5 py-6 sm:grid-cols-2 lg:p-8 lg:gap-1"
       >
         {[thirdQuarterData, fourthQuarterData, firstQuarterData, secondQuarterData].map(
           (data, index) => (
-            <ActivityCalendar
-              key={index}
-              hideColorLegend
-              hideTotalCount
-              hideMonthLabels
-              data={data}
-              theme={{
-                light: [
-                  tailwind.theme.colors.neutral[200],
-                  tailwind.theme.colors.green[200],
-                  tailwind.theme.colors.green[400],
-                  tailwind.theme.colors.green[600],
-                  tailwind.theme.colors.green[800],
-                ],
-                dark: [
-                  tailwind.theme.colors.neutral[800],
-                  tailwind.theme.colors.green[200],
-                  tailwind.theme.colors.green[400],
-                  tailwind.theme.colors.green[600],
-                  tailwind.theme.colors.green[800],
-                ],
-              }}
-            />
+            <Calendar key={index} hideColorLegend hideTotalCount hideMonthLabels data={data} />
           ),
         )}
-        <div className="absolute right-0 bottom-0 left-0 z-10 h-full bg-gradient-to-b from-transparent to-background sm:bottom-8 sm:h-40" />
+        <div className="absolute right-0 bottom-0 left-0 z-10 h-full bg-gradient-to-b from-transparent to-background lg:bottom-8 lg:h-40" />
         <a
           className="-translate-x-1/2 absolute bottom-4 left-1/2 z-10 whitespace-nowrap font-mono text-muted-foreground text-xs"
           href={`https://github.com/${env.NEXT_PUBLIC_GITHUB_USERNAME}`}

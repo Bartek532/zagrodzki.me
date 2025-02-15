@@ -3,11 +3,11 @@ import { ThirdsSection } from "@/components/common/sections/thirds";
 export const FeaturedProject = () => (
   <ThirdsSection
     caption="Now"
-    description="I'm currently working on a new project called 'The Hub'. It's a platform that helps people find and connect with each other. I'm using it to learn more about Next.js, Tailwind CSS, and TypeScript."
+    description="Im currently working on a new project called 'TurboStarter'. It's a collection of starter kits to help you get started quickly with your next project. Having Next.js, Expo (React Native) and WXT (Vite) on its stack makes it a great choice for shipping web apps, mobile apps and browser extensions in minutes."
     buttons={[
       {
-        label: "Learn more",
-        href: "https://thehub.com",
+        label: "Check it out",
+        href: "https://turbostarter.dev",
       },
     ]}
   >

@@ -59,6 +59,9 @@ module.exports = {
           DEFAULT: "hsl(var(--warning))",
           foreground: "hsl(var(--warning-foreground))",
         },
+        link: {
+          DEFAULT: "hsl(var(--link))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -74,6 +77,40 @@ module.exports = {
         "in-expo": "cubic-bezier(0.32, 0.72, 0, 1)",
       },
       typography: typographyConfig,
+      boxShadow: {
+        tile: "hsla(0, 0%, 0%, 0.08) 0px 1px 4px",
+      },
+      keyframes: {
+        "bar-pulse": {
+          "0%": {
+            height: "1px",
+            marginTop: "0",
+          },
+          "10%": {
+            height: "15px",
+            marginTop: "-15px",
+          },
+          "50%": {
+            height: "5px",
+            marginTop: "-5px",
+          },
+          "60%": {
+            height: "7px",
+            marginTop: "-7px",
+          },
+          "80%": {
+            height: "15px",
+            marginTop: "-15px",
+          },
+          "100%": {
+            height: "1px",
+            marginTop: "0",
+          },
+        },
+      },
+      animation: {
+        "bar-pulse": "bar-pulse 1s infinite",
+      },
     },
   },
   plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],

@@ -15,7 +15,7 @@ export const TeaserTitle = ({ contacts }: TeaserTitleProps) => {
     const observer = new IntersectionObserver(
       (entries) => {
         const [entry] = entries;
-        if (entry.isIntersecting) {
+        if (entry?.isIntersecting) {
           setCount(contacts);
           observer.disconnect(); // Stop observing once triggered
         }
@@ -23,20 +23,22 @@ export const TeaserTitle = ({ contacts }: TeaserTitleProps) => {
       { threshold: 1 }, // Trigger when at least 10% of the element is visible
     );
 
-    if (h2Ref.current) {
-      observer.observe(h2Ref.current);
+    const current = h2Ref.current;
+
+    if (current) {
+      observer.observe(current);
     }
 
     return () => {
-      if (h2Ref.current) {
-        observer.unobserve(h2Ref.current);
+      if (current) {
+        observer.unobserve(current);
       }
     };
   }, [contacts]);
 
   return (
     <h2 ref={h2Ref} className="font-bold text-2xl tracking-tight sm:text-3xl">
-      Join <NumberFlow value={count} /> readers and get infrequent updates on new projects.
+      Join <NumberFlow value={count} />+ readers and get infrequent updates on frequent projects.
     </h2>
   );
 };

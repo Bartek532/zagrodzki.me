@@ -14,7 +14,7 @@ export const Feed = async () => {
   return (
     <Section
       className={cn(
-        "relative flex flex-col gap-2 px-4 py-8 font-mono text-muted-foreground text-xs",
+        "relative flex flex-col gap-2 p-6 font-mono text-muted-foreground text-xs",
         "sm:px-8 sm:text-sm",
       )}
     >

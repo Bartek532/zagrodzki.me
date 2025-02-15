@@ -33,7 +33,6 @@ export const NewsletterForm = () => {
     },
   });
 
-  // 2. Define a submit handler.
   const onSubmit = async (values: z.infer<typeof newsletterSchema>) => {
     try {
       const response = await new Promise((resolve) => {
@@ -55,7 +54,7 @@ export const NewsletterForm = () => {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="relative">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="relative sm:mt-2">
         <FormField
           control={form.control}
           name="email"
@@ -64,12 +63,12 @@ export const NewsletterForm = () => {
               <FormLabel className="sr-only">Email</FormLabel>
               <FormControl>
                 <Input
-                  placeholder="jane@acme.com"
+                  placeholder="john@doe.com"
                   {...field}
-                  className="h-auto rounded-full bg-background px-8 py-4 pr-16"
+                  className="h-auto bg-card rounded-full shadow-tile px-6 py-4 pr-16"
                 />
               </FormControl>
-              <FormDescription className="py-2">
+              <FormDescription className="py-2 pl-2">
                 I promise not to spam you or sell your email address.
               </FormDescription>
               <FormMessage />
@@ -78,7 +77,7 @@ export const NewsletterForm = () => {
         />
         <Button
           type="submit"
-          className="absolute top-[3px] right-[3px] aspect-square h-auto rounded-full"
+          className="absolute top-[5px] right-[5px] sm:top-[3px] sm:right-[3px] aspect-square h-auto rounded-full"
           disabled={form.formState.isSubmitting || !form.formState.isValid}
         >
           <ArrowRightIcon size={16} />

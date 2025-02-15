@@ -17,7 +17,7 @@ export const HeroSection = ({ image, caption, title, children }: HeroProps) => (
     <div
       className={cn(
         "flex flex-col items-start justify-center gap-8",
-        "sm:items-center sm:rounded-lg sm:border sm:bg-card sm:px-8 sm:py-20 sm:shadow-sm",
+        "sm:items-center sm:rounded-lg sm:border sm:bg-card sm:px-8 sm:py-20 sm:shadow-tile",
       )}
     >
       {image && (
@@ -44,9 +44,9 @@ export const HeroSection = ({ image, caption, title, children }: HeroProps) => (
         >
           <h1
             className={cn(
-              "max-w-4xl font-bold font-kenfolg text-3xl leading-tight tracking-tight",
+              "max-w-4xl font-bold font-kenfolg text-balance text-3xl leading-tighter tracking-tight",
               "sm:text-center sm:text-4xl sm:leading-tight",
-              "md:text-5xl md:leading-tight",
+              "lg:text-5xl lg:leading-tight",
             )}
           >
             {title}

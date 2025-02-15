@@ -1,9 +1,8 @@
-import { ArrowUpRightIcon } from "lucide-react";
-
 import { Section } from "@/components/common/sections/section";
 import { Button } from "@/components/ui/button";
 import { Prose } from "@/components/ui/prose";
 import { ViewAnimation } from "@/providers/view-animation";
+import ArrowUpRightIcon from "public/svg/right-top-arrow.svg";
 
 import type { ReactNode } from "react";
 
@@ -35,14 +34,14 @@ const LargeSlot = ({ children }: { children: ReactNode }) => (
 const SmallSlot = ({ caption, title, description, buttons }: ThirdsSectionProps) => (
   <div>
     <ViewAnimation
-      className="flex h-full flex-col items-start justify-between gap-4 px-6 py-8 sm:px-8"
+      className="flex h-full flex-col items-start justify-between gap-4 p-6 sm:p-8"
       initial={{ opacity: 0, translateY: -8 }}
       whileInView={{ opacity: 1, translateY: 0 }}
     >
       <Prose>
         <small className="text-muted-foreground">{caption}</small>
         {title && <h2 className="my-2 text-3xl">{title}</h2>}
-        <p>{description}</p>
+        <p className="mt-2">{description}</p>
       </Prose>
       <div className="flex items-center gap-1">
         {buttons.map((button, index) => (
@@ -51,9 +50,10 @@ const SmallSlot = ({ caption, title, description, buttons }: ThirdsSectionProps)
               href={button.href}
               target={button.href.includes("http") ? "_blank" : undefined}
               rel={button.href.includes("http") ? "noreferrer noopener" : undefined}
+              className="[&_svg]:size-2"
             >
               {button.label}
-              {button.href.includes("http") && <ArrowUpRightIcon size={16} />}
+              {button.href.includes("http") && <ArrowUpRightIcon className="text-foreground" />}
             </a>
           </Button>
         ))}
@@ -63,7 +63,7 @@ const SmallSlot = ({ caption, title, description, buttons }: ThirdsSectionProps)
 );
 
 export const ThirdsSection = ({ children, reverse = false, ...props }: ThirdsSectionProps) => (
-  <Section className="grid divide-y sm:grid-cols-3 sm:divide-x sm:divide-y-0">
+  <Section className="grid divide-y lg:grid-cols-3 lg:divide-x lg:divide-y-0">
     {reverse ? (
       <>
         <LargeSlot>{children}</LargeSlot>

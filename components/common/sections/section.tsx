@@ -23,7 +23,7 @@ const Cross = () => (
 );
 
 export const Section = ({ children, className, ...props }: SectionProps) => (
-  <section className="border-dashed" {...props}>
+  <section {...props}>
     <div className="container relative mx-auto">
       <div className={cn("sm:border-x", className)}>{children}</div>
       <div className="-bottom-3 -left-3 absolute z-10 hidden h-6 sm:block">

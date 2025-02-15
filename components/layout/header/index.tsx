@@ -4,7 +4,7 @@ import { MobileNav } from "@/components/layout/header/nav/mobile-nav";
 import { MobileNavTrigger } from "@/components/layout/header/nav/mobile-nav-trigger";
 import { ActiveLink } from "@/components/ui/active-link";
 import { Button } from "@/components/ui/button";
-import { navigation } from "@/lib/navigation";
+import { routes } from "@/data/routes";
 import { HeaderProvider } from "@/providers/header";
 import { ViewAnimation } from "@/providers/view-animation";
 import Logo from "public/svg/logo.svg";
@@ -24,14 +24,14 @@ export const Header = () => (
         </ViewAnimation>
       </div>
       <nav className="hidden gap-6 md:flex">
-        {navigation.map((link, index) => (
+        {routes.map((link, index) => (
           <ViewAnimation
-            key={link.href}
+            key={link.path}
             initial={{ opacity: 0, translateY: -8 }}
             whileInView={{ opacity: 1, translateY: 0 }}
             delay={0.4 + index * 0.1}
           >
-            <ActiveLink href={link.href}>{link.label}</ActiveLink>
+            <ActiveLink href={link.path}>{link.label}</ActiveLink>
           </ViewAnimation>
         ))}
       </nav>
@@ -44,7 +44,7 @@ export const Header = () => (
           <Button variant="outline" size="sm" asChild>
             <Link href="/contact" className="group">
               Get in touch
-              <PaperPlane className="transition-transform duration-200 ease-out group-hover:translate-x-8 group-hover:-translate-y-4 group-hover:rotate-[20deg]" />
+              <PaperPlane className="transition-transform duration-200 size-3.5 text-foreground ease-out group-hover:translate-x-8 group-hover:-translate-y-4 group-hover:rotate-[20deg]" />
             </Link>
           </Button>
         </ViewAnimation>

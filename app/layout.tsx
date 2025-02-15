@@ -1,6 +1,8 @@
 import clsx from "clsx";
 import localFont from "next/font/local";
 
+import { Newsletter } from "@/components/home/newsletter";
+import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
 import { Toaster } from "@/components/ui/sonner";
 import { WindowsEmojiPolyfill } from "@/components/windows-emoji-polyfill";
@@ -10,7 +12,6 @@ import { ThemeProvider } from "@/providers/theme";
 
 import "../styles/globals.css";
 
-import { Newsletter } from "@/components/home/newsletter";
 // import "../styles/globals.scss";
 
 export const metadata = DEFAULT_METADATA;
@@ -70,11 +71,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         >
           <Header />
           <div className="container mx-auto h-[52px] sm:h-16 sm:border-x" />
-          <main className="divide-y border-dashed sm:border-b">
+          <main className="divide-y sm:border-b">
             {children}
             <Newsletter />
           </main>
-          {/* <Footer /> */}
+          <Footer />
         </ThemeProvider>
         <Toaster />
         <Analytics />
