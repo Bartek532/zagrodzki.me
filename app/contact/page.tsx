@@ -1,5 +1,5 @@
-import { Hero } from "components/common/hero/Hero";
-import { Contact } from "components/contact/Contact";
+import { Contact } from "@/components/contact";
+import { Hero } from "@/components/contact/hero";
 import { getMetadata } from "lib/metadata";
 
 const description = "Do you want to cooperate? Ask for something? Or just chat? Let me know 💬";
@@ -13,7 +13,9 @@ export const metadata = getMetadata({
 
 const ContactPage = () => (
   <>
-    <Hero title="Contact" description={description} />
+    {/* <Hero title="Contact" description={description} />
+    <Contact /> */}
+    <Hero />
     <Contact />
   </>
 );

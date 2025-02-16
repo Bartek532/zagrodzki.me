@@ -26,7 +26,7 @@ export const Recommendations = () => (
             delay={index % 2 ? 0.2 : 0}
             key={recommendation.author.name}
             className={cn(
-              "mx-auto flex max-w-4xl flex-col items-start gap-4 lg:gap-6 p-6 transition-colors hover:bg-card dark:hover:bg-accent",
+              "w-full flex flex-col items-start gap-4 lg:gap-6 p-6 transition-colors hover:bg-card dark:hover:bg-accent",
               "sm:flex-row sm:p-8",
             )}
           >
@@ -48,7 +48,7 @@ export const Recommendations = () => (
                 </a>
                 <p className="text-muted-foreground text-sm">{recommendation.author.position}</p>
               </div>
-              <Prose className="prose-sm max-w-none">
+              <Prose className="prose-sm max-w-3xl">
                 <p>{recommendation.content}</p>
               </Prose>
             </div>

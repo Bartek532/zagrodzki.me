@@ -57,7 +57,7 @@ body {
     --destructive-foreground: 0 0% 98%;
     --border: 0 0% 14.9%;
     --input: 0 0% 14.9%;
-    --ring: 0 0% 83.1%;
+    --ring: 230 7% 21%;
 
     --success: 175 47% 57%;
     --success-foreground: 0 0% 98%;
@@ -101,6 +101,16 @@ body {
       transparent 100%
     );
     background-size: 0.25rem 0.25rem;
+  }
+
+  .border-archive {
+    background-image: repeating-linear-gradient(
+      -45deg,
+      black,
+      black 20px,
+      hsl(var(--warning)) 20px,
+      hsl(var(--warning)) 40px
+    );
   }
 }
 
@@ -175,6 +185,24 @@ body {
 
 .react-activity-calendar {
   width: auto !important;
+}
+
+input[type="search"]::-ms-clear {
+  display: none;
+  width: 0;
+  height: 0;
+}
+input[type="search"]::-ms-reveal {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+  display: none;
 }
 
 :root {
