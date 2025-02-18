@@ -1,7 +1,8 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { ArrowRightIcon } from "lucide-react";
+import { ArrowRight, Check, Loader2, X } from "lucide-react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod";
@@ -17,9 +18,12 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { handleError } from "@/utils";
+import { cn } from "@/utils";
+import { onPromise } from "@/utils/functions";
 
-// import { subscribe } from "@/app/actions/subscribe";
+import { subscribeToNewsletter } from "./api/mailer";
+
+type FormStatus = "pending" | "loading" | "fullfilled" | "rejected";
 
 const newsletterSchema = z.object({
   email: z.string().email(),
@@ -27,34 +31,26 @@ const newsletterSchema = z.object({
 
 export const NewsletterForm = () => {
   const form = useForm<z.infer<typeof newsletterSchema>>({
-    resolver: zodResolver(newsletterSchema as never),
-    defaultValues: {
-      email: "",
-    },
+    resolver: zodResolver(newsletterSchema),
   });
 
-  const onSubmit = async (values: z.infer<typeof newsletterSchema>) => {
+  const [formStatus, setFormStatus] = useState<FormStatus>("pending");
+
+  const onSubmit = form.handleSubmit(async ({ email }) => {
+    setFormStatus("loading");
     try {
-      const response = await new Promise((resolve) => {
-        setTimeout(() => {
-          resolve({ message: "Email subscribed", error: null });
-        }, 1000);
-      });
-
-      if ("error" in response) {
-        throw new Error(response.error);
-      }
-
-      form.reset();
-      toast.success(response.message);
-    } catch (error) {
-      handleError(error);
+      await subscribeToNewsletter(email);
+      setFormStatus("fullfilled");
+      toast.success("You're subscribed to my newsletter! Now check your inbox 📬");
+    } catch {
+      setFormStatus("rejected");
+      toast.error("Oops, maybe try again later?");
     }
-  };
+  });
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="relative sm:mt-2">
+      <form onSubmit={onPromise(onSubmit)} className="relative sm:mt-2">
         <FormField
           control={form.control}
           name="email"
@@ -77,10 +73,24 @@ export const NewsletterForm = () => {
         />
         <Button
           type="submit"
-          className="absolute top-[5px] right-[5px] sm:top-[3px] sm:right-[3px] aspect-square h-auto rounded-full"
-          disabled={form.formState.isSubmitting || !form.formState.isValid}
+          className={cn(
+            "absolute top-[5px] right-[5px] sm:top-[3px] sm:right-[3px] aspect-square h-auto rounded-full",
+            formStatus === "fullfilled" &&
+              "bg-success text-success-foreground disabled:opacity-100",
+            formStatus === "rejected" &&
+              "bg-destructive text-destructive-foreground disabled:opacity-100",
+          )}
+          disabled={formStatus !== "pending" || !form.formState.isValid}
         >
-          <ArrowRightIcon size={16} />
+          {formStatus === "loading" ? (
+            <Loader2 className="size-4 animate-spin" />
+          ) : formStatus === "fullfilled" ? (
+            <Check className="size-4" />
+          ) : formStatus === "rejected" ? (
+            <X className="size-4" />
+          ) : (
+            <ArrowRight className="size-4" />
+          )}
         </Button>
       </form>
     </Form>

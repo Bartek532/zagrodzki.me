@@ -8,13 +8,15 @@ import { Prose } from "@/components/ui/prose";
 import { cn } from "@/utils";
 import { CONTENT_ID } from "@/utils/consts";
 
+import * as customComponents from "./components/custom";
 import { Heading } from "./components/heading";
-import { Image } from "./components/image";
-import { Video } from "./components/video";
-import { Sandbox } from "./components/sandbox";
 import { Highlight } from "./components/highlight";
-import { Quote } from "./components/quote";
+import { Image } from "./components/image";
 import { Pre } from "./components/pre";
+import { Quote } from "./components/quote";
+import { Sandbox } from "./components/sandbox";
+import { Video } from "./components/video";
+
 interface ContentProps {
   readonly content: MDXRemoteSerializeResult;
 }
@@ -36,7 +38,7 @@ const customMdxComponents = {
   Highlight,
   Sandbox: ({ id }: { id: string }) => <Sandbox id={id} />,
   pre: Pre,
-  // ...CustomComponents,
+  ...customComponents,
 } as unknown as Record<string, React.ReactNode>;
 
 export const Content = memo<ContentProps>(({ content }) => (

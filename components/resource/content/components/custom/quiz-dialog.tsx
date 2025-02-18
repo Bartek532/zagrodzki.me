@@ -1,16 +1,15 @@
 "use client";
 
 import clsx from "clsx";
+import { Plus, X } from "lucide-react";
 import { memo, useEffect } from "react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
-import { Input } from "components/common/input/Input";
-import CrossIcon from "public/svg/cross.svg";
-import PlusIcon from "public/svg/plus.svg";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/utils";
+import { Input } from "components/ui/input";
 import { onPromise } from "utils/functions";
-
-import styles from "./quizDialog.module.scss";
 
 interface QuizDialogProps {
   readonly correctAnswers: (string | number)[];
@@ -25,13 +24,28 @@ interface Answer {
 
 const AnswerItem = ({ answer, onDeleteAnswer }: { answer: Answer; onDeleteAnswer: () => void }) => (
   <li>
-    <button className={clsx(styles.answer, styles[answer.status])} onClick={onDeleteAnswer}>
-      {answer.status === "unchecked" ? (
-        <div className={styles.close}>
-          <CrossIcon />
+    <button
+      className={clsx(
+        "text-sm py-1.5 px-3.5 rounded-full border-0 relative group transition-colors duration-100",
+        answer.status === "unchecked" && "bg-background cursor-pointer",
+        answer.status === "correct" && "bg-success text-success-foreground cursor-default",
+        answer.status === "incorrect" &&
+          "bg-destructive text-destructive-foreground cursor-default",
+      )}
+      onClick={onDeleteAnswer}
+    >
+      {answer.status === "unchecked" && (
+        <div className="inset-0 absolute z-10 flex items-center justify-center opacity-0 transition-opacity duration-100 group-hover:opacity-100">
+          <X className="size-4" />
         </div>
-      ) : null}
-      <span className={styles.text}>{answer.text}</span>
+      )}
+      <span
+        className={cn({
+          "transition-opacity duration-100 group-hover:opacity-0": answer.status === "unchecked",
+        })}
+      >
+        {answer.text}
+      </span>
     </button>
   </li>
 );
@@ -104,31 +118,38 @@ export const QuizDialog = memo<QuizDialogProps>(({ correctAnswers, scoreMessages
 
   return (
     <>
-      <form className={styles.form} onSubmit={onPromise(handleSubmit(handleFormSubmit))}>
+      <form
+        className="w-full flex items-center gap-2 justify-center relative mt-6 sm:mt-8 lg:mt-10"
+        onSubmit={onPromise(handleSubmit(handleFormSubmit))}
+      >
         <Input
           type="text"
           placeholder="Type your answer here..."
-          isError={!!errors.inputType}
+          className={clsx(errors.inputType && "border-destructive focus-visible:ring-destructive")}
           {...register("inputType", {
             required: true,
             validate: isNotInAnswers,
           })}
           disabled={answers.length >= correctAnswers.length || isAnswersChecked}
-        >
-          <span className="sr-only">input type</span>
-        </Input>
+          aria-label="input type"
+        />
         <button
-          className={styles.btn}
+          className="border-0 cursor-pointer transition-colors duration-200 hover:bg-sky/90 text-sm self-stretch text-white px-5 rounded-lg bg-sky  flex items-center gap-2 disabled:cursor-not-allowed disabled:opacity-50"
           disabled={answers.length >= correctAnswers.length || isAnswersChecked}
         >
-          Add <PlusIcon />
+          Add <Plus className="size-4" />
         </button>
       </form>
-      <div className={styles.answersWrapper}>
+      <div
+        className={cn(
+          "w-full flex justify-center border border-input bg-card min-h-[200px] py-3 px-4 text-sm rounded-lg mt-4 relative",
+          answers.length === 0 ? "items-center" : "items-start",
+        )}
+      >
         {answers.length === 0 ? (
-          <div className={styles.placeholder}>Your answers will appear here.</div>
+          <div className="flex items-center justify-center">Your answers will appear here.</div>
         ) : (
-          <ul className={styles.answers}>
+          <ul className="w-full h-full flex flex-wrap items-start justify-start list-none p-0 m-0 gap-1.5 relative z-30">
             {answers.map((answer) => (
               <AnswerItem
                 key={answer.id}
@@ -140,18 +161,16 @@ export const QuizDialog = memo<QuizDialogProps>(({ correctAnswers, scoreMessages
         )}
         <div
           className={clsx(
-            styles.result,
-            styles.active && { [styles.active]: isResultMessageShown },
+            "w-full h-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center gap-[2px] text-[16px] rounded-[15px] backdrop-blur-md opacity-0 transition-opacity duration-150 text-center p-[30px] z-20",
+            isResultMessageShown && "opacity-100 z-40",
           )}
         >
           <strong>Your result is {score.toFixed(0)}%</strong>
-          <div className={styles.message}>
-            {scoreMessages.find((scoreMessage) => scoreMessage.score <= score)?.message}
-          </div>
+          <div>{scoreMessages.find((scoreMessage) => scoreMessage.score <= score)?.message}</div>
         </div>
         {isAnswersChecked ? (
           <button
-            className={styles.resultBtn}
+            className="absolute right-[10px] bottom-[7px] border-0 bg-transparent text-gray-400 underline cursor-pointer z-50 hover:no-underline"
             onClick={() =>
               isResultMessageShown ? setIsResultMessageShown(false) : setIsResultMessageShown(true)
             }
@@ -160,24 +179,32 @@ export const QuizDialog = memo<QuizDialogProps>(({ correctAnswers, scoreMessages
           </button>
         ) : null}
       </div>
-      <div className={styles.info}>
-        <div className={styles.buttons}>
-          <button
-            className={clsx(styles.button, styles.check)}
+      <div className="w-full flex items-start justify-between mt-4 px-1">
+        <div className="flex items-center gap-2.5">
+          <Button
+            className={clsx(
+              "border-0 cursor-pointer text-sm py-2 px-5 rounded-full",
+              "disabled:cursor-not-allowed disabled:opacity-50",
+              "bg-success text-success-foreground hover:bg-success/90",
+            )}
             onClick={handleCheckAnswers}
             disabled={!answers.length || isAnswersChecked}
           >
             Check
-          </button>
-          <button
-            className={clsx(styles.button, styles.reset)}
+          </Button>
+          <Button
+            className={clsx(
+              "border-0 cursor-pointer text-sm py-2 px-5 rounded-full",
+              "disabled:cursor-not-allowed disabled:opacity-50",
+              "bg-destructive text-destructive-foreground hover:bg-destructive/90",
+            )}
             onClick={handleResetAnswers}
             disabled={!answers.length}
           >
             Reset
-          </button>
+          </Button>
         </div>
-        <div className={styles.counter}>
+        <div className="text-sm text-muted-foreground">
           {answers.length}/{correctAnswers.length}
         </div>
       </div>
