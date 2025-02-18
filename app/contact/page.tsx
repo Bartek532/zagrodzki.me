@@ -1,6 +1,6 @@
 import { Contact } from "@/components/contact";
 import { Hero } from "@/components/contact/hero";
-import { getMetadata } from "lib/metadata";
+import { getMetadata } from "@/lib/metadata";
 
 const description = "Do you want to cooperate? Ask for something? Or just chat? Let me know 💬";
 

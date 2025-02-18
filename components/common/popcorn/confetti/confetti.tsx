@@ -1,20 +1,19 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
 import { random } from "lodash";
+import { AnimatePresence, motion } from "motion/react";
 import { memo } from "react";
 
-import Particle1 from "public/svg/confetti/1.svg";
-import Particle10 from "public/svg/confetti/10.svg";
-import Particle2 from "public/svg/confetti/2.svg";
-import Particle3 from "public/svg/confetti/3.svg";
-import Particle4 from "public/svg/confetti/4.svg";
-import Particle5 from "public/svg/confetti/5.svg";
-import Particle6 from "public/svg/confetti/6.svg";
-import Particle7 from "public/svg/confetti/7.svg";
-import Particle8 from "public/svg/confetti/8.svg";
-import Particle9 from "public/svg/confetti/9.svg";
-
+import Particle1 from "../../../../public/svg/confetti/1.svg";
+import Particle10 from "../../../../public/svg/confetti/10.svg";
+import Particle2 from "../../../../public/svg/confetti/2.svg";
+import Particle3 from "../../../../public/svg/confetti/3.svg";
+import Particle4 from "../../../../public/svg/confetti/4.svg";
+import Particle5 from "../../../../public/svg/confetti/5.svg";
+import Particle6 from "../../../../public/svg/confetti/6.svg";
+import Particle7 from "../../../../public/svg/confetti/7.svg";
+import Particle8 from "../../../../public/svg/confetti/8.svg";
+import Particle9 from "../../../../public/svg/confetti/9.svg";
 import { transition } from "../consts";
 
 import styles from "./confetti.module.scss";
@@ -35,7 +34,7 @@ const particles = [
 
 const DEFAULT_COLORS = ["#EF476F", "#59CBC0", "#FCCCD6", "#94CCFF", "#FDEF72"];
 
-type ConfettiProps = {
+interface ConfettiProps {
   readonly count: number;
   readonly width: number;
   readonly size?: number;
@@ -43,7 +42,7 @@ type ConfettiProps = {
   readonly colors?: string[];
   readonly duration?: number;
   readonly delay?: number;
-};
+}
 
 export const Confetti = memo<ConfettiProps>(
   ({
@@ -69,6 +68,7 @@ export const Confetti = memo<ConfettiProps>(
           <div
             className={styles.particles}
             style={{
+              // @ts-expect-error --size is not a valid CSS property
               "--size": `${size}px`,
             }}
           >

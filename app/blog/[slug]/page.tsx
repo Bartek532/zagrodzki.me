@@ -1,14 +1,15 @@
-import { Article, WithContext } from "schema-dts";
-
 import { FeaturedPosts } from "@/components/blog/featured-posts";
 import { Resource } from "@/components/resource/resource";
-import { getMetadata } from "lib/metadata";
-import { getNewestPosts, getPostBySlug, getPostsPaths } from "lib/posts";
-import { type MetadataParams } from "types";
-import { SITE_TITLE } from "utils/consts";
+import { getMetadata } from "@/lib/metadata";
+import { getNewestPosts, getPostBySlug, getPostsPaths } from "@/lib/posts";
+import { SITE_TITLE } from "@/utils/consts";
 
-export async function generateMetadata({ params: { slug } }: MetadataParams) {
-  const { frontmatter } = await getPostBySlug(slug);
+import type { MetadataParams } from "@/types";
+import type { Article, WithContext } from "schema-dts";
+
+export async function generateMetadata({ params }: MetadataParams) {
+  const { slug } = await params;
+  const { frontmatter } = getPostBySlug(slug);
 
   return getMetadata({
     title: frontmatter.title,
@@ -25,11 +26,12 @@ export function generateStaticParams() {
   return paths.map((slug) => ({ slug }));
 }
 
-const PostPage = async ({ params: { slug } }: MetadataParams) => {
+const PostPage = async ({ params }: MetadataParams) => {
+  const { slug } = await params;
   const featuredPosts = getNewestPosts()
     .filter((post) => post.slug !== slug)
     .slice(0, 3);
-  const { transformedMdx, frontmatter } = await getPostBySlug(slug);
+  const { content, frontmatter } = getPostBySlug(slug);
 
   const jsonLd: WithContext<Article> = {
     "@context": "https://schema.org",
@@ -44,7 +46,7 @@ const PostPage = async ({ params: { slug } }: MetadataParams) => {
 
   return (
     <>
-      <Resource content={transformedMdx} metadata={frontmatter} />
+      <Resource content={content} metadata={frontmatter} />
       <FeaturedPosts posts={featuredPosts} />
       {/* Needed to add JSON-LD to the page */}
       <script

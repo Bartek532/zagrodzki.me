@@ -74,7 +74,7 @@ pre[data-lang]:not(pre[data-lang=""]) {
 pre[data-lang]:not(pre[data-lang=""])::after {
   content: attr(data-lang);
   background-color: var(--syntax-background);
-  @apply absolute right-8 top-px -translate-y-full font-sans uppercase font-semibold rounded-t-lg py-1 px-3 tracking-wide;
+  @apply absolute right-8 top-px -translate-y-full rounded-t-lg px-3 py-1 font-sans font-semibold uppercase tracking-wide;
 }
 
 code,
@@ -83,33 +83,31 @@ pre {
   tab-size: 2;
   --selection-background: var(--syntax-selection);
   --selection-color: currentColor;
-  @apply bg-none font-mono text-left whitespace-pre break-normal leading-6 hyphens-none;
+  @apply hyphens-none whitespace-pre break-normal bg-none text-left font-mono leading-6;
 }
 
-@media (min-width: 1024px) {
-  code::-webkit-scrollbar,
-  pre::-webkit-scrollbar {
-    @apply h-2;
-  }
+code::-webkit-scrollbar,
+pre::-webkit-scrollbar {
+  @apply h-2;
+}
 
-  code::-webkit-scrollbar-track,
-  pre::-webkit-scrollbar-track {
-    @apply bg-transparent;
-  }
+code::-webkit-scrollbar-track,
+pre::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
 
-  code::-webkit-scrollbar-thumb,
-  pre::-webkit-scrollbar-thumb {
-    background-color: var(--syntax-scrollbar-color);
-    @apply rounded-full;
-  }
+code::-webkit-scrollbar-thumb,
+pre::-webkit-scrollbar-thumb {
+  background-color: var(--syntax-scrollbar-color);
+  @apply rounded-full;
 }
 
 pre {
-  @apply text-sm p-8 -mx-6 my-8 h-full sm:-mx-8 lg:rounded-lg lg:-mx-3;
+  @apply -mx-6 my-8 h-full p-8 text-sm sm:-mx-8 lg:-mx-3 lg:rounded-lg;
 }
 
 pre > code {
-  @apply overflow-auto block;
+  @apply block overflow-auto;
 }
 
 :not(pre) > code,
@@ -119,7 +117,7 @@ pre {
 
 /* Inline code */
 :not(pre) > code {
-  @apply px-2 py-1 text-sm mx-px rounded-md whitespace-normal;
+  @apply mx-px whitespace-normal rounded-md px-2 py-1 text-sm;
   background-color: var(--syntax-background);
   color: var(--syntax-function);
 }

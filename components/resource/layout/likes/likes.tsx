@@ -1,15 +1,16 @@
 import { random } from "lodash";
 import { memo } from "react";
 
-import { getResourceLikesBySlug } from "lib/kv/likes";
-import { RESOURCE_TYPE } from "types";
+import { getResourceLikesBySlug } from "@/lib/kv/likes";
 
 import { LikesCounter } from "./counter/likes-counter";
 
-type LikesProps = {
+import type { RESOURCE_TYPE } from "@/types";
+
+interface LikesProps {
   readonly type: RESOURCE_TYPE;
   readonly slug: string;
-};
+}
 
 export const Likes = memo<LikesProps>(async ({ type, slug }) => {
   const likes = await getResourceLikesBySlug(type, slug);

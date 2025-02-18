@@ -1,12 +1,12 @@
 import Image from "next/image";
 
-import { SOCIALS } from "@/utils/consts";
-
 import { Button } from "./button";
 
-type SocialButtonProps = {
-  data: typeof SOCIALS[keyof typeof SOCIALS];
-};
+import type { SOCIALS } from "@/utils/consts";
+
+interface SocialButtonProps {
+  data: (typeof SOCIALS)[keyof typeof SOCIALS];
+}
 
 export const SocialButton = ({ data }: SocialButtonProps) => (
   <Button asChild variant="outline">

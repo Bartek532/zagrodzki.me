@@ -1,5 +1,4 @@
 import { ArrowUpRight } from "lucide-react";
-import { memo } from "react";
 
 import { SuperLink } from "./super-link";
 
@@ -8,7 +7,7 @@ interface LinkProps {
   readonly href: string;
 }
 
-export const Link = memo<LinkProps>(({ children, href }) => {
+export const Link = ({ children, href }: LinkProps) => {
   const isExternal = ["http://", "https://", "mailto:", "www."].some((start) =>
     href.startsWith(start),
   );
@@ -22,15 +21,13 @@ export const Link = memo<LinkProps>(({ children, href }) => {
       rel={isExternal ? "noreferrer noopener" : undefined}
       target="_blank"
     >
-      <span className="text-link p-0 bg-gradient-to-r from-current to-current bg-no-repeat bg-[length:0%_1.7px] bg-[position:0%_100%] transition-[background-size] duration-250 ease-in-out hover:bg-[length:100%_1.7px] focus:bg-[length:100%_1.7px]">
+      <span className="duration-250 bg-gradient-to-r from-current to-current bg-[length:0%_1.7px] bg-[position:0%_100%] bg-no-repeat p-0 text-link transition-[background-size] ease-in-out hover:bg-[length:100%_1.7px] focus:bg-[length:100%_1.7px]">
         {children}
       </span>
-      <span className="px-0.5 inline-flex items-center whitespace-nowrap">
+      <span className="inline-flex items-center whitespace-nowrap px-0.5">
         &#xfeff;
-        <ArrowUpRight className="w-4 inline text-link" />
+        <ArrowUpRight className="inline w-4 text-link" />
       </span>
     </Component>
   );
-});
-
-Link.displayName = "Link";
+};

@@ -4,14 +4,18 @@ import { motion, useReducedMotion } from "motion/react";
 
 import type { ReactNode } from "react";
 
-type ViewAnimationProps = {
+interface ViewAnimationProps {
   initial?: Record<string, string | number>;
   whileInView?: Record<string, string | number>;
   animate?: Record<string, string | number>;
   delay?: number;
   className?: string;
   children: ReactNode;
-};
+  viewport?: {
+    once?: boolean;
+    amount?: "some" | "all" | number;
+  };
+}
 
 export const ViewAnimation = ({
   initial,
@@ -20,6 +24,7 @@ export const ViewAnimation = ({
   delay,
   className,
   children,
+  viewport = { once: true, amount: 0.5 },
 }: ViewAnimationProps) => {
   const shouldReduceMotion = useReducedMotion();
 
@@ -31,10 +36,10 @@ export const ViewAnimation = ({
     <motion.div
       initial={{ filter: "blur(4px)", ...initial }}
       whileInView={{ filter: "blur(0px)", ...whileInView }}
-      animate={animate}
       className={className}
-      viewport={{ once: true, amount: 0.5 }}
-      transition={{ delay, duration: 0.8 }}
+      viewport={viewport}
+      transition={{ delay: delay ?? 0, duration: 0.8 }}
+      {...(animate ? { animate } : {})}
     >
       {children}
     </motion.div>

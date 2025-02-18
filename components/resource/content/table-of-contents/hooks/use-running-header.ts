@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 
-import { useIntersectionObserver } from "hooks/useIntersectionObserver";
+import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
 
 const options = {
   threshold: 1,

@@ -5,7 +5,7 @@ import slugify from "slugify";
 
 import { cn } from "@/utils";
 
-import type { HeadingVariant } from "types";
+import type { HeadingVariant } from "@/types";
 
 interface HeadingProps {
   readonly children: string;
@@ -31,9 +31,9 @@ export const Heading = memo<HeadingProps>(({ level: Tag, children }) => {
         id={id}
         aria-hidden="true"
         tabIndex={-1}
-        className="absolute hidden sm:block top-1/2 -translate-y-1/2 -left-8"
+        className="absolute -left-8 top-1/2 hidden -translate-y-1/2 sm:block"
       >
-        <LinkIcon className="size-6 opacity-0 transition-opacity duration-300 group-hover:opacity-65 hover:opacity-100 focus:opacity-100" />
+        <LinkIcon className="size-6 opacity-0 transition-opacity duration-300 hover:opacity-100 focus:opacity-100 group-hover:opacity-65" />
       </Link>
       {children}
     </Tag>

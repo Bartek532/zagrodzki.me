@@ -5,7 +5,7 @@ import { Hero } from "@/components/about/hero";
 import { Recommendations } from "@/components/about/recommendation";
 import { Skills } from "@/components/about/skills";
 import { GitHubActivity } from "@/components/home/github-activity";
-import { getMetadata } from "lib/metadata";
+import { getMetadata } from "@/lib/metadata";
 
 const description = "I'm a Software Engineer not afraid of any technology 🎓";
 

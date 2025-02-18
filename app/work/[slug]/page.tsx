@@ -1,12 +1,14 @@
-import { Project, WithContext } from "schema-dts";
-
 import { Resource } from "@/components/resource/resource";
-import { getMetadata } from "lib/metadata";
-import { getProjectBySlug, getProjectsPaths } from "lib/projects";
-import { MetadataParams } from "types";
+import { getMetadata } from "@/lib/metadata";
+import { getProjectBySlug, getProjectsPaths } from "@/lib/projects";
 
-export async function generateMetadata({ params: { slug } }: MetadataParams) {
-  const { frontmatter } = await getProjectBySlug(slug);
+import type { MetadataParams } from "@/types";
+import type { Project, WithContext } from "schema-dts";
+
+export async function generateMetadata({ params }: MetadataParams) {
+  const { slug } = await params;
+  const { frontmatter } = getProjectBySlug(slug);
+
   return getMetadata({
     title: frontmatter.title,
     description: frontmatter.excerpt,
@@ -22,8 +24,9 @@ export function generateStaticParams() {
   return paths.map((slug) => ({ slug }));
 }
 
-const ProjectPage = async ({ params: { slug } }: MetadataParams) => {
-  const { transformedMdx, frontmatter } = await getProjectBySlug(slug);
+const ProjectPage = async ({ params }: MetadataParams) => {
+  const { slug } = await params;
+  const { content, frontmatter } = getProjectBySlug(slug);
 
   const jsonLd: WithContext<Project> = {
     "@context": "https://schema.org",
@@ -35,7 +38,7 @@ const ProjectPage = async ({ params: { slug } }: MetadataParams) => {
 
   return (
     <>
-      <Resource content={transformedMdx} metadata={frontmatter} />
+      <Resource content={content} metadata={frontmatter} />
       {/* Needed to add JSON-LD to the page */}
       <script
         type="application/ld+json"

@@ -1,5 +1,3 @@
-import { memo } from "react";
-
 import { Image as CommonImage } from "@/components/common/image";
 
 interface ImageProps {
@@ -9,8 +7,8 @@ interface ImageProps {
   readonly height?: number | `${number}`;
 }
 
-export const Image = memo<ImageProps>(({ src, alt = "", width, height }) => (
-  <figure className="w-auto h-auto my-8 -mx-1 relative flex flex-col items-center gap-2 sm:-mx-3">
+export const Image = ({ src, alt = "", width, height }: ImageProps) => (
+  <figure className="relative -mx-1 my-8 flex h-auto w-auto flex-col items-center gap-2 sm:-mx-3">
     <CommonImage
       className="max-w-full rounded-2xl"
       src={src}
@@ -20,11 +18,9 @@ export const Image = memo<ImageProps>(({ src, alt = "", width, height }) => (
       decoding="async"
     />
     {alt ? (
-      <figcaption className="text-sm italic text-muted-foreground opacity-60 px-4 text-center">
+      <figcaption className="px-4 text-center text-sm italic text-muted-foreground opacity-60">
         {alt}
       </figcaption>
     ) : null}
   </figure>
-));
-
-Image.displayName = "Image";
+);

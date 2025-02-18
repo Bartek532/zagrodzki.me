@@ -61,7 +61,7 @@ export const NewsletterForm = () => {
                 <Input
                   placeholder="john@doe.com"
                   {...field}
-                  className="h-auto bg-card rounded-full shadow-tile px-6 py-4 pr-16"
+                  className="h-auto rounded-full bg-card px-6 py-4 pr-16 shadow-tile"
                 />
               </FormControl>
               <FormDescription className="py-2 pl-2">
@@ -74,7 +74,7 @@ export const NewsletterForm = () => {
         <Button
           type="submit"
           className={cn(
-            "absolute top-[5px] right-[5px] sm:top-[3px] sm:right-[3px] aspect-square h-auto rounded-full",
+            "absolute right-[5px] top-[5px] aspect-square h-auto rounded-full sm:right-[3px] sm:top-[3px]",
             formStatus === "fullfilled" &&
               "bg-success text-success-foreground disabled:opacity-100",
             formStatus === "rejected" &&

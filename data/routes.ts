@@ -1,4 +1,4 @@
-import { RESOURCE_TYPE } from "types";
+import { RESOURCE_TYPE } from "@/types";
 
 export const routes = [
   { label: "Home", path: "/" },

@@ -2,8 +2,9 @@ import { unstable_cache as cache } from "next/cache";
 import Image from "next/image";
 
 import { ViewAnimation } from "@/providers/view-animation";
-import OfflineIcon from "public/svg/offline.svg";
-import SpotifyIcon from "public/svg/socials/spotify.svg";
+
+import OfflineIcon from "../../../public/svg/offline.svg";
+import SpotifyIcon from "../../../public/svg/socials/spotify.svg";
 
 import { fetchLastTrack } from "./api/spotify";
 import { TRACK_STATUS } from "./types";
@@ -21,24 +22,24 @@ export const Spotify = async () => {
     <ViewAnimation initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} className="h-full">
       <a
         href={external_urls.spotify}
-        className="w-full bg-card hover:bg-accent border h-full transition-colors group rounded-lg relative shadow-tile overflow-hidden block"
+        className="group relative block h-full w-full overflow-hidden rounded-lg border bg-card shadow-tile transition-colors hover:bg-accent"
         target="_blank"
         rel="noreferrer noopener"
       >
-        <div className="flex items-center justify-between h-full">
-          <div className="relative p-6 sm:p-8 min-w-0 flex flex-col justify-between h-full">
+        <div className="flex h-full items-center justify-between">
+          <div className="relative flex h-full min-w-0 flex-col justify-between p-6 sm:p-8">
             <div className="size-9 md:size-11">
               <SpotifyIcon className="text-success" />
             </div>
 
-            <span className="text-success mt-8 flex items-baseline gap-2 text-xs lg:text-sm">
+            <span className="mt-8 flex items-baseline gap-2 text-xs text-success lg:text-sm">
               {data.status !== TRACK_STATUS.ONLINE ? (
                 <>
-                  <span className="flex  gap-px">
+                  <span className="flex gap-px">
                     {[1, 2, 3].map((i) => (
                       <span
                         key={i}
-                        className="inline-block w-[3px] h-[1px] bg-success rounded-sm animate-bar-pulse"
+                        className="inline-block h-[1px] w-[3px] animate-bar-pulse rounded-sm bg-success"
                         style={{
                           animationDelay: i === 1 ? "0.5s" : i === 3 ? "1.2s" : "0s",
                         }}
@@ -55,19 +56,19 @@ export const Spotify = async () => {
               )}
             </span>
 
-            <h2 className="font-bold text-xl truncate tracking-tight sm:text-2xl">{name}</h2>
+            <h2 className="truncate text-xl font-bold tracking-tight sm:text-2xl">{name}</h2>
 
-            <p className="text-muted-foreground text-sm truncate sm:text-base">
+            <p className="truncate text-sm text-muted-foreground sm:text-base">
               {artists.map((artist) => artist.name).join(", ")}
             </p>
           </div>
 
-          <div className="w-2/5 self-stretch relative shrink-0">
+          <div className="relative w-2/5 shrink-0 self-stretch">
             <Image
               src={album.images[0].url}
               alt={album.name}
               fill
-              className="object-cover group-hover:scale-105 transition-transform"
+              className="object-cover transition-transform group-hover:scale-105"
             />
           </div>
         </div>

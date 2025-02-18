@@ -9,8 +9,9 @@ import { DEFAULT_METADATA, DEFAULT_VIEWPORT } from "@/lib/metadata";
 import { Analytics } from "@/providers/analytics";
 import { ThemeProvider } from "@/providers/theme";
 
-import "../styles/code.css";
 import "../styles/globals.css";
+// eslint-disable-next-line import/order
+import "../styles/code.css";
 
 export const metadata = DEFAULT_METADATA;
 export const viewport = DEFAULT_VIEWPORT;
@@ -69,7 +70,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         >
           <Header />
           <div className="container mx-auto h-[52px] sm:h-16 sm:border-x" />
-          <main className="divide-y sm:border-b">
+          <main className="divide-y sm:border-b" id="main">
             {children}
             <Newsletter />
           </main>

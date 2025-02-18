@@ -4,13 +4,6 @@ export const typographyConfig = (theme: (path: string) => string) => ({
       "h1, h2, h3, h4, h5, h6": {
         letterSpacing: theme("letterSpacing.tight"),
       },
-      pre: {
-        backgroundColor: "transparent",
-        padding: theme("spacing.4"),
-        margin: 0,
-        fontSize: theme("fontSize.sm"),
-        border: `1px solid ${theme("colors.border")}`,
-      },
       "figure, img, video": {
         margin: 0,
       },
@@ -22,7 +15,6 @@ export const typographyConfig = (theme: (path: string) => string) => ({
       "pre code": false,
       "code::before": false,
       "code::after": false,
-
       a: {
         textDecoration: "none",
       },

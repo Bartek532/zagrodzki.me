@@ -55,6 +55,7 @@ const observe = (() => {
   const createObserver = (options: IntersectionObserverOptions) => {
     const key = JSON.stringify(options);
     if (observers.has(key)) {
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       return observers.get(key)!;
     }
 

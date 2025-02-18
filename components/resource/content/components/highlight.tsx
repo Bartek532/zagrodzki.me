@@ -1,5 +1,4 @@
 import { CircleAlert, CircleCheck, CircleXIcon } from "lucide-react";
-import { memo } from "react";
 
 import { cn } from "@/utils";
 
@@ -15,7 +14,7 @@ const icons = {
   warning: CircleAlert,
 } as const;
 
-export const Highlight = memo<HighlightProps>(({ variant, title, children }) => {
+export const Highlight = ({ variant, title, children }: HighlightProps) => {
   const Icon = icons[variant];
 
   const variantStyles = {
@@ -27,17 +26,15 @@ export const Highlight = memo<HighlightProps>(({ variant, title, children }) => 
   return (
     <aside
       className={cn(
-        "relative flex flex-col items-start my-8 -mx-1 sm:-mx-3 p-6 pb-0.5 rounded-r-xl border-l-4",
+        "relative -mx-1 my-8 flex flex-col items-start rounded-r-xl border-l-4 p-6 pb-0.5 sm:-mx-3",
         variantStyles[variant],
       )}
     >
-      <div className="absolute top-6 right-8 w-[17%] max-w-20 z-0 opacity-20 aspect-square">
-        <Icon className="w-full h-full" />
+      <div className="absolute right-8 top-6 z-0 aspect-square w-[17%] max-w-20 opacity-20">
+        <Icon className="h-full w-full" />
       </div>
-      <strong className="text-foreground font-bold">{title}</strong>
-      <div className="relative z-10 text-foreground max-w-full">{children}</div>
+      <strong className="font-bold text-foreground">{title}</strong>
+      <div className="relative z-10 max-w-full text-foreground">{children}</div>
     </aside>
   );
-});
-
-Highlight.displayName = "Highlight";
+};

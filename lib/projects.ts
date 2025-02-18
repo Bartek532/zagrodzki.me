@@ -1,20 +1,28 @@
-import path from "path";
-
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
+import fs from "fs";
+import path from "path";
 
 import {
   getAllResources,
   getResourcesPaths,
   getResourceBySlug,
   getResourceParsedContent,
-} from "lib/resource";
+} from "@/lib/resource";
 
-import type { Project } from "types";
+import type { Project } from "@/types";
 
 dayjs.extend(customParseFormat);
 
-const PROJECTS_DIR = path.join(process.cwd(), "content/projects");
+const PROJECTS_DIR = path.join(process.cwd(), "/content/projects");
+
+console.log(PROJECTS_DIR);
+
+const listPostsDirectory = () => {
+  return fs.readdirSync(PROJECTS_DIR);
+};
+
+console.log(listPostsDirectory());
 
 export const getAllProjects = () => getAllResources<Project>(PROJECTS_DIR);
 

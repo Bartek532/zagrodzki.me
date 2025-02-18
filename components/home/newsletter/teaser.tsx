@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { Image } from "@/components/common/image";
 
 import { TeaserTitle } from "./teaser-title";
 
@@ -13,7 +13,7 @@ const gravatars = [
 export const Teaser = () => (
   <div className="flex flex-col gap-4">
     <TeaserTitle contacts={100} />
-    <div className="-space-x-2 flex items-center">
+    <div className="flex items-center -space-x-2">
       {gravatars.map((hash) => (
         <Image
           key={hash}
@@ -26,7 +26,7 @@ export const Teaser = () => (
       ))}
       <div className="flex h-8 w-8 items-center justify-center rounded-full bg-card ring-2 ring-secondary">
         <span className="text-[8px] text-muted-foreground">
-          +{new Intl.NumberFormat("en-US", { notation: "compact" }).format((100 ?? 0) - (10 ?? 0))}
+          +{new Intl.NumberFormat("en-US", { notation: "compact" }).format(90)}
         </span>
       </div>
     </div>

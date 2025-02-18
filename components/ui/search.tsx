@@ -2,12 +2,14 @@
 
 import { Search as SearchIcon } from "lucide-react";
 import { useTheme } from "next-themes";
-import React, { ChangeEventHandler, useCallback } from "react";
+import React, { useCallback } from "react";
 import { PoweredBy, useSearchBox } from "react-instantsearch";
 
 import { cn } from "@/utils";
 
 import { Input } from "./input";
+
+import type { ChangeEventHandler } from "react";
 
 export const Search = React.forwardRef<HTMLInputElement, React.ComponentProps<"input">>(
   ({ className, ...props }, ref) => {
@@ -35,9 +37,9 @@ export const Search = React.forwardRef<HTMLInputElement, React.ComponentProps<"i
           type="search"
           {...props}
         />
-        <SearchIcon className="size-5 absolute left-3.5 top-1/2 text-muted-foreground -translate-y-1/2" />
+        <SearchIcon className="absolute left-3.5 top-1/2 size-5 -translate-y-1/2 text-muted-foreground" />
         <PoweredBy
-          className="w-24 absolute opacity-75 right-1 -bottom-1.5 translate-y-full"
+          className="absolute -bottom-1.5 right-1 w-24 translate-y-full opacity-75"
           theme={resolvedTheme === "dark" ? "dark" : "light"}
         />
       </div>

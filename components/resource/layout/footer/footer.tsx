@@ -4,44 +4,46 @@ import customParseFormat from "dayjs/plugin/customParseFormat";
 import { Suspense, memo } from "react";
 
 import { Link } from "@/components/common/link/link";
-import { env } from "@/env/client";
+import { resourceRoutes } from "@/data/routes";
+import { env } from "@/lib/env";
+import { RESOURCE_TYPE } from "@/types";
 import { formatDate } from "@/utils";
-import { resourceRoutes } from "data/routes";
-import { RESOURCE_TYPE, Resource } from "types";
-import { HOST } from "utils/consts";
+import { HOST } from "@/utils/consts";
 
 import { Likes } from "../likes/likes";
 
 import { Views } from "./views";
 
+import type { Resource } from "@/types";
+
 dayjs.extend(customParseFormat);
 dayjs.extend(advancedFormat);
 
-type FooterProps = {
+interface FooterProps {
   readonly resource: Resource;
-};
+}
 
 export const Footer = memo<FooterProps>(({ resource }) => {
   const url = `${HOST}/${resourceRoutes[resource.type]}/${resource.slug}`;
 
   return (
     <>
-      <div className="flex flex-col gap-6 px-6 sm:px-8 lg:px-10 max-w-3xl mx-auto pb-8">
+      <div className="mx-auto flex max-w-3xl flex-col gap-6 px-6 pb-8 sm:px-8 lg:px-10">
         <div className="flex items-center justify-between lg:justify-end">
           <div className="shrink-0 lg:hidden">
             <Suspense fallback={null}>
               <Likes slug={resource.slug} type={resource.type} />
             </Suspense>
           </div>
-          <div className="flex flex-col items-end text-sm italic opacity-60 text-muted-foreground">
+          <div className="flex flex-col items-end text-sm italic text-muted-foreground opacity-60">
             <div className="text-sm">{formatDate(resource.modifiedAt)}</div>
             <Suspense fallback={null}>
               <Views slug={resource.slug} type={resource.type} />
             </Suspense>
           </div>
         </div>
-        <div className="flex items-center justify-end sm:justify-between gap-4">
-          <div className="items-center gap-4 hidden sm:flex">
+        <div className="flex items-center justify-end gap-4 sm:justify-between">
+          <div className="hidden items-center gap-4 sm:flex">
             <Link href={`https://x.com/share?url=${url}&text=${resource.title} -`}>
               Tweet about
             </Link>

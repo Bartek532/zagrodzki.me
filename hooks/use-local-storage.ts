@@ -12,6 +12,7 @@ export const useLocalStorage = <T extends string>(key: string, defaultValue: T) 
       setVal(defaultValue);
       setStoredVal(defaultValue);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const setStoredVal = useCallback(

@@ -1,9 +1,10 @@
 "use server";
 
-import { Message } from "../schema";
 import sgMail from "@sendgrid/mail";
 
-import { env } from "env/server";
+import { env } from "@/lib/env";
+
+import type { Message } from "../schema";
 
 sgMail.setApiKey(env.SENDGRID_API_KEY);
 

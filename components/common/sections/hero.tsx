@@ -1,24 +1,26 @@
-import { Children, type ReactNode } from "react";
+import { Children } from "react";
 
 import { ViewAnimation } from "@/providers/view-animation";
 import { cn } from "@/utils";
 
 import { Section } from "./section";
 
-type HeroProps = {
+import type { ReactNode } from "react";
+
+interface HeroProps {
   image?: ReactNode;
   caption?: ReactNode;
   title: string;
   children?: ReactNode;
   className?: string;
-};
+}
 
 export const HeroSection = ({ image, caption, title, children, className }: HeroProps) => (
   <Section className={cn("p-6", className)}>
     <div
       className={cn(
-        "flex flex-col items-start relative overflow-hidden justify-center gap-5",
-        "sm:items-center sm:rounded-lg sm:border sm:bg-card sm:px-8 sm:py-20 sm:shadow-tile sm:gap-6 lg:gap-8",
+        "relative flex flex-col items-start justify-center gap-5 overflow-hidden",
+        "sm:items-center sm:gap-6 sm:rounded-lg sm:border sm:bg-card sm:px-8 sm:py-20 sm:shadow-tile lg:gap-8",
       )}
     >
       {image && (
@@ -35,7 +37,7 @@ export const HeroSection = ({ image, caption, title, children, className }: Hero
             initial={{ opacity: 0, translateY: -8 }}
             whileInView={{ opacity: 1, translateY: 0 }}
           >
-            <small className="block text-muted-foreground text-sm sm:text-base">{caption}</small>
+            <small className="block text-sm text-muted-foreground sm:text-base">{caption}</small>
           </ViewAnimation>
         )}
         <ViewAnimation
@@ -45,7 +47,7 @@ export const HeroSection = ({ image, caption, title, children, className }: Hero
         >
           <h1
             className={cn(
-              "max-w-4xl font-bold font-kenfolg text-balance text-3xl leading-tighter tracking-tight",
+              "font-kenfolg leading-tighter max-w-4xl text-balance text-3xl font-bold tracking-tight",
               "sm:text-center sm:text-4xl sm:leading-tight",
               "lg:text-5xl lg:leading-tight",
             )}

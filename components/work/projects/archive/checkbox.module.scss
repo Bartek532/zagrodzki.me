@@ -83,7 +83,9 @@
             width: 50%;
             height: 100%;
             background-color: #f3c07b;
-            transition: transform 0.3s ease-in-out, border-radius 0.3s ease-in-out;
+            transition:
+              transform 0.3s ease-in-out,
+              border-radius 0.3s ease-in-out;
             --border-size: calc(var(--size) / 7);
 
             &.left {

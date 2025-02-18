@@ -1,24 +1,25 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { debounce } from "lodash";
+import { motion } from "motion/react";
 import { memo, useMemo, useState } from "react";
 
+import { MAX_CORNS_COUNT } from "@/components/common/popcorn/consts";
 import { Popcorn } from "@/components/common/popcorn/popcorn";
+import { useLocalStorage } from "@/hooks/use-local-storage";
+import { setLikesBySlug } from "@/lib/kv/likes";
 import { cn } from "@/utils";
-import { MAX_CORNS_COUNT } from "components/common/popcorn/consts";
-import { useLocalStorage } from "hooks/useLocalStorage";
-import { setLikesBySlug } from "lib/kv/likes";
-import { RESOURCE_TYPE } from "types";
-import { normalizeCount } from "utils/functions";
+import { normalizeCount } from "@/utils/functions";
 
 import { decrementGivenLikes, getGivenLikes, incrementGivenLikes } from "../utils/given-likes";
 
-type LikesCounterProps = {
+import type { RESOURCE_TYPE } from "@/types";
+
+interface LikesCounterProps {
   readonly likes: number;
   readonly type: RESOURCE_TYPE;
   readonly slug: string;
-};
+}
 
 export const LikesCounter = memo<LikesCounterProps>(({ likes: initialLikes, type, slug }) => {
   const [lastAction, setLastAction] = useState<"+" | "-" | null>(null);
@@ -38,7 +39,7 @@ export const LikesCounter = memo<LikesCounterProps>(({ likes: initialLikes, type
     setGivenLikesData(incrementGivenLikes(givenLikesData, slug));
     try {
       await debouncedFetch(type, slug, likes + 1);
-    } catch (error) {
+    } catch {
       setLikes((likes) => likes - 1);
     }
   };
@@ -53,25 +54,25 @@ export const LikesCounter = memo<LikesCounterProps>(({ likes: initialLikes, type
     setGivenLikesData(decrementGivenLikes(givenLikesData, slug));
     try {
       await debouncedFetch(type, slug, likes - 1);
-    } catch (error) {
+    } catch {
       setLikes((likes) => likes + 1);
     }
   };
 
   return (
-    <div className="relative flex gap-4 w-fit">
+    <div className="relative flex w-fit gap-4">
       <Popcorn width={40} count={givenLikes} onAdd={onLike} onRemove={onUnlike} />
       <span
         className={cn(
-          "font-semibold pt-3 opacity-60",
-          givenLikes > 0 && "opacity-85 text-destructive",
+          "pt-3 font-semibold opacity-60",
+          givenLikes > 0 && "text-destructive opacity-85",
         )}
       >
         {normalizeCount(givenLikes > likes ? givenLikes : likes)}
       </span>
 
       {lastAction && (
-        <div className="absolute right-0 text-sm top-[20%] translate-x-[calc(100%+2px)] opacity-40 pointer-events-none">
+        <div className="pointer-events-none absolute right-0 top-[20%] translate-x-[calc(100%+2px)] text-sm opacity-40">
           <motion.div
             animate={{
               opacity: [1, 0],

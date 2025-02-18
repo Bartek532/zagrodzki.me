@@ -7,7 +7,7 @@ import { ViewAnimation } from "@/providers/view-animation";
 
 import type { ReactNode } from "react";
 
-type ThirdsSectionProps = {
+interface ThirdsSectionProps {
   caption: string;
   title?: string;
   description: string;
@@ -17,7 +17,7 @@ type ThirdsSectionProps = {
     label: string;
     href: string;
   }[];
-};
+}
 
 const LargeSlot = ({ children }: { children: ReactNode }) => (
   <div className="bg-dashed sm:col-span-2">

@@ -11,11 +11,11 @@ export const Skills = () => (
       whileInView={{ opacity: 1, translateY: 0 }}
       className="px-4"
     >
-      <p className="text-center text-muted-foreground text-sm">
-        I'm proficient in the following technologies
+      <p className="text-center text-sm text-muted-foreground">
+        I&apos;m proficient in the following technologies
       </p>
     </ViewAnimation>
-    <div className="flex flex-wrap items-center justify-center gap-1 sm:gap-2.5">
+    <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2.5">
       {allSkills.map((skill, index) => (
         <ViewAnimation
           initial={{ opacity: 0, translateY: -8 }}

@@ -1,12 +1,13 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 
+import { SuperLink } from "@/components/common/link/super-link";
 import { HeroSection } from "@/components/common/sections/hero";
 import { Button } from "@/components/ui/button";
 import { useBreakpoint } from "@/hooks/use-media-query";
-import WinkingAvatar from "public/img/avatars/winking.png";
+
+import WinkingAvatar from "../../public/img/avatars/winking.png";
 
 export const Hero = () => {
   const withImage = useBreakpoint("sm");
@@ -29,12 +30,12 @@ export const Hero = () => {
           }
         : {})}
     >
-      <div className="flex items-center sm:justify-center gap-4">
+      <div className="flex items-center gap-4 sm:justify-center">
         <Button asChild variant="outline">
-          <Link href="/work">View my work</Link>
+          <SuperLink href="/work">View my work</SuperLink>
         </Button>
         <Button asChild>
-          <Link href="/contact">Get in touch</Link>
+          <SuperLink href="/contact">Get in touch</SuperLink>
         </Button>
       </div>
     </HeroSection>

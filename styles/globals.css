@@ -120,7 +120,7 @@
 }
 
 .react-activity-calendar svg {
-  @apply w-full h-auto;
+  @apply h-auto w-full;
 }
 
 ::selection {
@@ -162,7 +162,7 @@
 }
 
 .faded-line-bottom {
-  @apply -left-6 -right-6 -bottom-1 absolute h-px border-connection border-b border-dashed;
+  @apply border-connection absolute -right-6 -bottom-1 -left-6 h-px border-b border-dashed;
   mask-image: linear-gradient(
     to right,
     transparent,
@@ -173,7 +173,7 @@
 }
 
 .faded-line-top {
-  @apply -left-6 -right-6 -top-1 absolute h-px border-connection border-t border-dashed;
+  @apply border-connection absolute -top-1 -right-6 -left-6 h-px border-t border-dashed;
   mask-image: linear-gradient(
     to right,
     transparent,
@@ -184,7 +184,7 @@
 }
 
 .faded-line-left {
-  @apply -top-6 -bottom-6 -left-1 absolute w-px border-connection border-l border-dashed;
+  @apply border-connection absolute -top-6 -bottom-6 -left-1 w-px border-l border-dashed;
   mask-image: linear-gradient(
     to bottom,
     transparent,
@@ -195,7 +195,7 @@
 }
 
 .faded-line-right {
-  @apply -top-6 -bottom-6 -right-1 absolute w-px border-r border-dashed;
+  @apply absolute -top-6 -right-1 -bottom-6 w-px border-r border-dashed;
   mask-image: linear-gradient(
     to bottom,
     transparent,
@@ -225,63 +225,4 @@ input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-results-button,
 input[type="search"]::-webkit-search-results-decoration {
   display: none;
-}
-
-:root {
-  --bg-100: hsl(340, 33%, 96%);
-  --red-100: hsl(347, 83%, 61%);
-  --yellow-100: hsl(49, 97%, 61%);
-  --pink-100: hsl(350, 89%, 89%);
-  --gray-100: hsl(330, 11%, 92%);
-  --gray-200: hsl(330, 11%, 92%);
-  --gray-300: hsl(190, 3%, 72%);
-  --gray-400: hsl(0, 0%, 99%);
-  --gray-500: hsl(330, 11%, 92%);
-  --green-100: hsl(175, 47%, 57%);
-  --blue-100: hsl(210, 100%, 79%);
-  --blue-200: hsl(245, 100%, 60%);
-  --blue-300: hsl(220, 71%, 93%);
-  --white-100: hsl(0, 0%, 100%);
-  --white-200: hsl(0, 0%, 100%);
-  --black-100: hsl(0, 0%, 0%);
-  --black-200: hsl(0, 0%, 20%);
-  --black-300: hsla(0, 0%, 0%, 0.8);
-
-  --scrollbar-thumb: hsl(0, 0%, 57%);
-  --scrollbar-thumb-hover: hsl(0, 0%, 72%);
-  --mdx-heading-color: var(--black-100);
-  --tile-shadow: hsla(0, 0%, 0%, 0.08) 0px 1px 4px;
-  --skeleton: hsla(0, 0%, 100%, 0.5);
-  --selection-color: hsl(0, 0%, 100%);
-  --selection-background: hsl(245, 100%, 60%);
-}
-
-:root.dark {
-  --red-100: hsl(347, 83%, 61%);
-  --yellow-100: hsl(49, 97%, 61%);
-  --pink-100: hsl(350, 89%, 89%);
-  --gray-200: hsl(330, 11%, 92%);
-  --green-100: hsl(175, 47%, 57%);
-  --blue-100: hsl(210, 100%, 79%);
-  --blue-200: hsl(246, 74%, 71%);
-  --blue-300: hsl(220, 71%, 93%);
-  --white-200: hsl(0, 0%, 100%);
-  --black-200: hsl(0, 0%, 20%);
-  --black-300: hsla(0, 0%, 100%, 0.8);
-  --mdx-heading-color: var(--black-100);
-  --selection-color: hsl(0, 0%, 100%);
-  --selection-background: hsl(245, 100%, 60%);
-
-  --bg-100: hsl(214, 21%, 11%);
-  --gray-100: hsl(222, 13%, 16%);
-  --black-100: hsl(210, 67%, 96%);
-  --white-100: hsl(0, 0%, 7%);
-  --gray-400: hsl(234, 13%, 16%);
-  --gray-300: hsl(230, 7%, 21%);
-  --gray-500: hsl(230, 7%, 21%);
-  --mdx-heading-color: var(--red-100);
-  --scrollbar-thumb: hsl(0, 0%, 56%);
-  --scrollbar-thumb-hover: hsl(0, 0%, 40%);
-  --skeleton: hsla(0, 0%, 39%, 0.5);
-  --tile-shadow: hsla(0, 0%, 14%, 0.781) 0px 1px 4px;
 }

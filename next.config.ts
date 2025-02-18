@@ -1,28 +1,29 @@
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-unsafe-return */
-import pwa from "next-pwa";
+import { NextConfig } from "next";
 
-const withPWA = pwa({
-  dest: "public",
-  disable: process.env.NODE_ENV === "development",
-});
+import "./lib/env";
 
-/**
- * @type {import('next').NextConfig}
- **/
-const nextConfig = {
-  experimental: {
-    esmExternals: "loose",
-  },
+const nextConfig: NextConfig = {
   reactStrictMode: true,
   webpack(config) {
     config.module.rules.push({
-      test: /\.svg$/,
+      test: /\.svg$/i,
       use: ["@svgr/webpack"],
     });
 
     return config;
+  },
+  experimental: {
+    turbo: {
+      rules: {
+        "*.svg": {
+          loaders: ["@svgr/webpack"],
+          as: "*.js",
+        },
+      },
+    },
+  },
+  outputFileTracingIncludes: {
+    "/content": ["./content/**/*"],
   },
   images: {
     remotePatterns: [
@@ -33,7 +34,7 @@ const nextConfig = {
         hostname: "www.gravatar.com",
       },
       {
-        hostname: "oku.ams3.cdn.digitaloceanspaces.com",
+        hostname: "images-na.ssl-images-amazon.com",
       },
     ],
   },
@@ -84,13 +85,8 @@ const nextConfig = {
         destination: `https://github.com/${process.env.NEXT_PUBLIC_GITHUB_USERNAME ?? ""}`,
         permanent: true,
       },
-      {
-        source: "/gumroad",
-        destination: `https://${process.env.NEXT_PUBLIC_GUMROAD_USERNAME ?? ""}.gumroad.com`,
-        permanent: true,
-      },
     ]);
   },
 };
 
-export default withPWA(nextConfig);
+export default nextConfig;

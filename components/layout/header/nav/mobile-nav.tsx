@@ -1,8 +1,8 @@
 "use client";
 
 import { atom, useAtom } from "jotai";
-import Link from "next/link";
 
+import { SuperLink } from "@/components/common/link/super-link";
 import { ActiveLink } from "@/components/ui/active-link";
 import { Button } from "@/components/ui/button";
 import { routes } from "@/data/routes";
@@ -33,10 +33,10 @@ export const MobileNav = () => {
             },
           )}
         >
-          <nav className="flex flex-col items-start gap-2">
+          <nav className="flex flex-col items-start gap-2.5">
             <ul className="w-full">
               {routes.map((link) => (
-                <li key={link.path} className="w-full py-1">
+                <li key={link.path} className="w-full py-1.5">
                   <ActiveLink key={link.path} href={link.path} onClick={() => setOpen(false)}>
                     {link.label}
                   </ActiveLink>
@@ -45,7 +45,7 @@ export const MobileNav = () => {
             </ul>
 
             <Button variant="outline" asChild onClick={() => setOpen(false)} className="w-full">
-              <Link href="/contact">Get in touch</Link>
+              <SuperLink href="/contact">Get in touch</SuperLink>
             </Button>
           </nav>
         </div>

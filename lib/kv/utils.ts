@@ -1,7 +1,7 @@
 import "server-only";
 import { z } from "zod";
 
-import { env } from "env/server";
+import { env } from "@/lib/env";
 
 const resultSchema = z
   .array(

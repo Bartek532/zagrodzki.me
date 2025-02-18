@@ -1,14 +1,14 @@
 "use client";
 
 import { Plus, X } from "lucide-react";
-import { memo, useEffect } from "react";
+import { useEffect } from "react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { cn } from "@/utils";
-import { Input } from "components/ui/input";
-import { onPromise } from "utils/functions";
+import { onPromise } from "@/utils/functions";
 
 interface QuizDialogProps {
   readonly correctAnswers: (string | number)[];
@@ -25,16 +25,16 @@ const AnswerItem = ({ answer, onDeleteAnswer }: { answer: Answer; onDeleteAnswer
   <li>
     <button
       className={cn(
-        "text-sm py-1.5 px-3.5 rounded-full border-0 relative group transition-colors duration-100",
-        answer.status === "unchecked" && "bg-background cursor-pointer",
-        answer.status === "correct" && "bg-success text-success-foreground cursor-default",
+        "group relative rounded-full border-0 px-3.5 py-1.5 text-sm transition-colors duration-100",
+        answer.status === "unchecked" && "cursor-pointer bg-background",
+        answer.status === "correct" && "cursor-default bg-success text-success-foreground",
         answer.status === "incorrect" &&
-          "bg-destructive text-destructive-foreground cursor-default",
+          "cursor-default bg-destructive text-destructive-foreground",
       )}
       onClick={onDeleteAnswer}
     >
       {answer.status === "unchecked" && (
-        <div className="inset-0 absolute z-10 flex items-center justify-center opacity-0 transition-opacity duration-100 group-hover:opacity-100">
+        <div className="absolute inset-0 z-10 flex items-center justify-center opacity-0 transition-opacity duration-100 group-hover:opacity-100">
           <X className="size-4" />
         </div>
       )}
@@ -49,7 +49,7 @@ const AnswerItem = ({ answer, onDeleteAnswer }: { answer: Answer; onDeleteAnswer
   </li>
 );
 
-export const QuizDialog = memo<QuizDialogProps>(({ correctAnswers, scoreMessages }) => {
+export const QuizDialog = ({ correctAnswers, scoreMessages }: QuizDialogProps) => {
   const [answers, setAnswers] = useState<Answer[]>([]);
   const [isAnswersChecked, setIsAnswersChecked] = useState(false);
   const [isResultMessageShown, setIsResultMessageShown] = useState(false);
@@ -118,7 +118,7 @@ export const QuizDialog = memo<QuizDialogProps>(({ correctAnswers, scoreMessages
   return (
     <>
       <form
-        className="w-full flex items-center gap-2 justify-center relative mt-6 sm:mt-8 lg:mt-10"
+        className="relative mt-6 flex w-full items-center justify-center gap-2 sm:mt-8 lg:mt-10"
         onSubmit={onPromise(handleSubmit(handleFormSubmit))}
       >
         <Input
@@ -133,7 +133,7 @@ export const QuizDialog = memo<QuizDialogProps>(({ correctAnswers, scoreMessages
           aria-label="input type"
         />
         <button
-          className="border-0 cursor-pointer transition-colors duration-200 hover:bg-sky/90 text-sm self-stretch text-white px-5 rounded-lg bg-sky  flex items-center gap-2 disabled:cursor-not-allowed disabled:opacity-50"
+          className="flex cursor-pointer items-center gap-2 self-stretch rounded-lg border-0 bg-sky px-5 text-sm text-white transition-colors duration-200 hover:bg-sky/90 disabled:cursor-not-allowed disabled:opacity-50"
           disabled={answers.length >= correctAnswers.length || isAnswersChecked}
         >
           Add <Plus className="size-4" />
@@ -141,14 +141,14 @@ export const QuizDialog = memo<QuizDialogProps>(({ correctAnswers, scoreMessages
       </form>
       <div
         className={cn(
-          "w-full flex justify-center border border-input bg-card min-h-[200px] py-3 px-4 text-sm rounded-lg mt-4 relative",
+          "relative mt-4 flex min-h-[200px] w-full justify-center rounded-lg border border-input bg-card px-4 py-3 text-sm",
           answers.length === 0 ? "items-center" : "items-start",
         )}
       >
         {answers.length === 0 ? (
           <div className="flex items-center justify-center">Your answers will appear here.</div>
         ) : (
-          <ul className="w-full h-full flex flex-wrap items-start justify-start list-none p-0 m-0 gap-1.5 relative z-30">
+          <ul className="relative z-30 m-0 flex h-full w-full list-none flex-wrap items-start justify-start gap-1.5 p-0">
             {answers.map((answer) => (
               <AnswerItem
                 key={answer.id}
@@ -160,8 +160,8 @@ export const QuizDialog = memo<QuizDialogProps>(({ correctAnswers, scoreMessages
         )}
         <div
           className={cn(
-            "w-full h-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center gap-[2px] text-[16px] rounded-[15px] backdrop-blur-md opacity-0 transition-opacity duration-150 text-center p-[30px] z-20",
-            isResultMessageShown && "opacity-100 z-40",
+            "absolute left-1/2 top-1/2 z-20 flex h-full w-full -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center gap-[2px] rounded-[15px] p-[30px] text-center text-[16px] opacity-0 backdrop-blur-md transition-opacity duration-150",
+            isResultMessageShown && "z-40 opacity-100",
           )}
         >
           <strong>Your result is {score.toFixed(0)}%</strong>
@@ -169,7 +169,7 @@ export const QuizDialog = memo<QuizDialogProps>(({ correctAnswers, scoreMessages
         </div>
         {isAnswersChecked ? (
           <button
-            className="absolute right-[10px] bottom-[7px] border-0 bg-transparent text-gray-400 underline cursor-pointer z-50 hover:no-underline"
+            className="absolute bottom-[7px] right-[10px] z-50 cursor-pointer border-0 bg-transparent text-gray-400 underline hover:no-underline"
             onClick={() =>
               isResultMessageShown ? setIsResultMessageShown(false) : setIsResultMessageShown(true)
             }
@@ -178,11 +178,11 @@ export const QuizDialog = memo<QuizDialogProps>(({ correctAnswers, scoreMessages
           </button>
         ) : null}
       </div>
-      <div className="w-full flex items-start justify-between mt-4 px-1">
+      <div className="mt-4 flex w-full items-start justify-between px-1">
         <div className="flex items-center gap-2.5">
           <Button
             className={cn(
-              "border-0 cursor-pointer text-sm py-2 px-5 rounded-full",
+              "cursor-pointer rounded-full border-0 px-5 py-2 text-sm",
               "disabled:cursor-not-allowed disabled:opacity-50",
               "bg-success text-success-foreground hover:bg-success/90",
             )}
@@ -193,7 +193,7 @@ export const QuizDialog = memo<QuizDialogProps>(({ correctAnswers, scoreMessages
           </Button>
           <Button
             className={cn(
-              "border-0 cursor-pointer text-sm py-2 px-5 rounded-full",
+              "cursor-pointer rounded-full border-0 px-5 py-2 text-sm",
               "disabled:cursor-not-allowed disabled:opacity-50",
               "bg-destructive text-destructive-foreground hover:bg-destructive/90",
             )}
@@ -209,6 +209,4 @@ export const QuizDialog = memo<QuizDialogProps>(({ correctAnswers, scoreMessages
       </div>
     </>
   );
-});
-
-QuizDialog.displayName = "QuizDialog";
+};

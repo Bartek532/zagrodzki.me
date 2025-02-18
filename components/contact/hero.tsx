@@ -2,16 +2,17 @@ import { Mail } from "lucide-react";
 
 import { HeroSection } from "@/components/common/sections/hero";
 import { Button } from "@/components/ui/button";
-import { env } from "@/env/client";
-import X from "public/svg/socials/x.svg";
+import { env } from "@/lib/env";
 
-type HeroProps = {
+import X from "../../public/svg/socials/x.svg";
+
+interface HeroProps {
   readonly description: string;
-};
+}
 
 export const Hero = ({ description }: HeroProps) => (
   <HeroSection caption="Contact" title={description}>
-    <div className="flex gap-3 sm:gap-4 sm:flex-row sm:items-center sm:justify-center">
+    <div className="flex gap-3 sm:flex-row sm:items-center sm:justify-center sm:gap-4">
       <Button asChild variant="outline">
         <a
           href={`https://x.com/${env.NEXT_PUBLIC_X_USERNAME}`}

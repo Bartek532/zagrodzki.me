@@ -15,7 +15,7 @@ const Cross = () => (
     <ViewAnimation
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
-      className="-translate-x-1/2 -translate-y-1/2 absolute top-1/2 left-1/2"
+      className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
     >
       <PlusIcon size={20} className="text-connection" />
     </ViewAnimation>
@@ -26,10 +26,10 @@ export const Section = ({ children, className, ...props }: SectionProps) => (
   <section {...props}>
     <div className="container relative mx-auto">
       <div className={cn("sm:border-x", className)}>{children}</div>
-      <div className="-bottom-3 -left-3 absolute z-10 hidden h-6 sm:block">
+      <div className="absolute -bottom-3 -left-3 z-10 hidden h-6 sm:block">
         <Cross />
       </div>
-      <div className="-bottom-3 -right-3 -translate-x-px absolute z-10 hidden h-6 sm:block">
+      <div className="absolute -bottom-3 -right-3 z-10 hidden h-6 -translate-x-px sm:block">
         <Cross />
       </div>
     </div>

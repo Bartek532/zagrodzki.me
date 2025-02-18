@@ -1,7 +1,7 @@
 import { random } from "lodash";
 import { unstable_cache as cache } from "next/cache";
-import Image from "next/image";
 
+import { Image } from "@/components/common/image";
 import { Link } from "@/components/common/link/link";
 import { Section } from "@/components/common/sections/section";
 import { Prose } from "@/components/ui/prose";
@@ -10,7 +10,8 @@ import { ViewAnimation } from "@/providers/view-animation";
 import { cn } from "@/utils";
 import { SITE_TITLE } from "@/utils/consts";
 import { normalizeCount } from "@/utils/functions";
-import Me from "public/img/me.webp";
+
+import Me from "../../public/img/me.webp";
 
 const getViews = cache(getAllResourcesTotalViews, ["total-views"], {
   revalidate: 60 * 60 * 24,
@@ -25,6 +26,7 @@ export const Content = async () => {
         <ViewAnimation
           initial={{ opacity: 0, translateY: -8 }}
           whileInView={{ opacity: 1, translateY: 0 }}
+          viewport={{ once: true, amount: 0.25 }}
           delay={0.4}
           className={cn("flex h-full flex-col items-start justify-between gap-4 p-6", "sm:p-8")}
         >
@@ -87,13 +89,13 @@ export const Content = async () => {
         <ViewAnimation initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} className="size-full">
           <div className="sticky top-24">
             <div className="relative">
-              <div className="absolute w-[120%] h-1/5 -bottom-10 z-10 left-[-10%] bg-background filter blur-[16px]"></div>
+              <div className="absolute -bottom-10 left-[-10%] z-10 h-1/5 w-[120%] bg-background blur-[16px] filter"></div>
               <Image
                 src={Me}
                 width="450"
                 height="660"
                 alt={SITE_TITLE}
-                className="drop-shadow-[0_-5px_10px_hsl(var(--connection))] mx-auto rounded-2xl border-b border-background"
+                className="mx-auto rounded-2xl border-b border-background drop-shadow-[0_-5px_10px_hsl(var(--connection))]"
               />
             </div>
           </div>

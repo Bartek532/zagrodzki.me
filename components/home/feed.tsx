@@ -14,7 +14,7 @@ export const Feed = async () => {
   return (
     <Section
       className={cn(
-        "relative flex flex-col gap-2 p-6 font-mono text-muted-foreground text-xs",
+        "relative flex flex-col gap-2 p-6 font-mono text-xs text-muted-foreground",
         "sm:px-8 sm:text-sm",
       )}
     >
@@ -28,7 +28,7 @@ export const Feed = async () => {
           <GitHubEvent event={event} />
         </ViewAnimation>
       ))}
-      <div className="absolute right-0 bottom-6 left-0 z-10 h-40 bg-gradient-to-b from-transparent to-background" />
+      <div className="absolute bottom-6 left-0 right-0 z-10 h-40 bg-gradient-to-b from-transparent to-background" />
     </Section>
   );
 };

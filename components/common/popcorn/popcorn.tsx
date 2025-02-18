@@ -1,21 +1,21 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 import { memo } from "react";
 
-import Corn from "public/svg/popcorn/corn.svg";
-import Cup from "public/svg/popcorn/cup.svg";
+import Corn from "../../../public/svg/popcorn/corn.svg";
+import Cup from "../../../public/svg/popcorn/cup.svg";
 
 import { Confetti } from "./confetti/confetti";
 import { MAX_CORNS_COUNT, allCorns, transition } from "./consts";
 import styles from "./popcorn.module.scss";
 
-type PopcornProps = {
+interface PopcornProps {
   readonly width?: number;
   readonly onAdd?: () => void | Promise<void>;
   readonly onRemove?: () => void | Promise<void>;
   readonly count?: number;
-};
+}
 
 export const Popcorn = memo<PopcornProps>(({ width = 100, count = 0, onAdd, onRemove }) => (
   <div className={styles.wrapper}>
@@ -24,7 +24,7 @@ export const Popcorn = memo<PopcornProps>(({ width = 100, count = 0, onAdd, onRe
       whileTap={{ scale: 1.1, rotateZ: 3 }}
       whileHover={{ scale: 1.05 }}
       onClick={onAdd}
-      onContextMenu={(e) => {
+      onContextMenu={(e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
         void onRemove?.();
       }}
