@@ -1,6 +1,5 @@
 "use client";
 
-import clsx from "clsx";
 import { Plus, X } from "lucide-react";
 import { memo, useEffect } from "react";
 import { useState } from "react";
@@ -25,7 +24,7 @@ interface Answer {
 const AnswerItem = ({ answer, onDeleteAnswer }: { answer: Answer; onDeleteAnswer: () => void }) => (
   <li>
     <button
-      className={clsx(
+      className={cn(
         "text-sm py-1.5 px-3.5 rounded-full border-0 relative group transition-colors duration-100",
         answer.status === "unchecked" && "bg-background cursor-pointer",
         answer.status === "correct" && "bg-success text-success-foreground cursor-default",
@@ -125,7 +124,7 @@ export const QuizDialog = memo<QuizDialogProps>(({ correctAnswers, scoreMessages
         <Input
           type="text"
           placeholder="Type your answer here..."
-          className={clsx(errors.inputType && "border-destructive focus-visible:ring-destructive")}
+          className={cn(errors.inputType && "border-destructive focus-visible:ring-destructive")}
           {...register("inputType", {
             required: true,
             validate: isNotInAnswers,
@@ -160,7 +159,7 @@ export const QuizDialog = memo<QuizDialogProps>(({ correctAnswers, scoreMessages
           </ul>
         )}
         <div
-          className={clsx(
+          className={cn(
             "w-full h-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center gap-[2px] text-[16px] rounded-[15px] backdrop-blur-md opacity-0 transition-opacity duration-150 text-center p-[30px] z-20",
             isResultMessageShown && "opacity-100 z-40",
           )}
@@ -182,7 +181,7 @@ export const QuizDialog = memo<QuizDialogProps>(({ correctAnswers, scoreMessages
       <div className="w-full flex items-start justify-between mt-4 px-1">
         <div className="flex items-center gap-2.5">
           <Button
-            className={clsx(
+            className={cn(
               "border-0 cursor-pointer text-sm py-2 px-5 rounded-full",
               "disabled:cursor-not-allowed disabled:opacity-50",
               "bg-success text-success-foreground hover:bg-success/90",
@@ -193,7 +192,7 @@ export const QuizDialog = memo<QuizDialogProps>(({ correctAnswers, scoreMessages
             Check
           </Button>
           <Button
-            className={clsx(
+            className={cn(
               "border-0 cursor-pointer text-sm py-2 px-5 rounded-full",
               "disabled:cursor-not-allowed disabled:opacity-50",
               "bg-destructive text-destructive-foreground hover:bg-destructive/90",

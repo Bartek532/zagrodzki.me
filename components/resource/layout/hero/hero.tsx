@@ -4,7 +4,7 @@ import { Image } from "@/components/common/image";
 import { HeroSection } from "@/components/common/sections/hero";
 import { buttonVariants } from "@/components/ui/button";
 import { Resource, RESOURCE_TYPE } from "@/types";
-import { cn } from "@/utils";
+import { cn, formatDate } from "@/utils";
 import Fire from "public/svg/fire.svg";
 
 import { Breadcrumbs } from "./breadcrumbs/breadcrumbs";
@@ -30,11 +30,7 @@ export const Hero = ({ resource }: HeroProps) => (
     <p className="mx-auto max-w-2xl sm:text-center text-pretty">{resource.excerpt}</p>
     {resource.type === RESOURCE_TYPE.POST ? (
       <div className="flex items-center gap-4 sm:justify-center text-muted-foreground text-sm sm:pb-8">
-        <p>
-          {new Intl.DateTimeFormat("en-US", {
-            dateStyle: "medium",
-          }).format(new Date())}
-        </p>
+        <p>{formatDate(resource.publishedAt)}</p>
         <p>&bull;</p>
         <p>{Math.round(resource.timeToRead)} min read</p>
       </div>

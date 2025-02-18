@@ -1,11 +1,12 @@
-import { ViewAnimation } from "@/providers/view-animation";
+import { unstable_cache as cache } from "next/cache";
 import Image from "next/image";
+
+import { ViewAnimation } from "@/providers/view-animation";
 import OfflineIcon from "public/svg/offline.svg";
 import SpotifyIcon from "public/svg/socials/spotify.svg";
+
 import { fetchLastTrack } from "./api/spotify";
 import { TRACK_STATUS } from "./types";
-
-import { unstable_cache as cache } from "next/cache";
 
 const getTrack = cache(fetchLastTrack, ["spotify"], { revalidate: 60 * 5 });
 
@@ -31,7 +32,7 @@ export const Spotify = async () => {
             </div>
 
             <span className="text-success mt-8 flex items-baseline gap-2 text-xs lg:text-sm">
-              {data.status === TRACK_STATUS.ONLINE ? (
+              {data.status !== TRACK_STATUS.ONLINE ? (
                 <>
                   <span className="flex  gap-px">
                     {[1, 2, 3].map((i) => (

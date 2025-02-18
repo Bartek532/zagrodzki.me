@@ -11,7 +11,7 @@ type HeroProps = {
 
 export const Hero = ({ description }: HeroProps) => (
   <HeroSection caption="Contact" title={description}>
-    <div className="flex  gap-3 sm:gap-4 sm:flex-row sm:items-center">
+    <div className="flex gap-3 sm:gap-4 sm:flex-row sm:items-center sm:justify-center">
       <Button asChild variant="outline">
         <a
           href={`https://x.com/${env.NEXT_PUBLIC_X_USERNAME}`}

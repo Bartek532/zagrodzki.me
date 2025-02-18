@@ -4,6 +4,8 @@ import customParseFormat from "dayjs/plugin/customParseFormat";
 import { Suspense, memo } from "react";
 
 import { Link } from "@/components/common/link/link";
+import { env } from "@/env/client";
+import { formatDate } from "@/utils";
 import { resourceRoutes } from "data/routes";
 import { RESOURCE_TYPE, Resource } from "types";
 import { HOST } from "utils/consts";
@@ -11,7 +13,6 @@ import { HOST } from "utils/consts";
 import { Likes } from "../likes/likes";
 
 import { Views } from "./views";
-import { env } from "@/env/client";
 
 dayjs.extend(customParseFormat);
 dayjs.extend(advancedFormat);
@@ -33,9 +34,7 @@ export const Footer = memo<FooterProps>(({ resource }) => {
             </Suspense>
           </div>
           <div className="flex flex-col items-end text-sm italic opacity-60 text-muted-foreground">
-            <div className="text-sm">
-              {dayjs(resource.modifiedAt, "DD-MM-YYYY").format("MMMM Do, YYYY")}
-            </div>
+            <div className="text-sm">{formatDate(resource.modifiedAt)}</div>
             <Suspense fallback={null}>
               <Views slug={resource.slug} type={resource.type} />
             </Suspense>

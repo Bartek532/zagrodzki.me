@@ -1,9 +1,9 @@
 "use client";
 
-import clsx from "clsx";
 import { memo, useState, useEffect } from "react";
 import Confetti from "react-dom-confetti";
 
+import { cn } from "@/utils";
 import { copyToClipboard } from "utils/clipboard";
 import { onPromise } from "utils/functions";
 
@@ -42,7 +42,7 @@ export const CopyButton = memo<CopyButtonProps>(({ label, textToCopy }) => {
       </div>
       <button
         onClick={onPromise(handleCopyButtonClick)}
-        className={clsx(
+        className={cn(
           "border bg-border cursor-pointer text-foreground px-5 py-2 rounded-xl transition-colors duration-200 hover:border-ring focus:border-ring",
           isCopied && "border-ring",
         )}

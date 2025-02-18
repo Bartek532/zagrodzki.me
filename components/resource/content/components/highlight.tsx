@@ -1,6 +1,7 @@
-import { cn } from "@/utils";
 import { CircleAlert, CircleCheck, CircleXIcon } from "lucide-react";
 import { memo } from "react";
+
+import { cn } from "@/utils";
 
 interface HighlightProps {
   readonly variant: "success" | "error" | "warning";

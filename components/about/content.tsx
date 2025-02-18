@@ -50,7 +50,7 @@ export const Content = async () => {
                 <Link href="https://www.credly.com/badges/2a842ba7-704b-40b4-b08c-474b460e8f04">
                   AWS Certified Solutions Architect
                 </Link>
-                , with expertise in designing and implementing scalable, highly available, and
+                with expertise in designing and implementing scalable, highly available, and
                 fault-tolerant systems on{" "}
                 <Link href="https://aws.amazon.com">Amazon Web Services</Link>. This certification
                 has equipped me with deep knowledge of cloud architecture best practices and AWS

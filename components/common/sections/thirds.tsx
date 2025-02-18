@@ -1,8 +1,9 @@
+import { ArrowUpRight } from "lucide-react";
+
 import { Section } from "@/components/common/sections/section";
 import { Button } from "@/components/ui/button";
 import { Prose } from "@/components/ui/prose";
 import { ViewAnimation } from "@/providers/view-animation";
-import ArrowUpRightIcon from "public/svg/right-top-arrow.svg";
 
 import type { ReactNode } from "react";
 
@@ -50,10 +51,9 @@ const SmallSlot = ({ caption, title, description, buttons }: ThirdsSectionProps)
               href={button.href}
               target={button.href.includes("http") ? "_blank" : undefined}
               rel={button.href.includes("http") ? "noreferrer noopener" : undefined}
-              className="[&_svg]:size-2"
             >
               {button.label}
-              {button.href.includes("http") && <ArrowUpRightIcon className="text-foreground" />}
+              {button.href.includes("http") && <ArrowUpRight className="size-4 text-foreground" />}
             </a>
           </Button>
         ))}

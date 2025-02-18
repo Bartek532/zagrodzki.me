@@ -1,6 +1,5 @@
+import { ArrowUpRight } from "lucide-react";
 import { memo } from "react";
-
-import RightTopArrow from "public/svg/right-top-arrow.svg";
 
 import { SuperLink } from "./super-link";
 
@@ -26,9 +25,9 @@ export const Link = memo<LinkProps>(({ children, href }) => {
       <span className="text-link p-0 bg-gradient-to-r from-current to-current bg-no-repeat bg-[length:0%_1.7px] bg-[position:0%_100%] transition-[background-size] duration-250 ease-in-out hover:bg-[length:100%_1.7px] focus:bg-[length:100%_1.7px]">
         {children}
       </span>
-      <span className="px-1.5 inline-flex items-center whitespace-nowrap">
+      <span className="px-0.5 inline-flex items-center whitespace-nowrap">
         &#xfeff;
-        <RightTopArrow className="w-2.5 inline text-link" />
+        <ArrowUpRight className="w-4 inline text-link" />
       </span>
     </Component>
   );

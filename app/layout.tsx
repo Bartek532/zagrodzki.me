@@ -1,4 +1,3 @@
-import clsx from "clsx";
 import localFont from "next/font/local";
 
 import { WindowsEmojiPolyfill } from "@/components/common/windows-emoji-polyfill";
@@ -10,8 +9,8 @@ import { DEFAULT_METADATA, DEFAULT_VIEWPORT } from "@/lib/metadata";
 import { Analytics } from "@/providers/analytics";
 import { ThemeProvider } from "@/providers/theme";
 
-import "../styles/globals.css";
 import "../styles/code.css";
+import "../styles/globals.css";
 
 export const metadata = DEFAULT_METADATA;
 export const viewport = DEFAULT_VIEWPORT;
@@ -58,7 +57,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       dir="ltr"
       prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#"
       itemType="http://schema.org/WebPage"
-      className={clsx(walsheim.variable, mono.variable, kenfolg.variable)}
+      className={`${walsheim.variable} ${mono.variable} ${kenfolg.variable}`}
       suppressHydrationWarning
     >
       <body className="overflow-x-hidden font-sans antialiased">

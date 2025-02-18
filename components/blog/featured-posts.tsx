@@ -2,7 +2,7 @@ import { Image } from "@/components/common/image";
 import { SuperLink } from "@/components/common/link/super-link";
 import { Section } from "@/components/common/sections/section";
 import { Prose } from "@/components/ui/prose";
-import { cn } from "@/utils";
+import { cn, formatDate } from "@/utils";
 import { Post } from "types";
 
 type FeaturedPostsProps = {
@@ -34,11 +34,7 @@ export const FeaturedPosts = ({ posts }: FeaturedPostsProps) => (
               </div>
 
               <div className="flex items-center w-fit text-sm gap-2">
-                <p>
-                  {new Intl.DateTimeFormat("en-US", {
-                    dateStyle: "medium",
-                  }).format(new Date())}
-                </p>
+                <p>{formatDate(post.modifiedAt)}</p>
                 <p>&bull;</p>
                 <p>{Math.round(post.timeToRead)} min read</p>
               </div>

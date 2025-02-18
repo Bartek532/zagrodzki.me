@@ -1,3 +1,4 @@
+import { ArrowUpRight } from "lucide-react";
 import { motion } from "motion/react";
 
 import { SuperLink } from "@/components/common/link/super-link";
@@ -5,7 +6,6 @@ import { Prose } from "@/components/ui/prose";
 import { allCategories } from "@/data/categories";
 import { Post } from "@/types";
 import { cn } from "@/utils";
-import RightTopArrow from "public/svg/right-top-arrow.svg";
 
 type PostThumbnailProps = {
   readonly post: Post;
@@ -37,9 +37,9 @@ export const PostThumbnail = ({ post, className }: PostThumbnailProps) => (
             <span>{Math.round(post.timeToRead)} minutes</span>
           </div>
 
-          <div className="flex items-center gap-2 border rounded-lg px-4 py-1.5">
+          <div className="flex items-center gap-1.5 border rounded-lg px-4 py-1.5">
             <span className="text-sm">Read more</span>
-            <RightTopArrow className="size-2.5" />
+            <ArrowUpRight className="size-4" />
           </div>
         </div>
       </div>

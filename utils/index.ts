@@ -1,6 +1,10 @@
 import clsx, { type ClassValue } from "clsx";
+import dayjs from "dayjs";
+import advancedFormat from "dayjs/plugin/advancedFormat";
 import { toast } from "sonner";
 import { twMerge } from "tailwind-merge";
+
+dayjs.extend(advancedFormat);
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -23,3 +27,5 @@ export const handleError = (error: unknown) => {
 
   toast.error(message);
 };
+
+export const formatDate = (date: string) => dayjs(date, "DD-MM-YYYY").format("MMMM Do, YYYY");

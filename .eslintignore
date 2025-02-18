@@ -1,2 +1,4 @@
 public
 *.config.js
+node_modules
+.next

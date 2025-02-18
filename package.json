@@ -24,11 +24,18 @@
     "start": "next start",
     "tsc": "tsc --noEmit"
   },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,md,mdx,graphql,yml,yaml,css,scss,json}": [
+      "prettier --write"
+    ],
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix"
+    ]
+  },
   "dependencies": {
     "@hookform/resolvers": "3.1.1",
     "@number-flow/react": "0.5.5",
     "@octokit/rest": "21.1.0",
-    "@plaiceholder/next": "3.0.0",
     "@primer/octicons-react": "19.15.0",
     "@radix-ui/react-checkbox": "1.1.4",
     "@radix-ui/react-label": "2.1.2",
@@ -45,9 +52,7 @@
     "dayjs": "1.10.7",
     "developer-icons": "5.2.8",
     "feed": "4.2.2",
-    "framer-motion": "10.16.4",
     "gray-matter": "4.0.3",
-    "invariant": "2.2.4",
     "jotai": "2.12.0",
     "lodash": "4.17.21",
     "lucide-react": "0.475.0",
@@ -62,13 +67,9 @@
     "react-dom-confetti": "0.2.0",
     "react-hook-form": "7.45.1",
     "react-instantsearch": "7.15.3",
-    "react-instantsearch-core": "6.40.1",
-    "react-instantsearch-dom": "6.40.1",
     "react-tweet": "3.2.1",
     "reading-time": "1.5.0",
-    "rsc-activity-calendar": "1.0.1",
     "schema-dts": "1.1.2",
-    "sharp": "0.32.6",
     "slugify": "1.6.4",
     "sonner": "1.7.4",
     "tailwind-merge": "3.0.1",
@@ -79,15 +80,12 @@
     "@svgr/webpack": "5.5.0",
     "@tailwindcss/typography": "0.5.16",
     "@types/gtag.js": "0.0.8",
-    "@types/invariant": "2.2.35",
     "@types/lodash": "4.14.202",
     "@types/mapbox__rehype-prism": "0.8.0",
     "@types/next-pwa": "5.6.4",
     "@types/node": "20.3.3",
     "@types/react": "18.2.58",
     "@types/react-dom": "18.2.19",
-    "@types/react-instantsearch-core": "6.26.3",
-    "@types/react-instantsearch-dom": "6.12.1",
     "@types/unist": "2.0.6",
     "@typescript-eslint/eslint-plugin": "6.7.0",
     "@typescript-eslint/parser": "6.7.0",
@@ -106,7 +104,6 @@
     "rehype-stringify": "8",
     "remark-parse": "8.0.3",
     "remark-rehype": "8",
-    "sass": "1.49.0",
     "server-only": "0.0.1",
     "tailwindcss": "^3.4.17",
     "tailwindcss-animate": "1.0.7",
@@ -117,7 +114,7 @@
   },
   "packageManager": "pnpm@8.5.0",
   "engines": {
-    "node": ">=20.0.0",
+    "node": ">=22.0.0",
     "npm": ">=10.0.0",
     "pnpm": ">=8.0.0"
   },
