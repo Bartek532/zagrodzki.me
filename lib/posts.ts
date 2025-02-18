@@ -53,9 +53,3 @@ export const getPostsCategories = () => {
 
   return [...new Set(allCategories)];
 };
-
-export const getPopularPosts = () => {
-  const posts = getPublishedPosts();
-
-  return posts.filter((post) => post.popular);
-};

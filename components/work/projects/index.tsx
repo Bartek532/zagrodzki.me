@@ -8,10 +8,15 @@ import { ViewAnimation } from "@/providers/view-animation";
 import { cn } from "@/utils";
 
 import { ArchiveCheckbox } from "./archive/checkbox";
-import { ProjectsList } from "./list/list";
+import { ProjectsListing } from "./listing/listing";
+import { env } from "@/env/client";
 
 export const Projects = () => (
-  <InstantSearch indexName="projects" searchClient={searchClient} insights>
+  <InstantSearch
+    indexName={env.NEXT_PUBLIC_ALGOLIA_PROJECTS_INDEX_NAME}
+    searchClient={searchClient}
+    insights
+  >
     <Section className={cn("flex flex-col gap-8 py-8 pb-12", "lg:py-16 lg:pb-18")}>
       <ViewAnimation
         initial={{ opacity: 0, translateY: -8 }}
@@ -29,6 +34,6 @@ export const Projects = () => (
       </ViewAnimation>
     </Section>
 
-    <ProjectsList />
+    <ProjectsListing />
   </InstantSearch>
 );

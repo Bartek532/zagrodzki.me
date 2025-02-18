@@ -2,7 +2,7 @@ import { memo } from "react";
 
 import RightTopArrow from "public/svg/right-top-arrow.svg";
 
-import { SuperLink } from "./SuperLink";
+import { SuperLink } from "./super-link";
 
 interface LinkProps {
   readonly children: React.ReactNode;

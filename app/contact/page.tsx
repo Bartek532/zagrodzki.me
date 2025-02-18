@@ -13,9 +13,7 @@ export const metadata = getMetadata({
 
 const ContactPage = () => (
   <>
-    {/* <Hero title="Contact" description={description} />
-    <Contact /> */}
-    <Hero />
+    <Hero description={description} />
     <Contact />
   </>
 );

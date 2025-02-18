@@ -7,17 +7,18 @@ import { Section } from "./section";
 
 type HeroProps = {
   image?: ReactNode;
-  caption?: string | null;
+  caption?: ReactNode;
   title: string;
   children?: ReactNode;
+  className?: string;
 };
 
-export const HeroSection = ({ image, caption, title, children }: HeroProps) => (
-  <Section className="p-6">
+export const HeroSection = ({ image, caption, title, children, className }: HeroProps) => (
+  <Section className={cn("p-6", className)}>
     <div
       className={cn(
-        "flex flex-col items-start justify-center gap-8",
-        "sm:items-center sm:rounded-lg sm:border sm:bg-card sm:px-8 sm:py-20 sm:shadow-tile",
+        "flex flex-col items-start relative overflow-hidden justify-center gap-5",
+        "sm:items-center sm:rounded-lg sm:border sm:bg-card sm:px-8 sm:py-20 sm:shadow-tile sm:gap-6 lg:gap-8",
       )}
     >
       {image && (
@@ -55,6 +56,7 @@ export const HeroSection = ({ image, caption, title, children }: HeroProps) => (
       </div>
       {Children.map(children, (child, index) => (
         <ViewAnimation
+          className="w-full"
           initial={{ opacity: 0, translateY: -8 }}
           whileInView={{ opacity: 1, translateY: 0 }}
           delay={0.8 + index * 0.4}

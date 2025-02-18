@@ -1,7 +1,7 @@
 import { Article, WithContext } from "schema-dts";
 
-import { FeaturedPosts } from "components/blog/featured/FeaturedPosts";
-import { Resource } from "components/resource/Resource";
+import { FeaturedPosts } from "@/components/blog/featured-posts";
+import { Resource } from "@/components/resource/resource";
 import { getMetadata } from "lib/metadata";
 import { getNewestPosts, getPostBySlug, getPostsPaths } from "lib/posts";
 import { type MetadataParams } from "types";
@@ -9,6 +9,7 @@ import { SITE_TITLE } from "utils/consts";
 
 export async function generateMetadata({ params: { slug } }: MetadataParams) {
   const { frontmatter } = await getPostBySlug(slug);
+
   return getMetadata({
     title: frontmatter.title,
     description: frontmatter.excerpt,

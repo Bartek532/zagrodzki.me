@@ -11,6 +11,21 @@ export const typographyConfig = (theme: (path: string) => string) => ({
         fontSize: theme("fontSize.sm"),
         border: `1px solid ${theme("colors.border")}`,
       },
+      "figure, img, video": {
+        margin: 0,
+      },
+      "blockquote p": {
+        fontStyle: "normal",
+      },
+      pre: false,
+      code: false,
+      "pre code": false,
+      "code::before": false,
+      "code::after": false,
+
+      a: {
+        textDecoration: "none",
+      },
     },
   },
   invert: {

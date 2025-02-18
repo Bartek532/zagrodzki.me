@@ -3,19 +3,18 @@
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import { memo } from "react";
 
-import { CONTENT_ID } from "utils/consts";
+import { Link } from "@/components/common/link/link";
+import { Prose } from "@/components/ui/prose";
+import { cn } from "@/utils";
+import { CONTENT_ID } from "@/utils/consts";
 
-import { Link } from "../../common/link/Link";
-
-import * as CustomComponents from "./components/custom";
-import { Heading } from "./components/heading/Heading";
-import { Highlight } from "./components/highlight/Highlight";
-import { Image } from "./components/image/Image";
-import { Pre } from "./components/pre/Pre";
-import { Quote } from "./components/quote/Quote";
-import { Sandbox } from "./components/sandbox/Sandbox";
-import { Video } from "./components/video/Video";
-
+import { Heading } from "./components/heading";
+import { Image } from "./components/image";
+import { Video } from "./components/video";
+import { Sandbox } from "./components/sandbox";
+import { Highlight } from "./components/highlight";
+import { Quote } from "./components/quote";
+import { Pre } from "./components/pre";
 interface ContentProps {
   readonly content: MDXRemoteSerializeResult;
 }
@@ -37,13 +36,16 @@ const customMdxComponents = {
   Highlight,
   Sandbox: ({ id }: { id: string }) => <Sandbox id={id} />,
   pre: Pre,
-  ...CustomComponents,
+  // ...CustomComponents,
 } as unknown as Record<string, React.ReactNode>;
 
 export const Content = memo<ContentProps>(({ content }) => (
-  <div className={CONTENT_ID} id={CONTENT_ID}>
+  <Prose
+    className={cn("px-6 sm:px-8 py-8 max-w-3xl mx-auto col-span-2", "lg:px-10 lg:py-16")}
+    id={CONTENT_ID}
+  >
     <MDXRemote {...content} components={customMdxComponents} />
-  </div>
+  </Prose>
 ));
 
 Content.displayName = "Content";

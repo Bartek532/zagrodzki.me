@@ -6,7 +6,7 @@ import { memo } from "react";
 import Corn from "public/svg/popcorn/corn.svg";
 import Cup from "public/svg/popcorn/cup.svg";
 
-import { Confetti } from "./confetti/Confetti";
+import { Confetti } from "./confetti/confetti";
 import { MAX_CORNS_COUNT, allCorns, transition } from "./consts";
 import styles from "./popcorn.module.scss";
 

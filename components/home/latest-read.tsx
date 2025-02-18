@@ -1,16 +1,17 @@
-import { ViewAnimation } from "@/providers/view-animation";
+import { unstable_cache as cache } from "next/cache";
 import Image from "next/image";
 
-import { unstable_cache as cache } from "next/cache";
+import { ViewAnimation } from "@/providers/view-animation";
 
 const getLatestRead = cache(
-  () => ({
-    id: 1,
-    title: "Deep Work",
-    author: "Cal Newport",
-    thumbnail:
-      "https://oku.ams3.cdn.digitaloceanspaces.com/covers/2022/06/4b800be0b9b04775f4c3d85de4f67959.jpg",
-  }),
+  () =>
+    Promise.resolve({
+      id: 1,
+      title: "Deep Work",
+      author: "Cal Newport",
+      thumbnail:
+        "https://oku.ams3.cdn.digitaloceanspaces.com/covers/2022/06/4b800be0b9b04775f4c3d85de4f67959.jpg",
+    }),
   ["latest-read"],
   { revalidate: 60 * 60 * 24 },
 );

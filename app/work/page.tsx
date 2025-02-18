@@ -5,7 +5,7 @@ import { Positions } from "@/components/work/positions";
 import { Projects } from "@/components/work/projects";
 import { getMetadata } from "lib/metadata";
 
-const description = "Everything that I have built, alone or with someone 🔨";
+const description = "I love shipping products and building great software 🔨";
 
 export const metadata = getMetadata({
   title: "Work",
@@ -16,7 +16,7 @@ export const metadata = getMetadata({
 
 const WorkPage = () => (
   <>
-    <Hero />
+    <Hero description={description} />
     <Positions />
     <Projects />
     <Skills />

@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import { SuperLink } from "@/components/common/link/SuperLink";
+import { SuperLink } from "@/components/common/link/super-link";
 import { Section } from "@/components/common/sections/section";
 import { buttonVariants } from "@/components/ui/button";
 import { Prose } from "@/components/ui/prose";
@@ -27,7 +27,7 @@ export const Positions = () => (
           rel="noopener noreferrer"
           className={cn(
             "flex flex-col items-start gap-6 p-6 h-full transition-colors hover:bg-card dark:hover:bg-accent",
-            "lg:flex-row lg:p-8",
+            "lg:flex-row sm:p-8",
           )}
         >
           <div className="flex w-16 shrink-0 items-center justify-center">

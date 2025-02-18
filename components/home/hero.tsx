@@ -29,7 +29,7 @@ export const Hero = () => {
           }
         : {})}
     >
-      <div className="flex items-center justify-center gap-4">
+      <div className="flex items-center sm:justify-center gap-4">
         <Button asChild variant="outline">
           <Link href="/work">View my work</Link>
         </Button>

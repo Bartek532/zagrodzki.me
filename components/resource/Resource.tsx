@@ -1,19 +1,16 @@
-import clsx from "clsx";
 import { MDXRemoteSerializeResult } from "next-mdx-remote";
-import { Suspense, memo } from "react";
+import { memo, Suspense } from "react";
 
-import { Image } from "components/common/image/Image";
-import Arrow from "public/svg/right-top-arrow.svg";
-import { RESOURCE_TYPE, Resource as ResourceType } from "types";
+import { Section } from "@/components/common/sections/section";
+import { Content } from "@/components/resource/content/content";
+import { TableOfContents } from "@/components/resource/content/table-of-contents/table-of-contents";
+import { Author } from "@/components/resource/layout/author";
+import { Footer } from "@/components/resource/layout/footer/footer";
+import { Likes } from "@/components/resource/layout/likes/likes";
+import { cn } from "@/utils";
+import { Resource as ResourceType } from "types";
 
-import { Content } from "./content/Content";
-import { TableOfContents } from "./content/tableOfContents/TableOfContents";
-import { Author } from "./layout/author/Author";
-import { Banner } from "./layout/banner/Banner";
-import { Footer } from "./layout/footer/Footer";
-import { Info } from "./layout/info/Info";
-import { Likes } from "./layout/likes/Likes";
-import styles from "./resource.module.scss";
+import { Hero } from "./layout/hero/hero";
 
 type ResourceProps = {
   readonly metadata: ResourceType;
@@ -21,46 +18,27 @@ type ResourceProps = {
 };
 
 export const Resource = memo<ResourceProps>(({ metadata, content }) => (
-  <article className={styles.container}>
-    <header className={styles.header}>
-      {"archived" in metadata && metadata.archived && (
-        <Banner
-          text={`This ${metadata.type} is archived and, most likely, won't get any updates.`}
-        />
-      )}
-      <Info resource={metadata} />
-    </header>
-    <div className={styles.main}>
-      <div className={styles.inner}>
-        <aside className={styles.aside}>
+  <>
+    <Hero resource={metadata} />
+    <Section className={cn("lg:grid lg:grid-cols-3 lg:divide-x lg:divide-y-0")}>
+      <div className="col-span-2">
+        <Content content={content} />
+        <Footer resource={metadata} />
+        <div className="border-t">
+          <Author name={metadata.author} />
+        </div>
+      </div>
+
+      <aside className={cn("px-10 py-16 hidden lg:block")}>
+        <div className="sticky top-28 flex flex-col gap-8 items-start">
           <TableOfContents content={content} />
           <Suspense fallback={null}>
             <Likes slug={metadata.slug} type={metadata.type} />
           </Suspense>
-        </aside>
-        <div className={styles.wrapper}>
-          {metadata.type === RESOURCE_TYPE.PROJECT ? (
-            <a className={clsx(styles.thumbnail, styles.link)} href={metadata.url} target="_blank">
-              <Image src={metadata.image} alt={metadata.title} width={1200} height={880} />
-              <div className={styles.arrow}>
-                <Arrow />
-              </div>
-            </a>
-          ) : (
-            <div className={styles.thumbnail}>
-              <Image src={metadata.image} alt={metadata.title} width={1200} height={880} />
-            </div>
-          )}
-
-          <Content content={content} />
-          <Footer resource={metadata} />
         </div>
-      </div>
-      <div className={styles.author}>
-        <Author name={metadata.author} />
-      </div>
-    </div>
-  </article>
+      </aside>
+    </Section>
+  </>
 ));
 
 Resource.displayName = "Resource";

@@ -1,9 +1,9 @@
-import { ThemeSwitcher } from "@/components/common/theme/theme-switcher";
+import { ThemeSwitcher } from "@/components/common/theme-switcher";
+import { BuiltWith } from "@/components/layout/footer/built-with";
 import { ViewAnimation } from "@/providers/view-animation";
 import { cn } from "@/utils";
 
 import { Links } from "./links";
-import { BuiltWith } from "@/components/layout/footer/built-with";
 
 export const Footer = () => (
   <footer className={cn("container mx-auto flex flex-col gap-4 p-6", "sm:gap-16 sm:px-8 sm:py-16")}>

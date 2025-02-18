@@ -2,7 +2,7 @@ import { random } from "lodash";
 import { unstable_cache as cache } from "next/cache";
 import Image from "next/image";
 
-import { Link } from "@/components/common/link/Link";
+import { Link } from "@/components/common/link/link";
 import { Section } from "@/components/common/sections/section";
 import { Prose } from "@/components/ui/prose";
 import { getAllResourcesTotalViews } from "@/lib/kv/views";

@@ -4,7 +4,7 @@ import { memo } from "react";
 import { getResourceLikesBySlug } from "lib/kv/likes";
 import { RESOURCE_TYPE } from "types";
 
-import { LikesCounter } from "./counter/LikesCounter";
+import { LikesCounter } from "./counter/likes-counter";
 
 type LikesProps = {
   readonly type: RESOURCE_TYPE;

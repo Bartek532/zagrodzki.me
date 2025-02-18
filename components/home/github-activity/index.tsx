@@ -5,8 +5,9 @@ import { Section } from "@/components/common/sections/section";
 import { env } from "@/env/client";
 import { ViewAnimation } from "@/providers/view-animation";
 
-import type { Activity } from "react-activity-calendar";
 import { Calendar } from "./calendar";
+
+import type { Activity } from "react-activity-calendar";
 
 const getContributions = cache(
   async () => {
@@ -52,7 +53,7 @@ export const GitHubActivity = async () => {
       <ViewAnimation
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
-        className="relative grid gap-0.5 py-6 sm:grid-cols-2 lg:p-8 lg:gap-1"
+        className="relative grid gap-0.5 py-6 sm:grid-cols-2 sm:p-8 lg:gap-1"
       >
         {[thirdQuarterData, fourthQuarterData, firstQuarterData, secondQuarterData].map(
           (data, index) => (

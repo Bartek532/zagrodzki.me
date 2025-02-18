@@ -9,7 +9,6 @@ type ViewAnimationProps = {
   whileInView?: Record<string, string | number>;
   animate?: Record<string, string | number>;
   delay?: number;
-  // className?: ComponentProps<typeof motion.div>['className'];
   className?: string;
   children: ReactNode;
 };

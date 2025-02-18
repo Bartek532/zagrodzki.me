@@ -7,7 +7,7 @@ import { Skills } from "@/components/about/skills";
 import { GitHubActivity } from "@/components/home/github-activity";
 import { getMetadata } from "lib/metadata";
 
-const description = "Want to know more about me? You've come to the right place 🎓";
+const description = "I'm a Software Engineer not afraid of any technology 🎓";
 
 export const metadata = getMetadata({
   title: "About",
@@ -18,7 +18,7 @@ export const metadata = getMetadata({
 
 const AboutPage = () => (
   <>
-    <Hero />
+    <Hero description={description} />
     <Content />
     <Education />
     <Skills />

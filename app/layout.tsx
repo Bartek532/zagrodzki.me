@@ -1,18 +1,17 @@
 import clsx from "clsx";
 import localFont from "next/font/local";
 
+import { WindowsEmojiPolyfill } from "@/components/common/windows-emoji-polyfill";
 import { Newsletter } from "@/components/home/newsletter";
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
 import { Toaster } from "@/components/ui/sonner";
-import { WindowsEmojiPolyfill } from "@/components/windows-emoji-polyfill";
 import { DEFAULT_METADATA, DEFAULT_VIEWPORT } from "@/lib/metadata";
 import { Analytics } from "@/providers/analytics";
 import { ThemeProvider } from "@/providers/theme";
 
 import "../styles/globals.css";
-
-// import "../styles/globals.scss";
+import "../styles/code.css";
 
 export const metadata = DEFAULT_METADATA;
 export const viewport = DEFAULT_VIEWPORT;

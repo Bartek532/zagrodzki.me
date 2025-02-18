@@ -19,7 +19,7 @@ export const Facts = () => (
         >
           <div
             className={cn(
-              "flex flex-col items-start justify-between h-full gap-6 lg:gap-8 px-6 py-8 transition-colors hover:bg-card dark:hover:bg-accent lg:p-8",
+              "flex flex-col items-start justify-between h-full gap-6 lg:gap-8 px-6 py-8 transition-colors hover:bg-card dark:hover:bg-accent sm:p-8",
             )}
           >
             <div className="flex size-8 shrink-0 items-center justify-center">

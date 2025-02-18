@@ -1,6 +1,6 @@
 import { Project, WithContext } from "schema-dts";
 
-import { Resource } from "components/resource/Resource";
+import { Resource } from "@/components/resource/resource";
 import { getMetadata } from "lib/metadata";
 import { getProjectBySlug, getProjectsPaths } from "lib/projects";
 import { MetadataParams } from "types";
