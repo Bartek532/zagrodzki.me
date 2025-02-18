@@ -1,11 +1,11 @@
 "use client";
 
+import { Checkbox } from "@radix-ui/react-checkbox";
 import { useToggleRefinement } from "react-instantsearch";
 
 import { cn } from "@/utils";
 
 import styles from "./checkbox.module.scss";
-import { Checkbox } from "@radix-ui/react-checkbox";
 
 export const ArchiveCheckbox = () => {
   const { refine, value } = useToggleRefinement({

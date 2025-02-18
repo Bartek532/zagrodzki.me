@@ -1,8 +1,10 @@
-import clsx, { type ClassValue } from "clsx";
+import clsx from "clsx";
 import dayjs from "dayjs";
 import advancedFormat from "dayjs/plugin/advancedFormat";
 import { toast } from "sonner";
 import { twMerge } from "tailwind-merge";
+
+import type { ClassValue } from "clsx";
 
 dayjs.extend(advancedFormat);
 

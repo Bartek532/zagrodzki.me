@@ -1,5 +1,11 @@
 "use client";
 
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Loader2 } from "lucide-react";
+import { memo, useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
+
+import { sendMail } from "@/components/contact/form/api/contact";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -18,14 +24,11 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import type { z } from "zod";
-import { messageSchema, messageTypes } from "./schema";
-import { memo, useEffect, useState } from "react";
-import { sendMail } from "@/components/contact/form/api/contact";
-import { Loader2 } from "lucide-react";
 import { cn } from "@/utils";
+
+import { messageSchema, messageTypes } from "./schema";
+
+import type { z } from "zod";
 
 type FormStatus = "pending" | "loading" | "fullfilled" | "rejected";
 
@@ -57,7 +60,9 @@ export const ContactForm = memo<ContactFormProps>(({ onSent }) => {
   });
 
   useEffect(() => {
-    formStatus === "fullfilled" && onSent();
+    if (formStatus === "fullfilled") {
+      onSent();
+    }
   }, [formStatus, onSent]);
 
   return (
@@ -122,7 +127,7 @@ export const ContactForm = memo<ContactFormProps>(({ onSent }) => {
                         {selectedType ? (
                           <div className="flex items-center gap-1 truncate">
                             <p>{selectedType.label}</p>
-                            <p className="truncate text-muted-foreground text-xs">
+                            <p className="truncate text-xs text-muted-foreground">
                               {selectedType.subtitle}
                             </p>
                           </div>
@@ -137,7 +142,7 @@ export const ContactForm = memo<ContactFormProps>(({ onSent }) => {
                       <SelectItem key={option.value} value={option.value}>
                         <div className="text-left">
                           <div>{option.label}</div>
-                          <div className="text-muted-foreground text-xs">{option.subtitle}</div>
+                          <div className="text-xs text-muted-foreground">{option.subtitle}</div>
                         </div>
                       </SelectItem>
                     ))}
@@ -151,7 +156,7 @@ export const ContactForm = memo<ContactFormProps>(({ onSent }) => {
         <Button
           type="submit"
           disabled={formStatus !== "pending"}
-          className={cn("w-full h-10 py-2.5", {
+          className={cn("h-10 w-full py-2.5", {
             "bg-success text-success-foreground disabled:opacity-100": formStatus === "fullfilled",
             "bg-destructive text-destructive-foreground disabled:opacity-100":
               formStatus === "rejected",

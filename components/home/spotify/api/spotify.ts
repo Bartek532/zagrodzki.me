@@ -1,7 +1,7 @@
 import dayjs from "dayjs";
 import "server-only";
 
-import { env } from "env/server";
+import { env } from "@/lib/env";
 
 import { TRACK_STATUS } from "../types";
 import {

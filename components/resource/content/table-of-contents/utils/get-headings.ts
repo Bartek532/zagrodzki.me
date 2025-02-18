@@ -1,10 +1,11 @@
 import slugify from "slugify";
 
-const HEADING_REGEX = /mdx\("h([2-6])".*?"([^"]+)"\)/gi;
+const HEADING_REGEX = /^(#{1,6})\s*(.+)$/gm;
+const CODE_BLOCK_REGEX = /```[\s\S]*?```/g;
 
 export const getHeadings = (source: string) =>
-  Array.from(source.matchAll(HEADING_REGEX))?.map((heading) => ({
-    level: heading?.[1] ?? null,
-    content: heading?.[2] ?? null,
-    id: slugify(heading?.[2] ?? "", { lower: true }),
-  })) ?? [];
+  Array.from(source.replace(CODE_BLOCK_REGEX, "").matchAll(HEADING_REGEX)).map((heading) => ({
+    level: heading[1]?.length ?? 0,
+    content: heading[2] ?? null,
+    id: slugify(heading[2] ?? "", { lower: true }),
+  }));

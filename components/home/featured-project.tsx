@@ -1,4 +1,7 @@
+import { Image } from "@/components/common/image";
 import { ThirdsSection } from "@/components/common/sections/thirds";
+
+import NewProject from "../../public/img/projects/new.png";
 
 export const FeaturedProject = () => (
   <ThirdsSection
@@ -11,10 +14,14 @@ export const FeaturedProject = () => (
       },
     ]}
   >
-    <div className="pt-4 pl-4 sm:pt-8 sm:pl-8">
+    <div className="pl-4 pt-4 sm:pl-8 sm:pt-8">
       <div className="dashed-line-top" />
       <div className="dashed-line-left" />
-      <div className="w-full rounded-tl-lg border-t border-l aspect-video bg-muted sm:rounded-tl-2xl" />
+      <Image
+        alt=""
+        src={NewProject}
+        className="aspect-video w-full rounded-tl-lg bg-muted sm:rounded-tl-2xl"
+      />
     </div>
   </ThirdsSection>
 );

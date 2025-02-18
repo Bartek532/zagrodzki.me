@@ -3,16 +3,19 @@ import { GitPullRequestArrow } from "lucide-react";
 import { Image } from "@/components/common/image";
 import { HeroSection } from "@/components/common/sections/hero";
 import { buttonVariants } from "@/components/ui/button";
-import { Resource, RESOURCE_TYPE } from "@/types";
+import { RESOURCE_TYPE } from "@/types";
 import { cn, formatDate } from "@/utils";
-import Fire from "public/svg/fire.svg";
+
+import Fire from "../../../../public/svg/fire.svg";
 
 import { Breadcrumbs } from "./breadcrumbs/breadcrumbs";
 import { getBreadcrumbs } from "./breadcrumbs/get-breadcrumbs";
 
-type HeroProps = {
+import type { Resource } from "@/types";
+
+interface HeroProps {
   readonly resource: Resource;
-};
+}
 
 export const Hero = ({ resource }: HeroProps) => (
   <HeroSection
@@ -27,10 +30,10 @@ export const Hero = ({ resource }: HeroProps) => (
     }
     className="pb-1 sm:pb-6"
   >
-    <p className="mx-auto max-w-2xl sm:text-center text-pretty">{resource.excerpt}</p>
+    <p className="mx-auto max-w-2xl text-pretty sm:text-center">{resource.excerpt}</p>
     {resource.type === RESOURCE_TYPE.POST ? (
-      <div className="flex items-center gap-4 sm:justify-center text-muted-foreground text-sm sm:pb-8">
-        <p>{formatDate(resource.publishedAt)}</p>
+      <div className="flex items-center gap-4 text-sm text-muted-foreground sm:justify-center sm:pb-8">
+        <p>{formatDate(resource.modifiedAt)}</p>
         <p>&bull;</p>
         <p>{Math.round(resource.timeToRead)} min read</p>
       </div>
@@ -51,16 +54,16 @@ export const Hero = ({ resource }: HeroProps) => (
       </div>
     )}
 
-    <div className="w-full aspect-[120/88] sm:w-auto sm:absolute sm:-left-8 sm:-right-8 sm:bottom-0 overflow-hidden sm:translate-y-full sm:aspect-[2/1] md:aspect-[5/2] xl:aspect-[3/1] z-10">
-      <div className="relative w-full h-full">
+    <div className="z-10 aspect-[120/88] w-full overflow-hidden sm:absolute sm:-left-8 sm:-right-8 sm:bottom-0 sm:aspect-[2/1] sm:w-auto sm:translate-y-full md:aspect-[5/2] xl:aspect-[3/1]">
+      <div className="relative h-full w-full">
         <Image
           src={resource.image}
           alt={resource.title}
           fill
-          className="object-cover rounded-lg sm:rounded-none"
+          className="rounded-lg object-cover sm:rounded-none"
         />
       </div>
     </div>
-    <div className="w-full aspect-[2/1] md:aspect-[5/2] xl:aspect-[3/1] -mt-24 hidden sm:block"></div>
+    <div className="-mt-24 hidden aspect-[2/1] w-full sm:block md:aspect-[5/2] xl:aspect-[3/1]"></div>
   </HeroSection>
 );

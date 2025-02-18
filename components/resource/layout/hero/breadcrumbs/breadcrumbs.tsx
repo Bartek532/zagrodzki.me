@@ -1,6 +1,6 @@
-import Link from "next/link";
 import { Fragment, memo } from "react";
 
+import { SuperLink } from "@/components/common/link/super-link";
 import {
   Breadcrumb,
   BreadcrumbList,
@@ -19,8 +19,8 @@ export const Breadcrumbs = memo<BreadcrumbsProps>(({ routes }) => (
       {routes.map((route, index) => (
         <Fragment key={route.path}>
           <BreadcrumbItem>
-            <BreadcrumbLink>
-              <Link href={route.path}>{route.name}</Link>
+            <BreadcrumbLink asChild>
+              <SuperLink href={route.path}>{route.name}</SuperLink>
             </BreadcrumbLink>
           </BreadcrumbItem>
           {index !== routes.length - 1 ? <BreadcrumbSeparator /> : null}

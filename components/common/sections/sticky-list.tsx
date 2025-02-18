@@ -4,11 +4,11 @@ import { cn } from "@/utils";
 
 import type { ReactNode } from "react";
 
-type StickyListProps = {
+interface StickyListProps {
   title: string;
   description?: string;
   children: ReactNode;
-};
+}
 
 export const StickyList = ({ title, description, children }: StickyListProps) => (
   <Section className="grid divide-y lg:grid-cols-3 lg:divide-x lg:divide-y-0">

@@ -1,6 +1,6 @@
 "use server";
 
-import { env } from "env/server";
+import { env } from "@/lib/env";
 
 export const subscribeToNewsletter = async (email: string) => {
   const response = await fetch("https://connect.mailerlite.com/api/subscribers", {

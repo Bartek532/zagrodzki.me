@@ -2,7 +2,7 @@ import dayjs from "dayjs";
 import { unstable_cache as cache } from "next/cache";
 
 import { Section } from "@/components/common/sections/section";
-import { env } from "@/env/client";
+import { env } from "@/lib/env";
 import { ViewAnimation } from "@/providers/view-animation";
 
 import { Calendar } from "./calendar";
@@ -38,10 +38,6 @@ const getContributions = cache(
 export const GitHubActivity = async () => {
   const github = await getContributions();
 
-  if (!github) {
-    return null;
-  }
-
   const quarterLength = Math.floor(github.data.length / 4);
   const firstQuarterData = github.data.slice(0, quarterLength);
   const secondQuarterData = github.data.slice(quarterLength, quarterLength * 2);
@@ -53,16 +49,16 @@ export const GitHubActivity = async () => {
       <ViewAnimation
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
-        className="relative grid gap-0.5 py-6 sm:grid-cols-2 sm:p-8 lg:gap-1"
+        className="relative grid gap-0.5 py-6 sm:grid-cols-2 sm:p-8"
       >
         {[thirdQuarterData, fourthQuarterData, firstQuarterData, secondQuarterData].map(
           (data, index) => (
             <Calendar key={index} hideColorLegend hideTotalCount hideMonthLabels data={data} />
           ),
         )}
-        <div className="absolute right-0 bottom-0 left-0 z-10 h-full bg-gradient-to-b from-transparent to-background lg:bottom-8 lg:h-40" />
+        <div className="absolute bottom-0 left-0 right-0 z-10 h-full bg-gradient-to-b from-transparent to-background lg:bottom-8 lg:h-40" />
         <a
-          className="-translate-x-1/2 absolute bottom-4 left-1/2 z-10 whitespace-nowrap font-mono text-muted-foreground text-xs"
+          className="absolute bottom-4 left-1/2 z-10 -translate-x-1/2 whitespace-nowrap font-mono text-xs text-muted-foreground"
           href={`https://github.com/${env.NEXT_PUBLIC_GITHUB_USERNAME}`}
           target="_blank"
           rel="noopener noreferrer"

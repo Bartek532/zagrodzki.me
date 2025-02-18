@@ -12,7 +12,7 @@ export const Education = () => (
     description="I love learning and I'm always looking for new opportunities to grow."
   >
     {allEducation.map((education, index, array) => {
-      const Icon = dynamic(() => import(`public/svg/${education.id}.svg`));
+      const Icon = dynamic(() => import(`../../public/svg/${education.id}.svg`));
 
       return (
         <ViewAnimation
@@ -31,20 +31,20 @@ export const Education = () => (
               "sm:flex-row sm:p-8",
             )}
           >
-            <div className="flex w-16 pt-2 shrink-0 items-center justify-center">
+            <div className="flex w-16 shrink-0 items-center justify-center pt-2">
               <Icon />
             </div>
             <div className="flex flex-col gap-2">
-              <h2 className="font-semibold text-xl leading-loose tracking-tight">
+              <h2 className="text-xl font-semibold leading-loose tracking-tight">
                 <span className="block leading-tight">{education.title}</span>
-                <span className="block font-sans text-muted-foreground text-lg">
+                <span className="block font-sans text-lg text-muted-foreground">
                   {education.place}
                 </span>
               </h2>
               <Prose className="prose-sm">
                 <p>{education.description}</p>
               </Prose>
-              <p className="text-muted-foreground text-sm">
+              <p className="text-sm text-muted-foreground">
                 {education.start} &mdash;&nbsp;
                 {"end" in education && typeof education.end === "string"
                   ? education.end

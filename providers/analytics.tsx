@@ -6,8 +6,8 @@ import { usePathname } from "next/navigation";
 import Script from "next/script";
 import { useEffect } from "react";
 
-import { env } from "env/client";
-import { reportPageView } from "lib/gtag";
+import { env } from "@/lib/env";
+import { reportPageView } from "@/lib/gtag";
 
 const isProduction = process.env.NODE_ENV === "production";
 

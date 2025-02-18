@@ -4,13 +4,13 @@ import { Button } from "@/components/ui/button";
 import { SocialButton } from "@/components/ui/social-button";
 import { SOCIALS } from "@/utils/consts";
 
-type HeroProps = {
+interface HeroProps {
   readonly description: string;
-};
+}
 
 export const Hero = ({ description }: HeroProps) => (
   <HeroSection caption="About" title={description}>
-    <div className="flex items-center justify-center gap-4">
+    <div className="flex items-center gap-4 sm:justify-center">
       <SocialButton data={SOCIALS.x} />
       <Button asChild>
         <SuperLink href="/contact">Let&apos;s hang out!</SuperLink>

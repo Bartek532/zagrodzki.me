@@ -1,18 +1,18 @@
 "use client";
 
-import { memo, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Confetti from "react-dom-confetti";
 
 import { cn } from "@/utils";
-import { copyToClipboard } from "utils/clipboard";
-import { onPromise } from "utils/functions";
+import { copyToClipboard } from "@/utils/clipboard";
+import { onPromise } from "@/utils/functions";
 
 interface CopyButtonProps {
   readonly label: string;
   readonly textToCopy: string;
 }
 
-export const CopyButton = memo<CopyButtonProps>(({ label, textToCopy }) => {
+export const CopyButton = ({ label, textToCopy }: CopyButtonProps) => {
   const [isCopied, setIsCopied] = useState(false);
 
   const handleCopyButtonClick = async () => {
@@ -36,14 +36,14 @@ export const CopyButton = memo<CopyButtonProps>(({ label, textToCopy }) => {
   };
 
   return (
-    <div className="w-full flex flex-col items-center py-8">
+    <div className="flex w-full flex-col items-center py-8">
       <div className="relative z-10">
         <Confetti active={isCopied} config={confettiConfig} />
       </div>
       <button
         onClick={onPromise(handleCopyButtonClick)}
         className={cn(
-          "border bg-border cursor-pointer text-foreground px-5 py-2 rounded-xl transition-colors duration-200 hover:border-ring focus:border-ring",
+          "cursor-pointer rounded-xl border bg-border px-5 py-2 text-foreground transition-colors duration-200 hover:border-ring focus:border-ring",
           isCopied && "border-ring",
         )}
       >
@@ -51,6 +51,4 @@ export const CopyButton = memo<CopyButtonProps>(({ label, textToCopy }) => {
       </button>
     </div>
   );
-});
-
-CopyButton.displayName = "CopyButton";
+};

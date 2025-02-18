@@ -3,7 +3,8 @@ import {
   recentlyPlayedPayloadSchema,
   tokensSchemaPayload,
 } from "./schema";
-import { CurrentlyPlayingPayload, RecentlyPlayedPayload, TokensPayload } from "./types";
+
+import type { CurrentlyPlayingPayload, RecentlyPlayedPayload, TokensPayload } from "./types";
 
 export const isTokensPayload = (maybeTokens: unknown): maybeTokens is TokensPayload =>
   tokensSchemaPayload.safeParse(maybeTokens).success;

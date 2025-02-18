@@ -26,24 +26,24 @@ export const Positions = () => (
           target="_blank"
           rel="noopener noreferrer"
           className={cn(
-            "flex flex-col items-start gap-6 p-6 h-full transition-colors hover:bg-card dark:hover:bg-accent",
-            "lg:flex-row sm:p-8",
+            "flex h-full flex-col items-start gap-6 p-6 transition-colors hover:bg-card dark:hover:bg-accent",
+            "sm:p-8 lg:flex-row",
           )}
         >
           <div className="flex w-16 shrink-0 items-center justify-center">
             <Image src={position.icon} alt={position.company} width={64} height={64} />
           </div>
           <div className="flex flex-col gap-2">
-            <h2 className="font-semibold text-xl leading-loose tracking-tight">
+            <h2 className="text-xl font-semibold leading-loose tracking-tight">
               <span className="block leading-tight">{position.position}</span>
-              <span className="block font-sans text-muted-foreground text-lg">
+              <span className="block font-sans text-lg text-muted-foreground">
                 {position.company}
               </span>
             </h2>
             <Prose className="prose-sm">
               <p>{position.description}</p>
             </Prose>
-            <p className="text-muted-foreground text-sm">
+            <p className="text-sm text-muted-foreground">
               {position.type} &bull; {position.start} &mdash;&nbsp;
               {"end" in position && typeof position.end === "string" ? position.end : "Present"}
             </p>
@@ -56,9 +56,9 @@ export const Positions = () => (
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         delay={0.2}
-        className="hidden border-t bg-dashed lg:flex p-8 items-center justify-center gap-6 flex-col"
+        className="bg-dashed hidden flex-col items-center justify-center gap-6 border-t p-8 lg:flex"
       >
-        <h2 className="text-3xl text-center font-semibold">Want to build together?</h2>
+        <h2 className="text-center text-3xl font-semibold">Want to build together?</h2>
         <SuperLink href="contact" className={buttonVariants()}>
           Let&apos;s talk about work
         </SuperLink>

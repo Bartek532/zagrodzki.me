@@ -1,5 +1,4 @@
-import { z } from "zod";
-
-import { localLikesSchema } from "./schema";
+import type { localLikesSchema } from "./schema";
+import type { z } from "zod";
 
 export type LocalLikesData = z.infer<typeof localLikesSchema>;

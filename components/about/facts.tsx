@@ -12,19 +12,19 @@ export const Facts = () => (
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           delay={index * 0.2}
-          className={cn(index < array.length - 1 ? "sm:border-r border-b sm:border-b-0" : "")}
+          className={cn(index < array.length - 1 ? "border-b sm:border-b-0 sm:border-r" : "")}
           key={fact.title}
         >
           <div
             className={cn(
-              "flex flex-col items-start justify-between h-full gap-6 lg:gap-8 px-6 py-8 transition-colors hover:bg-card dark:hover:bg-accent sm:p-8",
+              "flex h-full flex-col items-start justify-between gap-6 px-6 py-8 transition-colors hover:bg-card dark:hover:bg-accent sm:p-8 lg:gap-8",
             )}
           >
             <div className="flex size-9 shrink-0 items-center justify-center">
               <fact.icon className="size-full" />
             </div>
             <div className="flex flex-col gap-2">
-              <h2 className="font-semibold text-xl leading-loose tracking-tight">
+              <h2 className="text-xl font-semibold leading-loose tracking-tight">
                 <span className="block leading-tight">{fact.title}</span>
               </h2>
               <Prose className="prose-sm">

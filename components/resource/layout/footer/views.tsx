@@ -1,14 +1,15 @@
 import { random } from "lodash";
 import { memo } from "react";
 
-import { getResourceViewsBySlug, view } from "lib/kv/views";
-import { RESOURCE_TYPE } from "types";
-import { normalizeCount } from "utils/functions";
+import { getResourceViewsBySlug, view } from "@/lib/kv/views";
+import { normalizeCount } from "@/utils/functions";
 
-type ViewsProps = {
+import type { RESOURCE_TYPE } from "@/types";
+
+interface ViewsProps {
   readonly slug: string;
   readonly type: RESOURCE_TYPE;
-};
+}
 
 export const Views = memo<ViewsProps>(async ({ slug, type }) => {
   await view(type, slug);

@@ -1,10 +1,12 @@
 "use client";
 
-import NextImage, { ImageProps } from "next/image";
+import NextImage from "next/image";
 import { useState } from "react";
 
 import { Skeleton } from "@/components/ui/skeleton";
 import { cn } from "@/utils";
+
+import type { ImageProps } from "next/image";
 
 export const Image = (props: Omit<ImageProps, "onLoad">) => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -14,7 +16,7 @@ export const Image = (props: Omit<ImageProps, "onLoad">) => {
       <Skeleton className={cn("absolute inset-0", { hidden: isLoaded }, props.className)} />
       <div
         className={cn(
-          "transition-opacity duration-250 ease-in-out",
+          "duration-250 transition-opacity ease-in-out",
           isLoaded ? "opacity-100" : "opacity-0",
           props.className,
         )}

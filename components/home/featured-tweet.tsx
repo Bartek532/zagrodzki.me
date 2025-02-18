@@ -1,7 +1,7 @@
 import { Tweet } from "react-tweet";
 
 import { ThirdsSection } from "@/components/common/sections/thirds";
-import { env } from "@/env/client";
+import { env } from "@/lib/env";
 import { cn } from "@/utils";
 
 export const FeaturedTweet = () => (
@@ -20,7 +20,7 @@ export const FeaturedTweet = () => (
       },
     ]}
   >
-    <div className={cn("relative flex items-center justify-center bg-dashed p-4", "sm:p-8")}>
+    <div className={cn("bg-dashed relative flex items-center justify-center p-4", "sm:p-8")}>
       <Tweet id="1885364950128091487" />
     </div>
   </ThirdsSection>

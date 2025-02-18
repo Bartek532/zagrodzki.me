@@ -1,12 +1,11 @@
-import { z } from "zod";
-
-import {
+import type {
   artistSchema,
   currentlyPlayingPayloadSchema,
   recentlyPlayedPayloadSchema,
   tokensSchemaPayload,
   trackSchema,
 } from "./schema";
+import type { z } from "zod";
 
 export type TokensPayload = z.infer<typeof tokensSchemaPayload>;
 export type CurrentlyPlayingPayload = z.infer<typeof currentlyPlayingPayloadSchema>;

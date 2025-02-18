@@ -1,8 +1,8 @@
-import Image from "next/image";
-
+import { Image } from "@/components/common/image";
 import { ThirdsSection } from "@/components/common/sections/thirds";
-import { Post } from "@/types";
 import { cn } from "@/utils";
+
+import type { Post } from "@/types";
 
 interface FeaturedPostProps {
   readonly post: Post;
@@ -26,7 +26,7 @@ export const FeaturedPost = ({ post }: FeaturedPostProps) => (
     ]}
   >
     <div
-      className={cn("relative aspect-video overflow-hidden bg-dashed px-6 pt-6", "sm:px-8 sm:pt-8")}
+      className={cn("bg-dashed relative aspect-video overflow-hidden px-6 pt-6", "sm:px-8 sm:pt-8")}
     >
       <div className="relative h-full w-full">
         <Image src={post.image} alt="" fill className="rounded-t-lg border sm:rounded-t-2xl" />

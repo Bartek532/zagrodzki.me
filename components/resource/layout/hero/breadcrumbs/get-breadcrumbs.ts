@@ -1,5 +1,5 @@
-import { allCategories } from "data/categories";
-import { RESOURCE_TYPE } from "types";
+import { allCategories } from "@/data/categories";
+import { RESOURCE_TYPE } from "@/types";
 
 export const getBreadcrumbs = (type: RESOURCE_TYPE, category?: string) => {
   if (type === RESOURCE_TYPE.POST && category) {

@@ -3,9 +3,9 @@
 import NumberFlow from "@number-flow/react";
 import { useEffect, useRef, useState } from "react";
 
-type TeaserTitleProps = {
+interface TeaserTitleProps {
   contacts: number;
-};
+}
 
 export const TeaserTitle = ({ contacts }: TeaserTitleProps) => {
   const [count, setCount] = useState(2000);
@@ -37,7 +37,7 @@ export const TeaserTitle = ({ contacts }: TeaserTitleProps) => {
   }, [contacts]);
 
   return (
-    <h2 ref={h2Ref} className="font-bold text-2xl tracking-tight sm:text-3xl">
+    <h2 ref={h2Ref} className="text-2xl font-bold tracking-tight sm:text-3xl">
       Join <NumberFlow value={count} />+ readers and get infrequent updates on frequent projects.
     </h2>
   );

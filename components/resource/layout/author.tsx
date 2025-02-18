@@ -1,21 +1,23 @@
-import Image from "next/image";
 import { memo } from "react";
 
+import { Image } from "@/components/common/image";
 import { Link } from "@/components/common/link/link";
-import { allAuthors } from "data/authors";
-import { Author as AuthorType } from "types";
+import { allAuthors } from "@/data/authors";
+
+import type { Author as AuthorType } from "@/types";
 
 interface AuthorProps {
   readonly name: AuthorType;
 }
 
 export const Author = memo<AuthorProps>(({ name }) => {
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
   const author = allAuthors.find((c) => c.name === name);
 
   if (!author) return null;
 
   return (
-    <div className="flex flex-col sm:flex-row gap-8 max-w-3xl sm:gap-12 px-6 sm:px-8 lg:px-10 py-10 mx-auto">
+    <div className="mx-auto flex max-w-3xl flex-col gap-8 px-6 py-10 sm:flex-row sm:gap-12 sm:px-8 lg:px-10">
       <div className="relative size-28 sm:size-40">
         <Image
           src={author.avatar}
@@ -26,8 +28,8 @@ export const Author = memo<AuthorProps>(({ name }) => {
       </div>
 
       <div className="flex-1">
-        <span className="font-bold mb-3 block text-lg">Written by {author.name}</span>
-        <p className="text-muted-foreground leading-relaxed">{author.meta.description}</p>
+        <span className="mb-3 block text-lg font-bold">Written by {author.name}</span>
+        <p className="leading-relaxed text-muted-foreground">{author.meta.description}</p>
         <div className="mt-5">
           <Link href={author.meta.about}>Learn more about {author.name.split(" ")[0]}</Link>
         </div>

@@ -17,7 +17,9 @@ export const Recommendations = () => (
           key={recommendation.author.name}
           className={cn(
             recommendation.size === "large" ? "sm:col-span-2" : "sm:col-span-1",
-            recommendation.size === "small" && array.at(index - 1)?.size === "small" && "border-l",
+            recommendation.size === "small" &&
+              array.at(index - 1)?.size === "small" &&
+              "lg:border-l",
           )}
         >
           <ViewAnimation
@@ -26,7 +28,7 @@ export const Recommendations = () => (
             delay={index % 2 ? 0.2 : 0}
             key={recommendation.author.name}
             className={cn(
-              "w-full flex flex-col items-start gap-4 lg:gap-6 p-6 transition-colors hover:bg-card dark:hover:bg-accent",
+              "flex w-full flex-col items-start gap-4 p-6 transition-colors hover:bg-card dark:hover:bg-accent lg:gap-6",
               "sm:flex-row sm:p-8",
             )}
           >
@@ -42,11 +44,11 @@ export const Recommendations = () => (
             <div className="flex flex-col gap-4">
               <div>
                 <a href={recommendation.author.link} target="_blank" rel="noopener noreferrer">
-                  <h3 className="font-semibold text-lg leading-normal tracking-tight">
+                  <h3 className="text-lg font-semibold leading-normal tracking-tight">
                     {recommendation.author.name}
                   </h3>
                 </a>
-                <p className="text-muted-foreground text-sm">{recommendation.author.position}</p>
+                <p className="text-sm text-muted-foreground">{recommendation.author.position}</p>
               </div>
               <Prose className="prose-sm max-w-3xl">
                 <p>{recommendation.content}</p>

@@ -7,7 +7,7 @@ import { GitHubActivity } from "@/components/home/github-activity";
 import { Hero } from "@/components/home/hero";
 import { LatestRead } from "@/components/home/latest-read";
 import { Spotify } from "@/components/home/spotify";
-import { getNewestPosts } from "lib/posts";
+import { getNewestPosts } from "@/lib/posts";
 
 const Home = () => {
   const [post] = getNewestPosts();
@@ -21,10 +21,10 @@ const Home = () => {
       <FeaturedTweet />
       <Feed />
       <Section className="grid divide-y lg:grid-cols-2 lg:divide-x lg:divide-y-0">
-        <div className="px-6 py-4 lg:py-6 min-w-0">
+        <div className="min-w-0 px-6 py-4 lg:py-6">
           <Spotify />
         </div>
-        <div className="px-6 py-4 lg:py-6 min-w-0">
+        <div className="min-w-0 px-6 py-4 lg:py-6">
           <LatestRead />
         </div>
       </Section>

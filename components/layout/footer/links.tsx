@@ -1,6 +1,6 @@
 import Image from "next/image";
-import Link from "next/link";
 
+import { SuperLink } from "@/components/common/link/super-link";
 import { ActiveLink } from "@/components/ui/active-link";
 import { allPositions } from "@/data/experience";
 import { routes } from "@/data/routes";
@@ -21,8 +21,9 @@ const lists = [
     title: "Work",
     href: "/work",
     items: allPositions.map((position) => ({
-      href: `/work/${position.slug}`,
+      href: position.link,
       children: position.company,
+      external: true,
     })),
   },
   {
@@ -61,11 +62,12 @@ const lists = [
           {social.name}
         </div>
       ),
+      external: true,
     })),
   },
 ];
 export const Links = () => (
-  <div className="grid gap-8 text-muted-foreground text-sm sm:grid-cols-2 lg:grid-cols-5">
+  <div className="grid gap-8 text-sm text-muted-foreground sm:grid-cols-2 lg:grid-cols-5">
     {lists.map((list, index) => (
       <ViewAnimation
         initial={{ opacity: 0, translateY: -8 }}
@@ -75,15 +77,16 @@ export const Links = () => (
         className="flex flex-col gap-6"
       >
         <div className="font-medium text-foreground">
-          {list.href ? <Link href={list.href}>{list.title}</Link> : <p>{list.title}</p>}
+          {list.href ? <SuperLink href={list.href}>{list.title}</SuperLink> : <p>{list.title}</p>}
         </div>
         <ul className="flex flex-col gap-3">
           {list.items.map((item) => (
             <li key={item.href}>
               <ActiveLink
                 href={item.href}
-                target={list.external ? "_blank" : undefined}
-                rel={list.external ? "noopener noreferrer" : undefined}
+                {...("external" in item && item.external
+                  ? { target: "_blank", rel: "noopener noreferrer" }
+                  : {})}
               >
                 {item.children}
               </ActiveLink>
