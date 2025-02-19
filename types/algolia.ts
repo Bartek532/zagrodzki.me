@@ -1,4 +1,4 @@
-export type ToggleRefinementProps = {
+export interface ToggleRefinementProps {
   readonly attribute: string;
   readonly label: string;
   readonly value: boolean;
@@ -10,4 +10,4 @@ export type ToggleRefinementProps = {
     readonly unchecked: number;
   };
   readonly refine: (value: boolean) => void;
-};
+}

@@ -1,8 +1,13 @@
-import { About } from "components/about/about";
-import { Hero } from "components/common/hero/Hero";
-import { getMetadata } from "lib/metadata";
+import { Content } from "@/components/about/content";
+import { Education } from "@/components/about/education";
+import { Facts } from "@/components/about/facts";
+import { Hero } from "@/components/about/hero";
+import { Recommendations } from "@/components/about/recommendation";
+import { Skills } from "@/components/about/skills";
+import { GitHubActivity } from "@/components/home/github-activity";
+import { getMetadata } from "@/lib/metadata";
 
-const description = "Want to know more about me? You've come to the right place 🎓";
+const description = "I'm a Software Engineer not afraid of any technology 🎓";
 
 export const metadata = getMetadata({
   title: "About",
@@ -13,8 +18,13 @@ export const metadata = getMetadata({
 
 const AboutPage = () => (
   <>
-    <Hero title="About" description={description} />
-    <About />
+    <Hero description={description} />
+    <Content />
+    <Education />
+    <Skills />
+    <Facts />
+    <Recommendations />
+    <GitHubActivity />
   </>
 );
 
