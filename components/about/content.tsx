@@ -89,13 +89,13 @@ export const Content = async () => {
         <ViewAnimation initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} className="size-full">
           <div className="sticky top-24">
             <div className="relative">
-              <div className="absolute -bottom-10 left-[-10%] z-10 h-1/5 w-[120%] bg-background blur-[16px] filter"></div>
+              <div className="bg-background absolute -bottom-10 left-[-10%] z-10 h-1/5 w-[120%] blur-[16px] filter"></div>
               <Image
                 src={Me}
                 width="450"
                 height="660"
                 alt={SITE_TITLE}
-                className="mx-auto rounded-2xl border-b border-background drop-shadow-[0_-5px_10px_hsl(var(--connection))]"
+                className="border-background mx-auto rounded-2xl border-b drop-shadow-[0_-5px_10px_var(--color-connection)]"
               />
             </div>
           </div>

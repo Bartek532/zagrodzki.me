@@ -31,7 +31,7 @@ export const PostsListing = () => {
       <Section>
         {status === "loading" ? (
           <div className="bg-dashed col-span-2 flex items-center justify-center py-16 sm:py-24 lg:py-32">
-            <Loader2 className="size-10 animate-spin text-primary" />
+            <Loader2 className="text-primary size-10 animate-spin" />
           </div>
         ) : (
           <div className="bg-dashed col-span-2 flex items-center justify-center">
@@ -42,19 +42,16 @@ export const PostsListing = () => {
     );
   }
 
-  let delay = 0;
-
   return Object.entries(posts)
     .reverse()
     .map(([year, posts]) => (
       <StickyList key={year} title={year}>
         {posts.map((post, index) => {
-          delay += 0.15;
           return (
             <ViewAnimation
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
-              delay={delay}
+              delay={index * 0.15}
               key={post.slug}
             >
               <PostThumbnail

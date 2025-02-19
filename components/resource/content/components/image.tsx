@@ -8,7 +8,7 @@ interface ImageProps {
 }
 
 export const Image = ({ src, alt = "", width, height }: ImageProps) => (
-  <figure className="relative -mx-1 my-8 flex h-auto w-auto flex-col items-center gap-2 sm:-mx-3">
+  <figure className="relative -mx-1 flex h-auto w-auto flex-col items-center gap-2 sm:-mx-3">
     <CommonImage
       className="max-w-full rounded-2xl"
       src={src}
@@ -18,7 +18,7 @@ export const Image = ({ src, alt = "", width, height }: ImageProps) => (
       decoding="async"
     />
     {alt ? (
-      <figcaption className="px-4 text-center text-sm italic text-muted-foreground opacity-60">
+      <figcaption className="text-muted-foreground px-4 text-center text-sm italic opacity-60">
         {alt}
       </figcaption>
     ) : null}

@@ -56,9 +56,9 @@ export const GitHubActivity = async () => {
             <Calendar key={index} hideColorLegend hideTotalCount hideMonthLabels data={data} />
           ),
         )}
-        <div className="absolute bottom-0 left-0 right-0 z-10 h-full bg-gradient-to-b from-transparent to-background lg:bottom-8 lg:h-40" />
+        <div className="to-background absolute right-0 bottom-0 left-0 z-10 h-full bg-linear-to-b from-transparent lg:bottom-8 lg:h-40" />
         <a
-          className="absolute bottom-4 left-1/2 z-10 -translate-x-1/2 whitespace-nowrap font-mono text-xs text-muted-foreground"
+          className="text-muted-foreground absolute bottom-4 left-1/2 z-10 -translate-x-1/2 font-mono text-xs whitespace-nowrap"
           href={`https://github.com/${env.NEXT_PUBLIC_GITHUB_USERNAME}`}
           target="_blank"
           rel="noopener noreferrer"

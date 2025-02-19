@@ -27,7 +27,7 @@ export const Video = ({ alt, ...props }: VideoProps) => {
   };
 
   return (
-    <figure className="relative -mx-1 my-8 flex h-auto w-auto flex-col flex-wrap gap-2 sm:-mx-3">
+    <figure className="relative -mx-1 flex h-auto w-auto flex-col flex-wrap gap-2 sm:-mx-3">
       <div className="relative">
         <video
           className={cn("max-w-full cursor-pointer rounded-2xl", props.className)}
@@ -39,7 +39,7 @@ export const Video = ({ alt, ...props }: VideoProps) => {
         />
         <button
           className={cn(
-            "pointer-events-none absolute inset-0 m-auto flex size-20 items-center justify-center rounded-full border-0 bg-black/50 text-[--white-200] opacity-0 transition-opacity duration-500",
+            "pointer-events-none absolute inset-0 m-auto flex size-20 items-center justify-center rounded-full border-0 bg-black/50 text-white opacity-0 transition-opacity duration-500 dark:bg-black/75",
             controlsVisible && "opacity-100",
           )}
         >

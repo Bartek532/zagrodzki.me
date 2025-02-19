@@ -21,11 +21,11 @@ export const Teaser = () => (
           alt=""
           width={40}
           height={40}
-          className="h-8 w-8 rounded-full object-cover ring-2 ring-secondary"
+          className="ring-secondary h-8 w-8 rounded-full object-cover ring-2"
         />
       ))}
-      <div className="flex h-8 w-8 items-center justify-center rounded-full bg-card ring-2 ring-secondary">
-        <span className="text-[8px] text-muted-foreground">
+      <div className="bg-card ring-secondary z-10 flex h-8 w-8 items-center justify-center rounded-full ring-2">
+        <span className="text-muted-foreground text-[8px]">
           +{new Intl.NumberFormat("en-US", { notation: "compact" }).format(90)}
         </span>
       </div>

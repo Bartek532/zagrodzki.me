@@ -74,7 +74,7 @@ pre[data-lang]:not(pre[data-lang=""]) {
 pre[data-lang]:not(pre[data-lang=""])::after {
   content: attr(data-lang);
   background-color: var(--syntax-background);
-  @apply absolute right-8 top-px -translate-y-full rounded-t-lg px-3 py-1 font-sans font-semibold uppercase tracking-wide;
+  @apply absolute top-px right-8 -translate-y-full rounded-t-lg px-3 py-1 font-sans font-semibold tracking-wide uppercase;
 }
 
 code,
@@ -83,7 +83,7 @@ pre {
   tab-size: 2;
   --selection-background: var(--syntax-selection);
   --selection-color: currentColor;
-  @apply hyphens-none whitespace-pre break-normal bg-none text-left font-mono leading-6;
+  @apply bg-none text-left font-mono leading-6 break-normal hyphens-none whitespace-pre;
 }
 
 code::-webkit-scrollbar,
@@ -117,7 +117,7 @@ pre {
 
 /* Inline code */
 :not(pre) > code {
-  @apply mx-px whitespace-normal rounded-md px-2 py-1 text-sm;
+  @apply mx-px rounded-md px-2.5 py-1 text-sm whitespace-normal;
   background-color: var(--syntax-background);
   color: var(--syntax-function);
 }

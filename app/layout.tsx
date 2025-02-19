@@ -10,8 +10,8 @@ import { Analytics } from "@/providers/analytics";
 import { ThemeProvider } from "@/providers/theme";
 
 import "../styles/globals.css";
-// eslint-disable-next-line import/order
-import "../styles/code.css";
+
+// import "../styles/code.css";
 
 export const metadata = DEFAULT_METADATA;
 export const viewport = DEFAULT_VIEWPORT;
@@ -36,7 +36,7 @@ const walsheim = localFont({
     },
   ],
   display: "swap",
-  variable: "--font-walsheim",
+  variable: "--font-sans",
 });
 
 const mono = localFont({
@@ -48,7 +48,7 @@ const mono = localFont({
 const kenfolg = localFont({
   src: "../public/fonts/Kenfolg.otf",
   display: "swap",
-  variable: "--font-kenfolg",
+  variable: "--font-serif",
 });
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

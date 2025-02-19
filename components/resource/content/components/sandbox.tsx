@@ -11,7 +11,7 @@ export const Sandbox = memo<SandboxProps>(({ id }) => {
   const { resolvedTheme } = useTheme();
 
   return (
-    <div className="-mx-1 my-8 flex aspect-[5/4] sm:-mx-3">
+    <div className="-mx-1 my-8 flex aspect-5/4 sm:-mx-3">
       <iframe
         src={`https://codesandbox.io/embed/${id}?fontsize=14&codemirror=1&theme=${resolvedTheme}`}
         allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"

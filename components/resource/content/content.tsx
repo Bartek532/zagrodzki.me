@@ -55,7 +55,10 @@ export const Content = memo<ContentProps>(async ({ content }) => {
 
   return (
     <Prose
-      className={cn("col-span-2 mx-auto max-w-3xl px-6 py-8 sm:px-8", "lg:px-10 lg:py-16")}
+      className={cn(
+        "prose-p:leading-7 col-span-2 mx-auto max-w-3xl px-6 py-8 sm:px-8",
+        "lg:px-10 lg:py-16",
+      )}
       id={CONTENT_ID}
     >
       <MDXContent source={content} components={customMdxComponents} />

@@ -50,6 +50,26 @@
           "url": "https://tailwindcss.com/docs/functions-and-directives#variants"
         }
       ]
+    },
+    {
+      "name": "@custom-variant",
+      "description": "Use the `@custom-variant` directive to create a custom variant for a given selector. This is useful when you want to create a variant for a specific element or component.",
+      "references": [
+        {
+          "name": "Tailwind Documentation",
+          "url": "https://tailwindcss.com/docs/functions-and-directives#custom-variant"
+        }
+      ]
+    },
+    {
+      "name": "@plugin",
+      "description": "Use the `@plugin` directive to import a plugin into your CSS.",
+      "references": [
+        {
+          "name": "Tailwind Documentation",
+          "url": "https://tailwindcss.com/docs/functions-and-directives#plugin"
+        }
+      ]
     }
   ]
 }

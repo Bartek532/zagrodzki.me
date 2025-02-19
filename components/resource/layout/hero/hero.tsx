@@ -32,7 +32,7 @@ export const Hero = ({ resource }: HeroProps) => (
   >
     <p className="mx-auto max-w-2xl text-pretty sm:text-center">{resource.excerpt}</p>
     {resource.type === RESOURCE_TYPE.POST ? (
-      <div className="flex items-center gap-4 text-sm text-muted-foreground sm:justify-center sm:pb-8">
+      <div className="text-muted-foreground flex items-center gap-4 text-sm sm:justify-center sm:pb-8">
         <p>{formatDate(resource.modifiedAt)}</p>
         <p>&bull;</p>
         <p>{Math.round(resource.timeToRead)} min read</p>
@@ -54,7 +54,7 @@ export const Hero = ({ resource }: HeroProps) => (
       </div>
     )}
 
-    <div className="z-10 aspect-[120/88] w-full overflow-hidden sm:absolute sm:-left-8 sm:-right-8 sm:bottom-0 sm:aspect-[2/1] sm:w-auto sm:translate-y-full md:aspect-[5/2] xl:aspect-[3/1]">
+    <div className="z-10 aspect-120/88 w-full overflow-hidden sm:absolute sm:-right-8 sm:bottom-0 sm:-left-8 sm:aspect-2/1 sm:w-auto sm:translate-y-full md:aspect-5/2 xl:aspect-3/1">
       <div className="relative h-full w-full">
         <Image
           src={resource.image}
@@ -64,6 +64,6 @@ export const Hero = ({ resource }: HeroProps) => (
         />
       </div>
     </div>
-    <div className="-mt-24 hidden aspect-[2/1] w-full sm:block md:aspect-[5/2] xl:aspect-[3/1]"></div>
+    <div className="-mt-24 hidden aspect-2/1 w-full sm:block md:aspect-5/2 xl:aspect-3/1"></div>
   </HeroSection>
 );

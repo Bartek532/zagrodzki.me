@@ -16,7 +16,7 @@ export const FeaturedPosts = ({ posts }: FeaturedPostsProps) => (
     <Section className={cn("bg-dashed p-6", "sm:p-8")}>
       <ViewAnimation initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} delay={0.2}>
         <Prose>
-          <h2 className="mb-2 text-balance text-3xl">Check my other posts 📚</h2>
+          <h2 className="mb-2 text-3xl text-balance">Check my other posts 📚</h2>
           <p className="text-pretty">
             If you find this helpful, you can also check out these posts
           </p>
@@ -35,9 +35,9 @@ export const FeaturedPosts = ({ posts }: FeaturedPostsProps) => (
           <SuperLink href={`/blog/${post.slug}`}>
             <article
               className={cn(
-                "gap-5§ flex h-full flex-col justify-between bg-background p-6 pb-0 transition-colors hover:bg-card dark:hover:bg-accent",
+                "gap-5§ bg-background hover:bg-card dark:hover:bg-accent flex h-full flex-col justify-between p-6 pb-0 transition-colors",
                 "sm:p-8 lg:pb-0",
-                index < array.length - 1 ? "border-b sm:border-b-0 sm:border-r" : "",
+                index < array.length - 1 ? "border-b sm:border-r sm:border-b-0" : "",
               )}
             >
               <div className="flex flex-col gap-2">
@@ -58,7 +58,7 @@ export const FeaturedPosts = ({ posts }: FeaturedPostsProps) => (
                   alt={post.title}
                   width={1200}
                   height={880}
-                  className="aspect-[120/88] rounded-t-lg"
+                  className="aspect-120/88 rounded-t-lg"
                 />
               </div>
             </article>
