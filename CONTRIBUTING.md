@@ -27,36 +27,38 @@ Just put it in `/content` folder and make a PR. It would be good for you to cont
 Description of the project files and directories.
 
 ```bash
+├── .github                    # Github workflows and templates
+├── .husky                     # Husky git hooks
+├── .vscode                    # VSCode settings
 ├── app/                       # Next.js app directory (v13)
 ├── components/                # React components
 ├── content/                   # All .mdx files with content
 ├── data/                      # Global available data
-├── env/                       # Env variables handling (validation)
 ├── hooks/                     # Shared React hooks
 ├── lib/                       # Lib files
-├── providers/                 # React context global state
+├── providers/                 # React context global state and other providers
 ├── public/                    # All images, icons, fonts
 ├── scripts/                   # Scripts executed during deployment (algolia, redirects, feed)
 ├── styles/                    # All shared styles
 ├── types/                     # TypeScript types
 ├── utils/                     # All utilities
 ├── .env-sample                # Examples of env variables
-├── .eslintignore              # Files ignored by ESLint
-├── .eslintrc.js               # ESLint configuration file
 ├── .gitignore                 # Files ignored by git
+├── .npmrc                     # NPM configuration
 ├── .prettierignore            # Files ignored by Prettier
-├── .prettierrc                # Code convention enforced by Prettier
 ├── build.sh                   # Deployment script
-├── next.config.mjs             # Next.js config
+├── eslint.config.mjs          # ESLint configuration file
+├── next.config.ts             # Next.js config
 ├── package.json               # Dependencies and additional information
+├── pnpm-lock.yaml             # Pnpm lockfile
+├── prettier.config.mjs        # Code convention enforced by Prettier
 ├── README.md
-├── tsconfig.json              # Typescript configuration
-└── pnpm-lock.yaml             # Pnpm lockfile
+└── tsconfig.json              # Typescript configuration
 ```
 
 ## Styleguide
 
-Coding conventions are enforced by [ESLint](.eslintrc.json) and [Prettier](.prettierrc).
+Coding conventions are enforced by [ESLint](eslint.config.mjs) and [Prettier](prettier.config.mjs).
 
 - Semicolons
 - Double quotes
@@ -72,13 +74,14 @@ Coding conventions are enforced by [ESLint](.eslintrc.json) and [Prettier](.pret
 ## Example component structure
 
 ```bash
-├── Component/
-│   ├── Component.tsx
-│   └── component.module.scss
+├── component/
+│   ├── api/
+│   ├── hooks/
+│   ├── utils/
+│   └── component.tsx
 ```
 
 ```tsx
-import styles from "./component.module.scss";
 import { memo } from "react";
 
 interface ComponentProps {
@@ -94,24 +97,24 @@ Component.displayName = "Component";
 
 ## Tech stack
 
-| Tech                                                      | Description                                                         |
-| --------------------------------------------------------- | ------------------------------------------------------------------- |
-| [TypeScript](https://www.typescriptlang.org/)             | Static type-checking programming language                           |
-| [Next.js 13](https://nextjs.org/)                         | The React Framework for Production                                  |
-| [React](https://reactjs.org/)                             | Library for building user interfaces                                |
-| [MDX](https://mdxjs.com/)                                 | Markdown for the component era                                      |
-| [Algolia](https://www.algolia.com/)                       | Implementing powerful search                                        |
-| [Github Actions](https://github.com/features/actions)     | Automations for workflow improvements                               |
-| [Framer Motion](https://www.framer.com/motion/)           | Motion library for React                                            |
-| [Context API](https://reactjs.org/docs/context.html)      | React structure that enables to share data with multiple components |
-| [React Hook Form](https://react-hook-form.com)            | Forms with easy-to-use validation                                   |
-| [Vercel KV](https://vercel.com/docs/storage/vercel-kv)    | Durable Redis database                                              |
-| [SCSS](https://sass-lang.com)                             | CSS with superpowers                                                |
-| [CSS Modules](https://github.com/css-modules/css-modules) | Styles convention in React                                          |
-| [Zod](https://zod.dev)                                    | TypeScript-first schema validation with static type inference       |
-| [Husky](https://github.comtypicode/husky)                 | Git hooks                                                           |
-| [ESLint](https://eslint.org/)                             | TypeScript linting                                                  |
-| [Prettier](https://prettier.io/)                          | Code formatter                                                      |
+| Tech                                                   | Description                                                   |
+| ------------------------------------------------------ | ------------------------------------------------------------- |
+| [TypeScript](https://www.typescriptlang.org/)          | Static type-checking programming language                     |
+| [Next.js](https://nextjs.org/)                         | The React framework for production                            |
+| [React](https://reactjs.org/)                          | Library for building user interfaces                          |
+| [MDX](https://mdxjs.com/)                              | Markdown for the component era                                |
+| [Algolia](https://www.algolia.com/)                    | Implementing powerful search                                  |
+| [Tailwind CSS](https://tailwindcss.com/)               | Utility-first CSS framework                                   |
+| [Radix UI](https://www.radix-ui.com/)                  | Accessible and composable headless UI components              |
+| [Github Actions](https://github.com/features/actions)  | Automations for workflow improvements                         |
+| [Motion](https://www.motion.dev/)                      | Motion library for making animations                          |
+| [React Hook Form](https://react-hook-form.com)         | Forms with easy-to-use validation                             |
+| [Vercel KV](https://vercel.com/docs/storage/vercel-kv) | Durable Redis database                                        |
+| [SCSS](https://sass-lang.com)                          | CSS with superpowers                                          |
+| [Zod](https://zod.dev)                                 | TypeScript-first schema validation with static type inference |
+| [Husky](https://github.comtypicode/husky)              | Git hooks                                                     |
+| [ESLint](https://eslint.org/)                          | TypeScript linting                                            |
+| [Prettier](https://prettier.io/)                       | Code formatter                                                |
 
 ## Scripts
 
@@ -128,3 +131,7 @@ Component.displayName = "Component";
 | [redirect](https://github.com/Bartek532/zagrodzki.me/blob/main/package.json#L23)   | Generates redirects to the newest post (in next.config.mjs) |
 | [start](https://github.com/Bartek532/zagrodzki.me/blob/main/package.json#L24)      | Starts Next.js server                                       |
 | [tsc](https://github.com/Bartek532/zagrodzki.me/blob/main/package.json#L25)        | Runs TypeScript transpilation against project files         |
+
+## Star History 🌟
+
+[![Star History Chart](https://api.star-history.com/svg?repos=Bartek532/zagrodzki.me&type=Date)](https://star-history.com/#Bartek532/zagrodzki.me&Date)

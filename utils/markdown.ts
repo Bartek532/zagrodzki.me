@@ -1,6 +1,7 @@
 import rehypePrism from "@mapbox/rehype-prism";
 import visit from "unist-util-visit";
 
+import type { Transformer } from "unified";
 import type { Node } from "unist";
 
 interface HtmlNode extends Node {
@@ -36,7 +37,7 @@ const isPreNode = (node: Node): node is PreNode =>
 const isCodeNode = (node: Node): node is CodeNode =>
   node.type === "element" && "tagName" in node && node.tagName === "code";
 
-export const addDataToCodeBlocks = (): import("unified").Transformer => (tree) => {
+export const addDataToCodeBlocks = (): Transformer => (tree) => {
   visit(tree, "element", (node: Node) => {
     if (!isPreNode(node) && !isCodeNode(node)) {
       return;

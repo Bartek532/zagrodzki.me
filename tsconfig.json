@@ -9,9 +9,8 @@
     "noEmit": true,
     "esModuleInterop": true,
     "module": "esnext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
-    "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
     "noUncheckedIndexedAccess": true,
@@ -24,13 +23,16 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "checkJs": true,
-    "baseUrl": ".",
     "plugins": [
       {
         "name": "next"
       }
     ],
-    "types": ["./node_modules/network-information-types"]
+    "paths": {
+      "@/*": ["./*"]
+    },
+    "types": ["./node_modules/network-information-types"],
+    "isolatedModules": true
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
   "exclude": ["node_modules"]

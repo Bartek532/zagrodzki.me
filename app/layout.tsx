@@ -1,12 +1,17 @@
-import clsx from "clsx";
 import localFont from "next/font/local";
 
-import { Analytics } from "components/common/analytics/Analytics";
-import { Layout } from "components/layout/Layout";
-import { DEFAULT_METADATA, DEFAULT_VIEWPORT } from "lib/metadata";
-import { AppProviders } from "providers/AppProviders";
+import { WindowsEmojiPolyfill } from "@/components/common/windows-emoji-polyfill";
+import { Newsletter } from "@/components/home/newsletter";
+import { Footer } from "@/components/layout/footer";
+import { Header } from "@/components/layout/header";
+import { Toaster } from "@/components/ui/sonner";
+import { DEFAULT_METADATA, DEFAULT_VIEWPORT } from "@/lib/metadata";
+import { Analytics } from "@/providers/analytics";
+import { ThemeProvider } from "@/providers/theme";
 
-import "../styles/globals.scss";
+import "../styles/globals.css";
+
+// import "../styles/code.css";
 
 export const metadata = DEFAULT_METADATA;
 export const viewport = DEFAULT_VIEWPORT;
@@ -31,7 +36,7 @@ const walsheim = localFont({
     },
   ],
   display: "swap",
-  variable: "--font-walsheim",
+  variable: "--font-sans",
 });
 
 const mono = localFont({
@@ -43,7 +48,7 @@ const mono = localFont({
 const kenfolg = localFont({
   src: "../public/fonts/Kenfolg.otf",
   display: "swap",
-  variable: "--font-kenfolg",
+  variable: "--font-serif",
 });
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -53,13 +58,27 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       dir="ltr"
       prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#"
       itemType="http://schema.org/WebPage"
-      className={clsx(walsheim.variable, mono.variable, kenfolg.variable)}
+      className={`${walsheim.variable} ${mono.variable} ${kenfolg.variable}`}
+      suppressHydrationWarning
     >
-      <body>
-        <AppProviders>
-          <Layout>{children}</Layout>
-        </AppProviders>
+      <body className="overflow-x-hidden font-sans antialiased">
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Header />
+          <div className="container mx-auto h-[52px] sm:h-16 sm:border-x" />
+          <main className="divide-y sm:border-b" id="main">
+            {children}
+            <Newsletter />
+          </main>
+          <Footer />
+        </ThemeProvider>
+        <Toaster />
         <Analytics />
+        <WindowsEmojiPolyfill />
       </body>
     </html>
   );

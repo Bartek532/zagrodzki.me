@@ -1,2 +1,2 @@
-export { CopyBtn } from "./copyBtn/CopyBtn";
-export { QuizDialog } from "./quizDialog/QuizDialog";
+export { CopyButton } from "./copy-button";
+export { QuizDialog } from "./quiz-dialog";

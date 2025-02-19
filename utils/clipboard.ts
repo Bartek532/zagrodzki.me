@@ -1,5 +1,6 @@
 export const copyToClipboard = async (text: string) => {
-  if (navigator && navigator.clipboard && navigator.clipboard.writeText) {
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+  if (navigator?.clipboard?.writeText) {
     await navigator.clipboard.writeText(text);
   } else {
     const body = document.querySelector("body");
