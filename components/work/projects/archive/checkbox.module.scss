@@ -1,0 +1,161 @@
+.checkbox {
+  -webkit-tap-highlight-color: transparent;
+
+  .wrapper {
+    --size: 21px;
+    width: var(--size);
+    height: var(--size);
+    perspective: 1000px;
+    transform: translateY(-4px);
+    margin-right: 20px;
+
+    .box {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      transform: rotate3d(1, 0, 0, -23deg) rotate3d(0, 1, 0, 50deg)
+        translate3D(calc(var(--size) / 2), calc(var(--size) / 3), calc(var(--size) / 2));
+
+      .tape {
+        --width: calc(var(--size) / 3.5);
+        position: absolute;
+        transform: rotate3d(0, 1, 0, -90deg) translate3d(0, 0, calc(var(--size) / 6 - 0.45px));
+        background: #8c5543;
+        width: var(--width);
+        height: calc(var(--size) / 4);
+        border-radius: 0 0 1px 1px;
+      }
+
+      .label {
+        --width: calc(var(--size) / 1.8);
+        position: absolute;
+        background: var(--color-background);
+        transform: rotate3d(0, 1, 0, -90deg)
+          translate3d(calc(var(--width) * 1.3), calc(var(--width) * 3 / 5), calc(var(--size)));
+        width: var(--width);
+        text-align: center;
+        padding: 0.05rem;
+        font-size: 0.12rem;
+        border-radius: 1rem;
+        font-weight: bold;
+        color: var(--color-foreground);
+        pointer-events: none;
+      }
+
+      .side {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: #f4b168;
+        border-radius: 1px;
+
+        &.front {
+          transform: translate3d(0, 0, calc(var(--size) / 2));
+          background-color: #ffce7c;
+        }
+
+        &.back {
+          background: linear-gradient(45deg, #f4b168, #ffce7c);
+          transform: rotate3d(0, 1, 0, 180deg) translate3d(0, 0, calc(var(--size) / 2));
+        }
+
+        &.left {
+          transform: rotate3d(0, 1, 0, -90deg) translate3d(0, 0, calc(var(--size) / 2));
+        }
+
+        &.right {
+          transform: rotate3d(0, 1, 0, 90deg) translate3d(0, 0, calc(var(--size) / 2));
+          background: linear-gradient(to left, #f4b168, #ffce7c);
+        }
+
+        &.bottom {
+          transform: rotate3d(1, 0, 0, -90deg) translate3d(0, 0, calc(var(--size) / 2));
+        }
+
+        &.cover {
+          transform-style: preserve-3d;
+          background: transparent;
+          transform: rotate3d(1, 0, 0, 90deg) translate3d(0, 0, calc(var(--size) / 2));
+
+          .coverSide {
+            position: absolute;
+            width: 50%;
+            height: 100%;
+            background-color: #f3c07b;
+            transition:
+              transform 0.3s ease-in-out,
+              border-radius 0.3s ease-in-out;
+            --border-size: calc(var(--size) / 7);
+
+            &.left {
+              transform: rotate3d(0, 1, 0, 0deg);
+              transform-origin: left center;
+              border-right: var(--border-size) solid #a56953;
+              border-radius: 1px 0 0 1px;
+            }
+
+            &.right {
+              transform: rotate3d(0, 1, 0, 0deg);
+              right: 0;
+              transform-origin: right center;
+              border-left: var(--border-size) solid #a56953;
+              border-radius: 0 1px 1px 0;
+            }
+
+            &.front {
+              transform: rotate3d(1, 0, 0, 0deg);
+              width: 100%;
+              height: 50%;
+              transform-origin: center top;
+              transition-delay: 0.2s;
+              border-bottom: var(--border-size) solid #a56953;
+              border-radius: 1px 1px 0 0;
+            }
+
+            &.back {
+              transform: rotate3d(1, 0, 0, 0deg);
+              bottom: 0;
+              width: 100%;
+              height: 50%;
+              transform-origin: center bottom;
+              transition-delay: 0.2s;
+              border-top: var(--border-size) solid #a56953;
+              border-radius: 0 0 1px 1px;
+            }
+          }
+        }
+      }
+
+      &.active {
+        .cover {
+          .coverSide {
+            &.left {
+              transform: rotate3d(0, 1, 0, -190deg);
+              transition-delay: 0.2s;
+              border-radius: 1px;
+            }
+
+            &.right {
+              transform: rotate3d(0, 1, 0, 140deg);
+              transition-delay: 0.2s;
+              border-radius: 1px;
+            }
+
+            &.front {
+              transform: rotate3d(1, 0, 0, 140deg);
+              transition-delay: 0s;
+              border-radius: 1px;
+            }
+
+            &.back {
+              transform: rotate3d(1, 0, 0, -190deg);
+              transition-delay: 0s;
+              border-radius: 1px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

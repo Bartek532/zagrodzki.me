@@ -1,15 +1,14 @@
-import { Metadata } from "next";
-import { Viewport } from "next";
-
 import {
   DEFAULT_DESCRIPTION,
   DEFAULT_IMAGE_URL,
   HOST,
   SITE_TITLE,
   SITE_TITLE_TEMPLATE,
-} from "utils/consts";
+} from "@/utils/consts";
 
-import type { Author } from "types";
+import type { Author } from "@/types";
+import type { Metadata } from "next";
+import type { Viewport } from "next";
 
 interface SeoProps {
   readonly title?: string;

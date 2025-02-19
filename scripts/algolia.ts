@@ -1,7 +1,7 @@
-import algoliasearch from "algoliasearch";
+import { algoliasearch } from "algoliasearch";
 import dayjs from "dayjs";
 
-import { env } from "env/server";
+import { env } from "@/lib/env";
 
 import { getPublishedPosts, getPostParsedContent } from "../lib/posts";
 import { getAllProjects, getProjectParsedContent } from "../lib/projects";
@@ -42,17 +42,28 @@ const generateAlgoliaPosts = async () => {
 
 async function run() {
   const client = algoliasearch(env.NEXT_PUBLIC_ALGOLIA_APP_ID, env.ALGOLIA_UPDATE_API_KEY);
-  const projectsIndex = client.initIndex(env.NEXT_PUBLIC_ALGOLIA_PROJECTS_INDEX_NAME);
-  const postsIndex = client.initIndex(env.NEXT_PUBLIC_ALGOLIA_POSTS_INDEX_NAME);
 
-  const indexedProjects = await projectsIndex.replaceAllObjects(await generateAlgoliaProjects());
-  const indexedPosts = await postsIndex.replaceAllObjects(await generateAlgoliaPosts());
+  const [indexedProjects, indexedPosts] = await Promise.all([
+    client.replaceAllObjects({
+      indexName: env.NEXT_PUBLIC_ALGOLIA_PROJECTS_INDEX_NAME,
+      objects: await generateAlgoliaProjects(),
+    }),
+    client.replaceAllObjects({
+      indexName: env.NEXT_PUBLIC_ALGOLIA_POSTS_INDEX_NAME,
+      objects: await generateAlgoliaPosts(),
+    }),
+  ]);
 
   console.log(
-    `${indexedProjects.objectIDs.length} projects indexed in ${env.NEXT_PUBLIC_ALGOLIA_PROJECTS_INDEX_NAME}`,
+    `${indexedProjects.batchResponses.flat().length} projects indexed in ${
+      env.NEXT_PUBLIC_ALGOLIA_PROJECTS_INDEX_NAME
+    }`,
   );
+
   console.log(
-    `${indexedPosts.objectIDs.length} posts indexed in ${env.NEXT_PUBLIC_ALGOLIA_POSTS_INDEX_NAME}`,
+    `${indexedPosts.batchResponses.flat().length} posts indexed in ${
+      env.NEXT_PUBLIC_ALGOLIA_POSTS_INDEX_NAME
+    }`,
   );
 }
 

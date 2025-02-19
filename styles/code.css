@@ -1,0 +1,278 @@
+:root {
+  --syntax-comment: #a0a1a7;
+  --syntax-punctuation: #999;
+  --syntax-pink: #905;
+  --syntax-green: #690;
+  --syntax-orange: #9a6e3a;
+  --syntax-blue: #07a;
+  --syntax-red: #dd4a68;
+  --syntax-yellow: #e90;
+  --syntax-background: #ede8eb;
+  --syntax-attr-value: #07a;
+  --syntax-tag: #905;
+  --syntax-prop: #905;
+  --base-syntax-color: #000;
+  --syntax-selector: #690;
+  --syntax-css-class: #690;
+  --syntax-css-id: #07a;
+  --syntax-important: #e90;
+  --syntax-css-unit: #905;
+  --syntax-css-number: #905;
+  --syntax-css-variable: #e90;
+  --syntax-maybe-class-name: #dd4a68;
+  --syntax-js-base-color: #000;
+  --syntax-constant: #905;
+  --syntax-builtin: #690;
+  --syntax-operator: #9a6e3a;
+  --syntax-function: #dd4a68;
+  --syntax-attr-name: #690;
+  --syntax-number: #905;
+  --syntax-boolean: #905;
+  --syntax-variable: #e90;
+  --syntax-scrollbar-color: #b5b9ba;
+  --syntax-selection: #d5d5d5;
+}
+
+.dark {
+  --syntax-comment: #5f6167;
+  --syntax-punctuation: #c7c7c7;
+  --syntax-background: #1c1c1c;
+  --syntax-red: #ee5d43;
+  --syntax-green: #abe338;
+  --syntax-orange: #f39c12;
+  --syntax-blue: #c74ded;
+  --syntax-attr-value: #abe338;
+  --syntax-tag: #f92672;
+  --base-syntax-color: #fff;
+  --syntax-selector: #f92672;
+  --syntax-css-class: #ffe66d;
+  --syntax-css-id: #ee5d43;
+  --syntax-important: #c74ded;
+  --syntax-css-base-color: #ee5d43;
+  --syntax-prop: #fff;
+  --syntax-css-unit: #f39c12;
+  --syntax-css-number: #f39c12;
+  --syntax-css-variable: #00e8c6;
+  --syntax-maybe-class-name: #ffe66d;
+  --syntax-js-base-color: #00e8c6;
+  --syntax-constant: #00e8c6;
+  --syntax-builtin: #fff;
+  --syntax-operator: #ee5d43;
+  --syntax-function: #ffe66d;
+  --syntax-attr-name: #ffe66d;
+  --syntax-number: #f39c12;
+  --syntax-boolean: #ee5d43;
+  --syntax-variable: #00e8c6;
+  --syntax-scrollbar-color: #0a0a0a;
+  --syntax-selection: #23262e;
+}
+
+pre[data-lang]:not(pre[data-lang=""]) {
+  @apply relative;
+}
+
+pre[data-lang]:not(pre[data-lang=""])::after {
+  content: attr(data-lang);
+  background-color: var(--syntax-background);
+  @apply absolute top-px right-8 -translate-y-full rounded-t-lg px-3 py-1 font-sans font-semibold tracking-wide uppercase;
+}
+
+code,
+pre {
+  color: var(--base-syntax-color);
+  tab-size: 2;
+  --selection-background: var(--syntax-selection);
+  --selection-color: currentColor;
+  @apply bg-none text-left font-mono leading-6 break-normal hyphens-none whitespace-pre;
+}
+
+code::-webkit-scrollbar,
+pre::-webkit-scrollbar {
+  @apply h-2;
+}
+
+code::-webkit-scrollbar-track,
+pre::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+code::-webkit-scrollbar-thumb,
+pre::-webkit-scrollbar-thumb {
+  background-color: var(--syntax-scrollbar-color);
+  @apply rounded-full;
+}
+
+pre {
+  @apply -mx-6 my-8 h-full p-8 text-sm sm:-mx-8 lg:-mx-3 lg:rounded-lg;
+}
+
+pre > code {
+  @apply block overflow-auto;
+}
+
+:not(pre) > code,
+pre {
+  background-color: var(--syntax-background);
+}
+
+/* Inline code */
+:not(pre) > code {
+  @apply mx-px rounded-md px-2.5 py-1 text-sm whitespace-normal;
+  background-color: var(--syntax-background);
+  color: var(--syntax-function);
+}
+
+code.language-css {
+  color: var(--syntax-css-base-color);
+}
+
+code.language-css .token.unit {
+  color: var(--syntax-css-unit);
+}
+
+code.language-css .token.number {
+  color: var(--syntax-css-number);
+}
+
+code.language-css .token.variable {
+  color: var(--syntax-css-variable);
+}
+
+code.language-ts,
+code.language-tsx,
+code.language-js,
+code.language-jsx,
+code.language-json,
+.language-javascript {
+  color: var(--syntax-js-base-color);
+}
+
+.token.punctuation {
+  color: var(--syntax-punctuation);
+}
+
+.token.namespace {
+  @apply opacity-70;
+}
+
+.token.property {
+  color: var(--syntax-prop);
+}
+
+.token.tag {
+  color: var(--syntax-tag);
+}
+
+.token.constant {
+  color: var(--syntax-constant);
+}
+
+.token.boolean {
+  color: var(--syntax-boolean);
+}
+
+.token.number {
+  color: var(--syntax-number);
+}
+
+.token.symbol,
+.token.deleted {
+  color: var(--syntax-pink);
+}
+
+.token.selector {
+  color: var(--syntax-selector);
+}
+
+.token.builtin {
+  color: var(--syntax-builtin);
+}
+
+.token.attr-name {
+  color: var(--syntax-attr-name);
+}
+
+.token.string,
+.token.char,
+.token.inserted {
+  color: var(--syntax-green);
+}
+
+.token.operator {
+  color: var(--syntax-operator);
+}
+
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+  color: var(--syntax-orange);
+}
+
+.language-css .token.class {
+  color: var(--syntax-css-class);
+}
+
+.language-css .token.id {
+  color: var(--syntax-css-id);
+}
+
+.token.attr-value {
+  color: var(--syntax-attr-value);
+}
+
+.token.attr-value .punctuation {
+  color: var(--syntax-attr-value);
+}
+
+.token.atrule,
+.token.keyword {
+  color: var(--syntax-blue);
+}
+
+.token.maybe-class-name {
+  color: var(--syntax-maybe-class-name);
+}
+
+.token.function,
+.token.class-name {
+  color: var(--syntax-red);
+}
+
+.token.important {
+  color: var(--syntax-important);
+}
+
+.token.variable {
+  color: var(--syntax-variable);
+}
+
+.token.regex {
+  color: var(--syntax-yellow);
+}
+
+.token.important,
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.property-access,
+.token.function {
+  color: var(--syntax-function);
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata,
+.token.shebang {
+  color: var(--syntax-comment);
+}

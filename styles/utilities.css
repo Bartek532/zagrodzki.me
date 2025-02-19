@@ -1,0 +1,83 @@
+@utility bg-dashed {
+  background-image: linear-gradient(
+    45deg,
+    var(--color-border) 12.5%,
+    transparent 12.5%,
+    transparent 50%,
+    var(--color-border) 50%,
+    var(--color-border) 62.5%,
+    transparent 62.5%,
+    transparent 100%
+  );
+  background-size: 0.25rem 0.25rem;
+}
+
+@utility border-archive {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    black,
+    black 20px,
+    var(--color-warning) 20px,
+    var(--color-warning) 40px
+  );
+}
+
+@utility dashed-line-top {
+  @apply absolute top-4 left-0 h-px w-full border-t border-dashed sm:top-8;
+}
+
+@utility dashed-line-left {
+  @apply absolute top-0 left-4 h-full w-px border-r border-dashed sm:left-8;
+}
+
+@utility dashed-line-right {
+  @apply absolute top-0 right-4 h-full w-px border-r border-dashed sm:right-8;
+}
+
+@utility dashed-line-bottom {
+  @apply absolute bottom-4 left-0 h-px w-full border-t border-dashed sm:bottom-8;
+}
+
+@utility faded-line-bottom {
+  @apply border-connection absolute -right-6 -bottom-1 -left-6 h-px border-b border-dashed;
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    var(--color-foreground) 2rem,
+    var(--color-foreground) calc(100% - 2rem),
+    transparent
+  );
+}
+
+@utility faded-line-top {
+  @apply border-connection absolute -top-1 -right-6 -left-6 h-px border-t border-dashed;
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    var(--color-foreground) 2rem,
+    var(--color-foreground) calc(100% - 2rem),
+    transparent
+  );
+}
+
+@utility faded-line-left {
+  @apply border-connection absolute -top-6 -bottom-6 -left-1 w-px border-l border-dashed;
+  mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    var(--color-foreground) 2rem,
+    var(--color-foreground) calc(100% - 2rem),
+    transparent
+  );
+}
+
+@utility faded-line-right {
+  @apply border-connection absolute -top-6 -right-1 -bottom-6 w-px border-r border-dashed;
+  mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    var(--color-foreground) 2rem,
+    var(--color-foreground) calc(100% - 2rem),
+    transparent
+  );
+}

@@ -1,17 +1,13 @@
 import fs from "fs";
-import path from "path";
-
 import matter from "gray-matter";
-import { serialize } from "next-mdx-remote/serialize";
+import path from "path";
 import readingTime from "reading-time";
 import rehypeStringify from "rehype-stringify";
 import remarkParse from "remark-parse";
 import remarkRehype from "remark-rehype";
 import unified from "unified";
 
-import { commonRehypePlugins } from "utils/markdown";
-
-import type { Project, Post } from "types";
+import type { Project, Post } from "@/types";
 
 const MDX_REGEX = /\.mdx$/;
 
@@ -50,19 +46,14 @@ export const getResourceParsedContent = async (slug: string, resourcePath: strin
   return { compiledContent };
 };
 
-export const getResourceBySlug = async <T extends Resource>(slug: string, resourcePath: string) => {
+export const getResourceBySlug = <T extends Resource>(slug: string, resourcePath: string) => {
   const filePath = path.join(resourcePath, `${slug}.mdx`);
   const source = fs.readFileSync(filePath);
   const { content, data } = matter(source);
   const timeToRead = readingTime(content).minutes;
   const frontmatter = { ...data, slug, timeToRead } as T;
-  const transformedMdx = await serialize(content, {
-    scope: data,
-    // @ts-expect-error rehype plugins types are not compatible
-    mdxOptions: { rehypePlugins: commonRehypePlugins },
-  });
 
-  return { transformedMdx, frontmatter };
+  return { content, frontmatter };
 };
 
 const getResourcesSlugs = (resourcePath: string) =>

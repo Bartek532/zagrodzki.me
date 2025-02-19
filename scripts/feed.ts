@@ -1,8 +1,6 @@
-import fs from "fs";
-
 import dayjs from "dayjs";
-
 import { Feed } from "feed";
+import fs from "fs";
 
 import { getPublishedPosts } from "../lib/posts";
 import { SITE_TITLE, DEFAULT_DESCRIPTION, HOST } from "../utils/consts";

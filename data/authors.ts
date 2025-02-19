@@ -13,7 +13,7 @@ export const allAuthors = [
       website: "https://www.zagrodzki.me",
       about: "https://www.zagrodzki.me/about",
       description:
-        "Blogger, software engineer and the main coordinator of this blog, he has lots of ideas and won't hesitate to use them! He lives in Poland.",
+        "Blogger, software engineer and the main coordinator of this website, he has lots of ideas and won't hesitate to use them! He lives in Poland.",
     },
   },
 ] as const;

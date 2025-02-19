@@ -1,6 +1,6 @@
 import "server-only";
 
-import { RESOURCE_TYPE } from "types";
+import { RESOURCE_TYPE } from "@/types";
 
 import { getSortedSetValue, getSortedSetValues, incrementSortedSetValue } from "./utils";
 

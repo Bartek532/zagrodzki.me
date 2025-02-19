@@ -1,4 +1,4 @@
-import { env } from "env/client";
+import { env } from "@/lib/env";
 
 declare global {
   interface Window {

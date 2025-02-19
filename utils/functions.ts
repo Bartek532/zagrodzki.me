@@ -1,4 +1,4 @@
-import { SyntheticEvent } from "react";
+import type { SyntheticEvent } from "react";
 
 export const onPromise =
   <T>(promise: (event: SyntheticEvent) => Promise<T>) =>
