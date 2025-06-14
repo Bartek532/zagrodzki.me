@@ -50,7 +50,7 @@ export const Recommendations = () => (
                 </a>
                 <p className="text-muted-foreground text-sm">{recommendation.author.position}</p>
               </div>
-              <Prose className="prose-sm max-w-3xl">
+              <Prose className="prose-sm [&_mark]:bg-primary/25 [&_mark]:text-foreground dark:[&_mark]:bg-primary/50 max-w-3xl [&_mark]:rounded-md [&_mark]:px-1 [&_mark]:py-px">
                 <p>{recommendation.content}</p>
               </Prose>
             </div>

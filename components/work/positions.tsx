@@ -1,3 +1,6 @@
+import dayjs from "dayjs";
+import duration from "dayjs/plugin/duration";
+import relativeTime from "dayjs/plugin/relativeTime";
 import Image from "next/image";
 
 import { SuperLink } from "@/components/common/link/super-link";
@@ -7,6 +10,9 @@ import { Prose } from "@/components/ui/prose";
 import { allPositions } from "@/data/experience";
 import { ViewAnimation } from "@/providers/view-animation";
 import { cn } from "@/utils";
+
+dayjs.extend(duration);
+dayjs.extend(relativeTime);
 
 export const Positions = () => (
   <Section className="grid lg:grid-cols-2">
@@ -44,8 +50,13 @@ export const Positions = () => (
               <p>{position.description}</p>
             </Prose>
             <p className="text-muted-foreground text-sm">
-              {position.type} &bull; {position.start} &mdash;&nbsp;
-              {"end" in position && typeof position.end === "string" ? position.end : "Present"}
+              {position.type} &bull; {dayjs(position.start).format("MM.YYYY")} &mdash;&nbsp;
+              {"end" in position ? dayjs(position.end).format("MM.YYYY") : "Present"} &bull;&nbsp;
+              {dayjs
+                .duration(
+                  dayjs("end" in position ? position.end : new Date()).diff(dayjs(position.start)),
+                )
+                .humanize()}
             </p>
           </div>
         </a>

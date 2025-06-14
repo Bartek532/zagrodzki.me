@@ -3,7 +3,7 @@ export const allPositions = [
     id: "brainhub",
     position: "Full-stack Engineer",
     company: "Brainhub",
-    start: "10.2022",
+    start: new Date("2022-10-01"),
     link: "https://brainhub.eu",
     type: "Full-time",
     description:
@@ -14,8 +14,7 @@ export const allPositions = [
     id: "zagrodzki",
     position: "Blogger",
     company: "zagrodzki.me",
-    start: "02.2022",
-    end: "present",
+    start: new Date("2022-02-01"),
     link: "https://www.zagrodzki.me",
     type: "Part-time",
     description:
@@ -26,8 +25,8 @@ export const allPositions = [
     id: "freelancer",
     position: "Front-end Developer",
     company: "Freelancer",
-    start: "06.2021",
-    end: "09.2022",
+    start: new Date("2021-06-01"),
+    end: new Date("2022-09-01"),
     link: "https://useme.com/pl/roles/contractor/bartosz-zagrodzki,174146",
     type: "Part-time",
     description:
