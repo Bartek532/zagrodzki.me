@@ -24,5 +24,6 @@ jobs:
         with:
           urls: ${{ steps.waitForVercelPreviewDeployment.outputs.url }}
           gitHubAccessToken: ${{ secrets.GITHUB_TOKEN }}
+          device: "all"
           locale: en
           prCommentEnabled: true

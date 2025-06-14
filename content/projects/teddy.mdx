@@ -1,0 +1,138 @@
+---
+title: "Teddy"
+excerpt: "Personalizable AI assistant designed to enhance daily workflow 🧸"
+publishedAt: "12-12-2022"
+modifiedAt: "27-10-2023"
+url: "https://github.com/Bartek532/teddy/releases/latest"
+repository: "https://github.com/Bartek532/teddy"
+tags:
+  - "tauri"
+  - "typescript"
+  - "ai"
+  - "gpt"
+  - "react"
+image: "/img/projects/teddy/thumbnail.png"
+type: "project"
+author: "Bartosz Zagrodzki"
+published: false
+archived: false
+priority: 3
+---
+
+<div id="introduction">
+
+Teddy was initially developed during <Link href="https://verified.sertifier.com/en/verify/55140061168727/"> one of my AI trainings.</Link> The idea was to create a proof of concept of an **AI assistant** that could help with daily tasks.
+
+The project began by experimenting with **prompts** in the command line and playground. After a while, I decided to create a more user-friendly interface. After developing **desktop app** and implementing advanced prompts Teddy was born 🧸
+
+Now, I use it daily, utilizing useful snippets and remote actions to automate my workflow.
+
+</div>
+
+## Tech stack
+
+When developing the app, I separated two main domains - **app** itself and the **AI** part.
+
+### App
+
+Well, I had **never** built a desktop app before.
+
+Moreover, I had **never** used **Rust**, but I had heard many good things about it. So, I decided to give it a try and use **Tauri** to create a desktop app 🚀
+
+In the end, it was a great decision. **Tauri** is a fantastic tool that allows you to create a desktop app using web technologies. It's easy to use and has many features that I extensively used, such as **notifications**, **shortcuts**, **local storage**, and many, many more.
+
+Of course, as with all of my projects, I used **TypeScript** to make the development process more enjoyable and less error-prone.
+
+For styling, I leveraged my new favorite tool - **TailwindCSS**. It's a great tool that allows you to create beautiful designs without writing much CSS. Maybe I should write a blog post about my favorite techniques in it? 🤔
+
+Last but probably most important - I implemented custom **GitHub Actions** that allow me to _build_ and _release_ new versions of the app with just one click. There were some troubles setting it up correctly, but in the end, it saved me at least **30+** hours of manual work! 🔥
+
+<Image
+  src="/img/projects/teddy/release-workflow.png"
+  alt="Single-click release workflow"
+  width="1200"
+  height="880"
+/>
+
+### AI
+
+I've tested many AI models and providers, such as **Gemini**, **Claude**, **Ollama**, and even more that no longer exist.
+
+However, I decided to use **OpenAI**'s **GPT**. It's a great tool that allows you to generate text based on the prompt you provide. It's really powerful and can be used in many different ways 💪
+
+They provide a great API that I used to communicate with the LLM model.
+
+I experimented a lot with different **prompts** and **techniques** (chain-of-thought, I'm looking at you! 😁) and finally achieved satisfying results.
+
+Of course, it could be better, and as you're reading this, there are probably even simpler ways to achieve the same, but I'm happy with how it works now and the knowledge I gained during the process.
+
+<Image
+  src="/img/projects/teddy/settings.png"
+  alt="How to avoid prompt injection? Expose your system prompt!"
+  width="1200"
+  height="880"
+/>
+
+## Problems
+
+To my surprise, I didn't have many problems with the **app** part.
+
+As I'm pretty experienced with React and TypeScript, I managed to create the app in just a **few days** 🚀
+
+Trying some Rust things was a bit challenging, but I managed to get through it with the help of the Tauri documentation and **Teddy itself (!).**
+
+The **AI** part was a lot harder 😬
+
+I tested tons of different flows, prompts, and techniques to correctly determine the intention of the message and then handle generating the most accurate response.
+
+I also implemented a lot of useful snippets that I can use everywhere on my OS just by invoking the **correct** shortcut. Here are some examples of the most useful ones:
+
+- Fixing code
+- Translating text
+- Creating a new note
+- Explaining concepts step-by-step
+
+The hardest part were probably **remote actions**. I wanted to invoke some third-party APIs directly in the chat (e.g., playing music from Spotify). This includes specifying an intention, generating a payload, calling the external API, parsing the response, etc. A lot of potential **bottlenecks**!
+
+But, at the end of the day, I managed to create a **working prototype** that I use daily. It's not perfect, but it's a **great tool** that helps me with my daily tasks 🔥
+
+<Image
+  src="/img/projects/teddy/actions.png"
+  alt="Integration with Spotify was a breeze!"
+  width="1200"
+  height="880"
+/>
+
+<Image
+  src="/img/projects/teddy/snippets.png"
+  alt="Thing that I'm using the most - snippets under shortcuts across OS"
+  width="1200"
+  height="880"
+/>
+
+## Lessons learned
+
+One of the most significant lessons I learned was the value of **not be scared of new technologies**. Despite having no prior experience with Rust, I decided to give it a try. Using Tauri to create a desktop app was a challenging yet rewarding experience.
+
+The AI part of the project required **extensive testing and iteration**. Experimenting with prompt engineering to fine-tune the AI's responses taught me the importance of patience and persistence.
+
+Constant testing and incremental improvements are key to developing a robust AI system. I explored numerous AI models and providers, ultimately deciding on OpenAI's GPT.
+
+Worth mentioning, that determining the user's intent and generating the most accurate response was a significant challenge. I learned the importance of context and nuanced understanding in AI interactions.
+
+Throughout this project, **continuous learning** and application of new knowledge were vital. I learned a lot about **desktop app development**, **AI**, and **automation**. This knowledge helped me a lot in developing further products.
+
+And it all started with a single **snippet**... 🧸
+
+<Video
+  src="/img/projects/teddy/demo.mp4"
+  alt="Let's see Teddy in action!"
+  autoPlay
+  loop
+  playsInline
+  muted
+  width="1000"
+  heigth="1000"
+/>
+
+PS. Maybe I wrote part of this post using Teddy? Who knows... 🤔
