@@ -9,7 +9,7 @@ export const env = createEnv({
     SPOTIFY_CLIENT_SECRET: z.string(),
     SPOTIFY_REFRESH_TOKEN: z.string(),
 
-    SENDGRID_API_KEY: z.string(),
+    PLUNK_API_KEY: z.string(),
     EMAIL: z.string().email(),
 
     KV_REST_API_TOKEN: z.string(),
