@@ -1,9 +1,21 @@
 export const allPositions = [
   {
+    id: "dropbox",
+    position: "Software Engineer",
+    company: "Dropbox",
+    start: new Date("2025-09-01"),
+    link: "https://dropbox.com",
+    type: "Full-time",
+    description:
+      "Building collaborative, secure content workflows used by millions. Shipping high-quality experiences with strong emphasis on performance, accessibility, and reliability. Partnering with design and product to deliver intuitive UIs, instrumented with analytics and experiments. Owning features end-to-end from architecture and testing to rollout and monitoring.",
+    icon: "/svg/dropbox.svg",
+  },
+  {
     id: "brainhub",
     position: "Full-stack Engineer",
     company: "Brainhub",
     start: new Date("2022-10-01"),
+    end: new Date("2025-09-01"),
     link: "https://brainhub.eu",
     type: "Full-time",
     description:
@@ -12,7 +24,7 @@ export const allPositions = [
   },
   {
     id: "zagrodzki",
-    position: "Blogger",
+    position: "Founder",
     company: "zagrodzki.me",
     start: new Date("2022-02-01"),
     link: "https://www.zagrodzki.me",

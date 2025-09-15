@@ -17,6 +17,8 @@ const getViews = cache(getAllResourcesTotalViews, ["total-views"], {
   revalidate: 60 * 60 * 24,
 });
 
+const BORN_YEAR = 2002;
+
 export const Content = async () => {
   const views = await getViews();
 
@@ -34,9 +36,9 @@ export const Content = async () => {
             <small className="text-muted-foreground">About me</small>
             <Prose className="[&_a]:no-underline">
               <p>
-                I&#39;m a 22-year-old software engineer based in Poland. I&#39;m passionate about
-                building modern software that enhances the lives of others, as well as my own. My
-                blogging journey began by publishing translations on{" "}
+                I&#39;m a {new Date().getFullYear() - BORN_YEAR}-year-old software engineer based in
+                Poland. I&#39;m passionate about building modern software that enhances the lives of
+                others, as well as my own. My blogging journey began by publishing translations on{" "}
                 <Link href="https://dev.to/bartek532">dev.to</Link>, and now I&#39;m here with{" "}
                 <span className="font-bold">{normalizeCount(views || random(82000, 84000))}</span>{" "}
                 post views.

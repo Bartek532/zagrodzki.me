@@ -62,18 +62,21 @@ export const Positions = () => (
         </a>
       </ViewAnimation>
     ))}
-    {allPositions.length % 2 && (
-      <ViewAnimation
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        delay={0.2}
-        className="bg-dashed hidden flex-col items-center justify-center gap-6 border-t p-8 lg:flex"
-      >
-        <h2 className="text-center text-3xl font-semibold">Want to build together?</h2>
-        <SuperLink href="contact" className={buttonVariants()}>
-          Let&apos;s talk about work
-        </SuperLink>
-      </ViewAnimation>
-    )}
+    <ViewAnimation
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      delay={0.2}
+      className={cn(
+        "bg-dashed flex min-h-64 flex-col items-center justify-center gap-6 border-t p-8",
+        {
+          "col-span-2": allPositions.length % 2 === 0,
+        },
+      )}
+    >
+      <h2 className="text-center text-3xl font-semibold">Want to build together?</h2>
+      <SuperLink href="contact" className={buttonVariants()}>
+        Let&apos;s talk about work
+      </SuperLink>
+    </ViewAnimation>
   </Section>
 );

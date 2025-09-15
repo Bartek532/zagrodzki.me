@@ -28,7 +28,7 @@ export const Recommendations = () => (
             delay={index % 2 ? 0.2 : 0}
             key={recommendation.author.name}
             className={cn(
-              "hover:bg-card dark:hover:bg-accent flex flex-col items-start gap-4 p-6 transition-colors lg:gap-6",
+              "hover:bg-card dark:hover:bg-accent flex h-full flex-col items-start gap-4 p-6 transition-colors lg:gap-6",
               "sm:flex-row sm:p-8",
             )}
           >
