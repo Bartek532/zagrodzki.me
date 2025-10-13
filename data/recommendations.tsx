@@ -159,4 +159,40 @@ export const allRecommendations = [
     },
     size: "large",
   },
+  {
+    content: (
+      <>
+        I had the pleasure of working with Bartosz on a mobile application project, and I can
+        confidently say he was an <mark>exceptional team member</mark>.
+        <br />
+        <br />
+        Bartosz demonstrated impressive technical knowledge combined with an{" "}
+        <mark>insatiable appetite for learning and exploring</mark> mobile technologies that were
+        new for him at the time.
+        <br />
+        <br />
+        What truly set Bartosz apart was his <mark>tremendous commitment</mark> to the project. He
+        consistently challenged ideas and proposed solutions, always pushing the team toward the
+        best possible outcomes. His willingness to question assumptions and explore alternative
+        approaches significantly elevated the quality of our work.
+        <br />
+        <br />
+        Beyond his technical contributions, Bartosz was a{" "}
+        <mark>fantastic colleague who fostered great collaboration</mark> throughout the project.
+        His positive attitude and team spirit made working together both productive and enjoyable.
+        <br />
+        <br />
+        <mark>I would highly recommend Bartosz</mark> to any team looking for a dedicated developer
+        who combines strong technical skills with genuine enthusiasm for innovation and
+        collaborative problem-solving.
+      </>
+    ),
+    author: {
+      name: "Adam Rąpała",
+      position: "Senior Full-stack Engineer at Brainhub",
+      image: "/img/references/adam-rapala.jpeg",
+      link: "https://www.linkedin.com/in/adam-rapala/",
+    },
+    size: "large",
+  },
 ] as const;

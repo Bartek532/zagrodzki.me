@@ -13,10 +13,9 @@
   "author": "Bartosz Zagrodzki",
   "scripts": {
     "algolia": "tsx ./scripts/algolia.ts ",
-    "build": "./build.sh redirect feed algolia next",
+    "build": "./build.sh redirect algolia next",
     "build:next": "next build",
     "dev": "next dev --turbopack",
-    "feed": "tsx ./scripts/feed.ts",
     "format": "prettier --write \"./**/*.{js,jsx,ts,tsx,css,scss,md,mdx}\"",
     "lint": "next lint",
     "prepare": "husky install",

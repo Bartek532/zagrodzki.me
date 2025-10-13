@@ -6,13 +6,13 @@ import { cn } from "@/utils";
 
 export const FeaturedTweet = () => (
   <ThirdsSection
-    title="3D Particles"
-    description="Exploring new ways to enhance the user experience of my product - adding 3D particles to the home call to action related to the community."
+    title="Launching Envin 🌳"
+    description="Introducing Envin — a type-safe, open-source environment validator with live previews and standard schema support. Instantly validate and preview your .env files, in any framework."
     caption="Featured tweet"
     buttons={[
       {
         label: "Read on X",
-        href: `https://x.com/bzagrodzki/status/1885364950128091487`,
+        href: `https://x.com/bzagrodzki/status/1932837053131292672`,
       },
       {
         label: "View all tweets",
@@ -21,7 +21,7 @@ export const FeaturedTweet = () => (
     ]}
   >
     <div className={cn("bg-dashed relative flex items-center justify-center p-4", "sm:p-8")}>
-      <Tweet id="1885364950128091487" />
+      <Tweet id="1932837053131292672" />
     </div>
   </ThirdsSection>
 );
