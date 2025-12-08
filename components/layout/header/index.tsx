@@ -51,7 +51,7 @@ export const Header = () => (
           <Button variant="outline" size="sm" asChild>
             <SuperLink href="/contact" className="group">
               Get in touch
-              <PaperPlane className="text-foreground size-3.5 transition-transform duration-200 ease-out group-hover:-translate-y-4 group-hover:translate-x-8 group-hover:rotate-[20deg]" />
+              <PaperPlane className="text-foreground size-3.5 transition-transform duration-200 ease-out group-hover:translate-x-8 group-hover:-translate-y-4 group-hover:rotate-[20deg]" />
             </SuperLink>
           </Button>
         </ViewAnimation>

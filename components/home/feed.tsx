@@ -4,10 +4,11 @@ import { ViewAnimation } from "@/providers/view-animation";
 import { cn } from "@/utils";
 
 import { GitHubEvent } from "./event";
+import { env } from "@/lib/env";
 
 export const Feed = async () => {
   const activity = await octokit.rest.activity.listPublicEventsForUser({
-    username: "Bartek532",
+    username: env.NEXT_PUBLIC_GITHUB_USERNAME,
     per_page: 15,
   });
 
@@ -18,16 +19,23 @@ export const Feed = async () => {
         "sm:px-8 sm:text-sm",
       )}
     >
-      {activity.data.slice(0, 10).map((event, index) => (
-        <ViewAnimation
-          key={event.id}
-          initial={{ opacity: 0, translateY: -8 }}
-          whileInView={{ opacity: 1, translateY: 0 }}
-          delay={index * 0.1}
-        >
-          <GitHubEvent event={event} />
-        </ViewAnimation>
-      ))}
+      {activity.data
+        .map((event) => {
+          const result = GitHubEvent({ event });
+          return result ? { event, result } : null;
+        })
+        .filter(Boolean)
+        .slice(0, 10)
+        .map((data, index) => (
+          <ViewAnimation
+            key={data?.event.id}
+            initial={{ opacity: 0, translateY: -8 }}
+            whileInView={{ opacity: 1, translateY: 0 }}
+            delay={index * 0.1}
+          >
+            {data?.result}
+          </ViewAnimation>
+        ))}
       <div className="to-background absolute right-0 bottom-6 left-0 z-10 h-40 bg-linear-to-b from-transparent" />
     </Section>
   );

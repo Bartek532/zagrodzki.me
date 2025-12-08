@@ -23,7 +23,7 @@ export const FeaturedProject = () => (
         light={NewProjectLight}
         dark={NewProjectDark}
         className="bg-muted h-full w-full rounded-tl-lg sm:rounded-tl-2xl"
-        priority
+        preload
       />
     </div>
   </ThirdsSection>

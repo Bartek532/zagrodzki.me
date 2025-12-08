@@ -59,7 +59,7 @@ const PushEvent = ({ event }: { event: GitHubEvent }) => {
   // https://github.com/octokit/rest.js/issues/128
   const commits = (
     event.payload as {
-      commits: {
+      commits?: {
         sha: string;
         author: {
           email: string;
@@ -71,15 +71,19 @@ const PushEvent = ({ event }: { event: GitHubEvent }) => {
     }
   ).commits;
 
+  if (!commits?.length) {
+    return null;
+  }
+
   return (
     <div className="flex items-center gap-4">
       <GitCommitIcon className="h-4 w-4 shrink-0" />
       <div className="flex-1 truncate">
-        Pushed {commits.length} commits to {event.repo.name}:{" "}
+        Pushed {commits.length} commit{commits.length > 1 ? "s" : ""} to {event.repo.name}:{" "}
         {new Intl.ListFormat("en", {
           style: "long",
           type: "conjunction",
-        }).format(commits.map((commit) => commit.message))}
+        }).format(commits?.map((commit) => commit.message))}
       </div>
       <EventDate date={event.created_at} />
     </div>
@@ -98,11 +102,16 @@ const PullRequestEvent = ({ event }: { event: GitHubEvent }) => {
     }
   ).pull_request;
 
+  if (!pullRequest?.user?.login && !pullRequest?.title) {
+    return null;
+  }
+
   return (
     <div className="flex items-center gap-4">
       <GitPullRequestIcon className="h-4 w-4 shrink-0" />
       <div className="flex-1 truncate">
-        Merged {pullRequest.user.login}&apos;s {pullRequest.title} on {event.repo.name}
+        Merged {pullRequest?.user?.login ? pullRequest.user.login + "'s" : ""} {pullRequest.title}{" "}
+        on {event.repo.name}
       </div>
       <EventDate date={event.created_at} />
     </div>
@@ -139,7 +148,8 @@ const IssuesEvent = ({ event }: { event: GitHubEvent }) => {
     <div className="flex items-center gap-4">
       <Icon className="h-4 w-4 shrink-0" />
       <div className="flex-1 truncate">
-        {event.actor.login} {event.payload.action} {event.payload.issue?.title} on {event.repo.name}
+        <span className="capitalize">{event.payload.action}</span> {event.payload.issue?.title} on{" "}
+        {event.repo.name}
       </div>
       <EventDate date={event.created_at} />
     </div>
@@ -274,29 +284,29 @@ export const GitHubEvent = ({ event }: { event: GitHubEvent }) => {
 
   switch (type) {
     case "PushEvent":
-      return <PushEvent event={event} />;
+      return PushEvent({ event });
     case "PullRequestEvent":
-      return <PullRequestEvent event={event} />;
+      return PullRequestEvent({ event });
     case "WatchEvent":
-      return <WatchEvent event={event} />;
+      return WatchEvent({ event });
     case "ForkEvent":
-      return <ForkEvent event={event} />;
+      return ForkEvent({ event });
     case "PullRequestReviewEvent":
-      return <PullRequestReviewEvent event={event} />;
+      return PullRequestReviewEvent({ event });
     case "PullRequestReviewCommentEvent":
-      return <PullRequestReviewCommentEvent event={event} />;
+      return PullRequestReviewCommentEvent({ event });
     case "PullRequestReviewThreadEvent":
-      return <PullRequestReviewThreadEvent event={event} />;
+      return PullRequestReviewThreadEvent({ event });
     case "PublicEvent":
-      return <PublicEvent event={event} />;
+      return PublicEvent({ event });
     case "IssueCommentEvent":
-      return <IssueCommentEvent event={event} />;
+      return IssueCommentEvent({ event });
     case "CreateEvent":
-      return <CreateEvent event={event} />;
+      return CreateEvent({ event });
     case "DeleteEvent":
-      return <DeleteEvent event={event} />;
+      return DeleteEvent({ event });
     case "IssuesEvent":
-      return <IssuesEvent event={event} />;
+      return IssuesEvent({ event });
     default:
       return null;
   }
