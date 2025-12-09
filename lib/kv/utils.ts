@@ -1,7 +1,7 @@
 import "server-only";
 import { z } from "zod";
 
-import { env } from "@/lib/env";
+import env from "@/env.config";
 
 const resultSchema = z
   .array(
@@ -34,7 +34,7 @@ export const getSortedSetValues = async (name: string) => {
       return [];
     }
 
-    return data[0].result;
+    return data[0]?.result;
   } catch {
     return [];
   }
@@ -60,7 +60,7 @@ export const getSortedSetValue = async (name: string, key: string) => {
       return 0;
     }
 
-    return Number(data[0].result);
+    return Number(data[0]?.result);
   } catch {
     return 0;
   }

@@ -30,7 +30,7 @@ export const messageTypes = [
 
 export const messageSchema = z.object({
   name: z.string().nonempty("Please provide your name so I know who you are!"),
-  email: z.string().email("I'll use your email only to contact you back."),
+  email: z.email("I'll use your email only to contact you back."),
   message: z.string().nonempty("Message cannot be empty, even if it's just a smile!"),
   type: z.enum(messageTypes.map((type) => type.value) as [string, ...string[]]),
 });

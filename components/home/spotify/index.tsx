@@ -14,7 +14,7 @@ const getTrack = cache(fetchLastTrack, ["spotify"], { revalidate: 60 * 5 });
 export const Spotify = async () => {
   const data = await getTrack();
 
-  if (!data) return null;
+  if (!data || !data.track) return null;
 
   const { artists, album, name, external_urls } = data.track;
 
@@ -63,14 +63,16 @@ export const Spotify = async () => {
             </p>
           </div>
 
-          <div className="relative w-2/5 shrink-0 self-stretch">
-            <Image
-              src={album.images[0].url}
-              alt={album.name}
-              fill
-              className="object-cover transition-transform group-hover:scale-105"
-            />
-          </div>
+          {album.images[0]?.url && (
+            <div className="relative w-2/5 shrink-0 self-stretch">
+              <Image
+                src={album.images[0].url}
+                alt={album.name}
+                fill
+                className="object-cover transition-transform group-hover:scale-105"
+              />
+            </div>
+          )}
         </div>
       </a>
     </ViewAnimation>

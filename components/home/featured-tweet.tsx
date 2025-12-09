@@ -1,7 +1,7 @@
 import { Tweet } from "react-tweet";
 
 import { ThirdsSection } from "@/components/common/sections/thirds";
-import { env } from "@/lib/env";
+import env from "@/env.config";
 import { cn } from "@/utils";
 
 export const FeaturedTweet = () => (

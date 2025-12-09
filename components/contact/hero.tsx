@@ -2,7 +2,7 @@ import { Mail } from "lucide-react";
 
 import { HeroSection } from "@/components/common/sections/hero";
 import { Button } from "@/components/ui/button";
-import { env } from "@/lib/env";
+import env from "@/env.config";
 
 import X from "../../public/svg/socials/x.svg";
 

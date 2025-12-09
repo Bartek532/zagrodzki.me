@@ -5,7 +5,7 @@ import { Suspense, memo } from "react";
 
 import { Link } from "@/components/common/link/link";
 import { resourceRoutes } from "@/data/routes";
-import { env } from "@/lib/env";
+import env from "@/env.config";
 import { RESOURCE_TYPE } from "@/types";
 import { formatDate } from "@/utils";
 import { HOST } from "@/utils/consts";

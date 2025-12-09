@@ -1,7 +1,7 @@
 import { algoliasearch } from "algoliasearch";
 import dayjs from "dayjs";
 
-import { env } from "@/lib/env";
+import env from "@/env.config";
 
 import { getPublishedPosts, getPostParsedContent } from "../lib/posts";
 import { getAllProjects, getProjectParsedContent } from "../lib/projects";

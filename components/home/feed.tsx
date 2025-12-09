@@ -4,12 +4,12 @@ import { ViewAnimation } from "@/providers/view-animation";
 import { cn } from "@/utils";
 
 import { GitHubEvent } from "./event";
-import { env } from "@/lib/env";
+import env from "@/env.config";
 
 export const Feed = async () => {
   const activity = await octokit.rest.activity.listPublicEventsForUser({
     username: env.NEXT_PUBLIC_GITHUB_USERNAME,
-    per_page: 15,
+    per_page: 30,
   });
 
   return (

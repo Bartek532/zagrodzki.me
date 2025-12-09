@@ -1,6 +1,6 @@
 "use server";
 
-import { env } from "@/lib/env";
+import env from "@/env.config";
 
 import type { Message } from "../schema";
 

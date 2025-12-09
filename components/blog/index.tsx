@@ -3,7 +3,7 @@ import { InstantSearch } from "react-instantsearch";
 
 import { Section } from "@/components/common/sections/section";
 import { Search } from "@/components/ui/search";
-import { env } from "@/lib/env";
+import env from "@/env.config";
 import { searchClient } from "@/lib/search";
 import { ViewAnimation } from "@/providers/view-animation";
 import { cn } from "@/utils";

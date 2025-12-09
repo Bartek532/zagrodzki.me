@@ -2,7 +2,7 @@ import dayjs from "dayjs";
 import { unstable_cache as cache } from "next/cache";
 
 import { Section } from "@/components/common/sections/section";
-import { env } from "@/lib/env";
+import env from "@/env.config";
 import { ViewAnimation } from "@/providers/view-animation";
 
 import { Calendar } from "./calendar";

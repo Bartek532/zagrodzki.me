@@ -1,4 +1,4 @@
-import { env } from "@/lib/env";
+import env from "@/env.config";
 
 export const ORIGIN =
   env.NEXT_PUBLIC_HOST ?? env.NEXT_PUBLIC_VERCEL_URL ?? ("www.zagrodzki.me" as const);

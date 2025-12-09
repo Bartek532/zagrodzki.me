@@ -1,7 +1,7 @@
 import dayjs from "dayjs";
 import "server-only";
 
-import { env } from "@/lib/env";
+import env from "@/env.config";
 
 import { TRACK_STATUS } from "../types";
 import {
@@ -99,7 +99,7 @@ export const fetchLastTrack = async () => {
   }
 
   return {
-    track: recentlyPlayedData.items[0].track,
+    track: recentlyPlayedData.items[0]?.track,
     status: TRACK_STATUS.OFFLINE,
   };
 };

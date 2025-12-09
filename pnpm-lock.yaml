@@ -41,9 +41,6 @@ importers:
       '@radix-ui/react-tabs':
         specifier: 1.1.3
         version: 1.1.3(@types/react-dom@19.2.2(@types/react@19.2.2))(@types/react@19.2.2)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
-      '@t3-oss/env-nextjs':
-        specifier: 0.12.0
-        version: 0.12.0(typescript@5.7.3)(zod@3.24.2)
       '@vercel/analytics':
         specifier: 1.5.0
         version: 1.5.0(next@16.0.7(@babel/core@7.23.2)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)(sass@1.85.0))(react@19.2.1)
@@ -65,6 +62,9 @@ importers:
       developer-icons:
         specifier: 5.2.8
         version: 5.2.8(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
+      envin:
+        specifier: 1.1.12
+        version: 1.1.12(arktype@2.1.28)(typescript@5.7.3)(zod@4.1.13)
       feed:
         specifier: 4.2.2
         version: 4.2.2
@@ -129,8 +129,8 @@ importers:
         specifier: 3.0.1
         version: 3.0.1
       zod:
-        specifier: 3.24.2
-        version: 3.24.2
+        specifier: 4.1.13
+        version: 4.1.13
     devDependencies:
       '@eslint/compat':
         specifier: 1.2.6
@@ -302,6 +302,12 @@ packages:
   '@ampproject/remapping@2.2.1':
     resolution: {integrity: sha512-lFMjJTrFL3j7L9yBxwYfCq2k6qqwHyzuUl/XBnif78PWTJYyL/dfowQHWE3sp6U6ZzqWiiIZnpTMO96zhkjwtg==}
     engines: {node: '>=6.0.0'}
+
+  '@ark/schema@0.56.0':
+    resolution: {integrity: sha512-ECg3hox/6Z/nLajxXqNhgPtNdHWC9zNsDyskwO28WinoFEnWow4IsERNz9AnXRhTZJnYIlAJ4uGn3nlLk65vZA==}
+
+  '@ark/util@0.56.0':
+    resolution: {integrity: sha512-BghfRC8b9pNs3vBoDJhcta0/c1J1rsoS1+HgVUreMFPdhz/CRAKReAu57YEllNaSy98rWAdY1gE+gFup7OXpgA==}
 
   '@babel/code-frame@7.22.13':
     resolution: {integrity: sha512-XktuhWlJ5g+3TJXc5upd9Ks1HutSArik6jf2eAjYFyIOf4ej3RN+184cZbzDvbPnuTJIUhPKKJE3cIsYTiAT3w==}
@@ -1925,34 +1931,6 @@ packages:
     resolution: {integrity: sha512-XIB2XbzHTN6ieIjfIMV9hlVcfPU26s2vafYWQcZHWXHOxiaRZYEDKEwdl129Zyg50+foYV2jCgtrqSA6qNuNSA==}
     engines: {node: '>=6'}
 
-  '@t3-oss/env-core@0.12.0':
-    resolution: {integrity: sha512-lOPj8d9nJJTt81mMuN9GMk8x5veOt7q9m11OSnCBJhwp1QrL/qR+M8Y467ULBSm9SunosryWNbmQQbgoiMgcdw==}
-    peerDependencies:
-      typescript: '>=5.0.0'
-      valibot: ^1.0.0-beta.7 || ^1.0.0
-      zod: ^3.24.0
-    peerDependenciesMeta:
-      typescript:
-        optional: true
-      valibot:
-        optional: true
-      zod:
-        optional: true
-
-  '@t3-oss/env-nextjs@0.12.0':
-    resolution: {integrity: sha512-rFnvYk1049RnNVUPvY8iQ55AuQh1Rr+qZzQBh3t++RttCGK4COpXGNxS4+45afuQq02lu+QAOy/5955aU8hRKw==}
-    peerDependencies:
-      typescript: '>=5.0.0'
-      valibot: ^1.0.0-beta.7 || ^1.0.0
-      zod: ^3.24.0
-    peerDependenciesMeta:
-      typescript:
-        optional: true
-      valibot:
-        optional: true
-      zod:
-        optional: true
-
   '@tailwindcss/node@4.0.7':
     resolution: {integrity: sha512-dkFXufkbRB2mu3FPsW5xLAUWJyexpJA+/VtQj18k3SUiJVLdpgzBd1v1gRRcIpEJj7K5KpxBKfOXlZxT3ZZRuA==}
 
@@ -2307,6 +2285,12 @@ packages:
   aria-query@5.3.2:
     resolution: {integrity: sha512-COROpnaoap1E2F000S62r6A60uHZnmlvomhfyT2DlTcrY1OrBKn2UhH7qn5wTC9zMvD0AY7csdPSNwKP+7WiQw==}
     engines: {node: '>= 0.4'}
+
+  arkregex@0.0.4:
+    resolution: {integrity: sha512-biS/FkvSwQq59TZ453piUp8bxMui11pgOMV9WHAnli1F8o0ayNCZzUwQadL/bGIUic5TkS/QlPcyMuI8ZIwedQ==}
+
+  arktype@2.1.28:
+    resolution: {integrity: sha512-LVZqXl2zWRpNFnbITrtFmqeqNkPPo+KemuzbGSY6jvJwCb4v8NsDzrWOLHnQgWl26TkJeWWcUNUeBpq2Mst1/Q==}
 
   array-buffer-byte-length@1.0.0:
     resolution: {integrity: sha512-LPuwb2P+NrQw3XhxGc36+XSvuBPopovXYTR9Ew++Du9Yb/bx5AzBfrIsBoj0EZUifjQU+sHL21sseZ3jerWO/A==}
@@ -2896,6 +2880,21 @@ packages:
 
   entities@2.2.0:
     resolution: {integrity: sha512-p92if5Nz619I0w+akJrLZH0MX0Pb5DX39XOwQTtXSdQQOaYH03S1uIQp4mhOZtAXrxq4ViO67YTiLBo2638o9A==}
+
+  envin@1.1.12:
+    resolution: {integrity: sha512-mNa+tF2M6xoHtlijc2C5+T2XtXP8MTDL0RmEHPmF+JfKeEOgTl6Q/XmMNR1uW9zZxXvMC0gEOx2zHllnonb0Dg==}
+    peerDependencies:
+      arktype: ^2.1.0
+      typescript: '>=5.0.0'
+      valibot: ^1.0.0
+      zod: ^3.24.0 || ^4.0.0
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+      valibot:
+        optional: true
+      zod:
+        optional: true
 
   error-ex@1.3.2:
     resolution: {integrity: sha512-7dFHNmqeFSEt2ZBsCriorKnn3Z2pj+fd9kmI6QoWw4//DL+icEBfc0U7qJCisqrTsKTjw4fNFy2pW9OqStD84g==}
@@ -5785,8 +5784,8 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
 
-  zod@3.24.2:
-    resolution: {integrity: sha512-lY7CDW43ECgW9u1TcT3IoXHflywfVqDYze4waEz812jR/bZ8FHDsl7pFQoSZTz5N+2NqRXs8GBwnAwo3ZNxqhQ==}
+  zod@4.1.13:
+    resolution: {integrity: sha512-AvvthqfqrAhNH9dnfmrfKzX5upOdjUVJYFqNSlkmGf64gRaTzlPwz99IHYnVs28qYAybvAlBV+H7pn0saFY4Ig==}
 
   zwitch@2.0.4:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
@@ -5878,6 +5877,12 @@ snapshots:
     dependencies:
       '@jridgewell/gen-mapping': 0.3.3
       '@jridgewell/trace-mapping': 0.3.20
+
+  '@ark/schema@0.56.0':
+    dependencies:
+      '@ark/util': 0.56.0
+
+  '@ark/util@0.56.0': {}
 
   '@babel/code-frame@7.22.13':
     dependencies:
@@ -7494,18 +7499,6 @@ snapshots:
     dependencies:
       defer-to-connect: 1.1.3
 
-  '@t3-oss/env-core@0.12.0(typescript@5.7.3)(zod@3.24.2)':
-    optionalDependencies:
-      typescript: 5.7.3
-      zod: 3.24.2
-
-  '@t3-oss/env-nextjs@0.12.0(typescript@5.7.3)(zod@3.24.2)':
-    dependencies:
-      '@t3-oss/env-core': 0.12.0(typescript@5.7.3)(zod@3.24.2)
-    optionalDependencies:
-      typescript: 5.7.3
-      zod: 3.24.2
-
   '@tailwindcss/node@4.0.7':
     dependencies:
       enhanced-resolve: 5.18.1
@@ -7832,6 +7825,16 @@ snapshots:
       tslib: 2.6.2
 
   aria-query@5.3.2: {}
+
+  arkregex@0.0.4:
+    dependencies:
+      '@ark/util': 0.56.0
+
+  arktype@2.1.28:
+    dependencies:
+      '@ark/schema': 0.56.0
+      '@ark/util': 0.56.0
+      arkregex: 0.0.4
 
   array-buffer-byte-length@1.0.0:
     dependencies:
@@ -8451,6 +8454,13 @@ snapshots:
       tapable: 2.2.1
 
   entities@2.2.0: {}
+
+  envin@1.1.12(arktype@2.1.28)(typescript@5.7.3)(zod@4.1.13):
+    dependencies:
+      arktype: 2.1.28
+    optionalDependencies:
+      typescript: 5.7.3
+      zod: 4.1.13
 
   error-ex@1.3.2:
     dependencies:
@@ -12023,6 +12033,6 @@ snapshots:
 
   yocto-queue@0.1.0: {}
 
-  zod@3.24.2: {}
+  zod@4.1.13: {}
 
   zwitch@2.0.4: {}

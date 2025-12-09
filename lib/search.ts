@@ -2,7 +2,7 @@
 
 import { liteClient as algoliasearch } from "algoliasearch/lite";
 
-import { env } from "@/lib/env";
+import env from "@/env.config";
 
 export const searchClient = algoliasearch(
   env.NEXT_PUBLIC_ALGOLIA_APP_ID,
