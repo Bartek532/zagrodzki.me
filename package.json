@@ -54,7 +54,7 @@
     "feed": "4.2.2",
     "gray-matter": "4.0.3",
     "jotai": "2.12.0",
-    "lodash": "4.17.21",
+    "lodash": "4.17.23",
     "lucide-react": "0.475.0",
     "motion": "12.4.3",
     "next": "16.0.10",
