@@ -75,8 +75,8 @@ importers:
         specifier: 2.12.0
         version: 2.12.0(@types/react@19.2.2)(react@19.2.1)
       lodash:
-        specifier: 4.17.21
-        version: 4.17.21
+        specifier: 4.18.1
+        version: 4.18.1
       lucide-react:
         specifier: 0.475.0
         version: 0.475.0(react@19.2.1)
@@ -3327,7 +3327,7 @@ packages:
 
   glob@7.2.3:
     resolution: {integrity: sha512-nFR0zLpU2YCaRxwoCJvL6UvCH2JFyFVIvwTLsIf21AuHlMskA1hhTdk+LlYJtOlYt9v6dvszD2BGRqBL+iQK9Q==}
-    deprecated: Glob versions prior to v9 are no longer supported
+    deprecated: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
 
   global-dirs@0.1.1:
     resolution: {integrity: sha512-NknMLn7F2J7aflwFOlGdNIuCDpN3VGoSoB+aap3KABFWbHVn1TCgFC+np23J8W2BiZbjfEw3BFBycSMv1AFblg==}
@@ -4070,8 +4070,8 @@ packages:
   lodash.merge@4.6.2:
     resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==}
 
-  lodash@4.17.21:
-    resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==}
+  lodash@4.18.1:
+    resolution: {integrity: sha512-dMInicTPVE8d1e5otfwmmjlxkZoUpiVLwyeTdUsi/Caj/gfzzblBcCE5sRHV/AsjuCmxWrte2TNGSYuCeCq+0Q==}
 
   log-update@4.0.0:
     resolution: {integrity: sha512-9fkkDevMefjg0mmzWFBW8YkFP91OrizzkW3diF7CpG+S2EYdy4+TVfGwz1zeF8x7hCx1ovSPTOE9Ngib74qqUg==}
@@ -9408,7 +9408,7 @@ snapshots:
       cli-width: 3.0.0
       external-editor: 3.1.0
       figures: 3.2.0
-      lodash: 4.17.21
+      lodash: 4.18.1
       mute-stream: 0.0.8
       run-async: 2.4.1
       rxjs: 6.6.7
@@ -9912,7 +9912,7 @@ snapshots:
 
   lodash.merge@4.6.2: {}
 
-  lodash@4.17.21: {}
+  lodash@4.18.1: {}
 
   log-update@4.0.0:
     dependencies:
@@ -10346,7 +10346,7 @@ snapshots:
       fs-extra: 8.1.0
       kleur: 3.0.3
       listify: 1.0.3
-      lodash: 4.17.21
+      lodash: 4.18.1
       minimist: 1.2.8
       prop-ini: 0.0.2
       rc: 1.2.8
@@ -10368,7 +10368,7 @@ snapshots:
       kleur: 3.0.3
       libnpx: 10.2.4
       listify: 1.0.3
-      lodash: 4.17.21
+      lodash: 4.18.1
       longest: 2.0.1
       middleearth-names: 1.1.0
       minimist: 1.2.8
@@ -11889,7 +11889,7 @@ snapshots:
 
   webpack-merge@4.2.2:
     dependencies:
-      lodash: 4.17.21
+      lodash: 4.18.1
 
   which-boxed-primitive@1.0.2:
     dependencies:
