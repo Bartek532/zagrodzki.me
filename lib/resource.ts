@@ -5,7 +5,7 @@ import readingTime from "reading-time";
 import rehypeStringify from "rehype-stringify";
 import remarkParse from "remark-parse";
 import remarkRehype from "remark-rehype";
-import unified from "unified";
+import { unified } from "unified";
 
 import type { Project, Post } from "@/types";
 
@@ -38,9 +38,9 @@ export const getResourceParsedContent = async (slug: string, resourcePath: strin
   const { content } = matter(source);
 
   const compiledContent = await unified()
-    .use(rehypeStringify)
-    .use(remarkRehype)
     .use(remarkParse)
+    .use(remarkRehype)
+    .use(rehypeStringify)
     .process(content);
 
   return { compiledContent };

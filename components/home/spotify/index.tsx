@@ -14,7 +14,7 @@ const getTrack = cache(fetchLastTrack, ["spotify"], { revalidate: 60 * 5 });
 export const Spotify = async () => {
   const data = await getTrack();
 
-  if (!data || !data.track) return null;
+  if (!data?.track) return null;
 
   const { artists, album, name, external_urls } = data.track;
 

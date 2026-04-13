@@ -1,21 +1,12 @@
-import { dirname } from "path";
-import { FlatCompat } from "@eslint/eslintrc";
 import * as path from "node:path";
 import { fileURLToPath } from "node:url";
 import { includeIgnoreFile } from "@eslint/compat";
 import eslint from "@eslint/js";
-import importPlugin from "eslint-plugin-import";
+import nextCoreWebVitals from "eslint-config-next/core-web-vitals";
 import unusedImportsPlugin from "eslint-plugin-unused-imports";
 import tseslint from "typescript-eslint";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-});
-
-const nextConfig = [...compat.extends("next/core-web-vitals", "next/typescript")];
+const nextConfig = [...nextCoreWebVitals];
 
 const baseConfig = tseslint.config(
   includeIgnoreFile(path.resolve(path.dirname(fileURLToPath(import.meta.url)), "./.gitignore")),
@@ -23,7 +14,6 @@ const baseConfig = tseslint.config(
   {
     files: ["**/*.js", "**/*.ts", "**/*.tsx"],
     plugins: {
-      import: importPlugin,
       "unused-imports": unusedImportsPlugin,
     },
     extends: [
@@ -85,6 +75,8 @@ const baseConfig = tseslint.config(
           argsIgnorePattern: "^_",
         },
       ],
+      "react-hooks/refs": "off",
+      "react-hooks/set-state-in-effect": "off",
     },
   },
   {
@@ -93,4 +85,4 @@ const baseConfig = tseslint.config(
   },
 );
 
-export default [...baseConfig, ...nextConfig];
+export default [...nextConfig, ...baseConfig];

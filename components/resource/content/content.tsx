@@ -44,7 +44,6 @@ const customMdxComponents = {
 export const Content = memo<ContentProps>(async ({ content }) => {
   const code = await compile(content, {
     outputFormat: "function-body",
-    // @ts-expect-error - rehype plugins are not typed
     rehypePlugins: commonRehypePlugins,
   });
 
