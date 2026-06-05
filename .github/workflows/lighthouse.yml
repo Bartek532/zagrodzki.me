@@ -12,18 +12,20 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Wait for Vercel preview deployment
-        uses: patrickedqvist/wait-for-vercel-preview@v1.2.0
+        uses: patrickedqvist/wait-for-vercel-preview@v1.3.3
         id: waitForVercelPreviewDeployment
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           max_timeout: 600
           check_interval: 15
+          vercel_protection_bypass_header: ${{ secrets.VERCEL_AUTOMATION_BYPASS_SECRET }}
 
       - name: Lighthouse
         uses: foo-software/lighthouse-check-action@v9.1.0
         with:
           urls: ${{ steps.waitForVercelPreviewDeployment.outputs.url }}
           gitHubAccessToken: ${{ secrets.GITHUB_TOKEN }}
+          extraHeaders: '{"x-vercel-protection-bypass":"${{ secrets.VERCEL_AUTOMATION_BYPASS_SECRET }}"}'
           device: "all"
           locale: en
           prCommentEnabled: true
