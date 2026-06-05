@@ -2,7 +2,8 @@ import { visit } from "unist-util-visit";
 
 import rehypePrism from "@/utils/rehype-prism";
 
-import type { Plugin } from "unified";
+import type { Root } from "hast";
+import type { PluggableList, Plugin } from "unified";
 import type { Node } from "unist";
 
 interface HtmlNode extends Node {
@@ -38,23 +39,28 @@ const isPreNode = (node: Node): node is PreNode =>
 const isCodeNode = (node: Node): node is CodeNode =>
   node.type === "element" && "tagName" in node && node.tagName === "code";
 
-export const addDataToCodeBlocks = (): Plugin => () => (tree) => {
-  visit(tree, "element", (node: Node) => {
-    if (!isPreNode(node) && !isCodeNode(node)) {
-      return;
-    }
+export const addDataToCodeBlocks: Plugin<[], Root> = function addDataToCodeBlocks() {
+  return (tree: Root) => {
+    visit(tree, "element", (node: Node) => {
+      if (!isPreNode(node) && !isCodeNode(node)) {
+        return;
+      }
 
-    const prefix = "language-";
-    const lang = node.properties?.className
-      ?.find((className) => className.startsWith(prefix))
-      ?.slice(prefix.length);
-    if (lang) {
-      node.properties = {
-        ...node.properties,
-        "data-lang": lang,
-      };
-    }
-  });
+      const prefix = "language-";
+      const lang = node.properties?.className
+        ?.find((className) => className.startsWith(prefix))
+        ?.slice(prefix.length);
+      if (lang) {
+        node.properties = {
+          ...node.properties,
+          "data-lang": lang,
+        };
+      }
+    });
+  };
 };
 
-export const commonRehypePlugins = [rehypePrism, addDataToCodeBlocks];
+export const commonRehypePlugins: PluggableList = [
+  [rehypePrism, { ignoreMissing: true }],
+  addDataToCodeBlocks,
+];

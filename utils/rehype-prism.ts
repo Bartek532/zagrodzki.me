@@ -1,9 +1,8 @@
 import { toString } from "hast-util-to-string";
-import { refractor } from "refractor";
+import { refractor } from "refractor/lib/common.js";
 import { visit } from "unist-util-visit";
 
 import type { Element, Root } from "hast";
-import type { Plugin } from "unified";
 
 /**
  * Syntax highlighting for MDX/rehype (same behavior as legacy @mapbox/rehype-prism),
@@ -12,7 +11,7 @@ import type { Plugin } from "unified";
 export default function rehypePrism(options?: {
   readonly alias?: Record<string, string | readonly string[]>;
   readonly ignoreMissing?: boolean;
-}): Plugin<[], Root> {
+}) {
   const alias = options?.alias;
   const ignoreMissing = options?.ignoreMissing ?? false;
 
@@ -20,7 +19,7 @@ export default function rehypePrism(options?: {
     refractor.alias(alias);
   }
 
-  return () => (tree: Root) => {
+  return (tree: Root) => {
     visit(tree, "element", (node: Element, _index, parent) => {
       if (parent?.type !== "element" || parent.tagName !== "pre" || node.tagName !== "code") {
         return;
