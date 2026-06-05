@@ -1,8 +1,32 @@
-import { Tweet } from "react-tweet";
+import { Suspense } from "react";
+import { EmbeddedTweet, TweetNotFound } from "react-tweet";
+import { getTweet } from "react-tweet/api";
 
 import { ThirdsSection } from "@/components/common/sections/thirds";
 import env from "@/env.config";
 import { cn } from "@/utils";
+
+import type { TweetEntities } from "react-tweet/api";
+
+const TWEET_ID = "1932837053131292672";
+
+const defaultEntities = (entities?: TweetEntities): TweetEntities => ({
+  hashtags: entities?.hashtags ?? [],
+  user_mentions: entities?.user_mentions ?? [],
+  urls: entities?.urls ?? [],
+  symbols: entities?.symbols ?? [],
+  ...(entities?.media ? { media: entities.media } : {}),
+});
+
+const FeaturedTweetEmbed = async () => {
+  const tweet = await getTweet(TWEET_ID).catch(() => undefined);
+
+  if (!tweet) {
+    return <TweetNotFound />;
+  }
+
+  return <EmbeddedTweet tweet={{ ...tweet, entities: defaultEntities(tweet.entities) }} />;
+};
 
 export const FeaturedTweet = () => (
   <ThirdsSection
@@ -12,7 +36,7 @@ export const FeaturedTweet = () => (
     buttons={[
       {
         label: "Read on X",
-        href: `https://x.com/bzagrodzki/status/1932837053131292672`,
+        href: `https://x.com/bzagrodzki/status/${TWEET_ID}`,
       },
       {
         label: "View all tweets",
@@ -21,7 +45,9 @@ export const FeaturedTweet = () => (
     ]}
   >
     <div className={cn("bg-dashed relative flex items-center justify-center p-4", "sm:p-8")}>
-      <Tweet id="1932837053131292672" />
+      <Suspense fallback={null}>
+        <FeaturedTweetEmbed />
+      </Suspense>
     </div>
   </ThirdsSection>
 );

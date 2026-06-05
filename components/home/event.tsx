@@ -83,7 +83,7 @@ const PushEvent = ({ event }: { event: GitHubEvent }) => {
         {new Intl.ListFormat("en", {
           style: "long",
           type: "conjunction",
-        }).format(commits?.map((commit) => commit.message))}
+        }).format(commits.map((commit) => commit.message))}
       </div>
       <EventDate date={event.created_at} />
     </div>
@@ -95,14 +95,14 @@ const PullRequestEvent = ({ event }: { event: GitHubEvent }) => {
     event.payload as {
       pull_request: {
         title: string;
-        user: {
+        user?: {
           login: string;
         };
       };
     }
   ).pull_request;
 
-  if (!pullRequest?.user?.login && !pullRequest?.title) {
+  if (!pullRequest.user?.login && !pullRequest.title) {
     return null;
   }
 
@@ -110,8 +110,8 @@ const PullRequestEvent = ({ event }: { event: GitHubEvent }) => {
     <div className="flex items-center gap-4">
       <GitPullRequestIcon className="h-4 w-4 shrink-0" />
       <div className="flex-1 truncate">
-        Merged {pullRequest?.user?.login ? pullRequest.user.login + "'s" : ""} {pullRequest.title}{" "}
-        on {event.repo.name}
+        Merged {pullRequest.user?.login ? pullRequest.user.login + "'s" : ""} {pullRequest.title} on{" "}
+        {event.repo.name}
       </div>
       <EventDate date={event.created_at} />
     </div>

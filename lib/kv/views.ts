@@ -31,4 +31,10 @@ export const getResourceViews = async (type: RESOURCE_TYPE) => getSortedSetValue
 export const getResourceViewsBySlug = async (type: RESOURCE_TYPE, slug: string) =>
   getSortedSetValue(type, slug);
 
-export const view = (type: RESOURCE_TYPE, slug: string) => incrementSortedSetValue(type, slug);
+export const view = (type: RESOURCE_TYPE, slug: string) => {
+  if (process.env.NEXT_PHASE === "phase-production-build") {
+    return Promise.resolve();
+  }
+
+  return incrementSortedSetValue(type, slug);
+};

@@ -1,10 +1,10 @@
 import { Section } from "@/components/common/sections/section";
+import env from "@/env.config";
 import { octokit } from "@/lib/github";
 import { ViewAnimation } from "@/providers/view-animation";
 import { cn } from "@/utils";
 
 import { GitHubEvent } from "./event";
-import env from "@/env.config";
 
 export const Feed = async () => {
   const activity = await octokit.rest.activity.listPublicEventsForUser({
