@@ -15,6 +15,19 @@ const access = {
   expires: "",
 };
 
+const readJson = async (response: Response) => {
+  try {
+    const text = await response.text();
+    if (!text.trim()) {
+      return null;
+    }
+
+    return JSON.parse(text) as unknown;
+  } catch {
+    return null;
+  }
+};
+
 export const getAccessToken = async (refreshToken: string) => {
   if (dayjs().isBefore(dayjs(access.expires))) {
     return access.token;
@@ -39,7 +52,11 @@ export const getAccessToken = async (refreshToken: string) => {
     },
   );
 
-  const tokens: unknown = await tokensResponse.json();
+  if (!tokensResponse.ok) {
+    return null;
+  }
+
+  const tokens = await readJson(tokensResponse);
 
   if (!isTokensPayload(tokens)) {
     return null;
@@ -69,7 +86,7 @@ export const fetchLastTrack = async () => {
   );
 
   if (currentlyPlayingResponse.status === 200) {
-    const currentlyPlayingData: unknown = await currentlyPlayingResponse.json();
+    const currentlyPlayingData = await readJson(currentlyPlayingResponse);
 
     if (isCurrentlyPlayingPayload(currentlyPlayingData)) {
       return {
@@ -92,10 +109,14 @@ export const fetchLastTrack = async () => {
     },
   );
 
-  const recentlyPlayedData: unknown = await recentlyPlayedResponse.json();
+  if (!recentlyPlayedResponse.ok) {
+    return null;
+  }
+
+  const recentlyPlayedData = await readJson(recentlyPlayedResponse);
 
   if (!isRecentlyPlayedPayload(recentlyPlayedData)) {
-    throw new Error("Unexpected error occured!");
+    return null;
   }
 
   return {
