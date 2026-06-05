@@ -10,11 +10,12 @@ export const allEducation = [
   },
   {
     id: "polsl",
-    link: "https://www.polsl.pl/",
+    link: "https://www.polsl.pl/en",
     title: "Bachelor of Science",
     place: "The Silesian University of Technology",
     description:
       "Completed Bachelor's degree in Computer Science with focus on software engineering and systems design. Gained strong theoretical foundations in algorithms, data structures, and computer architecture. Participated in practical projects developing real-world applications while collaborating in teams.",
     start: "2022",
+    end: "2026",
   },
 ] as const;

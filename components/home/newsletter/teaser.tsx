@@ -12,7 +12,7 @@ const gravatars = [
 
 export const Teaser = () => (
   <div className="flex flex-col gap-4">
-    <TeaserTitle contacts={100} />
+    <TeaserTitle contacts={1370} />
     <div className="flex items-center -space-x-2">
       {gravatars.map((hash) => (
         <Image

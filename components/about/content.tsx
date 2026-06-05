@@ -70,10 +70,10 @@ export const Content = async () => {
               </p>
 
               <p>
-                Currently, I&apos;m finalizing my Bachelor&apos;s degree in Computer Science at the
-                Silesian University of Technology, which I began in 2022. It has given me strong
-                foundational knowledge in software engineering, and I&apos;ve met many interesting
-                people along the way.
+                I hold a Bachelor&apos;s degree in Computer Science from the{" "}
+                <Link href="https://www.polsl.pl/en">Silesian University of Technology</Link>, which
+                I completed in 2026. It gave me strong foundational knowledge in software
+                engineering, and I&apos;ve met many interesting people along the way.
               </p>
 
               <p>

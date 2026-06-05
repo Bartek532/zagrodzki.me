@@ -19,22 +19,23 @@ export const allRecommendations = [
   {
     content: (
       <>
-        I had a pleasure working together with Bartosz on a mobile application project. From very
-        first day throughout our co-operation Bartosz showed{" "}
-        <mark>big motivation and great technical skills.</mark>
+        I had the pleasure of working with Bartek on several projects, and it was always a great
+        experience. Even though the projects were often quite challenging, with tight deadlines and
+        shifting requirements, <mark>Bartek adapted very quickly to changing conditions.</mark>
         <br />
         <br />
-        In addition to very good programming skills he can also step out of his responsibilities and
-        help push the work forward supporting other roles in the project and suggest improvements.
-        Personally Bartosz is <mark>very easy and fun person to work with.</mark> I definitely
-        recommend Bartosz for any future projects!
+        He consistently proposed solutions that took into account not only the technical side but
+        also the business perspective, all while maintaining a positive attitude that had a very
+        uplifting impact on the rest of the team. I{" "}
+        <mark>truly enjoyed collaborating with him</mark>, and I can highly recommend him as a
+        mature and reliable professional &#58;&#41;
       </>
     ),
     author: {
-      name: "Marek Skowron",
-      position: "Senior Delivery Lead at Futurice",
-      image: "/img/references/marek-skowron.jpeg",
-      link: "https://www.linkedin.com/in/skowron/",
+      name: "Nina Borowska",
+      position: "Head of Delivery at STX Next",
+      image: "/img/references/nina-borowska.jpeg",
+      link: "https://www.linkedin.com/in/nina-borowska-7b9a64164/",
     },
     size: "large",
   },
@@ -79,23 +80,22 @@ export const allRecommendations = [
   {
     content: (
       <>
-        I had the pleasure of working with Bartek on several projects, and it was always a great
-        experience. Even though the projects were often quite challenging, with tight deadlines and
-        shifting requirements, <mark>Bartek adapted very quickly to changing conditions.</mark>
+        I had a pleasure working together with Bartosz on a mobile application project. From very
+        first day throughout our co-operation Bartosz showed{" "}
+        <mark>big motivation and great technical skills.</mark>
         <br />
         <br />
-        He consistently proposed solutions that took into account not only the technical side but
-        also the business perspective, all while maintaining a positive attitude that had a very
-        uplifting impact on the rest of the team. I{" "}
-        <mark>truly enjoyed collaborating with him</mark>, and I can highly recommend him as a
-        mature and reliable professional &#58;&#41;
+        In addition to very good programming skills he can also step out of his responsibilities and
+        help push the work forward supporting other roles in the project and suggest improvements.
+        Personally Bartosz is <mark>very easy and fun person to work with.</mark> I definitely
+        recommend Bartosz for any future projects!
       </>
     ),
     author: {
-      name: "Nina Borowska",
-      position: "Project Manager at Brainhub",
-      image: "/img/references/nina-borowska.jpeg",
-      link: "https://www.linkedin.com/in/nina-borowska-7b9a64164/",
+      name: "Marek Skowron",
+      position: "Senior Delivery Lead at Futurice",
+      image: "/img/references/marek-skowron.jpeg",
+      link: "https://www.linkedin.com/in/skowron/",
     },
     size: "large",
   },

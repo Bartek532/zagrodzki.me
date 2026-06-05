@@ -63,7 +63,7 @@ export const GitHubActivity = async () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          {github.total} contributions in the last year 🔥
+          {new Intl.NumberFormat("en-US").format(github.total)} contributions in the last year 🔥
         </a>
       </ViewAnimation>
     </Section>

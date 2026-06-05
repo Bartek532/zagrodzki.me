@@ -7,7 +7,7 @@ import NewProjectLight from "../../public/img/projects/new-light.webp";
 export const FeaturedProject = () => (
   <ThirdsSection
     caption="Now 🔥"
-    description="Im currently working on a new project called 'TurboStarter'. It's a collection of starter kits to help you get started quickly with your next project. Having Next.js, Expo (React Native) and WXT (Vite) on its stack makes it a great choice for shipping web apps, mobile apps and browser extensions in minutes."
+    description="Im currently working on a project called 'TurboStarter'. It's a collection of starter kits to help you get started quickly with your next project. Having Next.js, Expo (React Native) and WXT (Vite) on its stack makes it a great choice for shipping web apps, mobile apps and browser extensions in minutes."
     buttons={[
       {
         label: "Check it out",

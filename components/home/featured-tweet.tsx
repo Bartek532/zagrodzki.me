@@ -8,7 +8,7 @@ import { cn } from "@/utils";
 
 import type { TweetEntities } from "react-tweet/api";
 
-const TWEET_ID = "1932837053131292672";
+const TWEET_ID = "2048091983328223415";
 
 const defaultEntities = (entities?: TweetEntities): TweetEntities => ({
   hashtags: entities?.hashtags ?? [],
@@ -30,10 +30,14 @@ const FeaturedTweetEmbed = async () => {
 
 export const FeaturedTweet = () => (
   <ThirdsSection
-    title="Launching Envin 🌳"
-    description="Introducing Envin — a type-safe, open-source environment validator with live previews and standard schema support. Instantly validate and preview your .env files, in any framework."
+    title="Launching Loading UI ⏳"
+    description="If your loading state is just a spinning icon, this one's for you. 35+ shadcn-compatible components with the simplest API — install, customize, plug in. Free, open-source, and ready to ship."
     caption="Featured tweet"
     buttons={[
+      {
+        label: "Try Loading UI",
+        href: "https://loading-ui.com",
+      },
       {
         label: "Read on X",
         href: `https://x.com/bzagrodzki/status/${TWEET_ID}`,

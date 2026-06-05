@@ -45,7 +45,7 @@ export const Education = () => (
                 <p>{education.description}</p>
               </Prose>
               <p className="text-muted-foreground text-sm">
-                {education.start} &mdash;&nbsp;
+                {education.start} &mdash;{" "}
                 {"end" in education && typeof education.end === "string"
                   ? education.end
                   : "Present"}

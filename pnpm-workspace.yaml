@@ -1,0 +1,5 @@
+allowBuilds:
+  '@parcel/watcher': true
+  '@vercel/speed-insights': true
+  esbuild: true
+  sharp: true

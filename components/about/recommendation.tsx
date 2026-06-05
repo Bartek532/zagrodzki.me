@@ -50,7 +50,15 @@ export const Recommendations = () => (
                 </a>
                 <p className="text-muted-foreground text-sm">{recommendation.author.position}</p>
               </div>
-              <Prose className="prose-sm [&_mark]:bg-primary/25 [&_mark]:text-foreground dark:[&_mark]:bg-primary/50 max-w-3xl [&_mark]:rounded-md [&_mark]:px-1 [&_mark]:py-px">
+              <Prose
+                className={cn(
+                  "prose-sm max-w-3xl",
+                  "[&_mark]:bg-primary/10 [&_mark]:text-primary dark:[&_mark]:text-foreground dark:[&_mark]:bg-primary/50 [&_mark]:rounded-md [&_mark]:px-1.5 [&_mark]:py-0.5 [&_mark]:font-semibold",
+                  {
+                    "max-w-none": recommendation.size === "large",
+                  },
+                )}
+              >
                 <p>{recommendation.content}</p>
               </Prose>
             </div>

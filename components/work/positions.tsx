@@ -50,8 +50,8 @@ export const Positions = () => (
               <p>{position.description}</p>
             </Prose>
             <p className="text-muted-foreground text-sm">
-              {position.type} &bull; {dayjs(position.start).format("MM.YYYY")} &mdash;&nbsp;
-              {"end" in position ? dayjs(position.end).format("MM.YYYY") : "Present"} &bull;&nbsp;
+              {position.type} &bull; {dayjs(position.start).format("MM.YYYY")} &mdash;{" "}
+              {"end" in position ? dayjs(position.end).format("MM.YYYY") : "Present"} &bull;{" "}
               {dayjs
                 .duration(
                   dayjs("end" in position ? position.end : new Date()).diff(dayjs(position.start)),
