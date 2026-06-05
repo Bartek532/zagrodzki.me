@@ -10,6 +10,8 @@ const env = defineEnv({
     SPOTIFY_CLIENT_SECRET: z.string(),
     SPOTIFY_REFRESH_TOKEN: z.string(),
 
+    YTMUSIC_COOKIE: z.string(),
+
     PLUNK_API_KEY: z.string(),
     EMAIL: z.email(),
 

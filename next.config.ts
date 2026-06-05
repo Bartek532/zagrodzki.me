@@ -17,6 +17,15 @@ const nextConfig: NextConfig = {
         hostname: "i.scdn.co",
       },
       {
+        hostname: "lh3.googleusercontent.com",
+      },
+      {
+        hostname: "i.ytimg.com",
+      },
+      {
+        hostname: "yt3.googleusercontent.com",
+      },
+      {
         hostname: "www.gravatar.com",
       },
       {

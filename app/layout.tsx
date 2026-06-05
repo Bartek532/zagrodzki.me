@@ -67,6 +67,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
+          scriptProps={{ type: "application/json" }}
         >
           <Header />
           <div className="container mx-auto h-[52px] sm:h-16 sm:border-x" />

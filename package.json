@@ -32,7 +32,7 @@
     ]
   },
   "dependencies": {
-    "@hookform/resolvers": "3.1.1",
+    "@hookform/resolvers": "5.4.0",
     "@mdx-js/mdx": "3.1.0",
     "@number-flow/react": "0.5.5",
     "@octokit/rest": "21.1.0",
@@ -66,7 +66,7 @@
     "react-activity-calendar": "2.7.8",
     "react-dom": "19.2.1",
     "react-dom-confetti": "0.2.0",
-    "react-hook-form": "7.54.2",
+    "react-hook-form": "7.55.0",
     "react-instantsearch": "7.29.0",
     "react-tweet": "3.2.1",
     "reading-time": "1.5.0",
@@ -76,6 +76,7 @@
     "slugify": "1.6.4",
     "sonner": "1.7.4",
     "tailwind-merge": "3.0.1",
+    "ytmusic-ts": "^0.2.2",
     "zod": "4.1.13"
   },
   "devDependencies": {

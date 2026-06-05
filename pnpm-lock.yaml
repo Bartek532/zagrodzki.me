@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@hookform/resolvers':
-        specifier: 3.1.1
-        version: 3.1.1(react-hook-form@7.54.2(react@19.2.1))
+        specifier: 5.4.0
+        version: 5.4.0(react-hook-form@7.55.0(react@19.2.1))
       '@mdx-js/mdx':
         specifier: 3.1.0
         version: 3.1.0(acorn@8.16.0)
@@ -111,8 +111,8 @@ importers:
         specifier: 0.2.0
         version: 0.2.0(react@19.2.1)
       react-hook-form:
-        specifier: 7.54.2
-        version: 7.54.2(react@19.2.1)
+        specifier: 7.55.0
+        version: 7.55.0(react@19.2.1)
       react-instantsearch:
         specifier: 7.29.0
         version: 7.29.0(algoliasearch@5.20.2)(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
@@ -140,6 +140,9 @@ importers:
       tailwind-merge:
         specifier: 3.0.1
         version: 3.0.1
+      ytmusic-ts:
+        specifier: ^0.2.2
+        version: 0.2.2
       zod:
         specifier: 4.1.13
         version: 4.1.13
@@ -1218,10 +1221,10 @@ packages:
   '@floating-ui/utils@0.2.9':
     resolution: {integrity: sha512-MDWhGtE+eHw5JW7lq4qhc5yRLS11ERl1c7Z6Xd0a58DozHES6EnNNwUWbMiG4J9Cgj053Bhk8zvlhFYKVhULwg==}
 
-  '@hookform/resolvers@3.1.1':
-    resolution: {integrity: sha512-tS16bAUkqjITNSvbJuO1x7MXbn7Oe8ZziDTJdA9mMvsoYthnOOiznOTGBYwbdlYBgU+tgpI/BtTU3paRbCuSlg==}
+  '@hookform/resolvers@5.4.0':
+    resolution: {integrity: sha512-EIsqr/t/qbinPIhGjMdtvutIN1Kk4uwbROE9/UQ93CAVGR7GkA7Y92+fX80OzXi/OB67jVFYwKGO1WzkxmkFZw==}
     peerDependencies:
-      react-hook-form: ^7.0.0
+      react-hook-form: ^7.55.0
 
   '@humanfs/core@0.19.1':
     resolution: {integrity: sha512-5DyQ4+1JEUzejeK1JGICcideyfUbGixgS9jNgex5nqkW+cY7WZhxBigmieN5Qnw9ZosSNVC9KQKyb+GUaGyKUA==}
@@ -1964,6 +1967,9 @@ packages:
 
   '@rtsao/scc@1.1.0':
     resolution: {integrity: sha512-zt6OdqaDoOnJ1ZYsCYGt9YmWzDXl4vQdKTyJev62gFhRGKdx7mcT54V9KIjg+d2wi9EXsPvAPKe7i7WjfVWB8g==}
+
+  '@standard-schema/utils@0.3.0':
+    resolution: {integrity: sha512-e7Mew686owMaPJVNNLs55PUvgz371nKgwsc4vxE49zsODpJEnxgxRo2y/OKrqueavXgZNMDVj3DdHFlaSAeU8g==}
 
   '@svgr/babel-plugin-add-jsx-attribute@8.0.0':
     resolution: {integrity: sha512-b9MIk7yhdS1pMCZM8VeNfUlSKVRhsHZNMl5O9SfaX0l0t5wjdgu4IDzGB8bpnGBBOjGST3rRFVsaaEtI4W6f7g==}
@@ -4149,8 +4155,8 @@ packages:
     peerDependencies:
       react: ^19.2.1
 
-  react-hook-form@7.54.2:
-    resolution: {integrity: sha512-eHpAUgUjWbZocoQYUHposymRb4ZP6d0uwUnooL2uOybA9/3tPUvoAKqEWK1WaSiTxxOfTpffNZP7QwlnM3/gEg==}
+  react-hook-form@7.55.0:
+    resolution: {integrity: sha512-XRnjsH3GVMQz1moZTW53MxfoWN7aDpUg/GpVNc4A3eXRVNdGXfbzJ4vM4aLQ8g6XCUh1nIbx70aaNCl7kxnjog==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
       react: ^16.8.0 || ^17 || ^18 || ^19
@@ -4765,6 +4771,10 @@ packages:
   yocto-queue@0.1.0:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
+
+  ytmusic-ts@0.2.2:
+    resolution: {integrity: sha512-KSv7i1vCecFAWlziwenFfg978/pHDWKt27zRZiAV35IkLPzK9+14GJsfDF7k8chTtooogl43Fy8CepUd71MMFA==}
+    engines: {node: '>=18'}
 
   zod-to-json-schema@3.24.6:
     resolution: {integrity: sha512-h/z3PKvcTcTetyjl1fkj79MHNEjm+HpD6NXheWjzOekY7kV+lwDYnHw+ivHkijnCSMz1yJaWBD9vu/Fcmk+vEg==}
@@ -5871,9 +5881,10 @@ snapshots:
 
   '@floating-ui/utils@0.2.9': {}
 
-  '@hookform/resolvers@3.1.1(react-hook-form@7.54.2(react@19.2.1))':
+  '@hookform/resolvers@5.4.0(react-hook-form@7.55.0(react@19.2.1))':
     dependencies:
-      react-hook-form: 7.54.2(react@19.2.1)
+      '@standard-schema/utils': 0.3.0
+      react-hook-form: 7.55.0(react@19.2.1)
 
   '@humanfs/core@0.19.1': {}
 
@@ -6506,6 +6517,8 @@ snapshots:
   '@radix-ui/rect@1.1.0': {}
 
   '@rtsao/scc@1.1.0': {}
+
+  '@standard-schema/utils@0.3.0': {}
 
   '@svgr/babel-plugin-add-jsx-attribute@8.0.0(@babel/core@7.29.0)':
     dependencies:
@@ -9097,7 +9110,7 @@ snapshots:
       react: 19.2.1
       scheduler: 0.27.0
 
-  react-hook-form@7.54.2(react@19.2.1):
+  react-hook-form@7.55.0(react@19.2.1):
     dependencies:
       react: 19.2.1
 
@@ -9881,6 +9894,8 @@ snapshots:
   yaml@2.8.3: {}
 
   yocto-queue@0.1.0: {}
+
+  ytmusic-ts@0.2.2: {}
 
   zod-to-json-schema@3.24.6(zod@4.1.13):
     dependencies:

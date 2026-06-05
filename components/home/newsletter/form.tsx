@@ -32,6 +32,9 @@ const newsletterSchema = z.object({
 export const NewsletterForm = () => {
   const form = useForm<z.infer<typeof newsletterSchema>>({
     resolver: zodResolver(newsletterSchema),
+    defaultValues: {
+      email: "",
+    },
   });
 
   const [formStatus, setFormStatus] = useState<FormStatus>("pending");

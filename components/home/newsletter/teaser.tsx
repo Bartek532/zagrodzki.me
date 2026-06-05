@@ -25,9 +25,7 @@ export const Teaser = () => (
         />
       ))}
       <div className="bg-card ring-secondary z-10 flex h-8 w-8 items-center justify-center rounded-full ring-2">
-        <span className="text-muted-foreground text-[8px]">
-          +{new Intl.NumberFormat("en-US", { notation: "compact" }).format(90)}
-        </span>
+        <span className="text-muted-foreground text-xs">+1k</span>
       </div>
     </div>
   </div>

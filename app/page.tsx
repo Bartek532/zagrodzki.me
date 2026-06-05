@@ -6,7 +6,7 @@ import { Feed } from "@/components/home/feed";
 import { GitHubActivity } from "@/components/home/github-activity";
 import { Hero } from "@/components/home/hero";
 import { LatestRead } from "@/components/home/latest-read";
-import { Spotify } from "@/components/home/spotify";
+import { YouTubeMusic } from "@/components/home/youtube-music";
 import { getNewestPosts } from "@/lib/posts";
 
 const Home = () => {
@@ -22,7 +22,7 @@ const Home = () => {
       <Feed />
       <Section className="grid divide-y lg:grid-cols-2 lg:divide-x lg:divide-y-0">
         <div className="min-w-0 px-6 py-4 lg:py-6">
-          <Spotify />
+          <YouTubeMusic />
         </div>
         <div className="min-w-0 px-6 py-4 lg:py-6">
           <LatestRead />
