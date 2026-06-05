@@ -2,7 +2,6 @@ import {
   CommentIcon,
   FeedPublicIcon,
   GitBranchIcon,
-  GitCommitIcon,
   GitPullRequestIcon,
   IssueClosedIcon,
   IssueOpenedIcon,
@@ -55,63 +54,33 @@ type EventType =
 type GitHubEvent =
   RestEndpointMethodTypes["activity"]["listPublicEventsForUser"]["response"]["data"][0];
 
-const PushEvent = ({ event }: { event: GitHubEvent }) => {
-  // https://github.com/octokit/rest.js/issues/128
-  const commits = (
-    event.payload as {
-      commits?: {
-        sha: string;
-        author: {
-          email: string;
-          name: string;
-        };
-        message: string;
-        distinct: boolean;
-      }[];
-    }
-  ).commits;
-
-  if (!commits?.length) {
-    return null;
-  }
-
-  return (
-    <div className="flex items-center gap-4">
-      <GitCommitIcon className="h-4 w-4 shrink-0" />
-      <div className="flex-1 truncate">
-        Pushed {commits.length} commit{commits.length > 1 ? "s" : ""} to {event.repo.name}:{" "}
-        {new Intl.ListFormat("en", {
-          style: "long",
-          type: "conjunction",
-        }).format(commits.map((commit) => commit.message))}
-      </div>
-      <EventDate date={event.created_at} />
-    </div>
-  );
-};
-
 const PullRequestEvent = ({ event }: { event: GitHubEvent }) => {
-  const pullRequest = (
-    event.payload as {
-      pull_request: {
-        title: string;
-        user?: {
-          login: string;
-        };
+  const payload = event.payload as {
+    action: string;
+    number?: number;
+    pull_request?: {
+      number?: number;
+      title?: string;
+      user?: {
+        login: string;
       };
-    }
-  ).pull_request;
+    };
+  };
 
-  if (!pullRequest.user?.login && !pullRequest.title) {
+  if (payload.action !== "merged") {
     return null;
   }
+
+  const number = payload.number ?? payload.pull_request?.number;
+  const title = payload.pull_request?.title;
+  const author = payload.pull_request?.user?.login;
+  const label = title ?? (number ? `#${number}` : "pull request");
 
   return (
     <div className="flex items-center gap-4">
       <GitPullRequestIcon className="h-4 w-4 shrink-0" />
       <div className="flex-1 truncate">
-        Merged {pullRequest.user?.login ? pullRequest.user.login + "'s" : ""} {pullRequest.title} on{" "}
-        {event.repo.name}
+        Merged{author ? ` ${author}'s` : ""} {label} on {event.repo.name}
       </div>
       <EventDate date={event.created_at} />
     </div>
@@ -283,8 +252,6 @@ export const GitHubEvent = ({ event }: { event: GitHubEvent }) => {
   const type = event.type as EventType;
 
   switch (type) {
-    case "PushEvent":
-      return PushEvent({ event });
     case "PullRequestEvent":
       return PullRequestEvent({ event });
     case "WatchEvent":

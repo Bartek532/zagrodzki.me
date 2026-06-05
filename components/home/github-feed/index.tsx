@@ -4,6 +4,7 @@ import { octokit } from "@/lib/github";
 import { ViewAnimation } from "@/providers/view-animation";
 import { cn } from "@/utils";
 
+import { enrichGitHubEvents } from "./api/github-events";
 import { GitHubEvent } from "./event";
 
 export const Feed = async () => {
@@ -12,6 +13,8 @@ export const Feed = async () => {
     per_page: 30,
   });
 
+  const events = await enrichGitHubEvents(activity.data);
+
   return (
     <Section
       className={cn(
@@ -19,7 +22,7 @@ export const Feed = async () => {
         "sm:px-8 sm:text-sm",
       )}
     >
-      {activity.data
+      {events
         .map((event) => {
           const result = GitHubEvent({ event });
           return result ? { event, result } : null;

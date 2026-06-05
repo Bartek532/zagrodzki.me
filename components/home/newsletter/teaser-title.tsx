@@ -8,7 +8,7 @@ interface TeaserTitleProps {
 }
 
 export const TeaserTitle = ({ contacts }: TeaserTitleProps) => {
-  const [count, setCount] = useState(2000);
+  const [count, setCount] = useState(5000);
   const h2Ref = useRef<HTMLHeadingElement>(null);
 
   useEffect(() => {

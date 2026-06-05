@@ -30,7 +30,7 @@ const FeaturedTweetEmbed = async () => {
 
 export const FeaturedTweet = () => (
   <ThirdsSection
-    title="Launching Loading UI ⏳"
+    title="Loading UI launch ⏳"
     description="If your loading state is just a spinning icon, this one's for you. 35+ shadcn-compatible components with the simplest API — install, customize, plug in. Free, open-source, and ready to ship."
     caption="Featured tweet"
     buttons={[
