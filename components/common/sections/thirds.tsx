@@ -41,7 +41,11 @@ const SmallSlot = ({ caption, title, description, buttons }: ThirdsSectionProps)
     >
       <Prose>
         <small className="text-muted-foreground">{caption}</small>
-        {title && <h2 className="not-prose text-foreground my-2 text-3xl font-bold">{title}</h2>}
+        {title && (
+          <h2 className="not-prose text-foreground my-2 text-3xl font-bold tracking-tight">
+            {title}
+          </h2>
+        )}
         <p className="mt-2">{description}</p>
       </Prose>
       <div className="flex flex-wrap items-center gap-1">

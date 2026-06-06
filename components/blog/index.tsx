@@ -36,12 +36,12 @@ export const Blog = ({ description, categories }: BlogProps) => (
         <p className="text-muted-foreground text-center text-sm">{description}</p>
       </ViewAnimation>
 
-      <div className="flex flex-col items-center justify-center gap-10">
+      <div className="flex flex-col items-center justify-center gap-10 px-6 sm:px-8">
         <ViewAnimation
           initial={{ opacity: 0, translateY: -8 }}
           whileInView={{ opacity: 1, translateY: 0 }}
           delay={0.2}
-          className="flex w-full items-center justify-center px-6 sm:px-8"
+          className="flex w-full items-center justify-center"
         >
           <Search placeholder="Search for a post..." />
         </ViewAnimation>

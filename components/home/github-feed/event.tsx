@@ -67,7 +67,7 @@ const PullRequestEvent = ({ event }: { event: GitHubEvent }) => {
     };
   };
 
-  if (payload.action !== "merged") {
+  if (payload.action !== "merged" && payload.action !== "opened") {
     return null;
   }
 
@@ -75,12 +75,14 @@ const PullRequestEvent = ({ event }: { event: GitHubEvent }) => {
   const title = payload.pull_request?.title;
   const author = payload.pull_request?.user?.login;
   const label = title ?? (number ? `#${number}` : "pull request");
+  const verb = payload.action === "merged" ? "Merged" : "Opened";
 
   return (
     <div className="flex items-center gap-4">
       <GitPullRequestIcon className="h-4 w-4 shrink-0" />
       <div className="flex-1 truncate">
-        Merged{author ? ` ${author}'s` : ""} {label} on {event.repo.name}
+        {verb}
+        {author ? ` ${author}'s` : ""} {label} on {event.repo.name}
       </div>
       <EventDate date={event.created_at} />
     </div>
@@ -167,7 +169,12 @@ const CreateEvent = ({ event }: { event: GitHubEvent }) => {
 
 const DeleteEvent = ({ event }: { event: GitHubEvent }) => {
   const refType = (event.payload as { ref_type: "branch" | "tag" }).ref_type;
-  const Icon = refType === "branch" ? GitBranchIcon : TagIcon;
+
+  if (refType === "branch") {
+    return null;
+  }
+
+  const Icon = TagIcon;
 
   return (
     <div className="flex items-center gap-4">

@@ -15,15 +15,16 @@ dayjs.extend(duration);
 dayjs.extend(relativeTime);
 
 export const Positions = () => (
-  <Section className="grid lg:grid-cols-2">
+  <Section className="grid grid-cols-1 lg:grid-cols-2">
     {allPositions.map((position, index, array) => (
       <ViewAnimation
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         delay={index % 2 ? 0.2 : 0}
         className={cn(
-          index % 2 === 0 ? "sm:border-r" : "",
-          index < array.length - 2 ? "border-b" : "",
+          index < array.length - 1 && "border-b",
+          index >= array.length - 2 && "lg:border-b-0",
+          index % 2 === 0 && "lg:border-r",
         )}
         key={position.id}
       >
@@ -69,7 +70,7 @@ export const Positions = () => (
       className={cn(
         "bg-dashed flex min-h-64 flex-col items-center justify-center gap-6 border-t p-8",
         {
-          "col-span-2": allPositions.length % 2 === 0,
+          "lg:col-span-2": allPositions.length % 2 === 0,
         },
       )}
     >

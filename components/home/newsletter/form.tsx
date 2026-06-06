@@ -60,13 +60,46 @@ export const NewsletterForm = () => {
           render={({ field }) => (
             <FormItem className="space-y-0">
               <FormLabel className="sr-only">Email</FormLabel>
-              <FormControl>
-                <Input
-                  placeholder="john@doe.com"
-                  {...field}
-                  className="bg-card shadow-tile h-auto rounded-full px-6 py-4 pr-16"
-                />
-              </FormControl>
+              <div className="relative w-full">
+                <FormControl>
+                  <Input
+                    placeholder="john@doe.com"
+                    {...field}
+                    className="bg-card shadow-tile h-auto rounded-full px-6 py-4 pr-16"
+                  />
+                </FormControl>
+
+                <Button
+                  type="submit"
+                  className={cn(
+                    "absolute inset-y-[5px] right-[5px] aspect-square h-auto rounded-full sm:inset-y-[3px] sm:right-[3px]",
+                    formStatus === "fullfilled" &&
+                      "bg-success text-success-foreground disabled:opacity-100",
+                    formStatus === "rejected" &&
+                      "bg-destructive text-destructive-foreground disabled:opacity-100",
+                  )}
+                  disabled={formStatus !== "pending" || !form.formState.isValid}
+                >
+                  <span className="sr-only">
+                    {formStatus === "loading"
+                      ? "Loading..."
+                      : formStatus === "fullfilled"
+                        ? "Subscribed"
+                        : formStatus === "rejected"
+                          ? "Error"
+                          : "Subscribe"}
+                  </span>
+                  {formStatus === "loading" ? (
+                    <Loader2 className="size-4 animate-spin" />
+                  ) : formStatus === "fullfilled" ? (
+                    <Check className="size-4" />
+                  ) : formStatus === "rejected" ? (
+                    <X className="size-4" />
+                  ) : (
+                    <ArrowRight className="size-4" />
+                  )}
+                </Button>
+              </div>
               <FormDescription className="py-2 pl-2">
                 I promise not to spam you or sell your email address.
               </FormDescription>
@@ -74,36 +107,6 @@ export const NewsletterForm = () => {
             </FormItem>
           )}
         />
-        <Button
-          type="submit"
-          className={cn(
-            "absolute top-[5px] right-[5px] aspect-square h-auto rounded-full sm:top-[3px] sm:right-[3px]",
-            formStatus === "fullfilled" &&
-              "bg-success text-success-foreground disabled:opacity-100",
-            formStatus === "rejected" &&
-              "bg-destructive text-destructive-foreground disabled:opacity-100",
-          )}
-          disabled={formStatus !== "pending" || !form.formState.isValid}
-        >
-          <span className="sr-only">
-            {formStatus === "loading"
-              ? "Loading..."
-              : formStatus === "fullfilled"
-                ? "Subscribed"
-                : formStatus === "rejected"
-                  ? "Error"
-                  : "Subscribe"}
-          </span>
-          {formStatus === "loading" ? (
-            <Loader2 className="size-4 animate-spin" />
-          ) : formStatus === "fullfilled" ? (
-            <Check className="size-4" />
-          ) : formStatus === "rejected" ? (
-            <X className="size-4" />
-          ) : (
-            <ArrowRight className="size-4" />
-          )}
-        </Button>
       </form>
     </Form>
   );

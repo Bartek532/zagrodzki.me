@@ -41,7 +41,7 @@ export const MobileNav = () => {
                     key={link.path}
                     href={link.path}
                     onClick={() => setOpen(false)}
-                    className="block w-full py-1.5"
+                    className="block w-full py-1.5 text-base"
                   >
                     {link.label}
                   </ActiveLink>

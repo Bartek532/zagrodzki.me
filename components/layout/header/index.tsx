@@ -12,7 +12,7 @@ import PaperPlane from "../../../public/svg/paper-plane.svg";
 
 export const Header = () => (
   <>
-    <HeaderProvider className="bg-background/90 fixed top-0 right-0 left-0 z-50 container mx-auto flex items-center justify-between px-6 py-3 backdrop-blur-md transition-all sm:border-x sm:py-4">
+    <HeaderProvider className="bg-background fixed top-0 right-0 left-0 z-50 container mx-auto flex items-center justify-between px-6 py-3 transition-all sm:border-x sm:py-4">
       <SuperLink
         href="#main"
         className="bg-sky absolute top-1/2 left-1/2 z-50 -translate-x-1/2 -translate-y-[400%] rounded-lg px-6 py-2 text-white focus:-translate-y-1/2"
@@ -48,7 +48,7 @@ export const Header = () => (
           whileInView={{ opacity: 1, translateY: 0 }}
           delay={0.8}
         >
-          <Button variant="outline" size="sm" asChild>
+          <Button variant="outline" asChild>
             <SuperLink href="/contact" className="group">
               Get in touch
               <PaperPlane className="text-foreground size-3.5 transition-transform duration-200 ease-out group-hover:translate-x-8 group-hover:-translate-y-4 group-hover:rotate-[20deg]" />
@@ -56,11 +56,12 @@ export const Header = () => (
           </Button>
         </ViewAnimation>
       </div>
-      <div className="flex w-32 justify-end md:hidden">
+      <div className="flex justify-end md:hidden">
         <ViewAnimation
           initial={{ opacity: 0, translateY: -8 }}
           whileInView={{ opacity: 1, translateY: 0 }}
           delay={0.8}
+          className="h-5"
         >
           <MobileNavTrigger />
         </ViewAnimation>

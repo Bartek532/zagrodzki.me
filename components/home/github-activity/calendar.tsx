@@ -11,7 +11,7 @@ export const Calendar = (props: Props) => {
 
   return (
     <>
-      <span className="sr-only">github activity - {resolvedTheme}</span>
+      <span className="sr-only">github activity</span>
       <ActivityCalendar
         {...props}
         colorScheme={resolvedTheme === "dark" ? "dark" : "light"}

@@ -34,7 +34,9 @@ export const LatestRead = async () => {
           <div className="relative flex h-full min-w-0 flex-col justify-between self-stretch p-6 sm:p-8">
             <small className="text-muted-foreground">Recently read 📚 </small>
             <div className="mt-16 flex flex-col gap-1">
-              <h2 className="text-xl font-bold tracking-tight sm:text-2xl">{title}</h2>
+              <h2 className="text-xl leading-tight font-bold tracking-tight sm:text-2xl">
+                {title}
+              </h2>
 
               <p className="text-muted-foreground truncate text-sm sm:text-base">by {author}</p>
             </div>

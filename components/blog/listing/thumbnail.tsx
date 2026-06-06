@@ -25,7 +25,7 @@ export const PostThumbnail = ({ post, className }: PostThumbnailProps) => (
     >
       <div className="flex flex-col gap-2">
         <div className="flex items-center justify-between gap-2">
-          <h2 className="text-2xl font-bold">{post.title}</h2>
+          <h2 className="text-2xl font-bold tracking-tight">{post.title}</h2>
         </div>
         <Prose>
           <p className="leading-normal text-pretty">{post.excerpt}</p>

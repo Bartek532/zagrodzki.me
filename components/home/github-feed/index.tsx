@@ -10,7 +10,7 @@ import { GitHubEvent } from "./event";
 export const Feed = async () => {
   const activity = await octokit.rest.activity.listPublicEventsForUser({
     username: env.NEXT_PUBLIC_GITHUB_USERNAME,
-    per_page: 30,
+    per_page: 100,
   });
 
   const events = await enrichGitHubEvents(activity.data);
@@ -28,7 +28,7 @@ export const Feed = async () => {
           return result ? { event, result } : null;
         })
         .filter(Boolean)
-        .slice(0, 10)
+        .slice(0, 15)
         .map((data, index) => (
           <ViewAnimation
             key={data?.event.id}
