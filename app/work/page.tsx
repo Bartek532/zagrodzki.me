@@ -4,6 +4,7 @@ import { Hero } from "@/components/work/hero";
 import { Positions } from "@/components/work/positions";
 import { Projects } from "@/components/work/projects";
 import { getMetadata } from "@/lib/metadata";
+import { getPublishedProjects } from "@/lib/projects";
 
 const description = "I love shipping products and building great software 🔨";
 
@@ -14,14 +15,18 @@ export const metadata = getMetadata({
   url: "/work",
 });
 
-const WorkPage = () => (
-  <>
-    <Hero description={description} />
-    <Positions />
-    <Projects />
-    <Skills />
-    <Recommendations />
-  </>
-);
+const WorkPage = () => {
+  const projects = getPublishedProjects();
+
+  return (
+    <>
+      <Hero description={description} />
+      <Positions />
+      <Projects projects={projects} />
+      <Skills />
+      <Recommendations />
+    </>
+  );
+};
 
 export default WorkPage;

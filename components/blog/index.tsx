@@ -11,14 +11,15 @@ import { cn } from "@/utils";
 import { Categories } from "./categories";
 import { PostsListing } from "./listing/listing";
 
-import type { Category } from "@/types";
+import type { Category, Post } from "@/types";
 
 interface BlogProps {
   readonly description: string;
   readonly categories: Category[];
+  readonly posts: Post[];
 }
 
-export const Blog = ({ description, categories }: BlogProps) => (
+export const Blog = ({ description, categories, posts }: BlogProps) => (
   <InstantSearch
     indexName={env.NEXT_PUBLIC_ALGOLIA_POSTS_INDEX_NAME}
     searchClient={searchClient}
@@ -49,6 +50,6 @@ export const Blog = ({ description, categories }: BlogProps) => (
       </div>
     </Section>
 
-    <PostsListing />
+    <PostsListing initialPosts={posts} />
   </InstantSearch>
 );

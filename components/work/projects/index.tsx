@@ -11,7 +11,13 @@ import { cn } from "@/utils";
 import { ArchiveCheckbox } from "./archive/checkbox";
 import { ProjectsListing } from "./listing/listing";
 
-export const Projects = () => (
+import type { Project } from "@/types";
+
+interface ProjectsProps {
+  readonly projects: Project[];
+}
+
+export const Projects = ({ projects }: ProjectsProps) => (
   <InstantSearch
     indexName={env.NEXT_PUBLIC_ALGOLIA_PROJECTS_INDEX_NAME}
     searchClient={searchClient}
@@ -37,6 +43,6 @@ export const Projects = () => (
       </ViewAnimation>
     </Section>
 
-    <ProjectsListing />
+    <ProjectsListing initialProjects={projects} />
   </InstantSearch>
 );

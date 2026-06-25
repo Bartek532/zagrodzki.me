@@ -38,6 +38,7 @@ export const DEFAULT_METADATA: Metadata = {
     title: SITE_TITLE,
     locale: "en_EN",
     description: DEFAULT_DESCRIPTION,
+    url: HOST,
     images: {
       width: 1200,
       height: 880,

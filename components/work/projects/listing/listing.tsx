@@ -2,7 +2,7 @@
 
 import { Loader2 } from "lucide-react";
 import Image from "next/image";
-import { useHits, useInstantSearch } from "react-instantsearch";
+import { useHits, useInstantSearch, useSearchBox, useToggleRefinement } from "react-instantsearch";
 
 import { Section } from "@/components/common/sections/section";
 import { ViewAnimation } from "@/providers/view-animation";
@@ -14,13 +14,21 @@ import { ProjectThumbnail } from "./thumbnail";
 
 import type { Project } from "@/types";
 
-export const ProjectsListing = () => {
+interface ProjectsListingProps {
+  readonly initialProjects: Project[];
+}
+
+export const ProjectsListing = ({ initialProjects }: ProjectsListingProps) => {
   const { status } = useInstantSearch();
   const { items } = useHits<Project>();
+  const { query } = useSearchBox();
+  const { value: archiveFilter } = useToggleRefinement({ attribute: "archived", on: false });
+  const isFiltered = Boolean(query.trim()) || archiveFilter.isRefined;
+  const displayItems = isFiltered || items.length > 0 ? items : initialProjects;
 
   return (
     <Section className="grid md:grid-cols-2">
-      {items.map((project, index) => (
+      {displayItems.map((project, index) => (
         <ViewAnimation
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -37,8 +45,8 @@ export const ProjectsListing = () => {
           />
         </ViewAnimation>
       ))}
-      {items.length % 2 === 1 && <div className="bg-dashed size-full border-t" />}
-      {!items.length ? (
+      {displayItems.length % 2 === 1 && <div className="bg-dashed size-full border-t" />}
+      {!displayItems.length ? (
         status === "loading" ? (
           <div className="bg-dashed col-span-2 flex items-center justify-center py-16 sm:py-24 lg:py-32">
             <Loader2 className="text-primary size-10 animate-spin" />

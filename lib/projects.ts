@@ -43,8 +43,6 @@ export const sortProjectsByPriority = (projects: Project[]) =>
     return 0;
   });
 
-export const getBestProjects = () => {
-  const projects = getAllProjects();
+export const getPublishedProjects = () => getAllProjects().filter((project) => project.published);
 
-  return sortProjectsByPriority(projects);
-};
+export const getBestProjects = () => sortProjectsByPriority(getPublishedProjects());
