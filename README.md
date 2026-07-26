@@ -66,4 +66,10 @@ https://zagrodzki.me
 
 ## Star History 🌟
 
-[![Star History Chart](https://api.star-history.com/svg?repos=Bartek532/zagrodzki.me&type=Date)](https://star-history.com/#Bartek532/zagrodzki.me&Date)
+<a href="https://www.star-history.com/?repos=Bartek532%2Fzagrodzki.me&type=date&legend=top-left">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=Bartek532/zagrodzki.me&type=date&theme=dark&legend=top-left&sealed_token=vX7Cn9mnWwZEkc5PMtP22lpKKcDbb9OEMu1LWkmyXXGZr1NweL_Z2iap4I2DWKeM2gxiA4IoKgfkyq_b70N72xJAvQfH1OqT58GAEi7yLbc10nL2bFGv-Xhb-mybFLL63bWgsEqtNmRpXI5oJC3yDhdy0CTdFoKr8BXyh2vhY7yCkvHB4LcY379ssf-x" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=Bartek532/zagrodzki.me&type=date&legend=top-left&sealed_token=vX7Cn9mnWwZEkc5PMtP22lpKKcDbb9OEMu1LWkmyXXGZr1NweL_Z2iap4I2DWKeM2gxiA4IoKgfkyq_b70N72xJAvQfH1OqT58GAEi7yLbc10nL2bFGv-Xhb-mybFLL63bWgsEqtNmRpXI5oJC3yDhdy0CTdFoKr8BXyh2vhY7yCkvHB4LcY379ssf-x" />
+   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=Bartek532/zagrodzki.me&type=date&legend=top-left&sealed_token=vX7Cn9mnWwZEkc5PMtP22lpKKcDbb9OEMu1LWkmyXXGZr1NweL_Z2iap4I2DWKeM2gxiA4IoKgfkyq_b70N72xJAvQfH1OqT58GAEi7yLbc10nL2bFGv-Xhb-mybFLL63bWgsEqtNmRpXI5oJC3yDhdy0CTdFoKr8BXyh2vhY7yCkvHB4LcY379ssf-x" />
+ </picture>
+</a>
