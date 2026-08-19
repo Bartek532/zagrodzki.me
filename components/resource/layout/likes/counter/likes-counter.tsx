@@ -2,12 +2,12 @@
 
 import { debounce } from "lodash";
 import { motion } from "motion/react";
-import { memo, useMemo, useRef, useState } from "react";
+import { memo, useMemo, useState } from "react";
 
 import { MAX_CORNS_COUNT } from "@/components/common/popcorn/consts";
 import { Popcorn } from "@/components/common/popcorn/popcorn";
 import { useLocalStorage } from "@/hooks/use-local-storage";
-import { like } from "@/lib/kv/likes";
+import { setLikesBySlug } from "@/lib/kv/likes";
 import { cn } from "@/utils";
 import { normalizeCount } from "@/utils/functions";
 
@@ -26,47 +26,37 @@ export const LikesCounter = memo<LikesCounterProps>(({ likes: initialLikes, type
   const [likes, setLikes] = useState(initialLikes);
   const [givenLikesData, setGivenLikesData] = useLocalStorage<string>("likes", "{}");
   const givenLikes = getGivenLikes(givenLikesData, slug);
-  const pendingAmount = useRef(0);
 
-  const debouncedLike = useMemo(
-    () =>
-      debounce(() => {
-        const amount = pendingAmount.current;
-        pendingAmount.current = 0;
+  const debouncedFetch = useMemo(() => debounce(setLikesBySlug, 1500), []);
 
-        if (amount === 0) {
-          return;
-        }
-
-        void like(type, slug, amount).catch(() => {
-          setLikes((current) => current - amount);
-        });
-      }, 1500),
-    [slug, type],
-  );
-
-  const onLike = () => {
+  const onLike = async () => {
     if (givenLikes >= MAX_CORNS_COUNT) {
       return;
     }
 
-    setLikes((current) => current + 1);
+    setLikes((likes) => likes + 1);
     setLastAction("+");
     setGivenLikesData(incrementGivenLikes(givenLikesData, slug));
-    pendingAmount.current += 1;
-    debouncedLike();
+    try {
+      await debouncedFetch(type, slug, likes + 1);
+    } catch {
+      setLikes((likes) => likes - 1);
+    }
   };
 
-  const onUnlike = () => {
+  const onUnlike = async () => {
     if (givenLikes <= 0) {
       return;
     }
 
-    setLikes((current) => current - 1);
+    setLikes((likes) => likes - 1);
     setLastAction("-");
     setGivenLikesData(decrementGivenLikes(givenLikesData, slug));
-    pendingAmount.current -= 1;
-    debouncedLike();
+    try {
+      await debouncedFetch(type, slug, likes - 1);
+    } catch {
+      setLikes((likes) => likes + 1);
+    }
   };
 
   return (

@@ -68,13 +68,35 @@ export const getSortedSetValue = async (name: string, key: string) => {
   }
 };
 
-export const incrementSortedSetValue = async (name: string, key: string, amount = 1) => {
+export const setSortedSetValue = async (name: string, key: string, score: number) => {
   await fetch(`${env.KV_REST_API_URL}/pipeline`, {
     method: "POST",
     headers: {
       Authorization: `Bearer ${env.KV_REST_API_TOKEN}`,
       "Content-Type": "application/json",
     },
-    body: JSON.stringify([["ZINCRBY", name, amount, key]]),
+    body: JSON.stringify([["ZADD", name, score, key]]),
+  });
+};
+
+export const incrementSortedSetValue = async (name: string, key: string) => {
+  await fetch(`${env.KV_REST_API_URL}/pipeline`, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${env.KV_REST_API_TOKEN}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify([["ZINCRBY", name, 1, key]]),
+  });
+};
+
+export const decrementSortedSetValue = async (name: string, key: string) => {
+  await fetch(`${env.KV_REST_API_URL}/pipeline`, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${env.KV_REST_API_TOKEN}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify([["ZINCRBY", name, -1, key]]),
   });
 };
