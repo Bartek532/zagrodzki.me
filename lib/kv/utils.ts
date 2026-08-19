@@ -14,14 +14,35 @@ const resultSchema = z
 const isValidKvResult = (data: unknown): data is z.infer<typeof resultSchema> =>
   resultSchema.safeParse(data).success;
 
+const KV_TOKEN_PATTERN = /^[a-z0-9]+(?:-[a-z0-9]+)*$/i;
+
+const assertSafeKvToken = (value: string, label: string) => {
+  if (!KV_TOKEN_PATTERN.test(value) || value.length > 200) {
+    throw new Error(`Invalid KV ${label}`);
+  }
+};
+
+const runPipeline = async (command: (string | number)[]) =>
+  fetch(`${env.KV_REST_API_URL}/pipeline`, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${env.KV_REST_API_TOKEN}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify([command]),
+  });
+
 export const getSortedSetValues = async (name: string) => {
+  assertSafeKvToken(name, "key");
+
   try {
     const response = await fetch(`${env.KV_REST_API_URL}/pipeline`, {
       method: "POST",
       headers: {
         Authorization: `Bearer ${env.KV_REST_API_TOKEN}`,
+        "Content-Type": "application/json",
       },
-      body: `[["ZRANGE", "${name}", 0, -1, "WITHSCORES"]]`,
+      body: JSON.stringify([["ZRANGE", name, 0, -1, "WITHSCORES"]]),
       next: {
         revalidate: 60,
         tags: [name],
@@ -41,13 +62,17 @@ export const getSortedSetValues = async (name: string) => {
 };
 
 export const getSortedSetValue = async (name: string, key: string) => {
+  assertSafeKvToken(name, "key");
+  assertSafeKvToken(key, "member");
+
   try {
     const response = await fetch(`${env.KV_REST_API_URL}/pipeline`, {
       method: "POST",
       headers: {
         Authorization: `Bearer ${env.KV_REST_API_TOKEN}`,
+        "Content-Type": "application/json",
       },
-      body: `[["ZSCORE", "${name}", "${key}"]]`,
+      body: JSON.stringify([["ZSCORE", name, key]]),
       next: {
         revalidate: 60,
         tags: [`${name}-${key}`],
@@ -66,32 +91,13 @@ export const getSortedSetValue = async (name: string, key: string) => {
   }
 };
 
-export const setSortedSetValue = async (name: string, key: string, score: number) => {
-  await fetch(`${env.KV_REST_API_URL}/pipeline`, {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${env.KV_REST_API_TOKEN}`,
-    },
-    body: `[["ZADD", "${name}", "${score}", "${key}"]]`,
-  });
-};
+export const incrementSortedSetValue = async (name: string, key: string, amount = 1) => {
+  assertSafeKvToken(name, "key");
+  assertSafeKvToken(key, "member");
 
-export const incrementSortedSetValue = async (name: string, key: string) => {
-  await fetch(`${env.KV_REST_API_URL}/pipeline`, {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${env.KV_REST_API_TOKEN}`,
-    },
-    body: `[["ZINCRBY", "${name}", 1, "${key}"]]`,
-  });
-};
+  if (!Number.isInteger(amount) || !Number.isSafeInteger(amount)) {
+    throw new Error("Invalid KV increment");
+  }
 
-export const decrementSortedSetValue = async (name: string, key: string) => {
-  await fetch(`${env.KV_REST_API_URL}/pipeline`, {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${env.KV_REST_API_TOKEN}`,
-    },
-    body: `[["ZINCRBY", "${name}", -1, "${key}"]]`,
-  });
+  await runPipeline(["ZINCRBY", name, amount, key]);
 };

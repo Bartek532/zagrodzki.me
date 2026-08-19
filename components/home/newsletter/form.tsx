@@ -26,7 +26,7 @@ import { subscribeToNewsletter } from "./api/mailer";
 type FormStatus = "pending" | "loading" | "fullfilled" | "rejected";
 
 const newsletterSchema = z.object({
-  email: z.email(),
+  email: z.email().max(254),
 });
 
 export const NewsletterForm = () => {

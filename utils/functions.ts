@@ -10,3 +10,5 @@ export const onPromise =
 
 export const normalizeCount = (count: number) =>
   count.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
+export const serializeJsonLd = (data: unknown) => JSON.stringify(data).replace(/</g, "\\u003c");

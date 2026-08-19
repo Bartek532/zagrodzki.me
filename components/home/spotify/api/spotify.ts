@@ -39,18 +39,16 @@ export const getAccessToken = async (refreshToken: string) => {
   params.append("grant_type", "refresh_token");
   params.append("refresh_token", refreshToken);
 
-  const tokensResponse = await fetch(
-    `https://accounts.spotify.com/api/token?${params.toString()}`,
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-      },
-      next: {
-        revalidate: 0,
-      },
+  const tokensResponse = await fetch("https://accounts.spotify.com/api/token", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
     },
-  );
+    body: params.toString(),
+    next: {
+      revalidate: 0,
+    },
+  });
 
   if (!tokensResponse.ok) {
     return null;

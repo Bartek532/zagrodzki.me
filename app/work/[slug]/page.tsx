@@ -1,6 +1,7 @@
 import { Resource } from "@/components/resource/resource";
 import { getMetadata } from "@/lib/metadata";
 import { getProjectBySlug, getProjectsPaths } from "@/lib/projects";
+import { serializeJsonLd } from "@/utils/functions";
 
 import type { MetadataParams } from "@/types";
 import type { Project, WithContext } from "schema-dts";
@@ -18,6 +19,8 @@ export async function generateMetadata({ params }: MetadataParams) {
     url: `/work/${slug}`,
   });
 }
+
+export const dynamicParams = false;
 
 export function generateStaticParams() {
   const paths = getProjectsPaths();
@@ -42,7 +45,7 @@ const ProjectPage = async ({ params }: MetadataParams) => {
       {/* Needed to add JSON-LD to the page */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }}
       />
     </>
   );
