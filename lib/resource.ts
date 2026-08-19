@@ -33,7 +33,7 @@ export const getAllResources = <T extends Resource>(resourcePath: string) => {
 };
 
 export const getResourceParsedContent = async (slug: string, resourcePath: string) => {
-  const filePath = path.join(resourcePath, `${slug}.mdx`);
+  const filePath = path.join(resourcePath, `${path.basename(slug)}.mdx`);
   const source = fs.readFileSync(filePath);
   const { content } = matter(source);
 
@@ -47,7 +47,7 @@ export const getResourceParsedContent = async (slug: string, resourcePath: strin
 };
 
 export const getResourceBySlug = <T extends Resource>(slug: string, resourcePath: string) => {
-  const filePath = path.join(resourcePath, `${slug}.mdx`);
+  const filePath = path.join(resourcePath, `${path.basename(slug)}.mdx`);
   const source = fs.readFileSync(filePath);
   const { content, data } = matter(source);
   const timeToRead = readingTime(content).minutes;

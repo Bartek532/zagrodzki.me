@@ -21,6 +21,8 @@ export async function generateMetadata({ params }: MetadataParams) {
   });
 }
 
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   const paths = getPostsPaths();
   return paths.map((slug) => ({ slug }));
@@ -51,7 +53,7 @@ const PostPage = async ({ params }: MetadataParams) => {
       {/* Needed to add JSON-LD to the page */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}
       />
     </>
   );

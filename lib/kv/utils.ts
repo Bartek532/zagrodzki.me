@@ -20,8 +20,9 @@ export const getSortedSetValues = async (name: string) => {
       method: "POST",
       headers: {
         Authorization: `Bearer ${env.KV_REST_API_TOKEN}`,
+        "Content-Type": "application/json",
       },
-      body: `[["ZRANGE", "${name}", 0, -1, "WITHSCORES"]]`,
+      body: JSON.stringify([["ZRANGE", name, 0, -1, "WITHSCORES"]]),
       next: {
         revalidate: 60,
         tags: [name],
@@ -46,8 +47,9 @@ export const getSortedSetValue = async (name: string, key: string) => {
       method: "POST",
       headers: {
         Authorization: `Bearer ${env.KV_REST_API_TOKEN}`,
+        "Content-Type": "application/json",
       },
-      body: `[["ZSCORE", "${name}", "${key}"]]`,
+      body: JSON.stringify([["ZSCORE", name, key]]),
       next: {
         revalidate: 60,
         tags: [`${name}-${key}`],
@@ -71,8 +73,9 @@ export const setSortedSetValue = async (name: string, key: string, score: number
     method: "POST",
     headers: {
       Authorization: `Bearer ${env.KV_REST_API_TOKEN}`,
+      "Content-Type": "application/json",
     },
-    body: `[["ZADD", "${name}", "${score}", "${key}"]]`,
+    body: JSON.stringify([["ZADD", name, score, key]]),
   });
 };
 
@@ -81,8 +84,9 @@ export const incrementSortedSetValue = async (name: string, key: string) => {
     method: "POST",
     headers: {
       Authorization: `Bearer ${env.KV_REST_API_TOKEN}`,
+      "Content-Type": "application/json",
     },
-    body: `[["ZINCRBY", "${name}", 1, "${key}"]]`,
+    body: JSON.stringify([["ZINCRBY", name, 1, key]]),
   });
 };
 
@@ -91,7 +95,8 @@ export const decrementSortedSetValue = async (name: string, key: string) => {
     method: "POST",
     headers: {
       Authorization: `Bearer ${env.KV_REST_API_TOKEN}`,
+      "Content-Type": "application/json",
     },
-    body: `[["ZINCRBY", "${name}", -1, "${key}"]]`,
+    body: JSON.stringify([["ZINCRBY", name, -1, key]]),
   });
 };
