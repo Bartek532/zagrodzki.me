@@ -4,10 +4,8 @@ import { z } from "zod";
 
 import env from "@/env.config";
 
-const newsletterEmailSchema = z.email().max(254);
-
 export const subscribeToNewsletter = async (email: string) => {
-  const parsedEmail = newsletterEmailSchema.parse(email.trim());
+  const parsedEmail = z.email().parse(email);
 
   const response = await fetch("https://connect.mailerlite.com/api/subscribers", {
     method: "POST",

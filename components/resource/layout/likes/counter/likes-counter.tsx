@@ -1,13 +1,12 @@
 "use client";
 
-import { debounce } from "lodash";
 import { motion } from "motion/react";
-import { memo, useMemo, useRef, useState } from "react";
+import { memo, useState } from "react";
 
 import { MAX_CORNS_COUNT } from "@/components/common/popcorn/consts";
 import { Popcorn } from "@/components/common/popcorn/popcorn";
 import { useLocalStorage } from "@/hooks/use-local-storage";
-import { adjustLikes } from "@/lib/kv/likes-actions";
+import { like, unlike } from "@/lib/kv/likes";
 import { cn } from "@/utils";
 import { normalizeCount } from "@/utils/functions";
 
@@ -26,26 +25,8 @@ export const LikesCounter = memo<LikesCounterProps>(({ likes: initialLikes, type
   const [likes, setLikes] = useState(initialLikes);
   const [givenLikesData, setGivenLikesData] = useLocalStorage<string>("likes", "{}");
   const givenLikes = getGivenLikes(givenLikesData, slug);
-  const pendingDelta = useRef(0);
 
-  const flushLikes = useMemo(
-    () =>
-      debounce(() => {
-        const delta = pendingDelta.current;
-        pendingDelta.current = 0;
-
-        if (delta === 0) {
-          return;
-        }
-
-        void adjustLikes(type, slug, delta).catch(() => {
-          setLikes((current) => current - delta);
-        });
-      }, 1500),
-    [slug, type],
-  );
-
-  const onLike = () => {
+  const onLike = async () => {
     if (givenLikes >= MAX_CORNS_COUNT) {
       return;
     }
@@ -53,11 +34,14 @@ export const LikesCounter = memo<LikesCounterProps>(({ likes: initialLikes, type
     setLikes((current) => current + 1);
     setLastAction("+");
     setGivenLikesData(incrementGivenLikes(givenLikesData, slug));
-    pendingDelta.current += 1;
-    flushLikes();
+    try {
+      await like(type, slug);
+    } catch {
+      setLikes((current) => current - 1);
+    }
   };
 
-  const onUnlike = () => {
+  const onUnlike = async () => {
     if (givenLikes <= 0) {
       return;
     }
@@ -65,8 +49,11 @@ export const LikesCounter = memo<LikesCounterProps>(({ likes: initialLikes, type
     setLikes((current) => current - 1);
     setLastAction("-");
     setGivenLikesData(decrementGivenLikes(givenLikesData, slug));
-    pendingDelta.current -= 1;
-    flushLikes();
+    try {
+      await unlike(type, slug);
+    } catch {
+      setLikes((current) => current + 1);
+    }
   };
 
   return (

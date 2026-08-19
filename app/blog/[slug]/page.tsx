@@ -3,7 +3,6 @@ import { Resource } from "@/components/resource/resource";
 import { getMetadata } from "@/lib/metadata";
 import { getNewestPosts, getPostBySlug, getPostsPaths } from "@/lib/posts";
 import { SITE_TITLE } from "@/utils/consts";
-import { serializeJsonLd } from "@/utils/functions";
 
 import type { MetadataParams } from "@/types";
 import type { Article, WithContext } from "schema-dts";
@@ -54,7 +53,7 @@ const PostPage = async ({ params }: MetadataParams) => {
       {/* Needed to add JSON-LD to the page */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}
       />
     </>
   );

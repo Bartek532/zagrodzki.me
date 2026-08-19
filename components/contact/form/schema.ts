@@ -28,31 +28,14 @@ export const messageTypes = [
   },
 ] as const;
 
-const withoutLineBreaks = (value: string) =>
-  value
-    .replace(/[\r\n]/g, "")
-    .replaceAll("\0", "")
-    .trim();
-
 export const messageSchema = z.object({
-  name: z
-    .string()
-    .transform(withoutLineBreaks)
-    .pipe(
-      z
-        .string()
-        .min(1, "Please provide your name so I know who you are!")
-        .max(100, "Name is too long."),
-    ),
-  email: z
-    .string()
-    .transform(withoutLineBreaks)
-    .pipe(z.email("I'll use your email only to contact you back.").max(254)),
+  name: z.string().trim().min(1, "Please provide your name so I know who you are!").max(100),
+  email: z.email("I'll use your email only to contact you back.").max(254),
   message: z
     .string()
     .trim()
     .min(1, "Message cannot be empty, even if it's just a smile!")
-    .max(5000, "Message is too long."),
+    .max(5000),
   type: z.enum(messageTypes.map((type) => type.value) as [string, ...string[]]),
 });
 

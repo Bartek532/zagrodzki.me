@@ -1,7 +1,6 @@
 import { Resource } from "@/components/resource/resource";
 import { getMetadata } from "@/lib/metadata";
 import { getProjectBySlug, getProjectsPaths } from "@/lib/projects";
-import { serializeJsonLd } from "@/utils/functions";
 
 import type { MetadataParams } from "@/types";
 import type { Project, WithContext } from "schema-dts";
@@ -45,7 +44,7 @@ const ProjectPage = async ({ params }: MetadataParams) => {
       {/* Needed to add JSON-LD to the page */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}
       />
     </>
   );
