@@ -57,8 +57,8 @@ importers:
         specifier: 0.1.8
         version: 0.1.8
       dayjs:
-        specifier: 1.10.7
-        version: 1.10.7
+        specifier: 1.11.13
+        version: 1.11.13
       developer-icons:
         specifier: 5.2.8
         version: 5.2.8(react-dom@19.2.1(react@19.2.1))(react@19.2.1)
@@ -2747,8 +2747,8 @@ packages:
   date-fns@4.1.0:
     resolution: {integrity: sha512-Ukq0owbQXxa/U3EGtsdVBkR1w7KOQ5gIBqdH2hkvknzZPYvBxb/aa6E8L7tmjFtkwZBu3UXBbjIgPo/Ez4xaNg==}
 
-  dayjs@1.10.7:
-    resolution: {integrity: sha512-P6twpd70BcPK34K26uJ1KT3wlhpuOAPoMwJzpsIWUxHZ7wpmbdZL/hQqBDfz7hGurYSa5PhzdhDHtt319hL3ig==}
+  dayjs@1.11.13:
+    resolution: {integrity: sha512-oaMBel6gjolK862uaPQOVTA7q3TZhuSvuMQAAglQDOWYO9A91IrAOUJEyKVlqJlHE0vq5p5UXxzdPfMH/x6xNg==}
 
   debug@3.2.7:
     resolution: {integrity: sha512-CFjzYYAi4ThfiQvizrFQevTTXHtnCqWfe7x1AhgEscTz6ZbLbfoLRLPugTQyBth6f8ZERVUSyWHFD/7Wu4t1XQ==}
@@ -7399,7 +7399,7 @@ snapshots:
 
   date-fns@4.1.0: {}
 
-  dayjs@1.10.7: {}
+  dayjs@1.11.13: {}
 
   debug@3.2.7:
     dependencies:
