@@ -29,7 +29,7 @@ Description of the project files and directories.
 ```bash
 ├── .github                    # Github workflows and templates
 ├── .vscode                    # VSCode settings
-├── app/                       # Next.js app directory (v13)
+├── app/                       # Next.js App Router (pages, API routes, RSS feeds)
 ├── components/                # React components
 ├── content/                   # All .mdx files with content
 ├── data/                      # Global available data
@@ -37,7 +37,7 @@ Description of the project files and directories.
 ├── lib/                       # Lib files
 ├── providers/                 # React context global state and other providers
 ├── public/                    # All images, icons, fonts
-├── scripts/                   # Scripts executed during deployment (algolia, redirects, feed)
+├── scripts/                   # Build-time scripts (Algolia indexing, newest-post redirect)
 ├── styles/                    # All shared styles
 ├── types/                     # TypeScript types
 ├── utils/                     # All utilities
@@ -105,7 +105,7 @@ Component.displayName = "Component";
 | [MDX](https://mdxjs.com/)                              | Markdown for the component era                                |
 | [Algolia](https://www.algolia.com/)                    | Implementing powerful search                                  |
 | [Tailwind CSS](https://tailwindcss.com/)               | Utility-first CSS framework                                   |
-| [Radix UI](https://www.radix-ui.com/)                  | Accessible and composable headless UI components              |
+| [Base UI](https://base-ui.com/react/overview/about)    | Accessible headless UI primitives (shadcn components)         |
 | [Github Actions](https://github.com/features/actions)  | Automations for workflow improvements                         |
 | [Motion](https://www.motion.dev/)                      | Motion library for making animations                          |
 | [React Hook Form](https://react-hook-form.com)         | Forms with easy-to-use validation                             |
@@ -124,14 +124,13 @@ Component.displayName = "Component";
 | [build](https://github.com/Bartek532/zagrodzki.me/blob/main/package.json#L16)      | Builds the whole project                                    |
 | [build:next](https://github.com/Bartek532/zagrodzki.me/blob/main/package.json#L17) | Builds Next.js app                                          |
 | [dev](https://github.com/Bartek532/zagrodzki.me/blob/main/package.json#L18)        | Runs Next.js local development server                       |
-| [feed](https://github.com/Bartek532/zagrodzki.me/blob/main/package.json#L19)       | Generates RSS feed for the blog                             |
-| [format](https://github.com/Bartek532/zagrodzki.me/blob/main/package.json#L20)     | Checks formatting across the project (Prettier)             |
-| [format:fix](https://github.com/Bartek532/zagrodzki.me/blob/main/package.json#L21) | Writes formatting fixes (Lefthook passes staged files)      |
-| [lint](https://github.com/Bartek532/zagrodzki.me/blob/main/package.json#L22)       | Runs ESLint against project files                           |
-| [lint:fix](https://github.com/Bartek532/zagrodzki.me/blob/main/package.json#L23)   | Runs ESLint with `--fix` (Lefthook passes staged files)     |
-| [redirect](https://github.com/Bartek532/zagrodzki.me/blob/main/package.json#L24)   | Generates redirects to the newest post (in next.config.mjs) |
-| [start](https://github.com/Bartek532/zagrodzki.me/blob/main/package.json#L25)      | Starts Next.js server                                       |
-| [tsc](https://github.com/Bartek532/zagrodzki.me/blob/main/package.json#L26)        | Runs TypeScript transpilation against project files         |
+| [format](https://github.com/Bartek532/zagrodzki.me/blob/main/package.json#L19)     | Checks formatting across the project (Prettier)             |
+| [format:fix](https://github.com/Bartek532/zagrodzki.me/blob/main/package.json#L20) | Writes formatting fixes (Lefthook passes staged files)      |
+| [lint](https://github.com/Bartek532/zagrodzki.me/blob/main/package.json#L21)       | Runs ESLint against project files                           |
+| [lint:fix](https://github.com/Bartek532/zagrodzki.me/blob/main/package.json#L22)   | Runs ESLint with `--fix` (Lefthook passes staged files)     |
+| [redirect](https://github.com/Bartek532/zagrodzki.me/blob/main/package.json#L23)   | Generates redirects to the newest post (in `next.config.ts`) |
+| [start](https://github.com/Bartek532/zagrodzki.me/blob/main/package.json#L24)      | Starts Next.js server                                       |
+| [tsc](https://github.com/Bartek532/zagrodzki.me/blob/main/package.json#L25)        | Runs TypeScript transpilation against project files         |
 
 ## Star History 🌟
 
