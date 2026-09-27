@@ -43,14 +43,16 @@ export const Hero = ({ resource }: HeroProps) => (
           <Fire className="size-4" />
           See live
         </a>
-        <a
-          href={resource.repository}
-          target="_blank"
-          className={cn(buttonVariants({ variant: "outline" }))}
-        >
-          <GitPullRequestArrow className="size-4" />
-          Contribute
-        </a>
+        {resource.repository ? (
+          <a
+            href={resource.repository}
+            target="_blank"
+            className={cn(buttonVariants({ variant: "outline" }))}
+          >
+            <GitPullRequestArrow className="size-4" />
+            Contribute
+          </a>
+        ) : null}
       </div>
     )}
 
