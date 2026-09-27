@@ -5,4 +5,6 @@ allowBuilds:
   "@parcel/watcher": true
   "@vercel/speed-insights": true
   esbuild: true
+  lefthook: true
   sharp: true
+  unrs-resolver: set this to true or false

@@ -1,11 +1,6 @@
 "use server";
 
-import {
-  decrementSortedSetValue,
-  getSortedSetValue,
-  incrementSortedSetValue,
-  setSortedSetValue,
-} from "./utils";
+import { decrementSortedSetValue, getSortedSetValue, incrementSortedSetValue } from "./utils";
 
 import type { RESOURCE_TYPE } from "@/types";
 
@@ -19,6 +14,3 @@ export const unlike = async (type: RESOURCE_TYPE, slug: string) =>
 
 export const getResourceLikesBySlug = async (type: RESOURCE_TYPE, slug: string) =>
   getSortedSetValue(`${type}${SORTED_SET_SUFFIX}`, slug);
-
-export const setLikesBySlug = async (type: RESOURCE_TYPE, slug: string, likes: number) =>
-  setSortedSetValue(`${type}${SORTED_SET_SUFFIX}`, slug, likes);
