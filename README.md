@@ -56,7 +56,7 @@ pnpm dev
 
 ## License ⚖️
 
-This project is licensed under the [GNU Affero General Public License (AGPL) version 3.0](LICENSE) for non-commercial use.
+This project is licensed under the [GNU Affero General Public License (AGPL) version 3.0](LICENSE)
 
 For commercial use or sponsorship inquiries, please contact me at [bartosz@zagrodzki.me](mailto:bartosz@zagrodzki.me).
 
