@@ -6,11 +6,7 @@ import { z } from "zod";
 const env = defineEnv({
   extends: [vercel],
   server: {
-    SPOTIFY_CLIENT_ID: z.string(),
-    SPOTIFY_CLIENT_SECRET: z.string(),
-    SPOTIFY_REFRESH_TOKEN: z.string(),
-
-    YTMUSIC_COOKIE: z.string(),
+    YTMUSIC_COOKIE: z.string().optional(),
 
     PLUNK_API_KEY: z.string(),
     EMAIL: z.email(),

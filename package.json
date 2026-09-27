@@ -16,20 +16,13 @@
     "build": "./build.sh redirect algolia next",
     "build:next": "next build",
     "dev": "next dev",
-    "format": "prettier --write \"./**/*.{js,jsx,ts,tsx,css,scss,md,mdx}\"",
+    "format": "prettier --check \"./**/*.{js,jsx,ts,tsx,css,scss,md,mdx}\"",
+    "format:fix": "prettier --write",
     "lint": "eslint",
-    "prepare": "husky install",
+    "lint:fix": "eslint --fix",
     "redirect": "tsx ./scripts/redirect.ts",
     "start": "next start",
     "tsc": "tsc --noEmit"
-  },
-  "lint-staged": {
-    "*.{js,jsx,ts,tsx,md,mdx,graphql,yml,yaml,css,scss,json}": [
-      "prettier --write"
-    ],
-    "*.{js,jsx,ts,tsx}": [
-      "eslint --fix"
-    ]
   },
   "dependencies": {
     "@hookform/resolvers": "5.4.0",
@@ -58,7 +51,7 @@
     "lodash": "4.18.1",
     "lucide-react": "0.475.0",
     "motion": "12.4.3",
-    "next": "16.3.1",
+    "next": "16.3.6",
     "next-themes": "0.4.4",
     "prismjs": "1.30.0",
     "qs": "6.16.0",
@@ -77,6 +70,13 @@
     "sonner": "1.7.4",
     "tailwind-merge": "3.0.1",
     "ytmusic-ts": "^0.2.2",
+    "clsx": "1.1.1",
+    "rehype-stringify": "10.0.1",
+    "remark-parse": "11.0.0",
+    "remark-rehype": "11.0.0",
+    "server-only": "0.0.1",
+    "unified": "11.0.5",
+    "unist-util-visit": "5.0.0",
     "zod": "4.1.13"
   },
   "devDependencies": {
@@ -92,27 +92,19 @@
     "@types/react": "19.2.2",
     "@types/react-dom": "19.2.2",
     "@types/unist": "3.0.3",
-    "clsx": "1.1.1",
     "eslint": "10.11.0",
     "eslint-config-next": "16.3.6",
     "eslint-plugin-unused-imports": "4.4.1",
-    "husky": "8.0.0",
-    "lint-staged": "16.4.0",
+    "lefthook": "2.1.10",
     "network-information-types": "0.1.1",
     "postcss": "8.5.26",
     "prettier": "3.5.1",
     "prettier-plugin-tailwindcss": "0.6.11",
-    "rehype-stringify": "10.0.1",
-    "remark-parse": "11.0.0",
-    "remark-rehype": "11.0.0",
-    "server-only": "0.0.1",
     "tailwindcss": "^4.1.17",
     "tailwindcss-animate": "1.0.7",
     "tsx": "4.23.12",
     "typescript": "6.0.3",
-    "typescript-eslint": "8.70.1",
-    "unified": "11.0.5",
-    "unist-util-visit": "5.0.0"
+    "typescript-eslint": "8.70.1"
   },
   "packageManager": "pnpm@11.5.2"
 }
