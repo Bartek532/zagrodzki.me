@@ -11,25 +11,36 @@ import type { Activity } from "react-activity-calendar";
 
 const getContributions = cache(
   async () => {
-    const today = dayjs().subtract(1, "week").endOf("week");
-    const oneYearAgo = today.subtract(365, "day");
-    const twoYearsAgo = today.subtract(1092, "day");
+    try {
+      const today = dayjs().subtract(1, "week").endOf("week");
+      const oneYearAgo = today.subtract(365, "day");
+      const twoYearsAgo = today.subtract(1092, "day");
 
-    const response = await fetch(`https://github-contributions-api.jogruber.de/v4/Bartek532`);
-    const data = (await response.json()) as {
-      contributions: Activity[];
-    };
+      const response = await fetch(
+        `https://github-contributions-api.jogruber.de/v4/${env.NEXT_PUBLIC_GITHUB_USERNAME}`,
+      );
 
-    return {
-      data: data.contributions
-        .filter(({ date }) => dayjs(date).isBefore(today) && dayjs(date).isAfter(twoYearsAgo))
-        .sort((a, b) => dayjs(a.date).valueOf() - dayjs(b.date).valueOf()),
-      total: data.contributions.reduce(
-        (total, { date, count }) =>
-          dayjs(date).isAfter(oneYearAgo) && dayjs(date).isBefore(today) ? total + count : total,
-        0,
-      ),
-    };
+      if (!response.ok) {
+        return null;
+      }
+
+      const data = (await response.json()) as {
+        contributions: Activity[];
+      };
+
+      return {
+        data: data.contributions
+          .filter(({ date }) => dayjs(date).isBefore(today) && dayjs(date).isAfter(twoYearsAgo))
+          .sort((a, b) => dayjs(a.date).valueOf() - dayjs(b.date).valueOf()),
+        total: data.contributions.reduce(
+          (total, { date, count }) =>
+            dayjs(date).isAfter(oneYearAgo) && dayjs(date).isBefore(today) ? total + count : total,
+          0,
+        ),
+      };
+    } catch {
+      return null;
+    }
   },
   ["github-contributions"],
   { revalidate: 60 * 60 * 24 },
@@ -37,6 +48,10 @@ const getContributions = cache(
 
 export const GitHubActivity = async () => {
   const github = await getContributions();
+
+  if (!github) {
+    return null;
+  }
 
   const quarterLength = Math.floor(github.data.length / 4);
   const firstQuarterData = github.data.slice(0, quarterLength);

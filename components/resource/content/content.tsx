@@ -1,4 +1,5 @@
 import { compile, run } from "@mdx-js/mdx";
+import { unstable_cache as cache } from "next/cache";
 import { memo } from "react";
 import * as runtime from "react/jsx-runtime";
 
