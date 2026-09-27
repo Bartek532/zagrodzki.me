@@ -1,4 +1,5 @@
 import { compile, run } from "@mdx-js/mdx";
+import { unstable_cache as cache } from "next/cache";
 import { memo } from "react";
 import * as runtime from "react/jsx-runtime";
 
@@ -41,13 +42,23 @@ const customMdxComponents = {
   ...customComponents,
 };
 
-export const Content = memo<ContentProps>(async ({ content }) => {
-  const code = await compile(content, {
-    outputFormat: "function-body",
-    rehypePlugins: commonRehypePlugins,
-  });
+const getCompiledContent = cache(
+  async (content: string) => {
+    const code = await compile(content, {
+      outputFormat: "function-body",
+      rehypePlugins: commonRehypePlugins,
+    });
 
-  const { default: MDXContent } = await run(String(code), {
+    return String(code);
+  },
+  ["mdx-content"],
+  { revalidate: 60 * 60 * 24 },
+);
+
+export const Content = memo<ContentProps>(async ({ content }) => {
+  const compiled = await getCompiledContent(content);
+
+  const { default: MDXContent } = await run(compiled, {
     ...runtime,
     baseUrl: import.meta.url,
   });

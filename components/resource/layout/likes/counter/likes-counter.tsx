@@ -7,7 +7,7 @@ import { memo, useMemo, useState } from "react";
 import { MAX_CORNS_COUNT } from "@/components/common/popcorn/consts";
 import { Popcorn } from "@/components/common/popcorn/popcorn";
 import { useLocalStorage } from "@/hooks/use-local-storage";
-import { setLikesBySlug } from "@/lib/kv/likes";
+import { like, unlike } from "@/lib/kv/likes";
 import { cn } from "@/utils";
 import { normalizeCount } from "@/utils/functions";
 
@@ -27,7 +27,8 @@ export const LikesCounter = memo<LikesCounterProps>(({ likes: initialLikes, type
   const [givenLikesData, setGivenLikesData] = useLocalStorage<string>("likes", "{}");
   const givenLikes = getGivenLikes(givenLikesData, slug);
 
-  const debouncedFetch = useMemo(() => debounce(setLikesBySlug, 1500), []);
+  const debouncedLike = useMemo(() => debounce(like, 1500), []);
+  const debouncedUnlike = useMemo(() => debounce(unlike, 1500), []);
 
   const onLike = async () => {
     if (givenLikes >= MAX_CORNS_COUNT) {
@@ -38,7 +39,7 @@ export const LikesCounter = memo<LikesCounterProps>(({ likes: initialLikes, type
     setLastAction("+");
     setGivenLikesData(incrementGivenLikes(givenLikesData, slug));
     try {
-      await debouncedFetch(type, slug, likes + 1);
+      await debouncedLike(type, slug);
     } catch {
       setLikes((likes) => likes - 1);
     }
@@ -53,7 +54,7 @@ export const LikesCounter = memo<LikesCounterProps>(({ likes: initialLikes, type
     setLastAction("-");
     setGivenLikesData(decrementGivenLikes(givenLikesData, slug));
     try {
-      await debouncedFetch(type, slug, likes - 1);
+      await debouncedUnlike(type, slug);
     } catch {
       setLikes((likes) => likes + 1);
     }
