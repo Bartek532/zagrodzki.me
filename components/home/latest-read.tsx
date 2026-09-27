@@ -1,18 +1,11 @@
 import { unstable_cache as cache } from "next/cache";
 import Image from "next/image";
 
+import { LATEST_READ } from "@/data/latest-read";
 import { ViewAnimation } from "@/providers/view-animation";
 
 const getLatestRead = cache(
-  () =>
-    Promise.resolve({
-      id: 1,
-      title: "Thinking Fast and Slow",
-      author: "Daniel Kahneman",
-      thumbnail:
-        "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1317793965i/11468377.jpg",
-      link: "https://www.goodreads.com/book/show/11468377-thinking-fast-and-slow",
-    }),
+  () => Promise.resolve(LATEST_READ),
   ["latest-read"],
   { revalidate: 60 * 60 * 24 },
 );
