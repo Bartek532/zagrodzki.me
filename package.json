@@ -21,6 +21,7 @@
     "prepare": "husky install",
     "redirect": "tsx ./scripts/redirect.ts",
     "start": "next start",
+    "test": "tsx --test utils/**/*.test.ts",
     "tsc": "tsc --noEmit"
   },
   "lint-staged": {
