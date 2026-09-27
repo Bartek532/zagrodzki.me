@@ -13,13 +13,12 @@
   "author": "Bartosz Zagrodzki",
   "scripts": {
     "algolia": "tsx ./scripts/algolia.ts ",
-    "build": "./build.sh redirect algolia next",
+    "build": "./build.sh algolia next",
     "build:next": "next build",
     "dev": "next dev",
     "format": "prettier --write \"./**/*.{js,jsx,ts,tsx,css,scss,md,mdx}\"",
     "lint": "eslint",
     "prepare": "husky install",
-    "redirect": "tsx ./scripts/redirect.ts",
     "start": "next start",
     "tsc": "tsc --noEmit"
   },

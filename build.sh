@@ -2,12 +2,6 @@
 
 ARGS=$@
 
-if [[ ${ARGS[*]} =~ 'redirect' ]]; then
-  echo "Generating redirect to the newest post..."
-  pnpm redirect
-  echo "Done generating redirect..."
-fi
-
 if [[ ${ARGS[*]} =~ 'algolia' ]]; then
   echo "Updating Algolia index..."
   pnpm algolia

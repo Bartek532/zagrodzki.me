@@ -1,5 +1,7 @@
 import type { NextConfig } from "next";
 
+import { getNewestPosts } from "./lib/posts";
+
 const securityHeaders = [
   { key: "X-Content-Type-Options", value: "nosniff" },
   { key: "X-Frame-Options", value: "DENY" },
@@ -72,20 +74,23 @@ const nextConfig: NextConfig = {
     ]);
   },
   redirects() {
+    const [newestPost] = getNewestPosts();
+    const newestPostSlug = newestPost?.slug ?? "REPLACE_THE_NEWEST_POST_SLUG";
+
     return Promise.resolve([
       {
         source: "/new-post",
-        destination: "/blog/REPLACE_THE_NEWEST_POST_SLUG",
+        destination: `/blog/${newestPostSlug}`,
         permanent: false,
       },
       {
         source: "/new",
-        destination: "/blog/REPLACE_THE_NEWEST_POST_SLUG",
+        destination: `/blog/${newestPostSlug}`,
         permanent: false,
       },
       {
         source: "/post",
-        destination: "/blog/REPLACE_THE_NEWEST_POST_SLUG",
+        destination: `/blog/${newestPostSlug}`,
         permanent: false,
       },
       {
