@@ -20,19 +20,19 @@ const walsheim = localFont({
   src: [
     {
       path: "../public/fonts/GT-Walsheim-Black.woff2",
-      weight: "400",
+      weight: "900",
     },
     {
       path: "../public/fonts/GT-Walsheim-Bold.woff2",
-      weight: "bold",
+      weight: "700",
     },
     {
       path: "../public/fonts/GT-Walsheim-Medium.woff2",
-      weight: "600",
+      weight: "500",
     },
     {
       path: "../public/fonts/GT-Walsheim-Regular.woff2",
-      weight: "normal",
+      weight: "400",
     },
   ],
   display: "swap",
