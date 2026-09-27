@@ -14,7 +14,13 @@ const resultSchema = z
 const isValidKvResult = (data: unknown): data is z.infer<typeof resultSchema> =>
   resultSchema.safeParse(data).success;
 
+const hasKvConfig = () => Boolean(env.KV_REST_API_URL && env.KV_REST_API_TOKEN);
+
 export const getSortedSetValues = async (name: string) => {
+  if (!hasKvConfig()) {
+    return [];
+  }
+
   try {
     const response = await fetch(`${env.KV_REST_API_URL}/pipeline`, {
       method: "POST",
