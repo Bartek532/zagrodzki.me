@@ -8,12 +8,6 @@ if [[ ${ARGS[*]} =~ 'algolia' ]]; then
   echo "Done updating Algolia index..."
 fi
 
-if [[ ${ARGS[*]} =~ 'feed' ]]; then
-  echo "Generating JSON and XML feed..."
-  pnpm feed
-  echo "Done generating feeds..."
-fi
-
 if [[ ${ARGS[*]} =~ 'next' ]]; then
   echo "Building Next.js..."
   pnpm build:next

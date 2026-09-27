@@ -3,8 +3,10 @@
 import { z } from "zod";
 
 import env from "@/env.config";
+import { assertRateLimit } from "@/lib/kv/rate-limit";
 
 export const subscribeToNewsletter = async (email: string) => {
+  await assertRateLimit("newsletter");
   const parsedEmail = z.email().parse(email);
 
   const response = await fetch("https://connect.mailerlite.com/api/subscribers", {
