@@ -49,8 +49,13 @@ export const MobileNav = () => {
               ))}
             </ul>
 
-            <Button variant="outline" asChild onClick={() => setOpen(false)} className="w-full">
-              <SuperLink href="/contact">Get in touch</SuperLink>
+            <Button
+              variant="outline"
+              nativeButton={false}
+              className="w-full"
+              render={<SuperLink href="/contact" onClick={() => setOpen(false)} />}
+            >
+              Get in touch
             </Button>
           </nav>
         </div>

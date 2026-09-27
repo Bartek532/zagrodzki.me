@@ -50,15 +50,21 @@ const SmallSlot = ({ caption, title, description, buttons }: ThirdsSectionProps)
       </Prose>
       <div className="flex flex-wrap items-center gap-1">
         {buttons.map((button, index) => (
-          <Button asChild variant={index ? "link" : "outline"} className="gap-2" key={button.label}>
-            <a
-              href={button.href}
-              target={button.href.includes("http") ? "_blank" : undefined}
-              rel={button.href.includes("http") ? "noreferrer noopener" : undefined}
-            >
-              {button.label}
-              {button.href.includes("http") && <ArrowUpRight className="text-foreground size-4" />}
-            </a>
+          <Button
+            variant={index ? "link" : "outline"}
+            className="gap-2"
+            key={button.label}
+            nativeButton={false}
+            render={
+              <a
+                href={button.href}
+                target={button.href.includes("http") ? "_blank" : undefined}
+                rel={button.href.includes("http") ? "noreferrer noopener" : undefined}
+              />
+            }
+          >
+            {button.label}
+            {button.href.includes("http") && <ArrowUpRight className="text-foreground size-4" />}
           </Button>
         ))}
       </div>

@@ -6,6 +6,7 @@
 @import "./config.css";
 @import "./utilities.css";
 @import "./code.css";
+@import "shadcn/tailwind.css";
 
 @custom-variant dark (&:where(.dark, .dark *));
 

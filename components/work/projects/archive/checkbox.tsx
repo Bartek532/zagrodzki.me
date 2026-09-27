@@ -1,6 +1,6 @@
 "use client";
 
-import { Checkbox } from "@radix-ui/react-checkbox";
+import { Checkbox as CheckboxPrimitive } from "@base-ui/react/checkbox";
 import { useToggleRefinement } from "react-instantsearch";
 
 import { cn } from "@/utils";
@@ -14,7 +14,7 @@ export const ArchiveCheckbox = () => {
   });
 
   return (
-    <Checkbox
+    <CheckboxPrimitive.Root
       aria-label="show only active projects"
       checked={value.isRefined}
       onCheckedChange={(checked) => {
@@ -40,6 +40,6 @@ export const ArchiveCheckbox = () => {
           <div className={cn(styles.side, styles.bottom)}></div>
         </div>
       </div>
-    </Checkbox>
+    </CheckboxPrimitive.Root>
   );
 };
