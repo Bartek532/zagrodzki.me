@@ -65,7 +65,7 @@ const SelectContent = ({
   <SelectPrimitive.Portal>
     <SelectPrimitive.Positioner
       sideOffset={sideOffset}
-      alignItemWithTrigger={position === "popper"}
+      alignItemWithTrigger={false}
       className="isolate z-50"
     >
       <SelectPrimitive.Popup

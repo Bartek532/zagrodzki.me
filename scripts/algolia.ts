@@ -3,41 +3,48 @@ import dayjs from "dayjs";
 
 import env from "@/env.config";
 
-import { getPublishedPosts, getPostParsedContent } from "../lib/posts";
-import { getAllProjects, getProjectParsedContent } from "../lib/projects";
+import { getPublishedPosts, getPostBySlug } from "../lib/posts";
+import { getAllProjects, getProjectBySlug } from "../lib/projects";
 
-const generateAlgoliaProjects = async () => {
+const stripMarkdown = (markdown: string) =>
+  markdown
+    .replace(/```[\s\S]*?```/g, " ")
+    .replace(/`[^`]*`/g, " ")
+    .replace(/!\[[^\]]*\]\([^)]*\)/g, " ")
+    .replace(/\[[^\]]*\]\([^)]*\)/g, " ")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/[#>*_~-]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+
+const generateAlgoliaProjects = () => {
   const projects = getAllProjects();
 
-  return await Promise.all(
-    projects.map(async (project) => {
-      const { compiledContent } = await getProjectParsedContent(project.slug);
+  return projects.map((project) => {
+    const { content } = getProjectBySlug(project.slug);
 
-      return {
-        ...project,
-        content: compiledContent.toString().replace(/<[^>]+>/g, ""),
-        objectID: project.slug,
-        timestamp: dayjs(project.modifiedAt, "DD-MM-YYYY").unix(),
-      };
-    }),
-  );
+    return {
+      ...project,
+      content: stripMarkdown(content),
+      objectID: project.slug,
+      timestamp: dayjs(project.modifiedAt, "DD-MM-YYYY").unix(),
+    };
+  });
 };
 
-const generateAlgoliaPosts = async () => {
+const generateAlgoliaPosts = () => {
   const posts = getPublishedPosts();
 
-  return await Promise.all(
-    posts.map(async (post) => {
-      const { compiledContent } = await getPostParsedContent(post.slug);
+  return posts.map((post) => {
+    const { content } = getPostBySlug(post.slug);
 
-      return {
-        ...post,
-        content: compiledContent.toString().replace(/<[^>]+>/g, ""),
-        objectID: post.slug,
-        timestamp: dayjs(post.modifiedAt, "DD-MM-YYYY").unix(),
-      };
-    }),
-  );
+    return {
+      ...post,
+      content: stripMarkdown(content),
+      objectID: post.slug,
+      timestamp: dayjs(post.modifiedAt, "DD-MM-YYYY").unix(),
+    };
+  });
 };
 
 async function run() {
@@ -46,11 +53,11 @@ async function run() {
   const [indexedProjects, indexedPosts] = await Promise.all([
     client.replaceAllObjects({
       indexName: env.NEXT_PUBLIC_ALGOLIA_PROJECTS_INDEX_NAME,
-      objects: await generateAlgoliaProjects(),
+      objects: generateAlgoliaProjects(),
     }),
     client.replaceAllObjects({
       indexName: env.NEXT_PUBLIC_ALGOLIA_POSTS_INDEX_NAME,
-      objects: await generateAlgoliaPosts(),
+      objects: generateAlgoliaPosts(),
     }),
   ]);
 

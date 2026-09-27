@@ -1,0 +1,13 @@
+pre-commit:
+  parallel: true
+  commands:
+    format:
+      run: pnpm format:fix {staged_files}
+      stage_fixed: true
+      glob:
+        - "*.{js,jsx,ts,tsx,mjs,cjs,json,css,scss,md,mdx,graphql,yml,yaml}"
+    lint:
+      run: pnpm lint:fix {staged_files}
+      stage_fixed: true
+      glob:
+        - "*.{js,jsx,ts,tsx,mjs,cjs}"
