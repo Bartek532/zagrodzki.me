@@ -27,7 +27,7 @@ Please read [CONTRIBUTING.md](https://github.com/Bartek532/zagrodzki.me/blob/mai
 | [Vercel KV](https://vercel.com/docs/storage/vercel-kv) | Durable Redis database                                        |
 | [SCSS](https://sass-lang.com)                          | CSS with superpowers                                          |
 | [Zod](https://zod.dev)                                 | TypeScript-first schema validation with static type inference |
-| [Husky](https://github.comtypicode/husky)              | Git hooks                                                     |
+| [Lefthook](https://github.com/evilmartians/lefthook)   | Git hooks                                                     |
 | [ESLint](https://eslint.org/)                          | TypeScript linting                                            |
 | [Prettier](https://prettier.io/)                       | Code formatter                                                |
 
