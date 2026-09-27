@@ -1,6 +1,5 @@
-import "server-only";
-
 import { headers } from "next/headers";
+import "server-only";
 
 import env from "@/env.config";
 
