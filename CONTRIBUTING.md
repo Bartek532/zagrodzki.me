@@ -28,7 +28,7 @@ Description of the project files and directories.
 
 ```bash
 ├── .github                    # Github workflows and templates
-├── .husky                     # Husky git hooks
+├── lefthook.yml               # Lefthook git hooks
 ├── .vscode                    # VSCode settings
 ├── app/                       # Next.js app directory (v13)
 ├── components/                # React components
@@ -112,7 +112,7 @@ Component.displayName = "Component";
 | [Vercel KV](https://vercel.com/docs/storage/vercel-kv) | Durable Redis database                                        |
 | [SCSS](https://sass-lang.com)                          | CSS with superpowers                                          |
 | [Zod](https://zod.dev)                                 | TypeScript-first schema validation with static type inference |
-| [Husky](https://github.comtypicode/husky)              | Git hooks                                                     |
+| [Lefthook](https://github.com/evilmartians/lefthook)   | Git hooks                                                     |
 | [ESLint](https://eslint.org/)                          | TypeScript linting                                            |
 | [Prettier](https://prettier.io/)                       | Code formatter                                                |
 
@@ -126,11 +126,12 @@ Component.displayName = "Component";
 | [dev](https://github.com/Bartek532/zagrodzki.me/blob/main/package.json#L18)        | Runs Next.js local development server                       |
 | [feed](https://github.com/Bartek532/zagrodzki.me/blob/main/package.json#L19)       | Generates RSS feed for the blog                             |
 | [format](https://github.com/Bartek532/zagrodzki.me/blob/main/package.json#L20)     | Formats the whole project (using Prettier)                  |
-| [lint](https://github.com/Bartek532/zagrodzki.me/blob/main/package.json#L21)       | Runs ESLint against project files                           |
-| [prepare](https://github.com/Bartek532/zagrodzki.me/blob/main/package.json#L22)    | Prepares Husky hooks                                        |
-| [redirect](https://github.com/Bartek532/zagrodzki.me/blob/main/package.json#L23)   | Generates redirects to the newest post (in next.config.mjs) |
-| [start](https://github.com/Bartek532/zagrodzki.me/blob/main/package.json#L24)      | Starts Next.js server                                       |
-| [tsc](https://github.com/Bartek532/zagrodzki.me/blob/main/package.json#L25)        | Runs TypeScript transpilation against project files         |
+| [format:fix](https://github.com/Bartek532/zagrodzki.me/blob/main/package.json#L21) | Formats given files (used by Lefthook on staged changes)    |
+| [lint](https://github.com/Bartek532/zagrodzki.me/blob/main/package.json#L22)       | Runs ESLint against project files                           |
+| [lint:fix](https://github.com/Bartek532/zagrodzki.me/blob/main/package.json#L23)   | Runs ESLint with `--fix` on given files (Lefthook)          |
+| [redirect](https://github.com/Bartek532/zagrodzki.me/blob/main/package.json#L24)   | Generates redirects to the newest post (in next.config.mjs) |
+| [start](https://github.com/Bartek532/zagrodzki.me/blob/main/package.json#L25)      | Starts Next.js server                                       |
+| [tsc](https://github.com/Bartek532/zagrodzki.me/blob/main/package.json#L26)        | Runs TypeScript transpilation against project files         |
 
 ## Star History 🌟
 

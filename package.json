@@ -17,19 +17,12 @@
     "build:next": "next build",
     "dev": "next dev",
     "format": "prettier --write \"./**/*.{js,jsx,ts,tsx,css,scss,md,mdx}\"",
+    "format:fix": "prettier --write",
     "lint": "eslint",
-    "prepare": "husky install",
+    "lint:fix": "eslint --fix",
     "redirect": "tsx ./scripts/redirect.ts",
     "start": "next start",
     "tsc": "tsc --noEmit"
-  },
-  "lint-staged": {
-    "*.{js,jsx,ts,tsx,md,mdx,graphql,yml,yaml,css,scss,json}": [
-      "prettier --write"
-    ],
-    "*.{js,jsx,ts,tsx}": [
-      "eslint --fix"
-    ]
   },
   "dependencies": {
     "@hookform/resolvers": "5.4.0",
@@ -97,8 +90,7 @@
     "eslint-config-next": "16.3.1",
     "eslint-plugin-import": "2.31.0",
     "eslint-plugin-unused-imports": "4.1.4",
-    "husky": "8.0.0",
-    "lint-staged": "16.4.0",
+    "lefthook": "2.1.10",
     "network-information-types": "0.1.1",
     "postcss": "8.5.26",
     "prettier": "3.5.1",
