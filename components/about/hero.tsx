@@ -12,8 +12,8 @@ export const Hero = ({ description }: HeroProps) => (
   <HeroSection caption="About" title={description}>
     <div className="flex items-center gap-4 sm:justify-center">
       <SocialButton data={SOCIALS.x} />
-      <Button asChild>
-        <SuperLink href="/contact">Let&apos;s hang out!</SuperLink>
+      <Button nativeButton={false} render={<SuperLink href="/contact" />}>
+        Let&apos;s hang out!
       </Button>
     </div>
   </HeroSection>

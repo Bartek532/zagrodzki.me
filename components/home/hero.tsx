@@ -31,11 +31,11 @@ export const Hero = () => {
         : {})}
     >
       <div className="flex items-center gap-4 sm:justify-center">
-        <Button asChild variant="outline">
-          <SuperLink href="/work">View my work</SuperLink>
+        <Button variant="outline" nativeButton={false} render={<SuperLink href="/work" />}>
+          View my work
         </Button>
-        <Button asChild>
-          <SuperLink href="/contact">Get in touch</SuperLink>
+        <Button nativeButton={false} render={<SuperLink href="/contact" />}>
+          Get in touch
         </Button>
       </div>
     </HeroSection>

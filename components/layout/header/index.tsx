@@ -48,11 +48,13 @@ export const Header = () => (
           whileInView={{ opacity: 1, translateY: 0 }}
           delay={0.8}
         >
-          <Button variant="outline" asChild>
-            <SuperLink href="/contact" className="group">
-              Get in touch
-              <PaperPlane className="text-foreground size-3.5 transition-transform duration-200 ease-out group-hover:translate-x-8 group-hover:-translate-y-4 group-hover:rotate-[20deg]" />
-            </SuperLink>
+          <Button
+            variant="outline"
+            nativeButton={false}
+            render={<SuperLink href="/contact" className="group" />}
+          >
+            Get in touch
+            <PaperPlane className="text-foreground size-3.5 transition-transform duration-200 ease-out group-hover:translate-x-8 group-hover:-translate-y-4 group-hover:rotate-[20deg]" />
           </Button>
         </ViewAnimation>
       </div>
