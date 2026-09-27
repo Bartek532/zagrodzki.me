@@ -19,9 +19,7 @@ export const Breadcrumbs = memo<BreadcrumbsProps>(({ routes }) => (
       {routes.map((route, index) => (
         <Fragment key={route.path}>
           <BreadcrumbItem>
-            <BreadcrumbLink asChild>
-              <SuperLink href={route.path}>{route.name}</SuperLink>
-            </BreadcrumbLink>
+            <BreadcrumbLink render={<SuperLink href={route.path} />}>{route.name}</BreadcrumbLink>
           </BreadcrumbItem>
           {index !== routes.length - 1 ? <BreadcrumbSeparator /> : null}
         </Fragment>

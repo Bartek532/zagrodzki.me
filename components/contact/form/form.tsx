@@ -123,7 +123,7 @@ export const ContactForm = memo<ContactFormProps>(({ onSent }) => {
                 <Select onValueChange={field.onChange} defaultValue={field.value}>
                   <FormControl>
                     <SelectTrigger>
-                      <SelectValue asChild>
+                      <SelectValue>
                         {selectedType ? (
                           <div className="flex items-center gap-1 truncate">
                             <p>{selectedType.label}</p>

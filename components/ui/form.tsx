@@ -1,13 +1,13 @@
 "use client";
 
-import { Slot } from "@radix-ui/react-slot";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
 import * as React from "react";
 import { Controller, FormProvider, useFormContext } from "react-hook-form";
 
 import { Label } from "@/components/ui/label";
 import { cn } from "@/utils";
 
-import type * as LabelPrimitive from "@radix-ui/react-label";
 import type { ControllerProps, FieldPath, FieldValues } from "react-hook-form";
 
 const Form = FormProvider;
@@ -75,7 +75,7 @@ const FormItem = ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>)
 };
 FormItem.displayName = "FormItem";
 
-const FormLabel = ({ className, ...props }: React.ComponentProps<typeof LabelPrimitive.Root>) => {
+const FormLabel = ({ className, ...props }: React.ComponentProps<typeof Label>) => {
   const { error, formItemId } = useFormField();
 
   return (
@@ -84,17 +84,29 @@ const FormLabel = ({ className, ...props }: React.ComponentProps<typeof LabelPri
 };
 FormLabel.displayName = "FormLabel";
 
-const FormControl = ({ ...props }: React.ComponentProps<typeof Slot>) => {
+const FormControl = ({
+  render,
+  children,
+  ...props
+}: useRender.ComponentProps<"div"> & { children?: React.ReactNode }) => {
   const { error, formItemId, formDescriptionId, formMessageId } = useFormField();
+  const childRender = render ?? (React.isValidElement(children) ? children : undefined);
 
-  return (
-    <Slot
-      id={formItemId}
-      aria-describedby={!error ? `${formDescriptionId}` : `${formDescriptionId} ${formMessageId}`}
-      aria-invalid={!!error}
-      {...props}
-    />
-  );
+  return useRender({
+    defaultTagName: "div",
+    render: childRender,
+    props: mergeProps<"div">(
+      {
+        id: formItemId,
+        "aria-describedby": !error ? formDescriptionId : `${formDescriptionId} ${formMessageId}`,
+        "aria-invalid": !!error,
+      },
+      props,
+    ),
+    state: {
+      slot: "form-control",
+    },
+  });
 };
 FormControl.displayName = "FormControl";
 

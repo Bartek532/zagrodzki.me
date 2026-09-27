@@ -1,13 +1,12 @@
 "use client";
 
-import * as TabsPrimitive from "@radix-ui/react-tabs";
-import * as React from "react";
+import { Tabs as TabsPrimitive } from "@base-ui/react/tabs";
 
 import { cn } from "@/utils";
 
 const Tabs = TabsPrimitive.Root;
 
-const TabsList = ({ className, ...props }: React.ComponentProps<typeof TabsPrimitive.List>) => (
+const TabsList = ({ className, ...props }: TabsPrimitive.List.Props) => (
   <TabsPrimitive.List
     className={cn(
       "bg-muted text-muted-foreground inline-flex h-9 items-center justify-center rounded-lg p-1",
@@ -16,27 +15,21 @@ const TabsList = ({ className, ...props }: React.ComponentProps<typeof TabsPrimi
     {...props}
   />
 );
-TabsList.displayName = TabsPrimitive.List.displayName;
+TabsList.displayName = "TabsList";
 
-const TabsTrigger = ({
-  className,
-  ...props
-}: React.ComponentProps<typeof TabsPrimitive.Trigger>) => (
-  <TabsPrimitive.Trigger
+const TabsTrigger = ({ className, ...props }: TabsPrimitive.Tab.Props) => (
+  <TabsPrimitive.Tab
     className={cn(
-      "ring-offset-background focus-visible:ring-ring data-[state=active]:bg-background data-[state=active]:text-foreground inline-flex items-center justify-center rounded-md px-3 py-1 text-sm font-medium whitespace-nowrap transition-all focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-hidden disabled:pointer-events-none disabled:opacity-50 data-[state=active]:shadow-sm",
+      "ring-offset-background focus-visible:ring-ring data-active:bg-background data-active:text-foreground inline-flex items-center justify-center rounded-md px-3 py-1 text-sm font-medium whitespace-nowrap transition-all focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-hidden disabled:pointer-events-none disabled:opacity-50 data-active:shadow-sm",
       className,
     )}
     {...props}
   />
 );
-TabsTrigger.displayName = TabsPrimitive.Trigger.displayName;
+TabsTrigger.displayName = "TabsTrigger";
 
-const TabsContent = ({
-  className,
-  ...props
-}: React.ComponentProps<typeof TabsPrimitive.Content>) => (
-  <TabsPrimitive.Content
+const TabsContent = ({ className, ...props }: TabsPrimitive.Panel.Props) => (
+  <TabsPrimitive.Panel
     className={cn(
       "ring-offset-background focus-visible:ring-ring mt-2 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-hidden",
       className,
@@ -44,6 +37,6 @@ const TabsContent = ({
     {...props}
   />
 );
-TabsContent.displayName = TabsPrimitive.Content.displayName;
+TabsContent.displayName = "TabsContent";
 
 export { Tabs, TabsList, TabsTrigger, TabsContent };

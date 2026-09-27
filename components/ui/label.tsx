@@ -1,6 +1,5 @@
 "use client";
 
-import * as LabelPrimitive from "@radix-ui/react-label";
 import { cva } from "class-variance-authority";
 import * as React from "react";
 
@@ -15,9 +14,9 @@ const labelVariants = cva(
 const Label = ({
   className,
   ...props
-}: React.ComponentProps<typeof LabelPrimitive.Root> & VariantProps<typeof labelVariants>) => (
-  <LabelPrimitive.Root className={cn(labelVariants(), className)} {...props} />
+}: React.ComponentProps<"label"> & VariantProps<typeof labelVariants>) => (
+  <label className={cn(labelVariants(), className)} {...props} />
 );
-Label.displayName = LabelPrimitive.Root.displayName;
+Label.displayName = "Label";
 
 export { Label };
