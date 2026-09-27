@@ -6,24 +6,24 @@ import { z } from "zod";
 const env = defineEnv({
   extends: [vercel],
   server: {
-    SPOTIFY_CLIENT_ID: z.string(),
-    SPOTIFY_CLIENT_SECRET: z.string(),
-    SPOTIFY_REFRESH_TOKEN: z.string(),
+    SPOTIFY_CLIENT_ID: z.string().optional(),
+    SPOTIFY_CLIENT_SECRET: z.string().optional(),
+    SPOTIFY_REFRESH_TOKEN: z.string().optional(),
 
-    YTMUSIC_COOKIE: z.string(),
+    YTMUSIC_COOKIE: z.string().optional(),
 
-    PLUNK_API_KEY: z.string(),
-    EMAIL: z.email(),
+    PLUNK_API_KEY: z.string().optional(),
+    EMAIL: z.email().optional(),
 
-    KV_REST_API_TOKEN: z.string(),
-    KV_REST_API_URL: z.url(),
+    KV_REST_API_TOKEN: z.string().optional(),
+    KV_REST_API_URL: z.url().optional(),
 
-    ALGOLIA_UPDATE_API_KEY: z.string(),
+    ALGOLIA_UPDATE_API_KEY: z.string().optional(),
 
-    MAILER_LITE_API_KEY: z.string(),
-    MAILER_LITE_GROUP_ID: z.string(),
+    MAILER_LITE_API_KEY: z.string().optional(),
+    MAILER_LITE_GROUP_ID: z.string().optional(),
 
-    GITHUB_TOKEN: z.string(),
+    GITHUB_TOKEN: z.string().optional(),
   },
   client: {
     NEXT_PUBLIC_X_USERNAME: z.string(),
