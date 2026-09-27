@@ -1,16 +1,19 @@
 import * as path from "node:path";
 import { fileURLToPath } from "node:url";
-import { includeIgnoreFile } from "@eslint/compat";
+import { fixupConfigRules, includeIgnoreFile } from "@eslint/compat";
 import eslint from "@eslint/js";
 import nextCoreWebVitals from "eslint-config-next/core-web-vitals";
 import unusedImportsPlugin from "eslint-plugin-unused-imports";
 import tseslint from "typescript-eslint";
 
-const nextConfig = [...nextCoreWebVitals];
+const nextConfig = fixupConfigRules(
+  nextCoreWebVitals.filter((config) => config.name !== "next/typescript"),
+);
 
-const baseConfig = tseslint.config(
+export default tseslint.config(
   includeIgnoreFile(path.resolve(path.dirname(fileURLToPath(import.meta.url)), "./.gitignore")),
   { ignores: ["**/*.config.*"] },
+  ...nextConfig,
   {
     files: ["**/*.js", "**/*.ts", "**/*.tsx"],
     plugins: {
@@ -84,5 +87,3 @@ const baseConfig = tseslint.config(
     languageOptions: { parserOptions: { projectService: true } },
   },
 );
-
-export default [...nextConfig, ...baseConfig];
