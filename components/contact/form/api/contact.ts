@@ -1,12 +1,14 @@
 "use server";
 
 import env from "@/env.config";
+import { assertRateLimit } from "@/lib/kv/rate-limit";
 
 import { messageSchema } from "../schema";
 
 import type { Message } from "../schema";
 
 export const sendMail = async (input: Message) => {
+  await assertRateLimit("contact");
   const { name, email, message, type } = messageSchema.parse(input);
 
   const response = await fetch("https://api.useplunk.com/v1/send", {
