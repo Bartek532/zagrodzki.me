@@ -6,7 +6,9 @@ import { z } from "zod";
 const env = defineEnv({
   extends: [vercel],
   server: {
-    YTMUSIC_COOKIE: z.string().optional(),
+    YTMUSIC_OAUTH_CLIENT_ID: z.string().optional(),
+    YTMUSIC_OAUTH_CLIENT_SECRET: z.string().optional(),
+    YTMUSIC_OAUTH_TOKEN: z.string().optional(),
 
     PLUNK_API_KEY: z.string(),
     EMAIL: z.email(),

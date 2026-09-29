@@ -1,15 +1,30 @@
 import "server-only";
 
-import { AuthType, YTMusic } from "ytmusic-ts";
+import { AuthType, OAuthCredentials, YTMusic } from "ytmusic-ts";
 
 import env from "@/env.config";
 
-import { TRACK_STATUS } from "../types";
+import { youtubeMusicOAuthStorage } from "./oauth-storage";
+import { TRACK_STATUS, type YoutubeMusicTrack } from "./types";
 
 const DEFAULT_DURATION_SECONDS = 180;
 const PLAYBACK_BUFFER_SECONDS = 30;
 
 type Thumbnail = { url: string; width?: number; height?: number };
+
+const upscaleThumbnailUrl = (url: string) => {
+  if (url.includes("ytimg.com")) {
+    return url.replace(/\/(default|mqdefault)\.jpg$/, "/hqdefault.jpg");
+  }
+
+  if (url.includes("googleusercontent.com") || url.includes("ggpht.com")) {
+    return url
+      .replace(/=w\d+-h\d+[^&]*/, "=w544-h544-l90-rj")
+      .replace(/=s\d+(-c)?/, "=s544$1");
+  }
+
+  return url;
+};
 
 const getThumbnailUrl = (thumbnails: Thumbnail[] | null | undefined, videoId: string) => {
   const largest = thumbnails?.reduce<Thumbnail | undefined>((best, thumb) => {
@@ -28,20 +43,6 @@ const getThumbnailUrl = (thumbnails: Thumbnail[] | null | undefined, videoId: st
   }
 
   return `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`;
-};
-
-const upscaleThumbnailUrl = (url: string) => {
-  if (url.includes("ytimg.com")) {
-    return url.replace(/\/(default|mqdefault)\.jpg$/, "/hqdefault.jpg");
-  }
-
-  if (url.includes("googleusercontent.com") || url.includes("ggpht.com")) {
-    return url
-      .replace(/=w\d+-h\d+[^&]*/, "=w544-h544-l90-rj")
-      .replace(/=s\d+(-c)?/, "=s544$1");
-  }
-
-  return url;
 };
 
 const parsePlayedSecondsAgo = (played?: string) => {
@@ -70,17 +71,6 @@ const parsePlayedSecondsAgo = (played?: string) => {
 };
 
 const isProbablyNowPlaying = (played: string | undefined, durationSeconds?: number) => {
-  if (!played) {
-    return false;
-  }
-
-  const label = played.toLowerCase().trim();
-
-  // History groups by shelf ("Today", "Yesterday", …) — not an exact timestamp.
-  if (label === "today" || label === "earlier today") {
-    return true;
-  }
-
   const secondsAgo = parsePlayedSecondsAgo(played);
 
   if (secondsAgo === null) {
@@ -92,14 +82,30 @@ const isProbablyNowPlaying = (played: string | undefined, durationSeconds?: numb
   return secondsAgo <= duration;
 };
 
-export const fetchLastTrack = async () => {
-  if (!env.YTMUSIC_COOKIE) {
+const isConfigured = () =>
+  Boolean(
+    env.YTMUSIC_OAUTH_CLIENT_ID &&
+      env.YTMUSIC_OAUTH_CLIENT_SECRET &&
+      env.YTMUSIC_OAUTH_TOKEN,
+  );
+
+export const fetchYoutubeMusicTrack = async (): Promise<YoutubeMusicTrack | null> => {
+  if (!isConfigured()) {
     return null;
   }
 
   try {
+    const credentials = new OAuthCredentials(
+      env.YTMUSIC_OAUTH_CLIENT_ID!,
+      env.YTMUSIC_OAUTH_CLIENT_SECRET!,
+    );
+
     const client = new YTMusic({
-      auth: { type: AuthType.BROWSER, cookie: env.YTMUSIC_COOKIE },
+      auth: {
+        type: AuthType.OAUTH_CUSTOM_CLIENT,
+        credentials,
+        storage: youtubeMusicOAuthStorage,
+      },
     });
 
     const [item] = await client.getHistory();

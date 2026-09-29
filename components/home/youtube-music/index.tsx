@@ -1,15 +1,15 @@
 import { unstable_cache as cache } from "next/cache";
 import Image from "next/image";
 
+import { fetchYoutubeMusicTrack } from "@/lib/youtube-music/fetch-track";
 import { ViewAnimation } from "@/providers/view-animation";
 
 import OfflineIcon from "../../../public/svg/offline.svg";
 import YouTubeMusicIcon from "../../../public/svg/socials/youtube-music.svg";
 
-import { fetchLastTrack } from "./api/youtube-music";
 import { TRACK_STATUS } from "./types";
 
-const getTrack = cache(fetchLastTrack, ["youtube-music"], { revalidate: 60 * 5 });
+const getTrack = cache(fetchYoutubeMusicTrack, ["youtube-music"], { revalidate: 120 });
 
 export const YouTubeMusic = async () => {
   const track = await getTrack();
